@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
 class ManualWidgetTesterTab extends StatefulWidget {
-  const ManualWidgetTesterTab({Key? key, required this.width, required this.isSelected, required this.widgetName, required this.themeSettings}) : super(key: key);
+  const ManualWidgetTesterTab({Key? key, required this.width, required this.widgetName, required this.themeSettings, required this.tabIndex, required this.selectedTabIndex}) : super(key: key);
   
   final double width;
-  final bool isSelected;
+  final int tabIndex;
+  final int selectedTabIndex;
   final String widgetName;
   final ManualWidgetTesterThemeSettings themeSettings;
 
@@ -18,6 +19,8 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
   
   @override
   Widget build(BuildContext context) {
+    final isSelected = widget.tabIndex == widget.selectedTabIndex;
+    
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       onEnter: (event) => setState(() {
@@ -33,12 +36,16 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
           padding: const EdgeInsets.only(top: 4.0),
           child: Stack(
             children: [
-              _TabBackground(isSelected: widget.isSelected, themeSettings: widget.themeSettings),
+              _TabBackground(
+                themeSettings: widget.themeSettings,
+                tabIndex: widget.tabIndex,
+                selectedTabIndex: widget.selectedTabIndex,
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: _TabText(
                   widgetName: widget.widgetName,
-                  isSelected: widget.isSelected,
+                  isSelected: isSelected,
                   isBeingHovered: _isBeingHovered,
                 ),
               ),
@@ -101,15 +108,19 @@ class _TabText extends StatelessWidget {
 class _TabBackground extends StatelessWidget {
   const _TabBackground({
     Key? key,
-    required this.isSelected,
     required this.themeSettings,
+    required this.tabIndex,
+    required this.selectedTabIndex,
   }) : super(key: key);
 
-  final bool isSelected;
+  final int tabIndex;
+  final int selectedTabIndex;
   final ManualWidgetTesterThemeSettings themeSettings;
 
   @override
   Widget build(BuildContext context) {
+    final isSelected = tabIndex == selectedTabIndex;
+    
     return Stack(
       children: [
         Container(
@@ -131,6 +142,23 @@ class _TabBackground extends StatelessWidget {
               bottomRight: Radius.circular(3.0),
             ),
             color: themeSettings.accentColor,
+          ),
+        ),
+        isSelected || tabIndex == selectedTabIndex - 1 ? const SizedBox() : Align(
+          alignment: Alignment.centerRight,
+          child: Container(
+            width: 1.0,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color.fromRGBO(255, 255, 255, 0.0),
+                  Color.fromRGBO(255, 255, 255, 0.1),
+                  Color.fromRGBO(255, 255, 255, 0.0),
+                ]
+              ),
+            ),
           ),
         ),
         Container(

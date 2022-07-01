@@ -9,6 +9,8 @@ class ManualWidgetTesterTabbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const selectedTabIndex = 1;
+    
     return SizedBox.expand(
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
@@ -16,19 +18,22 @@ class ManualWidgetTesterTabbar extends StatelessWidget {
           children: [
             ManualWidgetTesterTab(
               width: 192.0,
-              isSelected: true,
+              tabIndex: 0,
+              selectedTabIndex: selectedTabIndex,
               widgetName: 'ThemeSettings',
               themeSettings: themeSettings,
             ),
             ManualWidgetTesterTab(
               width: 192.0,
-              isSelected: false,
+              tabIndex: 1,
+              selectedTabIndex: selectedTabIndex,
               widgetName: 'MouseCursorOverrider',
               themeSettings: themeSettings,
             ),
             ManualWidgetTesterTab(
               width: 192.0,
-              isSelected: false,
+              tabIndex: 2,
+              selectedTabIndex: selectedTabIndex,
               widgetName: 'MouseCursorOverriderTestWidget',
               themeSettings: themeSettings,
             ),
