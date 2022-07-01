@@ -71,8 +71,7 @@ class _ManualWidgetTesterBody extends StatelessWidget {
               child: Column(
                 children: [
                   ManualWidgetTesterAppbar(
-                    height: themeSettings.appbarHeight,
-                    sidebarColor: themeSettings.sidebarColor,
+                    themeSettings: themeSettings,
                   ),
                   Container(),
                 ],

@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/widgets/tabbar.dart';
 
 class ManualWidgetTesterAppbar extends StatelessWidget {
-  const ManualWidgetTesterAppbar({Key? key, required this.height, required this.sidebarColor}) : super(key: key);
+  const ManualWidgetTesterAppbar({Key? key, required this.themeSettings}) : super(key: key);
   
-  final double height;
-  final Color sidebarColor;
+  final ManualWidgetTesterThemeSettings themeSettings;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height,
-      color: sidebarColor,
+      height: themeSettings.appbarHeight,
+      color: themeSettings.sidebarColor,
+      child: ManualWidgetTesterTabbar(
+        themeSettings: themeSettings,
+      ),
     );
   }
 }
