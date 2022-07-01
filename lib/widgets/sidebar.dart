@@ -72,9 +72,20 @@ class ManualWidgetTesterSidebar extends StatefulWidget {
 class _ManualWidgetTesterSidebarState extends State<ManualWidgetTesterSidebar> {
   double _draggedWidth = 128.0;
   
+  double _getLegalDisplayWidthFromDraggedWidth(double draggedWidth) {
+    const lowerBound = 96.0;
+    final upperBound = widget.maxWidth;
+    
+    if (lowerBound > upperBound) {
+      return draggedWidth;
+    }
+    
+    return draggedWidth.clamp(lowerBound, upperBound);
+  }
+  
   @override
   Widget build(BuildContext context) {
-    final displayWidth = _draggedWidth.clamp(96.0, widget.maxWidth - 64.0);
+    final displayWidth = _getLegalDisplayWidthFromDraggedWidth(_draggedWidth);
     
     return Container(
       width: displayWidth,
