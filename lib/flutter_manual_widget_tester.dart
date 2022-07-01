@@ -1,6 +1,8 @@
 library flutter_manual_widget_tester;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/backend/widget_test_session.dart';
+import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 import 'package:flutter_manual_widget_tester/widgets/appbar.dart';
@@ -18,6 +20,17 @@ class ManualWidgetTester extends StatefulWidget {
 
 class _ManualWidgetTesterState extends State<ManualWidgetTester> {
   final _mouseCursorOverrider = MouseCursorOverrider();
+  final _widgetTestSessionHandler = WidgetTestSessionHandler();
+  
+  @override
+  void initState() {
+    // TODO: remove after testing
+    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'ThemeSettings'));
+    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverrider'));
+    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverriderTestWidget'));
+    
+    super.initState();
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -37,6 +50,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
             _ManualWidgetTesterBody(
               themeSettings: widget.themeSettings,
               mouseCursorOverrider: _mouseCursorOverrider,
+              widgetTestSessionHandler: _widgetTestSessionHandler,
             ),
           ],
         ),
@@ -50,10 +64,12 @@ class _ManualWidgetTesterBody extends StatelessWidget {
     Key? key,
     required this.themeSettings,
     required this.mouseCursorOverrider,
+    required this.widgetTestSessionHandler,
   }) : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final MouseCursorOverrider mouseCursorOverrider;
+  final WidgetTestSessionHandler widgetTestSessionHandler;
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +88,7 @@ class _ManualWidgetTesterBody extends StatelessWidget {
                 children: [
                   ManualWidgetTesterAppbar(
                     themeSettings: themeSettings,
+                    widgetTestSessionHandler: widgetTestSessionHandler,
                   ),
                   Container(),
                 ],
