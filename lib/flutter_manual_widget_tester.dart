@@ -23,7 +23,6 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
   Widget build(BuildContext context) {
     _mouseCursorOverrider.setSetStateFunction(setState);
     
-    print(_mouseCursorOverrider.currentMouseCursor);
     return DefaultTextStyle(
       style: const TextStyle(
         color: Colors.black,
