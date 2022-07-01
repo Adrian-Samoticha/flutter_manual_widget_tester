@@ -18,26 +18,39 @@ class _ManualWidgetTesterTabbarState extends State<ManualWidgetTesterTabbar> {
   @override
   Widget build(BuildContext context) {
     return SizedBox.expand(
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: widget.widgetTestSessionHandler.widgetTestSessions.asMap().entries.map((MapEntry<int, WidgetTestSession> entry) {
-            return ManualWidgetTesterTab(
-              width: 192.0,
-              widgetName: entry.value.name,
-              themeSettings: widget.themeSettings,
-              tabIndex: entry.key,
-              selectedTabIndex: widget.widgetTestSessionHandler.currentIndex,
-              onSelect: () => setState(() {
-                widget.widgetTestSessionHandler.currentIndex = entry.key;
-              }),
-              onClose: () => setState(() {
-                widget.widgetTestSessionHandler.closeWidgetTestSession(entry.key);
-              }),
-            );
-          }).toList(),
-        ),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: widget.widgetTestSessionHandler.widgetTestSessions.asMap().entries.map((MapEntry<int, WidgetTestSession> entry) {
+                final tabWidth = _calculateTabWidth(widget.widgetTestSessionHandler.widgetTestSessions.length, constraints.maxWidth);
+                
+                return ManualWidgetTesterTab(
+                  width: tabWidth,
+                  widgetName: entry.value.name,
+                  themeSettings: widget.themeSettings,
+                  tabIndex: entry.key,
+                  selectedTabIndex: widget.widgetTestSessionHandler.currentIndex,
+                  onSelect: () => setState(() {
+                    widget.widgetTestSessionHandler.currentIndex = entry.key;
+                  }),
+                  onClose: () => setState(() {
+                    widget.widgetTestSessionHandler.closeWidgetTestSession(entry.key);
+                  }),
+                );
+              }).toList(),
+            ),
+          );
+        }
       ),
     );
+  }
+  
+  double _calculateTabWidth(int numberOfTabs, double maxWidth) {
+    final minTabWidth = widget.themeSettings.minTabWidth;
+    final maxTabWidth = widget.themeSettings.maxTabWidth;
+    
+    return (maxWidth / numberOfTabs).clamp(minTabWidth, maxTabWidth);
   }
 }
