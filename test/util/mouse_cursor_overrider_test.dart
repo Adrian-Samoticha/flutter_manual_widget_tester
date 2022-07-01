@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/rendering.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 import 'package:flutter_test/flutter_test.dart';
