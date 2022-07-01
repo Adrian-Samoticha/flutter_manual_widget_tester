@@ -14,6 +14,7 @@ class _HorizontalDragHandle extends StatefulWidget {
 
 class _HorizontalDragHandleState extends State<_HorizontalDragHandle> {
   int _mouseCursorOverrideId = 0;
+  bool _isBeingDragged = false;
   
   @override
   Widget build(BuildContext context) {
@@ -22,15 +23,18 @@ class _HorizontalDragHandleState extends State<_HorizontalDragHandle> {
       child: GestureDetector(
         onHorizontalDragStart: (details) {
           _mouseCursorOverrideId = widget.mouseCursorOverrider.overrideMouseCursor(SystemMouseCursors.resizeLeftRight);
+          setState(() => _isBeingDragged = true);
           widget.onDragStart();
         },
         onHorizontalDragEnd: (details) {
           widget.mouseCursorOverrider.cancelOverride(_mouseCursorOverrideId);
+          setState(() => _isBeingDragged = false);
         },
         onHorizontalDragUpdate: (details) => widget.onDragUpdate(details.delta.dx),
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
           width: 6.0,
-          color: Colors.transparent,
+          color: _isBeingDragged ? Colors.blue : Colors.transparent,
         ),
       ),
     );
