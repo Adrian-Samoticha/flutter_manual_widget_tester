@@ -31,6 +31,9 @@ class _ManualWidgetTesterTabbarState extends State<ManualWidgetTesterTabbar> {
               onSelect: () => setState(() {
                 widget.widgetTestSessionHandler.currentIndex = entry.key;
               }),
+              onClose: () => setState(() {
+                widget.widgetTestSessionHandler.closeWidgetTestSession(entry.key);
+              }),
             );
           }).toList(),
         ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
 class ManualWidgetTesterTab extends StatefulWidget {
-  const ManualWidgetTesterTab({Key? key, required this.width, required this.widgetName, required this.themeSettings, required this.tabIndex, required this.selectedTabIndex, required this.onSelect}) : super(key: key);
+  const ManualWidgetTesterTab({Key? key, required this.width, required this.widgetName, required this.themeSettings, required this.tabIndex, required this.selectedTabIndex, required this.onSelect, required this.onClose}) : super(key: key);
   
   final double width;
   final int tabIndex;
@@ -10,6 +10,7 @@ class ManualWidgetTesterTab extends StatefulWidget {
   final String widgetName;
   final ManualWidgetTesterThemeSettings themeSettings;
   final void Function() onSelect;
+  final void Function() onClose;
 
   @override
   State<ManualWidgetTesterTab> createState() => _ManualWidgetTesterTabState();
@@ -24,6 +25,7 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
     
     return GestureDetector(
       onTapDown: (_) => widget.onSelect(),
+      onTertiaryTapDown: (_) => widget.onClose(),
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         onEnter: (event) => setState(() {

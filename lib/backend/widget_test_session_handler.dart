@@ -15,7 +15,9 @@ class WidgetTestSessionHandler {
   
   void closeWidgetTestSession(int index) {
     _widgetTestSessions.removeAt(index);
-    currentIndex -= 1;
+    if (currentIndex >= index) {
+      currentIndex -= 1;
+    }
   }
   
   int get currentIndex => _currentIndex;

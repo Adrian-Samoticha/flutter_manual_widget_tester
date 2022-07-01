@@ -44,7 +44,8 @@ void main() {
     sessionHandler.currentIndex = 3;
     expect(sessionHandler.currentIndex, 2);
     
-    // Closing a session is supposed to decrement the current index.
+    // Closing a session is supposed to decrement the current index,
+    // if the current index is greater than or equal to the closed index.
     sessionHandler.closeWidgetTestSession(2);
     expect(sessionHandler.widgetTestSessions.length, 2);
     expect(sessionHandler.currentIndex, 1);
@@ -52,5 +53,15 @@ void main() {
     sessionHandler.closeWidgetTestSession(0);
     expect(sessionHandler.widgetTestSessions.length, 1);
     expect(sessionHandler.currentIndex, 0);
+    
+    // The index should, however, not be decremented if the current index,
+    // is smaller than the closed index.
+    sessionHandler.createNewSession(WidgetTestSession());
+    sessionHandler.createNewSession(WidgetTestSession());
+    expect(sessionHandler.widgetTestSessions.length, 3);
+    sessionHandler.currentIndex = 1;
+    expect(sessionHandler.currentIndex, 1);
+    sessionHandler.closeWidgetTestSession(2);
+    expect(sessionHandler.currentIndex, 1);
   });
 }
