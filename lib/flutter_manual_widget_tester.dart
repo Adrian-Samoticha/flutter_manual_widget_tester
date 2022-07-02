@@ -8,7 +8,7 @@ import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 import 'package:flutter_manual_widget_tester/widgets/appbar.dart';
 import 'package:flutter_manual_widget_tester/widgets/background.dart';
 import 'package:flutter_manual_widget_tester/widgets/sidebar.dart';
-import 'package:flutter_manual_widget_tester/widgets/widget_test_session_area.dart';
+import 'package:flutter_manual_widget_tester/widgets/widget_test_session_area_stack.dart';
 
 class ManualWidgetTester extends StatefulWidget {
   const ManualWidgetTester({Key? key, this.themeSettings = const ManualWidgetTesterThemeSettings()}) : super(key: key);
@@ -92,9 +92,10 @@ class _ManualWidgetTesterBody extends StatelessWidget {
                     widgetTestSessionHandler: widgetTestSessionHandler,
                   ),
                   Expanded(
-                    child: ManualWidgetTesterWidgetTestSessionArea(
+                    child: ManualWidgetTesterWidgetTestSessionAreaStack(
                       mouseCursorOverrider: mouseCursorOverrider,
                       themeSettings: themeSettings,
+                      widgetTestSessionHandler: widgetTestSessionHandler,
                     )
                   ),
                 ],
