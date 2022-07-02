@@ -64,4 +64,60 @@ void main() {
     sessionHandler.closeWidgetTestSession(2);
     expect(sessionHandler.currentIndex, 1);
   });
+  
+  testWidgets('widget test session handler session creation callback', (tester) async {
+    final sessionHandler = WidgetTestSessionHandler();
+    
+    sessionHandler.registerOnChangedCallback(
+      expectAsync1((value) => value == sessionHandler),
+    );
+    
+    sessionHandler.createNewSession(WidgetTestSession());
+  });
+  
+  testWidgets('widget test session handler index change callback', (tester) async {
+    final sessionHandler = WidgetTestSessionHandler();
+    
+    sessionHandler.createNewSession(WidgetTestSession());
+    sessionHandler.createNewSession(WidgetTestSession());
+    sessionHandler.createNewSession(WidgetTestSession());
+    
+    sessionHandler.registerOnChangedCallback(
+      expectAsync1((value) => value == sessionHandler),
+    );
+    
+    sessionHandler.currentIndex = 1;
+  });
+  
+  testWidgets('widget test session handler session closed callback (index does not change)', (tester) async {
+    final sessionHandler = WidgetTestSessionHandler();
+    
+    sessionHandler.createNewSession(WidgetTestSession());
+    sessionHandler.createNewSession(WidgetTestSession());
+    sessionHandler.createNewSession(WidgetTestSession());
+    
+    sessionHandler.currentIndex = 0;
+    
+    sessionHandler.registerOnChangedCallback(
+      expectAsync1((value) => value == sessionHandler),
+    );
+    
+    sessionHandler.closeWidgetTestSession(0);
+  });
+  
+  testWidgets('widget test session handler session closed callback (index does change)', (tester) async {
+    final sessionHandler = WidgetTestSessionHandler();
+    
+    sessionHandler.createNewSession(WidgetTestSession());
+    sessionHandler.createNewSession(WidgetTestSession());
+    sessionHandler.createNewSession(WidgetTestSession());
+    
+    sessionHandler.currentIndex = 2;
+    
+    sessionHandler.registerOnChangedCallback(
+      expectAsync1((value) => value == sessionHandler),
+    );
+    
+    sessionHandler.closeWidgetTestSession(0);
+  });
 }
