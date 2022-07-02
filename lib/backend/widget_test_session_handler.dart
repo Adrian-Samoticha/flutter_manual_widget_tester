@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter_manual_widget_tester/backend/widget_test_session.dart';
 
 class WidgetTestSessionHandler {
