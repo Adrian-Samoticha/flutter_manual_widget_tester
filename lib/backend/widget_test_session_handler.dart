@@ -36,7 +36,7 @@ class WidgetTestSessionHandler {
     _currentIndex = newIndex.clamp(0, _widgetTestSessions.length - 1);
   }
   
-  StreamSubscription registerOnChangedCallback(void Function(WidgetTestSessionHandler) callback) {
+  StreamSubscription<WidgetTestSessionHandler> registerOnChangedCallback(void Function(WidgetTestSessionHandler) callback) {
     return _onChangedStream.stream.listen(callback);
   }
 }
