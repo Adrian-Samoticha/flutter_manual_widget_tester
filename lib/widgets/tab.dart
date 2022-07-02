@@ -63,13 +63,11 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
       child: Row(
         children: [
           ...widget.icon == null ? []: [
-            Padding(
-              padding: const EdgeInsets.only(right: 4.0),
-              child: Icon(
-                widget.icon,
-                size: 21.0,
-                color: widget.iconColor,
-              ),
+            _TabIcon(
+              icon: widget.icon!,
+              iconColor: widget.iconColor,
+              isSelected: isSelected,
+              isBeingHovered: _isBeingHovered,
             ),
           ],
           Expanded(
@@ -80,6 +78,48 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _TabIcon extends StatelessWidget {
+  const _TabIcon({
+    Key? key,
+    required this.icon,
+    required this.iconColor,
+    required this.isSelected,
+    required this.isBeingHovered,
+  }) : super(key: key);
+
+  final IconData icon;
+  final Color? iconColor;
+  final bool isSelected;
+  final bool isBeingHovered;
+
+  @override
+  Widget build(BuildContext context) {
+    if (isSelected) {
+      return Padding(
+        padding: const EdgeInsets.only(right: 4.0),
+        child: Icon(
+          icon,
+          size: 21.0,
+          color: iconColor,
+        ),
+      );
+    }
+    
+    return AnimatedOpacity(
+      duration: const Duration(milliseconds: 150),
+      opacity: isBeingHovered ? 0.7 : 0.4,
+      child: Padding(
+        padding: const EdgeInsets.only(right: 4.0),
+        child: Icon(
+          icon,
+          size: 21.0,
+          color: iconColor,
+        ),
       ),
     );
   }
