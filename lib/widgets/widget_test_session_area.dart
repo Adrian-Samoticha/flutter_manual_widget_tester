@@ -114,7 +114,7 @@ class _ResizableBorderState extends State<_ResizableBorder> {
   }
 
   Widget _generateResizeHandle({required bool isLeft}) {
-    final mouseCursor = widget.isVertical ? SystemMouseCursors.resizeUpDown : SystemMouseCursors.resizeLeftRight;
+    final mouseCursor = _getMouseCursor();
     
     return MouseRegion(
       cursor: mouseCursor,
@@ -137,6 +137,14 @@ class _ResizableBorderState extends State<_ResizableBorder> {
         ),
       ),
     );
+  }
+  
+  MouseCursor _getMouseCursor() {
+    if (widget.mouseCursorOverrider.isOverrideActive) {
+      return MouseCursor.defer;
+    }
+    
+    return widget.isVertical ? SystemMouseCursors.resizeUpDown : SystemMouseCursors.resizeLeftRight;
   }
 }
 
@@ -231,6 +239,10 @@ class _ResizableCornersState extends State<_ResizableCorners> {
   }
 
   MouseCursor _getMouseCursorForCorner({required bool isRight, required bool isBottom, bool isMouseButtonDown = false}) {
+    if (widget.mouseCursorOverrider.isOverrideActive) {
+      return MouseCursor.defer;
+    }
+    
     if (Platform.isMacOS) {
       return isMouseButtonDown ? SystemMouseCursors.grabbing : SystemMouseCursors.grab;
     }

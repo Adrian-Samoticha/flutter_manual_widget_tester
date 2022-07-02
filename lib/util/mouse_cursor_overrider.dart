@@ -50,4 +50,6 @@ class MouseCursorOverrider {
     
     return _overrides.last.mouseCursor;
   }
+  
+  bool get isOverrideActive => _overrides.isNotEmpty;
 }
