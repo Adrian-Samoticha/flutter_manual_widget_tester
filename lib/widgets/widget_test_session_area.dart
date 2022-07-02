@@ -19,6 +19,7 @@ class ManualWidgetTesterWidgetTestSessionArea extends StatefulWidget {
 class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTesterWidgetTestSessionArea> {
   double _draggedWidth = 64.0;
   double _draggedHeight = 64.0;
+  double _zoom = 1.0;
   
   @override
   Widget build(BuildContext context) {
@@ -29,17 +30,34 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
         
         return Stack(
           children: [
-            Center(
-              child: SizedBox(
-                width: displayWidth,
-                height: displayHeight,
-                child: widget.widgetTestSession.widget,
-              ),
-            ),
+            _generateToBeTestedWidget(displayWidth, displayHeight),
             ..._generateResizableHandles(displayWidth, displayHeight),
           ],
         );
       }
+    );
+  }
+
+  Center _generateToBeTestedWidget(double displayWidth, double displayHeight) {
+    if ((_zoom - 1.0).abs() < 0.00001) {
+      return Center(
+        child: SizedBox(
+          width: displayWidth,
+          height: displayHeight,
+          child: widget.widgetTestSession.widget,
+        ),
+      );
+    }
+    
+    return Center(
+      child: Transform.scale(
+        scale: _zoom,
+        child: SizedBox(
+          width: displayWidth * (1.0 / _zoom),
+          height: displayHeight * (1.0 / _zoom),
+          child: widget.widgetTestSession.widget,
+        ),
+      ),
     );
   }
   
