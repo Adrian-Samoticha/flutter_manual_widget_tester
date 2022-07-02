@@ -71,7 +71,7 @@ class _ResizableBorder extends StatefulWidget {
   final MouseCursorOverrider mouseCursorOverrider;
   final ManualWidgetTesterThemeSettings themeSettings;
 
-  const _ResizableBorder({super.key, required this.isVertical, required this.size, required this.onDragStart, required this.onDragUpdate, required this.mouseCursorOverrider, required this.themeSettings});
+  const _ResizableBorder({required this.isVertical, required this.size, required this.onDragStart, required this.onDragUpdate, required this.mouseCursorOverrider, required this.themeSettings});
 
   @override
   State<_ResizableBorder> createState() => _ResizableBorderState();
