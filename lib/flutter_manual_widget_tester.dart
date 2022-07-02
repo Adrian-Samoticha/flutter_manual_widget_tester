@@ -8,6 +8,7 @@ import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 import 'package:flutter_manual_widget_tester/widgets/appbar.dart';
 import 'package:flutter_manual_widget_tester/widgets/background.dart';
 import 'package:flutter_manual_widget_tester/widgets/sidebar.dart';
+import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row.dart';
 import 'package:flutter_manual_widget_tester/widgets/widget_test_session_area_stack.dart';
 
 class ManualWidgetTester extends StatefulWidget {
@@ -30,7 +31,19 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       color: Colors.blue,
       child: const Text('foo'),
     )));
-    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverrider', icon: Icons.api));
+    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverrider', icon: Icons.api, widget: Container(
+      color: widget.themeSettings.sidebarColor,
+      child:  Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ManualWidgetTesterButtonRow(
+          themeSettings: widget.themeSettings,
+          buttons: [
+            ManualWidgetTesterButtonInfo(onButtonDown: () => print('onButtonDown'), onButtonPressed: () => print('onButtonPressed'), child: const Icon(Icons.zoom_out)),
+            ManualWidgetTesterButtonInfo(onButtonDown: null, onButtonPressed: null, child: const Icon(Icons.zoom_in)),
+          ],
+        ),
+      ),
+    )));
     _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverriderTestWidget'));
     
     super.initState();
