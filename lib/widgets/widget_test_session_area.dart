@@ -230,7 +230,7 @@ class _ResizableCornersState extends State<_ResizableCorners> {
             child: Container(
               width: 6.0,
               height: 6.0,
-              color: Colors.blue,
+              color: Colors.transparent,
             ),
           ),
         ),
