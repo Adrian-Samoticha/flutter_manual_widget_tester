@@ -27,7 +27,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
   void initState() {
     // TODO: remove after testing
     _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'ThemeSettings'));
-    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverrider'));
+    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverrider', icon: Icons.api));
     _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverriderTestWidget'));
     
     super.initState();

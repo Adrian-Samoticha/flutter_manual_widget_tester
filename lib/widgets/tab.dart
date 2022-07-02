@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
 class ManualWidgetTesterTab extends StatefulWidget {
-  const ManualWidgetTesterTab({Key? key, required this.width, required this.widgetName, required this.themeSettings, required this.tabIndex, required this.selectedTabIndex, required this.onSelect, required this.onClose}) : super(key: key);
+  const ManualWidgetTesterTab({Key? key, required this.width, required this.widgetName, required this.themeSettings, required this.tabIndex, required this.selectedTabIndex, required this.onSelect, required this.onClose, required this.icon, required this.iconColor}) : super(key: key);
   
   final double width;
   final int tabIndex;
@@ -11,6 +11,8 @@ class ManualWidgetTesterTab extends StatefulWidget {
   final ManualWidgetTesterThemeSettings themeSettings;
   final void Function() onSelect;
   final void Function() onClose;
+  final IconData? icon;
+  final Color iconColor;
 
   @override
   State<ManualWidgetTesterTab> createState() => _ManualWidgetTesterTabState();
@@ -46,18 +48,38 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
                   tabIndex: widget.tabIndex,
                   selectedTabIndex: widget.selectedTabIndex,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: _TabText(
-                    widgetName: widget.widgetName,
-                    isSelected: isSelected,
-                    isBeingHovered: _isBeingHovered,
-                  ),
-                ),
+                _generateTabRow(isSelected),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Padding _generateTabRow(bool isSelected) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          ...widget.icon == null ? []: [
+            Padding(
+              padding: const EdgeInsets.only(right: 4.0),
+              child: Icon(
+                widget.icon,
+                size: 21.0,
+                color: widget.iconColor,
+              ),
+            ),
+          ],
+          Expanded(
+            child: _TabText(
+              widgetName: widget.widgetName,
+              isSelected: isSelected,
+              isBeingHovered: _isBeingHovered,
+            ),
+          ),
+        ],
       ),
     );
   }

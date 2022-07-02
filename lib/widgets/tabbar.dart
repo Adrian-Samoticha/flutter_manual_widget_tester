@@ -25,10 +25,11 @@ class _ManualWidgetTesterTabbarState extends State<ManualWidgetTesterTabbar> {
             child: Row(
               children: widget.widgetTestSessionHandler.widgetTestSessions.asMap().entries.map((MapEntry<int, WidgetTestSession> entry) {
                 final tabWidth = _calculateTabWidth(widget.widgetTestSessionHandler.widgetTestSessions.length, constraints.maxWidth);
+                final session = entry.value;
                 
                 return ManualWidgetTesterTab(
                   width: tabWidth,
-                  widgetName: entry.value.name,
+                  widgetName: session.name,
                   themeSettings: widget.themeSettings,
                   tabIndex: entry.key,
                   selectedTabIndex: widget.widgetTestSessionHandler.currentIndex,
@@ -38,6 +39,8 @@ class _ManualWidgetTesterTabbarState extends State<ManualWidgetTesterTabbar> {
                   onClose: () => setState(() {
                     widget.widgetTestSessionHandler.closeWidgetTestSession(entry.key);
                   }),
+                  icon: session.icon,
+                  iconColor: session.iconColor ?? widget.themeSettings.defaultIconColor,
                 );
               }).toList(),
             ),
