@@ -94,6 +94,7 @@ class _ManualWidgetTesterBody extends StatelessWidget {
                   Expanded(
                     child: ManualWidgetTesterWidgetTestSessionArea(
                       mouseCursorOverrider: mouseCursorOverrider,
+                      themeSettings: themeSettings,
                     )
                   ),
                 ],

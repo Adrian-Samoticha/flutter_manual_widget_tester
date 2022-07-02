@@ -7,6 +7,7 @@ class ManualWidgetTesterThemeSettings {
   final Color accentColor;
   final double minTabWidth;
   final double maxTabWidth;
+  final Color dottedLineColor;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -15,5 +16,6 @@ class ManualWidgetTesterThemeSettings {
     this.accentColor = const Color.fromARGB(255, 40, 138, 251),
     this.minTabWidth = 64.0,
     this.maxTabWidth = 192.0,
+    this.dottedLineColor = const Color.fromRGBO(255, 255, 255, 0.5),
   });
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 
 class ManualWidgetTesterWidgetTestSessionArea extends StatefulWidget {
   final MouseCursorOverrider mouseCursorOverrider;
+  final ManualWidgetTesterThemeSettings themeSettings;
   
-  const ManualWidgetTesterWidgetTestSessionArea({Key? key, required this.mouseCursorOverrider}) : super(key: key);
+  const ManualWidgetTesterWidgetTestSessionArea({Key? key, required this.mouseCursorOverrider, required this.themeSettings}) : super(key: key);
 
   @override
   State<ManualWidgetTesterWidgetTestSessionArea> createState() => _ManualWidgetTesterWidgetTestSessionAreaState();
@@ -31,6 +33,7 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
                 _draggedWidth += delta;
               }),
               mouseCursorOverrider: widget.mouseCursorOverrider,
+              themeSettings: widget.themeSettings,
             ),
             _ResizableBorder(
               isVertical: true,
@@ -40,6 +43,7 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
                 _draggedHeight += delta;
               }),
               mouseCursorOverrider: widget.mouseCursorOverrider,
+              themeSettings: widget.themeSettings,
             ),
           ],
         );
@@ -65,8 +69,9 @@ class _ResizableBorder extends StatefulWidget {
   final void Function() onDragStart;
   final void Function(double) onDragUpdate;
   final MouseCursorOverrider mouseCursorOverrider;
+  final ManualWidgetTesterThemeSettings themeSettings;
 
-  const _ResizableBorder({super.key, required this.isVertical, required this.size, required this.onDragStart, required this.onDragUpdate, required this.mouseCursorOverrider});
+  const _ResizableBorder({super.key, required this.isVertical, required this.size, required this.onDragStart, required this.onDragUpdate, required this.mouseCursorOverrider, required this.themeSettings});
 
   @override
   State<_ResizableBorder> createState() => _ResizableBorderState();
@@ -111,7 +116,7 @@ class _ResizableBorderState extends State<_ResizableBorder> {
           width: 6.0,
           child: SizedBox.expand(
             child: CustomPaint(
-              painter: _DottedLine(),
+              painter: _DottedLine(widget.themeSettings.dottedLineColor),
             ),
           ),
         ),
@@ -121,10 +126,14 @@ class _ResizableBorderState extends State<_ResizableBorder> {
 }
 
 class _DottedLine extends CustomPainter {
+  final Color dottedLineColor;
+
+  _DottedLine(this.dottedLineColor);
+  
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
-      ..color = const Color.fromRGBO(255, 255, 255, 0.5);
+      ..color = dottedLineColor;
     
     final x = size.width * 0.5;
     for (var y = 0.0; y < size.height; y += 4.0) {
