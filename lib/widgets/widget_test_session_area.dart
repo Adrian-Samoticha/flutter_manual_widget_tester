@@ -107,11 +107,33 @@ class _ResizableBorderState extends State<_ResizableBorder> {
         onHorizontalDragEnd: (_) {
           widget.mouseCursorOverrider.cancelOverride(_mouseCursorOverrideId);
         },
-        child: Container(
+        child: SizedBox(
           width: 6.0,
-          color: Colors.blue,
+          child: SizedBox.expand(
+            child: CustomPaint(
+              painter: _DottedLine(),
+            ),
+          ),
         ),
       ),
     );
+  }
+}
+
+class _DottedLine extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..color = const Color.fromRGBO(255, 255, 255, 0.5);
+    
+    final x = size.width * 0.5;
+    for (var y = 0.0; y < size.height; y += 4.0) {
+      canvas.drawCircle(Offset(x, y), 1.0, paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }
