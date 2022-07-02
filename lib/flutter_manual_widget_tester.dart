@@ -26,7 +26,10 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
   @override
   void initState() {
     // TODO: remove after testing
-    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'ThemeSettings'));
+    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'ThemeSettings', widget: Container(
+      color: Colors.blue,
+      child: const Text('foo'),
+    )));
     _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverrider', icon: Icons.api));
     _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverriderTestWidget'));
     

@@ -42,6 +42,7 @@ class _ManualWidgetTesterWidgetTestSessionAreaStackState extends State<ManualWid
       children: widget.widgetTestSessionHandler.widgetTestSessions.map((WidgetTestSession session) {
         return ManualWidgetTesterWidgetTestSessionArea(
           key: session.key,
+          widgetTestSession: session,
           mouseCursorOverrider: widget.mouseCursorOverrider,
           themeSettings: widget.themeSettings,
         );

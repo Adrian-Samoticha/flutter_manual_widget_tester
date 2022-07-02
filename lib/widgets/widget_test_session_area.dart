@@ -1,14 +1,16 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/backend/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 
 class ManualWidgetTesterWidgetTestSessionArea extends StatefulWidget {
   final MouseCursorOverrider mouseCursorOverrider;
   final ManualWidgetTesterThemeSettings themeSettings;
+  final WidgetTestSession widgetTestSession;
   
-  const ManualWidgetTesterWidgetTestSessionArea({Key? key, required this.mouseCursorOverrider, required this.themeSettings}) : super(key: key);
+  const ManualWidgetTesterWidgetTestSessionArea({Key? key, required this.mouseCursorOverrider, required this.themeSettings, required this.widgetTestSession}) : super(key: key);
 
   @override
   State<ManualWidgetTesterWidgetTestSessionArea> createState() => _ManualWidgetTesterWidgetTestSessionAreaState();
@@ -27,39 +29,14 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
         
         return Stack(
           children: [
-            _ResizableBorder(
-              isVertical: false,
-              size: displayWidth,
-              onDragStart: () => _draggedWidth = displayWidth,
-              onDragUpdate: (delta) => setState(() {
-                _draggedWidth += delta;
-              }),
-              mouseCursorOverrider: widget.mouseCursorOverrider,
-              themeSettings: widget.themeSettings,
+            Center(
+              child: SizedBox(
+                width: displayWidth,
+                height: displayHeight,
+                child: widget.widgetTestSession.widget,
+              ),
             ),
-            _ResizableBorder(
-              isVertical: true,
-              size: displayHeight,
-              onDragStart: () => _draggedHeight = displayHeight,
-              onDragUpdate: (delta) => setState(() {
-                _draggedHeight += delta;
-              }),
-              mouseCursorOverrider: widget.mouseCursorOverrider,
-              themeSettings: widget.themeSettings,
-            ),
-            _ResizableCorners(
-              width: displayWidth,
-              height: displayHeight,
-              onHorizontalDragStart: () => _draggedWidth = displayWidth,
-              onHorizontalDragUpdate: (delta) => setState(() {
-                _draggedWidth += delta;
-              }),
-              onVerticalDragStart: () => _draggedHeight = displayHeight,
-              onVerticalDragUpdate: (delta) => setState(() {
-                _draggedHeight += delta;
-              }),
-              mouseCursorOverrider: widget.mouseCursorOverrider
-            )
+            ..._generateResizableHandles(displayWidth, displayHeight),
           ],
         );
       }
@@ -75,6 +52,44 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
     }
     
     return draggedSize.clamp(minSize, maxSizeMinusHandleSize);
+  }
+  
+  List<Widget> _generateResizableHandles(double displayWidth, double displayHeight) {
+    return [
+      _ResizableBorder(
+        isVertical: false,
+        size: displayWidth,
+        onDragStart: () => _draggedWidth = displayWidth,
+        onDragUpdate: (delta) => setState(() {
+          _draggedWidth += delta;
+        }),
+        mouseCursorOverrider: widget.mouseCursorOverrider,
+        themeSettings: widget.themeSettings,
+      ),
+      _ResizableBorder(
+        isVertical: true,
+        size: displayHeight,
+        onDragStart: () => _draggedHeight = displayHeight,
+        onDragUpdate: (delta) => setState(() {
+          _draggedHeight += delta;
+        }),
+        mouseCursorOverrider: widget.mouseCursorOverrider,
+        themeSettings: widget.themeSettings,
+      ),
+      _ResizableCorners(
+        width: displayWidth,
+        height: displayHeight,
+        onHorizontalDragStart: () => _draggedWidth = displayWidth,
+        onHorizontalDragUpdate: (delta) => setState(() {
+          _draggedWidth += delta;
+        }),
+        onVerticalDragStart: () => _draggedHeight = displayHeight,
+        onVerticalDragUpdate: (delta) => setState(() {
+          _draggedHeight += delta;
+        }),
+        mouseCursorOverrider: widget.mouseCursorOverrider
+      )
+    ];
   }
 }
 
