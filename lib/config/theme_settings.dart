@@ -8,6 +8,7 @@ class ManualWidgetTesterThemeSettings {
   final double minTabWidth;
   final double maxTabWidth;
   final Color dottedLineColor;
+  final TextStyle widgetSizeTextStyle;
   final Color defaultIconColor;
   final Color buttonColor;
   final Radius buttonBorderRadius;
@@ -53,6 +54,10 @@ class ManualWidgetTesterThemeSettings {
     this.minTabWidth = 64.0,
     this.maxTabWidth = 192.0,
     this.dottedLineColor = const Color.fromRGBO(255, 255, 255, 0.5),
+    this.widgetSizeTextStyle = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.5),
+      fontSize: 10.0,
+    ),
     this.defaultIconColor = const Color.fromRGBO(64, 167, 255, 1.0),
     this.buttonColor = const Color.fromRGBO(45, 50, 59, 1.0),
     this.buttonBorderRadius = const Radius.circular(3.0),

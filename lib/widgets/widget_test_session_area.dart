@@ -162,7 +162,18 @@ class _ResizableBorderState extends State<_ResizableBorder> {
       quarterTurns: widget.isVertical ? 1 : 0,
       child: Row(
         children: [
-          const Spacer(),
+          Expanded(
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: RotatedBox(
+                quarterTurns: 3,
+                child: Text(
+                  '${widget.size.round()} px',
+                  style: widget.themeSettings.widgetSizeTextStyle
+                ),
+              ),
+            ),
+          ),
           _generateResizeHandle(isLeft: true),
           Container(
             width: widget.size,
