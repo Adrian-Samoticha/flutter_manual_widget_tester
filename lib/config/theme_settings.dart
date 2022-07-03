@@ -23,6 +23,16 @@ class ManualWidgetTesterThemeSettings {
   final TextStyle disabledButtonTextStyle;
   final TextStyle pressedButtonTextStyle;
   final TextStyle buttonTextStyle;
+  final List<BoxShadow> textFieldShadow;
+  final Radius textFieldBorderRadius;
+  final Color textFieldColor;
+  final Color textFieldBorderColor;
+  final double textFieldBorderWidth;
+  final TextStyle textFieldTextStyle;
+  final TextStyle textFieldSuffixStyle;
+  final Color textFieldCursorColor;
+  final Color textFieldSelectionColor;
+  final EdgeInsetsGeometry textFieldContentPadding;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -34,7 +44,7 @@ class ManualWidgetTesterThemeSettings {
     this.dottedLineColor = const Color.fromRGBO(255, 255, 255, 0.5),
     this.defaultIconColor = const Color.fromRGBO(64, 167, 255, 1.0),
     this.buttonColor = const Color.fromRGBO(45, 50, 59, 1.0),
-    this.buttonCornerRadius = const Radius.circular(3.0),
+    this.buttonCornerRadius = const Radius.circular(3.0), // TODO: rename to border radius
     this.buttonShadow = const [
       BoxShadow(blurRadius: 2.0, color: Color.fromRGBO(0, 0, 0, 0.2), offset: Offset(0.0, 1.0))
     ],
@@ -64,5 +74,23 @@ class ManualWidgetTesterThemeSettings {
     this.buttonTextStyle = const TextStyle(
       color: Color.fromRGBO(255, 255, 255, 0.9),
     ),
+    this.textFieldShadow = const [
+      BoxShadow(blurRadius: 2.0, color: Color.fromRGBO(0, 0, 0, 0.2), offset: Offset(0.0, 1.0))
+    ],
+    this.textFieldBorderRadius = const Radius.circular(3.0),
+    this.textFieldColor = const Color.fromARGB(255, 41, 45, 53),
+    this.textFieldBorderColor = const Color.fromRGBO(255, 255, 255, 0.05),
+    this.textFieldBorderWidth = 1.0,
+    this.textFieldTextStyle = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 1.0),
+      fontSize: 13.0,
+    ),
+    this.textFieldSuffixStyle = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 1.0),
+      fontSize: 13.0,
+    ),
+    this.textFieldCursorColor = const Color.fromRGBO(4, 180, 255, 1.0),
+    this.textFieldSelectionColor = const Color.fromRGBO(4, 180, 255, 0.67),
+    this.textFieldContentPadding = const EdgeInsets.all(8.0),
   });
 }

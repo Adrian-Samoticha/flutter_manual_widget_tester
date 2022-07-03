@@ -9,6 +9,7 @@ import 'package:flutter_manual_widget_tester/widgets/appbar.dart';
 import 'package:flutter_manual_widget_tester/widgets/background.dart';
 import 'package:flutter_manual_widget_tester/widgets/sidebar.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row.dart';
+import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 import 'package:flutter_manual_widget_tester/widgets/widget_test_session_area_stack.dart';
 
 class ManualWidgetTester extends StatefulWidget {
@@ -35,11 +36,29 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       color: widget.themeSettings.sidebarColor,
       child:  Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ManualWidgetTesterButtonRow(
-          themeSettings: widget.themeSettings,
-          buttons: [
-            ManualWidgetTesterButtonInfo(onButtonDown: () => print('onButtonDown'), onButtonPressed: () => print('onButtonPressed'), child: const Icon(Icons.zoom_out)),
-            ManualWidgetTesterButtonInfo(onButtonDown: null, onButtonPressed: null, child: const Icon(Icons.zoom_in)),
+        child: Row(
+          children: [
+            Expanded(
+              child: ManualWidgetTesterTextField(
+                themeSettings: widget.themeSettings,
+                initialValue: '100',
+                disableRoundedCornersOnRightSide: true,
+                onSubmitted: (text) => print(text),
+                suffix: '%',
+              ),
+            ),
+            const SizedBox(width: 0.5),
+            SizedBox(
+              width: 64.0,
+              child: ManualWidgetTesterButtonRow(
+                themeSettings: widget.themeSettings,
+                disableRoundedCornersOnLeftSide: true,
+                buttons: [
+                  ManualWidgetTesterButtonInfo(onButtonDown: () => print('onButtonDown'), onButtonPressed: () => print('onButtonPressed'), child: const Icon(Icons.zoom_out)),
+                  ManualWidgetTesterButtonInfo(onButtonDown: null, onButtonPressed: null, child: const Icon(Icons.zoom_in)),
+                ],
+              ),
+            ),
           ],
         ),
       ),
