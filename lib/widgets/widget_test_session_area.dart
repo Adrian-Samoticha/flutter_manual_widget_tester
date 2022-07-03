@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 import 'package:flutter_manual_widget_tester/widgets/zoom_controls.dart';
 
@@ -91,7 +92,7 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
   
   double _getLegalDisplaySizeFromDraggedSize(double draggedSize, double maxSize) {
     const minSize = 32.0;
-    final maxSizeMinusHandleSize = maxSize - 2 * 8.0;
+    final maxSizeMinusHandleSize = maxSize - 2 * (8.0 + (widget.themeSettings.widgetSizeTextStyle.fontSize ?? DefaultTextStyleProvider.defaultTextStyle.fontSize!));
     
     if (minSize > maxSizeMinusHandleSize) {
       return draggedSize;
