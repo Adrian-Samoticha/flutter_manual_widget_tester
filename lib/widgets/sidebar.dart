@@ -77,7 +77,7 @@ class _ManualWidgetTesterSidebarState extends State<ManualWidgetTesterSidebar> {
     final upperBound = widget.maxWidth;
     
     if (lowerBound > upperBound) {
-      return draggedWidth;
+      return 0.0;
     }
     
     return draggedWidth.clamp(lowerBound, upperBound);
