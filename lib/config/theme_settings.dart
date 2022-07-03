@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class ManualWidgetTesterThemeSettings {
   final Color backgroundColor;
@@ -33,6 +33,17 @@ class ManualWidgetTesterThemeSettings {
   final Color textFieldCursorColor;
   final Color textFieldSelectionColor;
   final EdgeInsetsGeometry textFieldContentPadding;
+  final double zoomControlsWidth;
+  final double zoomControlsHeight;
+  final BorderRadius zoomControlsBorderRadius;
+  final List<BoxShadow> zoomControlsShadow;
+  final EdgeInsets zoomControlsPadding;
+  final double zoomControlsSpaceBetweenTextBoxAndButtonRow;
+  final double zoomControlsButtonRowWidth;
+  final Icon zoomControlsZoomOutIcon;
+  final Icon zoomControlsZoomInIcon;
+  final double zoomControlsDistanceToBorder;
+  final Alignment zoomControlsAlignment;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -92,5 +103,20 @@ class ManualWidgetTesterThemeSettings {
     this.textFieldCursorColor = const Color.fromRGBO(4, 180, 255, 1.0),
     this.textFieldSelectionColor = const Color.fromRGBO(4, 180, 255, 0.67),
     this.textFieldContentPadding = const EdgeInsets.all(8.0),
+    this.zoomControlsWidth = 128.0,
+    this.zoomControlsHeight = 32.0,
+    this.zoomControlsBorderRadius = const BorderRadius.all(
+      Radius.circular(3.0),
+    ),
+    this.zoomControlsShadow = const [
+      BoxShadow(blurRadius: 2.0, color: Color.fromRGBO(0, 0, 0, 0.25), offset: Offset(0.0, 1.0)),
+    ],
+    this.zoomControlsPadding = const EdgeInsets.all(3.5),
+    this.zoomControlsSpaceBetweenTextBoxAndButtonRow = 0.5,
+    this.zoomControlsButtonRowWidth = 64.0,
+    this.zoomControlsZoomOutIcon = const Icon(Icons.zoom_out),
+    this.zoomControlsZoomInIcon = const Icon(Icons.zoom_in),
+    this.zoomControlsDistanceToBorder = 8.0,
+    this.zoomControlsAlignment = Alignment.bottomCenter,
   });
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
+import 'package:flutter_manual_widget_tester/widgets/zoom_controls.dart';
 
 class ManualWidgetTesterWidgetTestSessionArea extends StatefulWidget {
   final MouseCursorOverrider mouseCursorOverrider;
@@ -17,8 +18,8 @@ class ManualWidgetTesterWidgetTestSessionArea extends StatefulWidget {
 }
 
 class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTesterWidgetTestSessionArea> {
-  double _draggedWidth = 64.0;
-  double _draggedHeight = 64.0;
+  double _draggedWidth = 128.0;
+  double _draggedHeight = 128.0;
   double _zoom = 1.0;
   
   @override
@@ -32,9 +33,36 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
           children: [
             _generateToBeTestedWidget(displayWidth, displayHeight),
             ..._generateResizableHandles(displayWidth, displayHeight),
+            _generateZoomControls(),
           ],
         );
       }
+    );
+  }
+  
+  Widget _generateZoomControls() {
+    return SizedBox.expand(
+      child: Padding(
+        padding: EdgeInsets.all(widget.themeSettings.zoomControlsDistanceToBorder),
+        child: Align(
+          alignment: widget.themeSettings.zoomControlsAlignment,
+          child: ManualWidgetTesterZoomControls(
+            themeSettings: widget.themeSettings,
+            minZoom: 0.2,
+            maxZoom: 4.0,
+            onZoomInButtonPressed: () => setState(() {
+              _zoom = (_zoom + 0.1).clamp(0.2, 4.0);
+            }),
+            onZoomOutButtonPressed: () => setState(() {
+              _zoom = (_zoom - 0.1).clamp(0.2, 4.0);
+            }),
+            zoom: _zoom,
+            onZoomChanged: (double newZoom) => setState(() {
+              _zoom = newZoom.clamp(0.2, 4.0);
+            }),
+          ),
+        ),
+      ),
     );
   }
 
