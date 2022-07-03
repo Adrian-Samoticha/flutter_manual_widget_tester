@@ -18,8 +18,8 @@ class ManualWidgetTesterWidgetTestSessionArea extends StatefulWidget {
 }
 
 class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTesterWidgetTestSessionArea> {
-  double _draggedWidth = 128.0;
-  double _draggedHeight = 128.0;
+  double _draggedWidth = 480.0;
+  double _draggedHeight = 640.0;
   double _zoom = 1.0;
   
   @override
