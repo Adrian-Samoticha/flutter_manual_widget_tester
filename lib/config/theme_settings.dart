@@ -10,7 +10,7 @@ class ManualWidgetTesterThemeSettings {
   final Color dottedLineColor;
   final Color defaultIconColor;
   final Color buttonColor;
-  final Radius buttonCornerRadius;
+  final Radius buttonBorderRadius;
   final List<BoxShadow> buttonShadow;
   final Color buttonPressedTint;
   final Color buttonHoveredTint;
@@ -55,7 +55,7 @@ class ManualWidgetTesterThemeSettings {
     this.dottedLineColor = const Color.fromRGBO(255, 255, 255, 0.5),
     this.defaultIconColor = const Color.fromRGBO(64, 167, 255, 1.0),
     this.buttonColor = const Color.fromRGBO(45, 50, 59, 1.0),
-    this.buttonCornerRadius = const Radius.circular(3.0), // TODO: rename to border radius
+    this.buttonBorderRadius = const Radius.circular(3.0),
     this.buttonShadow = const [
       BoxShadow(blurRadius: 2.0, color: Color.fromRGBO(0, 0, 0, 0.2), offset: Offset(0.0, 1.0))
     ],

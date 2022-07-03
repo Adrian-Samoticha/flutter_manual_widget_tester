@@ -23,10 +23,10 @@ class ManualWidgetTesterButtonRow extends StatelessWidget {
       decoration: BoxDecoration(
         color: themeSettings.buttonColor,
         borderRadius: BorderRadius.only(
-          topLeft: disableRoundedCornersOnLeftSide ? Radius.zero : themeSettings.buttonCornerRadius,
-          bottomLeft: disableRoundedCornersOnLeftSide ? Radius.zero : themeSettings.buttonCornerRadius,
-          topRight: disableRoundedCornersOnRightSide ? Radius.zero : themeSettings.buttonCornerRadius,
-          bottomRight: disableRoundedCornersOnRightSide ? Radius.zero : themeSettings.buttonCornerRadius,
+          topLeft: disableRoundedCornersOnLeftSide ? Radius.zero : themeSettings.buttonBorderRadius,
+          bottomLeft: disableRoundedCornersOnLeftSide ? Radius.zero : themeSettings.buttonBorderRadius,
+          topRight: disableRoundedCornersOnRightSide ? Radius.zero : themeSettings.buttonBorderRadius,
+          bottomRight: disableRoundedCornersOnRightSide ? Radius.zero : themeSettings.buttonBorderRadius,
         ),
         boxShadow:themeSettings.buttonShadow,
       ),
@@ -211,10 +211,10 @@ class _ManualWidgetTesterButtonState extends State<_ManualWidgetTesterButton> {
     
     return BoxDecoration(
       borderRadius: BorderRadius.only(
-        topLeft: roundLeftCorners ? widget.themeSettings.buttonCornerRadius : Radius.zero,
-        bottomLeft: roundLeftCorners ? widget.themeSettings.buttonCornerRadius : Radius.zero,
-        topRight: roundRightCorners ? widget.themeSettings.buttonCornerRadius : Radius.zero,
-        bottomRight: roundRightCorners ? widget.themeSettings.buttonCornerRadius : Radius.zero,
+        topLeft: roundLeftCorners ? widget.themeSettings.buttonBorderRadius : Radius.zero,
+        bottomLeft: roundLeftCorners ? widget.themeSettings.buttonBorderRadius : Radius.zero,
+        topRight: roundRightCorners ? widget.themeSettings.buttonBorderRadius : Radius.zero,
+        bottomRight: roundRightCorners ? widget.themeSettings.buttonBorderRadius : Radius.zero,
       ),
       gradient: LinearGradient(
         begin: Alignment.topCenter,
