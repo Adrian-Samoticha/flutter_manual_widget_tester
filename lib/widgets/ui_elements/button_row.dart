@@ -10,17 +10,24 @@ class ManualWidgetTesterButtonInfo {
 }
 
 class ManualWidgetTesterButtonRow extends StatelessWidget {
-  const ManualWidgetTesterButtonRow({Key? key, required this.buttons, required this.themeSettings}) : super(key: key);
+  const ManualWidgetTesterButtonRow({Key? key, required this.buttons, required this.themeSettings, this.disableRoundedCornersOnLeftSide = false, this.disableRoundedCornersOnRightSide = false}) : super(key: key);
   
   final List<ManualWidgetTesterButtonInfo> buttons;
   final ManualWidgetTesterThemeSettings themeSettings;
+  final bool disableRoundedCornersOnLeftSide;
+  final bool disableRoundedCornersOnRightSide;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: themeSettings.buttonColor,
-        borderRadius: BorderRadius.all(themeSettings.buttonCornerRadius),
+        borderRadius: BorderRadius.only(
+          topLeft: disableRoundedCornersOnLeftSide ? Radius.zero : themeSettings.buttonCornerRadius,
+          bottomLeft: disableRoundedCornersOnLeftSide ? Radius.zero : themeSettings.buttonCornerRadius,
+          topRight: disableRoundedCornersOnRightSide ? Radius.zero : themeSettings.buttonCornerRadius,
+          bottomRight: disableRoundedCornersOnRightSide ? Radius.zero : themeSettings.buttonCornerRadius,
+        ),
         boxShadow:themeSettings.buttonShadow,
       ),
       child: _generateButtons(),
@@ -36,6 +43,8 @@ class ManualWidgetTesterButtonRow extends StatelessWidget {
             buttons: buttons,
             index: index,
             themeSettings: themeSettings,
+            disableRoundedCornersOnLeftSide: disableRoundedCornersOnLeftSide,
+            disableRoundedCornersOnRightSide: disableRoundedCornersOnRightSide,
           ),
         );
         
@@ -51,8 +60,10 @@ class _ManualWidgetTesterButton extends StatefulWidget {
   final List<ManualWidgetTesterButtonInfo> buttons;
   final int index;
   final ManualWidgetTesterThemeSettings themeSettings;
+  final bool disableRoundedCornersOnLeftSide;
+  final bool disableRoundedCornersOnRightSide;
 
-  const _ManualWidgetTesterButton({required this.button, required this.buttons, required this.index, required this.themeSettings});
+  const _ManualWidgetTesterButton({required this.button, required this.buttons, required this.index, required this.themeSettings, required this.disableRoundedCornersOnLeftSide, required this.disableRoundedCornersOnRightSide});
 
   @override
   State<_ManualWidgetTesterButton> createState() => _ManualWidgetTesterButtonState();
@@ -127,8 +138,8 @@ class _ManualWidgetTesterButtonState extends State<_ManualWidgetTesterButton> {
         ),
         Container(
           decoration: _generateButtonBoxDecoration(
-            isFirst: widget.index == 0,
-            isLast: widget.index == widget.buttons.length - 1,
+            roundLeftCorners: widget.index == 0 && !widget.disableRoundedCornersOnLeftSide,
+            roundRightCorners: widget.index == widget.buttons.length - 1 && !widget.disableRoundedCornersOnRightSide,
             isPressed: _isPressed,
             isDisabled: isDisabled,
           ),
@@ -192,7 +203,7 @@ class _ManualWidgetTesterButtonState extends State<_ManualWidgetTesterButton> {
     );
   }
 
-  BoxDecoration _generateButtonBoxDecoration({required bool isFirst, required bool isLast, required bool isPressed, required bool isDisabled}) {
+  BoxDecoration _generateButtonBoxDecoration({required bool roundLeftCorners, required bool roundRightCorners, required bool isPressed, required bool isDisabled}) {
     final gradientColors = _getButtonBoxDecorationGradientColors(
       isPressed: isPressed,
       isDisabled: isDisabled,
@@ -200,10 +211,10 @@ class _ManualWidgetTesterButtonState extends State<_ManualWidgetTesterButton> {
     
     return BoxDecoration(
       borderRadius: BorderRadius.only(
-        topLeft: isFirst ? widget.themeSettings.buttonCornerRadius : const Radius.circular(0.0),
-        bottomLeft: isFirst ? widget.themeSettings.buttonCornerRadius : const Radius.circular(0.0),
-        topRight: isLast ? widget.themeSettings.buttonCornerRadius : const Radius.circular(0.0),
-        bottomRight: isLast ? widget.themeSettings.buttonCornerRadius : const Radius.circular(0.0),
+        topLeft: roundLeftCorners ? widget.themeSettings.buttonCornerRadius : Radius.zero,
+        bottomLeft: roundLeftCorners ? widget.themeSettings.buttonCornerRadius : Radius.zero,
+        topRight: roundRightCorners ? widget.themeSettings.buttonCornerRadius : Radius.zero,
+        bottomRight: roundRightCorners ? widget.themeSettings.buttonCornerRadius : Radius.zero,
       ),
       gradient: LinearGradient(
         begin: Alignment.topCenter,
