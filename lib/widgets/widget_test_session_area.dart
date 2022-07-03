@@ -111,6 +111,7 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
         }),
         mouseCursorOverrider: widget.mouseCursorOverrider,
         themeSettings: widget.themeSettings,
+        zoom: _zoom,
       ),
       _ResizableBorder(
         isVertical: true,
@@ -121,6 +122,7 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
         }),
         mouseCursorOverrider: widget.mouseCursorOverrider,
         themeSettings: widget.themeSettings,
+        zoom: _zoom,
       ),
       _ResizableCorners(
         width: displayWidth,
@@ -146,8 +148,9 @@ class _ResizableBorder extends StatefulWidget {
   final void Function(double) onDragUpdate;
   final MouseCursorOverrider mouseCursorOverrider;
   final ManualWidgetTesterThemeSettings themeSettings;
+  final double zoom;
 
-  const _ResizableBorder({required this.isVertical, required this.size, required this.onDragStart, required this.onDragUpdate, required this.mouseCursorOverrider, required this.themeSettings});
+  const _ResizableBorder({required this.isVertical, required this.size, required this.onDragStart, required this.onDragUpdate, required this.mouseCursorOverrider, required this.themeSettings, required this.zoom});
 
   @override
   State<_ResizableBorder> createState() => _ResizableBorderState();
@@ -168,7 +171,7 @@ class _ResizableBorderState extends State<_ResizableBorder> {
               child: RotatedBox(
                 quarterTurns: 3,
                 child: Text(
-                  '${widget.size.round()} px',
+                  '${(widget.size / widget.zoom).round()} px',
                   style: widget.themeSettings.widgetSizeTextStyle
                 ),
               ),
