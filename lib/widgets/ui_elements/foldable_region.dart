@@ -7,7 +7,7 @@ class ManualWidgetTesterFoldableRegion extends StatefulWidget {
   final ManualWidgetTesterThemeSettings themeSettings;
   final bool isIndented;
   
-  const ManualWidgetTesterFoldableRegion({Key? key, required this.child, required this.heading, required this.themeSettings, required this.isIndented}) : super(key: key);
+  const ManualWidgetTesterFoldableRegion({Key? key, required this.child, required this.heading, required this.themeSettings, this.isIndented = false}) : super(key: key);
 
   @override
   State<ManualWidgetTesterFoldableRegion> createState() => _ManualWidgetTesterFoldableRegionState();
@@ -80,7 +80,7 @@ class _Header extends StatelessWidget {
             child: Row(
               children: [
                 Icon(
-                  isFolded ? Icons.keyboard_arrow_down_outlined : Icons.keyboard_arrow_right_outlined,
+                  isFolded ? Icons.keyboard_arrow_right_outlined : Icons.keyboard_arrow_down_outlined,
                   color: themeSettings.foldableRegionChevronIconColor,
                   size: themeSettings.foldableRegionChevronIconSize,
                 ),
