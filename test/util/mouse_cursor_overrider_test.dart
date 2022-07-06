@@ -20,4 +20,26 @@ void main() {
     mouseCursorOverrider.cancelOverride(moveId);
     expect(mouseCursorOverrider.currentMouseCursor, MouseCursor.defer);
   });
+  
+  testWidgets('mouse cursor overrider on override changed callback (override mouse cursor)', (tester) async {
+    final mouseCursorOverrider = MouseCursorOverrider();
+    
+    mouseCursorOverrider.registerOnMouseCursorOverrideChanged(
+      expectAsync1((value) => value == mouseCursorOverrider)
+    );
+    
+    mouseCursorOverrider.overrideMouseCursor(SystemMouseCursors.alias);
+  });
+  
+  testWidgets('mouse cursor overrider on override changed callback (cancel override)', (tester) async {
+    final mouseCursorOverrider = MouseCursorOverrider();
+    
+    final overrideId = mouseCursorOverrider.overrideMouseCursor(SystemMouseCursors.alias);
+    
+    mouseCursorOverrider.registerOnMouseCursorOverrideChanged(
+      expectAsync1((value) => value == mouseCursorOverrider)
+    );
+    
+    mouseCursorOverrider.cancelOverride(overrideId);
+  });
 }
