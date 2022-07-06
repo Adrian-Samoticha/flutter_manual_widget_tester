@@ -106,6 +106,7 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
       _ResizableBorder(
         isVertical: false,
         size: displayWidth,
+        oppositeSize: displayHeight,
         onDragStart: () => _draggedWidth = displayWidth,
         onDragUpdate: (delta) => setState(() {
           _draggedWidth += delta;
@@ -117,6 +118,7 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
       _ResizableBorder(
         isVertical: true,
         size: displayHeight,
+        oppositeSize: displayWidth,
         onDragStart: () => _draggedHeight = displayHeight,
         onDragUpdate: (delta) => setState(() {
           _draggedHeight += delta;
@@ -145,13 +147,14 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
 class _ResizableBorder extends StatefulWidget {
   final bool isVertical;
   final double size;
+  final double oppositeSize;
   final void Function() onDragStart;
   final void Function(double) onDragUpdate;
   final MouseCursorOverrider mouseCursorOverrider;
   final ManualWidgetTesterThemeSettings themeSettings;
   final double zoom;
 
-  const _ResizableBorder({required this.isVertical, required this.size, required this.onDragStart, required this.onDragUpdate, required this.mouseCursorOverrider, required this.themeSettings, required this.zoom});
+  const _ResizableBorder({required this.isVertical, required this.size, required this.onDragStart, required this.onDragUpdate, required this.mouseCursorOverrider, required this.themeSettings, required this.zoom, required this.oppositeSize});
 
   @override
   State<_ResizableBorder> createState() => _ResizableBorderState();
@@ -172,7 +175,7 @@ class _ResizableBorderState extends State<_ResizableBorder> {
               child: RotatedBox(
                 quarterTurns: 3,
                 child: Text(
-                  '${(widget.size / widget.zoom).round()} px',
+                  '${(widget.oppositeSize / widget.zoom).round()} px',
                   style: widget.themeSettings.widgetSizeTextStyle
                 ),
               ),
