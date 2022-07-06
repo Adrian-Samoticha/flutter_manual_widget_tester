@@ -55,6 +55,8 @@ class ManualWidgetTesterThemeSettings {
   final double foldableRegionChevronIconSize;
   final TextStyle foldableRegionHeadingStyle;
   final TextOverflow foldableRegionHeadingOverflow;
+  final BoxDecoration closeButtonHoverDecoration;
+  final Color closeButtonColor;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -147,5 +149,10 @@ class ManualWidgetTesterThemeSettings {
       fontWeight: FontWeight.w700
     ),
     this.foldableRegionHeadingOverflow = TextOverflow.ellipsis,
+    this.closeButtonHoverDecoration = const BoxDecoration(
+      color: Color.fromRGBO(255, 255, 255, 0.2),
+      borderRadius: BorderRadius.all(Radius.circular(1024.0)),
+    ),
+    this.closeButtonColor = const Color.fromRGBO(255, 255, 255, 0.9),
   });
 }
