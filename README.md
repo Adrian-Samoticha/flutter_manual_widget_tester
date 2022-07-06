@@ -11,6 +11,10 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
+<p align="center">
+  <img width="640" height="266" src="./svg/logo.svg" alt="Flutter Manual Widget Tester logo">
+</p>
+
 This package is currently a very early WIP.
 
 It currently looks somewhat like this:
