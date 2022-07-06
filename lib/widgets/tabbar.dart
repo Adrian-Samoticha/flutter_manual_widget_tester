@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler.dart';
@@ -15,6 +17,24 @@ class ManualWidgetTesterTabbar extends StatefulWidget {
 }
 
 class _ManualWidgetTesterTabbarState extends State<ManualWidgetTesterTabbar> {
+  late StreamSubscription<WidgetTestSessionHandler> _widgetTestSessionsChangedStream;
+  
+  @override
+  void initState() {
+    _widgetTestSessionsChangedStream = widget.widgetTestSessionHandler.registerOnChangedCallback((_) {
+      setState(() {});
+    });
+    
+    super.initState();
+  }
+  
+  @override
+  void dispose() {
+    _widgetTestSessionsChangedStream.cancel();
+    
+    super.dispose();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return SizedBox.expand(
@@ -33,12 +53,8 @@ class _ManualWidgetTesterTabbarState extends State<ManualWidgetTesterTabbar> {
                   themeSettings: widget.themeSettings,
                   tabIndex: entry.key,
                   selectedTabIndex: widget.widgetTestSessionHandler.currentIndex,
-                  onSelect: () => setState(() {
-                    widget.widgetTestSessionHandler.currentIndex = entry.key;
-                  }),
-                  onClose: () => setState(() {
-                    widget.widgetTestSessionHandler.closeWidgetTestSession(entry.key);
-                  }),
+                  onSelect: () => widget.widgetTestSessionHandler.currentIndex = entry.key,
+                  onClose: () => widget.widgetTestSessionHandler.closeWidgetTestSession(entry.key),
                   icon: session.icon,
                   iconColor: session.iconColor ?? widget.themeSettings.defaultIconColor,
                 );
