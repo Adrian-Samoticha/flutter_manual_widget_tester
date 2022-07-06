@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/rendering.dart';
 
 class _MouseCursorOverride {
@@ -19,16 +21,14 @@ class MouseCursorOverrider {
   final List<_MouseCursorOverride> _overrides = [];
   final mouseCursorOverrideGenerator = _MouseCursorOverrideGenerator();
   
-  void Function(void Function())? _setStateFunction;
+  final StreamController<MouseCursorOverrider> _onMouseCursorOverrideChangedStream = StreamController.broadcast();
   
-  void setSetStateFunction(Function(void Function()) setStateFunction) {
-    _setStateFunction = setStateFunction;
+  StreamSubscription<MouseCursorOverrider> registerOnMouseCursorOverrideChanged(void Function(MouseCursorOverrider) callback) {
+    return _onMouseCursorOverrideChangedStream.stream.listen(callback);
   }
   
   int overrideMouseCursor(MouseCursor mouseCursor) {
-    if (_setStateFunction != null) {
-      _setStateFunction!(() {});
-    }
+    _onMouseCursorOverrideChangedStream.add(this);
     
     final newOverride = mouseCursorOverrideGenerator.generateMouseCursorOverride(mouseCursor);
     _overrides.add(newOverride);
@@ -36,9 +36,7 @@ class MouseCursorOverrider {
   }
   
   void cancelOverride(int id) {
-    if (_setStateFunction != null) {
-      _setStateFunction!(() {});
-    }
+    _onMouseCursorOverrideChangedStream.add(this);
     
     _overrides.removeWhere((element) => element.id == id);
   }

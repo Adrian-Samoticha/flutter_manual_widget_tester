@@ -1,5 +1,7 @@
 library flutter_manual_widget_tester;
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler.dart';
@@ -25,6 +27,7 @@ class ManualWidgetTester extends StatefulWidget {
 class _ManualWidgetTesterState extends State<ManualWidgetTester> {
   final _mouseCursorOverrider = MouseCursorOverrider();
   final _widgetTestSessionHandler = WidgetTestSessionHandler();
+  late final StreamSubscription<MouseCursorOverrider> _onMouseCursorOverrideChangedStreamSubscription;
   
   @override
   void initState() {
@@ -66,13 +69,22 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
     )));
     _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverriderTestWidget'));
     
+    _onMouseCursorOverrideChangedStreamSubscription = _mouseCursorOverrider.registerOnMouseCursorOverrideChanged((_) {
+      setState(() {});
+    });
+    
     super.initState();
   }
   
   @override
-  Widget build(BuildContext context) {
-    _mouseCursorOverrider.setSetStateFunction(setState);
+  void dispose() {
+    _onMouseCursorOverrideChangedStreamSubscription.cancel();
     
+    super.dispose();
+  }
+  
+  @override
+  Widget build(BuildContext context) {
     return DefaultTextStyle(
       style: DefaultTextStyleProvider.defaultTextStyle,
       child: MouseRegion(
