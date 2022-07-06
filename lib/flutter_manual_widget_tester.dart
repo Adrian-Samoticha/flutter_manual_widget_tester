@@ -12,6 +12,7 @@ import 'package:flutter_manual_widget_tester/widgets/appbar.dart';
 import 'package:flutter_manual_widget_tester/widgets/background.dart';
 import 'package:flutter_manual_widget_tester/widgets/sidebar.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row.dart';
+import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 import 'package:flutter_manual_widget_tester/widgets/widget_test_session_area_stack.dart';
 
@@ -68,6 +69,35 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       ),
     )));
     _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverriderTestWidget'));
+    _widgetTestSessionHandler.createNewSession(WidgetTestSession(
+      name: 'ManualWidgetTesterFoldableRegion',
+      icon: Icons.folder_outlined,
+      widget: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ManualWidgetTesterFoldableRegion(
+              themeSettings: widget.themeSettings,
+              heading: 'FOLDABLE REGION',
+              isIndented: false,
+              child: ManualWidgetTesterFoldableRegion(
+                themeSettings: widget.themeSettings,
+                heading: 'INDENTED FOLDABLE REGION',
+                isIndented: true,
+                child: Text('foo\nfoo\nfoo\nfoo\nfoo\nfoo', style: widget.themeSettings.buttonTextStyle),
+              ),
+            ),
+            ManualWidgetTesterFoldableRegion(
+              themeSettings: widget.themeSettings,
+              heading: 'FOLDABLE REGION',
+              child: Text('foo\nfoo\nfoo\nfoo\nfoo\nfoo', style: widget.themeSettings.buttonTextStyle),
+              isIndented: false,
+            ),
+          ],
+        ),
+      ),
+    ));
     
     _onMouseCursorOverrideChangedStreamSubscription = _mouseCursorOverrider.registerOnMouseCursorOverrideChanged((_) {
       setState(() {});

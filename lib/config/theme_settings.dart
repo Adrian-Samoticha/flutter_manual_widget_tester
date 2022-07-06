@@ -45,6 +45,16 @@ class ManualWidgetTesterThemeSettings {
   final Icon zoomControlsZoomInIcon;
   final double zoomControlsDistanceToBorder;
   final Alignment zoomControlsAlignment;
+  final double foldableRegionIndentationAmount;
+  final Duration foldableRegionAnimationDuration;
+  final Alignment foldableRegionContentAlignment;
+  final double foldableRegionHeaderHeight;
+  final double foldableRegionFoldedHeaderOpacity;
+  final Color foldableRegionHeaderColor;
+  final Color foldableRegionChevronIconColor;
+  final double foldableRegionChevronIconSize;
+  final TextStyle foldableRegionHeadingStyle;
+  final TextOverflow foldableRegionHeadingOverflow;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -123,5 +133,19 @@ class ManualWidgetTesterThemeSettings {
     this.zoomControlsZoomInIcon = const Icon(Icons.zoom_in),
     this.zoomControlsDistanceToBorder = 8.0,
     this.zoomControlsAlignment = Alignment.bottomCenter,
+    this.foldableRegionIndentationAmount = 12.0,
+    this.foldableRegionAnimationDuration = const Duration(milliseconds: 300),
+    this.foldableRegionContentAlignment = Alignment.bottomLeft,
+    this.foldableRegionHeaderHeight = 24.0,
+    this.foldableRegionFoldedHeaderOpacity = 0.5,
+    this.foldableRegionHeaderColor = const Color.fromRGBO(70, 79, 90, 1.0),
+    this.foldableRegionChevronIconColor = Colors.white,
+    this.foldableRegionChevronIconSize = 18.0,
+    this.foldableRegionHeadingStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 12.0,
+      fontWeight: FontWeight.w700
+    ),
+    this.foldableRegionHeadingOverflow = TextOverflow.ellipsis,
   });
 }
