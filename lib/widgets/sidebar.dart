@@ -61,6 +61,7 @@ class _ManualWidgetTesterSidebarState extends State<ManualWidgetTesterSidebar> {
       child: Stack(
         children: [
           SingleChildScrollView(
+            controller: ScrollController(),
             child: Column(
               children: [
                 ManualWidgetTesterFoldableRegion(
