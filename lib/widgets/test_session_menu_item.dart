@@ -89,10 +89,14 @@ class _ManualWidgetTesterTestSessionMenuItemState extends State<ManualWidgetTest
           ),
         );
       },
-      child: ManualWidgetTesterCloseButton(
-        themeSettings: widget.themeSettings,
-        onPressed: widget.onClose,
-        size: widget.themeSettings.testSessionMenuItemCloseButtonSize,
+      child: SizedBox(
+        width: widget.themeSettings.testSessionMenuItemCloseButtonSize,
+        height: widget.themeSettings.testSessionMenuItemCloseButtonSize,
+        child: ManualWidgetTesterCloseButton(
+          themeSettings: widget.themeSettings,
+          onPressed: widget.onClose,
+          size: widget.themeSettings.testSessionMenuItemCloseButtonSize,
+        ),
       ),
     );
   }
