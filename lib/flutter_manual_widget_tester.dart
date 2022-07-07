@@ -12,6 +12,7 @@ import 'package:flutter_manual_widget_tester/widgets/appbar.dart';
 import 'package:flutter_manual_widget_tester/widgets/background.dart';
 import 'package:flutter_manual_widget_tester/widgets/sidebar.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row.dart';
+import 'package:flutter_manual_widget_tester/widgets/ui_elements/close_button.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 import 'package:flutter_manual_widget_tester/widgets/widget_test_session_area_stack.dart';
@@ -99,6 +100,15 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       ),
     ));
     
+    _widgetTestSessionHandler.createNewSession(WidgetTestSession(
+      name: 'ManualWidgetTesterCloseButton',
+      icon: Icons.close,
+      widget: ManualWidgetTesterCloseButton(
+        themeSettings: widget.themeSettings,
+        onPressed: () => print('closed'),
+      ),
+    ));
+    
     _onMouseCursorOverrideChangedStreamSubscription = _mouseCursorOverrider.registerOnMouseCursorOverrideChanged((_) {
       setState(() {});
     });
@@ -156,9 +166,10 @@ class _ManualWidgetTesterBody extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ManualWidgetTesterSidebar(
-              sidebarColor: themeSettings.sidebarColor,
+              themeSettings: themeSettings,
               maxWidth: constraints.maxWidth - 128.0,
               mouseCursorOverrider: mouseCursorOverrider,
+              widgetTestSessionHandler: widgetTestSessionHandler,
             ),
             Expanded(
               child: Column(
