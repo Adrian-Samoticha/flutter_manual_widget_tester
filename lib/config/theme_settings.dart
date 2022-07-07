@@ -57,6 +57,17 @@ class ManualWidgetTesterThemeSettings {
   final TextOverflow foldableRegionHeadingOverflow;
   final BoxDecoration closeButtonHoverDecoration;
   final Color closeButtonColor;
+  final double testSessionMenuItemHeight;
+  final double testSessionMenuItemUnselectedTabOpacity;
+  final EdgeInsets testSessionMenuItemPadding;
+  final EdgeInsets testSessionMenuItemCloseButtonPadding;
+  final double testSessionMenuItemCloseButtonSize;
+  final TextOverflow testSessionMenuItemTextOverflow;
+  final TextStyle testSessionMenuItemTextStyle;
+  final double testSessionMenuItemIconSize;
+  final BoxDecoration testSessionMenuItemHoverTintDecoration;
+  final EdgeInsets testSessionMenuItemTabIconPadding;
+  final BoxDecoration testSessionMenuItemSelectedTabTintDecoration;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -154,5 +165,23 @@ class ManualWidgetTesterThemeSettings {
       borderRadius: BorderRadius.all(Radius.circular(1024.0)),
     ),
     this.closeButtonColor = const Color.fromRGBO(255, 255, 255, 0.9),
+    this.testSessionMenuItemHeight = 24.0,
+    this.testSessionMenuItemUnselectedTabOpacity = 0.5,
+    this.testSessionMenuItemPadding = const EdgeInsets.symmetric(horizontal: 8.0),
+    this.testSessionMenuItemCloseButtonPadding = const EdgeInsets.only(left: 8.0),
+    this.testSessionMenuItemCloseButtonSize = 12.0,
+    this.testSessionMenuItemTextOverflow = TextOverflow.ellipsis,
+    this.testSessionMenuItemTextStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 12.0,
+    ),
+    this.testSessionMenuItemIconSize = 18.0,
+    this.testSessionMenuItemHoverTintDecoration = const BoxDecoration(
+      color: Color.fromRGBO(255, 255, 255, 0.1),
+    ),
+    this.testSessionMenuItemTabIconPadding = const EdgeInsets.only(right: 8.0),
+    this.testSessionMenuItemSelectedTabTintDecoration = const BoxDecoration(
+      color: Color.fromRGBO(255, 255, 255, 0.15),
+    ),
   });
 }
