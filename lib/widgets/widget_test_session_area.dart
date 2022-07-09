@@ -68,16 +68,6 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
   }
 
   Center _generateToBeTestedWidget(double displayWidth, double displayHeight) {
-    if ((_zoom - 1.0).abs() < 0.00001) { // TODO: remove this, as this is causing state loss
-      return Center(
-        child: SizedBox(
-          width: displayWidth,
-          height: displayHeight,
-          child: widget.widgetTestSession.builder(context, widget.widgetTestSession.customSettings),
-        ),
-      );
-    }
-    
     return Center(
       child: Transform.scale(
         scale: _zoom,
