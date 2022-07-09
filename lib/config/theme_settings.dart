@@ -68,6 +68,18 @@ class ManualWidgetTesterThemeSettings {
   final BoxDecoration testSessionMenuItemHoverTintDecoration;
   final EdgeInsets testSessionMenuItemTabIconPadding;
   final BoxDecoration testSessionMenuItemSelectedTabTintDecoration;
+  final EdgeInsets noEditorMessagePadding;
+  final EdgeInsets noEditorMessageMargin;
+  final BoxDecoration noEditorMessageDecoration;
+  final EdgeInsets noCustomSettingsMessagePadding;
+  final TextStyle noCustomSettingsMessageTextStyle;
+  final TextStyle noEditorTextStyle;
+  final TextStyle noEditorHighlightedTextStyle;
+  final TextStyle customSettingHeadingTextStyle;
+  final TextOverflow customSettingHeadingOverflow;
+  final EdgeInsets customSettingsHeadingPadding;
+  final EdgeInsets customSettingsPadding;
+  final double stringEditorHeight;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -183,5 +195,33 @@ class ManualWidgetTesterThemeSettings {
     this.testSessionMenuItemSelectedTabTintDecoration = const BoxDecoration(
       color: Color.fromRGBO(255, 255, 255, 0.15),
     ),
+    this.noEditorMessagePadding = const EdgeInsets.all(8.0),
+    this.noEditorMessageMargin = const EdgeInsets.all(8.0),
+    this.noEditorMessageDecoration = const BoxDecoration(
+      border: Border.fromBorderSide(
+        BorderSide(
+          color: Color.fromRGBO(255, 128, 0, 1.0),
+        ),
+      ),
+      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+    ),
+    this.noCustomSettingsMessagePadding = const EdgeInsets.all(8.0),
+    this.noCustomSettingsMessageTextStyle = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.75),
+    ),
+    this.noEditorTextStyle = const TextStyle(
+      color: Color.fromRGBO(255, 128, 0, 1.0),
+    ),
+    this.noEditorHighlightedTextStyle = const TextStyle(
+      color: Color.fromRGBO(255, 192, 0, 1.0),
+      fontStyle: FontStyle.italic,
+    ),
+    this.customSettingHeadingTextStyle = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.9),
+    ),
+    this.customSettingHeadingOverflow = TextOverflow.ellipsis,
+    this.customSettingsHeadingPadding = const EdgeInsets.only(bottom: 5.0),
+    this.customSettingsPadding = const EdgeInsets.all(8.0),
+    this.stringEditorHeight = 32.0,
   });
 }

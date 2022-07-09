@@ -4,6 +4,7 @@ import 'package:flutter_manual_widget_tester/backend/widget_test_session.dart';
 
 class WidgetTestSessionHandler {
   final List<WidgetTestSession> _widgetTestSessions = [];
+  final Map<WidgetTestSession, StreamSubscription> _onCustomSettingsChangedStreamSubscriptions = {};
   int _currentIndex = -1;
   final StreamController<WidgetTestSessionHandler> _onChangedStream = StreamController.broadcast();
   
@@ -12,10 +13,20 @@ class WidgetTestSessionHandler {
   void createNewSession(WidgetTestSession newWidgetTestSession) {
     _widgetTestSessions.add(newWidgetTestSession);
     currentIndex = _widgetTestSessions.length - 1;
+    
+    StreamSubscription onCustomSettingsChangedStreamSubscription = newWidgetTestSession.customSettings.registerOnChangedCallback((_) {
+      _onChangedStream.add(this);
+    });
+    _onCustomSettingsChangedStreamSubscriptions[newWidgetTestSession] = onCustomSettingsChangedStreamSubscription;
   }
   
   void closeWidgetTestSession(int index) {
-    _widgetTestSessions.removeAt(index);
+    if (index >= _widgetTestSessions.length) {
+      throw ArgumentError('Attempting to close test session at out-of-bounds index $index.');
+    }
+    
+    final removedTestSession = _widgetTestSessions.removeAt(index);
+    _onCustomSettingsChangedStreamSubscriptions[removedTestSession]?.cancel();
     if (currentIndex >= index) {
       currentIndex -= 1;
     } else {

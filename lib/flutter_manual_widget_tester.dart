@@ -3,6 +3,7 @@ library flutter_manual_widget_tester;
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_manual_widget_tester/const/default_text_style_provider.d
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 import 'package:flutter_manual_widget_tester/widgets/appbar.dart';
 import 'package:flutter_manual_widget_tester/widgets/background.dart';
+import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/string_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/sidebar.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/close_button.dart';
@@ -30,15 +32,16 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
   final _mouseCursorOverrider = MouseCursorOverrider();
   final _widgetTestSessionHandler = WidgetTestSessionHandler();
   late final StreamSubscription<MouseCursorOverrider> _onMouseCursorOverrideChangedStreamSubscription;
+  final TypeEditorBuilder _typeEditorBuilder = TypeEditorBuilder();
   
   @override
   void initState() {
     // TODO: remove after testing
-    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'ThemeSettings', widget: Container(
+    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'ThemeSettings', builder: (_, __) => Container(
       color: Colors.blue,
       child: const Text('foo'),
     )));
-    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverrider', icon: Icons.api, widget: Container(
+    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverrider', icon: Icons.api, builder: (_, __) => Container(
       color: widget.themeSettings.sidebarColor,
       child:  Padding(
         padding: const EdgeInsets.all(16.0),
@@ -69,11 +72,14 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
         ),
       ),
     )));
-    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverriderTestWidget'));
     _widgetTestSessionHandler.createNewSession(WidgetTestSession(
       name: 'ManualWidgetTesterFoldableRegion',
       icon: Icons.folder_outlined,
-      widget: SingleChildScrollView(
+      builder: (_, settings) {
+        final text = settings.getSetting('text', 'foo');
+        final someColor = settings.getSetting('someColor', const Color.fromRGBO(255, 255, 255, 1.0));
+        
+        return SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
@@ -86,31 +92,43 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
                 themeSettings: widget.themeSettings,
                 heading: 'INDENTED FOLDABLE REGION',
                 isIndented: true,
-                child: Text('foo\nfoo\nfoo\nfoo\nfoo\nfoo', style: widget.themeSettings.buttonTextStyle),
+                child: Text('$text\n$text\n$text\n$text\n$text\n$text', style: TextStyle(color: someColor)),
               ),
             ),
             ManualWidgetTesterFoldableRegion(
               themeSettings: widget.themeSettings,
               heading: 'FOLDABLE REGION',
-              child: Text('foo\nfoo\nfoo\nfoo\nfoo\nfoo', style: widget.themeSettings.buttonTextStyle),
               isIndented: false,
+              child: Text('$text\n$text\n$text\n$text\n$text\n$text', style: TextStyle(color: someColor)),
             ),
           ],
         ),
-      ),
+      );
+      },
     ));
     
     _widgetTestSessionHandler.createNewSession(WidgetTestSession(
       name: 'ManualWidgetTesterCloseButton',
       icon: Icons.close,
-      widget: ManualWidgetTesterCloseButton(
+      builder: (_, __) => ManualWidgetTesterCloseButton(
         themeSettings: widget.themeSettings,
         onPressed: () => print('closed'),
       ),
     ));
     
+    //////////////////////////
+    
     _onMouseCursorOverrideChangedStreamSubscription = _mouseCursorOverrider.registerOnMouseCursorOverrideChanged((_) {
       setState(() {});
+    });
+    
+    _typeEditorBuilder.installEditorBuilder<String>((String settingName, String currentValue, void Function(String) onChanged) {
+      return ManualWidgetTesterCustomSettingsStringEditor(
+        themeSettings: widget.themeSettings,
+        settingName: settingName,
+        currentValue: currentValue,
+        onChanged: onChanged,
+      );
     });
     
     super.initState();
@@ -138,6 +156,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
               themeSettings: widget.themeSettings,
               mouseCursorOverrider: _mouseCursorOverrider,
               widgetTestSessionHandler: _widgetTestSessionHandler,
+              typeEditorBuilder: _typeEditorBuilder,
             ),
           ],
         ),
@@ -152,11 +171,13 @@ class _ManualWidgetTesterBody extends StatelessWidget {
     required this.themeSettings,
     required this.mouseCursorOverrider,
     required this.widgetTestSessionHandler,
+    required this.typeEditorBuilder,
   }) : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final MouseCursorOverrider mouseCursorOverrider;
   final WidgetTestSessionHandler widgetTestSessionHandler;
+  final TypeEditorBuilder typeEditorBuilder;
 
   @override
   Widget build(BuildContext context) {
@@ -170,6 +191,7 @@ class _ManualWidgetTesterBody extends StatelessWidget {
               maxWidth: constraints.maxWidth - 128.0,
               mouseCursorOverrider: mouseCursorOverrider,
               widgetTestSessionHandler: widgetTestSessionHandler,
+              typeEditorBuilder: typeEditorBuilder,
             ),
             Expanded(
               child: Column(
