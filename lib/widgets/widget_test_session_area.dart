@@ -42,6 +42,10 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
   }
   
   Widget _generateZoomControls() {
+    const minZoom = 0.2;
+    const maxZoom = 4.0;
+    const zoomStepSize = 0.1;
+    
     return SizedBox.expand(
       child: Padding(
         padding: EdgeInsets.all(widget.themeSettings.zoomControlsDistanceToBorder),
@@ -49,17 +53,17 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
           alignment: widget.themeSettings.zoomControlsAlignment,
           child: ManualWidgetTesterZoomControls(
             themeSettings: widget.themeSettings,
-            minZoom: 0.2,
-            maxZoom: 4.0,
+            minZoom: minZoom,
+            maxZoom: maxZoom,
             onZoomInButtonPressed: () => setState(() {
-              _zoom = (_zoom + 0.1).clamp(0.2, 4.0);
+              _zoom = (_zoom + zoomStepSize).clamp(minZoom, maxZoom);
             }),
             onZoomOutButtonPressed: () => setState(() {
-              _zoom = (_zoom - 0.1).clamp(0.2, 4.0);
+              _zoom = (_zoom - zoomStepSize).clamp(minZoom, maxZoom);
             }),
             zoom: _zoom,
             onZoomChanged: (double newZoom) => setState(() {
-              _zoom = newZoom.clamp(0.2, 4.0);
+              _zoom = newZoom.clamp(minZoom, maxZoom);
             }),
           ),
         ),
