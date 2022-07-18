@@ -80,6 +80,21 @@ class ManualWidgetTesterThemeSettings {
   final EdgeInsets customSettingsHeadingPadding;
   final EdgeInsets customSettingsPadding;
   final double stringEditorHeight;
+  final Color dialogBackgroundColor;
+  final Color dialogBarrierColor;
+  final Duration dialogOpenCloseAnimationDuration;
+  final Curve dialogOpenCloseAnimationCurve;
+  final Offset dialogOpenCloseAnimationOffset;
+  final Alignment dialogAlignment;
+  final double dialogBlurRadius;
+  final BorderRadius dialogBorderRadius;
+  final Color dialogBorderColor;
+  final List<BoxShadow> dialogShadow;
+  final EdgeInsets dialogPadding;
+  final double dialogActionButtonHeight;
+  final double defaultDialogActionButtonRowWidth;
+  final double customDialogActionButtonWidthAddition;
+  final double distanceBetweenDialogContentAndActionButtons;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -223,5 +238,22 @@ class ManualWidgetTesterThemeSettings {
     this.customSettingsHeadingPadding = const EdgeInsets.only(bottom: 5.0),
     this.customSettingsPadding = const EdgeInsets.all(8.0),
     this.stringEditorHeight = 32.0,
+    this.dialogBackgroundColor = const Color.fromRGBO(38, 39, 47, 0.75),
+    this.dialogBarrierColor = const Color.fromRGBO(0, 0, 0, 0.35),
+    this.dialogOpenCloseAnimationDuration = const Duration(milliseconds: 150),
+    this.dialogOpenCloseAnimationCurve = Curves.easeInOutSine,
+    this.dialogOpenCloseAnimationOffset = const Offset(0.0, -16.0),
+    this.dialogAlignment = Alignment.center,
+    this.dialogBlurRadius = 8.0,
+    this.dialogBorderRadius = const BorderRadius.all(Radius.circular(5.0)),
+    this.dialogBorderColor = const Color.fromRGBO(255, 255, 255, 0.025),
+    this.dialogShadow = const [
+      BoxShadow(blurRadius: 8.0, color: Color.fromRGBO(0, 0, 0, 0.25), spreadRadius: 4.0, offset: Offset(0.0, 4.0)),
+    ],
+    this.dialogPadding = const EdgeInsets.all(8.0),
+    this.dialogActionButtonHeight = 32.0,
+    this.defaultDialogActionButtonRowWidth = 192.0,
+    this.customDialogActionButtonWidthAddition = 32.0,
+    this.distanceBetweenDialogContentAndActionButtons = 8.0,
   });
 }
