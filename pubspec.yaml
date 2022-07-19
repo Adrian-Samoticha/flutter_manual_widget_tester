@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   basic_utils: ^4.3.0
+  flex_color_picker: ^2.5.0
 
 dev_dependencies:
   flutter_test:

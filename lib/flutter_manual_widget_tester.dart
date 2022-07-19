@@ -11,6 +11,7 @@ import 'package:flutter_manual_widget_tester/const/default_text_style_provider.d
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 import 'package:flutter_manual_widget_tester/widgets/appbar.dart';
 import 'package:flutter_manual_widget_tester/widgets/background.dart';
+import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/color_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/string_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/sidebar.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row.dart';
@@ -41,6 +42,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       color: Colors.blue,
       child: const Text('foo'),
     )));
+    
     _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverrider', icon: Icons.api, builder: (_, __) => Container(
       color: widget.themeSettings.sidebarColor,
       child:  Padding(
@@ -72,6 +74,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
         ),
       ),
     )));
+    
     _widgetTestSessionHandler.createNewSession(WidgetTestSession(
       name: 'ManualWidgetTesterFoldableRegion',
       icon: Icons.folder_outlined,
@@ -116,6 +119,29 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       ),
     ));
     
+    _widgetTestSessionHandler.createNewSession(WidgetTestSession(
+      name: 'ManualWidgetTesterCustomSettingsColorEditor',
+      icon: Icons.color_lens,
+      builder: (_, __) => Builder(
+        builder: (context) {
+          var color = const Color.fromRGBO(255, 0, 128, 0.75);
+          return StatefulBuilder(
+            builder: (context, setState) {
+              return ManualWidgetTesterCustomSettingsColorEditor(
+                themeSettings: widget.themeSettings,
+                currentValue: color,
+                onChanged: (newColor) => setState(() {
+                  color = newColor;
+                  print(newColor);
+                }),
+                settingName: 'backgroundColor',
+              );
+            }
+          );
+        }
+      ),
+    ));
+    
     //////////////////////////
     
     _onMouseCursorOverrideChangedStreamSubscription = _mouseCursorOverrider.registerOnMouseCursorOverrideChanged((_) {
@@ -124,6 +150,15 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
     
     _typeEditorBuilder.installEditorBuilder<String>((String settingName, String currentValue, void Function(String) onChanged) {
       return ManualWidgetTesterCustomSettingsStringEditor(
+        themeSettings: widget.themeSettings,
+        settingName: settingName,
+        currentValue: currentValue,
+        onChanged: onChanged,
+      );
+    });
+    
+    _typeEditorBuilder.installEditorBuilder<Color>((String settingName, Color currentValue, void Function(Color) onChanged) {
+      return ManualWidgetTesterCustomSettingsColorEditor(
         themeSettings: widget.themeSettings,
         settingName: settingName,
         currentValue: currentValue,

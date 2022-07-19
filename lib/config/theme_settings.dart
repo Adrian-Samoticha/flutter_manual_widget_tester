@@ -95,6 +95,32 @@ class ManualWidgetTesterThemeSettings {
   final double defaultDialogActionButtonRowWidth;
   final double customDialogActionButtonWidthAddition;
   final double distanceBetweenDialogContentAndActionButtons;
+  final double editColorButtonHeight;
+  final BoxDecoration editColorButtonDecorationForDarkColor;
+  final BoxDecoration editColorButtonDecorationForBrightColor;
+  final BorderRadius editColorButtonBorderRadius;
+  final Color editColorButtonCheckerboardColor1;
+  final Color editColorButtonCheckerboardColor2;
+  final double editColorbuttonCheckerboardSize;
+  final IconData editColorButtonIcon;
+  final Color editColorButtonIconColorForDarkColor;
+  final Color editColorButtonIconColorForBrightColor;
+  final List<Shadow>? editColorButtonIconShadowsForDarkColor;
+  final List<Shadow>? editColorButtonIconShadowsForBrightColor;
+  final Duration editColorButtonIconAnimationDuration;
+  final Curve editColorButtonIconAnimationCurve;
+  final TextStyle editColorButtonTextStyleForDarkColor;
+  final TextStyle editColorButtonTextStyleForBrightColor;
+  final Duration editColorDialogSizeChangeAnimationDuration;
+  final Curve editColorDialogSizeChangeCurve;
+  final double editColorDialogElevation;
+  final double editColorDialogBorderRadius;
+  final TextStyle editColorDialogColorNameTextStyle;
+  final TextStyle editColorDialogTypeTextStyle;
+  final Color editColorDialogSelectedPickerTypeColor;
+  final double editColorDialogSpacing;
+  final double editColorDialogRunSpacing;
+  final double editColorDialogColumnSpacing;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -255,5 +281,62 @@ class ManualWidgetTesterThemeSettings {
     this.defaultDialogActionButtonRowWidth = 192.0,
     this.customDialogActionButtonWidthAddition = 32.0,
     this.distanceBetweenDialogContentAndActionButtons = 8.0,
+    this.editColorButtonHeight = 28.0,
+    this.editColorButtonDecorationForDarkColor = const BoxDecoration(
+      border: Border.fromBorderSide(
+        BorderSide(
+          color: Color.fromRGBO(255, 255, 255, 0.4),
+        ),
+      ),
+      boxShadow: [
+        BoxShadow(blurRadius: 3.0, color: Color.fromRGBO(0, 0, 0, 0.25), offset: Offset(0.0, 1.0)),
+      ],
+    ),
+    this.editColorButtonDecorationForBrightColor = const BoxDecoration(
+      border: Border.fromBorderSide(
+        BorderSide(
+          color: Color.fromRGBO(0, 0, 0, 0.5),
+        ),
+      ),
+      boxShadow: [
+        BoxShadow(blurRadius: 3.0, color: Color.fromRGBO(0, 0, 0, 0.25), offset: Offset(0.0, 1.0)),
+      ],
+    ),
+    this.editColorButtonBorderRadius = const BorderRadius.all(Radius.circular(5.0)),
+    this.editColorButtonCheckerboardColor1 = const Color.fromRGBO(255, 255, 255, 1.0),
+    this.editColorButtonCheckerboardColor2 = const Color.fromRGBO(192, 192, 192, 1.0),
+    this.editColorbuttonCheckerboardSize = 14.0,
+    this.editColorButtonIcon = Icons.colorize_rounded,
+    this.editColorButtonIconColorForDarkColor = const Color.fromRGBO(255, 255, 255, 0.9),
+    this.editColorButtonIconColorForBrightColor = const Color.fromRGBO(0, 0, 0, 0.7),
+    this.editColorButtonIconShadowsForDarkColor = const [
+      Shadow(blurRadius: 2.0, color: Color.fromRGBO(0, 0, 0, 0.5), offset: Offset(0.0, 1.0)),
+    ],
+    this.editColorButtonIconShadowsForBrightColor,
+    this.editColorButtonIconAnimationDuration = const Duration(milliseconds: 250),
+    this.editColorButtonIconAnimationCurve = Curves.ease,
+    this.editColorButtonTextStyleForDarkColor = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.9),
+      shadows: [
+        Shadow(blurRadius: 2.0, color: Color.fromRGBO(0, 0, 0, 0.5), offset: Offset(0.0, 1.0)),
+      ]
+    ),
+    this.editColorButtonTextStyleForBrightColor = const TextStyle(
+      color: Color.fromRGBO(0, 0, 0, 0.9),
+    ),
+    this.editColorDialogSizeChangeAnimationDuration = const Duration(milliseconds: 150),
+    this.editColorDialogSizeChangeCurve = Curves.ease,
+    this.editColorDialogElevation = 2.0,
+    this.editColorDialogBorderRadius = 2.0,
+    this.editColorDialogColorNameTextStyle = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.9),
+    ),
+    this.editColorDialogTypeTextStyle = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.9),
+    ),
+    this.editColorDialogSelectedPickerTypeColor = const Color.fromRGBO(82, 82, 82, 1.0),
+    this.editColorDialogSpacing = 4.0,
+    this.editColorDialogRunSpacing = 4.0,
+    this.editColorDialogColumnSpacing = 8.0,
   });
 }
