@@ -16,7 +16,7 @@ class TypeEditorBuilder {
     return builder(name, value, onValueChanged as void Function(dynamic));
   }
   
-  void installEditorBuilder<T>(Widget Function(String, T, void Function(T)) builder) {
+  void installEditorBuilder<T>(Widget Function(String settingName, T currentValue, void Function(T) onChanged) builder) {
     _typeToEditorBuilder[T] = builder;
   }
 }
