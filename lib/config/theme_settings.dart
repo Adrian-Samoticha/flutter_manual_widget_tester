@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ManualWidgetTesterThemeSettings {
   final Color backgroundColor;
   final Color sidebarColor;
-  final double appbarHeight;
+  final double appBarHeight;
   final Color accentColor;
   final double minTabWidth;
   final double maxTabWidth;
@@ -101,7 +101,7 @@ class ManualWidgetTesterThemeSettings {
   final BorderRadius editColorButtonBorderRadius;
   final Color editColorButtonCheckerboardColor1;
   final Color editColorButtonCheckerboardColor2;
-  final double editColorbuttonCheckerboardSize;
+  final double editColorButtonCheckerboardSize;
   final IconData editColorButtonIcon;
   final Color editColorButtonIconColorForDarkColor;
   final Color editColorButtonIconColorForBrightColor;
@@ -125,7 +125,7 @@ class ManualWidgetTesterThemeSettings {
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
-    this.appbarHeight = 40.0,
+    this.appBarHeight = 40.0,
     this.accentColor = const Color.fromARGB(255, 40, 138, 251),
     this.minTabWidth = 64.0,
     this.maxTabWidth = 192.0,
@@ -305,7 +305,7 @@ class ManualWidgetTesterThemeSettings {
     this.editColorButtonBorderRadius = const BorderRadius.all(Radius.circular(5.0)),
     this.editColorButtonCheckerboardColor1 = const Color.fromRGBO(255, 255, 255, 1.0),
     this.editColorButtonCheckerboardColor2 = const Color.fromRGBO(192, 192, 192, 1.0),
-    this.editColorbuttonCheckerboardSize = 14.0,
+    this.editColorButtonCheckerboardSize = 14.0,
     this.editColorButtonIcon = Icons.colorize_rounded,
     this.editColorButtonIconColorForDarkColor = const Color.fromRGBO(255, 255, 255, 0.9),
     this.editColorButtonIconColorForBrightColor = const Color.fromRGBO(0, 0, 0, 0.7),

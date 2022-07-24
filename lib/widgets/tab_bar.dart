@@ -6,17 +6,17 @@ import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/tab.dart';
 
-class ManualWidgetTesterTabbar extends StatefulWidget {
-  const ManualWidgetTesterTabbar({Key? key, required this.themeSettings, required this.widgetTestSessionHandler}) : super(key: key);
+class ManualWidgetTesterTabBar extends StatefulWidget {
+  const ManualWidgetTesterTabBar({Key? key, required this.themeSettings, required this.widgetTestSessionHandler}) : super(key: key);
   
   final ManualWidgetTesterThemeSettings themeSettings;
   final WidgetTestSessionHandler widgetTestSessionHandler;
 
   @override
-  State<ManualWidgetTesterTabbar> createState() => _ManualWidgetTesterTabbarState();
+  State<ManualWidgetTesterTabBar> createState() => _ManualWidgetTesterTabBarState();
 }
 
-class _ManualWidgetTesterTabbarState extends State<ManualWidgetTesterTabbar> {
+class _ManualWidgetTesterTabBarState extends State<ManualWidgetTesterTabBar> {
   late StreamSubscription<WidgetTestSessionHandler> _widgetTestSessionsChangedStream;
   
   @override

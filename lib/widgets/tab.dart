@@ -38,7 +38,7 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
         }),
         child: SizedBox(
           width: widget.width,
-          height: widget.themeSettings.appbarHeight,
+          height: widget.themeSettings.appBarHeight,
           child: Padding(
             padding: const EdgeInsets.only(top: 4.0),
             child: Stack(

@@ -143,7 +143,7 @@ class _ColorPickerState extends State<_ColorPicker> {
         borderRadius: widget.themeSettings.editColorButtonBorderRadius,
         child: CustomPaint(
           painter: _CheckerboardPainter(
-            widget.themeSettings.editColorbuttonCheckerboardSize,
+            widget.themeSettings.editColorButtonCheckerboardSize,
             widget.themeSettings.editColorButtonCheckerboardColor1,
             widget.themeSettings.editColorButtonCheckerboardColor2,
           ),
