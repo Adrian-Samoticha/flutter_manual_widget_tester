@@ -29,44 +29,52 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
                 return Row(
                   children: [
                     Expanded(
-                      child: ManualWidgetTesterTextField(
-                        initialValue: currentValue.toString(),
-                        onSubmitted: (String valueAsString) {
-                          final parsedValue = int.tryParse(valueAsString);
-                          onChanged(parsedValue ?? currentValue);
-                        },
-                        themeSettings: themeSettings,
-                        disableRoundedCornersOnRightSide: true,
-                      ),
+                      child: _generateTextField(),
                     ),
                     SizedBox(width: themeSettings.spaceBetweenTextBoxesAndButtonRows),
-                    SizedBox(
-                      width: min(themeSettings.defaultIntegerEditorButtonRowWidth, constraints.maxWidth * 0.5),
-                      child: ManualWidgetTesterButtonRow(
-                        themeSettings: themeSettings,
-                        disableRoundedCornersOnLeftSide: true,
-                        buttons: [
-                          ManualWidgetTesterButtonInfo(
-                            child: const Center(child: Text('-')),
-                            onButtonPressed: null,
-                            onButtonDown: () {
-                              onChanged(currentValue - 1);
-                            },
-                          ),
-                          ManualWidgetTesterButtonInfo(
-                            child: const Center(child: Text('+')),
-                            onButtonPressed: null,
-                            onButtonDown: () {
-                              onChanged(currentValue + 1);
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
+                    _generateButtonRow(constraints),
                   ],
                 );
               }
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  ManualWidgetTesterTextField _generateTextField() {
+    return ManualWidgetTesterTextField(
+      initialValue: currentValue.toString(),
+      onSubmitted: (String valueAsString) {
+        final parsedValue = int.tryParse(valueAsString);
+        onChanged(parsedValue ?? currentValue);
+      },
+      themeSettings: themeSettings,
+      disableRoundedCornersOnRightSide: true,
+    );
+  }
+
+  SizedBox _generateButtonRow(BoxConstraints constraints) {
+    return SizedBox(
+      width: min(themeSettings.defaultIntegerEditorButtonRowWidth, constraints.maxWidth * 0.5),
+      child: ManualWidgetTesterButtonRow(
+        themeSettings: themeSettings,
+        disableRoundedCornersOnLeftSide: true,
+        buttons: [
+          ManualWidgetTesterButtonInfo(
+            child: const Center(child: Text('-')),
+            onButtonPressed: null,
+            onButtonDown: () {
+              onChanged(currentValue - 1);
+            },
+          ),
+          ManualWidgetTesterButtonInfo(
+            child: const Center(child: Text('+')),
+            onButtonPressed: null,
+            onButtonDown: () {
+              onChanged(currentValue + 1);
+            },
           ),
         ],
       ),
