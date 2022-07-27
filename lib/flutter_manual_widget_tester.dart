@@ -12,6 +12,7 @@ import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 import 'package:flutter_manual_widget_tester/widgets/app_bar.dart';
 import 'package:flutter_manual_widget_tester/widgets/background.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/color_editor.dart';
+import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/double_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/int_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/string_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/sidebar.dart';
@@ -160,7 +161,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
                     integer = newInteger;
                     print(newInteger);
                   }),
-                  settingName: 'backgroundColor',
+                  settingName: 'numberOfElements',
                 ),
               );
             }
