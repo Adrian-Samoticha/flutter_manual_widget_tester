@@ -41,7 +41,7 @@ class ManualWidgetTesterZoomControls extends StatelessWidget {
                 suffix: '%',
               ),
             ),
-            SizedBox(width: themeSettings.zoomControlsSpaceBetweenTextBoxAndButtonRow),
+            SizedBox(width: themeSettings.spaceBetweenTextBoxesAndButtonRows),
             SizedBox(
               width: themeSettings.zoomControlsButtonRowWidth,
               child: ManualWidgetTesterButtonRow(

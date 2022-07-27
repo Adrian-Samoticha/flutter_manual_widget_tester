@@ -39,7 +39,7 @@ class ManualWidgetTesterThemeSettings {
   final BorderRadius zoomControlsBorderRadius;
   final List<BoxShadow> zoomControlsShadow;
   final EdgeInsets zoomControlsPadding;
-  final double zoomControlsSpaceBetweenTextBoxAndButtonRow;
+  final double spaceBetweenTextBoxesAndButtonRows;
   final double zoomControlsButtonRowWidth;
   final Icon zoomControlsZoomOutIcon;
   final Icon zoomControlsZoomInIcon;
@@ -121,6 +121,7 @@ class ManualWidgetTesterThemeSettings {
   final double editColorDialogSpacing;
   final double editColorDialogRunSpacing;
   final double editColorDialogColumnSpacing;
+  final double defaultIntegerEditorButtonRowWidth;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -193,7 +194,7 @@ class ManualWidgetTesterThemeSettings {
       BoxShadow(blurRadius: 2.0, color: Color.fromRGBO(0, 0, 0, 0.25), offset: Offset(0.0, 1.0)),
     ],
     this.zoomControlsPadding = const EdgeInsets.all(3.5),
-    this.zoomControlsSpaceBetweenTextBoxAndButtonRow = 0.5,
+    this.spaceBetweenTextBoxesAndButtonRows = 0.5,
     this.zoomControlsButtonRowWidth = 64.0,
     this.zoomControlsZoomOutIcon = const Icon(Icons.zoom_out),
     this.zoomControlsZoomInIcon = const Icon(Icons.zoom_in),
@@ -338,5 +339,6 @@ class ManualWidgetTesterThemeSettings {
     this.editColorDialogSpacing = 4.0,
     this.editColorDialogRunSpacing = 4.0,
     this.editColorDialogColumnSpacing = 8.0,
+    this.defaultIntegerEditorButtonRowWidth = 64.0,
   });
 }
