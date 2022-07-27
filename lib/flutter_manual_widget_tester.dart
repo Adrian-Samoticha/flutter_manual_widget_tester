@@ -156,9 +156,9 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
                 child: ManualWidgetTesterCustomSettingsIntEditor(
                   themeSettings: widget.themeSettings,
                   currentValue: integer,
-                  onChanged: (newColor) => setState(() {
-                    integer = newColor;
-                    print(newColor);
+                  onChanged: (newInteger) => setState(() {
+                    integer = newInteger;
+                    print(newInteger);
                   }),
                   settingName: 'backgroundColor',
                 ),
