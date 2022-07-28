@@ -202,7 +202,7 @@ class _ColorPickerState extends State<_ColorPicker> {
 
   String _generateColorCodeString() {
     final rawColorString = widget.selectedColor.value.toRadixString(16).toUpperCase().padLeft(8, '0');
-    return '#${rawColorString.substring(2)}${rawColorString.substring(0, 2)}';
+    return '0x$rawColorString';
   }
 }
 
