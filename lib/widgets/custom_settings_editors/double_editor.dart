@@ -130,11 +130,17 @@ class _InfiniteScrollViewPainter extends CustomPainter {
       ..color = themeSettings.doubleEditorInfiniteScrollViewLineColor
       ..strokeWidth = themeSettings.doubleEditorInfiniteScrollViewLineWidth;
     
+    final indicatorPaint = Paint()
+      ..color = themeSettings.doubleEditorInfiniteScrollViewIndicatorColor
+      ..strokeWidth = themeSettings.doubleEditorInfiniteScrollViewIndicatorWidth;
+    
     _drawRuler(canvas, size, linePaint, 1.0, 1.0);
     _drawRuler(canvas, size, linePaint, 0.5, 0.5);
     _drawRuler(canvas, size, linePaint, 0.1, 0.1);
     
     _drawRulerNumbers(canvas, size);
+    
+    _drawBottomLineAtValue(value, canvas, size, indicatorPaint, themeSettings.doubleEditorInfiniteScrollViewIndicatorHeight);
   }
   
   void _drawRuler(Canvas canvas, Size size, Paint paint, double stepSize, double heightFactor) {
@@ -144,11 +150,11 @@ class _InfiniteScrollViewPainter extends CustomPainter {
     final flooredValue = value.floorToDouble();
     
     for (var i = flooredValue; i <= rightEdgeValue; i += stepSize) {
-      _drawLineAtValue(i, canvas, size, paint, heightFactor);
+      _drawTopLineAtValue(i, canvas, size, paint, heightFactor);
     }
     
     for (var i = flooredValue; i >= leftEdgeValue; i -= stepSize) {
-      _drawLineAtValue(i, canvas, size, paint, heightFactor);
+      _drawTopLineAtValue(i, canvas, size, paint, heightFactor);
     }
   }
   
@@ -193,11 +199,20 @@ class _InfiniteScrollViewPainter extends CustomPainter {
     );
   }
   
-  void _drawLineAtValue(double valueToDrawTheLineAt, Canvas canvas, Size size, Paint paint, double heightFactor) {
+  void _drawTopLineAtValue(double valueToDrawTheLineAt, Canvas canvas, Size size, Paint paint, double heightFactor) {
     final position = _valueToPosition(valueToDrawTheLineAt, size.width);
     canvas.drawLine(
       Offset(position, 0.0),
       Offset(position, size.height * heightFactor),
+      paint,
+    );
+  }
+  
+  void _drawBottomLineAtValue(double valueToDrawTheLineAt, Canvas canvas, Size size, Paint paint, double heightFactor) {
+    final position = _valueToPosition(valueToDrawTheLineAt, size.width);
+    canvas.drawLine(
+      Offset(position, size.height * (1.0 - heightFactor)),
+      Offset(position, size.height),
       paint,
     );
   }

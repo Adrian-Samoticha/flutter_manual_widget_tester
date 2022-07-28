@@ -130,6 +130,9 @@ class ManualWidgetTesterThemeSettings {
   final double doubleEditorInfiniteScrollViewTextPaddingAmount;
   final Color doubleEditorInfiniteScrollViewLineColor;
   final double doubleEditorInfiniteScrollViewLineWidth;
+  final Color doubleEditorInfiniteScrollViewIndicatorColor;
+  final double doubleEditorInfiniteScrollViewIndicatorWidth;
+  final double doubleEditorInfiniteScrollViewIndicatorHeight;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -371,5 +374,8 @@ class ManualWidgetTesterThemeSettings {
     this.doubleEditorInfiniteScrollViewTextPaddingAmount = 4.0,
     this.doubleEditorInfiniteScrollViewLineColor = const Color.fromRGBO(255, 255, 255, 1.0),
     this.doubleEditorInfiniteScrollViewLineWidth = 1.1,
+    this.doubleEditorInfiniteScrollViewIndicatorColor = const Color.fromRGBO(32, 145, 255, 1.0),
+    this.doubleEditorInfiniteScrollViewIndicatorWidth = 2.31,
+    this.doubleEditorInfiniteScrollViewIndicatorHeight = 0.75,
   });
 }
