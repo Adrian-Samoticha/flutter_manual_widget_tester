@@ -125,6 +125,8 @@ class _ColorPickerState extends State<_ColorPicker> {
               spacing: widget.themeSettings.editColorDialogSpacing,
               runSpacing: widget.themeSettings.editColorDialogRunSpacing,
               columnSpacing: widget.themeSettings.editColorDialogColumnSpacing,
+              showColorCode: true,
+              colorCodeHasColor: true,
               pickersEnabled: const {
                 ColorPickerType.primary: true,
                 ColorPickerType.accent: true,
