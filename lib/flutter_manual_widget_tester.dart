@@ -11,6 +11,7 @@ import 'package:flutter_manual_widget_tester/const/default_text_style_provider.d
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 import 'package:flutter_manual_widget_tester/widgets/app_bar.dart';
 import 'package:flutter_manual_widget_tester/widgets/background.dart';
+import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/bool_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/color_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/double_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/int_editor.dart';
@@ -19,6 +20,7 @@ import 'package:flutter_manual_widget_tester/widgets/sidebar.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/close_button.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
+import 'package:flutter_manual_widget_tester/widgets/ui_elements/radio_button.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 import 'package:flutter_manual_widget_tester/widgets/widget_test_session_area_stack.dart';
 
@@ -86,6 +88,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
         final text = settings.getSetting('text', 'foo') * settings.getSetting('textFactor', 1);
         final someColor = settings.getSetting('someColor', const Color.fromRGBO(255, 255, 255, 1.0));
         final padding = settings.getSetting('padding', 0.0).clamp(0.0, 128.0);
+        final softWrap = settings.getSetting('softWrap', true);
         
         return Padding(
           padding: EdgeInsets.all(padding),
@@ -102,14 +105,14 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
                   themeSettings: widget.themeSettings,
                   heading: 'INDENTED FOLDABLE REGION',
                   isIndented: true,
-                  child: Text('$text\n$text\n$text\n$text\n$text\n$text', style: TextStyle(color: someColor)),
+                  child: Text('$text\n$text\n$text\n$text\n$text\n$text', style: TextStyle(color: someColor), softWrap: softWrap),
                 ),
               ),
               ManualWidgetTesterFoldableRegion(
                 themeSettings: widget.themeSettings,
                 heading: 'FOLDABLE REGION',
                 isIndented: false,
-                child: Text('$text\n$text\n$text\n$text\n$text\n$text', style: TextStyle(color: someColor)),
+                child: Text('$text\n$text\n$text\n$text\n$text\n$text', style: TextStyle(color: someColor), softWrap: softWrap),
               ),
             ],
           ),
@@ -204,6 +207,60 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       ),
     ));
     
+    _widgetTestSessionHandler.createNewSession(WidgetTestSession(
+      name: 'ManualWidgetTesterCustomSettingsBoolEditor',
+      icon: Icons.check_box,
+      builder: (_, __) => Builder(
+        builder: (context) {
+          var someBool = false;
+          return StatefulBuilder(
+            builder: (context, setState) {
+              return Container(
+                color: widget.themeSettings.sidebarColor,
+                child: ManualWidgetTesterCustomSettingsBoolEditor(
+                  themeSettings: widget.themeSettings,
+                  currentValue: someBool,
+                  onChanged: (newBool) => setState(() {
+                    someBool = newBool;
+                    print(newBool);
+                  }),
+                  settingName: 'doShowSettings',
+                ),
+              );
+            }
+          );
+        }
+      ),
+    ));
+    
+    _widgetTestSessionHandler.createNewSession(WidgetTestSession(
+      name: 'ManualWidgetTesterRadioButtonWithLabel',
+      icon: Icons.radio_button_checked,
+      builder: (_, __) => Builder(
+        builder: (context) {
+          var isSelected = true;
+          return StatefulBuilder(
+            builder: (context, setState) {
+              return GestureDetector(
+                onTap: () => setState(() {
+                  isSelected = !isSelected;
+                }),
+                child: Container(
+                  color: widget.themeSettings.sidebarColor,
+                  padding: const EdgeInsets.all(8.0),
+                  child: ManualWidgetTesterRadioButtonWithLabel(
+                    themeSettings: widget.themeSettings,
+                    isSelected: isSelected,
+                    label: 'true',
+                  ),
+                ),
+              );
+            }
+          );
+        }
+      ),
+    ));
+    
     //////////////////////////
     
     _onMouseCursorOverrideChangedStreamSubscription = _mouseCursorOverrider.registerOnMouseCursorOverrideChanged((_) {
@@ -245,6 +302,15 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
         onChanged: onChanged,
         infiniteScrollViewRange: widget.doubleEditorInfiniteScrollViewRange,
         infiniteScrollViewScrollSpeedFactor: widget.doubleEditorInfiniteScrollViewScrollSpeedFactor,
+      );
+    });
+    
+    _typeEditorBuilder.installEditorBuilder<bool>((String settingName, bool currentValue, void Function(bool) onChanged) {
+      return ManualWidgetTesterCustomSettingsBoolEditor(
+        themeSettings: widget.themeSettings,
+        settingName: settingName,
+        currentValue: currentValue,
+        onChanged: onChanged,
       );
     });
     

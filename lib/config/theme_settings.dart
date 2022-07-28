@@ -138,6 +138,10 @@ class ManualWidgetTesterThemeSettings {
   final double spaceBetweenRadioButtonAndLabel;
   final TextStyle selectedRadioButtonLabelStyle;
   final TextStyle unselectedRadioButtonLabelStyle;
+  final double boolEditorMaxWidth;
+  final double boolEditorSpaceBetweenRadioButtons;
+  final EdgeInsets boolEditorRadioButtonPadding;
+  final double boolEditorHeight;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -444,5 +448,9 @@ class ManualWidgetTesterThemeSettings {
     this.unselectedRadioButtonLabelStyle = const TextStyle(
       color: Color.fromRGBO(255, 255, 255, 0.5),
     ),
+    this.boolEditorMaxWidth = 192.0,
+    this.boolEditorSpaceBetweenRadioButtons = 12.0,
+    this.boolEditorRadioButtonPadding = const EdgeInsets.symmetric(vertical: 8.0),
+    this.boolEditorHeight = 16.0,
   });
 }
