@@ -58,9 +58,11 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
     return Listener(
       onPointerSignal: (PointerSignalEvent event) {
         if (event is PointerScrollEvent) {
-          final scrollDelta = event.scrollDelta;
-          final newValue = currentValue + (scrollDelta.dx + scrollDelta.dy) * infiniteScrollViewScrollSpeedFactor;
-          onChanged(newValue);
+          GestureBinding.instance.pointerSignalResolver.register(event, (event) {
+            final scrollDelta = (event as PointerScrollEvent).scrollDelta;
+            final newValue = currentValue + (scrollDelta.dx + scrollDelta.dy) * infiniteScrollViewScrollSpeedFactor;
+            onChanged(newValue);
+          });
         }
       },
       child: Container(
