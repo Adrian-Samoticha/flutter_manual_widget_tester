@@ -23,9 +23,11 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart
 import 'package:flutter_manual_widget_tester/widgets/widget_test_session_area_stack.dart';
 
 class ManualWidgetTester extends StatefulWidget {
-  const ManualWidgetTester({Key? key, this.themeSettings = const ManualWidgetTesterThemeSettings()}) : super(key: key);
+  const ManualWidgetTester({Key? key, this.themeSettings = const ManualWidgetTesterThemeSettings(), this.doubleEditorInfiniteScrollViewRange = 3.0, this.doubleEditorInfiniteScrollViewScrollSpeedFactor = 0.003}) : super(key: key);
   
   final ManualWidgetTesterThemeSettings themeSettings;
+  final double doubleEditorInfiniteScrollViewRange;
+  final double doubleEditorInfiniteScrollViewScrollSpeedFactor;
 
   @override
   State<ManualWidgetTester> createState() => _ManualWidgetTesterState();
@@ -83,32 +85,36 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       builder: (_, settings) {
         final text = settings.getSetting('text', 'foo') * settings.getSetting('textFactor', 1);
         final someColor = settings.getSetting('someColor', const Color.fromRGBO(255, 255, 255, 1.0));
+        final padding = settings.getSetting('padding', 0.0).clamp(0.0, 128.0);
         
-        return SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ManualWidgetTesterFoldableRegion(
-              themeSettings: widget.themeSettings,
-              heading: 'FOLDABLE REGION',
-              isIndented: false,
-              child: ManualWidgetTesterFoldableRegion(
+        return Padding(
+          padding: EdgeInsets.all(padding),
+          child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ManualWidgetTesterFoldableRegion(
                 themeSettings: widget.themeSettings,
-                heading: 'INDENTED FOLDABLE REGION',
-                isIndented: true,
+                heading: 'FOLDABLE REGION',
+                isIndented: false,
+                child: ManualWidgetTesterFoldableRegion(
+                  themeSettings: widget.themeSettings,
+                  heading: 'INDENTED FOLDABLE REGION',
+                  isIndented: true,
+                  child: Text('$text\n$text\n$text\n$text\n$text\n$text', style: TextStyle(color: someColor)),
+                ),
+              ),
+              ManualWidgetTesterFoldableRegion(
+                themeSettings: widget.themeSettings,
+                heading: 'FOLDABLE REGION',
+                isIndented: false,
                 child: Text('$text\n$text\n$text\n$text\n$text\n$text', style: TextStyle(color: someColor)),
               ),
-            ),
-            ManualWidgetTesterFoldableRegion(
-              themeSettings: widget.themeSettings,
-              heading: 'FOLDABLE REGION',
-              isIndented: false,
-              child: Text('$text\n$text\n$text\n$text\n$text\n$text', style: TextStyle(color: someColor)),
-            ),
-          ],
-        ),
-      );
+            ],
+          ),
+      ),
+        );
       },
     ));
     
@@ -170,6 +176,34 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       ),
     ));
     
+    _widgetTestSessionHandler.createNewSession(WidgetTestSession(
+      name: 'ManualWidgetTesterCustomSettingsDoubleEditor',
+      icon: Icons.numbers,
+      builder: (_, __) => Builder(
+        builder: (context) {
+          var someDouble = 0.0;
+          return StatefulBuilder(
+            builder: (context, setState) {
+              return Container(
+                color: widget.themeSettings.sidebarColor,
+                child: ManualWidgetTesterCustomSettingsDoubleEditor(
+                  themeSettings: widget.themeSettings,
+                  currentValue: someDouble,
+                  onChanged: (newDouble) => setState(() {
+                    someDouble = newDouble;
+                    print(newDouble);
+                  }),
+                  settingName: 'size',
+                  infiniteScrollViewRange: widget.doubleEditorInfiniteScrollViewRange,
+                  infiniteScrollViewScrollSpeedFactor: widget.doubleEditorInfiniteScrollViewScrollSpeedFactor,
+                ),
+              );
+            }
+          );
+        }
+      ),
+    ));
+    
     //////////////////////////
     
     _onMouseCursorOverrideChangedStreamSubscription = _mouseCursorOverrider.registerOnMouseCursorOverrideChanged((_) {
@@ -200,6 +234,17 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
         settingName: settingName,
         currentValue: currentValue,
         onChanged: onChanged,
+      );
+    });
+    
+    _typeEditorBuilder.installEditorBuilder<double>((String settingName, double currentValue, void Function(double) onChanged) {
+      return ManualWidgetTesterCustomSettingsDoubleEditor(
+        themeSettings: widget.themeSettings,
+        settingName: settingName,
+        currentValue: currentValue,
+        onChanged: onChanged,
+        infiniteScrollViewRange: widget.doubleEditorInfiniteScrollViewRange,
+        infiniteScrollViewScrollSpeedFactor: widget.doubleEditorInfiniteScrollViewScrollSpeedFactor,
       );
     });
     

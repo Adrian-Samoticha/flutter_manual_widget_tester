@@ -121,7 +121,15 @@ class ManualWidgetTesterThemeSettings {
   final double editColorDialogSpacing;
   final double editColorDialogRunSpacing;
   final double editColorDialogColumnSpacing;
-  final double defaultIntegerEditorButtonRowWidth;
+  final double defaultNumberEditorButtonRowWidth;
+  final double spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView;
+  final double doubleEditorInfiniteScrollViewHeight;
+  final BoxDecoration doubleEditorInfiniteScrollViewBoxDecoration;
+  final EdgeInsets doubleEditorInfiniteScrollViewPadding;
+  final TextStyle doubleEditorInfiniteScrollViewTextStyle;
+  final double doubleEditorInfiniteScrollViewTextPaddingAmount;
+  final Color doubleEditorInfiniteScrollViewLineColor;
+  final double doubleEditorInfiniteScrollViewLineWidth;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -339,6 +347,29 @@ class ManualWidgetTesterThemeSettings {
     this.editColorDialogSpacing = 4.0,
     this.editColorDialogRunSpacing = 4.0,
     this.editColorDialogColumnSpacing = 8.0,
-    this.defaultIntegerEditorButtonRowWidth = 64.0,
+    this.defaultNumberEditorButtonRowWidth = 64.0,
+    this.spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView = 4.0,
+    this.doubleEditorInfiniteScrollViewHeight = 32.0,
+    this.doubleEditorInfiniteScrollViewBoxDecoration = const BoxDecoration(
+      color: Colors.transparent,
+      borderRadius: BorderRadius.all(Radius.circular(4.0)),
+      boxShadow: [
+        BoxShadow(color: Color.fromRGBO(18, 20, 23, 1.0)),
+        BoxShadow(color: Color.fromRGBO(43, 47, 54, 1.0), spreadRadius: -2.0, blurRadius: 5.5, offset: Offset(0.0, 1.0)),
+      ],
+      border: Border.fromBorderSide(
+        BorderSide(
+          color: Color.fromRGBO(255, 255, 255, 0.075),
+        ),
+      ),
+    ),
+    this.doubleEditorInfiniteScrollViewPadding = const EdgeInsets.symmetric(vertical: 2.0),
+    this.doubleEditorInfiniteScrollViewTextStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 12.0,
+    ),
+    this.doubleEditorInfiniteScrollViewTextPaddingAmount = 4.0,
+    this.doubleEditorInfiniteScrollViewLineColor = const Color.fromRGBO(255, 255, 255, 1.0),
+    this.doubleEditorInfiniteScrollViewLineWidth = 1.1,
   });
 }

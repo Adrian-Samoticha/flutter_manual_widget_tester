@@ -57,7 +57,7 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
 
   SizedBox _generateButtonRow(BoxConstraints constraints) {
     return SizedBox(
-      width: min(themeSettings.defaultIntegerEditorButtonRowWidth, constraints.maxWidth * 0.5),
+      width: min(themeSettings.defaultNumberEditorButtonRowWidth, constraints.maxWidth * 0.5),
       child: ManualWidgetTesterButtonRow(
         themeSettings: themeSettings,
         disableRoundedCornersOnLeftSide: true,

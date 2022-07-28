@@ -13,6 +13,7 @@ dependencies:
   basic_utils: ^4.3.0
   flex_color_picker: ^2.5.0
   num_remap: ^1.0.1
+  sprintf: ^6.0.0
 
 dev_dependencies:
   flutter_test:
