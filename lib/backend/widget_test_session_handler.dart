@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_manual_widget_tester/backend/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session.dart';
 
 class WidgetTestSessionHandler {
@@ -10,7 +11,9 @@ class WidgetTestSessionHandler {
   
   List<WidgetTestSession> get widgetTestSessions => _widgetTestSessions;
   
-  void createNewSession(WidgetTestSession newWidgetTestSession) {
+  void createNewSession(WidgetTestBuilder widgetTestBuilder) {
+    final newWidgetTestSession = WidgetTestSession(widgetTestBuilder);
+    
     _widgetTestSessions.add(newWidgetTestSession);
     currentIndex = _widgetTestSessions.length - 1;
     
@@ -18,6 +21,16 @@ class WidgetTestSessionHandler {
       _onChangedStream.add(this);
     });
     _onCustomSettingsChangedStreamSubscriptions[newWidgetTestSession] = onCustomSettingsChangedStreamSubscription;
+  }
+  
+  void updateSessions(WidgetTestBuilder widgetTestBuilder) {
+    for (var i = 0; i < _widgetTestSessions.length; i += 1) {
+      if (_widgetTestSessions[i].widgetTestBuilder.key != widgetTestBuilder.key) continue;
+      
+      final oldKey = _widgetTestSessions[i].key;
+      final oldCustomSettings = _widgetTestSessions[i].customSettings;
+      _widgetTestSessions[i] = WidgetTestSession.withKeyAndCustomSettings(widgetTestBuilder, oldKey, oldCustomSettings);
+    }
   }
   
   void closeWidgetTestSession(int index) {

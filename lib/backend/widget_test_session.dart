@@ -1,14 +1,18 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_manual_widget_tester/backend/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_custom_settings.dart';
 
 class WidgetTestSession {
-  WidgetTestSession({required this.builder, this.name = 'unnamed', this.icon, this.iconColor}) : key = UniqueKey(),
-    assert(iconColor == null || icon != null, 'iconColor must be null if icon is null.');
+  WidgetTestSession(this.widgetTestBuilder) : key = UniqueKey(), customSettings = WidgetTestSessionCustomSettings();
+  
+  WidgetTestSession.withKeyAndCustomSettings(this.widgetTestBuilder, this.key, this.customSettings);
   
   final Key key;
-  final Widget Function(BuildContext, WidgetTestSessionCustomSettings) builder;
-  final String name;
-  final IconData? icon;
-  final Color? iconColor;
-  final WidgetTestSessionCustomSettings customSettings = WidgetTestSessionCustomSettings();
+  final WidgetTestBuilder widgetTestBuilder;
+  final WidgetTestSessionCustomSettings customSettings;
+  
+  Widget Function(BuildContext, WidgetTestSessionCustomSettings) get builder => widgetTestBuilder.builder;
+  String get name => widgetTestBuilder.name;
+  IconData? get icon => widgetTestBuilder.icon;
+  Color? get iconColor => widgetTestBuilder.iconColor;
 }

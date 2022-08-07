@@ -4,10 +4,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
-import 'package:flutter_manual_widget_tester/backend/widget_test_session.dart';
+import 'package:flutter_manual_widget_tester/backend/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
+import 'package:flutter_manual_widget_tester/util/list_has_duplicates.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 import 'package:flutter_manual_widget_tester/widgets/app_bar.dart';
 import 'package:flutter_manual_widget_tester/widgets/background.dart';
@@ -17,19 +18,15 @@ import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/dou
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/int_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/string_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/sidebar.dart';
-import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row.dart';
-import 'package:flutter_manual_widget_tester/widgets/ui_elements/close_button.dart';
-import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
-import 'package:flutter_manual_widget_tester/widgets/ui_elements/radio_button.dart';
-import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 import 'package:flutter_manual_widget_tester/widgets/widget_test_session_area_stack.dart';
 
 class ManualWidgetTester extends StatefulWidget {
-  const ManualWidgetTester({Key? key, this.themeSettings = const ManualWidgetTesterThemeSettings(), this.doubleEditorInfiniteScrollViewRange = 3.0, this.doubleEditorInfiniteScrollViewScrollSpeedFactor = 0.003}) : super(key: key);
+  const ManualWidgetTester({Key? key, this.themeSettings = const ManualWidgetTesterThemeSettings(), this.doubleEditorInfiniteScrollViewRange = 3.0, this.doubleEditorInfiniteScrollViewScrollSpeedFactor = 0.003, required this.builders}) : super(key: key);
   
   final ManualWidgetTesterThemeSettings themeSettings;
   final double doubleEditorInfiniteScrollViewRange;
   final double doubleEditorInfiniteScrollViewScrollSpeedFactor;
+  final List<WidgetTestBuilder> builders;
 
   @override
   State<ManualWidgetTester> createState() => _ManualWidgetTesterState();
@@ -43,225 +40,12 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
   
   @override
   void initState() {
-    // TODO: remove after testing
-    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'ThemeSettings', builder: (_, __) => Container(
-      color: Colors.blue,
-      child: const Text('foo'),
-    )));
-    
-    _widgetTestSessionHandler.createNewSession(WidgetTestSession(name: 'MouseCursorOverrider', icon: Icons.api, builder: (_, __) => Container(
-      color: widget.themeSettings.sidebarColor,
-      child:  Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          children: [
-            Expanded(
-              child: ManualWidgetTesterTextField(
-                themeSettings: widget.themeSettings,
-                initialValue: '100',
-                disableRoundedCornersOnRightSide: true,
-                onSubmitted: (text) => print(text),
-                suffix: '%',
-              ),
-            ),
-            const SizedBox(width: 0.5),
-            SizedBox(
-              width: 64.0,
-              child: ManualWidgetTesterButtonRow(
-                themeSettings: widget.themeSettings,
-                disableRoundedCornersOnLeftSide: true,
-                buttons: [
-                  ManualWidgetTesterButtonInfo(onButtonDown: () => print('onButtonDown'), onButtonPressed: () => print('onButtonPressed'), child: const Icon(Icons.zoom_out)),
-                  ManualWidgetTesterButtonInfo(onButtonDown: null, onButtonPressed: null, child: const Icon(Icons.zoom_in)),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    )));
-    
-    _widgetTestSessionHandler.createNewSession(WidgetTestSession(
-      name: 'ManualWidgetTesterFoldableRegion',
-      icon: Icons.folder_outlined,
-      builder: (_, settings) {
-        final text = settings.getSetting('text', 'foo') * settings.getSetting('textFactor', 1);
-        final someColor = settings.getSetting('someColor', const Color.fromRGBO(255, 255, 255, 1.0));
-        final padding = settings.getSetting('padding', 0.0).clamp(0.0, 128.0);
-        final softWrap = settings.getSetting('softWrap', true);
-        
-        return Padding(
-          padding: EdgeInsets.all(padding),
-          child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ManualWidgetTesterFoldableRegion(
-                themeSettings: widget.themeSettings,
-                heading: 'FOLDABLE REGION',
-                isIndented: false,
-                child: ManualWidgetTesterFoldableRegion(
-                  themeSettings: widget.themeSettings,
-                  heading: 'INDENTED FOLDABLE REGION',
-                  isIndented: true,
-                  child: Text('$text\n$text\n$text\n$text\n$text\n$text', style: TextStyle(color: someColor), softWrap: softWrap),
-                ),
-              ),
-              ManualWidgetTesterFoldableRegion(
-                themeSettings: widget.themeSettings,
-                heading: 'FOLDABLE REGION',
-                isIndented: false,
-                child: Text('$text\n$text\n$text\n$text\n$text\n$text', style: TextStyle(color: someColor), softWrap: softWrap),
-              ),
-            ],
-          ),
-      ),
-        );
-      },
-    ));
-    
-    _widgetTestSessionHandler.createNewSession(WidgetTestSession(
-      name: 'ManualWidgetTesterCloseButton',
-      icon: Icons.close,
-      builder: (_, __) => ManualWidgetTesterCloseButton(
-        themeSettings: widget.themeSettings,
-        onPressed: () => print('closed'),
-      ),
-    ));
-    
-    _widgetTestSessionHandler.createNewSession(WidgetTestSession(
-      name: 'ManualWidgetTesterCustomSettingsColorEditor',
-      icon: Icons.color_lens,
-      builder: (_, __) => Builder(
-        builder: (context) {
-          var color = const Color.fromRGBO(255, 0, 128, 0.75);
-          return StatefulBuilder(
-            builder: (context, setState) {
-              return ManualWidgetTesterCustomSettingsColorEditor(
-                themeSettings: widget.themeSettings,
-                currentValue: color,
-                onChanged: (newColor) => setState(() {
-                  color = newColor;
-                  print(newColor);
-                }),
-                settingName: 'backgroundColor',
-              );
-            }
-          );
-        }
-      ),
-    ));
-    
-    _widgetTestSessionHandler.createNewSession(WidgetTestSession(
-      name: 'ManualWidgetTesterCustomSettingsIntEditor',
-      icon: Icons.numbers,
-      builder: (_, __) => Builder(
-        builder: (context) {
-          var integer = 0;
-          return StatefulBuilder(
-            builder: (context, setState) {
-              return Container(
-                color: widget.themeSettings.sidebarColor,
-                child: ManualWidgetTesterCustomSettingsIntEditor(
-                  themeSettings: widget.themeSettings,
-                  currentValue: integer,
-                  onChanged: (newInteger) => setState(() {
-                    integer = newInteger;
-                    print(newInteger);
-                  }),
-                  settingName: 'numberOfElements',
-                ),
-              );
-            }
-          );
-        }
-      ),
-    ));
-    
-    _widgetTestSessionHandler.createNewSession(WidgetTestSession(
-      name: 'ManualWidgetTesterCustomSettingsDoubleEditor',
-      icon: Icons.numbers,
-      builder: (_, __) => Builder(
-        builder: (context) {
-          var someDouble = 0.0;
-          return StatefulBuilder(
-            builder: (context, setState) {
-              return Container(
-                color: widget.themeSettings.sidebarColor,
-                child: ManualWidgetTesterCustomSettingsDoubleEditor(
-                  themeSettings: widget.themeSettings,
-                  currentValue: someDouble,
-                  onChanged: (newDouble) => setState(() {
-                    someDouble = newDouble;
-                    print(newDouble);
-                  }),
-                  settingName: 'size',
-                  infiniteScrollViewRange: widget.doubleEditorInfiniteScrollViewRange,
-                  infiniteScrollViewScrollSpeedFactor: widget.doubleEditorInfiniteScrollViewScrollSpeedFactor,
-                ),
-              );
-            }
-          );
-        }
-      ),
-    ));
-    
-    _widgetTestSessionHandler.createNewSession(WidgetTestSession(
-      name: 'ManualWidgetTesterCustomSettingsBoolEditor',
-      icon: Icons.check_box,
-      builder: (_, __) => Builder(
-        builder: (context) {
-          var someBool = false;
-          return StatefulBuilder(
-            builder: (context, setState) {
-              return Container(
-                color: widget.themeSettings.sidebarColor,
-                child: ManualWidgetTesterCustomSettingsBoolEditor(
-                  themeSettings: widget.themeSettings,
-                  currentValue: someBool,
-                  onChanged: (newBool) => setState(() {
-                    someBool = newBool;
-                    print(newBool);
-                  }),
-                  settingName: 'doShowSettings',
-                ),
-              );
-            }
-          );
-        }
-      ),
-    ));
-    
-    _widgetTestSessionHandler.createNewSession(WidgetTestSession(
-      name: 'ManualWidgetTesterRadioButtonWithLabel',
-      icon: Icons.radio_button_checked,
-      builder: (_, __) => Builder(
-        builder: (context) {
-          var isSelected = true;
-          return StatefulBuilder(
-            builder: (context, setState) {
-              return GestureDetector(
-                onTap: () => setState(() {
-                  isSelected = !isSelected;
-                }),
-                child: Container(
-                  color: widget.themeSettings.sidebarColor,
-                  padding: const EdgeInsets.all(8.0),
-                  child: ManualWidgetTesterRadioButtonWithLabel(
-                    themeSettings: widget.themeSettings,
-                    isSelected: isSelected,
-                    label: 'true',
-                  ),
-                ),
-              );
-            }
-          );
-        }
-      ),
-    ));
-    
-    //////////////////////////
+    // TODO: remove after implementing '+' button
+    for (final WidgetTestBuilder builder in widget.builders) {
+      _widgetTestSessionHandler.createNewSession(builder);
+      _widgetTestSessionHandler.createNewSession(builder);
+    }
+    /////////////
     
     _onMouseCursorOverrideChangedStreamSubscription = _mouseCursorOverrider.registerOnMouseCursorOverrideChanged((_) {
       setState(() {});
@@ -326,6 +110,14 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
   
   @override
   Widget build(BuildContext context) {
+    if (widget.builders.hasDuplicates((WidgetTestBuilder builder) => builder.key)) {
+      throw ArgumentError('Found duplicate keys in `builders` list. All WidgetTestBuilders must have unique keys.');
+    }
+    
+    for (final WidgetTestBuilder builder in widget.builders) {
+      _widgetTestSessionHandler.updateSessions(builder);
+    }
+    
     return DefaultTextStyle(
       style: DefaultTextStyleProvider.defaultTextStyle,
       child: MouseRegion(
