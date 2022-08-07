@@ -66,7 +66,7 @@ void main() {
     expect(sessionHandler.currentIndex, 1);
   });
   
-  testWidgets('widget test session handler throw when closing non-existant session', (tester) async {
+  testWidgets('widget test session handler throw when closing non-existent session', (tester) async {
     final sessionHandler = WidgetTestSessionHandler();
     
     expect(() => sessionHandler.closeWidgetTestSession(0), throwsArgumentError);
