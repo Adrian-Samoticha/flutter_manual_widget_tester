@@ -8,8 +8,9 @@ class ManualWidgetTesterTextField extends StatelessWidget {
   final void Function(String) onSubmitted;
   final String suffix;
   final ManualWidgetTesterThemeSettings themeSettings;
+  final bool autofocus;
   
-  const ManualWidgetTesterTextField({Key? key, required this.initialValue, this.disableRoundedCornersOnLeftSide = false, this.disableRoundedCornersOnRightSide = false, required this.onSubmitted, this.suffix = '', required this.themeSettings}) : super(key: key);
+  const ManualWidgetTesterTextField({Key? key, required this.initialValue, this.disableRoundedCornersOnLeftSide = false, this.disableRoundedCornersOnRightSide = false, required this.onSubmitted, this.suffix = '', required this.themeSettings, this.autofocus = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +90,7 @@ class ManualWidgetTesterTextField extends StatelessWidget {
           style: themeSettings.textFieldTextStyle,
           cursorColor: themeSettings.textFieldCursorColor,
           autocorrect: false,
+          autofocus: autofocus,
           onSubmitted: onSubmitted,
         ),
       ),
