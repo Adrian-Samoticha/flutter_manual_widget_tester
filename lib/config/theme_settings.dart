@@ -142,6 +142,7 @@ class ManualWidgetTesterThemeSettings {
   final double boolEditorSpaceBetweenRadioButtons;
   final EdgeInsets boolEditorRadioButtonPadding;
   final double boolEditorHeight;
+  final EdgeInsets createTestSessionButtonPadding;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -452,5 +453,6 @@ class ManualWidgetTesterThemeSettings {
     this.boolEditorSpaceBetweenRadioButtons = 12.0,
     this.boolEditorRadioButtonPadding = const EdgeInsets.symmetric(vertical: 8.0),
     this.boolEditorHeight = 16.0,
+    this.createTestSessionButtonPadding = const EdgeInsets.all(6.5),
   });
 }
