@@ -40,13 +40,6 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
   
   @override
   void initState() {
-    // TODO: remove after implementing '+' button
-    for (final WidgetTestBuilder builder in widget.builders) {
-      _widgetTestSessionHandler.createNewSession(builder);
-      _widgetTestSessionHandler.createNewSession(builder);
-    }
-    /////////////
-    
     _onMouseCursorOverrideChangedStreamSubscription = _mouseCursorOverrider.registerOnMouseCursorOverrideChanged((_) {
       setState(() {});
     });
