@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
 class ManualWidgetTesterTextField extends StatelessWidget {
-  final String initialValue;
+  final String? initialValue;
   final bool disableRoundedCornersOnLeftSide;
   final bool disableRoundedCornersOnRightSide;
   final void Function(String) onSubmitted;
+  final void Function(String)? onChanged;
   final String suffix;
   final ManualWidgetTesterThemeSettings themeSettings;
   final bool autofocus;
+  final TextEditingController? textEditingController;
   
-  const ManualWidgetTesterTextField({Key? key, required this.initialValue, this.disableRoundedCornersOnLeftSide = false, this.disableRoundedCornersOnRightSide = false, required this.onSubmitted, this.suffix = '', required this.themeSettings, this.autofocus = false}) : super(key: key);
+  const ManualWidgetTesterTextField({Key? key, this.initialValue, this.disableRoundedCornersOnLeftSide = false, this.disableRoundedCornersOnRightSide = false, required this.onSubmitted, this.suffix = '', required this.themeSettings, this.autofocus = false, this.onChanged, this.textEditingController}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +79,7 @@ class ManualWidgetTesterTextField extends StatelessWidget {
           ),
         ),
         child: TextField(
-          controller: TextEditingController(
+          controller: textEditingController ?? TextEditingController(
             text: initialValue,
           ),
           decoration: InputDecoration(
@@ -92,6 +94,7 @@ class ManualWidgetTesterTextField extends StatelessWidget {
           autocorrect: false,
           autofocus: autofocus,
           onSubmitted: onSubmitted,
+          onChanged: onChanged,
         ),
       ),
     );
