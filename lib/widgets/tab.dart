@@ -40,7 +40,7 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
           width: widget.width,
           height: widget.themeSettings.appBarHeight,
           child: Padding(
-            padding: const EdgeInsets.only(top: 4.0),
+            padding: const EdgeInsets.only(top: 4.0), // TODO: add to theme settings
             child: Stack(
               children: [
                 _TabBackground(
@@ -59,7 +59,7 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
 
   Padding _generateTabRow(bool isSelected) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0), // TODO: add to theme settings
       child: Row(
         children: [
           ...widget.icon == null ? []: [
@@ -101,18 +101,18 @@ class _TabIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     if (isSelected) {
       return Padding(
-        padding: const EdgeInsets.only(right: 4.0),
+        padding: const EdgeInsets.only(right: 4.0), // TODO: add to theme settings
         child: Icon(
           icon,
-          size: 21.0,
+          size: 21.0, // TODO: add to theme settings
           color: iconColor,
         ),
       );
     }
     
     return AnimatedOpacity(
-      duration: const Duration(milliseconds: 150),
-      opacity: isBeingHovered ? 0.7 : 0.4,
+      duration: const Duration(milliseconds: 150), // TODO: add to theme settings
+      opacity: isBeingHovered ? 0.7 : 0.4, // TODO: add to theme settings
       child: Padding(
         padding: const EdgeInsets.only(right: 4.0),
         child: Icon(
@@ -145,7 +145,7 @@ class _TabText extends StatelessWidget {
           widgetName,
           overflow: TextOverflow.fade,
           softWrap: false,
-          style: const TextStyle(
+          style: const TextStyle( // TODO: add to theme settings
             color: Colors.white,
             fontSize: 12.0,
             fontWeight: FontWeight.w600,
@@ -156,13 +156,13 @@ class _TabText extends StatelessWidget {
     
     return Center(
       child: AnimatedOpacity(
-        duration: const Duration(milliseconds: 150),
-        opacity: isBeingHovered ? 0.7 : 0.4,
+        duration: const Duration(milliseconds: 150), // TODO: add to theme settings
+        opacity: isBeingHovered ? 0.7 : 0.4, // TODO: add to theme settings
         child: Text(
           widgetName,
           overflow: TextOverflow.fade,
           softWrap: false,
-          style: const TextStyle(
+          style: const TextStyle( // TODO: add to theme settings
             color:Colors.white,
             fontSize: 12.0,
             fontWeight: FontWeight.w600,
@@ -192,7 +192,7 @@ class _TabBackground extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          decoration: isSelected ? BoxDecoration(
+          decoration: isSelected ? BoxDecoration( // TODO: add to theme settings
             color: themeSettings.backgroundColor,
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(3.0),
@@ -202,7 +202,7 @@ class _TabBackground extends StatelessWidget {
             color: Colors.transparent,
           ),
         ),
-        !isSelected ? const SizedBox() : Container(
+        !isSelected ? const SizedBox() : Container( // TODO: add to theme settings
           width: 3.0,
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.only(
@@ -216,7 +216,7 @@ class _TabBackground extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: Container(
             width: 1.0,
-            decoration: const BoxDecoration(
+            decoration: const BoxDecoration( // TODO: add to theme settings
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -230,7 +230,7 @@ class _TabBackground extends StatelessWidget {
           ),
         ),
         Container(
-          decoration: BoxDecoration(
+          decoration: BoxDecoration( // TODO: add to theme settings
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(3.0),
               topRight: Radius.circular(3.0),
