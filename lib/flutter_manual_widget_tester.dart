@@ -132,6 +132,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
               mouseCursorOverrider: _mouseCursorOverrider,
               widgetTestSessionHandler: _widgetTestSessionHandler,
               typeEditorBuilder: _typeEditorBuilder,
+              builders: widget.builders,
             ),
           ],
         ),
@@ -147,12 +148,14 @@ class _ManualWidgetTesterBody extends StatelessWidget {
     required this.mouseCursorOverrider,
     required this.widgetTestSessionHandler,
     required this.typeEditorBuilder,
+    required this.builders,
   }) : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final MouseCursorOverrider mouseCursorOverrider;
   final WidgetTestSessionHandler widgetTestSessionHandler;
   final TypeEditorBuilder typeEditorBuilder;
+  final List<WidgetTestBuilder> builders;
 
   @override
   Widget build(BuildContext context) {
@@ -174,6 +177,7 @@ class _ManualWidgetTesterBody extends StatelessWidget {
                   ManualWidgetTesterAppBar(
                     themeSettings: themeSettings,
                     widgetTestSessionHandler: widgetTestSessionHandler,
+                    builders: builders,
                   ),
                   Expanded(
                     child: ManualWidgetTesterWidgetTestSessionAreaStack(

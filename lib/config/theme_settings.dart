@@ -143,6 +143,20 @@ class ManualWidgetTesterThemeSettings {
   final EdgeInsets boolEditorRadioButtonPadding;
   final double boolEditorHeight;
   final EdgeInsets createTestSessionButtonPadding;
+  final double createTestSessionDialogWidth;
+  final EdgeInsets createTestSessionDialogPadding;
+  final double createTestSessionDialogSearchResultsHeightFactor;
+  final double createTestSessionDialogSearchBarHeight;
+  final EdgeInsets createTestSessionDialogSearchResultsPadding;
+  final double createTestSessionDialogSearchResultHeight;
+  final BoxDecoration createTestSessionDialogSelectedSearchResultDecoration;
+  final BoxDecoration createTestSessionDialogUnselectedSearchResultDecoration;
+  final TextStyle createTestSessionDialogSearchResultTextStyle;
+  final EdgeInsets createTestSessionDialogSearchResultIconPadding;
+  final double createTestSessionDialogSearchResultIconSize;
+  final Duration createTestSessionDialogSearchResultFadeDuration;
+  final double createTestSessionDialogUnselectedSearchResultOpacity;
+  final TextStyle createTestSessionDialogNoMatchingResultsTextStyle;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -454,5 +468,33 @@ class ManualWidgetTesterThemeSettings {
     this.boolEditorRadioButtonPadding = const EdgeInsets.symmetric(vertical: 8.0),
     this.boolEditorHeight = 16.0,
     this.createTestSessionButtonPadding = const EdgeInsets.all(6.5),
+    this.createTestSessionDialogWidth = 512.0,
+    this.createTestSessionDialogPadding = const EdgeInsets.all(8.0),
+    this.createTestSessionDialogSearchResultsHeightFactor = 0.5,
+    this.createTestSessionDialogSearchBarHeight = 32.0,
+    this.createTestSessionDialogSearchResultsPadding = const EdgeInsets.only(top: 8.0),
+    this.createTestSessionDialogSearchResultHeight = 28.0,
+    this.createTestSessionDialogSelectedSearchResultDecoration = const BoxDecoration(
+      color: Color.fromRGBO(255, 255, 255, 0.15),
+      border: Border.fromBorderSide(
+        BorderSide(
+          color: Color.fromRGBO(255, 255, 255, 0.15),
+        ),
+      ),
+      borderRadius: BorderRadius.all(
+        Radius.circular(5.0),
+      ),
+    ),
+    this.createTestSessionDialogUnselectedSearchResultDecoration = const BoxDecoration(),
+    this.createTestSessionDialogSearchResultTextStyle = const TextStyle(
+      color: Colors.white,
+    ),
+    this.createTestSessionDialogSearchResultIconPadding = const EdgeInsets.only(right: 8.0, left: 2.0),
+    this.createTestSessionDialogSearchResultIconSize = 21.0,
+    this.createTestSessionDialogSearchResultFadeDuration = const Duration(milliseconds: 100),
+    this.createTestSessionDialogUnselectedSearchResultOpacity = 0.5,
+    this.createTestSessionDialogNoMatchingResultsTextStyle = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.9),
+    ),
   });
 }

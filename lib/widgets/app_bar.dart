@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/backend/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/widgets/create_test_session_dialog_generator/create_test_session_dialog_generator.dart';
 import 'package:flutter_manual_widget_tester/widgets/tab_bar.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row.dart';
 
 class ManualWidgetTesterAppBar extends StatelessWidget {
-  const ManualWidgetTesterAppBar({Key? key, required this.themeSettings, required this.widgetTestSessionHandler}) : super(key: key);
+  const ManualWidgetTesterAppBar({Key? key, required this.themeSettings, required this.widgetTestSessionHandler, required this.builders}) : super(key: key);
   
   final ManualWidgetTesterThemeSettings themeSettings;
   final WidgetTestSessionHandler widgetTestSessionHandler;
+  final List<WidgetTestBuilder> builders;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,14 @@ class ManualWidgetTesterAppBar extends StatelessWidget {
               buttons: [
                 ManualWidgetTesterButtonInfo(
                   onButtonDown: null,
-                  onButtonPressed: () {},
+                  onButtonPressed: () {
+                    CreateTestSessionDialogGenerator.showNewTestSessionDialog(
+                      context: context,
+                      themeSettings: themeSettings,
+                      builders: builders,
+                      widgetTestSessionHandler: widgetTestSessionHandler,
+                    );
+                  },
                   child: const Center(child: Icon(Icons.add)),
                 ),
               ],
