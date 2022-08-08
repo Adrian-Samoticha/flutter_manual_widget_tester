@@ -6,7 +6,10 @@ class WidgetTestSessionCustomSettings {
   final StreamController<WidgetTestSessionCustomSettings> _onChangedStream = StreamController.broadcast();
   
   T getSetting<T>(String settingName, T initialValue) {
-    _settingNameToValue[settingName] = _settingNameToValue[settingName] ?? initialValue;
+    if (!_settingNameToValue.containsKey(settingName)) {
+      _settingNameToValue[settingName] = initialValue;
+      _onChangedStream.add(this);
+    }
     
     return _settingNameToValue[settingName] as T;
   }
