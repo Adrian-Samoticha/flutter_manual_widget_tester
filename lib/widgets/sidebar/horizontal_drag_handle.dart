@@ -25,7 +25,7 @@ class _HorizontalDragHandleState extends State<HorizontalDragHandle> {
     return MouseRegion(
       cursor: SystemMouseCursors.resizeLeftRight,
       child: MouseRegion(
-        onEnter: (event) => _hoverTimer = Timer(const Duration(milliseconds: 250), () {
+        onEnter: (event) => _hoverTimer = Timer(const Duration(milliseconds: 250), () { // TODO: add to theme settings
           setState(() {
             _isBeingHovered = true;
           });
@@ -48,9 +48,9 @@ class _HorizontalDragHandleState extends State<HorizontalDragHandle> {
           },
           onHorizontalDragUpdate: (details) => widget.onDragUpdate(details.delta.dx),
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 150),
-            width: 6.0,
-            color: _isBeingDragged || _isBeingHovered ? Colors.blue : Colors.transparent,
+            duration: const Duration(milliseconds: 150), // TODO: add to theme settings
+            width: 6.0, // TODO: add to theme settings
+            color: _isBeingDragged || _isBeingHovered ? Colors.blue : Colors.transparent, // TODO: add to theme settings
           ),
         ),
       ),
