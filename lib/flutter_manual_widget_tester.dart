@@ -10,7 +10,7 @@ import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 import 'package:flutter_manual_widget_tester/util/list_has_duplicates.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
-import 'package:flutter_manual_widget_tester/widgets/app_bar.dart';
+import 'package:flutter_manual_widget_tester/widgets/app_bar/app_bar.dart';
 import 'package:flutter_manual_widget_tester/widgets/background.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/bool_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/color_editor.dart';
