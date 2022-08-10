@@ -7,8 +7,8 @@ import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 
 import 'horizontal_drag_handle.dart';
-import 'running_test_sessions_list.dart';
-import 'test_session_settings.dart';
+import 'running_test_sessions_list/running_test_sessions_list.dart';
+import 'test_session_settings/test_session_settings.dart';
 
 class ManualWidgetTesterSidebar extends StatefulWidget {
   const ManualWidgetTesterSidebar({Key? key, required this.maxWidth, required this.mouseCursorOverrider, required this.themeSettings, required this.widgetTestSessionHandler, required this.typeEditorBuilder}) : super(key: key);
