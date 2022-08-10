@@ -5,7 +5,7 @@ import 'package:flutter_manual_widget_tester/backend/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
-import 'tab.dart';
+import 'tab/tab.dart';
 
 class ManualWidgetTesterTabBar extends StatefulWidget {
   const ManualWidgetTesterTabBar({Key? key, required this.themeSettings, required this.widgetTestSessionHandler}) : super(key: key);
