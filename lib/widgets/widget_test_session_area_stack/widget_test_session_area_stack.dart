@@ -5,7 +5,8 @@ import 'package:flutter_manual_widget_tester/backend/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
-import 'package:flutter_manual_widget_tester/widgets/widget_test_session_area.dart';
+
+import 'widget_test_session_area/widget_test_session_area.dart';
 
 class ManualWidgetTesterWidgetTestSessionAreaStack extends StatefulWidget {
   final WidgetTestSessionHandler widgetTestSessionHandler;

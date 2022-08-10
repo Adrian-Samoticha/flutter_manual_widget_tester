@@ -5,7 +5,8 @@ import 'package:flutter_manual_widget_tester/backend/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
-import 'package:flutter_manual_widget_tester/widgets/zoom_controls.dart';
+
+import 'zoom_controls.dart';
 
 class ManualWidgetTesterWidgetTestSessionArea extends StatefulWidget {
   final MouseCursorOverrider mouseCursorOverrider;

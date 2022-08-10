@@ -18,7 +18,7 @@ import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/dou
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/int_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/string_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/sidebar/sidebar.dart';
-import 'package:flutter_manual_widget_tester/widgets/widget_test_session_area_stack.dart';
+import 'package:flutter_manual_widget_tester/widgets/widget_test_session_area_stack/widget_test_session_area_stack.dart';
 
 class ManualWidgetTester extends StatefulWidget {
   const ManualWidgetTester({Key? key, this.themeSettings = const ManualWidgetTesterThemeSettings(), this.doubleEditorInfiniteScrollViewRange = 3.0, this.doubleEditorInfiniteScrollViewScrollSpeedFactor = 0.003, required this.builders}) : super(key: key);
