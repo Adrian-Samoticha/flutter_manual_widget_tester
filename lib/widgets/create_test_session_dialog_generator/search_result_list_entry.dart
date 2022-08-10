@@ -1,9 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_builder.dart';
+import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
-
-import 'create_test_session_dialog.dart';
 
 class SearchResultListEntry extends StatefulWidget {
   const SearchResultListEntry({
@@ -11,13 +10,15 @@ class SearchResultListEntry extends StatefulWidget {
     required this.index,
     required this.legalSelectedSearchResultIndex,
     required this.builder,
-    required this.newTestSessionDialog,
+    required this.themeSettings,
+    required this.widgetTestSessionHandler,
   }) : super(key: key);
 
   final int index;
   final int legalSelectedSearchResultIndex;
   final WidgetTestBuilder builder;
-  final CreateTestSessionDialog newTestSessionDialog;
+  final ManualWidgetTesterThemeSettings themeSettings;
+  final WidgetTestSessionHandler widgetTestSessionHandler;
 
   @override
   State<SearchResultListEntry> createState() => _SearchResultListEntryState();
@@ -28,11 +29,11 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
   
   @override
   Widget build(BuildContext context) {
-    final themeSettings = widget.newTestSessionDialog.themeSettings;
+    final themeSettings = widget.themeSettings;
     
     return GestureDetector(
       onTapDown: (_) {
-        final widgetTestSessionHandler = widget.newTestSessionDialog.widgetTestSessionHandler;
+        final widgetTestSessionHandler = widget.widgetTestSessionHandler;
         widgetTestSessionHandler.createNewSession(widget.builder);
         Navigator.maybePop(context);
       },
@@ -62,7 +63,7 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
   }
 
   Row _generateIconAndNameRow() {
-    final themeSettings = widget.newTestSessionDialog.themeSettings;
+    final themeSettings = widget.themeSettings;
     
     return Row(
       children: [

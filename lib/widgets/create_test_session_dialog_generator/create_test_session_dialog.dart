@@ -162,7 +162,8 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
                   index: index,
                   legalSelectedSearchResultIndex: _legalSelectedSearchResultIndex,
                   builder: builder,
-                  newTestSessionDialog: widget,
+                  themeSettings: widget.themeSettings,
+                  widgetTestSessionHandler: widget.widgetTestSessionHandler,
                 );
               }).toList(),
             ),
