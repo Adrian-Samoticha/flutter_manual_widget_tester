@@ -12,11 +12,11 @@ import 'package:flutter_manual_widget_tester/util/list_has_duplicates.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 import 'package:flutter_manual_widget_tester/widgets/app_bar/app_bar.dart';
 import 'package:flutter_manual_widget_tester/widgets/background.dart';
-import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/bool_editor.dart';
-import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/color_editor.dart';
-import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/double_editor.dart';
-import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/int_editor.dart';
-import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/string_editor.dart';
+import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/editors/bool_editor.dart';
+import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/editors/color_editor/color_editor.dart';
+import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/editors/double_editor.dart';
+import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/editors/int_editor.dart';
+import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/editors/string_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/sidebar/sidebar.dart';
 import 'package:flutter_manual_widget_tester/widgets/widget_test_session_area_stack/widget_test_session_area_stack.dart';
 
