@@ -4,6 +4,7 @@ import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/util/dialog_generator.dart';
 
 import 'checkerboard.dart';
+import 'colored_container.dart';
 
 class ColorPicker extends StatefulWidget {
   final ManualWidgetTesterThemeSettings themeSettings;
@@ -52,7 +53,12 @@ class _ColorPickerState extends State<ColorPicker> {
         child: Stack(
           children: [
             _generateCheckerboardBackground(),
-            _generateColoredContainer(isSelectedColorDark, _isBeingHovered || _isDialogOpen),
+            ColoredContainer(
+              isSelectedColorDark: isSelectedColorDark,
+              doShowEditIcon: _isBeingHovered || _isDialogOpen,
+              selectedColor: widget.selectedColor,
+              themeSettings: widget.themeSettings
+            ),
           ],
         ),
       ),
@@ -119,58 +125,5 @@ class _ColorPickerState extends State<ColorPicker> {
         ),
       ),
     );
-  }
-
-  Widget _generateColoredContainer(bool isSelectedColorDark, bool doShowEditIcon) {
-    return Container(
-      decoration: (isSelectedColorDark ? widget.themeSettings.editColorButtonDecorationForDarkColor : widget.themeSettings.editColorButtonDecorationForBrightColor).copyWith(
-        color: widget.selectedColor,
-        borderRadius: widget.themeSettings.editColorButtonBorderRadius,
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Center(
-              child: _generateColorCodeText(isSelectedColorDark),
-            ),
-          ),
-          TweenAnimationBuilder<double>(
-            duration: widget.themeSettings.editColorButtonIconAnimationDuration,
-            tween: Tween<double>(begin: doShowEditIcon ? 1.0 : 0.0, end: doShowEditIcon ? 1.0 : 0.0),
-            curve: widget.themeSettings.editColorButtonIconAnimationCurve,
-            builder: (BuildContext context, double animationValue, Widget? child) {
-              return Opacity(
-                opacity: animationValue.clamp(0.0, 1.0),
-                child: ClipRect(
-                  child: Align(
-                    widthFactor: animationValue,
-                    child: child,
-                  ),
-                ),
-              );
-            },
-            child: Icon(
-              widget.themeSettings.editColorButtonIcon,
-              color: isSelectedColorDark ? widget.themeSettings.editColorButtonIconColorForDarkColor : widget.themeSettings.editColorButtonIconColorForBrightColor,
-              shadows: isSelectedColorDark ? widget.themeSettings.editColorButtonIconShadowsForDarkColor : widget.themeSettings.editColorButtonIconShadowsForBrightColor,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Text _generateColorCodeText(bool isSelectedColorDark) {
-    return Text(
-      _generateColorCodeString(),
-      overflow: TextOverflow.fade,
-      softWrap: false,
-      style: isSelectedColorDark ? widget.themeSettings.editColorButtonTextStyleForDarkColor : widget.themeSettings.editColorButtonTextStyleForBrightColor,
-    );
-  }
-
-  String _generateColorCodeString() {
-    final rawColorString = widget.selectedColor.value.toRadixString(16).toUpperCase().padLeft(8, '0');
-    return '0x$rawColorString';
   }
 }
