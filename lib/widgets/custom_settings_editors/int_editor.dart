@@ -2,9 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
-import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/heading.dart';
+import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/ui_elements/heading.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
+
+import 'ui_elements/heading.dart';
 
 class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
   const ManualWidgetTesterCustomSettingsIntEditor({Key? key, required this.themeSettings, required this.settingName, required this.currentValue, required this.onChanged}) : super(key: key);
