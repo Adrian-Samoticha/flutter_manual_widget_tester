@@ -5,7 +5,7 @@ import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/create_test_session_dialog_generator/create_test_session_dialog_generator.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row.dart';
 
-import 'tab_bar.dart';
+import 'tab_bar/tab_bar.dart';
 
 class ManualWidgetTesterAppBar extends StatelessWidget {
   const ManualWidgetTesterAppBar({Key? key, required this.themeSettings, required this.widgetTestSessionHandler, required this.builders}) : super(key: key);
