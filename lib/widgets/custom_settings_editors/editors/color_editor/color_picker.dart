@@ -1,52 +1,22 @@
-import 'package:flex_color_picker/flex_color_picker.dart';
+import 'package:flex_color_picker/flex_color_picker.dart' as flex_color_picker;
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/util/dialog_generator.dart';
 
-import '../ui_elements/heading.dart';
+import 'checkerboard.dart';
 
-class ManualWidgetTesterCustomSettingsColorEditor extends StatelessWidget {
-  const ManualWidgetTesterCustomSettingsColorEditor({Key? key, required this.themeSettings, required this.settingName, required this.currentValue, required this.onChanged}) : super(key: key);
-
-  final ManualWidgetTesterThemeSettings themeSettings;
-  final String settingName;
-  final Color currentValue;
-  final void Function(Color) onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: themeSettings.customSettingsPadding,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          ManualWidgetTesterCustomSettingsHeading(themeSettings: themeSettings, settingName: settingName),
-          SizedBox(
-            height: themeSettings.editColorButtonHeight,
-            child: _ColorPicker(
-              themeSettings: themeSettings,
-              selectedColor: currentValue,
-              onChanged: onChanged,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ColorPicker extends StatefulWidget {
+class ColorPicker extends StatefulWidget {
   final ManualWidgetTesterThemeSettings themeSettings;
   final Color selectedColor;
   final void Function(Color) onChanged;
 
-  const _ColorPicker({required this.themeSettings, required this.selectedColor, required this.onChanged});
+  const ColorPicker({Key? key, required this.themeSettings, required this.selectedColor, required this.onChanged}) : super(key: key);
 
   @override
-  State<_ColorPicker> createState() => _ColorPickerState();
+  State<ColorPicker> createState() => _ColorPickerState();
 }
 
-class _ColorPickerState extends State<_ColorPicker> {
+class _ColorPickerState extends State<ColorPicker> {
   late Color _colorWorkingCopy;
   bool _isBeingHovered = false;
   bool _isDialogOpen = false;
@@ -107,7 +77,7 @@ class _ColorPickerState extends State<_ColorPicker> {
           curve: widget.themeSettings.editColorDialogSizeChangeCurve,
           child: Material(
             type: MaterialType.transparency,
-            child: ColorPicker(
+            child: flex_color_picker.ColorPicker(
               onColorChanged: (Color newColor) {
                 setState(() {
                   _colorWorkingCopy = newColor;
@@ -129,9 +99,9 @@ class _ColorPickerState extends State<_ColorPicker> {
               showColorCode: true,
               colorCodeHasColor: true,
               pickersEnabled: const {
-                ColorPickerType.primary: true,
-                ColorPickerType.accent: true,
-                ColorPickerType.wheel: true,
+                flex_color_picker.ColorPickerType.primary: true,
+                flex_color_picker.ColorPickerType.accent: true,
+                flex_color_picker.ColorPickerType.wheel: true,
               },
             ),
           ),
@@ -144,12 +114,8 @@ class _ColorPickerState extends State<_ColorPicker> {
     return SizedBox.expand(
       child: ClipRRect(
         borderRadius: widget.themeSettings.editColorButtonBorderRadius,
-        child: CustomPaint(
-          painter: _CheckerboardPainter(
-            widget.themeSettings.editColorButtonCheckerboardSize,
-            widget.themeSettings.editColorButtonCheckerboardColor1,
-            widget.themeSettings.editColorButtonCheckerboardColor2,
-          ),
+        child: Checkerboard(
+          themeSettings: widget.themeSettings,
         ),
       ),
     );
@@ -207,36 +173,4 @@ class _ColorPickerState extends State<_ColorPicker> {
     final rawColorString = widget.selectedColor.value.toRadixString(16).toUpperCase().padLeft(8, '0');
     return '0x$rawColorString';
   }
-}
-
-
-class _CheckerboardPainter extends CustomPainter {
-  final double tileSize;
-  final Color color1;
-  final Color color2;
-
-  _CheckerboardPainter(this.tileSize, this.color1, this.color2);
-  
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint1 = Paint()
-      ..color = color1;
-      
-    final paint2 = Paint()
-      ..color = color2;
-      
-    final widthInTiles = size.width / tileSize;
-    final heightInTiles = size.height / tileSize;
-      
-    for (var x = 0; x < widthInTiles; x += 1) {
-      for (var y = 0; y < heightInTiles; y += 1) {
-        final paint = (x + y) % 2 == 0 ? paint1 : paint2;
-        final rect = Rect.fromLTWH(x * tileSize, y * tileSize, tileSize, tileSize);
-        canvas.drawRect(rect, paint);
-      }
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
