@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
-import 'package:flutter_manual_widget_tester/widgets/ui_elements/close_button.dart';
+
+import 'close_tab_button.dart';
 
 class ManualWidgetTesterTestSessionMenuItem extends StatefulWidget {
   final int tabIndex;
@@ -64,40 +65,19 @@ class _ManualWidgetTesterTestSessionMenuItemState extends State<ManualWidgetTest
         Expanded(
           child: _generateTabText(),
         ),
-        _generateTabCloseButton(),
+        _generateCloseTabButton(),
       ],
     );
   }
 
-  Widget _generateTabCloseButton() {
+  Widget _generateCloseTabButton() {
     final isVisible = _isBeingHovered || widget.tabIndex == widget.selectedTabIndex;
     final tweenValue = isVisible ? 1.0 : 0.0;
     
-    return TweenAnimationBuilder<double>(
-      duration: const Duration(milliseconds: 100),
-      tween: Tween<double>(begin: tweenValue, end: tweenValue),
-      curve: Curves.decelerate,
-      builder: (BuildContext context, double value, Widget? child) {
-        return Align(
-          widthFactor: value,
-          child: Opacity(
-            opacity: value,
-            child: Padding(
-              padding: widget.themeSettings.testSessionMenuItemCloseButtonPadding,
-              child: child,
-            ),
-          ),
-        );
-      },
-      child: SizedBox(
-        width: widget.themeSettings.testSessionMenuItemCloseButtonSize,
-        height: widget.themeSettings.testSessionMenuItemCloseButtonSize,
-        child: ManualWidgetTesterCloseButton(
-          themeSettings: widget.themeSettings,
-          onPressed: widget.onClose,
-          size: widget.themeSettings.testSessionMenuItemCloseButtonSize,
-        ),
-      ),
+    return CloseTabButton(
+      themeSettings: widget.themeSettings,
+      tweenValue: tweenValue,
+      onPressed: widget.onClose,
     );
   }
 
