@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter_manual_widget_tester/backend/widget_test_builder.dart';
-import 'package:flutter_manual_widget_tester/backend/widget_test_session.dart';
+import 'widget_test_builder.dart';
+import 'widget_test_session.dart';
+
 
 class WidgetTestSessionHandler {
   final List<WidgetTestSession> _widgetTestSessions = [];

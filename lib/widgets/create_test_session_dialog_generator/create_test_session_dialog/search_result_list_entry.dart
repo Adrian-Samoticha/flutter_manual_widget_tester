@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/backend/widget_test_builder.dart';
-import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler.dart';
+import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
+import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
 class SearchResultListEntry extends StatefulWidget {

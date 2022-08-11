@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_manual_widget_tester/backend/widget_test_builder.dart';
-import 'package:flutter_manual_widget_tester/backend/widget_test_session_custom_settings.dart';
+
+import 'widget_test_builder.dart';
+import 'widget_test_session_custom_settings.dart';
 
 class WidgetTestSession {
   WidgetTestSession(this.widgetTestBuilder) : key = UniqueKey(), customSettings = WidgetTestSessionCustomSettings();

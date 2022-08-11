@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_manual_widget_tester/backend/widget_test_session_custom_settings.dart';
+
+import 'widget_test_session_custom_settings.dart';
 
 class WidgetTestBuilder {
   WidgetTestBuilder({required this.key, required this.builder, this.name = 'unnamed', this.icon, this.iconColor}) :
