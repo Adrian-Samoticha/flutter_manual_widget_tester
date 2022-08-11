@@ -5,11 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
-import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 import 'package:flutter_manual_widget_tester/util/get_resemblance_to_search_term.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 
-import 'search_result_list_entry.dart';
+import 'no_matching_results_message.dart';
+import 'search_results_list/search_results_list.dart';
 
 class CreateTestSessionDialog extends StatefulWidget {
   final ManualWidgetTesterThemeSettings themeSettings;
@@ -28,7 +28,7 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
   var _selectedSearchResultIndex = 0;
   late List<WidgetTestBuilder> _searchResults;
   
-  get _legalSelectedSearchResultIndex => _selectedSearchResultIndex.clamp(0, _searchResults.length - 1);
+  int get _legalSelectedSearchResultIndex => _selectedSearchResultIndex.clamp(0, _searchResults.length - 1);
   
   @override
   void initState() {
@@ -47,15 +47,7 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
         border: Border.fromBorderSide(
           BorderSide(color: widget.themeSettings.dialogBorderColor),
         ),
-        boxShadow: widget.themeSettings.dialogShadow.map((BoxShadow boxShadow) {
-          return BoxShadow(
-            blurRadius: boxShadow.blurRadius,
-            color: boxShadow.color,
-            blurStyle: boxShadow.blurStyle,
-            offset: boxShadow.offset,
-            spreadRadius: boxShadow.spreadRadius,
-          );
-        }).toList(),
+        boxShadow: widget.themeSettings.dialogShadow,
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.vertical(
@@ -131,45 +123,17 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
 
   Widget _generateSearchResultList(double maxHeight) {
     if (_searchResults.isEmpty) {
-      return Padding(
-        padding: widget.themeSettings.createTestSessionDialogSearchResultsPadding,
-        child: DefaultTextStyle(
-          style: DefaultTextStyleProvider.defaultTextStyle,
-          child: Text(
-            'No matching results.',
-            style: widget.themeSettings.createTestSessionDialogNoMatchingResultsTextStyle
-          ),
-        ),
+      return NoMatchingResultsMessage(
+        themeSettings: widget.themeSettings,
       );
     }
     
-    return DefaultTextStyle(
-      style: DefaultTextStyleProvider.defaultTextStyle,
-      child: Container(
-        padding: widget.themeSettings.createTestSessionDialogSearchResultsPadding,
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxHeight: maxHeight,
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: _searchResults.asMap().entries.map((MapEntry<int, WidgetTestBuilder> entry) {
-                final index = entry.key;
-                final builder = entry.value;
-                
-                return SearchResultListEntry(
-                  index: index,
-                  legalSelectedSearchResultIndex: _legalSelectedSearchResultIndex,
-                  builder: builder,
-                  themeSettings: widget.themeSettings,
-                  widgetTestSessionHandler: widget.widgetTestSessionHandler,
-                );
-              }).toList(),
-            ),
-          ),
-        ),
-      ),
+    return SearchResultsList(
+      themeSettings: widget.themeSettings,
+      widgetTestSessionHandler: widget.widgetTestSessionHandler,
+      searchResults: _searchResults,
+      legalSelectedSearchResultIndex: _legalSelectedSearchResultIndex,
+      maxHeight: maxHeight,
     );
   }
   

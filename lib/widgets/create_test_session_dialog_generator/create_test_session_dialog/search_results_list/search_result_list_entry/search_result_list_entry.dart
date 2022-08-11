@@ -1,8 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+
+import 'search_result_icon.dart';
 
 class SearchResultListEntry extends StatefulWidget {
   const SearchResultListEntry({
@@ -68,7 +69,7 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
     return Row(
       children: [
         ...widget.builder.icon == null ? const [] : [
-          _SearchResultIcon(
+          SearchResultIcon(
             themeSettings: themeSettings,
             icon: widget.builder.icon!,
             iconColor: widget.builder.iconColor ?? themeSettings.defaultIconColor,
@@ -83,31 +84,6 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
           ),
         ),
       ],
-    );
-  }
-}
-
-class _SearchResultIcon extends StatelessWidget {
-  const _SearchResultIcon({
-    Key? key,
-    required this.icon,
-    required this.iconColor,
-    required this.themeSettings,
-  }) : super(key: key);
-
-  final IconData icon;
-  final Color? iconColor;
-  final ManualWidgetTesterThemeSettings themeSettings;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: themeSettings.createTestSessionDialogSearchResultIconPadding,
-      child: Icon(
-        icon,
-        size: themeSettings.createTestSessionDialogSearchResultIconSize,
-        color: iconColor,
-      ),
     );
   }
 }
