@@ -84,6 +84,7 @@ class _ManualWidgetTesterSidebarState extends State<ManualWidgetTesterSidebar> {
           Align(
             alignment: Alignment.topRight,
             child: HorizontalDragHandle(
+              themeSettings: widget.themeSettings,
               mouseCursorOverrider: widget.mouseCursorOverrider,
               onDragStart: () {
                 _draggedWidth = displayWidth;

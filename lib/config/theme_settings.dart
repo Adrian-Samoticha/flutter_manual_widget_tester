@@ -170,6 +170,10 @@ class ManualWidgetTesterThemeSettings {
   final Duration unselectedTabOpacityChangeDuration;
   final double spaceAboveTabs;
   final EdgeInsets tabContentPadding;
+  final Color dragHandleColor;
+  final double dragHandleSize;
+  final Duration dragHandleChangeOpacityDuration;
+  final Duration timeUntilDragHandleAppears;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -561,5 +565,9 @@ class ManualWidgetTesterThemeSettings {
     this.unselectedTabOpacityChangeDuration = const Duration(milliseconds: 150),
     this.spaceAboveTabs = 4.0,
     this.tabContentPadding = const EdgeInsets.all(8.0),
+    this.dragHandleColor = Colors.blue,
+    this.dragHandleSize = 6.0,
+    this.dragHandleChangeOpacityDuration = const Duration(milliseconds: 150),
+    this.timeUntilDragHandleAppears = const Duration(milliseconds: 250),
   });
 }

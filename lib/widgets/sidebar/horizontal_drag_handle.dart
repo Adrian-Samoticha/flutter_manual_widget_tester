@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 
 class HorizontalDragHandle extends StatefulWidget {
-  const HorizontalDragHandle({Key? key, required this.onDragUpdate, required this.onDragStart, required this.mouseCursorOverrider}) : super(key: key);
+  const HorizontalDragHandle({Key? key, required this.themeSettings, required this.onDragUpdate, required this.onDragStart, required this.mouseCursorOverrider}) : super(key: key);
   
+  final ManualWidgetTesterThemeSettings themeSettings;
   final void Function() onDragStart;
   final void Function(double) onDragUpdate;
   final MouseCursorOverrider mouseCursorOverrider;
@@ -25,7 +27,7 @@ class _HorizontalDragHandleState extends State<HorizontalDragHandle> {
     return MouseRegion(
       cursor: SystemMouseCursors.resizeLeftRight,
       child: MouseRegion(
-        onEnter: (event) => _hoverTimer = Timer(const Duration(milliseconds: 250), () { // TODO: add to theme settings
+        onEnter: (event) => _hoverTimer = Timer(widget.themeSettings.timeUntilDragHandleAppears, () {
           setState(() {
             _isBeingHovered = true;
           });
@@ -48,9 +50,9 @@ class _HorizontalDragHandleState extends State<HorizontalDragHandle> {
           },
           onHorizontalDragUpdate: (details) => widget.onDragUpdate(details.delta.dx),
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 150), // TODO: add to theme settings
-            width: 6.0, // TODO: add to theme settings
-            color: _isBeingDragged || _isBeingHovered ? Colors.blue : Colors.transparent, // TODO: add to theme settings
+            duration: widget.themeSettings.dragHandleChangeOpacityDuration,
+            width: widget.themeSettings.dragHandleSize,
+            color: _isBeingDragged || _isBeingHovered ? widget.themeSettings.dragHandleColor : Colors.transparent,
           ),
         ),
       ),
