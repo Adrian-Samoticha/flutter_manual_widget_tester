@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
-import 'tab_background.dart';
+import 'tab_background/tab_background.dart';
 import 'tab_icon.dart';
 import 'tab_text.dart';
 
