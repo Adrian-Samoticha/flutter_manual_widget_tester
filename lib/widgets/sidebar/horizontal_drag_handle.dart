@@ -27,28 +27,28 @@ class _HorizontalDragHandleState extends State<HorizontalDragHandle> {
     return MouseRegion(
       cursor: SystemMouseCursors.resizeLeftRight,
       child: MouseRegion(
-        onEnter: (event) => _hoverTimer = Timer(widget.themeSettings.timeUntilDragHandleAppears, () {
+        onEnter: (_) => _hoverTimer = Timer(widget.themeSettings.timeUntilDragHandleAppears, () {
           setState(() {
             _isBeingHovered = true;
           });
         }),
-        onExit: (event) {
+        onExit: (_) {
           _hoverTimer?.cancel();
           setState(() {
             _isBeingHovered = false;
           });
         },
         child: GestureDetector(
-          onHorizontalDragStart: (details) {
+          onHorizontalDragStart: (_) {
             _mouseCursorOverrideId = widget.mouseCursorOverrider.overrideMouseCursor(SystemMouseCursors.resizeLeftRight);
             setState(() => _isBeingDragged = true);
             widget.onDragStart();
           },
-          onHorizontalDragEnd: (details) {
+          onHorizontalDragEnd: (_) {
             widget.mouseCursorOverrider.cancelOverride(_mouseCursorOverrideId);
             setState(() => _isBeingDragged = false);
           },
-          onHorizontalDragUpdate: (details) => widget.onDragUpdate(details.delta.dx),
+          onHorizontalDragUpdate: (DragUpdateDetails details) => widget.onDragUpdate(details.delta.dx),
           child: AnimatedContainer(
             duration: widget.themeSettings.dragHandleChangeOpacityDuration,
             width: widget.themeSettings.dragHandleSize,
