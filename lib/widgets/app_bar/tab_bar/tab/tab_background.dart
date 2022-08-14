@@ -20,22 +20,14 @@ class TabBackground extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          decoration: isSelected ? BoxDecoration( // TODO: add to theme settings
-            color: themeSettings.backgroundColor,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(3.0),
-              topRight: Radius.circular(3.0),
-            ),
-          ) : const BoxDecoration(
-            color: Colors.transparent,
-          ),
+          decoration: isSelected ? themeSettings.selectedTabBoxDecoration : themeSettings.unselectedTabBoxDecoration,
         ),
-        !isSelected ? const SizedBox() : Container( // TODO: add to theme settings
-          width: 3.0,
+        !isSelected ? const SizedBox() : Container(
+          width: themeSettings.selectedTabAccentColorDecorationWidth,
           decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(3.0),
-              bottomRight: Radius.circular(3.0),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(themeSettings.selectedTabAccentColorDecorationWidth),
+              bottomRight: Radius.circular(themeSettings.selectedTabAccentColorDecorationWidth),
             ),
             color: themeSettings.accentColor,
           ),
@@ -44,38 +36,11 @@ class TabBackground extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: Container(
             width: 1.0,
-            decoration: const BoxDecoration( // TODO: add to theme settings
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color.fromRGBO(255, 255, 255, 0.0),
-                  Color.fromRGBO(255, 255, 255, 0.1),
-                  Color.fromRGBO(255, 255, 255, 0.0),
-                ]
-              ),
-            ),
+            decoration: themeSettings.tabSeparatorBoxDecoration,
           ),
         ),
         Container(
-          decoration: BoxDecoration( // TODO: add to theme settings
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(3.0),
-              topRight: Radius.circular(3.0),
-            ),
-            gradient: !isSelected ? null : const LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromRGBO(255, 255, 255, 0.3),
-                Color.fromRGBO(255, 255, 255, 0.12),
-                Color.fromRGBO(255, 255, 255, 0.1),
-                Color.fromRGBO(255, 255, 255, 0.05),
-                Color.fromRGBO(255, 255, 255, 0.02),
-                Color.fromRGBO(255, 255, 255, 0.0),
-              ]
-            ),
-          ),
+          decoration: !isSelected ? null : themeSettings.tabLightReflectionBoxDecoration,
         ),
       ],
     );

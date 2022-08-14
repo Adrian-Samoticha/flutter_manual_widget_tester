@@ -157,6 +157,11 @@ class ManualWidgetTesterThemeSettings {
   final Duration createTestSessionDialogSearchResultFadeDuration;
   final double createTestSessionDialogUnselectedSearchResultOpacity;
   final TextStyle createTestSessionDialogNoMatchingResultsTextStyle;
+  final BoxDecoration selectedTabBoxDecoration;
+  final BoxDecoration unselectedTabBoxDecoration;
+  final double selectedTabAccentColorDecorationWidth;
+  final BoxDecoration tabSeparatorBoxDecoration;
+  final BoxDecoration tabLightReflectionBoxDecoration;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -495,6 +500,46 @@ class ManualWidgetTesterThemeSettings {
     this.createTestSessionDialogUnselectedSearchResultOpacity = 0.5,
     this.createTestSessionDialogNoMatchingResultsTextStyle = const TextStyle(
       color: Color.fromRGBO(255, 255, 255, 0.9),
+    ),
+    this.selectedTabBoxDecoration = const BoxDecoration(
+      color: Color.fromRGBO(41, 43, 53, 1.0),
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(3.0),
+        topRight: Radius.circular(3.0),
+      ),
+    ),
+    this.unselectedTabBoxDecoration = const BoxDecoration(
+      color: Colors.transparent,
+    ),
+    this.selectedTabAccentColorDecorationWidth = 3.0,
+    this.tabSeparatorBoxDecoration = const BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          Color.fromRGBO(255, 255, 255, 0.0),
+          Color.fromRGBO(255, 255, 255, 0.1),
+          Color.fromRGBO(255, 255, 255, 0.0),
+        ]
+      ),
+    ),
+    this.tabLightReflectionBoxDecoration = const BoxDecoration(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(3.0),
+        topRight: Radius.circular(3.0),
+      ),
+      gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          Color.fromRGBO(255, 255, 255, 0.3),
+          Color.fromRGBO(255, 255, 255, 0.12),
+          Color.fromRGBO(255, 255, 255, 0.1),
+          Color.fromRGBO(255, 255, 255, 0.05),
+          Color.fromRGBO(255, 255, 255, 0.02),
+          Color.fromRGBO(255, 255, 255, 0.0),
+        ]
+      ),
     ),
   });
 }
