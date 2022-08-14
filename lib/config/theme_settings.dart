@@ -168,6 +168,8 @@ class ManualWidgetTesterThemeSettings {
   final double unselectedHoveredTabOpacity;
   final double unselectedNotHoveredTabOpacity;
   final Duration unselectedTabOpacityChangeDuration;
+  final double spaceAboveTabs;
+  final EdgeInsets tabContentPadding;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -557,5 +559,7 @@ class ManualWidgetTesterThemeSettings {
     this.unselectedHoveredTabOpacity = 0.7,
     this.unselectedNotHoveredTabOpacity = 0.4,
     this.unselectedTabOpacityChangeDuration = const Duration(milliseconds: 150),
+    this.spaceAboveTabs = 4.0,
+    this.tabContentPadding = const EdgeInsets.all(8.0),
   });
 }

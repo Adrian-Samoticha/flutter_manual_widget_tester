@@ -44,7 +44,7 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
           width: widget.width,
           height: widget.themeSettings.appBarHeight,
           child: Padding(
-            padding: const EdgeInsets.only(top: 4.0), // TODO: add to theme settings
+            padding: EdgeInsets.only(top: widget.themeSettings.spaceAboveTabs),
             child: Stack(
               children: [
                 TabBackground(
@@ -52,7 +52,7 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
                   tabIndex: widget.tabIndex,
                   selectedTabIndex: widget.selectedTabIndex,
                 ),
-                _generateTabRow(isSelected),
+                _generateTabContent(isSelected),
               ],
             ),
           ),
@@ -61,9 +61,9 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
     );
   }
 
-  Padding _generateTabRow(bool isSelected) {
+  Padding _generateTabContent(bool isSelected) {
     return Padding(
-      padding: const EdgeInsets.all(8.0), // TODO: add to theme settings
+      padding: widget.themeSettings.tabContentPadding,
       child: Row(
         children: [
           ...widget.icon == null ? []: [
