@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
 class TabText extends StatelessWidget {
   const TabText({
     Key? key,
+    required this.themeSettings,
     required this.widgetName,
     required this.isSelected,
     required this.isBeingHovered,
   }) : super(key: key);
 
+  final ManualWidgetTesterThemeSettings themeSettings;
   final String widgetName;
   final bool isSelected;
   final bool isBeingHovered;
@@ -20,28 +23,20 @@ class TabText extends StatelessWidget {
           widgetName,
           overflow: TextOverflow.fade,
           softWrap: false,
-          style: const TextStyle( // TODO: add to theme settings
-            color: Colors.white,
-            fontSize: 12.0,
-            fontWeight: FontWeight.w600,
-          ),
+          style: themeSettings.tabTextStyle,
         )
       );
     }
     
     return Center(
       child: AnimatedOpacity(
-        duration: const Duration(milliseconds: 150), // TODO: add to theme settings
-        opacity: isBeingHovered ? 0.7 : 0.4, // TODO: add to theme settings
+        duration: themeSettings.unselectedTabOpacityChangeDuration,
+        opacity: isBeingHovered ? themeSettings.unselectedHoveredTabOpacity : themeSettings.unselectedNotHoveredTabOpacity,
         child: Text(
           widgetName,
           overflow: TextOverflow.fade,
           softWrap: false,
-          style: const TextStyle( // TODO: add to theme settings
-            color:Colors.white,
-            fontSize: 12.0,
-            fontWeight: FontWeight.w600,
-          ),
+          style: themeSettings.tabTextStyle,
         ),
       )
     );

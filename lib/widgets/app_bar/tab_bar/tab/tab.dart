@@ -68,6 +68,7 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
         children: [
           ...widget.icon == null ? []: [
             TabIcon(
+              themeSettings: widget.themeSettings,
               icon: widget.icon!,
               iconColor: widget.iconColor,
               isSelected: isSelected,
@@ -76,6 +77,7 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
           ],
           Expanded(
             child: TabText(
+              themeSettings: widget.themeSettings,
               widgetName: widget.widgetName,
               isSelected: isSelected,
               isBeingHovered: _isBeingHovered,

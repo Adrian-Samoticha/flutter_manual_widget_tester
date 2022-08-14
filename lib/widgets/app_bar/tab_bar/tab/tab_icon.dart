@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
 class TabIcon extends StatelessWidget {
   const TabIcon({
     Key? key,
+    required this.themeSettings,
     required this.icon,
     required this.iconColor,
     required this.isSelected,
     required this.isBeingHovered,
   }) : super(key: key);
 
+  final ManualWidgetTesterThemeSettings themeSettings;
   final IconData icon;
   final Color? iconColor;
   final bool isSelected;
@@ -18,23 +21,23 @@ class TabIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     if (isSelected) {
       return Padding(
-        padding: const EdgeInsets.only(right: 4.0), // TODO: add to theme settings
+        padding: themeSettings.tabIconPadding,
         child: Icon(
           icon,
-          size: 21.0, // TODO: add to theme settings
+          size: themeSettings.tabIconSize,
           color: iconColor,
         ),
       );
     }
     
     return AnimatedOpacity(
-      duration: const Duration(milliseconds: 150), // TODO: add to theme settings
-      opacity: isBeingHovered ? 0.7 : 0.4, // TODO: add to theme settings
+      duration: themeSettings.unselectedTabOpacityChangeDuration,
+      opacity: isBeingHovered ? themeSettings.unselectedHoveredTabOpacity : themeSettings.unselectedNotHoveredTabOpacity,
       child: Padding(
-        padding: const EdgeInsets.only(right: 4.0),
+        padding: themeSettings.tabIconPadding,
         child: Icon(
           icon,
-          size: 21.0,
+          size: themeSettings.tabIconSize,
           color: iconColor,
         ),
       ),

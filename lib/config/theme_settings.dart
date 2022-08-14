@@ -162,6 +162,12 @@ class ManualWidgetTesterThemeSettings {
   final double selectedTabAccentColorDecorationWidth;
   final BoxDecoration tabSeparatorBoxDecoration;
   final BoxDecoration tabLightReflectionBoxDecoration;
+  final EdgeInsets tabIconPadding;
+  final double tabIconSize;
+  final TextStyle tabTextStyle;
+  final double unselectedHoveredTabOpacity;
+  final double unselectedNotHoveredTabOpacity;
+  final Duration unselectedTabOpacityChangeDuration;
   
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -541,5 +547,15 @@ class ManualWidgetTesterThemeSettings {
         ]
       ),
     ),
+    this.tabIconPadding = const EdgeInsets.only(right: 4.0),
+    this.tabIconSize = 21.0,
+    this.tabTextStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 12.0,
+      fontWeight: FontWeight.w600,
+    ),
+    this.unselectedHoveredTabOpacity = 0.7,
+    this.unselectedNotHoveredTabOpacity = 0.4,
+    this.unselectedTabOpacityChangeDuration = const Duration(milliseconds: 150),
   });
 }
