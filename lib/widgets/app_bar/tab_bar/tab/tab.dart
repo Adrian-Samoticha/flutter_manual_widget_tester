@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
 import 'tab_background/tab_background.dart';
-import 'tab_icon.dart';
-import 'tab_text.dart';
+import 'tab_content/tab_content.dart';
 
 class ManualWidgetTesterTab extends StatefulWidget {
   const ManualWidgetTesterTab({Key? key, required this.width, required this.widgetName, required this.themeSettings, required this.tabIndex, required this.selectedTabIndex, required this.onSelect, required this.onClose, required this.icon, required this.iconColor}) : super(key: key);
@@ -52,38 +51,18 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
                   tabIndex: widget.tabIndex,
                   selectedTabIndex: widget.selectedTabIndex,
                 ),
-                _generateTabContent(isSelected),
+                TabContent(
+                  themeSettings: widget.themeSettings,
+                  isBeingHovered: _isBeingHovered,
+                  icon: widget.icon,
+                  iconColor: widget.iconColor,
+                  isSelected: isSelected,
+                  widgetName: widget.widgetName,
+                ),
               ],
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Padding _generateTabContent(bool isSelected) {
-    return Padding(
-      padding: widget.themeSettings.tabContentPadding,
-      child: Row(
-        children: [
-          ...widget.icon == null ? []: [
-            TabIcon(
-              themeSettings: widget.themeSettings,
-              icon: widget.icon!,
-              iconColor: widget.iconColor,
-              isSelected: isSelected,
-              isBeingHovered: _isBeingHovered,
-            ),
-          ],
-          Expanded(
-            child: TabText(
-              themeSettings: widget.themeSettings,
-              widgetName: widget.widgetName,
-              isSelected: isSelected,
-              isBeingHovered: _isBeingHovered,
-            ),
-          ),
-        ],
       ),
     );
   }
