@@ -39,31 +39,52 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
         onExit: (_) => setState(() {
           _isBeingHovered = false;
         }),
-        child: SizedBox(
-          width: widget.width,
-          height: widget.themeSettings.appBarHeight,
-          child: Padding(
-            padding: EdgeInsets.only(top: widget.themeSettings.spaceAboveTabs),
-            child: Stack(
-              children: [
-                TabBackground(
-                  themeSettings: widget.themeSettings,
-                  tabIndex: widget.tabIndex,
-                  selectedTabIndex: widget.selectedTabIndex,
-                ),
-                TabContent(
-                  themeSettings: widget.themeSettings,
-                  isBeingHovered: _isBeingHovered,
-                  icon: widget.icon,
-                  iconColor: widget.iconColor,
-                  isSelected: isSelected,
-                  widgetName: widget.widgetName,
-                ),
-              ],
-            ),
+        child: _generateTabBox(isSelected),
+      ),
+    );
+  }
+
+  Widget _generateTabBox(bool isSelected) {
+    return TweenAnimationBuilder<double>(
+      duration: widget.themeSettings.tabOpenAnimationDuration,
+      tween: Tween<double>(begin: 1.0, end: 0.0),
+      curve: widget.themeSettings.tabOpenAnimationCurve,
+      builder: (BuildContext context, double value, Widget? child) {
+        return ClipRect(
+          child: FractionalTranslation(
+            translation: Offset(0.0, value),
+            child: child!,
           ),
+        );
+      },
+      child: SizedBox(
+        width: widget.width,
+        height: widget.themeSettings.appBarHeight,
+        child: Padding(
+          padding: EdgeInsets.only(top: widget.themeSettings.spaceAboveTabs),
+          child: _generateTabStack(isSelected),
         ),
       ),
+    );
+  }
+
+  Stack _generateTabStack(bool isSelected) {
+    return Stack(
+      children: [
+        TabBackground(
+          themeSettings: widget.themeSettings,
+          tabIndex: widget.tabIndex,
+          selectedTabIndex: widget.selectedTabIndex,
+        ),
+        TabContent(
+          themeSettings: widget.themeSettings,
+          isBeingHovered: _isBeingHovered,
+          icon: widget.icon,
+          iconColor: widget.iconColor,
+          isSelected: isSelected,
+          widgetName: widget.widgetName,
+        ),
+      ],
     );
   }
 }

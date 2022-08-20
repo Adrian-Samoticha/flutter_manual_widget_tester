@@ -170,6 +170,8 @@ class ManualWidgetTesterThemeSettings {
   final Duration unselectedTabOpacityChangeDuration;
   final double spaceAboveTabs;
   final EdgeInsets tabContentPadding;
+  final Duration tabOpenAnimationDuration;
+  final Curve tabOpenAnimationCurve;
   final Color dragHandleColor;
   final double dragHandleSize;
   final Duration dragHandleChangeOpacityDuration;
@@ -565,6 +567,8 @@ class ManualWidgetTesterThemeSettings {
     this.unselectedTabOpacityChangeDuration = const Duration(milliseconds: 150),
     this.spaceAboveTabs = 4.0,
     this.tabContentPadding = const EdgeInsets.all(8.0),
+    this.tabOpenAnimationDuration = const Duration(milliseconds: 150),
+    this.tabOpenAnimationCurve = Curves.ease,
     this.dragHandleColor = Colors.blue,
     this.dragHandleSize = 6.0,
     this.dragHandleChangeOpacityDuration = const Duration(milliseconds: 150),
