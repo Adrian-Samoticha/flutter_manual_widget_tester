@@ -106,7 +106,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
   
   @override
   Widget build(BuildContext context) {
-    if (widget.builders.hasDuplicates((WidgetTestBuilder builder) => builder.key)) {
+    if (widget.builders.hasDuplicates((WidgetTestBuilder builder) => builder.id)) {
       throw ArgumentError('Found duplicate keys in `builders` list. All WidgetTestBuilders must have unique keys.');
     }
     

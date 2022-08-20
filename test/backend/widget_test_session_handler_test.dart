@@ -21,11 +21,11 @@ void main() {
     // Create 3 test sessions.
     // Creating a new test session is supposed to update the index, such that
     // the current index points to the newly created session.
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(0), name: '0', builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 0, name: '0', builder: (_, __) => Container()));
     expect(sessionHandler.currentIndex, 0);
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(1), name: '1', builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 1, name: '1', builder: (_, __) => Container()));
     expect(sessionHandler.currentIndex, 1);
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(2), name: '2', builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 2, name: '2', builder: (_, __) => Container()));
     expect(sessionHandler.currentIndex, 2);
     
     // Check if the test session list is correct.
@@ -57,8 +57,8 @@ void main() {
     
     // The index should, however, not be decremented if the current index,
     // is smaller than the closed index.
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(0), builder: (_, __) => Container()));
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(1), builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 0, builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 1, builder: (_, __) => Container()));
     expect(sessionHandler.widgetTestSessions.length, 3);
     sessionHandler.currentIndex = 1;
     expect(sessionHandler.currentIndex, 1);
@@ -79,15 +79,15 @@ void main() {
       expectAsync1((value) => value == sessionHandler),
     );
     
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(0), builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 0, builder: (_, __) => Container()));
   });
   
   testWidgets('widget test session handler index change callback', (tester) async {
     final sessionHandler = WidgetTestSessionHandler();
     
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(0), builder: (_, __) => Container()));
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(1), builder: (_, __) => Container()));
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(2), builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 0, builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 1, builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 2, builder: (_, __) => Container()));
     
     sessionHandler.registerOnChangedCallback(
       expectAsync1((value) => value == sessionHandler),
@@ -99,9 +99,9 @@ void main() {
   testWidgets('widget test session handler session closed callback (index does not change)', (tester) async {
     final sessionHandler = WidgetTestSessionHandler();
     
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(0), builder: (_, __) => Container()));
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(1), builder: (_, __) => Container()));
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(2), builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 0, builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 1, builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 2, builder: (_, __) => Container()));
     
     sessionHandler.currentIndex = 0;
     
@@ -115,9 +115,9 @@ void main() {
   testWidgets('widget test session handler session closed callback (index does change)', (tester) async {
     final sessionHandler = WidgetTestSessionHandler();
     
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(0), builder: (_, __) => Container()));
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(1), builder: (_, __) => Container()));
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(2), builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 0, builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 1, builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 2, builder: (_, __) => Container()));
     
     sessionHandler.currentIndex = 2;
     
@@ -131,7 +131,7 @@ void main() {
   testWidgets('widget test session handler session custom settings stream subscriptions', (tester) async {
     final sessionHandler = WidgetTestSessionHandler();
     
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(0), builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 0, builder: (_, __) => Container()));
     
     sessionHandler.registerOnChangedCallback(
       expectAsync1((value) => value == sessionHandler, count: 1),
@@ -143,7 +143,7 @@ void main() {
   testWidgets('widget test session handler session custom settings stream subscriptions (session is closed)', (tester) async {
     final sessionHandler = WidgetTestSessionHandler();
     
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(0), builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 0, builder: (_, __) => Container()));
     
     final settingsToBeChangedLater = sessionHandler.widgetTestSessions[0].customSettings;
     
@@ -161,9 +161,9 @@ void main() {
   testWidgets('widget test session handler session custom settings stream subscriptions (three sessions, first two are closed, the second one is modified)', (tester) async {
     final sessionHandler = WidgetTestSessionHandler();
     
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(0), builder: (_, __) => Container()));
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(1), builder: (_, __) => Container()));
-    sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(2), builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 0, builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 1, builder: (_, __) => Container()));
+    sessionHandler.createNewSession(WidgetTestBuilder(id: 2, builder: (_, __) => Container()));
     
     final settings = [
       sessionHandler.widgetTestSessions[0].customSettings,

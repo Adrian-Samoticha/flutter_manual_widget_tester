@@ -28,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final builders = [
       WidgetTestBuilder(
-        key: const ValueKey('some key'),
+        id: 'some key',
         name: 'SomeName',
         icon: Icons.access_alarms_rounded,
         builder: (context, settings) {
@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       ),
       WidgetTestBuilder(
-        key: const ValueKey('some other key'),
+        id: 'some other key',
         name: 'SomeOtherName',
         icon: Icons.kayaking,
         builder: (context, settings) {
@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       ),
       WidgetTestBuilder(
-        key: const ValueKey('list view'),
+        id: 'list view',
         name: 'ListView',
         icon: Icons.list,
         builder: (context, settings) {
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       ),
       WidgetTestBuilder(
-        key: const ValueKey('dialog generator'),
+        id: 'dialog generator',
         name: 'DialogGenerator',
         icon: Icons.window,
         builder: (context, settings) {
@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       ),
       WidgetTestBuilder(
-        key: const ValueKey('string editor state'),
+        id: 'string editor state',
         name: 'StringEditorState',
         icon: Icons.abc,
         builder: (context, settings) {
@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       ),
       WidgetTestBuilder(
-        key: const ValueKey('substring editor'),
+        id: 'substring editor',
         name: 'SubstringEditor',
         icon: Icons.abc,
         iconColor: Colors.red,
@@ -101,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       ),
       WidgetTestBuilder(
-        key: const ValueKey('string editor'),
+        id: 'string editor',
         name: 'StringEditor',
         icon: Icons.abc,
         builder: (context, settings) {
