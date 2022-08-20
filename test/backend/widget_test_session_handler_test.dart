@@ -133,8 +133,6 @@ void main() {
     
     sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(0), builder: (_, __) => Container()));
     
-    sessionHandler.widgetTestSessions[0].customSettings.getSetting('someSetting', 'initial value');
-    
     sessionHandler.registerOnChangedCallback(
       expectAsync1((value) => value == sessionHandler, count: 1),
     );
@@ -147,7 +145,6 @@ void main() {
     
     sessionHandler.createNewSession(WidgetTestBuilder(key: const ValueKey(0), builder: (_, __) => Container()));
     
-    sessionHandler.widgetTestSessions[0].customSettings.getSetting('someSetting', 'initial value');
     final settingsToBeChangedLater = sessionHandler.widgetTestSessions[0].customSettings;
     
     sessionHandler.closeWidgetTestSession(0);
@@ -173,10 +170,6 @@ void main() {
       sessionHandler.widgetTestSessions[1].customSettings,
       sessionHandler.widgetTestSessions[2].customSettings,
     ];
-    
-    settings[0].getSetting('someSetting', 'initial value');
-    settings[1].getSetting('someSetting', 'initial value');
-    settings[2].getSetting('someSetting', 'initial value');
     
     sessionHandler.closeWidgetTestSession(0);
     sessionHandler.closeWidgetTestSession(0);

@@ -5,8 +5,12 @@ class WidgetTestSessionCustomSettings {
   final Map<String, dynamic> _settingNameToValue = {};
   final StreamController<WidgetTestSessionCustomSettings> _onChangedStream = StreamController.broadcast();
   
+  bool _settingExists(String settingName) {
+    return _settingNameToValue.containsKey(settingName);
+  }
+  
   T getSetting<T>(String settingName, T initialValue) {
-    if (!_settingNameToValue.containsKey(settingName)) {
+    if (!_settingExists(settingName)) {
       _settingNameToValue[settingName] = initialValue;
       _onChangedStream.add(this);
     }
@@ -15,7 +19,7 @@ class WidgetTestSessionCustomSettings {
   }
   
   void setSetting<T>(String settingName, T newValue) {
-    if (newValue.runtimeType != _settingNameToValue[settingName].runtimeType) {
+    if (_settingExists(settingName) && newValue.runtimeType != _settingNameToValue[settingName].runtimeType) {
       throw Exception('Attempting to overwrite setting “$settingName” which has type “${_settingNameToValue[settingName].runtimeType}” with a value of a different type “${newValue.runtimeType}”.');
     }
     
