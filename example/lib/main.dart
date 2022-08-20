@@ -112,6 +112,38 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
       ),
+      WidgetTestBuilder(
+        id: 'offset button test',
+        name: 'Offset Button Test',
+        icon: Icons.smart_button,
+        builder: (context, settings) {
+          final offsetX = settings.getSetting('offsetX', 0.0);
+          final offsetY = settings.getSetting('offsetY', 0.0);
+          
+          return Center(
+            child: Container(
+              color: const Color.fromRGBO(0, 0, 0, 0.25),
+              child: SizedBox(
+                width: 128.0,
+                height: 32.0,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return Transform.translate(
+                      offset: Offset(offsetX * constraints.maxWidth, offsetY * constraints.maxHeight),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          print('pressed');
+                        },
+                        child: const Text('button'),
+                      ),
+                    );
+                  }
+                ),
+              ),
+            ),
+          );
+        },
+      ),
     ];
     
     return ManualWidgetTester(
