@@ -60,7 +60,7 @@ class ManualWidgetTesterTextField extends StatelessWidget {
                 ),
               ),
               child: Center(
-                child: _generateTextField(context),
+                child: _buildTextField(context),
               ),
             ),
           ),
@@ -69,7 +69,7 @@ class ManualWidgetTesterTextField extends StatelessWidget {
     );
   }
 
-  Material _generateTextField(BuildContext context) {
+  Material _buildTextField(BuildContext context) {
     return Material(
       type: MaterialType.transparency,
       child: Theme(

@@ -58,14 +58,14 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
           child: Container(
             width: widget.themeSettings.createTestSessionDialogWidth,
             padding: widget.themeSettings.createTestSessionDialogPadding,
-            child: _generateMainColumn(),
+            child: _buildMainColumn(),
           ),
         ),
       ),
     );
   }
 
-  Widget _generateMainColumn() {
+  Widget _buildMainColumn() {
     return Focus(
       autofocus: false,
       onKeyEvent: (FocusNode node, KeyEvent event) {
@@ -95,14 +95,14 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _generateSearchBar(),
-          _generateSearchResultList(MediaQuery.of(context).size.height * widget.themeSettings.createTestSessionDialogSearchResultsHeightFactor),
+          _buildSearchBar(),
+          _buildSearchResultList(MediaQuery.of(context).size.height * widget.themeSettings.createTestSessionDialogSearchResultsHeightFactor),
         ],
       ),
     );
   }
 
-  Widget _generateSearchBar() {
+  Widget _buildSearchBar() {
     return SizedBox(
       height: widget.themeSettings.createTestSessionDialogSearchBarHeight,
       child: ManualWidgetTesterTextField(
@@ -121,7 +121,7 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
     );
   }
 
-  Widget _generateSearchResultList(double maxHeight) {
+  Widget _buildSearchResultList(double maxHeight) {
     if (_searchResults.isEmpty) {
       return NoMatchingResultsMessage(
         themeSettings: widget.themeSettings,

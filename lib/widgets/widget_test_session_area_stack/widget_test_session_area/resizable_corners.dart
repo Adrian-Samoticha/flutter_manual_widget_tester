@@ -26,15 +26,15 @@ class _ResizableCornersState extends State<ResizableCorners> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        _generateResizeHandle(isRight: false, isBottom: false),
-        _generateResizeHandle(isRight: true, isBottom: false),
-        _generateResizeHandle(isRight: false, isBottom: true),
-        _generateResizeHandle(isRight: true, isBottom: true),
+        _buildResizeHandle(isRight: false, isBottom: false),
+        _buildResizeHandle(isRight: true, isBottom: false),
+        _buildResizeHandle(isRight: false, isBottom: true),
+        _buildResizeHandle(isRight: true, isBottom: true),
       ],
     );
   }
 
-  Widget _generateResizeHandle({required bool isRight, required bool isBottom}) {
+  Widget _buildResizeHandle({required bool isRight, required bool isBottom}) {
     final mouseCursor = _getMouseCursorForCorner(isRight: isRight, isBottom: isBottom, isMouseButtonDown: _isBeingDragged);
     
     return Center(

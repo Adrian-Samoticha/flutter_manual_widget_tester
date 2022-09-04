@@ -29,11 +29,11 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    child: _generateRadioButtonWithLabel(true),
+                    child: _buildRadioButtonWithLabel(true),
                   ),
                   SizedBox(width: themeSettings.boolEditorSpaceBetweenRadioButtons),
                   Expanded(
-                    child: _generateRadioButtonWithLabel(false),
+                    child: _buildRadioButtonWithLabel(false),
                   ),
                 ],
               ),
@@ -44,7 +44,7 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
     );
   }
 
-  Widget _generateRadioButtonWithLabel(bool isTrue) {
+  Widget _buildRadioButtonWithLabel(bool isTrue) {
     return MouseRegion(
       cursor: isTrue != currentValue ? SystemMouseCursors.click : MouseCursor.defer,
       child: GestureDetector(

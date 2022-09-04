@@ -43,10 +43,10 @@ class _ManualWidgetTesterTestSessionMenuItemState extends State<ManualWidgetTest
             decoration: widget.tabIndex != widget.selectedTabIndex ? null : widget.themeSettings.testSessionMenuItemSelectedTabTintDecoration,
             child: Stack(
               children: [
-                _generateHoverTint(),
+                _buildHoverTint(),
                 Padding(
                   padding: widget.themeSettings.testSessionMenuItemPadding,
-                  child: _generateTabRow(),
+                  child: _buildTabRow(),
                 ),
               ],
             ),
@@ -56,21 +56,21 @@ class _ManualWidgetTesterTestSessionMenuItemState extends State<ManualWidgetTest
     );
   }
 
-  Row _generateTabRow() {
+  Row _buildTabRow() {
     return Row(
       children: [
         ...widget.enableIcon ? [
-          _generateTabIcon(),
+          _buildTabIcon(),
         ] : const [],
         Expanded(
-          child: _generateTabText(),
+          child: _buildTabText(),
         ),
-        _generateCloseTabButton(),
+        _buildCloseTabButton(),
       ],
     );
   }
 
-  Widget _generateCloseTabButton() {
+  Widget _buildCloseTabButton() {
     final isVisible = _isBeingHovered || widget.tabIndex == widget.selectedTabIndex;
     final tweenValue = isVisible ? 1.0 : 0.0;
     
@@ -81,7 +81,7 @@ class _ManualWidgetTesterTestSessionMenuItemState extends State<ManualWidgetTest
     );
   }
 
-  Text _generateTabText() {
+  Text _buildTabText() {
     return Text(
       widget.widgetName,
       softWrap: false,
@@ -90,7 +90,7 @@ class _ManualWidgetTesterTestSessionMenuItemState extends State<ManualWidgetTest
     );
   }
 
-  Padding _generateTabIcon() {
+  Padding _buildTabIcon() {
     return Padding(
       padding: widget.themeSettings.testSessionMenuItemTabIconPadding,
       child: Icon(
@@ -101,7 +101,7 @@ class _ManualWidgetTesterTestSessionMenuItemState extends State<ManualWidgetTest
     );
   }
 
-  AnimatedOpacity _generateHoverTint() {
+  AnimatedOpacity _buildHoverTint() {
     return AnimatedOpacity(
       duration: const Duration(milliseconds: 50),
       opacity: _isBeingHovered ? 1.0 : 0.0,

@@ -20,7 +20,7 @@ class ColoredContainer extends StatelessWidget {
         children: [
           Expanded(
             child: Center(
-              child: _generateColorCodeText(isSelectedColorDark),
+              child: _buildColorCodeText(isSelectedColorDark),
             ),
           ),
           TweenAnimationBuilder<double>(
@@ -49,7 +49,7 @@ class ColoredContainer extends StatelessWidget {
     );
   }
   
-  Text _generateColorCodeText(bool isSelectedColorDark) {
+  Text _buildColorCodeText(bool isSelectedColorDark) {
     return Text(
       _generateColorCodeString(),
       overflow: TextOverflow.fade,

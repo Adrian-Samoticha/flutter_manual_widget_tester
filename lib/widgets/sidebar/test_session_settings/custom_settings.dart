@@ -30,7 +30,7 @@ class CustomSettings extends StatelessWidget {
     
     if (customSettings.settings.isEmpty) {
       return [
-        _generateNoSettingsText(),
+        _buildNoSettingsText(),
       ];
     }
     
@@ -38,7 +38,7 @@ class CustomSettings extends StatelessWidget {
       final settingType = settingValue.runtimeType;
       
       if (!typeEditorBuilder.hasEditorBuilderInstalledForType(settingType)) {
-        final widgetToBeReturned = _generateNoEditorMessage(settingName, settingValue);
+        final widgetToBeReturned = _buildNoEditorMessage(settingName, settingValue);
         
         return MapEntry<String, Widget>(settingName, widgetToBeReturned);
       }
@@ -51,16 +51,16 @@ class CustomSettings extends StatelessWidget {
     }).values.toList();
   }
   
-  Container _generateNoEditorMessage(String settingName, settingValue) {
+  Container _buildNoEditorMessage(String settingName, settingValue) {
     return Container(
       padding: themeSettings.noEditorMessagePadding,
       margin: themeSettings.noEditorMessageMargin,
       decoration: themeSettings.noEditorMessageDecoration,
-      child: _generateNoEditorText(settingName, settingValue),
+      child: _buildNoEditorText(settingName, settingValue),
     );
   }
   
-  RichText _generateNoEditorText(String settingName, settingValue) {
+  RichText _buildNoEditorText(String settingName, settingValue) {
     return RichText(
       text: TextSpan(
         text: 'Could not build type editor for setting ',
@@ -85,7 +85,7 @@ class CustomSettings extends StatelessWidget {
     );
   }
   
-  Padding _generateNoSettingsText() {
+  Padding _buildNoSettingsText() {
     return Padding(
       padding: themeSettings.noCustomSettingsMessagePadding,
       child: Text(

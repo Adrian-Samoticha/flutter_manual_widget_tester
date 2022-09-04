@@ -42,18 +42,18 @@ class _ResizableBorderState extends State<ResizableBorder> {
               ),
             ),
           ),
-          _generateResizeHandle(isLeft: true),
+          _buildResizeHandle(isLeft: true),
           Container(
             width: widget.size,
           ),
-          _generateResizeHandle(isLeft: false),
+          _buildResizeHandle(isLeft: false),
           const Spacer(),
         ],
       ),
     );
   }
 
-  Widget _generateResizeHandle({required bool isLeft}) {
+  Widget _buildResizeHandle({required bool isLeft}) {
     final mouseCursor = _getMouseCursor();
     
     return MouseRegion(

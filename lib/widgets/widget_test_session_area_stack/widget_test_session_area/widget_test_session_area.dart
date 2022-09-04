@@ -35,14 +35,14 @@ class _ManualWidgetTesterWidgetTestSessionAreaState extends State<ManualWidgetTe
           children: [
             _generateToBeTestedWidget(displayWidth, displayHeight),
             ..._generateResizableHandles(displayWidth, displayHeight),
-            _generateZoomControls(),
+            _buildZoomControls(),
           ],
         );
       }
     );
   }
   
-  Widget _generateZoomControls() {
+  Widget _buildZoomControls() {
     const minZoom = 0.2;
     const maxZoom = 4.0;
     const zoomStepSize = 0.1;

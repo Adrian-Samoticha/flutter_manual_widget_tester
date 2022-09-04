@@ -56,14 +56,14 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
           child: Container(
             height: themeSettings.createTestSessionDialogSearchResultHeight,
             decoration: widget.index == widget.legalSelectedSearchResultIndex ? themeSettings.createTestSessionDialogSelectedSearchResultDecoration : themeSettings.createTestSessionDialogUnselectedSearchResultDecoration,
-            child: _generateIconAndNameRow(),
+            child: _buildIconAndNameRow(),
           ),
         ),
       ),
     );
   }
 
-  Row _generateIconAndNameRow() {
+  Row _buildIconAndNameRow() {
     final themeSettings = widget.themeSettings;
     
     return Row(

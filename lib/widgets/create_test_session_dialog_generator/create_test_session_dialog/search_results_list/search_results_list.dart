@@ -33,14 +33,14 @@ class SearchResultsList extends StatelessWidget {
             maxHeight: maxHeight,
           ),
           child: SingleChildScrollView(
-            child: _generateSearchResultList(),
+            child: _buildSearchResultList(),
           ),
         ),
       ),
     );
   }
 
-  Column _generateSearchResultList() {
+  Column _buildSearchResultList() {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: searchResults.asMap().entries.map((MapEntry<int, WidgetTestBuilder> entry) {

@@ -30,11 +30,11 @@ class ManualWidgetTesterButtonRow extends StatelessWidget {
         ),
         boxShadow:themeSettings.buttonShadow,
       ),
-      child: _generateButtons(),
+      child: _buildButtons(),
     );
   }
   
-  Widget _generateButtons() {
+  Widget _buildButtons() {
     return Row(
       children: buttons.asMap().map((int index, ManualWidgetTesterButtonInfo button) {
         final toBeReturnedWidget = Expanded(
@@ -77,7 +77,7 @@ class _ManualWidgetTesterButtonState extends State<_ManualWidgetTesterButton> {
   Widget build(BuildContext context) {
     bool isDisabled = widget.button.onButtonDown == null && widget.button.onButtonPressed == null;
     
-    return _generateDefaultTextStyleAndIconTheme(
+    return _buildDefaultTextStyleAndIconTheme(
       isPressed: _isPressed,
       isDisabled: isDisabled,
       child: SizedBox.expand(
@@ -114,7 +114,7 @@ class _ManualWidgetTesterButtonState extends State<_ManualWidgetTesterButton> {
                 widget.button.onButtonPressed!();
               }
             },
-            child: _generateButtonStack(
+            child: _buildButtonStack(
               isDisabled: isDisabled,
             ),
           ),
@@ -123,7 +123,7 @@ class _ManualWidgetTesterButtonState extends State<_ManualWidgetTesterButton> {
     );
   }
 
-  Stack _generateButtonStack({required bool isDisabled}) {
+  Stack _buildButtonStack({required bool isDisabled}) {
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -161,7 +161,7 @@ class _ManualWidgetTesterButtonState extends State<_ManualWidgetTesterButton> {
     );
   }
 
-  Widget _generateDefaultTextStyleAndIconTheme({required Widget child, required bool isPressed, required bool isDisabled}) {
+  Widget _buildDefaultTextStyleAndIconTheme({required Widget child, required bool isPressed, required bool isDisabled}) {
     if (isDisabled) {
       return IconTheme(
         data: widget.themeSettings.disabledButtonIconTheme,

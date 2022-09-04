@@ -30,10 +30,10 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
                 return Row(
                   children: [
                     Expanded(
-                      child: _generateTextField(),
+                      child: _buildTextField(),
                     ),
                     SizedBox(width: themeSettings.spaceBetweenTextBoxesAndButtonRows),
-                    _generateButtonRow(constraints),
+                    _buildButtonRow(constraints),
                   ],
                 );
               }
@@ -44,7 +44,7 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
     );
   }
 
-  ManualWidgetTesterTextField _generateTextField() {
+  ManualWidgetTesterTextField _buildTextField() {
     return ManualWidgetTesterTextField(
       initialValue: currentValue.toString(),
       onSubmitted: (String valueAsString) {
@@ -56,7 +56,7 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
     );
   }
 
-  SizedBox _generateButtonRow(BoxConstraints constraints) {
+  SizedBox _buildButtonRow(BoxConstraints constraints) {
     return SizedBox(
       width: min(themeSettings.defaultNumberEditorButtonRowWidth, constraints.maxWidth * 0.5),
       child: ManualWidgetTesterButtonRow(

@@ -43,7 +43,7 @@ class ManualWidgetTesterDialogGenerator {
           offset: themeSettings.dialogOpenCloseAnimationOffset * (1.0 - curvedAnimationValue),
           child: Align(
             alignment: themeSettings.dialogAlignment,
-            child: _generateDialogWindow(dialogWidth, themeSettings, renderedDialogBackgroundColor, curvedAnimationValue, doEnableBlur, widget),
+            child: _buildDialogWindow(dialogWidth, themeSettings, renderedDialogBackgroundColor, curvedAnimationValue, doEnableBlur, widget),
           ),
         );
       },
@@ -56,7 +56,7 @@ class ManualWidgetTesterDialogGenerator {
             children: [
               editorBuilder(context),
               SizedBox(height: themeSettings.distanceBetweenDialogContentAndActionButtons),
-              _generateActionButtonRow(themeSettings, context, onApply, onCancel, customActionButtons),
+              _buildActionButtonRow(themeSettings, context, onApply, onCancel, customActionButtons),
             ],
           ),
         );
@@ -76,7 +76,7 @@ class ManualWidgetTesterDialogGenerator {
     }
   }
 
-  static Widget _generateDialogWindow(double dialogWidth, ManualWidgetTesterThemeSettings themeSettings, Color renderedDialogBackgroundColor, double curvedAnimationValue, bool doEnableBlur, Widget widget) {
+  static Widget _buildDialogWindow(double dialogWidth, ManualWidgetTesterThemeSettings themeSettings, Color renderedDialogBackgroundColor, double curvedAnimationValue, bool doEnableBlur, Widget widget) {
     return Container(
       width: dialogWidth,
       decoration: BoxDecoration(
@@ -111,7 +111,7 @@ class ManualWidgetTesterDialogGenerator {
     );
   }
 
-  static Widget _generateActionButtonRow(ManualWidgetTesterThemeSettings themeSettings, BuildContext context, void Function()? onApply, void Function()? onCancel, List<ManualWidgetTesterButtonInfo> customButtons) {
+  static Widget _buildActionButtonRow(ManualWidgetTesterThemeSettings themeSettings, BuildContext context, void Function()? onApply, void Function()? onCancel, List<ManualWidgetTesterButtonInfo> customButtons) {
     return Row(
       children: [
         const Spacer(),

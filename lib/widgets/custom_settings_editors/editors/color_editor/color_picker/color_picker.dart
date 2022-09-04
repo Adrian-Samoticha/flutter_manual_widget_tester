@@ -52,7 +52,7 @@ class _ColorPickerState extends State<ColorPicker> {
         },
         child: Stack(
           children: [
-            _generateCheckerboardBackground(),
+            _buildCheckerboardBackground(),
             ColoredContainer(
               isSelectedColorDark: isSelectedColorDark,
               doShowEditIcon: _isBeingHovered || _isDialogOpen,
@@ -116,7 +116,7 @@ class _ColorPickerState extends State<ColorPicker> {
     );
   }
 
-  SizedBox _generateCheckerboardBackground() {
+  SizedBox _buildCheckerboardBackground() {
     return SizedBox.expand(
       child: ClipRRect(
         borderRadius: widget.themeSettings.editColorButtonBorderRadius,

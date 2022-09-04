@@ -37,17 +37,17 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
                     return Row(
                       children: [
                         Expanded(
-                          child: _generateTextField(),
+                          child: _buildTextField(),
                         ),
                         SizedBox(width: themeSettings.spaceBetweenTextBoxesAndButtonRows),
-                        _generateButtonRow(constraints),
+                        _buildButtonRow(constraints),
                       ],
                     );
                   }
                 ),
               ),
               SizedBox(height: themeSettings.spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView),
-              _generateInfiniteScrollView(),
+              _buildInfiniteScrollView(),
             ],
           ),
         ],
@@ -55,7 +55,7 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
     );
   }
 
-  Listener _generateInfiniteScrollView() {
+  Listener _buildInfiniteScrollView() {
     return Listener(
       onPointerSignal: (PointerSignalEvent event) {
         if (event is PointerScrollEvent) {
@@ -81,7 +81,7 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
     );
   }
 
-  ManualWidgetTesterTextField _generateTextField() {
+  ManualWidgetTesterTextField _buildTextField() {
     return ManualWidgetTesterTextField(
       initialValue: sprintf('%f', [currentValue]),
       onSubmitted: (String valueAsString) {
@@ -93,7 +93,7 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
     );
   }
 
-  SizedBox _generateButtonRow(BoxConstraints constraints) {
+  SizedBox _buildButtonRow(BoxConstraints constraints) {
     return SizedBox(
       width: min(themeSettings.defaultNumberEditorButtonRowWidth, constraints.maxWidth * 0.5),
       child: ManualWidgetTesterButtonRow(

@@ -39,12 +39,12 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
         onExit: (_) => setState(() {
           _isBeingHovered = false;
         }),
-        child: _generateTabBox(isSelected),
+        child: _buildTabBox(isSelected),
       ),
     );
   }
 
-  Widget _generateTabBox(bool isSelected) {
+  Widget _buildTabBox(bool isSelected) {
     return TweenAnimationBuilder<double>(
       duration: widget.themeSettings.tabOpenAnimationDuration,
       tween: Tween<double>(begin: 1.0, end: 0.0),
@@ -62,13 +62,13 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
         height: widget.themeSettings.appBarHeight,
         child: Padding(
           padding: EdgeInsets.only(top: widget.themeSettings.spaceAboveTabs),
-          child: _generateTabStack(isSelected),
+          child: _buildTabStack(isSelected),
         ),
       ),
     );
   }
 
-  Stack _generateTabStack(bool isSelected) {
+  Stack _buildTabStack(bool isSelected) {
     return Stack(
       children: [
         TabBackground(
