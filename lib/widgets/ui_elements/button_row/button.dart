@@ -1,61 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
-class ManualWidgetTesterButtonInfo {
-  final void Function()? onButtonDown;
-  final void Function()? onButtonPressed;
-  final Widget child;
+import 'button_info.dart';
 
-  ManualWidgetTesterButtonInfo({required this.onButtonDown, required this.onButtonPressed, this.child = const SizedBox()});
-}
-
-class ManualWidgetTesterButtonRow extends StatelessWidget {
-  const ManualWidgetTesterButtonRow({Key? key, required this.buttons, required this.themeSettings, this.disableRoundedCornersOnLeftSide = false, this.disableRoundedCornersOnRightSide = false}) : super(key: key);
-  
-  final List<ManualWidgetTesterButtonInfo> buttons;
-  final ManualWidgetTesterThemeSettings themeSettings;
-  final bool disableRoundedCornersOnLeftSide;
-  final bool disableRoundedCornersOnRightSide;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: themeSettings.buttonColor,
-        borderRadius: BorderRadius.only(
-          topLeft: disableRoundedCornersOnLeftSide ? Radius.zero : themeSettings.buttonBorderRadius,
-          bottomLeft: disableRoundedCornersOnLeftSide ? Radius.zero : themeSettings.buttonBorderRadius,
-          topRight: disableRoundedCornersOnRightSide ? Radius.zero : themeSettings.buttonBorderRadius,
-          bottomRight: disableRoundedCornersOnRightSide ? Radius.zero : themeSettings.buttonBorderRadius,
-        ),
-        boxShadow:themeSettings.buttonShadow,
-      ),
-      child: _buildButtons(),
-    );
-  }
-  
-  Widget _buildButtons() {
-    return Row(
-      children: buttons.asMap().map((int index, ManualWidgetTesterButtonInfo button) {
-        final toBeReturnedWidget = Expanded(
-          child: _ManualWidgetTesterButton(
-            button: button,
-            buttons: buttons,
-            index: index,
-            themeSettings: themeSettings,
-            disableRoundedCornersOnLeftSide: disableRoundedCornersOnLeftSide,
-            disableRoundedCornersOnRightSide: disableRoundedCornersOnRightSide,
-          ),
-        );
-        
-        return MapEntry(index, toBeReturnedWidget);
-      }).values.toList(),
-    );
-  }
-  
-}
-
-class _ManualWidgetTesterButton extends StatefulWidget {
+class ManualWidgetTesterButton extends StatefulWidget {
   final ManualWidgetTesterButtonInfo button;
   final List<ManualWidgetTesterButtonInfo> buttons;
   final int index;
@@ -63,13 +11,13 @@ class _ManualWidgetTesterButton extends StatefulWidget {
   final bool disableRoundedCornersOnLeftSide;
   final bool disableRoundedCornersOnRightSide;
 
-  const _ManualWidgetTesterButton({required this.button, required this.buttons, required this.index, required this.themeSettings, required this.disableRoundedCornersOnLeftSide, required this.disableRoundedCornersOnRightSide});
+  const ManualWidgetTesterButton({super.key, required this.button, required this.buttons, required this.index, required this.themeSettings, required this.disableRoundedCornersOnLeftSide, required this.disableRoundedCornersOnRightSide});
 
   @override
-  State<_ManualWidgetTesterButton> createState() => _ManualWidgetTesterButtonState();
+  State<ManualWidgetTesterButton> createState() => _ManualWidgetTesterButtonState();
 }
 
-class _ManualWidgetTesterButtonState extends State<_ManualWidgetTesterButton> {
+class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
   bool _isBeingHovered = false;
   bool _isPressed = false;
   

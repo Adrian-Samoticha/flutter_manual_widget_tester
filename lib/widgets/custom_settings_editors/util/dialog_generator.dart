@@ -5,7 +5,7 @@ import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 import 'package:flutter_manual_widget_tester/util/multiply_opacity.dart';
 import 'package:num_remap/num_remap.dart';
-import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row.dart';
+import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row/button_row.dart';
 
 class ManualWidgetTesterDialogGenerator {
   /// Shows a dialog that displays a custom setting editor that is built via a provided [editorBuilder].

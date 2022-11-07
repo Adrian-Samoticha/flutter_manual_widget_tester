@@ -3,7 +3,7 @@ import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/create_test_session_dialog_generator/create_test_session_dialog_generator.dart';
-import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row.dart';
+import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row/button_row.dart';
 
 import 'tab_bar/tab_bar.dart';
 
