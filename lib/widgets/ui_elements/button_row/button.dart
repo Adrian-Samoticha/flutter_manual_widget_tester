@@ -76,12 +76,25 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
       fit: StackFit.expand,
       children: [
         _isPressed ? Container(
-          color: widget.themeSettings.buttonPressedTint,
+          decoration: BoxDecoration(
+            color: widget.themeSettings.buttonPressedTint,
+            borderRadius: _generateBorderRadius(
+              roundLeftCorners: widget.index == 0 && !widget.disableRoundedCornersOnLeftSide,
+              roundRightCorners: widget.index == widget.buttons.length - 1 && !widget.disableRoundedCornersOnRightSide,
+            ),
+          ),
+          
         ) : AnimatedOpacity(
           duration: const Duration(milliseconds: 50),
           opacity: _isBeingHovered ? 1.0 : 0.0,
           child: Container(
-            color: widget.themeSettings.buttonHoveredTint,
+            decoration: BoxDecoration(
+              color: widget.themeSettings.buttonHoveredTint,
+              borderRadius: _generateBorderRadius(
+                roundLeftCorners: widget.index == 0 && !widget.disableRoundedCornersOnLeftSide,
+                roundRightCorners: widget.index == widget.buttons.length - 1 && !widget.disableRoundedCornersOnRightSide,
+              ),
+            ),
           ),
         ),
         Container(
@@ -150,6 +163,15 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
       ),
     );
   }
+  
+  BorderRadius _generateBorderRadius({required bool roundLeftCorners, required bool roundRightCorners}) {
+    return BorderRadius.only(
+      topLeft: roundLeftCorners ? widget.themeSettings.buttonBorderRadius : Radius.zero,
+      bottomLeft: roundLeftCorners ? widget.themeSettings.buttonBorderRadius : Radius.zero,
+      topRight: roundRightCorners ? widget.themeSettings.buttonBorderRadius : Radius.zero,
+      bottomRight: roundRightCorners ? widget.themeSettings.buttonBorderRadius : Radius.zero,
+    );
+  }
 
   BoxDecoration _generateButtonBoxDecoration({required bool roundLeftCorners, required bool roundRightCorners, required bool isPressed, required bool isDisabled}) {
     final gradientColors = _getButtonBoxDecorationGradientColors(
@@ -158,12 +180,7 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
     );
     
     return BoxDecoration(
-      borderRadius: BorderRadius.only(
-        topLeft: roundLeftCorners ? widget.themeSettings.buttonBorderRadius : Radius.zero,
-        bottomLeft: roundLeftCorners ? widget.themeSettings.buttonBorderRadius : Radius.zero,
-        topRight: roundRightCorners ? widget.themeSettings.buttonBorderRadius : Radius.zero,
-        bottomRight: roundRightCorners ? widget.themeSettings.buttonBorderRadius : Radius.zero,
-      ),
+      borderRadius: _generateBorderRadius(roundLeftCorners: roundLeftCorners, roundRightCorners: roundRightCorners),
       gradient: LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
