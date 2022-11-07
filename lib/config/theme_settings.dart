@@ -1,181 +1,556 @@
 import 'package:flutter/material.dart';
 
 class ManualWidgetTesterThemeSettings {
+  /// The color of the manual widget tester's background.
   final Color backgroundColor;
+  
+  /// The color of the manual widget tester's sidebar.
   final Color sidebarColor;
+  
+  /// The height of the app bar on the top of the widget.
+  /// 
+  /// The app bar is the bar that houses the tab bar and the “create new test session” button.
   final double appBarHeight;
+  
+  /// The accent color, currently used only for the decoration of the selected tab.
   final Color accentColor;
+  
+  /// The minimal tab width.
+  /// 
+  /// **Note:** The tabs will resize themselves based on the current window size.
   final double minTabWidth;
+  
+  /// The maximal tab width.
+  /// 
+  /// **Note:** The tabs will resize themselves based on the current window size.
   final double maxTabWidth;
+  
+  /// The color of the dotted lines that show the tested widget's size.
   final Color dottedLineColor;
+  
+  /// The text style in which the tested widget's size is displayed.
   final TextStyle widgetSizeTextStyle;
+  
+  /// The default color of the icons of the open test sessions.
   final Color defaultIconColor;
+  
+  /// The buttons' color.
   final Color buttonColor;
+  
+  /// The buttons' border radius.
   final Radius buttonBorderRadius;
+  
+  /// The buttons' shadow(s).
   final List<BoxShadow> buttonShadow;
+  
+  /// The color to tint the button with when it is pressed.
   final Color buttonPressedTint;
+  
+  /// The color to tint the button with when it is hovered over.
   final Color buttonHoveredTint;
+  
+  /// The offset of the button when it is pressed.
   final Offset buttonPressedOffset;
+  
+  /// The color of the line that separates two buttons within a button row.
   final Color buttonSeparatorColor;
+  
+  /// The width of the line that separates two buttons within a button row.
   final double buttonSeparatorWidth;
+  
+  /// The icon theme of a disabled button.
   final IconThemeData disabledButtonIconTheme;
+  
+  /// The icon theme of a pressed button.
   final IconThemeData pressedButtonIconTheme;
+  
+  /// The icon theme of an enabled, unpressed button.
   final IconThemeData buttonIconTheme;
+  
+  /// The text style of a disabled button.
   final TextStyle disabledButtonTextStyle;
+  
+  /// The text style of a pressed button.
   final TextStyle pressedButtonTextStyle;
+  
+  /// The text style of an enabled, unpressed button.
   final TextStyle buttonTextStyle;
+  
+  /// The shadow(s) of a text field.
   final List<BoxShadow> textFieldShadow;
+  
+  /// The border radius of a text field.
   final Radius textFieldBorderRadius;
+  
+  /// The color of a text field.
   final Color textFieldColor;
+  
+  /// The border color of a text field.
   final Color textFieldBorderColor;
+  
+  /// The border width of a text field.
   final double textFieldBorderWidth;
+  
+  /// The text style of a text field.
   final TextStyle textFieldTextStyle;
+  
+  /// The text style of a text field's suffix.
   final TextStyle textFieldSuffixStyle;
+  
+  /// The color of a text field's cursor.
   final Color textFieldCursorColor;
+  
+  /// The color of a text field's selection.
   final Color textFieldSelectionColor;
+  
+  /// The padding of a text field's content.
   final EdgeInsetsGeometry textFieldContentPadding;
+  
+  /// The width of the zoom controls.
   final double zoomControlsWidth;
+  
+  /// The height of the zoom controls.
   final double zoomControlsHeight;
+  
+  /// The border radius of the zoom controls.
   final BorderRadius zoomControlsBorderRadius;
+  
+  /// The shadow(s) of the zoom controls.
   final List<BoxShadow> zoomControlsShadow;
+  
+  /// The padding of the zoom controls.
   final EdgeInsets zoomControlsPadding;
+  
+  /// The space between text boxes and connected button rows.
   final double spaceBetweenTextBoxesAndButtonRows;
+  
+  /// The width of the zoom controls' button row.
   final double zoomControlsButtonRowWidth;
+  
+  /// The icon on the zoom controls' zoom out button.
   final Icon zoomControlsZoomOutIcon;
+  
+  /// The icon on the zoom controls' zoom in button.
   final Icon zoomControlsZoomInIcon;
+  
+  /// The zoom controls' distance to the manual widget tester's border.
   final double zoomControlsDistanceToBorder;
+  
+  /// The zoom controls' alignment.
   final Alignment zoomControlsAlignment;
+  
+  /// The indentation amount in foldable regions.
   final double foldableRegionIndentationAmount;
+  
+  /// The animation duration of foldable regions.
   final Duration foldableRegionAnimationDuration;
+  
+  /// The alignment of a foldable region's content during the fold/unfold animation.
   final Alignment foldableRegionContentAlignment;
+  
+  /// The height of a foldable region's header.
   final double foldableRegionHeaderHeight;
+  
+  /// The opacity of a foldable region's header when it is folded.
   final double foldableRegionFoldedHeaderOpacity;
+  
+  /// A foldable region's header color.
   final Color foldableRegionHeaderColor;
+  
+  /// The color of a foldable region's chevron icon.
   final Color foldableRegionChevronIconColor;
+  
+  /// The size of a foldable region's chevron icon.
   final double foldableRegionChevronIconSize;
+  
+  /// The text style of a foldable region's heading.
   final TextStyle foldableRegionHeadingStyle;
+  
+  /// The foldable region's header's overflow.
   final TextOverflow foldableRegionHeadingOverflow;
+  
+  /// The box decoration of a close button's hover effect.
   final BoxDecoration closeButtonHoverDecoration;
+  
+  /// The close button's color.
   final Color closeButtonColor;
+  
+  /// The height of a menu item in the “RUNNING TEST SESSIONS” area.
   final double testSessionMenuItemHeight;
+  
+  /// The opacity of an unselected menu item in the “RUNNING TEST SESSIONS” area.
   final double testSessionMenuItemUnselectedTabOpacity;
+  
+  /// The padding of a menu item in the “RUNNING TEST SESSIONS” area.
   final EdgeInsets testSessionMenuItemPadding;
+  
+  /// The padding of a menu item's close button in the “RUNNING TEST SESSIONS” area.
   final EdgeInsets testSessionMenuItemCloseButtonPadding;
+  
+  /// The size of a menu item's close button in the “RUNNING TEST SESSIONS” area.
   final double testSessionMenuItemCloseButtonSize;
+  
+  /// The text overflow behavior of a menu item in the “RUNNING TEST SESSIONS” area.
   final TextOverflow testSessionMenuItemTextOverflow;
+  
+  /// The text style of a menu item in the “RUNNING TEST SESSIONS” area.
   final TextStyle testSessionMenuItemTextStyle;
+  
+  /// The icon size of a menu item in the “RUNNING TEST SESSIONS” area.
   final double testSessionMenuItemIconSize;
+  
+  /// The hover tint decoration of a menu item in the “RUNNING TEST SESSIONS” area.
   final BoxDecoration testSessionMenuItemHoverTintDecoration;
+  
+  /// The icon padding of a menu item in the “RUNNING TEST SESSIONS” area.
   final EdgeInsets testSessionMenuItemTabIconPadding;
+  
+  /// The tint decoration of a selected menu item in the “RUNNING TEST SESSIONS” area.
   final BoxDecoration testSessionMenuItemSelectedTabTintDecoration;
+  
+  /// The padding of the message that is displayed when no editor for a particular setting could be built.
   final EdgeInsets noEditorMessagePadding;
+  
+  /// The margin of the message that is displayed when no editor for a particular setting could be built.
   final EdgeInsets noEditorMessageMargin;
+  
+  /// The box decoration of the message that is displayed when no editor for a particular setting could be built.
   final BoxDecoration noEditorMessageDecoration;
+  
+  /// The padding of the message that is displayed when a test session has no custom settings.
   final EdgeInsets noCustomSettingsMessagePadding;
+  
+  /// The text style of the message that is displayed when a test session has no custom settings.
   final TextStyle noCustomSettingsMessageTextStyle;
+  
+  /// The text style of the message that is displayed when no editor for a particular setting could be built.
   final TextStyle noEditorTextStyle;
+  
+  /// The text style of the highlighted text of the message that is displayed when no editor for a particular setting could be built.
   final TextStyle noEditorHighlightedTextStyle;
+  
+  /// The text style of a custom setting's heading.
   final TextStyle customSettingHeadingTextStyle;
+  
+  /// The text overflow behavior of a custom setting's heading.
   final TextOverflow customSettingHeadingOverflow;
+  
+  /// The padding of a custom setting's heading.
   final EdgeInsets customSettingsHeadingPadding;
+  
+  /// The padding of a custom settings widget.
   final EdgeInsets customSettingsPadding;
+  
+  /// The height of the string editor.
   final double stringEditorHeight;
+  
+  /// A dialog's background color.
   final Color dialogBackgroundColor;
+  
+  /// The color of a dialog's barrier.
   final Color dialogBarrierColor;
+  
+  /// The duration of a dialog's open/close animation.
   final Duration dialogOpenCloseAnimationDuration;
+  
+  /// The animation curve of a dialog's open/close animation.
   final Curve dialogOpenCloseAnimationCurve;
+  
+  /// The offset of the dialog's open/close animation.
   final Offset dialogOpenCloseAnimationOffset;
+  
+  /// The alignment of a dialog box.
   final Alignment dialogAlignment;
+  
+  /// The blur radius of a dialog's backdrop effect.
   final double dialogBlurRadius;
+  
+  /// The border radius of a dialog box.
   final BorderRadius dialogBorderRadius;
+  
+  /// The border color of a dialog box.
   final Color dialogBorderColor;
+  
+  /// The shadow(s) of a dialog box.
   final List<BoxShadow> dialogShadow;
+  
+  /// The padding of a dialog box.
   final EdgeInsets dialogPadding;
+  
+  /// The height of the buttons in the dialog box's action button row.
   final double dialogActionButtonHeight;
+  
+  /// The background color of the section in which the dialog's action buttons are located.
   final Color dialogActionButtonSectionBackgroundColor;
-  final double defaultDialogActionButtonRowWidth;
+  
+  /// The base width of a dialog's action button row, upon which `customDialogActionButtonWidthAddition` gets added for each action button.
+  final double baseDialogActionButtonRowWidth;
+  
+  /// The amount to add to the default action button row width for each action button.
   final double customDialogActionButtonWidthAddition;
+  
+  /// The distance between the dialog's content and its action button row.
   final double distanceBetweenDialogContentAndActionButtons;
+  
+  /// The height of the edit color button.
   final double editColorButtonHeight;
+  
+  /// The box decoration of the edit color button when it is displaying a dark color.
   final BoxDecoration editColorButtonDecorationForDarkColor;
+  
+  /// The box decoration of the edit color button when it is displaying a bright color.
   final BoxDecoration editColorButtonDecorationForBrightColor;
+  
+  /// The border radius of the edit color button.
   final BorderRadius editColorButtonBorderRadius;
+  
+  /// The first checkerboard color of the edit color button.
+  /// 
+  /// The checkerboard pattern is only shown when the edit color button is displaying a transparent color.
   final Color editColorButtonCheckerboardColor1;
+  
+  /// The second checkerboard color of the edit color button.
+  /// 
+  /// The checkerboard pattern is only shown when the edit color button is displaying a transparent color.
   final Color editColorButtonCheckerboardColor2;
+  
+  /// The checkerboard size of the edit color button.
+  /// 
+  /// The checkerboard pattern is only shown when the edit color button is displaying a transparent color.
   final double editColorButtonCheckerboardSize;
+  
+  /// The icon on the edit color button.
   final IconData editColorButtonIcon;
+  
+  /// The color of the edit color button's icon when it is displaying a dark color.
   final Color editColorButtonIconColorForDarkColor;
+  
+  /// The color of the edit color button's icon when it is displaying a bright color.
   final Color editColorButtonIconColorForBrightColor;
+  
+  /// The shadow(s) of the edit color button's icon when it is displaying a dark color.
   final List<Shadow>? editColorButtonIconShadowsForDarkColor;
+  
+  /// The shadow(s) of the edit color button's icon when it is displaying a bright color.
   final List<Shadow>? editColorButtonIconShadowsForBrightColor;
+  
+  /// The duration of the edit color button's icon's slide in/out animation that is played when the mouse is hovered over the button.
   final Duration editColorButtonIconAnimationDuration;
+  
+  /// The animation curve of the edit color button's icon's slide in/out animation that is played when the mouse is hovered over the button.
   final Curve editColorButtonIconAnimationCurve;
+  
+  /// The text style of the edit color button when it is displaying a dark color.
   final TextStyle editColorButtonTextStyleForDarkColor;
+  
+  /// The text style of the edit color button when it is displaying a bright color.
   final TextStyle editColorButtonTextStyleForBrightColor;
+  
+  /// The duration of the edit color dialog's size change animation.
   final Duration editColorDialogSizeChangeAnimationDuration;
+  
+  /// The animation curve of the edit color dialog's size change animation.
   final Curve editColorDialogSizeChangeCurve;
+  
+  /// The elevation of the edit color dialog.
   final double editColorDialogElevation;
+  
+  /// The border radius of the edit color dialog.
   final double editColorDialogBorderRadius;
+  
+  /// The text style of the edit color dialog's color name.
   final TextStyle editColorDialogColorNameTextStyle;
-  final TextStyle editColorDialogTypeTextStyle;
+  
+  /// The text style of the edit color dialog's picker type text.
+  final TextStyle editColorDialogPickerTypeTextStyle;
+  
+  /// The color of the selected picker type text in the edit color dialog.
   final Color editColorDialogSelectedPickerTypeColor;
+  
+  /// The horizontal spacing between the color picker indicator items in the edit color dialog.
   final double editColorDialogSpacing;
+  
+  /// The space between the color picker color item rows in the edit color dialog, when they need to be wrapped to multiple rows.
   final double editColorDialogRunSpacing;
+  
+  /// Vertical spacing between items in the color picker column in the edit color dialog.
   final double editColorDialogColumnSpacing;
+  
+  /// The default width of the number edit button row.
+  /// 
+  /// The width gets reduced if the sidebar is too narrow.
   final double defaultNumberEditorButtonRowWidth;
+  
+  /// The space between the text field and the double editor's infinite scroll view.
   final double spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView;
+  
+  /// The height of the double editor's infinite scroll view.
   final double doubleEditorInfiniteScrollViewHeight;
+  
+  /// The double editor's infinite scroll view's box decoration.
   final BoxDecoration doubleEditorInfiniteScrollViewBoxDecoration;
+  
+  /// The double editor's infinite scroll view's padding.
   final EdgeInsets doubleEditorInfiniteScrollViewPadding;
+  
+  /// The text style of the double editor's infinite scroll view.
   final TextStyle doubleEditorInfiniteScrollViewTextStyle;
+  
+  /// The double editor's infinite scroll view's padding amount.
   final double doubleEditorInfiniteScrollViewTextPaddingAmount;
+  
+  /// The color of the lines in the double editor's infinite scroll view.
   final Color doubleEditorInfiniteScrollViewLineColor;
+  
+  /// The width of the lines in the double editor's infinite scroll view.
   final double doubleEditorInfiniteScrollViewLineWidth;
+  
+  /// The color of the indicator in the double editor's infinite scroll view.
+  /// 
+  /// The indicator is the line in the middle of the infinite scroll view that shows where the currently selected double value is located.
   final Color doubleEditorInfiniteScrollViewIndicatorColor;
+  
+  /// The width of the indicator in the double editor's infinite scroll view.
+  /// 
+  /// The indicator is the line in the middle of the infinite scroll view that shows where the currently selected double value is located.
   final double doubleEditorInfiniteScrollViewIndicatorWidth;
+  
+  /// The height of the indicator in the double editor's infinite scroll view (on a range from 0.0 to 1.0).
+  /// 
+  /// The indicator is the line in the middle of the infinite scroll view that shows where the currently selected double value is located.
   final double doubleEditorInfiniteScrollViewIndicatorHeight;
+  
+  /// The widget to use as the selected radio button.
   final Widget selectedRadioButton;
+  
+  /// The widget to use as the unselected radio button.
   final Widget unselectedRadioButton;
+  
+  /// The space between a radio button and its label.
   final double spaceBetweenRadioButtonAndLabel;
+  
+  /// The text style of a selected radio buttons label.
   final TextStyle selectedRadioButtonLabelStyle;
+  
+  /// The text style of an unselected radio buttons label.
   final TextStyle unselectedRadioButtonLabelStyle;
+  
+  /// The maximal width of a boolean editor.
   final double boolEditorMaxWidth;
+  
+  /// The space between the radio buttons in the boolean editor.
   final double boolEditorSpaceBetweenRadioButtons;
+  
+  /// The boolean editor's padding.
   final EdgeInsets boolEditorRadioButtonPadding;
+  
+  /// The height of the boolean editor.
   final double boolEditorHeight;
+  
+  /// The padding of the “create test session” button.
   final EdgeInsets createTestSessionButtonPadding;
+  
+  /// The width of the “create test session” button.
   final double createTestSessionDialogWidth;
+  
+  /// The padding of the “create test session” dialog.
   final EdgeInsets createTestSessionDialogPadding;
+  
+  /// The height factor of the “create test session” dialog's search result list in relation to the window's height.
+  /// 
+  /// A height factor of 0.5 means that the search result list covers 50 % of the application window.
   final double createTestSessionDialogSearchResultsHeightFactor;
+  
+  /// The height of the “create test session” dialog's search bar.
   final double createTestSessionDialogSearchBarHeight;
+  
+  /// The padding of the “create test session” dialog's search results.
   final EdgeInsets createTestSessionDialogSearchResultsPadding;
+  
+  /// The height of a single item in the “create test session” dialog's search results.
   final double createTestSessionDialogSearchResultHeight;
+  
+  /// The box decoration of the “create test session” dialog's selected search result.
   final BoxDecoration createTestSessionDialogSelectedSearchResultDecoration;
+  
+  /// The box decoration of the “create test session” dialog's unselected search results.
   final BoxDecoration createTestSessionDialogUnselectedSearchResultDecoration;
+  
+  /// The text style of the “create test session” dialog's search results.
   final TextStyle createTestSessionDialogSearchResultTextStyle;
+  
+  /// The padding of the “create test session” dialog's search result icons.
   final EdgeInsets createTestSessionDialogSearchResultIconPadding;
+  
+  /// The size of the “create test session” dialog's search result icons.
   final double createTestSessionDialogSearchResultIconSize;
+  
+  /// The duration of the “create test session” dialog's search result fade animation.
   final Duration createTestSessionDialogSearchResultFadeDuration;
+  
+  /// The opacity of the “create test session” dialog's unselected search results.
   final double createTestSessionDialogUnselectedSearchResultOpacity;
+  
+  /// The text style of the “create test session” dialog's *“No matching results.”* text.
   final TextStyle createTestSessionDialogNoMatchingResultsTextStyle;
+  
+  /// The box decoration of the selected tab.
   final BoxDecoration selectedTabBoxDecoration;
+  
+  /// The box decoration of the unselected tabs.
   final BoxDecoration unselectedTabBoxDecoration;
+  
+  /// The width of the decoration of the selected tab.
   final double selectedTabAccentColorDecorationWidth;
+  
+  /// The width of the line that separates tabs.
   final BoxDecoration tabSeparatorBoxDecoration;
+  
+  /// The box decoration of the active tab's light reflection.
   final BoxDecoration tabLightReflectionBoxDecoration;
+  
+  /// The padding of the tabs' icons.
   final EdgeInsets tabIconPadding;
+  
+  /// The size of the tabs' icons.
   final double tabIconSize;
+  
+  /// The text style of the tabs' text.
   final TextStyle tabTextStyle;
+  
+  /// The opacity of unselected tabs that are being hovered over.
   final double unselectedHoveredTabOpacity;
+  
+  /// The opacity of unselected tabs that are *not* being hovered over.
   final double unselectedNotHoveredTabOpacity;
+  
+  /// The duration of the opacity change animation that plays when an unselected tab is hovered over.
   final Duration unselectedTabOpacityChangeDuration;
+  
+  /// The space above the tab bar.
   final double spaceAboveTabs;
+  
+  /// The padding of the tabs' content.
   final EdgeInsets tabContentPadding;
+  
+  /// The duration of the animation that plays when a new tab has been opened.
   final Duration tabOpenAnimationDuration;
+  
+  /// The animation curve of the animation that plays when a new tab has been opened.
   final Curve tabOpenAnimationCurve;
+  
+  /// The color of the drag handle that appears when the sidebar is being resized.
   final Color dragHandleColor;
+  
+  /// The size of the drag handle that appears when the sidebar is being resized.
   final double dragHandleSize;
+  
+  /// The duration of the drag handle's fade animation.
+  /// 
+  /// The “drag handle” refers to the line that appears when the sidebar is being resized.
   final Duration dragHandleChangeOpacityDuration;
+  
+  /// The amount of time until the drag handle appears when sidebar's edge is being hovered over.
   final Duration timeUntilDragHandleAppears;
   
   const ManualWidgetTesterThemeSettings({
@@ -335,7 +710,7 @@ class ManualWidgetTesterThemeSettings {
     this.dialogPadding = const EdgeInsets.all(8.0),
     this.dialogActionButtonHeight = 32.0,
     this.dialogActionButtonSectionBackgroundColor = const Color.fromRGBO(16, 18, 21, 0.5),
-    this.defaultDialogActionButtonRowWidth = 192.0,
+    this.baseDialogActionButtonRowWidth = 192.0,
     this.customDialogActionButtonWidthAddition = 32.0,
     this.distanceBetweenDialogContentAndActionButtons = 8.0,
     this.editColorButtonHeight = 28.0,
@@ -388,7 +763,7 @@ class ManualWidgetTesterThemeSettings {
     this.editColorDialogColorNameTextStyle = const TextStyle(
       color: Color.fromRGBO(255, 255, 255, 0.9),
     ),
-    this.editColorDialogTypeTextStyle = const TextStyle(
+    this.editColorDialogPickerTypeTextStyle = const TextStyle(
       color: Color.fromRGBO(255, 255, 255, 0.9),
     ),
     this.editColorDialogSelectedPickerTypeColor = const Color.fromRGBO(82, 82, 82, 1.0),

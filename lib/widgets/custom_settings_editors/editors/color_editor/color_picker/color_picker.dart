@@ -97,7 +97,7 @@ class _ColorPickerState extends State<ColorPicker> {
               elevation: widget.themeSettings.editColorDialogElevation,
               borderRadius: widget.themeSettings.editColorDialogBorderRadius,
               colorNameTextStyle: widget.themeSettings.editColorDialogColorNameTextStyle,
-              pickerTypeTextStyle: widget.themeSettings.editColorDialogTypeTextStyle,
+              pickerTypeTextStyle: widget.themeSettings.editColorDialogPickerTypeTextStyle,
               selectedPickerTypeColor: widget.themeSettings.editColorDialogSelectedPickerTypeColor,
               spacing: widget.themeSettings.editColorDialogSpacing,
               runSpacing: widget.themeSettings.editColorDialogRunSpacing,

@@ -124,7 +124,7 @@ class ManualWidgetTesterDialogGenerator {
           const Spacer(),
           SizedBox(
             height: themeSettings.dialogActionButtonHeight,
-            width: themeSettings.defaultDialogActionButtonRowWidth + themeSettings.customDialogActionButtonWidthAddition * customButtons.length,
+            width: themeSettings.baseDialogActionButtonRowWidth + themeSettings.customDialogActionButtonWidthAddition * customButtons.length,
             child: ManualWidgetTesterButtonRow(
               themeSettings: themeSettings,
               buttons: [
