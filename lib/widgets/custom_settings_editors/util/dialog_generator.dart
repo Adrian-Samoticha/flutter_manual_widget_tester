@@ -54,7 +54,12 @@ class ManualWidgetTesterDialogGenerator {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
-              editorBuilder(context),
+              Padding(
+                padding: themeSettings.dialogPadding.copyWith(
+                  bottom: 0.0,
+                ),
+                child: editorBuilder(context),
+              ),
               SizedBox(height: themeSettings.distanceBetweenDialogContentAndActionButtons),
               _buildActionButtonRow(themeSettings, context, onApply, onCancel, customActionButtons),
             ],
@@ -101,10 +106,7 @@ class ManualWidgetTesterDialogGenerator {
           filter: doEnableBlur ? ImageFilter.blur(sigmaX: themeSettings.dialogBlurRadius, sigmaY: themeSettings.dialogBlurRadius) : ImageFilter.blur(),
           child: Opacity(
             opacity: curvedAnimationValue,
-            child: Padding(
-              padding: themeSettings.dialogPadding,
-              child: widget,
-            ),
+            child: widget,
           ),
         ),
       ),
@@ -112,38 +114,44 @@ class ManualWidgetTesterDialogGenerator {
   }
 
   static Widget _buildActionButtonRow(ManualWidgetTesterThemeSettings themeSettings, BuildContext context, void Function()? onApply, void Function()? onCancel, List<ManualWidgetTesterButtonInfo> customButtons) {
-    return Row(
-      children: [
-        const Spacer(),
-        SizedBox(
-          height: themeSettings.dialogActionButtonHeight,
-          width: themeSettings.defaultDialogActionButtonRowWidth + themeSettings.customDialogActionButtonWidthAddition * customButtons.length,
-          child: ManualWidgetTesterButtonRow(
-            themeSettings: themeSettings,
-            buttons: [
-              ManualWidgetTesterButtonInfo(
-                onButtonDown: null,
-                onButtonPressed: () {
-                  if (onCancel != null) {
-                    onCancel();
-                  }
-                  Navigator.maybePop(context);
-                },
-                child: const Center(child: Text('Cancel')),
-              ),
-              ...customButtons,
-              ManualWidgetTesterButtonInfo(
-                onButtonDown: null,
-                onButtonPressed: onApply == null ? null : () {
-                  onApply();
-                  Navigator.maybePop(context);
-                },
-                child: const Center(child: Text('Apply')),
-              ),
-            ],
+    return Container(
+      color: themeSettings.dialogActionButtonSectionBackgroundColor,
+      padding: themeSettings.dialogPadding.copyWith(
+        top: themeSettings.dialogPadding.bottom,
+      ),
+      child: Row(
+        children: [
+          const Spacer(),
+          SizedBox(
+            height: themeSettings.dialogActionButtonHeight,
+            width: themeSettings.defaultDialogActionButtonRowWidth + themeSettings.customDialogActionButtonWidthAddition * customButtons.length,
+            child: ManualWidgetTesterButtonRow(
+              themeSettings: themeSettings,
+              buttons: [
+                ManualWidgetTesterButtonInfo(
+                  onButtonDown: null,
+                  onButtonPressed: () {
+                    if (onCancel != null) {
+                      onCancel();
+                    }
+                    Navigator.maybePop(context);
+                  },
+                  child: const Center(child: Text('Cancel')),
+                ),
+                ...customButtons,
+                ManualWidgetTesterButtonInfo(
+                  onButtonDown: null,
+                  onButtonPressed: onApply == null ? null : () {
+                    onApply();
+                    Navigator.maybePop(context);
+                  },
+                  child: const Center(child: Text('Apply')),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

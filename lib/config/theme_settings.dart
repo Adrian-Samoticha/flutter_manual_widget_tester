@@ -92,6 +92,7 @@ class ManualWidgetTesterThemeSettings {
   final List<BoxShadow> dialogShadow;
   final EdgeInsets dialogPadding;
   final double dialogActionButtonHeight;
+  final Color dialogActionButtonSectionBackgroundColor;
   final double defaultDialogActionButtonRowWidth;
   final double customDialogActionButtonWidthAddition;
   final double distanceBetweenDialogContentAndActionButtons;
@@ -333,6 +334,7 @@ class ManualWidgetTesterThemeSettings {
     ],
     this.dialogPadding = const EdgeInsets.all(8.0),
     this.dialogActionButtonHeight = 32.0,
+    this.dialogActionButtonSectionBackgroundColor = const Color.fromRGBO(16, 18, 21, 0.5),
     this.defaultDialogActionButtonRowWidth = 192.0,
     this.customDialogActionButtonWidthAddition = 32.0,
     this.distanceBetweenDialogContentAndActionButtons = 8.0,
