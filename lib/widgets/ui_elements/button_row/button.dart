@@ -77,7 +77,7 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
       children: [
         _isPressed ? Container(
           color: widget.themeSettings.buttonPressedTint,
-        ) :  AnimatedOpacity(
+        ) : AnimatedOpacity(
           duration: const Duration(milliseconds: 50),
           opacity: _isBeingHovered ? 1.0 : 0.0,
           child: Container(
