@@ -75,14 +75,15 @@ class ManualWidgetTesterTextField extends StatelessWidget {
                     : themeSettings.textFieldBorderRadius,
               ),
               gradient: const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Color.fromRGBO(255, 255, 255, 0.0),
-                    Color.fromRGBO(255, 255, 255, 0.0),
-                    Color.fromRGBO(255, 255, 255, 0.025),
-                    Color.fromRGBO(255, 255, 255, 0.035),
-                  ]),
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color.fromRGBO(255, 255, 255, 0.0),
+                  Color.fromRGBO(255, 255, 255, 0.0),
+                  Color.fromRGBO(255, 255, 255, 0.025),
+                  Color.fromRGBO(255, 255, 255, 0.035),
+                ],
+              ),
             ),
             child: Center(
               child: _buildTextField(context),

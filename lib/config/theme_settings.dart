@@ -779,14 +779,16 @@ class ManualWidgetTesterThemeSettings {
     this.editColorButtonIconAnimationDuration =
         const Duration(milliseconds: 250),
     this.editColorButtonIconAnimationCurve = Curves.ease,
-    this.editColorButtonTextStyleForDarkColor =
-        const TextStyle(color: Color.fromRGBO(255, 255, 255, 0.9), shadows: [
-      Shadow(
-        blurRadius: 2.0,
-        color: Color.fromRGBO(0, 0, 0, 0.5),
-        offset: Offset(0.0, 1.0),
-      ),
-    ]),
+    this.editColorButtonTextStyleForDarkColor = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.9),
+      shadows: [
+        Shadow(
+          blurRadius: 2.0,
+          color: Color.fromRGBO(0, 0, 0, 0.5),
+          offset: Offset(0.0, 1.0),
+        ),
+      ],
+    ),
     this.editColorButtonTextStyleForBrightColor = const TextStyle(
       color: Color.fromRGBO(0, 0, 0, 0.9),
     ),
@@ -964,13 +966,14 @@ class ManualWidgetTesterThemeSettings {
     this.selectedTabAccentColorDecorationWidth = 3.0,
     this.tabSeparatorBoxDecoration = const BoxDecoration(
       gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Color.fromRGBO(255, 255, 255, 0.0),
-            Color.fromRGBO(255, 255, 255, 0.1),
-            Color.fromRGBO(255, 255, 255, 0.0),
-          ]),
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          Color.fromRGBO(255, 255, 255, 0.0),
+          Color.fromRGBO(255, 255, 255, 0.1),
+          Color.fromRGBO(255, 255, 255, 0.0),
+        ],
+      ),
     ),
     this.tabLightReflectionBoxDecoration = const BoxDecoration(
       borderRadius: BorderRadius.only(
@@ -978,16 +981,17 @@ class ManualWidgetTesterThemeSettings {
         topRight: Radius.circular(3.0),
       ),
       gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Color.fromRGBO(255, 255, 255, 0.3),
-            Color.fromRGBO(255, 255, 255, 0.12),
-            Color.fromRGBO(255, 255, 255, 0.1),
-            Color.fromRGBO(255, 255, 255, 0.05),
-            Color.fromRGBO(255, 255, 255, 0.02),
-            Color.fromRGBO(255, 255, 255, 0.0),
-          ]),
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          Color.fromRGBO(255, 255, 255, 0.3),
+          Color.fromRGBO(255, 255, 255, 0.12),
+          Color.fromRGBO(255, 255, 255, 0.1),
+          Color.fromRGBO(255, 255, 255, 0.05),
+          Color.fromRGBO(255, 255, 255, 0.02),
+          Color.fromRGBO(255, 255, 255, 0.0),
+        ],
+      ),
     ),
     this.tabIconPadding = const EdgeInsets.only(right: 4.0),
     this.tabIconSize = 21.0,
