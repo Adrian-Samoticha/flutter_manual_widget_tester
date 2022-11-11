@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
-import 'tab_background/tab_background.dart';
-import 'tab_content/tab_content.dart';
+import 'tab_box/tab_box.dart';
 
 class ManualWidgetTesterTab extends StatefulWidget {
   const ManualWidgetTesterTab({Key? key, required this.width, required this.widgetName, required this.themeSettings, required this.tabIndex, required this.selectedTabIndex, required this.onSelect, required this.onClose, required this.icon, required this.iconColor}) : super(key: key);
@@ -39,52 +38,18 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
         onExit: (_) => setState(() {
           _isBeingHovered = false;
         }),
-        child: _buildTabBox(isSelected),
-      ),
-    );
-  }
-
-  Widget _buildTabBox(bool isSelected) {
-    return TweenAnimationBuilder<double>(
-      duration: widget.themeSettings.tabOpenAnimationDuration,
-      tween: Tween<double>(begin: 1.0, end: 0.0),
-      curve: widget.themeSettings.tabOpenAnimationCurve,
-      builder: (BuildContext context, double value, Widget? child) {
-        return ClipRect(
-          child: FractionalTranslation(
-            translation: Offset(0.0, value),
-            child: child!,
-          ),
-        );
-      },
-      child: SizedBox(
-        width: widget.width,
-        height: widget.themeSettings.appBarHeight,
-        child: Padding(
-          padding: EdgeInsets.only(top: widget.themeSettings.spaceAboveTabs),
-          child: _buildTabStack(isSelected),
-        ),
-      ),
-    );
-  }
-
-  Stack _buildTabStack(bool isSelected) {
-    return Stack(
-      children: [
-        TabBackground(
-          themeSettings: widget.themeSettings,
-          tabIndex: widget.tabIndex,
-          selectedTabIndex: widget.selectedTabIndex,
-        ),
-        TabContent(
-          themeSettings: widget.themeSettings,
+        child: TabBox(
           isBeingHovered: _isBeingHovered,
+          themeSettings: widget.themeSettings,
           icon: widget.icon,
           iconColor: widget.iconColor,
           isSelected: isSelected,
+          selectedTabIndex: widget.selectedTabIndex,
+          tabIndex: widget.tabIndex,
           widgetName: widget.widgetName,
+          width: widget.width,
         ),
-      ],
+      ),
     );
   }
 }
