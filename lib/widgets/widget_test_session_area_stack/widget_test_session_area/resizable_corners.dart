@@ -45,32 +45,39 @@ class _ResizableCornersState extends State<ResizableCorners> {
 
   Widget _buildResizeHandle({required bool isRight, required bool isBottom}) {
     final mouseCursor = _getMouseCursorForCorner(
-        isRight: isRight,
-        isBottom: isBottom,
-        isMouseButtonDown: _isBeingDragged);
+      isRight: isRight,
+      isBottom: isBottom,
+      isMouseButtonDown: _isBeingDragged,
+    );
 
     return Center(
       child: Transform.translate(
-        offset: Offset((isRight ? 0.5 : -0.5) * (widget.width + 6.0),
-            (isBottom ? 0.5 : -0.5) * (widget.height + 6.0)),
+        offset: Offset(
+          (isRight ? 0.5 : -0.5) * (widget.width + 6.0),
+          (isBottom ? 0.5 : -0.5) * (widget.height + 6.0),
+        ),
         child: MouseRegion(
           cursor: mouseCursor,
           child: GestureDetector(
             onPanStart: (_) {
-              _mouseCursorOverrideId = widget.mouseCursorOverrider
-                  .overrideMouseCursor(_getMouseCursorForCorner(
-                      isRight: isRight,
-                      isBottom: isBottom,
-                      isMouseButtonDown: true));
+              _mouseCursorOverrideId =
+                  widget.mouseCursorOverrider.overrideMouseCursor(
+                _getMouseCursorForCorner(
+                  isRight: isRight,
+                  isBottom: isBottom,
+                  isMouseButtonDown: true,
+                ),
+              );
               _isBeingDragged = true;
               widget.onHorizontalDragStart();
               widget.onVerticalDragStart();
             },
-            onPanUpdate: (details) {
-              widget.onHorizontalDragUpdate(
-                  (isRight ? 2 : -2) * details.delta.dx);
-              widget
-                  .onVerticalDragUpdate((isBottom ? 2 : -2) * details.delta.dy);
+            onPanUpdate: (DragUpdateDetails details) {
+              var horizontalDelta = (isRight ? 2.0 : -2.0) * details.delta.dx;
+              widget.onHorizontalDragUpdate(horizontalDelta);
+
+              var verticalDelta = (isBottom ? 2.0 : -2.0) * details.delta.dy;
+              widget.onVerticalDragUpdate(verticalDelta);
             },
             onPanEnd: (_) {
               widget.mouseCursorOverrider

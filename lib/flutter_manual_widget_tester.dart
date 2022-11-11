@@ -189,11 +189,12 @@ class _ManualWidgetTesterBody extends StatelessWidget {
                 builders: builders,
               ),
               Expanded(
-                  child: ManualWidgetTesterWidgetTestSessionAreaStack(
-                mouseCursorOverrider: mouseCursorOverrider,
-                themeSettings: themeSettings,
-                widgetTestSessionHandler: widgetTestSessionHandler,
-              )),
+                child: ManualWidgetTesterWidgetTestSessionAreaStack(
+                  mouseCursorOverrider: mouseCursorOverrider,
+                  themeSettings: themeSettings,
+                  widgetTestSessionHandler: widgetTestSessionHandler,
+                ),
+              ),
             ],
           ),
         ),

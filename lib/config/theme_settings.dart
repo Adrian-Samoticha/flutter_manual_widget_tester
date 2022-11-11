@@ -628,9 +628,10 @@ class ManualWidgetTesterThemeSettings {
     ),
     this.zoomControlsShadow = const [
       BoxShadow(
-          blurRadius: 2.0,
-          color: Color.fromRGBO(0, 0, 0, 0.25),
-          offset: Offset(0.0, 1.0)),
+        blurRadius: 2.0,
+        color: Color.fromRGBO(0, 0, 0, 0.25),
+        offset: Offset(0.0, 1.0),
+      ),
     ],
     this.zoomControlsPadding = const EdgeInsets.all(3.5),
     this.spaceBetweenTextBoxesAndButtonRows = 0.5,
@@ -735,9 +736,10 @@ class ManualWidgetTesterThemeSettings {
       ),
       boxShadow: [
         BoxShadow(
-            blurRadius: 3.0,
-            color: Color.fromRGBO(0, 0, 0, 0.25),
-            offset: Offset(0.0, 1.0)),
+          blurRadius: 3.0,
+          color: Color.fromRGBO(0, 0, 0, 0.25),
+          offset: Offset(0.0, 1.0),
+        ),
       ],
     ),
     this.editColorButtonDecorationForBrightColor = const BoxDecoration(
@@ -748,9 +750,10 @@ class ManualWidgetTesterThemeSettings {
       ),
       boxShadow: [
         BoxShadow(
-            blurRadius: 3.0,
-            color: Color.fromRGBO(0, 0, 0, 0.25),
-            offset: Offset(0.0, 1.0)),
+          blurRadius: 3.0,
+          color: Color.fromRGBO(0, 0, 0, 0.25),
+          offset: Offset(0.0, 1.0),
+        ),
       ],
     ),
     this.editColorButtonBorderRadius =
@@ -767,9 +770,10 @@ class ManualWidgetTesterThemeSettings {
         const Color.fromRGBO(0, 0, 0, 0.7),
     this.editColorButtonIconShadowsForDarkColor = const [
       Shadow(
-          blurRadius: 2.0,
-          color: Color.fromRGBO(0, 0, 0, 0.5),
-          offset: Offset(0.0, 1.0)),
+        blurRadius: 2.0,
+        color: Color.fromRGBO(0, 0, 0, 0.5),
+        offset: Offset(0.0, 1.0),
+      ),
     ],
     this.editColorButtonIconShadowsForBrightColor,
     this.editColorButtonIconAnimationDuration =
@@ -778,9 +782,10 @@ class ManualWidgetTesterThemeSettings {
     this.editColorButtonTextStyleForDarkColor =
         const TextStyle(color: Color.fromRGBO(255, 255, 255, 0.9), shadows: [
       Shadow(
-          blurRadius: 2.0,
-          color: Color.fromRGBO(0, 0, 0, 0.5),
-          offset: Offset(0.0, 1.0)),
+        blurRadius: 2.0,
+        color: Color.fromRGBO(0, 0, 0, 0.5),
+        offset: Offset(0.0, 1.0),
+      ),
     ]),
     this.editColorButtonTextStyleForBrightColor = const TextStyle(
       color: Color.fromRGBO(0, 0, 0, 0.9),
@@ -810,10 +815,11 @@ class ManualWidgetTesterThemeSettings {
       boxShadow: [
         BoxShadow(color: Color.fromRGBO(18, 20, 23, 1.0)),
         BoxShadow(
-            color: Color.fromRGBO(43, 47, 54, 1.0),
-            spreadRadius: -2.0,
-            blurRadius: 5.5,
-            offset: Offset(0.0, 1.0)),
+          color: Color.fromRGBO(43, 47, 54, 1.0),
+          spreadRadius: -2.0,
+          blurRadius: 5.5,
+          offset: Offset(0.0, 1.0),
+        ),
       ],
       border: Border.fromBorderSide(
         BorderSide(
@@ -861,10 +867,11 @@ class ManualWidgetTesterThemeSettings {
             boxShadow: [
               BoxShadow(color: Color.fromRGBO(24, 125, 192, 1.0)),
               BoxShadow(
-                  color: Color.fromRGBO(32, 175, 255, 1.0),
-                  spreadRadius: -2.0,
-                  blurRadius: 2.5,
-                  offset: Offset(-1.0, -1.0)),
+                color: Color.fromRGBO(32, 175, 255, 1.0),
+                spreadRadius: -2.0,
+                blurRadius: 2.5,
+                offset: Offset(-1.0, -1.0),
+              ),
             ],
           ),
           child: FractionallySizedBox(
