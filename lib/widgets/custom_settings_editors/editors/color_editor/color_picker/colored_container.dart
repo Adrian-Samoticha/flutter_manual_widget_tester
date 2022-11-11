@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
 class ColoredContainer extends StatelessWidget {
-  const ColoredContainer({Key? key, required this.isSelectedColorDark, required this.doShowEditIcon, required this.selectedColor, required this.themeSettings}) : super(key: key);
-  
+  const ColoredContainer(
+      {Key? key,
+      required this.isSelectedColorDark,
+      required this.doShowEditIcon,
+      required this.selectedColor,
+      required this.themeSettings})
+      : super(key: key);
+
   final bool isSelectedColorDark;
   final bool doShowEditIcon;
   final Color selectedColor;
@@ -12,7 +18,10 @@ class ColoredContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: (isSelectedColorDark ? themeSettings.editColorButtonDecorationForDarkColor : themeSettings.editColorButtonDecorationForBrightColor).copyWith(
+      decoration: (isSelectedColorDark
+              ? themeSettings.editColorButtonDecorationForDarkColor
+              : themeSettings.editColorButtonDecorationForBrightColor)
+          .copyWith(
         color: selectedColor,
         borderRadius: themeSettings.editColorButtonBorderRadius,
       ),
@@ -25,9 +34,12 @@ class ColoredContainer extends StatelessWidget {
           ),
           TweenAnimationBuilder<double>(
             duration: themeSettings.editColorButtonIconAnimationDuration,
-            tween: Tween<double>(begin: doShowEditIcon ? 1.0 : 0.0, end: doShowEditIcon ? 1.0 : 0.0),
+            tween: Tween<double>(
+                begin: doShowEditIcon ? 1.0 : 0.0,
+                end: doShowEditIcon ? 1.0 : 0.0),
             curve: themeSettings.editColorButtonIconAnimationCurve,
-            builder: (BuildContext context, double animationValue, Widget? child) {
+            builder:
+                (BuildContext context, double animationValue, Widget? child) {
               return Opacity(
                 opacity: animationValue.clamp(0.0, 1.0),
                 child: ClipRect(
@@ -40,26 +52,33 @@ class ColoredContainer extends StatelessWidget {
             },
             child: Icon(
               themeSettings.editColorButtonIcon,
-              color: isSelectedColorDark ? themeSettings.editColorButtonIconColorForDarkColor : themeSettings.editColorButtonIconColorForBrightColor,
-              shadows: isSelectedColorDark ? themeSettings.editColorButtonIconShadowsForDarkColor : themeSettings.editColorButtonIconShadowsForBrightColor,
+              color: isSelectedColorDark
+                  ? themeSettings.editColorButtonIconColorForDarkColor
+                  : themeSettings.editColorButtonIconColorForBrightColor,
+              shadows: isSelectedColorDark
+                  ? themeSettings.editColorButtonIconShadowsForDarkColor
+                  : themeSettings.editColorButtonIconShadowsForBrightColor,
             ),
           ),
         ],
       ),
     );
   }
-  
+
   Text _buildColorCodeText(bool isSelectedColorDark) {
     return Text(
       _generateColorCodeString(),
       overflow: TextOverflow.fade,
       softWrap: false,
-      style: isSelectedColorDark ? themeSettings.editColorButtonTextStyleForDarkColor : themeSettings.editColorButtonTextStyleForBrightColor,
+      style: isSelectedColorDark
+          ? themeSettings.editColorButtonTextStyleForDarkColor
+          : themeSettings.editColorButtonTextStyleForBrightColor,
     );
   }
 
   String _generateColorCodeString() {
-    final rawColorString = selectedColor.value.toRadixString(16).toUpperCase().padLeft(8, '0');
+    final rawColorString =
+        selectedColor.value.toRadixString(16).toUpperCase().padLeft(8, '0');
     return '0x$rawColorString';
   }
 }

@@ -4,7 +4,18 @@ import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'tab_stack/tab_stack.dart';
 
 class TabBox extends StatelessWidget {
-  const TabBox({Key? key, required this.themeSettings, required this.width, required this.isBeingHovered, required this.isSelected, this.icon, required this.iconColor, required this.tabIndex, required this.selectedTabIndex, required this.widgetName}) : super(key: key);
+  const TabBox(
+      {Key? key,
+      required this.themeSettings,
+      required this.width,
+      required this.isBeingHovered,
+      required this.isSelected,
+      this.icon,
+      required this.iconColor,
+      required this.tabIndex,
+      required this.selectedTabIndex,
+      required this.widgetName})
+      : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final double width;

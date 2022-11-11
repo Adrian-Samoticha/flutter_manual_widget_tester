@@ -19,26 +19,26 @@ class TabText extends StatelessWidget {
   Widget build(BuildContext context) {
     if (isSelected) {
       return Center(
-        child: Text(
-          widgetName,
-          overflow: TextOverflow.fade,
-          softWrap: false,
-          style: themeSettings.tabTextStyle,
-        )
-      );
+          child: Text(
+        widgetName,
+        overflow: TextOverflow.fade,
+        softWrap: false,
+        style: themeSettings.tabTextStyle,
+      ));
     }
-    
+
     return Center(
-      child: AnimatedOpacity(
-        duration: themeSettings.unselectedTabOpacityChangeDuration,
-        opacity: isBeingHovered ? themeSettings.unselectedHoveredTabOpacity : themeSettings.unselectedNotHoveredTabOpacity,
-        child: Text(
-          widgetName,
-          overflow: TextOverflow.fade,
-          softWrap: false,
-          style: themeSettings.tabTextStyle,
-        ),
-      )
-    );
+        child: AnimatedOpacity(
+      duration: themeSettings.unselectedTabOpacityChangeDuration,
+      opacity: isBeingHovered
+          ? themeSettings.unselectedHoveredTabOpacity
+          : themeSettings.unselectedNotHoveredTabOpacity,
+      child: Text(
+        widgetName,
+        overflow: TextOverflow.fade,
+        softWrap: false,
+        style: themeSettings.tabTextStyle,
+      ),
+    ));
   }
 }

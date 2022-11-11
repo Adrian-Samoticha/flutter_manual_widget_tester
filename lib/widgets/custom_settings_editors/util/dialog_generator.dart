@@ -29,25 +29,38 @@ class ManualWidgetTesterDialogGenerator {
       barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
       barrierColor: themeSettings.dialogBarrierColor,
       transitionDuration: themeSettings.dialogOpenCloseAnimationDuration,
-      transitionBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget widget) {
-        final curvedAnimationValue = themeSettings.dialogOpenCloseAnimationCurve.transform(animation.value);
-        
+      transitionBuilder: (BuildContext context, Animation<double> animation,
+          Animation<double> secondaryAnimation, Widget widget) {
+        final curvedAnimationValue = themeSettings.dialogOpenCloseAnimationCurve
+            .transform(animation.value);
+
         // Unfortunately, the BackdropFilter Widget cannot be combined with the Opacity widget to create a dialog open/close animation. So instead, this code
         // fades the background color to full opacity to hide the point at which the BackdropFilter is enabled/disabled.
-        final originalDialogBackgroundColor = themeSettings.dialogBackgroundColor;
-        final renderedDialogBackgroundColor = _getRenderedBackgroundColorFromOriginalBackgroundColor(curvedAnimationValue, originalDialogBackgroundColor);
-        
+        final originalDialogBackgroundColor =
+            themeSettings.dialogBackgroundColor;
+        final renderedDialogBackgroundColor =
+            _getRenderedBackgroundColorFromOriginalBackgroundColor(
+                curvedAnimationValue, originalDialogBackgroundColor);
+
         final doEnableBlur = curvedAnimationValue >= 0.5;
-        
+
         return Transform.translate(
-          offset: themeSettings.dialogOpenCloseAnimationOffset * (1.0 - curvedAnimationValue),
+          offset: themeSettings.dialogOpenCloseAnimationOffset *
+              (1.0 - curvedAnimationValue),
           child: Align(
             alignment: themeSettings.dialogAlignment,
-            child: _buildDialogWindow(dialogWidth, themeSettings, renderedDialogBackgroundColor, curvedAnimationValue, doEnableBlur, widget),
+            child: _buildDialogWindow(
+                dialogWidth,
+                themeSettings,
+                renderedDialogBackgroundColor,
+                curvedAnimationValue,
+                doEnableBlur,
+                widget),
           ),
         );
       },
-      pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
+      pageBuilder: (BuildContext context, Animation<double> animation,
+          Animation<double> secondaryAnimation) {
         return DefaultTextStyle(
           style: DefaultTextStyleProvider.defaultTextStyle,
           child: Column(
@@ -60,8 +73,11 @@ class ManualWidgetTesterDialogGenerator {
                 ),
                 child: editorBuilder(context),
               ),
-              SizedBox(height: themeSettings.distanceBetweenDialogContentAndActionButtons),
-              _buildActionButtonRow(themeSettings, context, onApply, onCancel, customActionButtons),
+              SizedBox(
+                  height: themeSettings
+                      .distanceBetweenDialogContentAndActionButtons),
+              _buildActionButtonRow(themeSettings, context, onApply, onCancel,
+                  customActionButtons),
             ],
           ),
         );
@@ -73,22 +89,33 @@ class ManualWidgetTesterDialogGenerator {
     });
   }
 
-  static Color _getRenderedBackgroundColorFromOriginalBackgroundColor(double curvedAnimationValue, Color originalDialogBackgroundColor) {
+  static Color _getRenderedBackgroundColorFromOriginalBackgroundColor(
+      double curvedAnimationValue, Color originalDialogBackgroundColor) {
     if (curvedAnimationValue >= 0.5) {
-      return originalDialogBackgroundColor.withOpacity(curvedAnimationValue.remap(0.5, 1.0, 1.0, originalDialogBackgroundColor.opacity));
+      return originalDialogBackgroundColor.withOpacity(curvedAnimationValue
+          .remap(0.5, 1.0, 1.0, originalDialogBackgroundColor.opacity));
     } else {
-      return originalDialogBackgroundColor.withOpacity(curvedAnimationValue.remap(0.0, 0.5, 0.0, 1.0));
+      return originalDialogBackgroundColor
+          .withOpacity(curvedAnimationValue.remap(0.0, 0.5, 0.0, 1.0));
     }
   }
 
-  static Widget _buildDialogWindow(double dialogWidth, ManualWidgetTesterThemeSettings themeSettings, Color renderedDialogBackgroundColor, double curvedAnimationValue, bool doEnableBlur, Widget widget) {
+  static Widget _buildDialogWindow(
+      double dialogWidth,
+      ManualWidgetTesterThemeSettings themeSettings,
+      Color renderedDialogBackgroundColor,
+      double curvedAnimationValue,
+      bool doEnableBlur,
+      Widget widget) {
     return Container(
       width: dialogWidth,
       decoration: BoxDecoration(
         borderRadius: themeSettings.dialogBorderRadius,
         color: renderedDialogBackgroundColor,
         border: Border.fromBorderSide(
-          BorderSide(color: themeSettings.dialogBorderColor.multiplyOpacity(curvedAnimationValue)),
+          BorderSide(
+              color: themeSettings.dialogBorderColor
+                  .multiplyOpacity(curvedAnimationValue)),
         ),
         boxShadow: themeSettings.dialogShadow.map((BoxShadow boxShadow) {
           return BoxShadow(
@@ -103,7 +130,11 @@ class ManualWidgetTesterDialogGenerator {
       child: ClipRRect(
         borderRadius: themeSettings.dialogBorderRadius,
         child: BackdropFilter(
-          filter: doEnableBlur ? ImageFilter.blur(sigmaX: themeSettings.dialogBlurRadius, sigmaY: themeSettings.dialogBlurRadius) : ImageFilter.blur(),
+          filter: doEnableBlur
+              ? ImageFilter.blur(
+                  sigmaX: themeSettings.dialogBlurRadius,
+                  sigmaY: themeSettings.dialogBlurRadius)
+              : ImageFilter.blur(),
           child: Opacity(
             opacity: curvedAnimationValue,
             child: widget,
@@ -113,7 +144,12 @@ class ManualWidgetTesterDialogGenerator {
     );
   }
 
-  static Widget _buildActionButtonRow(ManualWidgetTesterThemeSettings themeSettings, BuildContext context, void Function()? onApply, void Function()? onCancel, List<ManualWidgetTesterButtonInfo> customButtons) {
+  static Widget _buildActionButtonRow(
+      ManualWidgetTesterThemeSettings themeSettings,
+      BuildContext context,
+      void Function()? onApply,
+      void Function()? onCancel,
+      List<ManualWidgetTesterButtonInfo> customButtons) {
     return Container(
       color: themeSettings.dialogActionButtonSectionBackgroundColor,
       padding: themeSettings.dialogPadding.copyWith(
@@ -124,7 +160,9 @@ class ManualWidgetTesterDialogGenerator {
           const Spacer(),
           SizedBox(
             height: themeSettings.dialogActionButtonHeight,
-            width: themeSettings.baseDialogActionButtonRowWidth + themeSettings.customDialogActionButtonWidthAddition * customButtons.length,
+            width: themeSettings.baseDialogActionButtonRowWidth +
+                themeSettings.customDialogActionButtonWidthAddition *
+                    customButtons.length,
             child: ManualWidgetTesterButtonRow(
               themeSettings: themeSettings,
               buttons: [
@@ -141,10 +179,12 @@ class ManualWidgetTesterDialogGenerator {
                 ...customButtons,
                 ManualWidgetTesterButtonInfo(
                   onButtonDown: null,
-                  onButtonPressed: onApply == null ? null : () {
-                    onApply();
-                    Navigator.maybePop(context);
-                  },
+                  onButtonPressed: onApply == null
+                      ? null
+                      : () {
+                          onApply();
+                          Navigator.maybePop(context);
+                        },
                   child: const Center(child: Text('Apply')),
                 ),
               ],

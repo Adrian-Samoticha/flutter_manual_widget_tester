@@ -8,8 +8,13 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row/butt
 import 'tab_bar/tab_bar.dart';
 
 class ManualWidgetTesterAppBar extends StatelessWidget {
-  const ManualWidgetTesterAppBar({Key? key, required this.themeSettings, required this.widgetTestSessionHandler, required this.builders}) : super(key: key);
-  
+  const ManualWidgetTesterAppBar(
+      {Key? key,
+      required this.themeSettings,
+      required this.widgetTestSessionHandler,
+      required this.builders})
+      : super(key: key);
+
   final ManualWidgetTesterThemeSettings themeSettings;
   final WidgetTestSessionHandler widgetTestSessionHandler;
   final List<WidgetTestBuilder> builders;

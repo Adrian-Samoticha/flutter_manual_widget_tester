@@ -6,20 +6,31 @@ class ManualWidgetTesterFoldableRegion extends StatefulWidget {
   final String heading;
   final ManualWidgetTesterThemeSettings themeSettings;
   final bool isIndented;
-  
-  const ManualWidgetTesterFoldableRegion({Key? key, required this.child, required this.heading, required this.themeSettings, this.isIndented = false}) : super(key: key);
+
+  const ManualWidgetTesterFoldableRegion(
+      {Key? key,
+      required this.child,
+      required this.heading,
+      required this.themeSettings,
+      this.isIndented = false})
+      : super(key: key);
 
   @override
-  State<ManualWidgetTesterFoldableRegion> createState() => _ManualWidgetTesterFoldableRegionState();
+  State<ManualWidgetTesterFoldableRegion> createState() =>
+      _ManualWidgetTesterFoldableRegionState();
 }
 
-class _ManualWidgetTesterFoldableRegionState extends State<ManualWidgetTesterFoldableRegion> {
+class _ManualWidgetTesterFoldableRegionState
+    extends State<ManualWidgetTesterFoldableRegion> {
   bool _isFolded = false;
-  
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: widget.isIndented ? EdgeInsets.only(left: widget.themeSettings.foldableRegionIndentationAmount) : EdgeInsets.zero,
+      padding: widget.isIndented
+          ? EdgeInsets.only(
+              left: widget.themeSettings.foldableRegionIndentationAmount)
+          : EdgeInsets.zero,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -36,13 +47,15 @@ class _ManualWidgetTesterFoldableRegionState extends State<ManualWidgetTesterFol
           ),
           TweenAnimationBuilder<double>(
             duration: widget.themeSettings.foldableRegionAnimationDuration,
-            tween: Tween<double>(begin: _isFolded ? 0.0 : 1.0, end: _isFolded ? 0.0 : 1.0),
+            tween: Tween<double>(
+                begin: _isFolded ? 0.0 : 1.0, end: _isFolded ? 0.0 : 1.0),
             curve: Curves.ease,
             builder: (context, value, child) {
               return ClipRect(
                 clipBehavior: value < 1.0 ? Clip.antiAlias : Clip.none,
                 child: Align(
-                  alignment: widget.themeSettings.foldableRegionContentAlignment,
+                  alignment:
+                      widget.themeSettings.foldableRegionContentAlignment,
                   heightFactor: value,
                   child: child,
                 ),
@@ -63,8 +76,13 @@ class _Header extends StatelessWidget {
   final bool isIndented;
   final ManualWidgetTesterThemeSettings themeSettings;
 
-  const _Header({required this.text, required this.isFolded, required this.onClicked, required this.isIndented, required this.themeSettings});
-  
+  const _Header(
+      {required this.text,
+      required this.isFolded,
+      required this.onClicked,
+      required this.isIndented,
+      required this.themeSettings});
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
@@ -73,24 +91,27 @@ class _Header extends StatelessWidget {
         onTapDown: (_) => onClicked(),
         child: AnimatedOpacity(
           duration: const Duration(milliseconds: 50),
-          opacity: isFolded ? themeSettings.foldableRegionFoldedHeaderOpacity : 1.0,
+          opacity:
+              isFolded ? themeSettings.foldableRegionFoldedHeaderOpacity : 1.0,
           child: Container(
             height: themeSettings.foldableRegionHeaderHeight,
-            color: isIndented ? Colors.transparent : themeSettings.foldableRegionHeaderColor,
+            color: isIndented
+                ? Colors.transparent
+                : themeSettings.foldableRegionHeaderColor,
             child: Row(
               children: [
                 Icon(
-                  isFolded ? Icons.keyboard_arrow_right_outlined : Icons.keyboard_arrow_down_outlined,
+                  isFolded
+                      ? Icons.keyboard_arrow_right_outlined
+                      : Icons.keyboard_arrow_down_outlined,
                   color: themeSettings.foldableRegionChevronIconColor,
                   size: themeSettings.foldableRegionChevronIconSize,
                 ),
                 Expanded(
-                  child: Text(
-                    text,
-                    softWrap: false,
-                    overflow: themeSettings.foldableRegionHeadingOverflow,
-                    style: themeSettings.foldableRegionHeadingStyle
-                  ),
+                  child: Text(text,
+                      softWrap: false,
+                      overflow: themeSettings.foldableRegionHeadingOverflow,
+                      style: themeSettings.foldableRegionHeadingStyle),
                 ),
               ],
             ),

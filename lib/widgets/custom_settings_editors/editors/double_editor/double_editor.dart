@@ -11,7 +11,15 @@ import '../../ui_elements/heading.dart';
 import 'infinite_scroll_view.dart';
 
 class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
-  const ManualWidgetTesterCustomSettingsDoubleEditor({Key? key, required this.themeSettings, required this.settingName, required this.currentValue, required this.onChanged, required this.infiniteScrollViewRange, required this.infiniteScrollViewScrollSpeedFactor}) : super(key: key);
+  const ManualWidgetTesterCustomSettingsDoubleEditor(
+      {Key? key,
+      required this.themeSettings,
+      required this.settingName,
+      required this.currentValue,
+      required this.onChanged,
+      required this.infiniteScrollViewRange,
+      required this.infiniteScrollViewScrollSpeedFactor})
+      : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final String settingName;
@@ -27,26 +35,29 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ManualWidgetTesterCustomSettingsHeading(themeSettings: themeSettings, settingName: settingName),
+          ManualWidgetTesterCustomSettingsHeading(
+              themeSettings: themeSettings, settingName: settingName),
           Column(
             children: [
               SizedBox(
                 height: themeSettings.stringEditorHeight,
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    return Row(
-                      children: [
-                        Expanded(
-                          child: _buildTextField(),
-                        ),
-                        SizedBox(width: themeSettings.spaceBetweenTextBoxesAndButtonRows),
-                        _buildButtonRow(constraints),
-                      ],
-                    );
-                  }
-                ),
+                child: LayoutBuilder(builder: (context, constraints) {
+                  return Row(
+                    children: [
+                      Expanded(
+                        child: _buildTextField(),
+                      ),
+                      SizedBox(
+                          width:
+                              themeSettings.spaceBetweenTextBoxesAndButtonRows),
+                      _buildButtonRow(constraints),
+                    ],
+                  );
+                }),
               ),
-              SizedBox(height: themeSettings.spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView),
+              SizedBox(
+                  height: themeSettings
+                      .spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView),
               _buildInfiniteScrollView(),
             ],
           ),
@@ -59,9 +70,12 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
     return Listener(
       onPointerSignal: (PointerSignalEvent event) {
         if (event is PointerScrollEvent) {
-          GestureBinding.instance.pointerSignalResolver.register(event, (event) {
+          GestureBinding.instance.pointerSignalResolver.register(event,
+              (event) {
             final scrollDelta = (event as PointerScrollEvent).scrollDelta;
-            final newValue = currentValue + (scrollDelta.dx + scrollDelta.dy) * infiniteScrollViewScrollSpeedFactor;
+            final newValue = currentValue +
+                (scrollDelta.dx + scrollDelta.dy) *
+                    infiniteScrollViewScrollSpeedFactor;
             onChanged(newValue);
           });
         }
@@ -95,7 +109,8 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
 
   SizedBox _buildButtonRow(BoxConstraints constraints) {
     return SizedBox(
-      width: min(themeSettings.defaultNumberEditorButtonRowWidth, constraints.maxWidth * 0.5),
+      width: min(themeSettings.defaultNumberEditorButtonRowWidth,
+          constraints.maxWidth * 0.5),
       child: ManualWidgetTesterButtonRow(
         themeSettings: themeSettings,
         disableRoundedCornersOnLeftSide: true,
@@ -119,4 +134,3 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
     );
   }
 }
-

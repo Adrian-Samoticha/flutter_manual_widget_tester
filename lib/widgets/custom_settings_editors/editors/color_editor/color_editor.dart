@@ -5,7 +5,13 @@ import '../../ui_elements/heading.dart';
 import 'color_picker/color_picker.dart';
 
 class ManualWidgetTesterCustomSettingsColorEditor extends StatelessWidget {
-  const ManualWidgetTesterCustomSettingsColorEditor({Key? key, required this.themeSettings, required this.settingName, required this.currentValue, required this.onChanged}) : super(key: key);
+  const ManualWidgetTesterCustomSettingsColorEditor(
+      {Key? key,
+      required this.themeSettings,
+      required this.settingName,
+      required this.currentValue,
+      required this.onChanged})
+      : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final String settingName;
@@ -19,7 +25,8 @@ class ManualWidgetTesterCustomSettingsColorEditor extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ManualWidgetTesterCustomSettingsHeading(themeSettings: themeSettings, settingName: settingName),
+          ManualWidgetTesterCustomSettingsHeading(
+              themeSettings: themeSettings, settingName: settingName),
           SizedBox(
             height: themeSettings.editColorButtonHeight,
             child: ColorPicker(
@@ -33,4 +40,3 @@ class ManualWidgetTesterCustomSettingsColorEditor extends StatelessWidget {
     );
   }
 }
-

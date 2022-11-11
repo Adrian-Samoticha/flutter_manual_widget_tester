@@ -28,15 +28,17 @@ class TabContent extends StatelessWidget {
       padding: themeSettings.tabContentPadding,
       child: Row(
         children: [
-          ...icon == null ? const []: [
-            TabIcon(
-              themeSettings: themeSettings,
-              icon: icon!,
-              iconColor: iconColor,
-              isSelected: isSelected,
-              isBeingHovered: isBeingHovered,
-            ),
-          ],
+          ...icon == null
+              ? const []
+              : [
+                  TabIcon(
+                    themeSettings: themeSettings,
+                    icon: icon!,
+                    iconColor: iconColor,
+                    isSelected: isSelected,
+                    isBeingHovered: isBeingHovered,
+                  ),
+                ],
           Expanded(
             child: TabText(
               themeSettings: themeSettings,

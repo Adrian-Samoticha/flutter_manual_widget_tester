@@ -32,7 +32,8 @@ class _MyHomePageState extends State<MyHomePage> {
         name: 'SomeName',
         icon: Icons.access_alarms_rounded,
         builder: (context, settings) {
-          final backgroundColor = settings.getSetting('backgroundColor', Colors.white);
+          final backgroundColor =
+              settings.getSetting('backgroundColor', Colors.white);
           return Container(
             color: backgroundColor,
             child: const Text('foobar2'),
@@ -44,7 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
         name: 'SomeOtherName',
         icon: Icons.kayaking,
         builder: (context, settings) {
-          final backgroundColor = settings.getSetting('backgroundColor', Colors.orange);
+          final backgroundColor =
+              settings.getSetting('backgroundColor', Colors.orange);
           return Container(
             color: backgroundColor,
             child: const Text('foobar6'),
@@ -56,7 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
         name: 'ListView',
         icon: Icons.list,
         builder: (context, settings) {
-          final backgroundColor = settings.getSetting('backgroundColor', Colors.white);
+          final backgroundColor =
+              settings.getSetting('backgroundColor', Colors.white);
           return Container(
             color: backgroundColor,
             child: const Text('list view'),
@@ -68,7 +71,8 @@ class _MyHomePageState extends State<MyHomePage> {
         name: 'DialogGenerator',
         icon: Icons.window,
         builder: (context, settings) {
-          final backgroundColor = settings.getSetting('backgroundColor', Colors.blue);
+          final backgroundColor =
+              settings.getSetting('backgroundColor', Colors.blue);
           return Container(
             color: backgroundColor,
             child: const Text('dialog generator'),
@@ -80,7 +84,8 @@ class _MyHomePageState extends State<MyHomePage> {
         name: 'StringEditorState',
         icon: Icons.abc,
         builder: (context, settings) {
-          final backgroundColor = settings.getSetting('backgroundColor', Colors.lightGreen);
+          final backgroundColor =
+              settings.getSetting('backgroundColor', Colors.lightGreen);
           return Container(
             color: backgroundColor,
             child: const Text('edit this string\'s state'),
@@ -93,7 +98,8 @@ class _MyHomePageState extends State<MyHomePage> {
         icon: Icons.abc,
         iconColor: Colors.red,
         builder: (context, settings) {
-          final backgroundColor = settings.getSetting('backgroundColor', Colors.green);
+          final backgroundColor =
+              settings.getSetting('backgroundColor', Colors.green);
           return Container(
             color: backgroundColor,
             child: const Text('it this str'),
@@ -105,7 +111,8 @@ class _MyHomePageState extends State<MyHomePage> {
         name: 'StringEditor',
         icon: Icons.abc,
         builder: (context, settings) {
-          final backgroundColor = settings.getSetting('backgroundColor', Colors.green);
+          final backgroundColor =
+              settings.getSetting('backgroundColor', Colors.green);
           return Container(
             color: backgroundColor,
             child: const Text('edit this string'),
@@ -119,37 +126,34 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context, settings) {
           final offsetX = settings.getSetting('offsetX', 0.0);
           final offsetY = settings.getSetting('offsetY', 0.0);
-          
+
           return Center(
             child: Container(
               color: const Color.fromRGBO(0, 0, 0, 0.25),
               child: SizedBox(
                 width: 128.0,
                 height: 32.0,
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    return Transform.translate(
-                      offset: Offset(offsetX * constraints.maxWidth, offsetY * constraints.maxHeight),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          print('pressed');
-                        },
-                        child: const Text('button'),
-                      ),
-                    );
-                  }
-                ),
+                child: LayoutBuilder(builder: (context, constraints) {
+                  return Transform.translate(
+                    offset: Offset(offsetX * constraints.maxWidth,
+                        offsetY * constraints.maxHeight),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        print('pressed');
+                      },
+                      child: const Text('button'),
+                    ),
+                  );
+                }),
               ),
             ),
           );
         },
       ),
     ];
-    
+
     return ManualWidgetTester(
-      themeSettings: const ManualWidgetTesterThemeSettings(
-        
-      ),
+      themeSettings: const ManualWidgetTesterThemeSettings(),
       builders: builders,
     );
   }

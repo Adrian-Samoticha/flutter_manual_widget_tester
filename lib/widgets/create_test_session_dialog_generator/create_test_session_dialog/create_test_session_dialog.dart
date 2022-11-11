@@ -16,10 +16,16 @@ class CreateTestSessionDialog extends StatefulWidget {
   final List<WidgetTestBuilder> builders;
   final WidgetTestSessionHandler widgetTestSessionHandler;
 
-  const CreateTestSessionDialog({Key? key, required this.themeSettings, required this.builders, required this.widgetTestSessionHandler}) : super(key: key);
+  const CreateTestSessionDialog(
+      {Key? key,
+      required this.themeSettings,
+      required this.builders,
+      required this.widgetTestSessionHandler})
+      : super(key: key);
 
   @override
-  State<CreateTestSessionDialog> createState() => _CreateTestSessionDialogState();
+  State<CreateTestSessionDialog> createState() =>
+      _CreateTestSessionDialogState();
 }
 
 class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
@@ -27,15 +33,16 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
   final _textEditingController = TextEditingController();
   var _selectedSearchResultIndex = 0;
   late List<WidgetTestBuilder> _searchResults;
-  
-  int get _legalSelectedSearchResultIndex => _selectedSearchResultIndex.clamp(0, _searchResults.length - 1);
-  
+
+  int get _legalSelectedSearchResultIndex =>
+      _selectedSearchResultIndex.clamp(0, _searchResults.length - 1);
+
   @override
   void initState() {
     _searchResults = _generateSearchResultsFromSearchTerm(_searchTerm);
     super.initState();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -54,7 +61,9 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
           bottom: widget.themeSettings.dialogBorderRadius.bottomLeft,
         ),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: widget.themeSettings.dialogBlurRadius, sigmaY: widget.themeSettings.dialogBlurRadius),
+          filter: ImageFilter.blur(
+              sigmaX: widget.themeSettings.dialogBlurRadius,
+              sigmaY: widget.themeSettings.dialogBlurRadius),
           child: Container(
             width: widget.themeSettings.createTestSessionDialogWidth,
             padding: widget.themeSettings.createTestSessionDialogPadding,
@@ -69,34 +78,41 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
     return Focus(
       autofocus: false,
       onKeyEvent: (FocusNode node, KeyEvent event) {
-        if (event.physicalKey == PhysicalKeyboardKey.arrowDown && event is KeyDownEvent) {
+        if (event.physicalKey == PhysicalKeyboardKey.arrowDown &&
+            event is KeyDownEvent) {
           setState(() {
             _selectedSearchResultIndex = _legalSelectedSearchResultIndex + 1;
           });
           return KeyEventResult.handled;
         }
-        
-        if (event.physicalKey == PhysicalKeyboardKey.arrowUp && event is KeyDownEvent) {
+
+        if (event.physicalKey == PhysicalKeyboardKey.arrowUp &&
+            event is KeyDownEvent) {
           setState(() {
             _selectedSearchResultIndex = _legalSelectedSearchResultIndex - 1;
           });
           return KeyEventResult.handled;
         }
-        
-        if (event.physicalKey == PhysicalKeyboardKey.enter && event is KeyDownEvent) {
-          final selectedSearchResult = _searchResults[_legalSelectedSearchResultIndex];
-          widget.widgetTestSessionHandler.createNewSession(selectedSearchResult);
+
+        if (event.physicalKey == PhysicalKeyboardKey.enter &&
+            event is KeyDownEvent) {
+          final selectedSearchResult =
+              _searchResults[_legalSelectedSearchResultIndex];
+          widget.widgetTestSessionHandler
+              .createNewSession(selectedSearchResult);
           Navigator.maybePop(context);
           return KeyEventResult.handled;
         }
-        
+
         return KeyEventResult.ignored;
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           _buildSearchBar(),
-          _buildSearchResultList(MediaQuery.of(context).size.height * widget.themeSettings.createTestSessionDialogSearchResultsHeightFactor),
+          _buildSearchResultList(MediaQuery.of(context).size.height *
+              widget.themeSettings
+                  .createTestSessionDialogSearchResultsHeightFactor),
         ],
       ),
     );
@@ -127,7 +143,7 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
         themeSettings: widget.themeSettings,
       );
     }
-    
+
     return SearchResultsList(
       themeSettings: widget.themeSettings,
       widgetTestSessionHandler: widget.widgetTestSessionHandler,
@@ -136,19 +152,21 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
       maxHeight: maxHeight,
     );
   }
-  
-  List<WidgetTestBuilder> _generateSearchResultsFromSearchTerm(String searchTerm) {
+
+  List<WidgetTestBuilder> _generateSearchResultsFromSearchTerm(
+      String searchTerm) {
     if (searchTerm.isEmpty) {
       return widget.builders;
     }
-    
+
     return [
-      ...widget.builders.where((element) => element.name.getResemblanceToSearchTerm(searchTerm) > 0.0),
+      ...widget.builders.where((element) =>
+          element.name.getResemblanceToSearchTerm(searchTerm) > 0.0),
     ]..sort((e1, e2) {
-      final e1Resemblance = e1.name.getResemblanceToSearchTerm(searchTerm);
-      final e2Resemblance = e2.name.getResemblanceToSearchTerm(searchTerm);
-      
-      return -e1Resemblance.compareTo(e2Resemblance);
-    });
+        final e1Resemblance = e1.name.getResemblanceToSearchTerm(searchTerm);
+        final e2Resemblance = e2.name.getResemblanceToSearchTerm(searchTerm);
+
+        return -e1Resemblance.compareTo(e2Resemblance);
+      });
   }
 }

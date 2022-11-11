@@ -7,8 +7,12 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region
 import 'test_session_menu_item/test_session_menu_item.dart';
 
 class RunningTestSessionsList extends StatelessWidget {
-  const RunningTestSessionsList({Key? key, required this.themeSettings, required this.widgetTestSessionHandler}) : super(key: key);
-  
+  const RunningTestSessionsList(
+      {Key? key,
+      required this.themeSettings,
+      required this.widgetTestSessionHandler})
+      : super(key: key);
+
   final ManualWidgetTesterThemeSettings themeSettings;
   final WidgetTestSessionHandler widgetTestSessionHandler;
 
@@ -22,28 +26,34 @@ class RunningTestSessionsList extends StatelessWidget {
       ),
     );
   }
-  
+
   List<Widget> _generateTestSessionColumnChildren() {
-    final enableIcons = widgetTestSessionHandler.widgetTestSessions.where((element) => element.icon != null).isNotEmpty;
-    
-    return widgetTestSessionHandler.widgetTestSessions.asMap().map((int index, WidgetTestSession session) {
-      final toBeReturnedWidget = ManualWidgetTesterTestSessionMenuItem(
-        widgetName: session.name,
-        iconColor: session.iconColor ?? themeSettings.defaultIconColor,
-        icon: session.icon,
-        themeSettings: themeSettings,
-        onSelect: () {
-          widgetTestSessionHandler.currentIndex = index;
-        },
-        onClose: () {
-          widgetTestSessionHandler.closeWidgetTestSession(index);
-        },
-        tabIndex: index,
-        selectedTabIndex: widgetTestSessionHandler.currentIndex,
-        enableIcon: enableIcons,
-      );
-      
-      return MapEntry(index, toBeReturnedWidget);
-    }).values.toList();
+    final enableIcons = widgetTestSessionHandler.widgetTestSessions
+        .where((element) => element.icon != null)
+        .isNotEmpty;
+
+    return widgetTestSessionHandler.widgetTestSessions
+        .asMap()
+        .map((int index, WidgetTestSession session) {
+          final toBeReturnedWidget = ManualWidgetTesterTestSessionMenuItem(
+            widgetName: session.name,
+            iconColor: session.iconColor ?? themeSettings.defaultIconColor,
+            icon: session.icon,
+            themeSettings: themeSettings,
+            onSelect: () {
+              widgetTestSessionHandler.currentIndex = index;
+            },
+            onClose: () {
+              widgetTestSessionHandler.closeWidgetTestSession(index);
+            },
+            tabIndex: index,
+            selectedTabIndex: widgetTestSessionHandler.currentIndex,
+            enableIcon: enableIcons,
+          );
+
+          return MapEntry(index, toBeReturnedWidget);
+        })
+        .values
+        .toList();
   }
 }

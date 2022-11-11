@@ -24,8 +24,14 @@ export 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 export 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 
 class ManualWidgetTester extends StatefulWidget {
-  const ManualWidgetTester({Key? key, this.themeSettings = const ManualWidgetTesterThemeSettings(), this.doubleEditorInfiniteScrollViewRange = 3.0, this.doubleEditorInfiniteScrollViewScrollSpeedFactor = 0.003, required this.builders}) : super(key: key);
-  
+  const ManualWidgetTester(
+      {Key? key,
+      this.themeSettings = const ManualWidgetTesterThemeSettings(),
+      this.doubleEditorInfiniteScrollViewRange = 3.0,
+      this.doubleEditorInfiniteScrollViewScrollSpeedFactor = 0.003,
+      required this.builders})
+      : super(key: key);
+
   final ManualWidgetTesterThemeSettings themeSettings;
   final double doubleEditorInfiniteScrollViewRange;
   final double doubleEditorInfiniteScrollViewScrollSpeedFactor;
@@ -38,16 +44,19 @@ class ManualWidgetTester extends StatefulWidget {
 class _ManualWidgetTesterState extends State<ManualWidgetTester> {
   final _mouseCursorOverrider = MouseCursorOverrider();
   final _widgetTestSessionHandler = WidgetTestSessionHandler();
-  late final StreamSubscription<MouseCursorOverrider> _onMouseCursorOverrideChangedStreamSubscription;
+  late final StreamSubscription<MouseCursorOverrider>
+      _onMouseCursorOverrideChangedStreamSubscription;
   final TypeEditorBuilder _typeEditorBuilder = TypeEditorBuilder();
-  
+
   @override
   void initState() {
-    _onMouseCursorOverrideChangedStreamSubscription = _mouseCursorOverrider.registerOnMouseCursorOverrideChanged((_) {
+    _onMouseCursorOverrideChangedStreamSubscription =
+        _mouseCursorOverrider.registerOnMouseCursorOverrideChanged((_) {
       setState(() {});
     });
-    
-    _typeEditorBuilder.installEditorBuilder<String>((String settingName, String currentValue, void Function(String) onChanged) {
+
+    _typeEditorBuilder.installEditorBuilder<String>((String settingName,
+        String currentValue, void Function(String) onChanged) {
       return ManualWidgetTesterCustomSettingsStringEditor(
         themeSettings: widget.themeSettings,
         settingName: settingName,
@@ -55,8 +64,9 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
         onChanged: onChanged,
       );
     });
-    
-    _typeEditorBuilder.installEditorBuilder<Color>((String settingName, Color currentValue, void Function(Color) onChanged) {
+
+    _typeEditorBuilder.installEditorBuilder<Color>((String settingName,
+        Color currentValue, void Function(Color) onChanged) {
       return ManualWidgetTesterCustomSettingsColorEditor(
         themeSettings: widget.themeSettings,
         settingName: settingName,
@@ -64,8 +74,9 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
         onChanged: onChanged,
       );
     });
-    
-    _typeEditorBuilder.installEditorBuilder<int>((String settingName, int currentValue, void Function(int) onChanged) {
+
+    _typeEditorBuilder.installEditorBuilder<int>(
+        (String settingName, int currentValue, void Function(int) onChanged) {
       return ManualWidgetTesterCustomSettingsIntEditor(
         themeSettings: widget.themeSettings,
         settingName: settingName,
@@ -73,19 +84,22 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
         onChanged: onChanged,
       );
     });
-    
-    _typeEditorBuilder.installEditorBuilder<double>((String settingName, double currentValue, void Function(double) onChanged) {
+
+    _typeEditorBuilder.installEditorBuilder<double>((String settingName,
+        double currentValue, void Function(double) onChanged) {
       return ManualWidgetTesterCustomSettingsDoubleEditor(
         themeSettings: widget.themeSettings,
         settingName: settingName,
         currentValue: currentValue,
         onChanged: onChanged,
         infiniteScrollViewRange: widget.doubleEditorInfiniteScrollViewRange,
-        infiniteScrollViewScrollSpeedFactor: widget.doubleEditorInfiniteScrollViewScrollSpeedFactor,
+        infiniteScrollViewScrollSpeedFactor:
+            widget.doubleEditorInfiniteScrollViewScrollSpeedFactor,
       );
     });
-    
-    _typeEditorBuilder.installEditorBuilder<bool>((String settingName, bool currentValue, void Function(bool) onChanged) {
+
+    _typeEditorBuilder.installEditorBuilder<bool>(
+        (String settingName, bool currentValue, void Function(bool) onChanged) {
       return ManualWidgetTesterCustomSettingsBoolEditor(
         themeSettings: widget.themeSettings,
         settingName: settingName,
@@ -93,27 +107,29 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
         onChanged: onChanged,
       );
     });
-    
+
     super.initState();
   }
-  
+
   @override
   void dispose() {
     _onMouseCursorOverrideChangedStreamSubscription.cancel();
-    
+
     super.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
-    if (widget.builders.hasDuplicates((WidgetTestBuilder builder) => builder.id)) {
-      throw ArgumentError('Found duplicate keys in `builders` list. All WidgetTestBuilders must have unique keys.');
+    if (widget.builders
+        .hasDuplicates((WidgetTestBuilder builder) => builder.id)) {
+      throw ArgumentError(
+          'Found duplicate keys in `builders` list. All WidgetTestBuilders must have unique keys.');
     }
-    
+
     for (final WidgetTestBuilder builder in widget.builders) {
       _widgetTestSessionHandler.updateSessions(builder);
     }
-    
+
     return DefaultTextStyle(
       style: DefaultTextStyleProvider.defaultTextStyle,
       child: MouseRegion(
@@ -155,39 +171,33 @@ class _ManualWidgetTesterBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ManualWidgetTesterSidebar(
-              themeSettings: themeSettings,
-              maxWidth: constraints.maxWidth - 128.0,
-              mouseCursorOverrider: mouseCursorOverrider,
-              widgetTestSessionHandler: widgetTestSessionHandler,
-              typeEditorBuilder: typeEditorBuilder,
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  ManualWidgetTesterAppBar(
-                    themeSettings: themeSettings,
-                    widgetTestSessionHandler: widgetTestSessionHandler,
-                    builders: builders,
-                  ),
-                  Expanded(
-                    child: ManualWidgetTesterWidgetTestSessionAreaStack(
-                      mouseCursorOverrider: mouseCursorOverrider,
-                      themeSettings: themeSettings,
-                      widgetTestSessionHandler: widgetTestSessionHandler,
-                    )
-                  ),
-                ],
+    return LayoutBuilder(builder: (context, constraints) {
+      return Row(mainAxisSize: MainAxisSize.min, children: [
+        ManualWidgetTesterSidebar(
+          themeSettings: themeSettings,
+          maxWidth: constraints.maxWidth - 128.0,
+          mouseCursorOverrider: mouseCursorOverrider,
+          widgetTestSessionHandler: widgetTestSessionHandler,
+          typeEditorBuilder: typeEditorBuilder,
+        ),
+        Expanded(
+          child: Column(
+            children: [
+              ManualWidgetTesterAppBar(
+                themeSettings: themeSettings,
+                widgetTestSessionHandler: widgetTestSessionHandler,
+                builders: builders,
               ),
-            ),
-          ]
-        );
-      }
-    );
+              Expanded(
+                  child: ManualWidgetTesterWidgetTestSessionAreaStack(
+                mouseCursorOverrider: mouseCursorOverrider,
+                themeSettings: themeSettings,
+                widgetTestSessionHandler: widgetTestSessionHandler,
+              )),
+            ],
+          ),
+        ),
+      ]);
+    });
   }
 }

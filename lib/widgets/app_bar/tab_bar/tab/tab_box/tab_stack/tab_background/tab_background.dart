@@ -20,23 +20,29 @@ class TabBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isSelected = tabIndex == selectedTabIndex;
-    
+
     return Stack(
       children: [
         Container(
-          decoration: isSelected ? themeSettings.selectedTabBoxDecoration : themeSettings.unselectedTabBoxDecoration,
+          decoration: isSelected
+              ? themeSettings.selectedTabBoxDecoration
+              : themeSettings.unselectedTabBoxDecoration,
         ),
-        ...!isSelected ? const [] : [
-          SelectedTabDecoration(themeSettings: themeSettings),
-        ],
-        ...isSelected || tabIndex == selectedTabIndex - 1 ? const [] : [
-          Align(
-            alignment: Alignment.centerRight,
-            child: TabSeparator(
-              themeSettings: themeSettings,
-            ),
-          ),
-        ],
+        ...!isSelected
+            ? const []
+            : [
+                SelectedTabDecoration(themeSettings: themeSettings),
+              ],
+        ...isSelected || tabIndex == selectedTabIndex - 1
+            ? const []
+            : [
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TabSeparator(
+                    themeSettings: themeSettings,
+                  ),
+                ),
+              ],
         TabLightReflection(
           isSelected: isSelected,
           themeSettings: themeSettings,

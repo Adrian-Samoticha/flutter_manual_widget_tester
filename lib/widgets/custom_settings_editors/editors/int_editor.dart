@@ -8,7 +8,13 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart
 import '../ui_elements/heading.dart';
 
 class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
-  const ManualWidgetTesterCustomSettingsIntEditor({Key? key, required this.themeSettings, required this.settingName, required this.currentValue, required this.onChanged}) : super(key: key);
+  const ManualWidgetTesterCustomSettingsIntEditor(
+      {Key? key,
+      required this.themeSettings,
+      required this.settingName,
+      required this.currentValue,
+      required this.onChanged})
+      : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final String settingName;
@@ -22,22 +28,22 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ManualWidgetTesterCustomSettingsHeading(themeSettings: themeSettings, settingName: settingName),
+          ManualWidgetTesterCustomSettingsHeading(
+              themeSettings: themeSettings, settingName: settingName),
           SizedBox(
             height: themeSettings.stringEditorHeight,
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return Row(
-                  children: [
-                    Expanded(
-                      child: _buildTextField(),
-                    ),
-                    SizedBox(width: themeSettings.spaceBetweenTextBoxesAndButtonRows),
-                    _buildButtonRow(constraints),
-                  ],
-                );
-              }
-            ),
+            child: LayoutBuilder(builder: (context, constraints) {
+              return Row(
+                children: [
+                  Expanded(
+                    child: _buildTextField(),
+                  ),
+                  SizedBox(
+                      width: themeSettings.spaceBetweenTextBoxesAndButtonRows),
+                  _buildButtonRow(constraints),
+                ],
+              );
+            }),
           ),
         ],
       ),
@@ -58,7 +64,8 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
 
   SizedBox _buildButtonRow(BoxConstraints constraints) {
     return SizedBox(
-      width: min(themeSettings.defaultNumberEditorButtonRowWidth, constraints.maxWidth * 0.5),
+      width: min(themeSettings.defaultNumberEditorButtonRowWidth,
+          constraints.maxWidth * 0.5),
       child: ManualWidgetTesterButtonRow(
         themeSettings: themeSettings,
         disableRoundedCornersOnLeftSide: true,

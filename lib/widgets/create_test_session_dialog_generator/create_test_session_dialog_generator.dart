@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
@@ -19,7 +18,8 @@ class CreateTestSessionDialogGenerator {
       barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
       barrierColor: themeSettings.dialogBarrierColor,
       transitionDuration: const Duration(milliseconds: 0),
-      pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
+      pageBuilder: (BuildContext context, Animation<double> animation,
+          Animation<double> secondaryAnimation) {
         return Align(
           alignment: Alignment.topCenter,
           child: CreateTestSessionDialog(
@@ -32,4 +32,3 @@ class CreateTestSessionDialogGenerator {
     );
   }
 }
-

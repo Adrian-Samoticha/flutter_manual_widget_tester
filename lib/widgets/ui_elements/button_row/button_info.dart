@@ -5,5 +5,8 @@ class ManualWidgetTesterButtonInfo {
   final void Function()? onButtonPressed;
   final Widget child;
 
-  ManualWidgetTesterButtonInfo({required this.onButtonDown, required this.onButtonPressed, this.child = const SizedBox()});
+  ManualWidgetTesterButtonInfo(
+      {required this.onButtonDown,
+      required this.onButtonPressed,
+      this.child = const SizedBox()});
 }

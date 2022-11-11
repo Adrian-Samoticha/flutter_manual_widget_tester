@@ -11,9 +11,17 @@ class ManualWidgetTesterZoomControls extends StatelessWidget {
   final void Function(double) onZoomChanged;
   final double minZoom;
   final double maxZoom;
-  
-  const ManualWidgetTesterZoomControls({Key? key,
-  required this.themeSettings, required this.zoom, required this.onZoomOutButtonPressed, required this.onZoomInButtonPressed, required this.minZoom, required this.maxZoom, required this.onZoomChanged}) : super(key: key);
+
+  const ManualWidgetTesterZoomControls(
+      {Key? key,
+      required this.themeSettings,
+      required this.zoom,
+      required this.onZoomOutButtonPressed,
+      required this.onZoomInButtonPressed,
+      required this.minZoom,
+      required this.maxZoom,
+      required this.onZoomChanged})
+      : super(key: key);
 
   @override
   Widget build(Object context) {
@@ -49,7 +57,8 @@ class ManualWidgetTesterZoomControls extends StatelessWidget {
                 disableRoundedCornersOnLeftSide: true,
                 buttons: [
                   ManualWidgetTesterButtonInfo(
-                    onButtonDown: zoom > minZoom ? onZoomOutButtonPressed : null,
+                    onButtonDown:
+                        zoom > minZoom ? onZoomOutButtonPressed : null,
                     onButtonPressed: null,
                     child: themeSettings.zoomControlsZoomOutIcon,
                   ),

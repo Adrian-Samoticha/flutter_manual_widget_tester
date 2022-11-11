@@ -29,10 +29,12 @@ class TabIcon extends StatelessWidget {
         ),
       );
     }
-    
+
     return AnimatedOpacity(
       duration: themeSettings.unselectedTabOpacityChangeDuration,
-      opacity: isBeingHovered ? themeSettings.unselectedHoveredTabOpacity : themeSettings.unselectedNotHoveredTabOpacity,
+      opacity: isBeingHovered
+          ? themeSettings.unselectedHoveredTabOpacity
+          : themeSettings.unselectedNotHoveredTabOpacity,
       child: Padding(
         padding: themeSettings.tabIconPadding,
         child: Icon(

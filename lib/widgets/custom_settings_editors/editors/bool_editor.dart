@@ -5,7 +5,13 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/radio_button.da
 import '../ui_elements/heading.dart';
 
 class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
-  const ManualWidgetTesterCustomSettingsBoolEditor({Key? key, required this.themeSettings, required this.settingName, required this.currentValue, required this.onChanged}) : super(key: key);
+  const ManualWidgetTesterCustomSettingsBoolEditor(
+      {Key? key,
+      required this.themeSettings,
+      required this.settingName,
+      required this.currentValue,
+      required this.onChanged})
+      : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final String settingName;
@@ -19,7 +25,8 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ManualWidgetTesterCustomSettingsHeading(themeSettings: themeSettings, settingName: settingName),
+          ManualWidgetTesterCustomSettingsHeading(
+              themeSettings: themeSettings, settingName: settingName),
           Align(
             alignment: Alignment.centerLeft,
             child: ConstrainedBox(
@@ -31,7 +38,8 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
                   Expanded(
                     child: _buildRadioButtonWithLabel(true),
                   ),
-                  SizedBox(width: themeSettings.boolEditorSpaceBetweenRadioButtons),
+                  SizedBox(
+                      width: themeSettings.boolEditorSpaceBetweenRadioButtons),
                   Expanded(
                     child: _buildRadioButtonWithLabel(false),
                   ),
@@ -46,7 +54,8 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
 
   Widget _buildRadioButtonWithLabel(bool isTrue) {
     return MouseRegion(
-      cursor: isTrue != currentValue ? SystemMouseCursors.click : MouseCursor.defer,
+      cursor:
+          isTrue != currentValue ? SystemMouseCursors.click : MouseCursor.defer,
       child: GestureDetector(
         onTapDown: (_) => onChanged(isTrue),
         child: Container(

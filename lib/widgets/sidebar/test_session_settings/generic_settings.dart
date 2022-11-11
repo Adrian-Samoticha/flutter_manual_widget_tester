@@ -3,8 +3,9 @@ import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
 
 class GenericSettings extends StatelessWidget {
-  const GenericSettings({Key? key, required this.themeSettings}) : super(key: key);
-  
+  const GenericSettings({Key? key, required this.themeSettings})
+      : super(key: key);
+
   final ManualWidgetTesterThemeSettings themeSettings;
 
   @override

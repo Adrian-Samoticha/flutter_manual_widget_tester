@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
@@ -15,7 +14,17 @@ class ResizableBorder extends StatefulWidget {
   final ManualWidgetTesterThemeSettings themeSettings;
   final double zoom;
 
-  const ResizableBorder({Key? key, required this.isVertical, required this.size, required this.onDragStart, required this.onDragUpdate, required this.mouseCursorOverrider, required this.themeSettings, required this.zoom, required this.oppositeSize}) : super(key: key);
+  const ResizableBorder(
+      {Key? key,
+      required this.isVertical,
+      required this.size,
+      required this.onDragStart,
+      required this.onDragUpdate,
+      required this.mouseCursorOverrider,
+      required this.themeSettings,
+      required this.zoom,
+      required this.oppositeSize})
+      : super(key: key);
 
   @override
   State<ResizableBorder> createState() => _ResizableBorderState();
@@ -23,7 +32,7 @@ class ResizableBorder extends StatefulWidget {
 
 class _ResizableBorderState extends State<ResizableBorder> {
   int _mouseCursorOverrideId = 0;
-  
+
   @override
   Widget build(BuildContext context) {
     return RotatedBox(
@@ -35,10 +44,8 @@ class _ResizableBorderState extends State<ResizableBorder> {
               alignment: Alignment.centerRight,
               child: RotatedBox(
                 quarterTurns: 3,
-                child: Text(
-                  '${(widget.oppositeSize / widget.zoom).round()} px',
-                  style: widget.themeSettings.widgetSizeTextStyle
-                ),
+                child: Text('${(widget.oppositeSize / widget.zoom).round()} px',
+                    style: widget.themeSettings.widgetSizeTextStyle),
               ),
             ),
           ),
@@ -55,15 +62,17 @@ class _ResizableBorderState extends State<ResizableBorder> {
 
   Widget _buildResizeHandle({required bool isLeft}) {
     final mouseCursor = _getMouseCursor();
-    
+
     return MouseRegion(
       cursor: mouseCursor,
       child: GestureDetector(
         onHorizontalDragStart: (_) {
-          _mouseCursorOverrideId = widget.mouseCursorOverrider.overrideMouseCursor(mouseCursor);
+          _mouseCursorOverrideId =
+              widget.mouseCursorOverrider.overrideMouseCursor(mouseCursor);
           widget.onDragStart();
         },
-        onHorizontalDragUpdate: (details) => widget.onDragUpdate((isLeft ? -2 : 2) * details.delta.dx),
+        onHorizontalDragUpdate: (details) =>
+            widget.onDragUpdate((isLeft ? -2 : 2) * details.delta.dx),
         onHorizontalDragEnd: (_) {
           widget.mouseCursorOverrider.cancelOverride(_mouseCursorOverrideId);
         },
@@ -78,12 +87,14 @@ class _ResizableBorderState extends State<ResizableBorder> {
       ),
     );
   }
-  
+
   MouseCursor _getMouseCursor() {
     if (widget.mouseCursorOverrider.isOverrideActive) {
       return MouseCursor.defer;
     }
-    
-    return widget.isVertical ? SystemMouseCursors.resizeUpDown : SystemMouseCursors.resizeLeftRight;
+
+    return widget.isVertical
+        ? SystemMouseCursors.resizeUpDown
+        : SystemMouseCursors.resizeLeftRight;
   }
 }

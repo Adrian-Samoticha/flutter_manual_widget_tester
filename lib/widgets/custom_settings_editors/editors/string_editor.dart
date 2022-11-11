@@ -5,7 +5,13 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart
 import '../ui_elements/heading.dart';
 
 class ManualWidgetTesterCustomSettingsStringEditor extends StatelessWidget {
-  const ManualWidgetTesterCustomSettingsStringEditor({Key? key, required this.themeSettings, required this.settingName, required this.currentValue, required this.onChanged}) : super(key: key);
+  const ManualWidgetTesterCustomSettingsStringEditor(
+      {Key? key,
+      required this.themeSettings,
+      required this.settingName,
+      required this.currentValue,
+      required this.onChanged})
+      : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final String settingName;
@@ -19,7 +25,8 @@ class ManualWidgetTesterCustomSettingsStringEditor extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ManualWidgetTesterCustomSettingsHeading(themeSettings: themeSettings, settingName: settingName),
+          ManualWidgetTesterCustomSettingsHeading(
+              themeSettings: themeSettings, settingName: settingName),
           SizedBox(
             height: themeSettings.stringEditorHeight,
             child: ManualWidgetTesterTextField(

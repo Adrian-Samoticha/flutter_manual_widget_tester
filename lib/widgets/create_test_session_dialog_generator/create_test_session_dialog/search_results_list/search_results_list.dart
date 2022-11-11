@@ -43,10 +43,13 @@ class SearchResultsList extends StatelessWidget {
   Column _buildSearchResultList() {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: searchResults.asMap().entries.map((MapEntry<int, WidgetTestBuilder> entry) {
+      children: searchResults
+          .asMap()
+          .entries
+          .map((MapEntry<int, WidgetTestBuilder> entry) {
         final index = entry.key;
         final builder = entry.value;
-        
+
         return SearchResultListEntry(
           index: index,
           legalSelectedSearchResultIndex: legalSelectedSearchResultIndex,

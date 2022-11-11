@@ -15,8 +15,10 @@ class SelectedTabDecoration extends StatelessWidget {
       width: themeSettings.selectedTabAccentColorDecorationWidth,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(themeSettings.selectedTabAccentColorDecorationWidth),
-          bottomRight: Radius.circular(themeSettings.selectedTabAccentColorDecorationWidth),
+          topLeft: Radius.circular(
+              themeSettings.selectedTabAccentColorDecorationWidth),
+          bottomRight: Radius.circular(
+              themeSettings.selectedTabAccentColorDecorationWidth),
         ),
         color: themeSettings.accentColor,
       ),

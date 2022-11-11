@@ -5,8 +5,13 @@ import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
 
 class CustomSettings extends StatelessWidget {
-  const CustomSettings({Key? key, required this.themeSettings, required this.widgetTestSessionHandler, required this.typeEditorBuilder}) : super(key: key);
-  
+  const CustomSettings(
+      {Key? key,
+      required this.themeSettings,
+      required this.widgetTestSessionHandler,
+      required this.typeEditorBuilder})
+      : super(key: key);
+
   final ManualWidgetTesterThemeSettings themeSettings;
   final WidgetTestSessionHandler widgetTestSessionHandler;
   final TypeEditorBuilder typeEditorBuilder;
@@ -22,35 +27,42 @@ class CustomSettings extends StatelessWidget {
       ),
     );
   }
-  
+
   List<Widget> _generateCustomSettingsChildren() {
     final currentIndex = widgetTestSessionHandler.currentIndex;
-    final currentTestSession = widgetTestSessionHandler.widgetTestSessions[currentIndex];
+    final currentTestSession =
+        widgetTestSessionHandler.widgetTestSessions[currentIndex];
     final customSettings = currentTestSession.customSettings;
-    
+
     if (customSettings.settings.isEmpty) {
       return [
         _buildNoSettingsText(),
       ];
     }
-    
-    return customSettings.settings.map((String settingName, dynamic settingValue) {
-      final settingType = settingValue.runtimeType;
-      
-      if (!typeEditorBuilder.hasEditorBuilderInstalledForType(settingType)) {
-        final widgetToBeReturned = _buildNoEditorMessage(settingName, settingValue);
-        
-        return MapEntry<String, Widget>(settingName, widgetToBeReturned);
-      }
-      
-      final widgetToBeReturned = typeEditorBuilder.buildEditor(settingName, settingType, settingValue, (newValue) {
-        customSettings.setSetting(settingName, newValue);
-      });
-      
-      return MapEntry<String, Widget>(settingName, widgetToBeReturned);
-    }).values.toList();
+
+    return customSettings.settings
+        .map((String settingName, dynamic settingValue) {
+          final settingType = settingValue.runtimeType;
+
+          if (!typeEditorBuilder
+              .hasEditorBuilderInstalledForType(settingType)) {
+            final widgetToBeReturned =
+                _buildNoEditorMessage(settingName, settingValue);
+
+            return MapEntry<String, Widget>(settingName, widgetToBeReturned);
+          }
+
+          final widgetToBeReturned = typeEditorBuilder
+              .buildEditor(settingName, settingType, settingValue, (newValue) {
+            customSettings.setSetting(settingName, newValue);
+          });
+
+          return MapEntry<String, Widget>(settingName, widgetToBeReturned);
+        })
+        .values
+        .toList();
   }
-  
+
   Container _buildNoEditorMessage(String settingName, settingValue) {
     return Container(
       padding: themeSettings.noEditorMessagePadding,
@@ -59,7 +71,7 @@ class CustomSettings extends StatelessWidget {
       child: _buildNoEditorText(settingName, settingValue),
     );
   }
-  
+
   RichText _buildNoEditorText(String settingName, settingValue) {
     return RichText(
       text: TextSpan(
@@ -84,7 +96,7 @@ class CustomSettings extends StatelessWidget {
       ),
     );
   }
-  
+
   Padding _buildNoSettingsText() {
     return Padding(
       padding: themeSettings.noCustomSettingsMessagePadding,

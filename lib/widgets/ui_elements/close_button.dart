@@ -5,17 +5,24 @@ class ManualWidgetTesterCloseButton extends StatefulWidget {
   final ManualWidgetTesterThemeSettings themeSettings;
   final double size;
   final void Function() onPressed;
-  
-  const ManualWidgetTesterCloseButton({Key? key, required this.themeSettings, this.size = 24.0, required this.onPressed}) : super(key: key);
+
+  const ManualWidgetTesterCloseButton(
+      {Key? key,
+      required this.themeSettings,
+      this.size = 24.0,
+      required this.onPressed})
+      : super(key: key);
 
   @override
-  State<ManualWidgetTesterCloseButton> createState() => _ManualWidgetTesterCloseButtonState();
+  State<ManualWidgetTesterCloseButton> createState() =>
+      _ManualWidgetTesterCloseButtonState();
 }
 
-class _ManualWidgetTesterCloseButtonState extends State<ManualWidgetTesterCloseButton> {
+class _ManualWidgetTesterCloseButtonState
+    extends State<ManualWidgetTesterCloseButton> {
   bool _isBeingHovered = false;
   bool _isBeingPressed = false;
-  
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
@@ -42,7 +49,9 @@ class _ManualWidgetTesterCloseButtonState extends State<ManualWidgetTesterCloseB
         }),
         onTap: widget.onPressed,
         child: Transform.translate(
-          offset: _isBeingPressed ? widget.themeSettings.buttonPressedOffset : Offset.zero,
+          offset: _isBeingPressed
+              ? widget.themeSettings.buttonPressedOffset
+              : Offset.zero,
           child: Stack(
             children: [
               AnimatedOpacity(

@@ -5,8 +5,14 @@ import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 
 class HorizontalDragHandle extends StatefulWidget {
-  const HorizontalDragHandle({Key? key, required this.themeSettings, required this.onDragUpdate, required this.onDragStart, required this.mouseCursorOverrider}) : super(key: key);
-  
+  const HorizontalDragHandle(
+      {Key? key,
+      required this.themeSettings,
+      required this.onDragUpdate,
+      required this.onDragStart,
+      required this.mouseCursorOverrider})
+      : super(key: key);
+
   final ManualWidgetTesterThemeSettings themeSettings;
   final void Function() onDragStart;
   final void Function(double) onDragUpdate;
@@ -21,13 +27,14 @@ class _HorizontalDragHandleState extends State<HorizontalDragHandle> {
   bool _isBeingDragged = false;
   bool _isBeingHovered = false;
   Timer? _hoverTimer;
-  
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
       cursor: SystemMouseCursors.resizeLeftRight,
       child: MouseRegion(
-        onEnter: (_) => _hoverTimer = Timer(widget.themeSettings.timeUntilDragHandleAppears, () {
+        onEnter: (_) => _hoverTimer =
+            Timer(widget.themeSettings.timeUntilDragHandleAppears, () {
           setState(() {
             _isBeingHovered = true;
           });
@@ -40,7 +47,8 @@ class _HorizontalDragHandleState extends State<HorizontalDragHandle> {
         },
         child: GestureDetector(
           onHorizontalDragStart: (_) {
-            _mouseCursorOverrideId = widget.mouseCursorOverrider.overrideMouseCursor(SystemMouseCursors.resizeLeftRight);
+            _mouseCursorOverrideId = widget.mouseCursorOverrider
+                .overrideMouseCursor(SystemMouseCursors.resizeLeftRight);
             setState(() => _isBeingDragged = true);
             widget.onDragStart();
           },
@@ -48,11 +56,14 @@ class _HorizontalDragHandleState extends State<HorizontalDragHandle> {
             widget.mouseCursorOverrider.cancelOverride(_mouseCursorOverrideId);
             setState(() => _isBeingDragged = false);
           },
-          onHorizontalDragUpdate: (DragUpdateDetails details) => widget.onDragUpdate(details.delta.dx),
+          onHorizontalDragUpdate: (DragUpdateDetails details) =>
+              widget.onDragUpdate(details.delta.dx),
           child: AnimatedContainer(
             duration: widget.themeSettings.dragHandleChangeOpacityDuration,
             width: widget.themeSettings.dragHandleSize,
-            color: _isBeingDragged || _isBeingHovered ? widget.themeSettings.dragHandleColor : Colors.transparent,
+            color: _isBeingDragged || _isBeingHovered
+                ? widget.themeSettings.dragHandleColor
+                : Colors.transparent,
           ),
         ),
       ),

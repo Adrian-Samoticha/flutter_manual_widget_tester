@@ -27,11 +27,11 @@ class SearchResultListEntry extends StatefulWidget {
 
 class _SearchResultListEntryState extends State<SearchResultListEntry> {
   var _isBeingHovered = false;
-  
+
   @override
   Widget build(BuildContext context) {
     final themeSettings = widget.themeSettings;
-    
+
     return GestureDetector(
       onTapDown: (_) {
         final widgetTestSessionHandler = widget.widgetTestSessionHandler;
@@ -51,11 +51,20 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
           });
         },
         child: AnimatedOpacity(
-          duration: themeSettings.createTestSessionDialogSearchResultFadeDuration,
-          opacity: widget.index == widget.legalSelectedSearchResultIndex || _isBeingHovered ? 1.0 : themeSettings.createTestSessionDialogUnselectedSearchResultOpacity,
+          duration:
+              themeSettings.createTestSessionDialogSearchResultFadeDuration,
+          opacity: widget.index == widget.legalSelectedSearchResultIndex ||
+                  _isBeingHovered
+              ? 1.0
+              : themeSettings
+                  .createTestSessionDialogUnselectedSearchResultOpacity,
           child: Container(
             height: themeSettings.createTestSessionDialogSearchResultHeight,
-            decoration: widget.index == widget.legalSelectedSearchResultIndex ? themeSettings.createTestSessionDialogSelectedSearchResultDecoration : themeSettings.createTestSessionDialogUnselectedSearchResultDecoration,
+            decoration: widget.index == widget.legalSelectedSearchResultIndex
+                ? themeSettings
+                    .createTestSessionDialogSelectedSearchResultDecoration
+                : themeSettings
+                    .createTestSessionDialogUnselectedSearchResultDecoration,
             child: _buildIconAndNameRow(),
           ),
         ),
@@ -65,16 +74,19 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
 
   Row _buildIconAndNameRow() {
     final themeSettings = widget.themeSettings;
-    
+
     return Row(
       children: [
-        ...widget.builder.icon == null ? const [] : [
-          SearchResultIcon(
-            themeSettings: themeSettings,
-            icon: widget.builder.icon!,
-            iconColor: widget.builder.iconColor ?? themeSettings.defaultIconColor,
-          ),
-        ],
+        ...widget.builder.icon == null
+            ? const []
+            : [
+                SearchResultIcon(
+                  themeSettings: themeSettings,
+                  icon: widget.builder.icon!,
+                  iconColor: widget.builder.iconColor ??
+                      themeSettings.defaultIconColor,
+                ),
+              ],
         Expanded(
           child: Text(
             widget.builder.name,

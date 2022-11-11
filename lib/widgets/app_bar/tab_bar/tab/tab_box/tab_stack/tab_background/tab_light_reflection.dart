@@ -14,7 +14,8 @@ class TabLightReflection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: !isSelected ? null : themeSettings.tabLightReflectionBoxDecoration,
+      decoration:
+          !isSelected ? null : themeSettings.tabLightReflectionBoxDecoration,
     );
   }
 }

@@ -4,8 +4,19 @@ import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'tab_box/tab_box.dart';
 
 class ManualWidgetTesterTab extends StatefulWidget {
-  const ManualWidgetTesterTab({Key? key, required this.width, required this.widgetName, required this.themeSettings, required this.tabIndex, required this.selectedTabIndex, required this.onSelect, required this.onClose, required this.icon, required this.iconColor}) : super(key: key);
-  
+  const ManualWidgetTesterTab(
+      {Key? key,
+      required this.width,
+      required this.widgetName,
+      required this.themeSettings,
+      required this.tabIndex,
+      required this.selectedTabIndex,
+      required this.onSelect,
+      required this.onClose,
+      required this.icon,
+      required this.iconColor})
+      : super(key: key);
+
   final double width;
   final int tabIndex;
   final int selectedTabIndex;
@@ -22,11 +33,11 @@ class ManualWidgetTesterTab extends StatefulWidget {
 
 class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
   bool _isBeingHovered = false;
-  
+
   @override
   Widget build(BuildContext context) {
     final isSelected = widget.tabIndex == widget.selectedTabIndex;
-    
+
     return GestureDetector(
       onTapDown: (_) => widget.onSelect(),
       onTertiaryTapDown: (_) => widget.onClose(),

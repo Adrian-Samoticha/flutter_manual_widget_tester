@@ -5,7 +5,17 @@ import 'tab_background/tab_background.dart';
 import 'tab_content/tab_content.dart';
 
 class TabStack extends StatelessWidget {
-  const TabStack({Key? key, required this.isSelected, required this.themeSettings, required this.tabIndex, required this.selectedTabIndex, required this.icon, required this.iconColor, required this.widgetName, required this.isBeingHovered}) : super(key: key);
+  const TabStack(
+      {Key? key,
+      required this.isSelected,
+      required this.themeSettings,
+      required this.tabIndex,
+      required this.selectedTabIndex,
+      required this.icon,
+      required this.iconColor,
+      required this.widgetName,
+      required this.isBeingHovered})
+      : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final int tabIndex;

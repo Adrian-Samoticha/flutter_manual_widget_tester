@@ -12,35 +12,44 @@ class ManualWidgetTesterWidgetTestSessionAreaStack extends StatefulWidget {
   final WidgetTestSessionHandler widgetTestSessionHandler;
   final MouseCursorOverrider mouseCursorOverrider;
   final ManualWidgetTesterThemeSettings themeSettings;
-  
-  const ManualWidgetTesterWidgetTestSessionAreaStack({Key? key, required this.widgetTestSessionHandler, required this.mouseCursorOverrider, required this.themeSettings}) : super(key: key);
+
+  const ManualWidgetTesterWidgetTestSessionAreaStack(
+      {Key? key,
+      required this.widgetTestSessionHandler,
+      required this.mouseCursorOverrider,
+      required this.themeSettings})
+      : super(key: key);
 
   @override
-  State<ManualWidgetTesterWidgetTestSessionAreaStack> createState() => _ManualWidgetTesterWidgetTestSessionAreaStackState();
+  State<ManualWidgetTesterWidgetTestSessionAreaStack> createState() =>
+      _ManualWidgetTesterWidgetTestSessionAreaStackState();
 }
 
-class _ManualWidgetTesterWidgetTestSessionAreaStackState extends State<ManualWidgetTesterWidgetTestSessionAreaStack> {
+class _ManualWidgetTesterWidgetTestSessionAreaStackState
+    extends State<ManualWidgetTesterWidgetTestSessionAreaStack> {
   late StreamSubscription _widgetTestSessionHandlerChangeStream;
-  
+
   @override
   void initState() {
-    _widgetTestSessionHandlerChangeStream = widget.widgetTestSessionHandler.registerOnChangedCallback((_) {
+    _widgetTestSessionHandlerChangeStream =
+        widget.widgetTestSessionHandler.registerOnChangedCallback((_) {
       setState(() {});
     });
     super.initState();
   }
-  
+
   @override
   void dispose() {
     _widgetTestSessionHandlerChangeStream.cancel();
     super.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return IndexedStack(
       index: widget.widgetTestSessionHandler.currentIndex,
-      children: widget.widgetTestSessionHandler.widgetTestSessions.map((WidgetTestSession session) {
+      children: widget.widgetTestSessionHandler.widgetTestSessions
+          .map((WidgetTestSession session) {
         return ManualWidgetTesterWidgetTestSessionArea(
           key: session.key,
           widgetTestSession: session,
