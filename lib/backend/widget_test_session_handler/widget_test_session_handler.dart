@@ -29,8 +29,9 @@ class WidgetTestSessionHandler {
 
   void updateSessions(WidgetTestBuilder widgetTestBuilder) {
     for (var i = 0; i < _widgetTestSessions.length; i += 1) {
-      if (_widgetTestSessions[i].widgetTestBuilder.id != widgetTestBuilder.id)
+      if (_widgetTestSessions[i].widgetTestBuilder.id != widgetTestBuilder.id) {
         continue;
+      }
 
       final oldKey = _widgetTestSessions[i].key;
       final oldCustomSettings = _widgetTestSessions[i].customSettings;
