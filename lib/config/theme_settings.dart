@@ -570,9 +570,10 @@ class ManualWidgetTesterThemeSettings {
     this.buttonBorderRadius = const Radius.circular(3.0),
     this.buttonShadow = const [
       BoxShadow(
-          blurRadius: 2.0,
-          color: Color.fromRGBO(0, 0, 0, 0.2),
-          offset: Offset(0.0, 1.0))
+        blurRadius: 2.0,
+        color: Color.fromRGBO(0, 0, 0, 0.2),
+        offset: Offset(0.0, 1.0),
+      ),
     ],
     this.buttonPressedTint = const Color.fromRGBO(0, 0, 0, 0.1),
     this.buttonHoveredTint = const Color.fromRGBO(255, 255, 255, 0.05),
@@ -602,9 +603,10 @@ class ManualWidgetTesterThemeSettings {
     ),
     this.textFieldShadow = const [
       BoxShadow(
-          blurRadius: 2.0,
-          color: Color.fromRGBO(0, 0, 0, 0.2),
-          offset: Offset(0.0, 1.0))
+        blurRadius: 2.0,
+        color: Color.fromRGBO(0, 0, 0, 0.2),
+        offset: Offset(0.0, 1.0),
+      ),
     ],
     this.textFieldBorderRadius = const Radius.circular(3.0),
     this.textFieldColor = const Color.fromARGB(255, 41, 45, 53),
@@ -649,7 +651,10 @@ class ManualWidgetTesterThemeSettings {
     this.foldableRegionChevronIconColor = Colors.white,
     this.foldableRegionChevronIconSize = 18.0,
     this.foldableRegionHeadingStyle = const TextStyle(
-        color: Colors.white, fontSize: 12.0, fontWeight: FontWeight.w700),
+      color: Colors.white,
+      fontSize: 12.0,
+      fontWeight: FontWeight.w700,
+    ),
     this.foldableRegionHeadingOverflow = TextOverflow.ellipsis,
     this.closeButtonHoverDecoration = const BoxDecoration(
       color: Color.fromRGBO(255, 255, 255, 0.2),
@@ -715,10 +720,11 @@ class ManualWidgetTesterThemeSettings {
     this.dialogBorderColor = const Color.fromRGBO(255, 255, 255, 0.025),
     this.dialogShadow = const [
       BoxShadow(
-          blurRadius: 8.0,
-          color: Color.fromRGBO(0, 0, 0, 0.25),
-          spreadRadius: 4.0,
-          offset: Offset(0.0, 4.0)),
+        blurRadius: 8.0,
+        color: Color.fromRGBO(0, 0, 0, 0.25),
+        spreadRadius: 4.0,
+        offset: Offset(0.0, 4.0),
+      ),
     ],
     this.dialogPadding = const EdgeInsets.all(8.0),
     this.dialogActionButtonHeight = 32.0,
@@ -854,10 +860,11 @@ class ManualWidgetTesterThemeSettings {
         ),
         boxShadow: [
           BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.5),
-              blurRadius: 2.0,
-              offset: Offset(0.5, 1.0),
-              spreadRadius: 1.0),
+            color: Color.fromRGBO(0, 0, 0, 0.5),
+            blurRadius: 2.0,
+            offset: Offset(0.5, 1.0),
+            spreadRadius: 1.0,
+          ),
         ],
       ),
       child: FractionallySizedBox(
