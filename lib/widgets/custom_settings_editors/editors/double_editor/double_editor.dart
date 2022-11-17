@@ -72,6 +72,12 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
 
   Listener _buildInfiniteScrollView() {
     return Listener(
+      onPointerPanZoomUpdate: (PointerPanZoomUpdateEvent event) {
+        final panDelta = event.panDelta;
+        final newValue = currentValue +
+            (-panDelta.dx - panDelta.dy) * infiniteScrollViewScrollSpeedFactor;
+        onChanged(newValue);
+      },
       onPointerSignal: (PointerSignalEvent event) {
         if (event is PointerScrollEvent) {
           GestureBinding.instance.pointerSignalResolver.register(
