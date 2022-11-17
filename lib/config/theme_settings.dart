@@ -972,10 +972,12 @@ class ManualWidgetTesterThemeSettings {
         topLeft: Radius.circular(3.0),
         topRight: Radius.circular(3.0),
       ),
-      boxShadow: [BoxShadow(
-        blurRadius: 16.0,
-        color: Color.fromRGBO(0, 0, 0, 0.5),
-      )],
+      boxShadow: [
+        BoxShadow(
+          blurRadius: 16.0,
+          color: Color.fromRGBO(0, 0, 0, 0.5),
+        )
+      ],
     ),
     this.unselectedTabBoxDecoration = const BoxDecoration(
       color: Colors.transparent,
