@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
+import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_custom_settings.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
@@ -35,32 +36,35 @@ class CustomSettings extends StatelessWidget {
     final customSettings = currentTestSession.customSettings;
 
     if (customSettings.settings.isEmpty) {
-      return [
-        _buildNoSettingsText(),
-      ];
+      return [_buildNoSettingsText()];
     }
 
     return customSettings.settings
         .map((String settingName, dynamic settingValue) {
-          final settingType = settingValue.runtimeType;
-
-          if (!typeEditorBuilder
-              .hasEditorBuilderInstalledForType(settingType)) {
-            final widgetToBeReturned =
-                _buildNoEditorMessage(settingName, settingValue);
-
-            return MapEntry<String, Widget>(settingName, widgetToBeReturned);
-          }
-
-          final widgetToBeReturned = typeEditorBuilder
-              .buildEditor(settingName, settingType, settingValue, (newValue) {
-            customSettings.setSetting(settingName, newValue);
-          });
-
-          return MapEntry<String, Widget>(settingName, widgetToBeReturned);
+          final widget =
+              _buildWidgetForSetting(customSettings, settingName, settingValue);
+          return MapEntry<String, Widget>(settingName, widget);
         })
         .values
         .toList();
+  }
+
+  Widget _buildWidgetForSetting(WidgetTestSessionCustomSettings customSettings,
+      String settingName, dynamic settingValue) {
+    final settingType = settingValue.runtimeType;
+
+    if (!typeEditorBuilder.hasEditorBuilderInstalledForType(settingType)) {
+      return _buildNoEditorMessage(settingName, settingValue);
+    }
+
+    return typeEditorBuilder.buildEditor(
+      settingName,
+      settingType,
+      settingValue,
+      (Object? newValue) {
+        customSettings.setSetting(settingName, newValue);
+      },
+    );
   }
 
   Container _buildNoEditorMessage(String settingName, settingValue) {
