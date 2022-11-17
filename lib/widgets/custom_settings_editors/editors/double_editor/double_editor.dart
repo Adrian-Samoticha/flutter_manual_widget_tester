@@ -41,23 +41,27 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
             children: [
               SizedBox(
                 height: themeSettings.stringEditorHeight,
-                child: LayoutBuilder(builder: (context, constraints) {
-                  return Row(
-                    children: [
-                      Expanded(
-                        child: _buildTextField(),
-                      ),
-                      SizedBox(
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return Row(
+                      children: [
+                        Expanded(
+                          child: _buildTextField(),
+                        ),
+                        SizedBox(
                           width:
-                              themeSettings.spaceBetweenTextBoxesAndButtonRows),
-                      _buildButtonRow(constraints),
-                    ],
-                  );
-                }),
+                              themeSettings.spaceBetweenTextBoxesAndButtonRows,
+                        ),
+                        _buildButtonRow(constraints),
+                      ],
+                    );
+                  },
+                ),
               ),
               SizedBox(
-                  height: themeSettings
-                      .spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView),
+                height: themeSettings
+                    .spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView,
+              ),
               _buildInfiniteScrollView(),
             ],
           ),
@@ -70,14 +74,16 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
     return Listener(
       onPointerSignal: (PointerSignalEvent event) {
         if (event is PointerScrollEvent) {
-          GestureBinding.instance.pointerSignalResolver.register(event,
-              (event) {
-            final scrollDelta = (event as PointerScrollEvent).scrollDelta;
-            final newValue = currentValue +
-                (scrollDelta.dx + scrollDelta.dy) *
-                    infiniteScrollViewScrollSpeedFactor;
-            onChanged(newValue);
-          });
+          GestureBinding.instance.pointerSignalResolver.register(
+            event,
+            (event) {
+              final scrollDelta = (event as PointerScrollEvent).scrollDelta;
+              final newValue = currentValue +
+                  (scrollDelta.dx + scrollDelta.dy) *
+                      infiniteScrollViewScrollSpeedFactor;
+              onChanged(newValue);
+            },
+          );
         }
       },
       child: Container(
