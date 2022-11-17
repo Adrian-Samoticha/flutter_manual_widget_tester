@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
-import 'package:flutter_manual_widget_tester/widgets/create_test_session_dialog_generator/create_test_session_dialog_generator.dart';
-import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row/button_row.dart';
 
+import 'new_test_session_button.dart';
 import 'tab_bar/tab_bar.dart';
 
 class ManualWidgetTesterAppBar extends StatelessWidget {
@@ -35,22 +34,10 @@ class ManualWidgetTesterAppBar extends StatelessWidget {
           Container(
             width: themeSettings.appBarHeight,
             padding: themeSettings.createTestSessionButtonPadding,
-            child: ManualWidgetTesterButtonRow(
+            child: NewTestSessionButton(
               themeSettings: themeSettings,
-              buttons: [
-                ManualWidgetTesterButtonInfo(
-                  onButtonDown: null,
-                  onButtonPressed: () {
-                    CreateTestSessionDialogGenerator.showNewTestSessionDialog(
-                      context: context,
-                      themeSettings: themeSettings,
-                      builders: builders,
-                      widgetTestSessionHandler: widgetTestSessionHandler,
-                    );
-                  },
-                  child: const Center(child: Icon(Icons.add)),
-                ),
-              ],
+              builders: builders,
+              widgetTestSessionHandler: widgetTestSessionHandler,
             ),
           ),
         ],
