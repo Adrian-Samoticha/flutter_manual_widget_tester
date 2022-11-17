@@ -1,5 +1,6 @@
 {
 	"cSpell.words": [
 		"Overrider"
-	]
+	],
+	"editor.formatOnSave": true
 }
