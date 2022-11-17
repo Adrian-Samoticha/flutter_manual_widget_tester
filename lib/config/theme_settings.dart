@@ -553,6 +553,12 @@ class ManualWidgetTesterThemeSettings {
   /// The amount of time until the drag handle appears when sidebar's edge is being hovered over.
   final Duration timeUntilDragHandleAppears;
 
+  /// The height of the container that simulates the shadow at the bottom of the app bar.
+  final double appBarShadowHeight;
+
+  /// The box decoration of the container that simulates the shadow at the bottom of the app bar.
+  final BoxDecoration appBarShadowBoxDecoration;
+
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -1022,5 +1028,16 @@ class ManualWidgetTesterThemeSettings {
     this.dragHandleSize = 6.0,
     this.dragHandleChangeOpacityDuration = const Duration(milliseconds: 150),
     this.timeUntilDragHandleAppears = const Duration(milliseconds: 250),
+    this.appBarShadowHeight = 16.0,
+    this.appBarShadowBoxDecoration = const BoxDecoration(
+      gradient: LinearGradient(
+        colors: [
+          Color.fromRGBO(0, 0, 0, 0.15),
+          Colors.transparent,
+        ],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+      ),
+    ),
   });
 }

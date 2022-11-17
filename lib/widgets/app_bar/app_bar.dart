@@ -3,6 +3,7 @@ import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
+import 'app_bar_shadow.dart';
 import 'new_test_session_button.dart';
 import 'tab_bar/tab_bar.dart';
 
@@ -23,25 +24,31 @@ class ManualWidgetTesterAppBar extends StatelessWidget {
     return Container(
       height: themeSettings.appBarHeight,
       color: themeSettings.sidebarColor,
-      child: Row(
+      child: Stack(
         children: [
-          Expanded(
-            child: ManualWidgetTesterTabBar(
-              themeSettings: themeSettings,
-              widgetTestSessionHandler: widgetTestSessionHandler,
-            ),
-          ),
-          Container(
-            width: themeSettings.appBarHeight,
-            padding: themeSettings.createTestSessionButtonPadding,
-            child: NewTestSessionButton(
-              themeSettings: themeSettings,
-              builders: builders,
-              widgetTestSessionHandler: widgetTestSessionHandler,
-            ),
+          AppBarShadow(themeSettings: themeSettings),
+          Row(
+            children: [
+              Expanded(
+                child: ManualWidgetTesterTabBar(
+                  themeSettings: themeSettings,
+                  widgetTestSessionHandler: widgetTestSessionHandler,
+                ),
+              ),
+              Container(
+                width: themeSettings.appBarHeight,
+                padding: themeSettings.createTestSessionButtonPadding,
+                child: NewTestSessionButton(
+                  themeSettings: themeSettings,
+                  builders: builders,
+                  widgetTestSessionHandler: widgetTestSessionHandler,
+                ),
+              ),
+            ],
           ),
         ],
       ),
     );
   }
 }
+
