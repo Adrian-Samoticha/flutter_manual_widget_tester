@@ -34,11 +34,9 @@ class TabBox extends StatelessWidget {
       tween: Tween<double>(begin: 1.0, end: 0.0),
       curve: themeSettings.tabOpenAnimationCurve,
       builder: (BuildContext context, double value, Widget? child) {
-        return ClipRect(
-          child: FractionalTranslation(
-            translation: Offset(0.0, value),
-            child: child!,
-          ),
+        return FractionalTranslation(
+          translation: Offset(0.0, value),
+          child: child!,
         );
       },
       child: SizedBox(

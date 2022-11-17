@@ -45,39 +45,50 @@ class _ManualWidgetTesterTabBarState extends State<ManualWidgetTesterTabBar> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox.expand(
-      child: LayoutBuilder(builder: (context, constraints) {
-        return SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: widget.widgetTestSessionHandler.widgetTestSessions
-                .asMap()
-                .entries
-                .map((MapEntry<int, WidgetTestSession> entry) {
-              final tabWidth = _calculateTabWidth(
-                  widget.widgetTestSessionHandler.widgetTestSessions.length,
-                  constraints.maxWidth);
-              final session = entry.value;
-
-              return ManualWidgetTesterTab(
-                width: tabWidth,
-                widgetName: session.name,
-                themeSettings: widget.themeSettings,
-                tabIndex: entry.key,
-                selectedTabIndex: widget.widgetTestSessionHandler.currentIndex,
-                onSelect: () =>
-                    widget.widgetTestSessionHandler.currentIndex = entry.key,
-                onClose: () => widget.widgetTestSessionHandler
-                    .closeWidgetTestSession(entry.key),
-                icon: session.icon,
-                iconColor:
-                    session.iconColor ?? widget.themeSettings.defaultIconColor,
-              );
-            }).toList(),
-          ),
-        );
-      }),
+    return ClipRect(
+      child: SizedBox.expand(
+        child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            return SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: _getTesterTabListFromWidgetTestSessionHandler(
+                  widget.widgetTestSessionHandler,
+                  constraints,
+                ),
+              ),
+            );
+          },
+        ),
+      ),
     );
+  }
+
+  List<ManualWidgetTesterTab> _getTesterTabListFromWidgetTestSessionHandler(
+      WidgetTestSessionHandler widgetTestSessionHandler,
+      BoxConstraints constraints) {
+    return widgetTestSessionHandler.widgetTestSessions.asMap().entries.map(
+      (MapEntry<int, WidgetTestSession> entry) {
+        final tabWidth = _calculateTabWidth(
+            widgetTestSessionHandler.widgetTestSessions.length,
+            constraints.maxWidth);
+        final session = entry.value;
+
+        return ManualWidgetTesterTab(
+          width: tabWidth,
+          widgetName: session.name,
+          themeSettings: widget.themeSettings,
+          tabIndex: entry.key,
+          selectedTabIndex: widgetTestSessionHandler.currentIndex,
+          onSelect: () =>
+              widget.widgetTestSessionHandler.currentIndex = entry.key,
+          onClose: () =>
+              widgetTestSessionHandler.closeWidgetTestSession(entry.key),
+          icon: session.icon,
+          iconColor: session.iconColor ?? widget.themeSettings.defaultIconColor,
+        );
+      },
+    ).toList();
   }
 
   double _calculateTabWidth(int numberOfTabs, double maxWidth) {
