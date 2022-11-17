@@ -171,34 +171,39 @@ class _ManualWidgetTesterBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return Row(mainAxisSize: MainAxisSize.min, children: [
-        ManualWidgetTesterSidebar(
-          themeSettings: themeSettings,
-          maxWidth: constraints.maxWidth - 128.0,
-          mouseCursorOverrider: mouseCursorOverrider,
-          widgetTestSessionHandler: widgetTestSessionHandler,
-          typeEditorBuilder: typeEditorBuilder,
-        ),
-        Expanded(
-          child: Column(
-            children: [
-              ManualWidgetTesterAppBar(
-                themeSettings: themeSettings,
-                widgetTestSessionHandler: widgetTestSessionHandler,
-                builders: builders,
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ManualWidgetTesterSidebar(
+              themeSettings: themeSettings,
+              maxWidth: constraints.maxWidth - 128.0,
+              mouseCursorOverrider: mouseCursorOverrider,
+              widgetTestSessionHandler: widgetTestSessionHandler,
+              typeEditorBuilder: typeEditorBuilder,
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  ManualWidgetTesterAppBar(
+                    themeSettings: themeSettings,
+                    widgetTestSessionHandler: widgetTestSessionHandler,
+                    builders: builders,
+                  ),
+                  Expanded(
+                    child: ManualWidgetTesterWidgetTestSessionAreaStack(
+                      mouseCursorOverrider: mouseCursorOverrider,
+                      themeSettings: themeSettings,
+                      widgetTestSessionHandler: widgetTestSessionHandler,
+                    ),
+                  ),
+                ],
               ),
-              Expanded(
-                child: ManualWidgetTesterWidgetTestSessionAreaStack(
-                  mouseCursorOverrider: mouseCursorOverrider,
-                  themeSettings: themeSettings,
-                  widgetTestSessionHandler: widgetTestSessionHandler,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ]);
-    });
+            ),
+          ],
+        );
+      },
+    );
   }
 }
