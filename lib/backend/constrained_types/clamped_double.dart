@@ -13,6 +13,6 @@ class ClampedDouble {
       {this.lowerLimit = double.negativeInfinity,
       this.upperLimit = double.infinity,
       required value}) {
-    _value = value;
+    this.value = value;
   }
 }
