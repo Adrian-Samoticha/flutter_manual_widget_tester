@@ -8,17 +8,26 @@ class InfiniteScrollView extends StatelessWidget {
     required this.themeSettings,
     required this.currentValue,
     required this.infiniteScrollViewRange,
+    required this.lowerLimit,
+    required this.upperLimit,
   }) : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final double currentValue;
   final double infiniteScrollViewRange;
+  final double lowerLimit;
+  final double upperLimit;
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: _InfiniteScrollViewPainter(
-          themeSettings, currentValue, infiniteScrollViewRange),
+        themeSettings: themeSettings,
+        value: currentValue,
+        range: infiniteScrollViewRange,
+        lowerLimit: lowerLimit,
+        upperLimit: upperLimit,
+      ),
     );
   }
 }
@@ -26,9 +35,16 @@ class InfiniteScrollView extends StatelessWidget {
 class _InfiniteScrollViewPainter extends CustomPainter {
   final double value;
   final double range;
+  final double lowerLimit;
+  final double upperLimit;
   final ManualWidgetTesterThemeSettings themeSettings;
 
-  _InfiniteScrollViewPainter(this.themeSettings, this.value, this.range);
+  _InfiniteScrollViewPainter(
+      {required this.themeSettings,
+      required this.value,
+      required this.range,
+      required this.lowerLimit,
+      required this.upperLimit});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -59,11 +75,15 @@ class _InfiniteScrollViewPainter extends CustomPainter {
     final flooredValue = value.floorToDouble();
 
     for (var i = flooredValue; i <= rightEdgeValue; i += stepSize) {
-      _drawTopLineAtValue(i, canvas, size, paint, heightFactor);
+      if (i <= upperLimit) {
+        _drawTopLineAtValue(i, canvas, size, paint, heightFactor);
+      }
     }
 
     for (var i = flooredValue; i >= leftEdgeValue; i -= stepSize) {
-      _drawTopLineAtValue(i, canvas, size, paint, heightFactor);
+      if (i >= lowerLimit) {
+        _drawTopLineAtValue(i, canvas, size, paint, heightFactor);
+      }
     }
   }
 
@@ -74,11 +94,15 @@ class _InfiniteScrollViewPainter extends CustomPainter {
     final flooredValue = value.floorToDouble();
 
     for (var i = flooredValue; i <= rightEdgeValue; i += 1.0) {
-      _drawRulerNumberAtValue(i, canvas, size);
+      if (i <= upperLimit) {
+        _drawRulerNumberAtValue(i, canvas, size);
+      }
     }
 
     for (var i = flooredValue; i >= (leftEdgeValue - 1.0); i -= 1.0) {
-      _drawRulerNumberAtValue(i, canvas, size);
+      if (i >= lowerLimit) {
+        _drawRulerNumberAtValue(i, canvas, size);
+      }
     }
   }
 

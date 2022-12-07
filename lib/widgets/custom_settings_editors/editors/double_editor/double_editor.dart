@@ -18,7 +18,9 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
       required this.currentValue,
       required this.onChanged,
       required this.infiniteScrollViewRange,
-      required this.infiniteScrollViewScrollSpeedFactor})
+      required this.infiniteScrollViewScrollSpeedFactor,
+      this.lowerLimit = double.negativeInfinity,
+      this.upperLimit = double.infinity})
       : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
@@ -27,6 +29,8 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
   final void Function(double) onChanged;
   final double infiniteScrollViewRange;
   final double infiniteScrollViewScrollSpeedFactor;
+  final double lowerLimit;
+  final double upperLimit;
 
   @override
   Widget build(BuildContext context) {
@@ -102,6 +106,8 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
           themeSettings: themeSettings,
           currentValue: currentValue,
           infiniteScrollViewRange: infiniteScrollViewRange,
+          lowerLimit: lowerLimit,
+          upperLimit: upperLimit,
         ),
       ),
     );
