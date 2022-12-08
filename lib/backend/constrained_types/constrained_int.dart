@@ -35,7 +35,8 @@ class ConstrainedInt {
   ///   builder: (context, settings) {
   ///     final someInt = settings
   ///         .getSetting('someInt',
-  ///             ClampedInt(lowerLimit: -1, value: 0, upperLimit: 1))
+  ///             ConstrainedInt(
+  ///                 lowerLimit: -10, value: 0, upperLimit: 10, divisor: 2))
   ///         .value;
   ///
   ///     return MyWidget(
