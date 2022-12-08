@@ -15,6 +15,9 @@ class ClampedInt {
   /// Creates a [ClampedInt] whose [value] is guaranteed to be clamped to be
   /// in the range [lowerLimit]-[upperLimit].
   ///
+  /// Both [lowerLimit] and [upperLimit] can be `null`, in which case the limit
+  /// will not be enforced.
+  ///
   /// It is intended to be used in conjunction with
   /// [WidgetTestSessionCustomSettings.getSetting] to create a custom setting
   /// whose value is a clamped integer.
