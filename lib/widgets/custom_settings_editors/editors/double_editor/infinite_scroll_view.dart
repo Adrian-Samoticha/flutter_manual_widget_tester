@@ -75,15 +75,11 @@ class _InfiniteScrollViewPainter extends CustomPainter {
     final flooredValue = value.floorToDouble();
 
     for (var i = flooredValue; i <= rightEdgeValue; i += stepSize) {
-      if (i <= upperLimit) {
-        _drawTopLineAtValue(i, canvas, size, paint, heightFactor);
-      }
+      _drawTopLineAtValueIfWithinLimit(i, canvas, size, paint, heightFactor);
     }
 
     for (var i = flooredValue; i >= leftEdgeValue; i -= stepSize) {
-      if (i >= lowerLimit) {
-        _drawTopLineAtValue(i, canvas, size, paint, heightFactor);
-      }
+      _drawTopLineAtValueIfWithinLimit(i, canvas, size, paint, heightFactor);
     }
   }
 
@@ -94,20 +90,20 @@ class _InfiniteScrollViewPainter extends CustomPainter {
     final flooredValue = value.floorToDouble();
 
     for (var i = flooredValue; i <= rightEdgeValue; i += 1.0) {
-      if (i <= upperLimit) {
-        _drawRulerNumberAtValue(i, canvas, size);
-      }
+      _drawRulerNumberAtValueIfWithinLimit(i, canvas, size);
     }
 
     for (var i = flooredValue; i >= (leftEdgeValue - 1.0); i -= 1.0) {
-      if (i >= lowerLimit) {
-        _drawRulerNumberAtValue(i, canvas, size);
-      }
+      _drawRulerNumberAtValueIfWithinLimit(i, canvas, size);
     }
   }
 
-  void _drawRulerNumberAtValue(
+  void _drawRulerNumberAtValueIfWithinLimit(
       double valueToDrawTheRulerNumberAt, Canvas canvas, Size size) {
+    if (!valueToDrawTheRulerNumberAt.isWithinRange(lowerLimit, upperLimit)) {
+      return;
+    }
+
     final textPositionLeft =
         _valueToPosition(valueToDrawTheRulerNumberAt, size.width) +
             themeSettings.doubleEditorInfiniteScrollViewTextPaddingAmount;
@@ -137,8 +133,12 @@ class _InfiniteScrollViewPainter extends CustomPainter {
     );
   }
 
-  void _drawTopLineAtValue(double valueToDrawTheLineAt, Canvas canvas,
-      Size size, Paint paint, double heightFactor) {
+  void _drawTopLineAtValueIfWithinLimit(double valueToDrawTheLineAt,
+      Canvas canvas, Size size, Paint paint, double heightFactor) {
+    if (!valueToDrawTheLineAt.isWithinRange(lowerLimit, upperLimit)) {
+      return;
+    }
+
     final position = _valueToPosition(valueToDrawTheLineAt, size.width);
     canvas.drawLine(
       Offset(position, 0.0),
