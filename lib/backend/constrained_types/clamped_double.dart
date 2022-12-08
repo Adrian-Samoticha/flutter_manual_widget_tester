@@ -36,7 +36,7 @@ class ClampedDouble {
   ClampedDouble(
       {this.lowerLimit = double.negativeInfinity,
       this.upperLimit = double.infinity,
-      required value}) {
+      required double value}) {
     assert(
         upperLimit >= lowerLimit,
         'upperLimit ($upperLimit) must be greater than or equal to lowerLimit'
