@@ -13,13 +13,17 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
       required this.themeSettings,
       required this.settingName,
       required this.currentValue,
-      required this.onChanged})
+      required this.onChanged,
+      this.lowerValue,
+      this.upperValue})
       : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final String settingName;
   final int currentValue;
   final void Function(int) onChanged;
+  final int? lowerValue;
+  final int? upperValue;
 
   @override
   Widget build(BuildContext context) {
@@ -73,16 +77,20 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
           ManualWidgetTesterButtonInfo(
             child: const Center(child: Text('-')),
             onButtonPressed: null,
-            onButtonDown: () {
-              onChanged(currentValue - 1);
-            },
+            onButtonDown: lowerValue == null || lowerValue! < currentValue
+                ? () {
+                    onChanged(currentValue - 1);
+                  }
+                : null,
           ),
           ManualWidgetTesterButtonInfo(
             child: const Center(child: Text('+')),
             onButtonPressed: null,
-            onButtonDown: () {
-              onChanged(currentValue + 1);
-            },
+            onButtonDown: upperValue == null || upperValue! > currentValue
+                ? () {
+                    onChanged(currentValue + 1);
+                  }
+                : null,
           ),
         ],
       ),
