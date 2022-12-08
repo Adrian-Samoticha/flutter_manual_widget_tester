@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter_manual_widget_tester/backend/constrained_types/clamped_double.dart';
 import 'package:flutter_manual_widget_tester/backend/constrained_types/clamped_int.dart';
+import 'package:flutter_manual_widget_tester/backend/constrained_types/constrained_int.dart';
 import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/editors/bool_editor.dart';
@@ -97,6 +98,21 @@ class EditorBuilderInstaller {
         },
         lowerValue: currentValue.lowerLimit,
         upperValue: currentValue.upperLimit,
+      );
+    });
+
+    typeEditorBuilder.installEditorBuilder<ConstrainedInt>((String settingName,
+        ConstrainedInt currentValue, void Function(ConstrainedInt) onChanged) {
+      return ManualWidgetTesterCustomSettingsIntEditor(
+        themeSettings: themeSettings,
+        settingName: settingName,
+        currentValue: currentValue.value,
+        onChanged: (int newValue) {
+          onChanged(currentValue..value = newValue);
+        },
+        lowerValue: currentValue.lowerLimit,
+        upperValue: currentValue.upperLimit,
+        stepSize: currentValue.divisor,
       );
     });
   }

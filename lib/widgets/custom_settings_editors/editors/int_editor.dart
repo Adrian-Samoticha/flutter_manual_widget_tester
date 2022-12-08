@@ -15,7 +15,8 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
       required this.currentValue,
       required this.onChanged,
       this.lowerValue,
-      this.upperValue})
+      this.upperValue,
+      this.stepSize = 1})
       : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
@@ -24,6 +25,7 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
   final void Function(int) onChanged;
   final int? lowerValue;
   final int? upperValue;
+  final int stepSize;
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +81,7 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
             onButtonPressed: null,
             onButtonDown: lowerValue == null || lowerValue! < currentValue
                 ? () {
-                    onChanged(currentValue - 1);
+                    onChanged(currentValue - stepSize);
                   }
                 : null,
           ),
@@ -88,7 +90,7 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
             onButtonPressed: null,
             onButtonDown: upperValue == null || upperValue! > currentValue
                 ? () {
-                    onChanged(currentValue + 1);
+                    onChanged(currentValue + stepSize);
                   }
                 : null,
           ),
