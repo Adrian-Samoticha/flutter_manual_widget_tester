@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/constrained_types/clamped_double.dart';
+import 'package:flutter_manual_widget_tester/backend/editor_builder_installer.dart';
 import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
@@ -49,76 +50,14 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       _onMouseCursorOverrideChangedStreamSubscription;
   final TypeEditorBuilder _typeEditorBuilder = TypeEditorBuilder();
 
-  void _installEditorBuilders() {
-    _typeEditorBuilder.installEditorBuilder<String>((String settingName,
-        String currentValue, void Function(String) onChanged) {
-      return ManualWidgetTesterCustomSettingsStringEditor(
+  void _installDefaultEditorBuilders() {
+    EditorBuilderInstaller.installDefaultEditorBuilders(
+        typeEditorBuilder: _typeEditorBuilder,
         themeSettings: widget.themeSettings,
-        settingName: settingName,
-        currentValue: currentValue,
-        onChanged: onChanged,
-      );
-    });
-
-    _typeEditorBuilder.installEditorBuilder<Color>((String settingName,
-        Color currentValue, void Function(Color) onChanged) {
-      return ManualWidgetTesterCustomSettingsColorEditor(
-        themeSettings: widget.themeSettings,
-        settingName: settingName,
-        currentValue: currentValue,
-        onChanged: onChanged,
-      );
-    });
-
-    _typeEditorBuilder.installEditorBuilder<int>(
-        (String settingName, int currentValue, void Function(int) onChanged) {
-      return ManualWidgetTesterCustomSettingsIntEditor(
-        themeSettings: widget.themeSettings,
-        settingName: settingName,
-        currentValue: currentValue,
-        onChanged: onChanged,
-      );
-    });
-
-    _typeEditorBuilder.installEditorBuilder<double>((String settingName,
-        double currentValue, void Function(double) onChanged) {
-      return ManualWidgetTesterCustomSettingsDoubleEditor(
-        themeSettings: widget.themeSettings,
-        settingName: settingName,
-        currentValue: currentValue,
-        onChanged: onChanged,
-        infiniteScrollViewRange: widget.doubleEditorInfiniteScrollViewRange,
-        infiniteScrollViewScrollSpeedFactor:
-            widget.doubleEditorInfiniteScrollViewScrollSpeedFactor,
-      );
-    });
-
-    _typeEditorBuilder.installEditorBuilder<bool>(
-        (String settingName, bool currentValue, void Function(bool) onChanged) {
-      return ManualWidgetTesterCustomSettingsBoolEditor(
-        themeSettings: widget.themeSettings,
-        settingName: settingName,
-        currentValue: currentValue,
-        onChanged: onChanged,
-      );
-    });
-
-    _typeEditorBuilder.installEditorBuilder<ClampedDouble>(
-        (settingName, currentValue, onChanged) {
-      return ManualWidgetTesterCustomSettingsDoubleEditor(
-        themeSettings: widget.themeSettings,
-        settingName: settingName,
-        currentValue: currentValue.value,
-        onChanged: (double newValue) {
-          onChanged(currentValue..value = newValue);
-        },
-        infiniteScrollViewRange: widget.doubleEditorInfiniteScrollViewRange,
-        infiniteScrollViewScrollSpeedFactor:
-            widget.doubleEditorInfiniteScrollViewScrollSpeedFactor,
-        lowerLimit: currentValue.lowerLimit,
-        upperLimit: currentValue.upperLimit,
-      );
-    });
+        doubleEditorInfiniteScrollViewRange:
+            widget.doubleEditorInfiniteScrollViewRange,
+        doubleEditorInfiniteScrollViewScrollSpeedFactor:
+            widget.doubleEditorInfiniteScrollViewScrollSpeedFactor);
   }
 
   @override
@@ -128,7 +67,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       setState(() {});
     });
 
-    _installEditorBuilders();
+    _installDefaultEditorBuilders();
 
     super.initState();
   }
