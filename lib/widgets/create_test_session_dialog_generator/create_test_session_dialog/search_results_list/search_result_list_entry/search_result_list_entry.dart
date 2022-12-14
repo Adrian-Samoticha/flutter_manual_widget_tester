@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
@@ -26,13 +28,48 @@ class SearchResultListEntry extends StatefulWidget {
 }
 
 class _SearchResultListEntryState extends State<SearchResultListEntry> {
+  final GlobalKey _globalKey = GlobalKey();
   var _isBeingHovered = false;
+  var _wasSelected = false;
+
+  bool get _isSelected => widget.index == widget.legalSelectedSearchResultIndex;
+
+  void _ensureVisible() {
+    if (_globalKey.currentContext == null) {
+      return;
+    }
+
+    Scrollable.ensureVisible(_globalKey.currentContext!,
+        duration: widget.themeSettings.scrollIntoViewDuration,
+        alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtStart);
+
+    Scrollable.ensureVisible(_globalKey.currentContext!,
+        duration: widget.themeSettings.scrollIntoViewDuration,
+        alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    // During the first build `_globalKey.currentContext` is null, therefore,
+    // use a timer to ensure that `_ensureVisible` is called after `build` has
+    // completed.
+    if (_isSelected) {
+      Timer(const Duration(), _ensureVisible);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final themeSettings = widget.themeSettings;
+    if (_isSelected && !_wasSelected) {
+      _ensureVisible();
+    }
+
+    _wasSelected = _isSelected;
 
     return GestureDetector(
+      key: _globalKey,
       onTapDown: (_) {
         final widgetTestSessionHandler = widget.widgetTestSessionHandler;
         widgetTestSessionHandler.createNewSession(widget.builder);
@@ -51,19 +88,19 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
           });
         },
         child: AnimatedOpacity(
-          duration:
-              themeSettings.createTestSessionDialogSearchResultFadeDuration,
-          opacity: widget.index == widget.legalSelectedSearchResultIndex ||
-                  _isBeingHovered
+          duration: widget
+              .themeSettings.createTestSessionDialogSearchResultFadeDuration,
+          opacity: _isSelected || _isBeingHovered
               ? 1.0
-              : themeSettings
+              : widget.themeSettings
                   .createTestSessionDialogUnselectedSearchResultOpacity,
           child: Container(
-            height: themeSettings.createTestSessionDialogSearchResultHeight,
-            decoration: widget.index == widget.legalSelectedSearchResultIndex
-                ? themeSettings
+            height:
+                widget.themeSettings.createTestSessionDialogSearchResultHeight,
+            decoration: _isSelected
+                ? widget.themeSettings
                     .createTestSessionDialogSelectedSearchResultDecoration
-                : themeSettings
+                : widget.themeSettings
                     .createTestSessionDialogUnselectedSearchResultDecoration,
             child: _buildIconAndNameRow(),
           ),
