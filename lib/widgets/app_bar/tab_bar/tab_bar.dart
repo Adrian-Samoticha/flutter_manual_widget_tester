@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
@@ -45,20 +46,34 @@ class _ManualWidgetTesterTabBarState extends State<ManualWidgetTesterTabBar> {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRect(
-      child: SizedBox.expand(
-        child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-            return SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: _getTesterTabListFromWidgetTestSessionHandler(
-                  widget.widgetTestSessionHandler,
-                  constraints,
+    return Listener(
+      onPointerSignal: (event) {
+        if (event is PointerScrollEvent) {
+          if (event.scrollDelta.dy == 0) {
+            return;
+          }
+
+          setState(() {
+            widget.widgetTestSessionHandler.currentIndex +=
+                event.scrollDelta.dy > 0 ? 1 : -1;
+          });
+        }
+      },
+      child: ClipRect(
+        child: SizedBox.expand(
+          child: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+              return SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: _getTesterTabListFromWidgetTestSessionHandler(
+                    widget.widgetTestSessionHandler,
+                    constraints,
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );
