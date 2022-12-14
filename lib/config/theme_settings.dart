@@ -12,7 +12,7 @@ class ManualWidgetTesterThemeSettings {
   /// The app bar is the bar that houses the tab bar and the “create new test session” button.
   final double appBarHeight;
 
-  /// The accent color, currently used only for the decoration of the selected tab.
+  /// The accent color, currently used only for the decoration of the focused tab.
   final Color accentColor;
 
   /// The minimal tab width.
@@ -178,8 +178,8 @@ class ManualWidgetTesterThemeSettings {
   /// The height of a menu item in the “RUNNING TEST SESSIONS” area.
   final double testSessionMenuItemHeight;
 
-  /// The opacity of an unselected menu item in the “RUNNING TEST SESSIONS” area.
-  final double testSessionMenuItemUnselectedTabOpacity;
+  /// The opacity of an unfocused menu item in the “RUNNING TEST SESSIONS” area.
+  final double testSessionMenuItemUnfocusedTabOpacity;
 
   /// The padding of a menu item in the “RUNNING TEST SESSIONS” area.
   final EdgeInsets testSessionMenuItemPadding;
@@ -205,8 +205,8 @@ class ManualWidgetTesterThemeSettings {
   /// The icon padding of a menu item in the “RUNNING TEST SESSIONS” area.
   final EdgeInsets testSessionMenuItemTabIconPadding;
 
-  /// The tint decoration of a selected menu item in the “RUNNING TEST SESSIONS” area.
-  final BoxDecoration testSessionMenuItemSelectedTabTintDecoration;
+  /// The tint decoration of a focused menu item in the “RUNNING TEST SESSIONS” area.
+  final BoxDecoration testSessionMenuItemFocusedTabTintDecoration;
 
   /// The padding of the message that is displayed when no editor for a particular setting could be built.
   final EdgeInsets noEditorMessagePadding;
@@ -494,14 +494,14 @@ class ManualWidgetTesterThemeSettings {
   /// The text style of the “create test session” dialog's *“No matching results.”* text.
   final TextStyle createTestSessionDialogNoMatchingResultsTextStyle;
 
-  /// The box decoration of the selected tab.
-  final BoxDecoration selectedTabBoxDecoration;
+  /// The box decoration of the focused tab.
+  final BoxDecoration focusedTabBoxDecoration;
 
-  /// The box decoration of the unselected tabs.
-  final BoxDecoration unselectedTabBoxDecoration;
+  /// The box decoration of the unfocused tabs.
+  final BoxDecoration unfocusedTabBoxDecoration;
 
-  /// The width of the decoration of the selected tab.
-  final double selectedTabAccentColorDecorationWidth;
+  /// The width of the decoration of the focused tab.
+  final double focusedTabAccentColorDecorationWidth;
 
   /// The width of the line that separates tabs.
   final BoxDecoration tabSeparatorBoxDecoration;
@@ -518,14 +518,14 @@ class ManualWidgetTesterThemeSettings {
   /// The text style of the tabs' text.
   final TextStyle tabTextStyle;
 
-  /// The opacity of unselected tabs that are being hovered over.
-  final double unselectedHoveredTabOpacity;
+  /// The opacity of unfocused tabs that are being hovered over.
+  final double unfocusedHoveredTabOpacity;
 
-  /// The opacity of unselected tabs that are *not* being hovered over.
-  final double unselectedNotHoveredTabOpacity;
+  /// The opacity of unfocused tabs that are *not* being hovered over.
+  final double unfocusedNotHoveredTabOpacity;
 
-  /// The duration of the opacity change animation that plays when an unselected tab is hovered over.
-  final Duration unselectedTabOpacityChangeDuration;
+  /// The duration of the opacity change animation that plays when an unfocused tab is hovered over.
+  final Duration unfocusedTabOpacityChangeDuration;
 
   /// The space above the tab bar.
   final double spaceAboveTabs;
@@ -671,7 +671,7 @@ class ManualWidgetTesterThemeSettings {
     ),
     this.closeButtonColor = const Color.fromRGBO(255, 255, 255, 0.9),
     this.testSessionMenuItemHeight = 24.0,
-    this.testSessionMenuItemUnselectedTabOpacity = 0.5,
+    this.testSessionMenuItemUnfocusedTabOpacity = 0.5,
     this.testSessionMenuItemPadding =
         const EdgeInsets.symmetric(horizontal: 8.0),
     this.testSessionMenuItemCloseButtonPadding =
@@ -687,7 +687,7 @@ class ManualWidgetTesterThemeSettings {
       color: Color.fromRGBO(255, 255, 255, 0.1),
     ),
     this.testSessionMenuItemTabIconPadding = const EdgeInsets.only(right: 8.0),
-    this.testSessionMenuItemSelectedTabTintDecoration = const BoxDecoration(
+    this.testSessionMenuItemFocusedTabTintDecoration = const BoxDecoration(
       color: Color.fromRGBO(255, 255, 255, 0.15),
     ),
     this.noEditorMessagePadding = const EdgeInsets.all(8.0),
@@ -969,7 +969,7 @@ class ManualWidgetTesterThemeSettings {
     this.createTestSessionDialogNoMatchingResultsTextStyle = const TextStyle(
       color: Color.fromRGBO(255, 255, 255, 0.9),
     ),
-    this.selectedTabBoxDecoration = const BoxDecoration(
+    this.focusedTabBoxDecoration = const BoxDecoration(
       color: Color.fromRGBO(41, 43, 53, 1.0),
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(3.0),
@@ -982,10 +982,10 @@ class ManualWidgetTesterThemeSettings {
         )
       ],
     ),
-    this.unselectedTabBoxDecoration = const BoxDecoration(
+    this.unfocusedTabBoxDecoration = const BoxDecoration(
       color: Colors.transparent,
     ),
-    this.selectedTabAccentColorDecorationWidth = 3.0,
+    this.focusedTabAccentColorDecorationWidth = 3.0,
     this.tabSeparatorBoxDecoration = const BoxDecoration(
       gradient: LinearGradient(
         begin: Alignment.topCenter,
@@ -1022,9 +1022,9 @@ class ManualWidgetTesterThemeSettings {
       fontSize: 12.0,
       fontWeight: FontWeight.w600,
     ),
-    this.unselectedHoveredTabOpacity = 0.7,
-    this.unselectedNotHoveredTabOpacity = 0.4,
-    this.unselectedTabOpacityChangeDuration = const Duration(milliseconds: 150),
+    this.unfocusedHoveredTabOpacity = 0.7,
+    this.unfocusedNotHoveredTabOpacity = 0.4,
+    this.unfocusedTabOpacityChangeDuration = const Duration(milliseconds: 150),
     this.spaceAboveTabs = 4.0,
     this.tabContentPadding = const EdgeInsets.all(8.0),
     this.tabOpenAnimationDuration = const Duration(milliseconds: 150),

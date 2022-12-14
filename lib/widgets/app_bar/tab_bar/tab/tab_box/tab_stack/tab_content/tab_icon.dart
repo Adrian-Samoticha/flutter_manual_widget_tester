@@ -7,19 +7,19 @@ class TabIcon extends StatelessWidget {
     required this.themeSettings,
     required this.icon,
     required this.iconColor,
-    required this.isSelected,
+    required this.isFocused,
     required this.isBeingHovered,
   }) : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final IconData icon;
   final Color? iconColor;
-  final bool isSelected;
+  final bool isFocused;
   final bool isBeingHovered;
 
   @override
   Widget build(BuildContext context) {
-    if (isSelected) {
+    if (isFocused) {
       return Padding(
         padding: themeSettings.tabIconPadding,
         child: Icon(
@@ -31,10 +31,10 @@ class TabIcon extends StatelessWidget {
     }
 
     return AnimatedOpacity(
-      duration: themeSettings.unselectedTabOpacityChangeDuration,
+      duration: themeSettings.unfocusedTabOpacityChangeDuration,
       opacity: isBeingHovered
-          ? themeSettings.unselectedHoveredTabOpacity
-          : themeSettings.unselectedNotHoveredTabOpacity,
+          ? themeSettings.unfocusedHoveredTabOpacity
+          : themeSettings.unfocusedNotHoveredTabOpacity,
       child: Padding(
         padding: themeSettings.tabIconPadding,
         child: Icon(

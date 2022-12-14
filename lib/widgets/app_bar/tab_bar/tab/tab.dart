@@ -12,7 +12,7 @@ class ManualWidgetTesterTab extends StatefulWidget {
       required this.widgetName,
       required this.themeSettings,
       required this.tabIndex,
-      required this.selectedTabIndex,
+      required this.focusedTabIndex,
       required this.onSelect,
       required this.onClose,
       required this.icon,
@@ -21,7 +21,7 @@ class ManualWidgetTesterTab extends StatefulWidget {
 
   final double width;
   final int tabIndex;
-  final int selectedTabIndex;
+  final int focusedTabIndex;
   final String widgetName;
   final ManualWidgetTesterThemeSettings themeSettings;
   final void Function() onSelect;
@@ -36,9 +36,9 @@ class ManualWidgetTesterTab extends StatefulWidget {
 class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
   final GlobalKey _globalKey = GlobalKey();
   bool _isBeingHovered = false;
-  bool _wasSelected = false;
+  bool _wasFocused = false;
 
-  bool get _isSelected => widget.tabIndex == widget.selectedTabIndex;
+  bool get _isFocused => widget.tabIndex == widget.focusedTabIndex;
 
   void _ensureVisible() {
     if (_globalKey.currentContext == null) {
@@ -61,18 +61,18 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
     // During the first build `_globalKey.currentContext` is null, therefore,
     // use a timer to ensure that `_ensureVisible` is called after `build` has
     // completed.
-    if (_isSelected) {
+    if (_isFocused) {
       Timer(const Duration(), _ensureVisible);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_isSelected && !_wasSelected) {
+    if (_isFocused && !_wasFocused) {
       _ensureVisible();
     }
 
-    _wasSelected = _isSelected;
+    _wasFocused = _isFocused;
 
     return GestureDetector(
       key: _globalKey,
@@ -91,8 +91,8 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
           themeSettings: widget.themeSettings,
           icon: widget.icon,
           iconColor: widget.iconColor,
-          isSelected: _isSelected,
-          selectedTabIndex: widget.selectedTabIndex,
+          isFocused: _isFocused,
+          focusedTabIndex: widget.focusedTabIndex,
           tabIndex: widget.tabIndex,
           widgetName: widget.widgetName,
           width: widget.width,

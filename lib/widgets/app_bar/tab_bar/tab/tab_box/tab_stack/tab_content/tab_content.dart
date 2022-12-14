@@ -11,7 +11,7 @@ class TabContent extends StatelessWidget {
     required this.isBeingHovered,
     required this.icon,
     required this.iconColor,
-    required this.isSelected,
+    required this.isFocused,
     required this.widgetName,
   }) : super(key: key);
 
@@ -19,7 +19,7 @@ class TabContent extends StatelessWidget {
   final bool isBeingHovered;
   final IconData? icon;
   final Color? iconColor;
-  final bool isSelected;
+  final bool isFocused;
   final String widgetName;
 
   @override
@@ -35,7 +35,7 @@ class TabContent extends StatelessWidget {
                     themeSettings: themeSettings,
                     icon: icon!,
                     iconColor: iconColor,
-                    isSelected: isSelected,
+                    isFocused: isFocused,
                     isBeingHovered: isBeingHovered,
                   ),
                 ],
@@ -43,7 +43,7 @@ class TabContent extends StatelessWidget {
             child: TabText(
               themeSettings: themeSettings,
               widgetName: widgetName,
-              isSelected: isSelected,
+              isFocused: isFocused,
               isBeingHovered: isBeingHovered,
             ),
           ),

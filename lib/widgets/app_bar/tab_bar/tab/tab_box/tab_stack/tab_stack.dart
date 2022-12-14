@@ -7,10 +7,10 @@ import 'tab_content/tab_content.dart';
 class TabStack extends StatelessWidget {
   const TabStack(
       {Key? key,
-      required this.isSelected,
+      required this.isFocused,
       required this.themeSettings,
       required this.tabIndex,
-      required this.selectedTabIndex,
+      required this.focusedTabIndex,
       required this.icon,
       required this.iconColor,
       required this.widgetName,
@@ -19,12 +19,12 @@ class TabStack extends StatelessWidget {
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final int tabIndex;
-  final int selectedTabIndex;
+  final int focusedTabIndex;
   final IconData? icon;
   final Color iconColor;
   final String widgetName;
   final bool isBeingHovered;
-  final bool isSelected;
+  final bool isFocused;
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +33,14 @@ class TabStack extends StatelessWidget {
         TabBackground(
           themeSettings: themeSettings,
           tabIndex: tabIndex,
-          selectedTabIndex: selectedTabIndex,
+          focusedTabIndex: focusedTabIndex,
         ),
         TabContent(
           themeSettings: themeSettings,
           isBeingHovered: isBeingHovered,
           icon: icon,
           iconColor: iconColor,
-          isSelected: isSelected,
+          isFocused: isFocused,
           widgetName: widgetName,
         ),
       ],

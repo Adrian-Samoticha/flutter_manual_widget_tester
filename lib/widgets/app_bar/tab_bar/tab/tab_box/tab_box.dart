@@ -9,22 +9,22 @@ class TabBox extends StatelessWidget {
       required this.themeSettings,
       required this.width,
       required this.isBeingHovered,
-      required this.isSelected,
+      required this.isFocused,
       this.icon,
       required this.iconColor,
       required this.tabIndex,
-      required this.selectedTabIndex,
+      required this.focusedTabIndex,
       required this.widgetName})
       : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final double width;
   final bool isBeingHovered;
-  final bool isSelected;
+  final bool isFocused;
   final IconData? icon;
   final Color iconColor;
   final int tabIndex;
-  final int selectedTabIndex;
+  final int focusedTabIndex;
   final String widgetName;
 
   @override
@@ -46,10 +46,10 @@ class TabBox extends StatelessWidget {
           padding: EdgeInsets.only(top: themeSettings.spaceAboveTabs),
           child: TabStack(
             isBeingHovered: isBeingHovered,
-            isSelected: isSelected,
+            isFocused: isFocused,
             icon: icon,
             iconColor: iconColor,
-            selectedTabIndex: selectedTabIndex,
+            focusedTabIndex: focusedTabIndex,
             tabIndex: tabIndex,
             themeSettings: themeSettings,
             widgetName: widgetName,

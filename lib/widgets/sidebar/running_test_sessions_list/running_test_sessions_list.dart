@@ -47,7 +47,7 @@ class RunningTestSessionsList extends StatelessWidget {
               widgetTestSessionHandler.closeWidgetTestSession(index);
             },
             tabIndex: index,
-            selectedTabIndex: widgetTestSessionHandler.currentIndex,
+            focusedTabIndex: widgetTestSessionHandler.currentIndex,
             enableIcon: enableIcons,
           );
 

@@ -5,7 +5,7 @@ import 'close_tab_button.dart';
 
 class ManualWidgetTesterTestSessionMenuItem extends StatefulWidget {
   final int tabIndex;
-  final int selectedTabIndex;
+  final int focusedTabIndex;
   final String widgetName;
   final ManualWidgetTesterThemeSettings themeSettings;
   final void Function() onSelect;
@@ -17,7 +17,7 @@ class ManualWidgetTesterTestSessionMenuItem extends StatefulWidget {
   const ManualWidgetTesterTestSessionMenuItem(
       {Key? key,
       required this.tabIndex,
-      required this.selectedTabIndex,
+      required this.focusedTabIndex,
       required this.widgetName,
       required this.themeSettings,
       required this.onSelect,
@@ -50,15 +50,15 @@ class _ManualWidgetTesterTestSessionMenuItemState
         onTapDown: (_) => widget.onSelect(),
         onTertiaryTapDown: (_) => widget.onClose(),
         child: Opacity(
-          opacity: widget.tabIndex == widget.selectedTabIndex
+          opacity: widget.tabIndex == widget.focusedTabIndex
               ? 1.0
-              : widget.themeSettings.testSessionMenuItemUnselectedTabOpacity,
+              : widget.themeSettings.testSessionMenuItemUnfocusedTabOpacity,
           child: Container(
             height: widget.themeSettings.testSessionMenuItemHeight,
-            decoration: widget.tabIndex != widget.selectedTabIndex
+            decoration: widget.tabIndex != widget.focusedTabIndex
                 ? null
                 : widget
-                    .themeSettings.testSessionMenuItemSelectedTabTintDecoration,
+                    .themeSettings.testSessionMenuItemFocusedTabTintDecoration,
             child: Stack(
               children: [
                 _buildHoverTint(),
@@ -92,7 +92,7 @@ class _ManualWidgetTesterTestSessionMenuItemState
 
   Widget _buildCloseTabButton() {
     final isVisible =
-        _isBeingHovered || widget.tabIndex == widget.selectedTabIndex;
+        _isBeingHovered || widget.tabIndex == widget.focusedTabIndex;
     final tweenValue = isVisible ? 1.0 : 0.0;
 
     return CloseTabButton(

@@ -79,7 +79,7 @@ class _ManualWidgetTesterTabBarState extends State<ManualWidgetTesterTabBar> {
           widgetName: session.name,
           themeSettings: widget.themeSettings,
           tabIndex: entry.key,
-          selectedTabIndex: widgetTestSessionHandler.currentIndex,
+          focusedTabIndex: widgetTestSessionHandler.currentIndex,
           onSelect: () =>
               widget.widgetTestSessionHandler.currentIndex = entry.key,
           onClose: () =>

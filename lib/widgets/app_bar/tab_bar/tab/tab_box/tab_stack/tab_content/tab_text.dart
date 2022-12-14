@@ -6,18 +6,18 @@ class TabText extends StatelessWidget {
     Key? key,
     required this.themeSettings,
     required this.widgetName,
-    required this.isSelected,
+    required this.isFocused,
     required this.isBeingHovered,
   }) : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final String widgetName;
-  final bool isSelected;
+  final bool isFocused;
   final bool isBeingHovered;
 
   @override
   Widget build(BuildContext context) {
-    if (isSelected) {
+    if (isFocused) {
       return Center(
           child: Text(
         widgetName,
@@ -29,10 +29,10 @@ class TabText extends StatelessWidget {
 
     return Center(
         child: AnimatedOpacity(
-      duration: themeSettings.unselectedTabOpacityChangeDuration,
+      duration: themeSettings.unfocusedTabOpacityChangeDuration,
       opacity: isBeingHovered
-          ? themeSettings.unselectedHoveredTabOpacity
-          : themeSettings.unselectedNotHoveredTabOpacity,
+          ? themeSettings.unfocusedHoveredTabOpacity
+          : themeSettings.unfocusedNotHoveredTabOpacity,
       child: Text(
         widgetName,
         overflow: TextOverflow.fade,

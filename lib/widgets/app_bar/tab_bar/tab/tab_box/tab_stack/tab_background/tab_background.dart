@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
-import 'selected_tab_decoration.dart';
+import 'focused_tab_decoration.dart';
 import 'tab_light_reflection.dart';
 import 'tab_separator.dart';
 
@@ -10,34 +10,34 @@ class TabBackground extends StatelessWidget {
     Key? key,
     required this.themeSettings,
     required this.tabIndex,
-    required this.selectedTabIndex,
+    required this.focusedTabIndex,
   }) : super(key: key);
 
   final int tabIndex;
-  final int selectedTabIndex;
+  final int focusedTabIndex;
   final ManualWidgetTesterThemeSettings themeSettings;
+
+  bool get _isFocused => tabIndex == focusedTabIndex;
 
   @override
   Widget build(BuildContext context) {
-    final isSelected = tabIndex == selectedTabIndex;
-
-    final tabDecoration = isSelected
-        ? themeSettings.selectedTabBoxDecoration
-        : themeSettings.unselectedTabBoxDecoration;
+    final tabDecoration = _isFocused
+        ? themeSettings.focusedTabBoxDecoration
+        : themeSettings.unfocusedTabBoxDecoration;
 
     return Stack(
       children: [
         Container(
           decoration: tabDecoration,
         ),
-        ...!isSelected
+        ...!_isFocused
             ? const []
-            : [SelectedTabDecoration(themeSettings: themeSettings)],
-        ...isSelected || tabIndex == selectedTabIndex - 1
+            : [FocusedTabDecoration(themeSettings: themeSettings)],
+        ..._isFocused || tabIndex == focusedTabIndex - 1
             ? const []
             : [_buildRightAlignedTabSeparator()],
         TabLightReflection(
-          isSelected: isSelected,
+          isFocused: _isFocused,
           themeSettings: themeSettings,
         ),
       ],
