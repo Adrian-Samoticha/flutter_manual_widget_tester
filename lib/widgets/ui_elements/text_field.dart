@@ -28,8 +28,8 @@ class ManualWidgetTesterTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      // Do not render the text field when there is not enough available space, as attempting to do so
-      // may cause exceptions to be thrown.
+      // Do not render the text field when there is not enough available space,
+      // as attempting to do so may cause exceptions to be thrown.
       if (constraints.maxWidth <= 32.0 || constraints.maxHeight <= 8.0) {
         return const SizedBox();
       }

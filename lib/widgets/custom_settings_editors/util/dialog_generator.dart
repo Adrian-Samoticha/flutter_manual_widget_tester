@@ -8,11 +8,13 @@ import 'package:num_remap/num_remap.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row/button_row.dart';
 
 class ManualWidgetTesterDialogGenerator {
-  /// Shows a dialog that displays a custom setting editor that is built via a provided [editorBuilder].
-  /// By default, the window has two actions buttons, one for canceling the setting and one for applying
-  /// it. When a button is pressed, the [onCancel] and [onApply] callbacks are triggered respectively.
-  /// Optionally, additional action buttons can be supplied via the [customActionButtons] argument.
-  /// These action buttons will then be positioned between the “Cancel” and “Apply” buttons.
+  /// Shows a dialog that displays a custom setting editor that is built via a
+  /// provided [editorBuilder]. By default, the window has two actions buttons,
+  /// one for canceling the setting and one for applying it. When a button is
+  /// pressed, the [onCancel] and [onApply] callbacks are triggered
+  /// respectively. Optionally, additional action buttons can be supplied via
+  /// the [customActionButtons] argument. These action buttons will then be
+  /// positioned between the “Cancel” and “Apply” buttons.
   static void showEditSettingDialog({
     required BuildContext context,
     required ManualWidgetTesterThemeSettings themeSettings,
@@ -34,8 +36,10 @@ class ManualWidgetTesterDialogGenerator {
         final curvedAnimationValue = themeSettings.dialogOpenCloseAnimationCurve
             .transform(animation.value);
 
-        // Unfortunately, the BackdropFilter Widget cannot be combined with the Opacity widget to create a dialog open/close animation. So instead, this code
-        // fades the background color to full opacity to hide the point at which the BackdropFilter is enabled/disabled.
+        // Unfortunately, the BackdropFilter Widget cannot be combined with the
+        // Opacity widget to create a dialog open/close animation. So instead,
+        // this code fades the background color to full opacity to hide the
+        // point at which the BackdropFilter is enabled/disabled.
         final originalDialogBackgroundColor =
             themeSettings.dialogBackgroundColor;
         final renderedDialogBackgroundColor =

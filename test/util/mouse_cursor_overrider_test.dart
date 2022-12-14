@@ -24,8 +24,8 @@ void main() {
   });
 
   testWidgets(
-      'mouse cursor overrider on override changed callback (override mouse cursor)',
-      (tester) async {
+      'mouse cursor overrider on override changed callback (override mouse '
+      'cursor)', (tester) async {
     final mouseCursorOverrider = MouseCursorOverrider();
 
     mouseCursorOverrider.registerOnMouseCursorOverrideChanged(

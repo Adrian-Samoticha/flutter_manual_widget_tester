@@ -8,7 +8,8 @@ void main() {
       (tester) async {
     final sessionHandler = WidgetTestSessionHandler();
 
-    // Initially, the length and index are expected to be 0 and -1, respectively.
+    // Initially, the length and index are expected to be 0 and -1,
+    // respectively.
     expect(sessionHandler.widgetTestSessions.length, 0);
     expect(sessionHandler.currentIndex, -1);
 
@@ -112,8 +113,8 @@ void main() {
   });
 
   testWidgets(
-      'widget test session handler session closed callback (index does not change)',
-      (tester) async {
+      'widget test session handler session closed callback (index does not '
+      'change)', (tester) async {
     final sessionHandler = WidgetTestSessionHandler();
 
     sessionHandler.createNewSession(
@@ -154,8 +155,8 @@ void main() {
   });
 
   testWidgets(
-      'widget test session handler session custom settings stream subscriptions',
-      (tester) async {
+      'widget test session handler session custom settings stream '
+      'subscriptions', (tester) async {
     final sessionHandler = WidgetTestSessionHandler();
 
     sessionHandler.createNewSession(
@@ -170,8 +171,8 @@ void main() {
   });
 
   testWidgets(
-      'widget test session handler session custom settings stream subscriptions (session is closed)',
-      (tester) async {
+      'widget test session handler session custom settings stream '
+      'subscriptions (session is closed)', (tester) async {
     final sessionHandler = WidgetTestSessionHandler();
 
     sessionHandler.createNewSession(
@@ -182,8 +183,8 @@ void main() {
 
     sessionHandler.closeWidgetTestSession(0);
 
-    // The stream subscription should be cancelled when the session is closed, therefore
-    // the count is 0.
+    // The stream subscription should be cancelled when the session is closed,
+    // therefore the count is 0.
     sessionHandler.registerOnChangedCallback(
       expectAsync1((value) => value == sessionHandler, count: 0),
     );
@@ -192,8 +193,9 @@ void main() {
   });
 
   testWidgets(
-      'widget test session handler session custom settings stream subscriptions (three sessions, first two are closed, the second one is modified)',
-      (tester) async {
+      'widget test session handler session custom settings stream '
+      'subscriptions (three sessions, first two are closed, the second one is '
+      'modified)', (tester) async {
     final sessionHandler = WidgetTestSessionHandler();
 
     sessionHandler.createNewSession(
@@ -212,8 +214,8 @@ void main() {
     sessionHandler.closeWidgetTestSession(0);
     sessionHandler.closeWidgetTestSession(0);
 
-    // The stream subscription should be cancelled when the session is closed, therefore
-    // the count is 0.
+    // The stream subscription should be cancelled when the session is closed,
+    // therefore the count is 0.
     sessionHandler.registerOnChangedCallback(
       expectAsync1((value) => value == sessionHandler, count: 0),
     );
