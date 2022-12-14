@@ -559,6 +559,9 @@ class ManualWidgetTesterThemeSettings {
   /// The box decoration of the container that simulates the shadow at the bottom of the app bar.
   final BoxDecoration appBarShadowBoxDecoration;
 
+  /// The duration of the scroll animation that plays when a widget is moved into view.
+  final Duration scrollIntoViewDuration;
+
   const ManualWidgetTesterThemeSettings({
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -1041,5 +1044,6 @@ class ManualWidgetTesterThemeSettings {
         end: Alignment.topCenter,
       ),
     ),
+    this.scrollIntoViewDuration = const Duration(milliseconds: 250),
   });
 }

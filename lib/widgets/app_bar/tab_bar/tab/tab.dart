@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 
@@ -32,13 +34,48 @@ class ManualWidgetTesterTab extends StatefulWidget {
 }
 
 class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
+  final GlobalKey _globalKey = GlobalKey();
   bool _isBeingHovered = false;
+  bool _wasSelected = false;
+
+  bool get _isSelected => widget.tabIndex == widget.selectedTabIndex;
+
+  void _ensureVisible() {
+    if (_globalKey.currentContext == null) {
+      return;
+    }
+
+    Scrollable.ensureVisible(_globalKey.currentContext!,
+        duration: widget.themeSettings.scrollIntoViewDuration,
+        alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtStart);
+
+    Scrollable.ensureVisible(_globalKey.currentContext!,
+        duration: widget.themeSettings.scrollIntoViewDuration,
+        alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    // During the first build `_globalKey.currentContext` is null, therefore,
+    // use a timer to ensure that `_ensureVisible` is called after `build` has
+    // completed.
+    if (_isSelected) {
+      Timer(const Duration(), _ensureVisible);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final isSelected = widget.tabIndex == widget.selectedTabIndex;
+    if (_isSelected && !_wasSelected) {
+      _ensureVisible();
+    }
+
+    _wasSelected = _isSelected;
 
     return GestureDetector(
+      key: _globalKey,
       onTapDown: (_) => widget.onSelect(),
       onTertiaryTapDown: (_) => widget.onClose(),
       child: MouseRegion(
@@ -54,7 +91,7 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
           themeSettings: widget.themeSettings,
           icon: widget.icon,
           iconColor: widget.iconColor,
-          isSelected: isSelected,
+          isSelected: _isSelected,
           selectedTabIndex: widget.selectedTabIndex,
           tabIndex: widget.tabIndex,
           widgetName: widget.widgetName,
