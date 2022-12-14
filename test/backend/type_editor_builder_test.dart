@@ -27,6 +27,6 @@ void main() {
     final editorBuilder = TypeEditorBuilder();
 
     expect(() => editorBuilder.buildEditor('some setting', double, 0.0, (_) {}),
-        throwsArgumentError);
+        throwsAssertionError);
   });
 }
