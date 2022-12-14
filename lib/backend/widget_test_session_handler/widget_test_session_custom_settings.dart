@@ -20,11 +20,13 @@ class WidgetTestSessionCustomSettings {
   }
 
   void setSetting<T>(String settingName, T newValue) {
-    if (_settingExists(settingName) &&
-        newValue.runtimeType != _settingNameToValue[settingName].runtimeType) {
-      throw Exception(
-          'Attempting to overwrite setting “$settingName” which has type “${_settingNameToValue[settingName].runtimeType}” with a value of a different type “${newValue.runtimeType}”.');
-    }
+    assert(
+        !_settingExists(settingName) ||
+            newValue.runtimeType ==
+                _settingNameToValue[settingName].runtimeType,
+        'Attempting to overwrite setting “$settingName” which has type '
+        '“${_settingNameToValue[settingName].runtimeType}” with a value of a '
+        'different type “${newValue.runtimeType}”.');
 
     _settingNameToValue[settingName] = newValue;
 
