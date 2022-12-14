@@ -85,23 +85,26 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       _widgetTestSessionHandler.updateSessions(builder);
     }
 
-    return DefaultTextStyle(
-      style: DefaultTextStyleProvider.defaultTextStyle,
-      child: MouseRegion(
-        cursor: _mouseCursorOverrider.currentMouseCursor,
-        child: Stack(
-          children: [
-            ManualWidgetTesterBackground(
-              color: widget.themeSettings.backgroundColor,
-            ),
-            _ManualWidgetTesterBody(
-              themeSettings: widget.themeSettings,
-              mouseCursorOverrider: _mouseCursorOverrider,
-              widgetTestSessionHandler: _widgetTestSessionHandler,
-              typeEditorBuilder: _typeEditorBuilder,
-              builders: widget.builders,
-            ),
-          ],
+    return Theme(
+      data: widget.themeSettings.isDark ? ThemeData.dark() : ThemeData.light(),
+      child: DefaultTextStyle(
+        style: DefaultTextStyleProvider.defaultTextStyle,
+        child: MouseRegion(
+          cursor: _mouseCursorOverrider.currentMouseCursor,
+          child: Stack(
+            children: [
+              ManualWidgetTesterBackground(
+                color: widget.themeSettings.backgroundColor,
+              ),
+              _ManualWidgetTesterBody(
+                themeSettings: widget.themeSettings,
+                mouseCursorOverrider: _mouseCursorOverrider,
+                widgetTestSessionHandler: _widgetTestSessionHandler,
+                typeEditorBuilder: _typeEditorBuilder,
+                builders: widget.builders,
+              ),
+            ],
+          ),
         ),
       ),
     );

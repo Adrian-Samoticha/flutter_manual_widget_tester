@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ManualWidgetTesterThemeSettings {
+  /// Whether this is a dark theme.
+  final bool isDark;
+
   /// The color of the manual widget tester's background.
   final Color backgroundColor;
 
@@ -621,6 +624,7 @@ class ManualWidgetTesterThemeSettings {
   final Duration scrollIntoViewDuration;
 
   const ManualWidgetTesterThemeSettings({
+    this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
     this.appBarHeight = 40.0,

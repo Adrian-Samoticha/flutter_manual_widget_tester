@@ -65,24 +65,27 @@ class ManualWidgetTesterDialogGenerator {
       },
       pageBuilder: (BuildContext context, Animation<double> animation,
           Animation<double> secondaryAnimation) {
-        return DefaultTextStyle(
-          style: DefaultTextStyleProvider.defaultTextStyle,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: themeSettings.dialogPadding.copyWith(
-                  bottom: 0.0,
+        return Theme(
+          data: themeSettings.isDark ? ThemeData.dark() : ThemeData.light(),
+          child: DefaultTextStyle(
+            style: DefaultTextStyleProvider.defaultTextStyle,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: themeSettings.dialogPadding.copyWith(
+                    bottom: 0.0,
+                  ),
+                  child: editorBuilder(context),
                 ),
-                child: editorBuilder(context),
-              ),
-              SizedBox(
-                  height: themeSettings
-                      .distanceBetweenDialogContentAndActionButtons),
-              _buildActionButtonRow(themeSettings, context, onApply, onCancel,
-                  customActionButtons),
-            ],
+                SizedBox(
+                    height: themeSettings
+                        .distanceBetweenDialogContentAndActionButtons),
+                _buildActionButtonRow(themeSettings, context, onApply, onCancel,
+                    customActionButtons),
+              ],
+            ),
           ),
         );
       },

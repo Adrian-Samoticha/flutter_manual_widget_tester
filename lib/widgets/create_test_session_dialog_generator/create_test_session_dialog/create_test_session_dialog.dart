@@ -45,29 +45,32 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.vertical(
-          bottom: widget.themeSettings.dialogBorderRadius.bottomLeft,
+    return Theme(
+      data: widget.themeSettings.isDark ? ThemeData.dark() : ThemeData.light(),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.vertical(
+            bottom: widget.themeSettings.dialogBorderRadius.bottomLeft,
+          ),
+          color: widget.themeSettings.dialogBackgroundColor,
+          border: Border.fromBorderSide(
+            BorderSide(color: widget.themeSettings.dialogBorderColor),
+          ),
+          boxShadow: widget.themeSettings.dialogShadow,
         ),
-        color: widget.themeSettings.dialogBackgroundColor,
-        border: Border.fromBorderSide(
-          BorderSide(color: widget.themeSettings.dialogBorderColor),
-        ),
-        boxShadow: widget.themeSettings.dialogShadow,
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.vertical(
-          bottom: widget.themeSettings.dialogBorderRadius.bottomLeft,
-        ),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(
-              sigmaX: widget.themeSettings.dialogBlurRadius,
-              sigmaY: widget.themeSettings.dialogBlurRadius),
-          child: Container(
-            width: widget.themeSettings.createTestSessionDialogWidth,
-            padding: widget.themeSettings.createTestSessionDialogPadding,
-            child: _buildMainColumn(),
+        child: ClipRRect(
+          borderRadius: BorderRadius.vertical(
+            bottom: widget.themeSettings.dialogBorderRadius.bottomLeft,
+          ),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(
+                sigmaX: widget.themeSettings.dialogBlurRadius,
+                sigmaY: widget.themeSettings.dialogBlurRadius),
+            child: Container(
+              width: widget.themeSettings.createTestSessionDialogWidth,
+              padding: widget.themeSettings.createTestSessionDialogPadding,
+              child: _buildMainColumn(),
+            ),
           ),
         ),
       ),
