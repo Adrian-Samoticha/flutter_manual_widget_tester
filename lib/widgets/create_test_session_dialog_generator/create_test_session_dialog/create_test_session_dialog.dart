@@ -79,7 +79,7 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
       autofocus: false,
       onKeyEvent: (FocusNode node, KeyEvent event) {
         if (event.physicalKey == PhysicalKeyboardKey.arrowDown &&
-            event is KeyDownEvent) {
+            (event is KeyDownEvent || event is KeyRepeatEvent)) {
           setState(() {
             _selectedSearchResultIndex = _legalSelectedSearchResultIndex + 1;
           });
@@ -87,7 +87,7 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
         }
 
         if (event.physicalKey == PhysicalKeyboardKey.arrowUp &&
-            event is KeyDownEvent) {
+            (event is KeyDownEvent || event is KeyRepeatEvent)) {
           setState(() {
             _selectedSearchResultIndex = _legalSelectedSearchResultIndex - 1;
           });
