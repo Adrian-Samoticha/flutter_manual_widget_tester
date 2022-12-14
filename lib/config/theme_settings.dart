@@ -567,7 +567,7 @@ class ManualWidgetTesterThemeSettings {
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
     this.appBarHeight = 40.0,
     this.accentColor = const Color.fromARGB(255, 40, 138, 251),
-    this.minTabWidth = 64.0,
+    this.minTabWidth = 94.0,
     this.maxTabWidth = 192.0,
     this.dottedLineColor = const Color.fromRGBO(255, 255, 255, 0.5),
     this.widgetSizeTextStyle = const TextStyle(
