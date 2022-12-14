@@ -22,8 +22,8 @@ void main() {
   });
 
   testWidgets(
-      'type editor builder exception when attempting to build non-existant editor builder',
-      (tester) async {
+      'type editor builder exception when attempting to build non-existent '
+      'editor builder', (tester) async {
     final editorBuilder = TypeEditorBuilder();
 
     expect(() => editorBuilder.buildEditor('some setting', double, 0.0, (_) {}),
