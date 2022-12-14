@@ -77,7 +77,8 @@ void main() {
       (tester) async {
     final sessionHandler = WidgetTestSessionHandler();
 
-    expect(() => sessionHandler.closeWidgetTestSession(0), throwsArgumentError);
+    expect(
+        () => sessionHandler.closeWidgetTestSession(0), throwsAssertionError);
   });
 
   testWidgets('widget test session handler session creation callback',

@@ -41,10 +41,8 @@ class WidgetTestSessionHandler {
   }
 
   void closeWidgetTestSession(int index) {
-    if (index >= _widgetTestSessions.length) {
-      throw ArgumentError(
-          'Attempting to close test session at out-of-bounds index $index.');
-    }
+    assert(index < _widgetTestSessions.length,
+        'Attempting to close test session at out-of-bounds index $index.');
 
     final removedTestSession = _widgetTestSessions.removeAt(index);
     _onCustomSettingsChangedStreamSubscriptions[removedTestSession]?.cancel();
