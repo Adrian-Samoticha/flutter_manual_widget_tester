@@ -6,13 +6,15 @@ class ManualWidgetTesterFoldableRegion extends StatefulWidget {
   final String heading;
   final ManualWidgetTesterThemeSettings themeSettings;
   final bool isIndented;
+  final bool isInitiallyFolded;
 
   const ManualWidgetTesterFoldableRegion(
       {Key? key,
       required this.child,
       required this.heading,
       required this.themeSettings,
-      this.isIndented = false})
+      this.isIndented = false,
+      this.isInitiallyFolded = false})
       : super(key: key);
 
   @override
@@ -22,7 +24,14 @@ class ManualWidgetTesterFoldableRegion extends StatefulWidget {
 
 class _ManualWidgetTesterFoldableRegionState
     extends State<ManualWidgetTesterFoldableRegion> {
-  bool _isFolded = false;
+  late bool _isFolded;
+
+  @override
+  void initState() {
+    _isFolded = widget.isInitiallyFolded;
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
