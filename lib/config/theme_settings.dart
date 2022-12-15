@@ -717,7 +717,7 @@ class ManualWidgetTesterThemeSettings {
     this.foldableRegionAnimationDuration = const Duration(milliseconds: 300),
     this.foldableRegionContentAlignment = Alignment.bottomLeft,
     this.foldableRegionHeaderHeight = 24.0,
-    this.foldableRegionFoldedHeaderOpacity = 0.5,
+    this.foldableRegionFoldedHeaderOpacity = 0.75,
     this.foldableRegionHeaderColor = const Color.fromRGBO(70, 79, 90, 1.0),
     this.foldableRegionChevronIconColor = Colors.white,
     this.foldableRegionChevronIconSize = 18.0,
