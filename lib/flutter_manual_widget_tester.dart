@@ -81,6 +81,8 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
         'Found duplicate keys in `builders` list. All widget test builders '
         'must have unique keys.');
 
+    // Updating all test sessions is necessary in case the source code of one of
+    // the widget test builders has been changed by the user of the library.
     for (final WidgetTestBuilder builder in widget.builders) {
       _widgetTestSessionHandler.updateSessions(builder);
     }
