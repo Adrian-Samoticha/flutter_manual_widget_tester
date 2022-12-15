@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
+import 'package:flutter_manual_widget_tester/config/config.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
 
@@ -13,11 +14,13 @@ class TestSessionSettings extends StatelessWidget {
   const TestSessionSettings(
       {Key? key,
       required this.themeSettings,
+      required this.config,
       required this.typeEditorBuilder,
       required this.widgetTestSessionHandler})
       : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
+  final ManualWidgetTesterConfig config;
   final TypeEditorBuilder typeEditorBuilder;
   final WidgetTestSessionHandler widgetTestSessionHandler;
 
@@ -40,6 +43,7 @@ class TestSessionSettings extends StatelessWidget {
               GenericSettings(
                 themeSettings: themeSettings,
                 session: session,
+                config: config,
               ),
             ],
           );

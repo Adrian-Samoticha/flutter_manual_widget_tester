@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_generic_settings.dart';
+import 'package:flutter_manual_widget_tester/config/config.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/generic_settings_editors/editors/edge_inset_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
@@ -11,10 +12,12 @@ class GenericSettings extends StatefulWidget {
   const GenericSettings({
     Key? key,
     required this.themeSettings,
+    required this.config,
     required this.session,
   }) : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
+  final ManualWidgetTesterConfig config;
   final WidgetTestSession session;
 
   @override
@@ -73,8 +76,10 @@ class _GenericSettingsState extends State<GenericSettings> {
                 mediaQueryData.copyWith(padding: newPadding);
             genericSettings.mediaQueryData = newMediaQueryData;
           },
-          infiniteScrollViewRange: 3.0, // TODO: address this
-          infiniteScrollViewScrollSpeedFactor: 0.003, // TODO: address this
+          infiniteScrollViewRange:
+              widget.config.doubleEditorInfiniteScrollViewRange,
+          infiniteScrollViewScrollSpeedFactor:
+              widget.config.doubleEditorInfiniteScrollViewScrollSpeedFactor,
           onlyAllowPositiveValues: true,
         ),
       ),

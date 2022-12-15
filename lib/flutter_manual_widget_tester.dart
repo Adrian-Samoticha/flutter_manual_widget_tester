@@ -7,6 +7,7 @@ import 'package:flutter_manual_widget_tester/backend/editor_builder_installer.da
 import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
+import 'package:flutter_manual_widget_tester/config/config.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 import 'package:flutter_manual_widget_tester/util/list_has_duplicates.dart';
@@ -44,14 +45,17 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       _onMouseCursorOverrideChangedStreamSubscription;
   final TypeEditorBuilder _typeEditorBuilder = TypeEditorBuilder();
 
+  ManualWidgetTesterConfig get _config => ManualWidgetTesterConfig(
+      doubleEditorInfiniteScrollViewRange:
+          widget.doubleEditorInfiniteScrollViewRange,
+      doubleEditorInfiniteScrollViewScrollSpeedFactor:
+          widget.doubleEditorInfiniteScrollViewScrollSpeedFactor);
+
   void _installDefaultEditorBuilders() {
     EditorBuilderInstaller.installDefaultEditorBuilders(
         typeEditorBuilder: _typeEditorBuilder,
         themeSettings: widget.themeSettings,
-        doubleEditorInfiniteScrollViewRange:
-            widget.doubleEditorInfiniteScrollViewRange,
-        doubleEditorInfiniteScrollViewScrollSpeedFactor:
-            widget.doubleEditorInfiniteScrollViewScrollSpeedFactor);
+        config: _config);
   }
 
   @override
@@ -100,6 +104,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
               ),
               _ManualWidgetTesterBody(
                 themeSettings: widget.themeSettings,
+                config: _config,
                 mouseCursorOverrider: _mouseCursorOverrider,
                 widgetTestSessionHandler: _widgetTestSessionHandler,
                 typeEditorBuilder: _typeEditorBuilder,
@@ -117,6 +122,7 @@ class _ManualWidgetTesterBody extends StatelessWidget {
   const _ManualWidgetTesterBody({
     Key? key,
     required this.themeSettings,
+    required this.config,
     required this.mouseCursorOverrider,
     required this.widgetTestSessionHandler,
     required this.typeEditorBuilder,
@@ -124,6 +130,7 @@ class _ManualWidgetTesterBody extends StatelessWidget {
   }) : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
+  final ManualWidgetTesterConfig config;
   final MouseCursorOverrider mouseCursorOverrider;
   final WidgetTestSessionHandler widgetTestSessionHandler;
   final TypeEditorBuilder typeEditorBuilder;
@@ -138,6 +145,7 @@ class _ManualWidgetTesterBody extends StatelessWidget {
           children: [
             ManualWidgetTesterSidebar(
               themeSettings: themeSettings,
+              config: config,
               maxWidth: constraints.maxWidth - 128.0,
               mouseCursorOverrider: mouseCursorOverrider,
               widgetTestSessionHandler: widgetTestSessionHandler,
