@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/backend/constrained_types/constrained_int.dart';
 import 'package:flutter_manual_widget_tester/flutter_manual_widget_tester.dart';
 
 void main() {
@@ -60,9 +61,18 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context, settings) {
           final backgroundColor =
               settings.getSetting('backgroundColor', Colors.white);
-          return Container(
-            color: backgroundColor,
-            child: const Text('list view'),
+          final constrainedInt = settings
+              .getSetting(
+                  'constrainedInt',
+                  ConstrainedInt(
+                      lowerLimit: null, value: 0, upperLimit: null, divisor: 2))
+              .value;
+
+          return SafeArea(
+            child: Container(
+              color: backgroundColor,
+              child: Text('list view $constrainedInt'),
+            ),
           );
         },
       ),
