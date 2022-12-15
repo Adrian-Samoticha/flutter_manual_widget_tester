@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session.dart';
+import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_generic_settings.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
@@ -27,9 +30,27 @@ class ManualWidgetTesterWidgetTestSessionArea extends StatefulWidget {
 
 class _ManualWidgetTesterWidgetTestSessionAreaState
     extends State<ManualWidgetTesterWidgetTestSessionArea> {
+  late StreamSubscription<WidgetTestSessionGenericSettings>
+      _genericSettingsChangedStreamSubscription;
   double _draggedWidth = 480.0;
   double _draggedHeight = 640.0;
   double _zoom = 1.0;
+
+  @override
+  void initState() {
+    _genericSettingsChangedStreamSubscription = widget
+        .widgetTestSession.genericSettings
+        .registerOnChangedCallback((_) => setState(() {}));
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _genericSettingsChangedStreamSubscription.cancel();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,8 +108,11 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
         child: SizedBox(
           width: displayWidth * (1.0 / _zoom),
           height: displayHeight * (1.0 / _zoom),
-          child: widget.widgetTestSession
-              .builder(context, widget.widgetTestSession.customSettings),
+          child: MediaQuery(
+            data: widget.widgetTestSession.genericSettings.mediaQueryData,
+            child: widget.widgetTestSession
+                .builder(context, widget.widgetTestSession.customSettings),
+          ),
         ),
       ),
     );

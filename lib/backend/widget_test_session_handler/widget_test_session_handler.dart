@@ -33,10 +33,8 @@ class WidgetTestSessionHandler {
         continue;
       }
 
-      final oldKey = _widgetTestSessions[i].key;
-      final oldCustomSettings = _widgetTestSessions[i].customSettings;
-      _widgetTestSessions[i] = WidgetTestSession.withKeyAndCustomSettings(
-          widgetTestBuilder, oldKey, oldCustomSettings);
+      _widgetTestSessions[i] = _widgetTestSessions[i]
+          .recreateWithNewWidgetTestBuilder(widgetTestBuilder);
     }
   }
 

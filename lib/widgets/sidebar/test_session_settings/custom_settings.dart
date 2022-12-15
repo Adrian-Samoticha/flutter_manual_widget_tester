@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
+import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_custom_settings.dart';
-import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
 
@@ -9,12 +9,12 @@ class CustomSettings extends StatelessWidget {
   const CustomSettings(
       {Key? key,
       required this.themeSettings,
-      required this.widgetTestSessionHandler,
+      required this.session,
       required this.typeEditorBuilder})
       : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
-  final WidgetTestSessionHandler widgetTestSessionHandler;
+  final WidgetTestSession session;
   final TypeEditorBuilder typeEditorBuilder;
 
   @override
@@ -30,10 +30,7 @@ class CustomSettings extends StatelessWidget {
   }
 
   List<Widget> _generateCustomSettingsChildren() {
-    final currentIndex = widgetTestSessionHandler.currentIndex;
-    final currentTestSession =
-        widgetTestSessionHandler.widgetTestSessions[currentIndex];
-    final customSettings = currentTestSession.customSettings;
+    final customSettings = session.customSettings;
 
     if (customSettings.settings.isEmpty) {
       return [_buildNoSettingsText()];

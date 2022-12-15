@@ -25,17 +25,26 @@ class TestSessionSettings extends StatelessWidget {
     return ManualWidgetTesterFoldableRegion(
       heading: '${_getCurrentTestSessionNameFormatted()} SETTINGS',
       themeSettings: themeSettings,
-      child: Column(
-        children: [
-          CustomSettings(
-            themeSettings: themeSettings,
-            typeEditorBuilder: typeEditorBuilder,
-            widgetTestSessionHandler: widgetTestSessionHandler,
-          ),
-          GenericSettings(
-            themeSettings: themeSettings,
-          ),
-        ],
+      child: IndexedStack(
+        index: widgetTestSessionHandler.currentIndex,
+        children: widgetTestSessionHandler.widgetTestSessions.map((e) {
+          final session = widgetTestSessionHandler
+              .widgetTestSessions[widgetTestSessionHandler.currentIndex];
+
+          return Column(
+            children: [
+              CustomSettings(
+                themeSettings: themeSettings,
+                typeEditorBuilder: typeEditorBuilder,
+                session: session,
+              ),
+              GenericSettings(
+                themeSettings: themeSettings,
+                session: session,
+              ),
+            ],
+          );
+        }).toList(),
       ),
     );
   }
