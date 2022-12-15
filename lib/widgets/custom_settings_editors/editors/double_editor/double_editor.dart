@@ -32,6 +32,8 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
   final double lowerLimit;
   final double upperLimit;
 
+  static const double epsilon = 0.00000001;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -120,6 +122,11 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
     );
   }
 
+  bool _isDoubleSimilar(double double1, double double2) {
+    final delta = (double1 - double2).abs();
+    return delta < epsilon;
+  }
+
   SizedBox _buildButtonRow(BoxConstraints constraints) {
     return SizedBox(
       width: min(themeSettings.defaultNumberEditorButtonRowWidth,
@@ -131,16 +138,20 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
           ManualWidgetTesterButtonInfo(
             child: const Center(child: Text('-')),
             onButtonPressed: null,
-            onButtonDown: () {
-              onChanged(currentValue - 0.2);
-            },
+            onButtonDown: _isDoubleSimilar(currentValue, lowerLimit)
+                ? null
+                : () {
+                    onChanged(currentValue - 0.2);
+                  },
           ),
           ManualWidgetTesterButtonInfo(
             child: const Center(child: Text('+')),
             onButtonPressed: null,
-            onButtonDown: () {
-              onChanged(currentValue + 0.2);
-            },
+            onButtonDown: _isDoubleSimilar(currentValue, upperLimit)
+                ? null
+                : () {
+                    onChanged(currentValue + 0.2);
+                  },
           ),
         ],
       ),
