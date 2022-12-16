@@ -76,35 +76,43 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
     );
   }
 
-  Listener _buildInfiniteScrollView() {
+  Widget _buildInfiniteScrollView() {
     return Listener(
-      onPointerPanZoomUpdate: (PointerPanZoomUpdateEvent event) {
-        final panDelta = event.panDelta;
-        final newValue = currentValue +
-            (-panDelta.dx - panDelta.dy) * infiniteScrollViewScrollSpeedFactor;
-        onChanged(newValue);
-      },
       onPointerSignal: (PointerSignalEvent event) {
         if (event is PointerScrollEvent) {
-          final scrollDelta = event.scrollDelta;
-          final newValue = currentValue +
-              (scrollDelta.dx + scrollDelta.dy) *
-                  infiniteScrollViewScrollSpeedFactor;
-          onChanged(newValue);
+          GestureBinding.instance.pointerSignalResolver.register(
+            event,
+            (event) {
+              final scrollDelta = (event as PointerScrollEvent).scrollDelta;
+              final newValue = currentValue +
+                  (scrollDelta.dx + scrollDelta.dy) *
+                      infiniteScrollViewScrollSpeedFactor;
+              onChanged(newValue);
+            },
+          );
         }
       },
-      child: Container(
-        width: double.infinity,
-        height: themeSettings.doubleEditorInfiniteScrollViewHeight,
-        padding: themeSettings.doubleEditorInfiniteScrollViewPadding,
-        decoration: themeSettings.doubleEditorInfiniteScrollViewBoxDecoration,
-        clipBehavior: Clip.hardEdge,
-        child: InfiniteScrollView(
-          themeSettings: themeSettings,
-          currentValue: currentValue,
-          infiniteScrollViewRange: infiniteScrollViewRange,
-          lowerLimit: lowerLimit,
-          upperLimit: upperLimit,
+      child: GestureDetector(
+        onPanUpdate: (DragUpdateDetails details) {
+          final panDelta = details.delta;
+          final newValue = currentValue +
+              (-panDelta.dx - panDelta.dy) *
+                  infiniteScrollViewScrollSpeedFactor;
+          onChanged(newValue);
+        },
+        child: Container(
+          width: double.infinity,
+          height: themeSettings.doubleEditorInfiniteScrollViewHeight,
+          padding: themeSettings.doubleEditorInfiniteScrollViewPadding,
+          decoration: themeSettings.doubleEditorInfiniteScrollViewBoxDecoration,
+          clipBehavior: Clip.hardEdge,
+          child: InfiniteScrollView(
+            themeSettings: themeSettings,
+            currentValue: currentValue,
+            infiniteScrollViewRange: infiniteScrollViewRange,
+            lowerLimit: lowerLimit,
+            upperLimit: upperLimit,
+          ),
         ),
       ),
     );
