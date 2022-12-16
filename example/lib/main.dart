@@ -168,8 +168,9 @@ class _MyHomePageState extends State<MyHomePage> {
         icon: Icons.image,
         builder: (context, settings) {
           final numberOfImages = settings.getSetting('numberOfImages', 1);
-          final padding = settings
-              .getSetting('padding', ClampedDouble(value: 8.0, lowerLimit: 0.0))
+          final imagePadding = settings
+              .getSetting(
+                  'imagePadding', ClampedDouble(value: 8.0, lowerLimit: 0.0))
               .value;
 
           return MaterialApp(
@@ -181,7 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               body: ImageList(
                 numberOfImages: numberOfImages,
-                padding: padding,
+                imagePadding: imagePadding,
               ),
             ),
           );

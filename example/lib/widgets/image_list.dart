@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class ImageList extends StatelessWidget {
   const ImageList(
-      {super.key, required this.numberOfImages, required this.padding});
+      {super.key, required this.numberOfImages, required this.imagePadding});
 
   final int numberOfImages;
-  final double padding;
+  final double imagePadding;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class ImageList extends StatelessWidget {
         children: List.generate(
             numberOfImages,
             (index) => Padding(
-                  padding: EdgeInsets.all(padding),
+                  padding: EdgeInsets.all(imagePadding),
                   child: Image.network(
                       'https://picsum.photos/seed/foobar$index/1280/960'),
                 )),
