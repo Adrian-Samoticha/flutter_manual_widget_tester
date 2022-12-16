@@ -1,4 +1,6 @@
+import 'package:example/widgets/image_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/backend/constrained_types/clamped_double.dart';
 import 'package:flutter_manual_widget_tester/backend/constrained_types/constrained_int.dart';
 import 'package:flutter_manual_widget_tester/flutter_manual_widget_tester.dart';
 
@@ -155,6 +157,31 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   );
                 }),
+              ),
+            ),
+          );
+        },
+      ),
+      WidgetTestBuilder(
+        id: 'image list',
+        name: 'Image List',
+        icon: Icons.image,
+        builder: (context, settings) {
+          final numberOfImages = settings.getSetting('numberOfImages', 1);
+          final padding = settings
+              .getSetting('padding', ClampedDouble(value: 8.0, lowerLimit: 0.0))
+              .value;
+
+          return MaterialApp(
+            theme: ThemeData.light(),
+            darkTheme: ThemeData.dark(),
+            home: Scaffold(
+              appBar: AppBar(
+                title: const Text('Image List'),
+              ),
+              body: ImageList(
+                numberOfImages: numberOfImages,
+                padding: padding,
               ),
             ),
           );
