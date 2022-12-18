@@ -12,6 +12,16 @@ import 'running_test_sessions_list/running_test_sessions_list.dart';
 import 'test_session_settings/test_session_settings.dart';
 
 class ManualWidgetTesterSidebar extends StatefulWidget {
+  /// Creates a sidebar widget for the [ManualWidgetTester].
+  ///
+  /// The [key] is used to identify this widget in the widget tree.
+  /// The [maxWidth] is the maximum width of the sidebar.
+  /// The [mouseCursorOverrider] is used to override the mouse cursor.
+  /// The [themeSettings] is the theme settings for the widget.
+  /// The [config] is the configuration for the widget.
+  /// The [widgetTestSessionHandler] is the handler for the widget test
+  /// sessions.
+  /// The [typeEditorBuilder] is used to build type editors for custom settings.
   const ManualWidgetTesterSidebar(
       {Key? key,
       required this.maxWidth,
