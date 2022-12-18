@@ -6,6 +6,14 @@ import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
 
 class CustomSettings extends StatelessWidget {
+  /// Creates a widget that displays custom settings for a widget test session.
+  ///
+  /// The [key] is used to identify this widget in the widget tree.
+  /// The [themeSettings] is the theme settings for the widget.
+  /// The [session] is the widget test session for which the custom settings are
+  /// displayed.
+  /// The [typeEditorBuilder] is the type editor builder used to build editors
+  /// for the custom settings.
   const CustomSettings(
       {Key? key,
       required this.themeSettings,
