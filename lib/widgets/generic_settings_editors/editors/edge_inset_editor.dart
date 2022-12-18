@@ -5,6 +5,19 @@ import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/editors/double_editor/double_editor.dart';
 
 class ManualWidgetTesterGenericSettingsEdgeInsetEditor extends StatelessWidget {
+  /// Creates an editor for an `EdgeInsets` setting.
+  ///
+  /// The [key] is used to identify this widget in the widget tree.
+  /// The [themeSettings] is the theme settings for the widget.
+  /// The [settingName] is the name of the setting.
+  /// The [currentEdgeInsets] is the current value of the setting.
+  /// The [onChanged] is a callback that is called when the value of the setting
+  /// is changed.
+  /// The [infiniteScrollViewRange] is the range of the infinite scroll view.
+  /// The [infiniteScrollViewScrollSpeedFactor] is the scroll speed factor of
+  /// the infinite scroll view.
+  /// The [onlyAllowPositiveValues] specifies whether only positive values are
+  /// allowed for the setting.
   const ManualWidgetTesterGenericSettingsEdgeInsetEditor(
       {super.key,
       required this.themeSettings,
