@@ -163,8 +163,8 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       ),
       WidgetTestBuilder(
-        id: 'image list',
-        name: 'Image List',
+        id: 'image list with material app',
+        name: 'Image List with Material App',
         icon: Icons.image,
         builder: (context, settings) {
           final numberOfImages = settings.getSetting('numberOfImages', 1);
@@ -185,6 +185,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 imagePadding: imagePadding,
               ),
             ),
+          );
+        },
+      ),
+      WidgetTestBuilder(
+        id: 'image list',
+        name: 'Image List',
+        icon: Icons.image,
+        builder: (context, settings) {
+          final numberOfImages = settings.getSetting('numberOfImages', 1);
+          final imagePadding = settings
+              .getSetting(
+                  'imagePadding', ClampedDouble(value: 8.0, lowerLimit: 0.0))
+              .value;
+
+          return ImageList(
+            numberOfImages: numberOfImages,
+            imagePadding: imagePadding,
           );
         },
       ),

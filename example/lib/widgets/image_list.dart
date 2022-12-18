@@ -11,13 +11,17 @@ class ImageList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-        children: List.generate(
+        children: [
+          const Text('Some pretty images:'),
+          ...List.generate(
             numberOfImages,
             (index) => Padding(
-                  padding: EdgeInsets.all(imagePadding),
-                  child: Image.network(
-                      'https://picsum.photos/seed/foobar$index/1280/960'),
-                )),
+              padding: EdgeInsets.all(imagePadding),
+              child: Image.network(
+                  'https://picsum.photos/seed/foobar$index/1280/960'),
+            ),
+          )
+        ],
       ),
     );
   }
