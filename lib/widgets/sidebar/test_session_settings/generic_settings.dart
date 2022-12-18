@@ -9,6 +9,13 @@ import 'package:flutter_manual_widget_tester/widgets/generic_settings_editors/ed
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
 
 class GenericSettings extends StatefulWidget {
+  /// Creates a widget that displays generic settings for a widget test session.
+  ///
+  /// The [key] is used to identify this widget in the widget tree.
+  /// The [themeSettings] is the theme settings for the widget.
+  /// The [config] is the configuration for the widget.
+  /// The [session] is the widget test session for which the generic settings
+  /// are displayed.
   const GenericSettings({
     Key? key,
     required this.themeSettings,
