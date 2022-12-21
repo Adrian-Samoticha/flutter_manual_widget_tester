@@ -70,66 +70,76 @@ class _GenericSettingsState extends State<GenericSettings> {
 
     return [
       ManualWidgetTesterFoldableRegion(
-        heading: 'PADDING',
+        heading: 'MEDIA QUERY',
         themeSettings: widget.themeSettings,
         isIndented: true,
         isInitiallyFolded: true,
-        child: ManualWidgetTesterGenericSettingsEdgeInsetEditor(
-          themeSettings: widget.themeSettings,
-          settingName: 'padding',
-          currentEdgeInsets: mediaQueryData.padding,
-          onChanged: (EdgeInsets newPadding) {
-            final newMediaQueryData =
-                mediaQueryData.copyWith(padding: newPadding);
-            genericSettings.mediaQueryData = newMediaQueryData;
-          },
-          infiniteScrollViewRange:
-              widget.config.doubleEditorInfiniteScrollViewRange,
-          infiniteScrollViewScrollSpeedFactor:
-              widget.config.doubleEditorInfiniteScrollViewScrollSpeedFactor,
-          onlyAllowPositiveValues: true,
-        ),
-      ),
-      ManualWidgetTesterFoldableRegion(
-        heading: 'VIEW INSETS',
-        themeSettings: widget.themeSettings,
-        isIndented: true,
-        isInitiallyFolded: true,
-        child: ManualWidgetTesterGenericSettingsEdgeInsetEditor(
-          themeSettings: widget.themeSettings,
-          settingName: 'viewInsets',
-          currentEdgeInsets: mediaQueryData.viewInsets,
-          onChanged: (EdgeInsets newViewInsets) {
-            final newMediaQueryData =
-                mediaQueryData.copyWith(viewInsets: newViewInsets);
-            genericSettings.mediaQueryData = newMediaQueryData;
-          },
-          infiniteScrollViewRange:
-              widget.config.doubleEditorInfiniteScrollViewRange,
-          infiniteScrollViewScrollSpeedFactor:
-              widget.config.doubleEditorInfiniteScrollViewScrollSpeedFactor,
-          onlyAllowPositiveValues: true,
-        ),
-      ),
-      ManualWidgetTesterFoldableRegion(
-        heading: 'VIEW PADDING',
-        themeSettings: widget.themeSettings,
-        isIndented: true,
-        isInitiallyFolded: true,
-        child: ManualWidgetTesterGenericSettingsEdgeInsetEditor(
-          themeSettings: widget.themeSettings,
-          settingName: 'viewPadding',
-          currentEdgeInsets: mediaQueryData.viewPadding,
-          onChanged: (EdgeInsets newViewPadding) {
-            final newMediaQueryData =
-                mediaQueryData.copyWith(viewPadding: newViewPadding);
-            genericSettings.mediaQueryData = newMediaQueryData;
-          },
-          infiniteScrollViewRange:
-              widget.config.doubleEditorInfiniteScrollViewRange,
-          infiniteScrollViewScrollSpeedFactor:
-              widget.config.doubleEditorInfiniteScrollViewScrollSpeedFactor,
-          onlyAllowPositiveValues: true,
+        child: Column(
+          children: [
+            ManualWidgetTesterFoldableRegion(
+              heading: 'PADDING',
+              themeSettings: widget.themeSettings,
+              isIndented: true,
+              isInitiallyFolded: true,
+              child: ManualWidgetTesterGenericSettingsEdgeInsetEditor(
+                themeSettings: widget.themeSettings,
+                settingName: 'padding',
+                currentEdgeInsets: mediaQueryData.padding,
+                onChanged: (EdgeInsets newPadding) {
+                  final newMediaQueryData =
+                      mediaQueryData.copyWith(padding: newPadding);
+                  genericSettings.mediaQueryData = newMediaQueryData;
+                },
+                infiniteScrollViewRange:
+                    widget.config.doubleEditorInfiniteScrollViewRange,
+                infiniteScrollViewScrollSpeedFactor: widget
+                    .config.doubleEditorInfiniteScrollViewScrollSpeedFactor,
+                onlyAllowPositiveValues: true,
+              ),
+            ),
+            ManualWidgetTesterFoldableRegion(
+              heading: 'VIEW INSETS',
+              themeSettings: widget.themeSettings,
+              isIndented: true,
+              isInitiallyFolded: true,
+              child: ManualWidgetTesterGenericSettingsEdgeInsetEditor(
+                themeSettings: widget.themeSettings,
+                settingName: 'viewInsets',
+                currentEdgeInsets: mediaQueryData.viewInsets,
+                onChanged: (EdgeInsets newViewInsets) {
+                  final newMediaQueryData =
+                      mediaQueryData.copyWith(viewInsets: newViewInsets);
+                  genericSettings.mediaQueryData = newMediaQueryData;
+                },
+                infiniteScrollViewRange:
+                    widget.config.doubleEditorInfiniteScrollViewRange,
+                infiniteScrollViewScrollSpeedFactor: widget
+                    .config.doubleEditorInfiniteScrollViewScrollSpeedFactor,
+                onlyAllowPositiveValues: true,
+              ),
+            ),
+            ManualWidgetTesterFoldableRegion(
+              heading: 'VIEW PADDING',
+              themeSettings: widget.themeSettings,
+              isIndented: true,
+              isInitiallyFolded: true,
+              child: ManualWidgetTesterGenericSettingsEdgeInsetEditor(
+                themeSettings: widget.themeSettings,
+                settingName: 'viewPadding',
+                currentEdgeInsets: mediaQueryData.viewPadding,
+                onChanged: (EdgeInsets newViewPadding) {
+                  final newMediaQueryData =
+                      mediaQueryData.copyWith(viewPadding: newViewPadding);
+                  genericSettings.mediaQueryData = newMediaQueryData;
+                },
+                infiniteScrollViewRange:
+                    widget.config.doubleEditorInfiniteScrollViewRange,
+                infiniteScrollViewScrollSpeedFactor: widget
+                    .config.doubleEditorInfiniteScrollViewScrollSpeedFactor,
+                onlyAllowPositiveValues: true,
+              ),
+            ),
+          ],
         ),
       ),
     ];
