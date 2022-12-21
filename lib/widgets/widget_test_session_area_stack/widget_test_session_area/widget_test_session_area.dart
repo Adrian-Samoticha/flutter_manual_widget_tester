@@ -102,16 +102,22 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
   }
 
   Center _generateToBeTestedWidget(double displayWidth, double displayHeight) {
+    final testSession = widget.widgetTestSession;
+    final customSettings = testSession.customSettings;
+    final genericSettings = testSession.genericSettings;
+
     return Center(
       child: Transform.scale(
         scale: _zoom,
         child: SizedBox(
           width: displayWidth * (1.0 / _zoom),
           height: displayHeight * (1.0 / _zoom),
-          child: MediaQuery(
-            data: widget.widgetTestSession.genericSettings.mediaQueryData,
-            child: widget.widgetTestSession
-                .builder(context, widget.widgetTestSession.customSettings),
+          child: DefaultTextStyle(
+            style: genericSettings.defaultTextStyle,
+            child: MediaQuery(
+              data: genericSettings.mediaQueryData,
+              child: widget.widgetTestSession.builder(context, customSettings),
+            ),
           ),
         ),
       ),
