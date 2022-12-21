@@ -25,7 +25,6 @@ class MediaQuerySettings extends StatelessWidget {
   String _formatSettingNameForFoldableRegionUsage(String settingName) {
     return StringUtils.camelCaseToUpperUnderscore(settingName)
         .replaceAll('_', ' ')
-        .replaceAll('.', '')
         .replaceAll('  ', ' ')
         .trim();
   }
