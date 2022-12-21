@@ -7,6 +7,7 @@ import 'package:flutter_manual_widget_tester/config/config.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
 
+import 'default_text_style_settings.dart';
 import 'media_query_settings.dart';
 
 class GenericSettings extends StatefulWidget {
@@ -68,6 +69,11 @@ class _GenericSettingsState extends State<GenericSettings> {
   List<Widget> _generateGenericSettingsChildren() {
     return [
       MediaQuerySettings(
+        themeSettings: widget.themeSettings,
+        config: widget.config,
+        session: widget.session,
+      ),
+      DefaultTextStyleSettings(
         themeSettings: widget.themeSettings,
         config: widget.config,
         session: widget.session,
