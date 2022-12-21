@@ -75,7 +75,7 @@ class MediaQuerySettings extends StatelessWidget {
             },
           ),
           _buildEdgeInsetEditor(
-            settingName: 'view insets',
+            settingName: 'viewInsets',
             currentEdgeInsets: _genericSettings.mediaQueryData.viewInsets,
             copyWithChangedData:
                 (MediaQueryData mediaQueryData, EdgeInsets newEdgeInsets) {
@@ -83,7 +83,7 @@ class MediaQuerySettings extends StatelessWidget {
             },
           ),
           _buildEdgeInsetEditor(
-            settingName: 'view padding',
+            settingName: 'viewPadding',
             currentEdgeInsets: _genericSettings.mediaQueryData.viewPadding,
             copyWithChangedData:
                 (MediaQueryData mediaQueryData, EdgeInsets newEdgeInsets) {
