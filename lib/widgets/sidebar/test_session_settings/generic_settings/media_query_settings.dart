@@ -1,5 +1,7 @@
+import 'package:basic_utils/basic_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session.dart';
+import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_generic_settings.dart';
 import 'package:flutter_manual_widget_tester/config/config.dart';
 import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/generic_settings_editors/editors/edge_inset_editor.dart';
@@ -17,10 +19,47 @@ class MediaQuerySettings extends StatelessWidget {
   final ManualWidgetTesterConfig config;
   final WidgetTestSession session;
 
+  WidgetTestSessionGenericSettings get _genericSettings =>
+      session.genericSettings;
+
+  String _formatSettingNameForFoldableRegionUsage(String settingName) {
+    return StringUtils.camelCaseToUpperUnderscore(settingName)
+        .replaceAll('_', ' ')
+        .replaceAll('.', '')
+        .replaceAll('  ', ' ')
+        .trim();
+  }
+
+  ManualWidgetTesterFoldableRegion _buildEdgeInsetEditor({
+    required String settingName,
+    required EdgeInsets currentEdgeInsets,
+    required MediaQueryData Function(MediaQueryData, EdgeInsets)
+        copyWithChangedData,
+  }) {
+    return ManualWidgetTesterFoldableRegion(
+      heading: _formatSettingNameForFoldableRegionUsage(settingName),
+      themeSettings: themeSettings,
+      isIndented: true,
+      isInitiallyFolded: true,
+      child: ManualWidgetTesterGenericSettingsEdgeInsetEditor(
+        themeSettings: themeSettings,
+        settingName: settingName,
+        currentEdgeInsets: currentEdgeInsets,
+        onChanged: (EdgeInsets newPadding) {
+          final newMediaQueryData =
+              copyWithChangedData(_genericSettings.mediaQueryData, newPadding);
+          _genericSettings.mediaQueryData = newMediaQueryData;
+        },
+        infiniteScrollViewRange: config.doubleEditorInfiniteScrollViewRange,
+        infiniteScrollViewScrollSpeedFactor:
+            config.doubleEditorInfiniteScrollViewScrollSpeedFactor,
+        onlyAllowPositiveValues: true,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final genericSettings = session.genericSettings;
-
     return ManualWidgetTesterFoldableRegion(
       heading: 'MEDIA QUERY',
       themeSettings: themeSettings,
@@ -28,68 +67,29 @@ class MediaQuerySettings extends StatelessWidget {
       isInitiallyFolded: true,
       child: Column(
         children: [
-          ManualWidgetTesterFoldableRegion(
-            heading: 'PADDING',
-            themeSettings: themeSettings,
-            isIndented: true,
-            isInitiallyFolded: true,
-            child: ManualWidgetTesterGenericSettingsEdgeInsetEditor(
-              themeSettings: themeSettings,
-              settingName: 'padding',
-              currentEdgeInsets: genericSettings.mediaQueryData.padding,
-              onChanged: (EdgeInsets newPadding) {
-                final newMediaQueryData = genericSettings.mediaQueryData
-                    .copyWith(padding: newPadding);
-                genericSettings.mediaQueryData = newMediaQueryData;
-              },
-              infiniteScrollViewRange:
-                  config.doubleEditorInfiniteScrollViewRange,
-              infiniteScrollViewScrollSpeedFactor:
-                  config.doubleEditorInfiniteScrollViewScrollSpeedFactor,
-              onlyAllowPositiveValues: true,
-            ),
+          _buildEdgeInsetEditor(
+            settingName: 'padding',
+            currentEdgeInsets: _genericSettings.mediaQueryData.padding,
+            copyWithChangedData:
+                (MediaQueryData mediaQueryData, EdgeInsets newEdgeInsets) {
+              return mediaQueryData.copyWith(padding: newEdgeInsets);
+            },
           ),
-          ManualWidgetTesterFoldableRegion(
-            heading: 'VIEW INSETS',
-            themeSettings: themeSettings,
-            isIndented: true,
-            isInitiallyFolded: true,
-            child: ManualWidgetTesterGenericSettingsEdgeInsetEditor(
-              themeSettings: themeSettings,
-              settingName: 'viewInsets',
-              currentEdgeInsets: genericSettings.mediaQueryData.viewInsets,
-              onChanged: (EdgeInsets newViewInsets) {
-                final newMediaQueryData = genericSettings.mediaQueryData
-                    .copyWith(viewInsets: newViewInsets);
-                genericSettings.mediaQueryData = newMediaQueryData;
-              },
-              infiniteScrollViewRange:
-                  config.doubleEditorInfiniteScrollViewRange,
-              infiniteScrollViewScrollSpeedFactor:
-                  config.doubleEditorInfiniteScrollViewScrollSpeedFactor,
-              onlyAllowPositiveValues: true,
-            ),
+          _buildEdgeInsetEditor(
+            settingName: 'view insets',
+            currentEdgeInsets: _genericSettings.mediaQueryData.viewInsets,
+            copyWithChangedData:
+                (MediaQueryData mediaQueryData, EdgeInsets newEdgeInsets) {
+              return mediaQueryData.copyWith(viewInsets: newEdgeInsets);
+            },
           ),
-          ManualWidgetTesterFoldableRegion(
-            heading: 'VIEW PADDING',
-            themeSettings: themeSettings,
-            isIndented: true,
-            isInitiallyFolded: true,
-            child: ManualWidgetTesterGenericSettingsEdgeInsetEditor(
-              themeSettings: themeSettings,
-              settingName: 'viewPadding',
-              currentEdgeInsets: genericSettings.mediaQueryData.viewPadding,
-              onChanged: (EdgeInsets newViewPadding) {
-                final newMediaQueryData = genericSettings.mediaQueryData
-                    .copyWith(viewPadding: newViewPadding);
-                genericSettings.mediaQueryData = newMediaQueryData;
-              },
-              infiniteScrollViewRange:
-                  config.doubleEditorInfiniteScrollViewRange,
-              infiniteScrollViewScrollSpeedFactor:
-                  config.doubleEditorInfiniteScrollViewScrollSpeedFactor,
-              onlyAllowPositiveValues: true,
-            ),
+          _buildEdgeInsetEditor(
+            settingName: 'view padding',
+            currentEdgeInsets: _genericSettings.mediaQueryData.viewPadding,
+            copyWithChangedData:
+                (MediaQueryData mediaQueryData, EdgeInsets newEdgeInsets) {
+              return mediaQueryData.copyWith(viewPadding: newEdgeInsets);
+            },
           ),
         ],
       ),
