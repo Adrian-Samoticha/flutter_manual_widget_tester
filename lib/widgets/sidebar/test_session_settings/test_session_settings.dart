@@ -8,7 +8,7 @@ import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
 
 import 'custom_settings.dart';
-import 'generic_settings.dart';
+import 'generic_settings/generic_settings.dart';
 
 class TestSessionSettings extends StatelessWidget {
   const TestSessionSettings(
