@@ -624,6 +624,9 @@ class ManualWidgetTesterThemeSettings {
   /// into view.
   final Duration scrollIntoViewDuration;
 
+  /// The border of the individual button inside a button row.
+  final BoxBorder buttonBoxBorder;
+
   const ManualWidgetTesterThemeSettings({
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
@@ -1120,5 +1123,17 @@ class ManualWidgetTesterThemeSettings {
       ),
     ),
     this.scrollIntoViewDuration = const Duration(milliseconds: 250),
+    this.buttonBoxBorder = const GradientBoxBorder(
+      gradient: LinearGradient(
+        colors: [
+          Color.fromRGBO(255, 255, 255, 0.1),
+          Colors.transparent,
+          Colors.transparent,
+        ],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      ),
+      width: 1.0,
+    ),
   });
 }
