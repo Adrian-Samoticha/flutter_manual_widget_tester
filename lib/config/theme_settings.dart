@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gradient_borders/gradient_borders.dart';
 
 class ManualWidgetTesterThemeSettings {
   /// Whether this is a dark theme.
@@ -1033,6 +1034,18 @@ class ManualWidgetTesterThemeSettings {
     ),
     this.focusedTabBoxDecoration = const BoxDecoration(
       color: Color.fromRGBO(41, 43, 53, 1.0),
+      border: GradientBoxBorder(
+        gradient: LinearGradient(
+          colors: [
+            Color.fromRGBO(255, 255, 255, 0.2),
+            Colors.transparent,
+            Colors.transparent,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+        width: 1.0,
+      ),
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(3.0),
         topRight: Radius.circular(3.0),
