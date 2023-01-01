@@ -50,7 +50,7 @@ class _ManualWidgetTesterCloseButtonState
         onTap: widget.onPressed,
         child: Transform.translate(
           offset: _isBeingPressed
-              ? widget.themeSettings.buttonPressedOffset
+              ? widget.themeSettings.buttonTheme.buttonPressedOffset
               : Offset.zero,
           child: Stack(
             children: [

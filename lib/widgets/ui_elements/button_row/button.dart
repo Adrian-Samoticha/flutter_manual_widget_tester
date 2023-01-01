@@ -89,7 +89,7 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
         _isPressed
             ? Container(
                 decoration: BoxDecoration(
-                  color: widget.themeSettings.buttonPressedTint,
+                  color: widget.themeSettings.buttonTheme.buttonPressedTint,
                   borderRadius: _generateBorderRadius(
                     roundLeftCorners: widget.index == 0 &&
                         !widget.disableRoundedCornersOnLeftSide,
@@ -104,7 +104,7 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
                 opacity: _isBeingHovered ? 1.0 : 0.0,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: widget.themeSettings.buttonHoveredTint,
+                    color: widget.themeSettings.buttonTheme.buttonHoveredTint,
                     borderRadius: _generateBorderRadius(
                       roundLeftCorners: widget.index == 0 &&
                           !widget.disableRoundedCornersOnLeftSide,
@@ -126,7 +126,7 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
           ),
           child: Transform.translate(
             offset: _isPressed
-                ? widget.themeSettings.buttonPressedOffset
+                ? widget.themeSettings.buttonTheme.buttonPressedOffset
                 : Offset.zero,
             child: widget.button.child,
           ),
@@ -137,8 +137,10 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Container(
-                    width: widget.themeSettings.buttonSeparatorWidth,
-                    color: widget.themeSettings.buttonSeparatorColor,
+                    width:
+                        widget.themeSettings.buttonTheme.buttonSeparatorWidth,
+                    color:
+                        widget.themeSettings.buttonTheme.buttonSeparatorColor,
                   ),
                 ),
               ]
@@ -152,9 +154,9 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
       required bool isDisabled}) {
     if (isDisabled) {
       return IconTheme(
-        data: widget.themeSettings.disabledButtonIconTheme,
+        data: widget.themeSettings.buttonTheme.disabledButtonIconTheme,
         child: DefaultTextStyle(
-          style: widget.themeSettings.disabledButtonTextStyle,
+          style: widget.themeSettings.buttonTheme.disabledButtonTextStyle,
           softWrap: false,
           overflow: TextOverflow.fade,
           child: Container(
@@ -166,9 +168,9 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
 
     if (isPressed) {
       return IconTheme(
-        data: widget.themeSettings.pressedButtonIconTheme,
+        data: widget.themeSettings.buttonTheme.pressedButtonIconTheme,
         child: DefaultTextStyle(
-          style: widget.themeSettings.pressedButtonTextStyle,
+          style: widget.themeSettings.buttonTheme.pressedButtonTextStyle,
           softWrap: false,
           overflow: TextOverflow.fade,
           child: Container(
@@ -179,9 +181,9 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
     }
 
     return IconTheme(
-      data: widget.themeSettings.buttonIconTheme,
+      data: widget.themeSettings.buttonTheme.buttonIconTheme,
       child: DefaultTextStyle(
-        style: widget.themeSettings.buttonTextStyle,
+        style: widget.themeSettings.buttonTheme.buttonTextStyle,
         softWrap: false,
         overflow: TextOverflow.fade,
         child: Container(
@@ -195,16 +197,16 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
       {required bool roundLeftCorners, required bool roundRightCorners}) {
     return BorderRadius.only(
       topLeft: roundLeftCorners
-          ? widget.themeSettings.buttonBorderRadius
+          ? widget.themeSettings.buttonTheme.buttonBorderRadius
           : Radius.zero,
       bottomLeft: roundLeftCorners
-          ? widget.themeSettings.buttonBorderRadius
+          ? widget.themeSettings.buttonTheme.buttonBorderRadius
           : Radius.zero,
       topRight: roundRightCorners
-          ? widget.themeSettings.buttonBorderRadius
+          ? widget.themeSettings.buttonTheme.buttonBorderRadius
           : Radius.zero,
       bottomRight: roundRightCorners
-          ? widget.themeSettings.buttonBorderRadius
+          ? widget.themeSettings.buttonTheme.buttonBorderRadius
           : Radius.zero,
     );
   }
@@ -220,7 +222,7 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
     );
 
     return BoxDecoration(
-      border: widget.themeSettings.buttonBoxBorder,
+      border: widget.themeSettings.buttonTheme.buttonBoxBorder,
       borderRadius: _generateBorderRadius(
           roundLeftCorners: roundLeftCorners,
           roundRightCorners: roundRightCorners),

@@ -24,22 +24,22 @@ class ManualWidgetTesterButtonRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: themeSettings.buttonColor,
+        color: themeSettings.buttonTheme.buttonColor,
         borderRadius: BorderRadius.only(
           topLeft: disableRoundedCornersOnLeftSide
               ? Radius.zero
-              : themeSettings.buttonBorderRadius,
+              : themeSettings.buttonTheme.buttonBorderRadius,
           bottomLeft: disableRoundedCornersOnLeftSide
               ? Radius.zero
-              : themeSettings.buttonBorderRadius,
+              : themeSettings.buttonTheme.buttonBorderRadius,
           topRight: disableRoundedCornersOnRightSide
               ? Radius.zero
-              : themeSettings.buttonBorderRadius,
+              : themeSettings.buttonTheme.buttonBorderRadius,
           bottomRight: disableRoundedCornersOnRightSide
               ? Radius.zero
-              : themeSettings.buttonBorderRadius,
+              : themeSettings.buttonTheme.buttonBorderRadius,
         ),
-        boxShadow: themeSettings.buttonShadow,
+        boxShadow: themeSettings.buttonTheme.buttonShadow,
       ),
       child: _buildButtons(),
     );
