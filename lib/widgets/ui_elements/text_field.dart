@@ -37,25 +37,25 @@ class ManualWidgetTesterTextField extends StatelessWidget {
       return SizedBox.expand(
         child: Container(
           decoration: BoxDecoration(
-            color: themeSettings.textFieldColor,
-            boxShadow: themeSettings.textFieldShadow,
+            color: themeSettings.textFieldTheme.textFieldColor,
+            boxShadow: themeSettings.textFieldTheme.textFieldShadow,
             borderRadius: BorderRadius.only(
               topLeft: disableRoundedCornersOnLeftSide
                   ? Radius.zero
-                  : themeSettings.textFieldBorderRadius,
+                  : themeSettings.textFieldTheme.textFieldBorderRadius,
               bottomLeft: disableRoundedCornersOnLeftSide
                   ? Radius.zero
-                  : themeSettings.textFieldBorderRadius,
+                  : themeSettings.textFieldTheme.textFieldBorderRadius,
               topRight: disableRoundedCornersOnRightSide
                   ? Radius.zero
-                  : themeSettings.textFieldBorderRadius,
+                  : themeSettings.textFieldTheme.textFieldBorderRadius,
               bottomRight: disableRoundedCornersOnRightSide
                   ? Radius.zero
-                  : themeSettings.textFieldBorderRadius,
+                  : themeSettings.textFieldTheme.textFieldBorderRadius,
             ),
             border: Border.all(
-              color: themeSettings.textFieldBorderColor,
-              width: themeSettings.textFieldBorderWidth,
+              color: themeSettings.textFieldTheme.textFieldBorderColor,
+              width: themeSettings.textFieldTheme.textFieldBorderWidth,
             ),
           ),
           child: Container(
@@ -63,16 +63,16 @@ class ManualWidgetTesterTextField extends StatelessWidget {
               borderRadius: BorderRadius.only(
                 topLeft: disableRoundedCornersOnLeftSide
                     ? Radius.zero
-                    : themeSettings.textFieldBorderRadius,
+                    : themeSettings.textFieldTheme.textFieldBorderRadius,
                 bottomLeft: disableRoundedCornersOnLeftSide
                     ? Radius.zero
-                    : themeSettings.textFieldBorderRadius,
+                    : themeSettings.textFieldTheme.textFieldBorderRadius,
                 topRight: disableRoundedCornersOnRightSide
                     ? Radius.zero
-                    : themeSettings.textFieldBorderRadius,
+                    : themeSettings.textFieldTheme.textFieldBorderRadius,
                 bottomRight: disableRoundedCornersOnRightSide
                     ? Radius.zero
-                    : themeSettings.textFieldBorderRadius,
+                    : themeSettings.textFieldTheme.textFieldBorderRadius,
               ),
               gradient: const LinearGradient(
                 begin: Alignment.topCenter,
@@ -100,7 +100,8 @@ class ManualWidgetTesterTextField extends StatelessWidget {
       child: Theme(
         data: Theme.of(context).copyWith(
           textSelectionTheme: TextSelectionThemeData(
-            selectionColor: themeSettings.textFieldSelectionColor,
+            selectionColor:
+                themeSettings.textFieldTheme.textFieldSelectionColor,
           ),
         ),
         child: TextField(
@@ -110,13 +111,14 @@ class ManualWidgetTesterTextField extends StatelessWidget {
               ),
           decoration: InputDecoration(
             isDense: true,
-            contentPadding: themeSettings.textFieldContentPadding,
+            contentPadding:
+                themeSettings.textFieldTheme.textFieldContentPadding,
             border: InputBorder.none,
             suffixText: suffix,
-            suffixStyle: themeSettings.textFieldSuffixStyle,
+            suffixStyle: themeSettings.textFieldTheme.textFieldSuffixStyle,
           ),
-          style: themeSettings.textFieldTextStyle,
-          cursorColor: themeSettings.textFieldCursorColor,
+          style: themeSettings.textFieldTheme.textFieldTextStyle,
+          cursorColor: themeSettings.textFieldTheme.textFieldCursorColor,
           autocorrect: false,
           autofocus: autofocus,
           onSubmitted: onSubmitted,
