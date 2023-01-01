@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/button_theme.dart';
-import 'package:gradient_borders/gradient_borders.dart';
 
 import 'tab_theme.dart';
 
