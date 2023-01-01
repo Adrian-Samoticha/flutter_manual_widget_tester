@@ -26,15 +26,15 @@ class ManualWidgetTesterZoomControls extends StatelessWidget {
   @override
   Widget build(Object context) {
     return Container(
-      width: themeSettings.zoomControlsWidth,
-      height: themeSettings.zoomControlsHeight,
+      width: themeSettings.zoomControlsTheme.zoomControlsWidth,
+      height: themeSettings.zoomControlsTheme.zoomControlsHeight,
       decoration: BoxDecoration(
         color: themeSettings.sidebarColor,
-        borderRadius: themeSettings.zoomControlsBorderRadius,
-        boxShadow: themeSettings.zoomControlsShadow,
+        borderRadius: themeSettings.zoomControlsTheme.zoomControlsBorderRadius,
+        boxShadow: themeSettings.zoomControlsTheme.zoomControlsShadow,
       ),
       child: Padding(
-        padding: themeSettings.zoomControlsPadding,
+        padding: themeSettings.zoomControlsTheme.zoomControlsPadding,
         child: Row(
           children: [
             Expanded(
@@ -51,7 +51,7 @@ class ManualWidgetTesterZoomControls extends StatelessWidget {
             ),
             SizedBox(width: themeSettings.spaceBetweenTextBoxesAndButtonRows),
             SizedBox(
-              width: themeSettings.zoomControlsButtonRowWidth,
+              width: themeSettings.zoomControlsTheme.zoomControlsButtonRowWidth,
               child: ManualWidgetTesterButtonRow(
                 themeSettings: themeSettings,
                 disableRoundedCornersOnLeftSide: true,
@@ -60,12 +60,14 @@ class ManualWidgetTesterZoomControls extends StatelessWidget {
                     onButtonDown:
                         zoom > minZoom ? onZoomOutButtonPressed : null,
                     onButtonPressed: null,
-                    child: themeSettings.zoomControlsZoomOutIcon,
+                    child:
+                        themeSettings.zoomControlsTheme.zoomControlsZoomOutIcon,
                   ),
                   ManualWidgetTesterButtonInfo(
                     onButtonDown: zoom < maxZoom ? onZoomInButtonPressed : null,
                     onButtonPressed: null,
-                    child: themeSettings.zoomControlsZoomInIcon,
+                    child:
+                        themeSettings.zoomControlsTheme.zoomControlsZoomInIcon,
                   ),
                 ],
               ),

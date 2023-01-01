@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'button_theme.dart';
 import 'tab_theme.dart';
 import 'text_field_theme.dart';
+import 'zoom_controls_theme.dart';
 
 class ManualWidgetTesterThemeSettings {
   /// The tab theme.
@@ -13,6 +14,9 @@ class ManualWidgetTesterThemeSettings {
 
   /// The text field theme.
   final ManualWidgetTesterTextFieldTheme textFieldTheme;
+
+  /// The theme of the zoom controls.
+  final ManualWidgetTesterZoomControlsTheme zoomControlsTheme;
 
   /// Whether this is a dark theme.
   final bool isDark;
@@ -42,38 +46,8 @@ class ManualWidgetTesterThemeSettings {
   /// The default color of the icons of the open test sessions.
   final Color defaultIconColor;
 
-  /// The width of the zoom controls.
-  final double zoomControlsWidth;
-
-  /// The height of the zoom controls.
-  final double zoomControlsHeight;
-
-  /// The border radius of the zoom controls.
-  final BorderRadius zoomControlsBorderRadius;
-
-  /// The shadow(s) of the zoom controls.
-  final List<BoxShadow> zoomControlsShadow;
-
-  /// The padding of the zoom controls.
-  final EdgeInsets zoomControlsPadding;
-
   /// The space between text boxes and connected button rows.
   final double spaceBetweenTextBoxesAndButtonRows;
-
-  /// The width of the zoom controls' button row.
-  final double zoomControlsButtonRowWidth;
-
-  /// The icon on the zoom controls' zoom out button.
-  final Icon zoomControlsZoomOutIcon;
-
-  /// The icon on the zoom controls' zoom in button.
-  final Icon zoomControlsZoomInIcon;
-
-  /// The zoom controls' distance to the manual widget tester's border.
-  final double zoomControlsDistanceToBorder;
-
-  /// The zoom controls' alignment.
-  final Alignment zoomControlsAlignment;
 
   /// The indentation amount in foldable regions.
   final double foldableRegionIndentationAmount;
@@ -509,6 +483,7 @@ class ManualWidgetTesterThemeSettings {
     this.tabTheme = const ManualWidgetTesterTabTheme(),
     this.buttonTheme = const ManualWidgetTesterButtonTheme(),
     this.textFieldTheme = const ManualWidgetTesterTextFieldTheme(),
+    this.zoomControlsTheme = const ManualWidgetTesterZoomControlsTheme(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -520,25 +495,7 @@ class ManualWidgetTesterThemeSettings {
       fontSize: 10.0,
     ),
     this.defaultIconColor = const Color.fromRGBO(64, 167, 255, 1.0),
-    this.zoomControlsWidth = 128.0,
-    this.zoomControlsHeight = 32.0,
-    this.zoomControlsBorderRadius = const BorderRadius.all(
-      Radius.circular(3.0),
-    ),
-    this.zoomControlsShadow = const [
-      BoxShadow(
-        blurRadius: 2.0,
-        color: Color.fromRGBO(0, 0, 0, 0.25),
-        offset: Offset(0.0, 1.0),
-      ),
-    ],
-    this.zoomControlsPadding = const EdgeInsets.all(3.5),
     this.spaceBetweenTextBoxesAndButtonRows = 0.5,
-    this.zoomControlsButtonRowWidth = 64.0,
-    this.zoomControlsZoomOutIcon = const Icon(Icons.zoom_out),
-    this.zoomControlsZoomInIcon = const Icon(Icons.zoom_in),
-    this.zoomControlsDistanceToBorder = 8.0,
-    this.zoomControlsAlignment = Alignment.bottomCenter,
     this.foldableRegionIndentationAmount = 12.0,
     this.foldableRegionAnimationDuration = const Duration(milliseconds: 300),
     this.foldableRegionContentAlignment = Alignment.bottomLeft,

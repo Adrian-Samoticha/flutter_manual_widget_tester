@@ -77,10 +77,11 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
 
     return SizedBox.expand(
       child: Padding(
-        padding:
-            EdgeInsets.all(widget.themeSettings.zoomControlsDistanceToBorder),
+        padding: EdgeInsets.all(widget
+            .themeSettings.zoomControlsTheme.zoomControlsDistanceToBorder),
         child: Align(
-          alignment: widget.themeSettings.zoomControlsAlignment,
+          alignment:
+              widget.themeSettings.zoomControlsTheme.zoomControlsAlignment,
           child: ManualWidgetTesterZoomControls(
             themeSettings: widget.themeSettings,
             minZoom: minZoom,
