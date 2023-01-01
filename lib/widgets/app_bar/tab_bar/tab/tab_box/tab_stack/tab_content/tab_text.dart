@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 
 class TabText extends StatelessWidget {
   const TabText({
@@ -23,21 +23,21 @@ class TabText extends StatelessWidget {
         widgetName,
         overflow: TextOverflow.fade,
         softWrap: false,
-        style: themeSettings.tabTextStyle,
+        style: themeSettings.tabTheme.tabTextStyle,
       ));
     }
 
     return Center(
         child: AnimatedOpacity(
-      duration: themeSettings.unfocusedTabOpacityChangeDuration,
+      duration: themeSettings.tabTheme.unfocusedTabOpacityChangeDuration,
       opacity: isBeingHovered
-          ? themeSettings.unfocusedHoveredTabOpacity
-          : themeSettings.unfocusedNotHoveredTabOpacity,
+          ? themeSettings.tabTheme.unfocusedHoveredTabOpacity
+          : themeSettings.tabTheme.unfocusedNotHoveredTabOpacity,
       child: Text(
         widgetName,
         overflow: TextOverflow.fade,
         softWrap: false,
-        style: themeSettings.tabTextStyle,
+        style: themeSettings.tabTheme.tabTextStyle,
       ),
     ));
   }

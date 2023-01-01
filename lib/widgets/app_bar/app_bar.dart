@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
-import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 
 import 'app_bar_shadow.dart';
 import 'new_test_session_button.dart';
@@ -66,7 +66,7 @@ class _ManualWidgetTesterAppBarState extends State<ManualWidgetTesterAppBar> {
       child: Stack(
         children: [
           AnimatedOpacity(
-            duration: widget.themeSettings.tabOpenAnimationDuration,
+            duration: widget.themeSettings.tabTheme.tabOpenAnimationDuration,
             opacity: _appBarShadowOpacity,
             child: AppBarShadow(themeSettings: widget.themeSettings),
           ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 
 class TabIcon extends StatelessWidget {
   const TabIcon({
@@ -21,25 +21,25 @@ class TabIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     if (isFocused) {
       return Padding(
-        padding: themeSettings.tabIconPadding,
+        padding: themeSettings.tabTheme.tabIconPadding,
         child: Icon(
           icon,
-          size: themeSettings.tabIconSize,
+          size: themeSettings.tabTheme.tabIconSize,
           color: iconColor,
         ),
       );
     }
 
     return AnimatedOpacity(
-      duration: themeSettings.unfocusedTabOpacityChangeDuration,
+      duration: themeSettings.tabTheme.unfocusedTabOpacityChangeDuration,
       opacity: isBeingHovered
-          ? themeSettings.unfocusedHoveredTabOpacity
-          : themeSettings.unfocusedNotHoveredTabOpacity,
+          ? themeSettings.tabTheme.unfocusedHoveredTabOpacity
+          : themeSettings.tabTheme.unfocusedNotHoveredTabOpacity,
       child: Padding(
-        padding: themeSettings.tabIconPadding,
+        padding: themeSettings.tabTheme.tabIconPadding,
         child: Icon(
           icon,
-          size: themeSettings.tabIconSize,
+          size: themeSettings.tabTheme.tabIconSize,
           color: iconColor,
         ),
       ),

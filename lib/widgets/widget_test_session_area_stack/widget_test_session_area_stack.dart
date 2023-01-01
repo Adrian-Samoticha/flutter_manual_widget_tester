@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
-import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 
 import 'widget_test_session_area/widget_test_session_area.dart';

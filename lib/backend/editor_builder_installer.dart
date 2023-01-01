@@ -5,7 +5,7 @@ import 'package:flutter_manual_widget_tester/backend/constrained_types/clamped_i
 import 'package:flutter_manual_widget_tester/backend/constrained_types/constrained_int.dart';
 import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
 import 'package:flutter_manual_widget_tester/config/config.dart';
-import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/editors/bool_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/editors/color_editor/color_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/editors/double_editor/double_editor.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 
 class FocusedTabDecoration extends StatelessWidget {
   const FocusedTabDecoration({
@@ -12,13 +12,13 @@ class FocusedTabDecoration extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: themeSettings.focusedTabAccentColorDecorationWidth,
+      width: themeSettings.tabTheme.focusedTabAccentColorDecorationWidth,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(
-              themeSettings.focusedTabAccentColorDecorationWidth),
+              themeSettings.tabTheme.focusedTabAccentColorDecorationWidth),
           bottomRight: Radius.circular(
-              themeSettings.focusedTabAccentColorDecorationWidth),
+              themeSettings.tabTheme.focusedTabAccentColorDecorationWidth),
         ),
         color: themeSettings.accentColor,
       ),

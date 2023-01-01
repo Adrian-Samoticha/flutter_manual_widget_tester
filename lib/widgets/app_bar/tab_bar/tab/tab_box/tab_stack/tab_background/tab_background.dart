@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 
 import 'focused_tab_decoration.dart';
 import 'tab_light_reflection.dart';
@@ -22,8 +22,8 @@ class TabBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tabDecoration = _isFocused
-        ? themeSettings.focusedTabBoxDecoration
-        : themeSettings.unfocusedTabBoxDecoration;
+        ? themeSettings.tabTheme.focusedTabBoxDecoration
+        : themeSettings.tabTheme.unfocusedTabBoxDecoration;
 
     return Stack(
       children: [

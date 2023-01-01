@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 
 import 'tab_stack/tab_stack.dart';
 
@@ -30,9 +30,9 @@ class TabBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(
-      duration: themeSettings.tabOpenAnimationDuration,
+      duration: themeSettings.tabTheme.tabOpenAnimationDuration,
       tween: Tween<double>(begin: 1.0, end: 0.0),
-      curve: themeSettings.tabOpenAnimationCurve,
+      curve: themeSettings.tabTheme.tabOpenAnimationCurve,
       builder: (BuildContext context, double value, Widget? child) {
         return FractionalTranslation(
           translation: Offset(0.0, value),
@@ -43,7 +43,7 @@ class TabBox extends StatelessWidget {
         width: width,
         height: themeSettings.appBarHeight,
         child: Padding(
-          padding: EdgeInsets.only(top: themeSettings.spaceAboveTabs),
+          padding: EdgeInsets.only(top: themeSettings.tabTheme.spaceAboveTabs),
           child: TabStack(
             isBeingHovered: isBeingHovered,
             isFocused: isFocused,

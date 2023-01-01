@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 
 class NoMatchingResultsMessage extends StatelessWidget {

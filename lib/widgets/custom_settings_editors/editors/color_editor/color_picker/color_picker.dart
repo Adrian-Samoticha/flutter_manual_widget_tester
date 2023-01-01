@@ -1,6 +1,6 @@
 import 'package:flex_color_picker/flex_color_picker.dart' as flex_color_picker;
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/util/dialog_generator.dart';
 
 import 'checkerboard.dart';

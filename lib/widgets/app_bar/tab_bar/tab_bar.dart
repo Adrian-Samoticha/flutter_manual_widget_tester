@@ -4,7 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
-import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 
 import 'tab/tab.dart';
 
@@ -107,8 +107,8 @@ class _ManualWidgetTesterTabBarState extends State<ManualWidgetTesterTabBar> {
   }
 
   double _calculateTabWidth(int numberOfTabs, double maxWidth) {
-    final minTabWidth = widget.themeSettings.minTabWidth;
-    final maxTabWidth = widget.themeSettings.maxTabWidth;
+    final minTabWidth = widget.themeSettings.tabTheme.minTabWidth;
+    final maxTabWidth = widget.themeSettings.tabTheme.maxTabWidth;
 
     return (maxWidth / numberOfTabs).clamp(minTabWidth, maxTabWidth);
   }

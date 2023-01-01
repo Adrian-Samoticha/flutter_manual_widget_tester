@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 
 import 'tab_icon.dart';
 import 'tab_text.dart';
@@ -25,7 +25,7 @@ class TabContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: themeSettings.tabContentPadding,
+      padding: themeSettings.tabTheme.tabContentPadding,
       child: Row(
         children: [
           ...icon == null

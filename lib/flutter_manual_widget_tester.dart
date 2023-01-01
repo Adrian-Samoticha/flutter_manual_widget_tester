@@ -8,7 +8,7 @@ import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/config.dart';
-import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 import 'package:flutter_manual_widget_tester/util/list_has_duplicates.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
@@ -17,7 +17,7 @@ import 'package:flutter_manual_widget_tester/widgets/background.dart';
 import 'package:flutter_manual_widget_tester/widgets/sidebar/sidebar.dart';
 import 'package:flutter_manual_widget_tester/widgets/widget_test_session_area_stack/widget_test_session_area_stack.dart';
 
-export 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+export 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 export 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 
 class ManualWidgetTester extends StatefulWidget {

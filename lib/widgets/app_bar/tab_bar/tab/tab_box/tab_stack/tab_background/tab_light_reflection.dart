@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 
 class TabLightReflection extends StatelessWidget {
   const TabLightReflection({
@@ -14,8 +14,9 @@ class TabLightReflection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration:
-          !isFocused ? null : themeSettings.tabLightReflectionBoxDecoration,
+      decoration: !isFocused
+          ? null
+          : themeSettings.tabTheme.tabLightReflectionBoxDecoration,
     );
   }
 }
