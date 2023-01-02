@@ -38,7 +38,8 @@ class _ManualWidgetTesterFoldableRegionState
     return Padding(
       padding: widget.isIndented
           ? EdgeInsets.only(
-              left: widget.themeSettings.foldableRegionIndentationAmount)
+              left: widget.themeSettings.foldableRegionTheme
+                  .foldableRegionIndentationAmount)
           : EdgeInsets.zero,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -55,7 +56,8 @@ class _ManualWidgetTesterFoldableRegionState
             },
           ),
           TweenAnimationBuilder<double>(
-            duration: widget.themeSettings.foldableRegionAnimationDuration,
+            duration: widget.themeSettings.foldableRegionTheme
+                .foldableRegionAnimationDuration,
             tween: Tween<double>(
                 begin: _isFolded ? 0.0 : 1.0, end: _isFolded ? 0.0 : 1.0),
             curve: Curves.ease,
@@ -63,8 +65,8 @@ class _ManualWidgetTesterFoldableRegionState
               return ClipRect(
                 clipBehavior: value < 1.0 ? Clip.antiAlias : Clip.none,
                 child: Align(
-                  alignment:
-                      widget.themeSettings.foldableRegionContentAlignment,
+                  alignment: widget.themeSettings.foldableRegionTheme
+                      .foldableRegionContentAlignment,
                   heightFactor: value,
                   child: child,
                 ),
@@ -100,27 +102,34 @@ class _Header extends StatelessWidget {
         onTapDown: (_) => onClicked(),
         child: AnimatedOpacity(
           duration: const Duration(milliseconds: 50),
-          opacity:
-              isFolded ? themeSettings.foldableRegionFoldedHeaderOpacity : 1.0,
+          opacity: isFolded
+              ? themeSettings
+                  .foldableRegionTheme.foldableRegionFoldedHeaderOpacity
+              : 1.0,
           child: Container(
-            height: themeSettings.foldableRegionHeaderHeight,
+            height:
+                themeSettings.foldableRegionTheme.foldableRegionHeaderHeight,
             color: isIndented
                 ? Colors.transparent
-                : themeSettings.foldableRegionHeaderColor,
+                : themeSettings.foldableRegionTheme.foldableRegionHeaderColor,
             child: Row(
               children: [
                 Icon(
                   isFolded
                       ? Icons.keyboard_arrow_right_outlined
                       : Icons.keyboard_arrow_down_outlined,
-                  color: themeSettings.foldableRegionChevronIconColor,
-                  size: themeSettings.foldableRegionChevronIconSize,
+                  color: themeSettings
+                      .foldableRegionTheme.foldableRegionChevronIconColor,
+                  size: themeSettings
+                      .foldableRegionTheme.foldableRegionChevronIconSize,
                 ),
                 Expanded(
                   child: Text(text,
                       softWrap: false,
-                      overflow: themeSettings.foldableRegionHeadingOverflow,
-                      style: themeSettings.foldableRegionHeadingStyle),
+                      overflow: themeSettings
+                          .foldableRegionTheme.foldableRegionHeadingOverflow,
+                      style: themeSettings
+                          .foldableRegionTheme.foldableRegionHeadingStyle),
                 ),
               ],
             ),

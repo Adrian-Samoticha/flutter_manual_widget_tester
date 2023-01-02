@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'button_theme.dart';
+import 'foldable_region_theme.dart';
 import 'tab_theme.dart';
 import 'text_field_theme.dart';
 import 'zoom_controls_theme.dart';
@@ -17,6 +18,9 @@ class ManualWidgetTesterThemeSettings {
 
   /// The theme of the zoom controls.
   final ManualWidgetTesterZoomControlsTheme zoomControlsTheme;
+
+  /// The foldable region theme.
+  final ManualWidgetTesterFoldableRegionTheme foldableRegionTheme;
 
   /// Whether this is a dark theme.
   final bool isDark;
@@ -48,37 +52,6 @@ class ManualWidgetTesterThemeSettings {
 
   /// The space between text boxes and connected button rows.
   final double spaceBetweenTextBoxesAndButtonRows;
-
-  /// The indentation amount in foldable regions.
-  final double foldableRegionIndentationAmount;
-
-  /// The animation duration of foldable regions.
-  final Duration foldableRegionAnimationDuration;
-
-  /// The alignment of a foldable region's content during the fold/unfold
-  /// animation.
-  final Alignment foldableRegionContentAlignment;
-
-  /// The height of a foldable region's header.
-  final double foldableRegionHeaderHeight;
-
-  /// The opacity of a foldable region's header when it is folded.
-  final double foldableRegionFoldedHeaderOpacity;
-
-  /// A foldable region's header color.
-  final Color foldableRegionHeaderColor;
-
-  /// The color of a foldable region's chevron icon.
-  final Color foldableRegionChevronIconColor;
-
-  /// The size of a foldable region's chevron icon.
-  final double foldableRegionChevronIconSize;
-
-  /// The text style of a foldable region's heading.
-  final TextStyle foldableRegionHeadingStyle;
-
-  /// The foldable region's header's overflow.
-  final TextOverflow foldableRegionHeadingOverflow;
 
   /// The box decoration of a close button's hover effect.
   final BoxDecoration closeButtonHoverDecoration;
@@ -484,6 +457,7 @@ class ManualWidgetTesterThemeSettings {
     this.buttonTheme = const ManualWidgetTesterButtonTheme(),
     this.textFieldTheme = const ManualWidgetTesterTextFieldTheme(),
     this.zoomControlsTheme = const ManualWidgetTesterZoomControlsTheme(),
+    this.foldableRegionTheme = const ManualWidgetTesterFoldableRegionTheme(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -496,20 +470,6 @@ class ManualWidgetTesterThemeSettings {
     ),
     this.defaultIconColor = const Color.fromRGBO(64, 167, 255, 1.0),
     this.spaceBetweenTextBoxesAndButtonRows = 0.5,
-    this.foldableRegionIndentationAmount = 12.0,
-    this.foldableRegionAnimationDuration = const Duration(milliseconds: 300),
-    this.foldableRegionContentAlignment = Alignment.bottomLeft,
-    this.foldableRegionHeaderHeight = 24.0,
-    this.foldableRegionFoldedHeaderOpacity = 0.75,
-    this.foldableRegionHeaderColor = const Color.fromRGBO(70, 79, 90, 1.0),
-    this.foldableRegionChevronIconColor = Colors.white,
-    this.foldableRegionChevronIconSize = 18.0,
-    this.foldableRegionHeadingStyle = const TextStyle(
-      color: Colors.white,
-      fontSize: 12.0,
-      fontWeight: FontWeight.w700,
-    ),
-    this.foldableRegionHeadingOverflow = TextOverflow.ellipsis,
     this.closeButtonHoverDecoration = const BoxDecoration(
       color: Color.fromRGBO(255, 255, 255, 0.2),
       borderRadius: BorderRadius.all(Radius.circular(1024.0)),
