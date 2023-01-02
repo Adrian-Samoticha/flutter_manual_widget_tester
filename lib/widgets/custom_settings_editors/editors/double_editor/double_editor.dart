@@ -65,7 +65,7 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: themeSettings
+                height: themeSettings.doubleEditorTheme
                     .spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView,
               ),
               _buildInfiniteScrollView(),
@@ -102,9 +102,12 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
         },
         child: Container(
           width: double.infinity,
-          height: themeSettings.doubleEditorInfiniteScrollViewHeight,
-          padding: themeSettings.doubleEditorInfiniteScrollViewPadding,
-          decoration: themeSettings.doubleEditorInfiniteScrollViewBoxDecoration,
+          height: themeSettings
+              .doubleEditorTheme.doubleEditorInfiniteScrollViewHeight,
+          padding: themeSettings
+              .doubleEditorTheme.doubleEditorInfiniteScrollViewPadding,
+          decoration: themeSettings
+              .doubleEditorTheme.doubleEditorInfiniteScrollViewBoxDecoration,
           clipBehavior: Clip.hardEdge,
           child: InfiniteScrollView(
             themeSettings: themeSettings,

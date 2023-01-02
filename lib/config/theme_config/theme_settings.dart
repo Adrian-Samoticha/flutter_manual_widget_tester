@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'button_theme.dart';
 import 'create_test_session_dialog_theme.dart';
 import 'dialog_theme.dart';
+import 'double_editor_theme.dart';
 import 'edit_color_button_theme.dart';
 import 'foldable_region_theme.dart';
 import 'tab_theme.dart';
@@ -38,6 +39,9 @@ class ManualWidgetTesterThemeSettings {
 
   /// The dialog theme.
   final ManualWidgetTesterDialogTheme dialogTheme;
+
+  /// The double editor theme.
+  final ManualWidgetTesterDoubleEditor doubleEditorTheme;
 
   /// Whether this is a dark theme.
   final bool isDark;
@@ -124,50 +128,6 @@ class ManualWidgetTesterThemeSettings {
   /// The width gets reduced if the sidebar is too narrow.
   final double defaultNumberEditorButtonRowWidth;
 
-  /// The space between the text field and the double editor's infinite scroll
-  /// view.
-  final double spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView;
-
-  /// The height of the double editor's infinite scroll view.
-  final double doubleEditorInfiniteScrollViewHeight;
-
-  /// The double editor's infinite scroll view's box decoration.
-  final BoxDecoration doubleEditorInfiniteScrollViewBoxDecoration;
-
-  /// The double editor's infinite scroll view's padding.
-  final EdgeInsets doubleEditorInfiniteScrollViewPadding;
-
-  /// The text style of the double editor's infinite scroll view.
-  final TextStyle doubleEditorInfiniteScrollViewTextStyle;
-
-  /// The double editor's infinite scroll view's padding amount.
-  final double doubleEditorInfiniteScrollViewTextPaddingAmount;
-
-  /// The color of the lines in the double editor's infinite scroll view.
-  final Color doubleEditorInfiniteScrollViewLineColor;
-
-  /// The width of the lines in the double editor's infinite scroll view.
-  final double doubleEditorInfiniteScrollViewLineWidth;
-
-  /// The color of the indicator in the double editor's infinite scroll view.
-  ///
-  /// The indicator is the line in the middle of the infinite scroll view that
-  /// shows where the currently selected double value is located.
-  final Color doubleEditorInfiniteScrollViewIndicatorColor;
-
-  /// The width of the indicator in the double editor's infinite scroll view.
-  ///
-  /// The indicator is the line in the middle of the infinite scroll view that
-  /// shows where the currently selected double value is located.
-  final double doubleEditorInfiniteScrollViewIndicatorWidth;
-
-  /// The height of the indicator in the double editor's infinite scroll view
-  /// (on a range from 0.0 to 1.0).
-  ///
-  /// The indicator is the line in the middle of the infinite scroll view that
-  /// shows where the currently selected double value is located.
-  final double doubleEditorInfiniteScrollViewIndicatorHeight;
-
   /// The widget to use as the selected radio button.
   final Widget selectedRadioButton;
 
@@ -240,6 +200,7 @@ class ManualWidgetTesterThemeSettings {
         const ManualWidgetTesterTestSessionMenuItemTheme(),
     this.editColorButtonTheme = const ManualWidgetTesterEditColorButtonTheme(),
     this.dialogTheme = const ManualWidgetTesterDialogTheme(),
+    this.doubleEditorTheme = const ManualWidgetTesterDoubleEditor(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -286,40 +247,6 @@ class ManualWidgetTesterThemeSettings {
     this.customSettingsPadding = const EdgeInsets.all(8.0),
     this.stringEditorHeight = 32.0,
     this.defaultNumberEditorButtonRowWidth = 64.0,
-    this.spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView = 4.0,
-    this.doubleEditorInfiniteScrollViewHeight = 32.0,
-    this.doubleEditorInfiniteScrollViewBoxDecoration = const BoxDecoration(
-      color: Colors.transparent,
-      borderRadius: BorderRadius.all(Radius.circular(4.0)),
-      boxShadow: [
-        BoxShadow(color: Color.fromRGBO(18, 20, 23, 1.0)),
-        BoxShadow(
-          color: Color.fromRGBO(43, 47, 54, 1.0),
-          spreadRadius: -2.0,
-          blurRadius: 5.5,
-          offset: Offset(0.0, 1.0),
-        ),
-      ],
-      border: Border.fromBorderSide(
-        BorderSide(
-          color: Color.fromRGBO(255, 255, 255, 0.075),
-        ),
-      ),
-    ),
-    this.doubleEditorInfiniteScrollViewPadding =
-        const EdgeInsets.symmetric(vertical: 2.0),
-    this.doubleEditorInfiniteScrollViewTextStyle = const TextStyle(
-      color: Colors.white,
-      fontSize: 12.0,
-    ),
-    this.doubleEditorInfiniteScrollViewTextPaddingAmount = 4.0,
-    this.doubleEditorInfiniteScrollViewLineColor =
-        const Color.fromRGBO(255, 255, 255, 1.0),
-    this.doubleEditorInfiniteScrollViewLineWidth = 1.1,
-    this.doubleEditorInfiniteScrollViewIndicatorColor =
-        const Color.fromRGBO(32, 145, 255, 1.0),
-    this.doubleEditorInfiniteScrollViewIndicatorWidth = 2.31,
-    this.doubleEditorInfiniteScrollViewIndicatorHeight = 0.75,
     this.selectedRadioButton = const DecoratedBox(
       decoration: BoxDecoration(
         shape: BoxShape.circle,

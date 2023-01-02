@@ -49,13 +49,16 @@ class _InfiniteScrollViewPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final linePaint = Paint()
-      ..color = themeSettings.doubleEditorInfiniteScrollViewLineColor
-      ..strokeWidth = themeSettings.doubleEditorInfiniteScrollViewLineWidth;
+      ..color = themeSettings
+          .doubleEditorTheme.doubleEditorInfiniteScrollViewLineColor
+      ..strokeWidth = themeSettings
+          .doubleEditorTheme.doubleEditorInfiniteScrollViewLineWidth;
 
     final indicatorPaint = Paint()
-      ..color = themeSettings.doubleEditorInfiniteScrollViewIndicatorColor
-      ..strokeWidth =
-          themeSettings.doubleEditorInfiniteScrollViewIndicatorWidth;
+      ..color = themeSettings
+          .doubleEditorTheme.doubleEditorInfiniteScrollViewIndicatorColor
+      ..strokeWidth = themeSettings
+          .doubleEditorTheme.doubleEditorInfiniteScrollViewIndicatorWidth;
 
     _drawRuler(canvas, size, linePaint, 1.0, 1.0);
     _drawRuler(canvas, size, linePaint, 0.5, 0.5);
@@ -63,8 +66,13 @@ class _InfiniteScrollViewPainter extends CustomPainter {
 
     _drawRulerNumbers(canvas, size);
 
-    _drawBottomLineAtValue(value, canvas, size, indicatorPaint,
-        themeSettings.doubleEditorInfiniteScrollViewIndicatorHeight);
+    _drawBottomLineAtValue(
+        value,
+        canvas,
+        size,
+        indicatorPaint,
+        themeSettings
+            .doubleEditorTheme.doubleEditorInfiniteScrollViewIndicatorHeight);
   }
 
   void _drawRuler(Canvas canvas, Size size, Paint paint, double stepSize,
@@ -106,14 +114,17 @@ class _InfiniteScrollViewPainter extends CustomPainter {
 
     final textPositionLeft =
         _valueToPosition(valueToDrawTheRulerNumberAt, size.width) +
-            themeSettings.doubleEditorInfiniteScrollViewTextPaddingAmount;
+            themeSettings.doubleEditorTheme
+                .doubleEditorInfiniteScrollViewTextPaddingAmount;
     final textPositionRight =
         _valueToPosition(valueToDrawTheRulerNumberAt + 1.0, size.width) -
-            themeSettings.doubleEditorInfiniteScrollViewTextPaddingAmount;
+            themeSettings.doubleEditorTheme
+                .doubleEditorInfiniteScrollViewTextPaddingAmount;
 
     final textSpan = TextSpan(
       text: valueToDrawTheRulerNumberAt.floor().toString(),
-      style: themeSettings.doubleEditorInfiniteScrollViewTextStyle,
+      style: themeSettings
+          .doubleEditorTheme.doubleEditorInfiniteScrollViewTextStyle,
     );
 
     final textPainter = TextPainter(
