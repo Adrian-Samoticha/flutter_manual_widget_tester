@@ -50,22 +50,25 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.vertical(
-            bottom: widget.themeSettings.dialogBorderRadius.bottomLeft,
+            bottom:
+                widget.themeSettings.dialogTheme.dialogBorderRadius.bottomLeft,
           ),
-          color: widget.themeSettings.dialogBackgroundColor,
+          color: widget.themeSettings.dialogTheme.dialogBackgroundColor,
           border: Border.fromBorderSide(
-            BorderSide(color: widget.themeSettings.dialogBorderColor),
+            BorderSide(
+                color: widget.themeSettings.dialogTheme.dialogBorderColor),
           ),
-          boxShadow: widget.themeSettings.dialogShadow,
+          boxShadow: widget.themeSettings.dialogTheme.dialogShadow,
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.vertical(
-            bottom: widget.themeSettings.dialogBorderRadius.bottomLeft,
+            bottom:
+                widget.themeSettings.dialogTheme.dialogBorderRadius.bottomLeft,
           ),
           child: BackdropFilter(
             filter: ImageFilter.blur(
-                sigmaX: widget.themeSettings.dialogBlurRadius,
-                sigmaY: widget.themeSettings.dialogBlurRadius),
+                sigmaX: widget.themeSettings.dialogTheme.dialogBlurRadius,
+                sigmaY: widget.themeSettings.dialogTheme.dialogBlurRadius),
             child: Container(
               width: widget.themeSettings.createTestSessionDialogTheme
                   .createTestSessionDialogWidth,

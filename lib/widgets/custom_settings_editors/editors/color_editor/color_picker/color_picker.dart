@@ -83,9 +83,10 @@ class _ColorPickerState extends State<ColorPicker> {
         },
         editorBuilder: (BuildContext context) {
           return AnimatedSize(
-            duration:
-                widget.themeSettings.editColorDialogSizeChangeAnimationDuration,
-            curve: widget.themeSettings.editColorDialogSizeChangeCurve,
+            duration: widget.themeSettings.dialogTheme
+                .editColorDialogSizeChangeAnimationDuration,
+            curve:
+                widget.themeSettings.dialogTheme.editColorDialogSizeChangeCurve,
             child: Material(
               type: MaterialType.transparency,
               child: flex_color_picker.ColorPicker(
@@ -99,18 +100,22 @@ class _ColorPickerState extends State<ColorPicker> {
                 enableShadesSelection: true,
                 enableTonalPalette: true,
                 showColorName: true,
-                elevation: widget.themeSettings.editColorDialogElevation,
-                borderRadius: widget.themeSettings.editColorDialogBorderRadius,
-                colorNameTextStyle:
-                    widget.themeSettings.editColorDialogColorNameTextStyle,
-                pickerTypeTextStyle:
-                    widget.themeSettings.editColorDialogPickerTypeTextStyle,
-                selectedPickerTypeColor:
-                    widget.themeSettings.editColorDialogSelectedPickerTypeColor,
-                spacing: widget.themeSettings.editColorDialogSpacing,
-                runSpacing: widget.themeSettings.editColorDialogRunSpacing,
-                columnSpacing:
-                    widget.themeSettings.editColorDialogColumnSpacing,
+                elevation:
+                    widget.themeSettings.dialogTheme.editColorDialogElevation,
+                borderRadius: widget
+                    .themeSettings.dialogTheme.editColorDialogBorderRadius,
+                colorNameTextStyle: widget.themeSettings.dialogTheme
+                    .editColorDialogColorNameTextStyle,
+                pickerTypeTextStyle: widget.themeSettings.dialogTheme
+                    .editColorDialogPickerTypeTextStyle,
+                selectedPickerTypeColor: widget.themeSettings.dialogTheme
+                    .editColorDialogSelectedPickerTypeColor,
+                spacing:
+                    widget.themeSettings.dialogTheme.editColorDialogSpacing,
+                runSpacing:
+                    widget.themeSettings.dialogTheme.editColorDialogRunSpacing,
+                columnSpacing: widget
+                    .themeSettings.dialogTheme.editColorDialogColumnSpacing,
                 showColorCode: true,
                 colorCodeHasColor: true,
                 pickersEnabled: const {

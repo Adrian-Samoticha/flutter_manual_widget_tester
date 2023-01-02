@@ -16,7 +16,7 @@ class CreateTestSessionDialogGenerator {
       context: context,
       barrierDismissible: true,
       barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
-      barrierColor: themeSettings.dialogBarrierColor,
+      barrierColor: themeSettings.dialogTheme.dialogBarrierColor,
       transitionDuration: const Duration(milliseconds: 0),
       pageBuilder: (BuildContext context, Animation<double> animation,
           Animation<double> secondaryAnimation) {
