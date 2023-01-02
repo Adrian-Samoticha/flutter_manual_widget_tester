@@ -4,6 +4,7 @@ import 'button_theme.dart';
 import 'create_test_session_dialog_theme.dart';
 import 'foldable_region_theme.dart';
 import 'tab_theme.dart';
+import 'test_session_menu_item_theme.dart';
 import 'text_field_theme.dart';
 import 'zoom_controls_theme.dart';
 
@@ -26,6 +27,9 @@ class ManualWidgetTesterThemeSettings {
   /// The theme of the “create test session” dialog
   final ManualWidgetTesterCreateTestSessionDialogTheme
       createTestSessionDialogTheme;
+
+  /// The test session menu item theme.
+  final ManualWidgetTesterTestSessionMenuItemTheme testSessionMenuItemTheme;
 
   /// Whether this is a dark theme.
   final bool isDark;
@@ -63,44 +67,6 @@ class ManualWidgetTesterThemeSettings {
 
   /// The close button's color.
   final Color closeButtonColor;
-
-  /// The height of a menu item in the “RUNNING TEST SESSIONS” area.
-  final double testSessionMenuItemHeight;
-
-  /// The opacity of an unfocused menu item in the “RUNNING TEST SESSIONS” area.
-  final double testSessionMenuItemUnfocusedTabOpacity;
-
-  /// The padding of a menu item in the “RUNNING TEST SESSIONS” area.
-  final EdgeInsets testSessionMenuItemPadding;
-
-  /// The padding of a menu item's close button in the “RUNNING TEST SESSIONS”
-  /// area.
-  final EdgeInsets testSessionMenuItemCloseButtonPadding;
-
-  /// The size of a menu item's close button in the “RUNNING TEST SESSIONS”
-  /// area.
-  final double testSessionMenuItemCloseButtonSize;
-
-  /// The text overflow behavior of a menu item in the “RUNNING TEST SESSIONS”
-  /// area.
-  final TextOverflow testSessionMenuItemTextOverflow;
-
-  /// The text style of a menu item in the “RUNNING TEST SESSIONS” area.
-  final TextStyle testSessionMenuItemTextStyle;
-
-  /// The icon size of a menu item in the “RUNNING TEST SESSIONS” area.
-  final double testSessionMenuItemIconSize;
-
-  /// The hover tint decoration of a menu item in the “RUNNING TEST SESSIONS”
-  /// area.
-  final BoxDecoration testSessionMenuItemHoverTintDecoration;
-
-  /// The icon padding of a menu item in the “RUNNING TEST SESSIONS” area.
-  final EdgeInsets testSessionMenuItemTabIconPadding;
-
-  /// The tint decoration of a focused menu item in the “RUNNING TEST SESSIONS”
-  /// area.
-  final BoxDecoration testSessionMenuItemFocusedTabTintDecoration;
 
   /// The padding of the message that is displayed when no editor for a
   /// particular setting could be built.
@@ -413,6 +379,8 @@ class ManualWidgetTesterThemeSettings {
     this.foldableRegionTheme = const ManualWidgetTesterFoldableRegionTheme(),
     this.createTestSessionDialogTheme =
         const ManualWidgetTesterCreateTestSessionDialogTheme(),
+    this.testSessionMenuItemTheme =
+        const ManualWidgetTesterTestSessionMenuItemTheme(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -430,26 +398,6 @@ class ManualWidgetTesterThemeSettings {
       borderRadius: BorderRadius.all(Radius.circular(1024.0)),
     ),
     this.closeButtonColor = const Color.fromRGBO(255, 255, 255, 0.9),
-    this.testSessionMenuItemHeight = 24.0,
-    this.testSessionMenuItemUnfocusedTabOpacity = 0.5,
-    this.testSessionMenuItemPadding =
-        const EdgeInsets.symmetric(horizontal: 8.0),
-    this.testSessionMenuItemCloseButtonPadding =
-        const EdgeInsets.only(left: 8.0),
-    this.testSessionMenuItemCloseButtonSize = 12.0,
-    this.testSessionMenuItemTextOverflow = TextOverflow.ellipsis,
-    this.testSessionMenuItemTextStyle = const TextStyle(
-      color: Colors.white,
-      fontSize: 12.0,
-    ),
-    this.testSessionMenuItemIconSize = 18.0,
-    this.testSessionMenuItemHoverTintDecoration = const BoxDecoration(
-      color: Color.fromRGBO(255, 255, 255, 0.1),
-    ),
-    this.testSessionMenuItemTabIconPadding = const EdgeInsets.only(right: 8.0),
-    this.testSessionMenuItemFocusedTabTintDecoration = const BoxDecoration(
-      color: Color.fromRGBO(255, 255, 255, 0.15),
-    ),
     this.noEditorMessagePadding = const EdgeInsets.all(8.0),
     this.noEditorMessageMargin = const EdgeInsets.all(8.0),
     this.noEditorMessageDecoration = const BoxDecoration(

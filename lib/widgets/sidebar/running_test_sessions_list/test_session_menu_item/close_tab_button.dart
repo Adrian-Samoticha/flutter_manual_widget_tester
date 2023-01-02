@@ -26,19 +26,23 @@ class CloseTabButton extends StatelessWidget {
           child: Opacity(
             opacity: value,
             child: Padding(
-              padding: themeSettings.testSessionMenuItemCloseButtonPadding,
+              padding: themeSettings.testSessionMenuItemTheme
+                  .testSessionMenuItemCloseButtonPadding,
               child: child,
             ),
           ),
         );
       },
       child: SizedBox(
-        width: themeSettings.testSessionMenuItemCloseButtonSize,
-        height: themeSettings.testSessionMenuItemCloseButtonSize,
+        width: themeSettings
+            .testSessionMenuItemTheme.testSessionMenuItemCloseButtonSize,
+        height: themeSettings
+            .testSessionMenuItemTheme.testSessionMenuItemCloseButtonSize,
         child: ManualWidgetTesterCloseButton(
           themeSettings: themeSettings,
           onPressed: onPressed,
-          size: themeSettings.testSessionMenuItemCloseButtonSize,
+          size: themeSettings
+              .testSessionMenuItemTheme.testSessionMenuItemCloseButtonSize,
         ),
       ),
     );

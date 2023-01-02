@@ -52,18 +52,21 @@ class _ManualWidgetTesterTestSessionMenuItemState
         child: Opacity(
           opacity: widget.tabIndex == widget.focusedTabIndex
               ? 1.0
-              : widget.themeSettings.testSessionMenuItemUnfocusedTabOpacity,
+              : widget.themeSettings.testSessionMenuItemTheme
+                  .testSessionMenuItemUnfocusedTabOpacity,
           child: Container(
-            height: widget.themeSettings.testSessionMenuItemHeight,
+            height: widget.themeSettings.testSessionMenuItemTheme
+                .testSessionMenuItemHeight,
             decoration: widget.tabIndex != widget.focusedTabIndex
                 ? null
-                : widget
-                    .themeSettings.testSessionMenuItemFocusedTabTintDecoration,
+                : widget.themeSettings.testSessionMenuItemTheme
+                    .testSessionMenuItemFocusedTabTintDecoration,
             child: Stack(
               children: [
                 _buildHoverTint(),
                 Padding(
-                  padding: widget.themeSettings.testSessionMenuItemPadding,
+                  padding: widget.themeSettings.testSessionMenuItemTheme
+                      .testSessionMenuItemPadding,
                   child: _buildTabRow(),
                 ),
               ],
@@ -105,17 +108,21 @@ class _ManualWidgetTesterTestSessionMenuItemState
   Text _buildTabText() {
     return Text(widget.widgetName,
         softWrap: false,
-        overflow: widget.themeSettings.testSessionMenuItemTextOverflow,
-        style: widget.themeSettings.testSessionMenuItemTextStyle);
+        overflow: widget.themeSettings.testSessionMenuItemTheme
+            .testSessionMenuItemTextOverflow,
+        style: widget.themeSettings.testSessionMenuItemTheme
+            .testSessionMenuItemTextStyle);
   }
 
   Padding _buildTabIcon() {
     return Padding(
-      padding: widget.themeSettings.testSessionMenuItemTabIconPadding,
+      padding: widget.themeSettings.testSessionMenuItemTheme
+          .testSessionMenuItemTabIconPadding,
       child: Icon(
         widget.icon,
         color: widget.iconColor,
-        size: widget.themeSettings.testSessionMenuItemIconSize,
+        size: widget
+            .themeSettings.testSessionMenuItemTheme.testSessionMenuItemIconSize,
       ),
     );
   }
@@ -125,8 +132,8 @@ class _ManualWidgetTesterTestSessionMenuItemState
       duration: const Duration(milliseconds: 50),
       opacity: _isBeingHovered ? 1.0 : 0.0,
       child: Container(
-          decoration:
-              widget.themeSettings.testSessionMenuItemHoverTintDecoration),
+          decoration: widget.themeSettings.testSessionMenuItemTheme
+              .testSessionMenuItemHoverTintDecoration),
     );
   }
 }
