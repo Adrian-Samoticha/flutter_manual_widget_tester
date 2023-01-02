@@ -127,7 +127,8 @@ class _ColorPickerState extends State<ColorPicker> {
   SizedBox _buildCheckerboardBackground() {
     return SizedBox.expand(
       child: ClipRRect(
-        borderRadius: widget.themeSettings.editColorButtonBorderRadius,
+        borderRadius: widget
+            .themeSettings.editColorButtonTheme.editColorButtonBorderRadius,
         child: Checkerboard(
           themeSettings: widget.themeSettings,
         ),

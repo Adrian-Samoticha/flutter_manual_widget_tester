@@ -13,9 +13,9 @@ class Checkerboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: _CheckerboardPainter(
-        themeSettings.editColorButtonCheckerboardSize,
-        themeSettings.editColorButtonCheckerboardColor1,
-        themeSettings.editColorButtonCheckerboardColor2,
+        themeSettings.editColorButtonTheme.editColorButtonCheckerboardSize,
+        themeSettings.editColorButtonTheme.editColorButtonCheckerboardColor1,
+        themeSettings.editColorButtonTheme.editColorButtonCheckerboardColor2,
       ),
     );
   }

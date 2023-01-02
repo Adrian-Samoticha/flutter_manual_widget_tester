@@ -28,7 +28,7 @@ class ManualWidgetTesterCustomSettingsColorEditor extends StatelessWidget {
           ManualWidgetTesterCustomSettingsHeading(
               themeSettings: themeSettings, settingName: settingName),
           SizedBox(
-            height: themeSettings.editColorButtonHeight,
+            height: themeSettings.editColorButtonTheme.editColorButtonHeight,
             child: ColorPicker(
               themeSettings: themeSettings,
               selectedColor: currentValue,
