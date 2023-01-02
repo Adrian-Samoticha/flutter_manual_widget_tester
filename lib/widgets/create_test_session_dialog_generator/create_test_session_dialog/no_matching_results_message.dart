@@ -13,11 +13,12 @@ class NoMatchingResultsMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: themeSettings.createTestSessionDialogSearchResultsPadding,
+      padding: themeSettings.createTestSessionDialogTheme
+          .createTestSessionDialogSearchResultsPadding,
       child: DefaultTextStyle(
         style: DefaultTextStyleProvider.defaultTextStyle,
         child: Text('No matching results.',
-            style: themeSettings
+            style: themeSettings.createTestSessionDialogTheme
                 .createTestSessionDialogNoMatchingResultsTextStyle),
       ),
     );

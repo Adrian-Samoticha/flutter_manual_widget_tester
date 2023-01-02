@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'button_theme.dart';
+import 'create_test_session_dialog_theme.dart';
 import 'foldable_region_theme.dart';
 import 'tab_theme.dart';
 import 'text_field_theme.dart';
@@ -21,6 +22,10 @@ class ManualWidgetTesterThemeSettings {
 
   /// The foldable region theme.
   final ManualWidgetTesterFoldableRegionTheme foldableRegionTheme;
+
+  /// The theme of the “create test session” dialog
+  final ManualWidgetTesterCreateTestSessionDialogTheme
+      createTestSessionDialogTheme;
 
   /// Whether this is a dark theme.
   final bool isDark;
@@ -370,58 +375,6 @@ class ManualWidgetTesterThemeSettings {
   /// The padding of the “create test session” button.
   final EdgeInsets createTestSessionButtonPadding;
 
-  /// The width of the “create test session” button.
-  final double createTestSessionDialogWidth;
-
-  /// The padding of the “create test session” dialog.
-  final EdgeInsets createTestSessionDialogPadding;
-
-  /// The height factor of the “create test session” dialog's search result list
-  /// in relation to the window's height.
-  ///
-  /// A height factor of 0.5 means that the search result list covers 50 % of
-  /// the application window.
-  final double createTestSessionDialogSearchResultsHeightFactor;
-
-  /// The height of the “create test session” dialog's search bar.
-  final double createTestSessionDialogSearchBarHeight;
-
-  /// The padding of the “create test session” dialog's search results.
-  final EdgeInsets createTestSessionDialogSearchResultsPadding;
-
-  /// The height of a single item in the “create test session” dialog's search
-  /// results.
-  final double createTestSessionDialogSearchResultHeight;
-
-  /// The box decoration of the “create test session” dialog's selected search
-  /// result.
-  final BoxDecoration createTestSessionDialogSelectedSearchResultDecoration;
-
-  /// The box decoration of the “create test session” dialog's unselected search
-  /// results.
-  final BoxDecoration createTestSessionDialogUnselectedSearchResultDecoration;
-
-  /// The text style of the “create test session” dialog's search results.
-  final TextStyle createTestSessionDialogSearchResultTextStyle;
-
-  /// The padding of the “create test session” dialog's search result icons.
-  final EdgeInsets createTestSessionDialogSearchResultIconPadding;
-
-  /// The size of the “create test session” dialog's search result icons.
-  final double createTestSessionDialogSearchResultIconSize;
-
-  /// The duration of the “create test session” dialog's search result fade
-  /// animation.
-  final Duration createTestSessionDialogSearchResultFadeDuration;
-
-  /// The opacity of the “create test session” dialog's unselected search
-  /// results.
-  final double createTestSessionDialogUnselectedSearchResultOpacity;
-
-  /// The text style of the “create test session” dialog's *“No matching
-  /// results.”* text.
-  final TextStyle createTestSessionDialogNoMatchingResultsTextStyle;
-
   /// The color of the drag handle that appears when the sidebar is being
   /// resized.
   final Color dragHandleColor;
@@ -458,6 +411,8 @@ class ManualWidgetTesterThemeSettings {
     this.textFieldTheme = const ManualWidgetTesterTextFieldTheme(),
     this.zoomControlsTheme = const ManualWidgetTesterZoomControlsTheme(),
     this.foldableRegionTheme = const ManualWidgetTesterFoldableRegionTheme(),
+    this.createTestSessionDialogTheme =
+        const ManualWidgetTesterCreateTestSessionDialogTheme(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -741,39 +696,6 @@ class ManualWidgetTesterThemeSettings {
         const EdgeInsets.symmetric(vertical: 8.0),
     this.boolEditorHeight = 16.0,
     this.createTestSessionButtonPadding = const EdgeInsets.all(6.5),
-    this.createTestSessionDialogWidth = 512.0,
-    this.createTestSessionDialogPadding = const EdgeInsets.all(8.0),
-    this.createTestSessionDialogSearchResultsHeightFactor = 0.5,
-    this.createTestSessionDialogSearchBarHeight = 32.0,
-    this.createTestSessionDialogSearchResultsPadding =
-        const EdgeInsets.only(top: 8.0),
-    this.createTestSessionDialogSearchResultHeight = 28.0,
-    this.createTestSessionDialogSelectedSearchResultDecoration =
-        const BoxDecoration(
-      color: Color.fromRGBO(255, 255, 255, 0.15),
-      border: Border.fromBorderSide(
-        BorderSide(
-          color: Color.fromRGBO(255, 255, 255, 0.15),
-        ),
-      ),
-      borderRadius: BorderRadius.all(
-        Radius.circular(5.0),
-      ),
-    ),
-    this.createTestSessionDialogUnselectedSearchResultDecoration =
-        const BoxDecoration(),
-    this.createTestSessionDialogSearchResultTextStyle = const TextStyle(
-      color: Colors.white,
-    ),
-    this.createTestSessionDialogSearchResultIconPadding =
-        const EdgeInsets.only(right: 8.0, left: 2.0),
-    this.createTestSessionDialogSearchResultIconSize = 21.0,
-    this.createTestSessionDialogSearchResultFadeDuration =
-        const Duration(milliseconds: 100),
-    this.createTestSessionDialogUnselectedSearchResultOpacity = 0.5,
-    this.createTestSessionDialogNoMatchingResultsTextStyle = const TextStyle(
-      color: Color.fromRGBO(255, 255, 255, 0.9),
-    ),
     this.dragHandleColor = Colors.blue,
     this.dragHandleSize = 6.0,
     this.dragHandleChangeOpacityDuration = const Duration(milliseconds: 150),

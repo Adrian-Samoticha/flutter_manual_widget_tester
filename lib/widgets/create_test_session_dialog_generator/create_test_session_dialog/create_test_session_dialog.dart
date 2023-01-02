@@ -67,8 +67,10 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
                 sigmaX: widget.themeSettings.dialogBlurRadius,
                 sigmaY: widget.themeSettings.dialogBlurRadius),
             child: Container(
-              width: widget.themeSettings.createTestSessionDialogWidth,
-              padding: widget.themeSettings.createTestSessionDialogPadding,
+              width: widget.themeSettings.createTestSessionDialogTheme
+                  .createTestSessionDialogWidth,
+              padding: widget.themeSettings.createTestSessionDialogTheme
+                  .createTestSessionDialogPadding,
               child: _buildMainColumn(),
             ),
           ),
@@ -114,7 +116,7 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
         children: [
           _buildSearchBar(),
           _buildSearchResultList(MediaQuery.of(context).size.height *
-              widget.themeSettings
+              widget.themeSettings.createTestSessionDialogTheme
                   .createTestSessionDialogSearchResultsHeightFactor),
         ],
       ),
@@ -123,7 +125,8 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
 
   Widget _buildSearchBar() {
     return SizedBox(
-      height: widget.themeSettings.createTestSessionDialogSearchBarHeight,
+      height: widget.themeSettings.createTestSessionDialogTheme
+          .createTestSessionDialogSearchBarHeight,
       child: ManualWidgetTesterTextField(
         textEditingController: _textEditingController,
         onSubmitted: (_) {},

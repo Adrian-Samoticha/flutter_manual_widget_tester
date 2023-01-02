@@ -16,10 +16,12 @@ class SearchResultIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: themeSettings.createTestSessionDialogSearchResultIconPadding,
+      padding: themeSettings.createTestSessionDialogTheme
+          .createTestSessionDialogSearchResultIconPadding,
       child: Icon(
         icon,
-        size: themeSettings.createTestSessionDialogSearchResultIconSize,
+        size: themeSettings.createTestSessionDialogTheme
+            .createTestSessionDialogSearchResultIconSize,
         color: iconColor,
       ),
     );

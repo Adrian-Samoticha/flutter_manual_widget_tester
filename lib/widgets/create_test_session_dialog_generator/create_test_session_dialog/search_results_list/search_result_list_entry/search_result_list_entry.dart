@@ -88,19 +88,19 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
           });
         },
         child: AnimatedOpacity(
-          duration: widget
-              .themeSettings.createTestSessionDialogSearchResultFadeDuration,
+          duration: widget.themeSettings.createTestSessionDialogTheme
+              .createTestSessionDialogSearchResultFadeDuration,
           opacity: _isSelected || _isBeingHovered
               ? 1.0
-              : widget.themeSettings
+              : widget.themeSettings.createTestSessionDialogTheme
                   .createTestSessionDialogUnselectedSearchResultOpacity,
           child: Container(
-            height:
-                widget.themeSettings.createTestSessionDialogSearchResultHeight,
+            height: widget.themeSettings.createTestSessionDialogTheme
+                .createTestSessionDialogSearchResultHeight,
             decoration: _isSelected
-                ? widget.themeSettings
+                ? widget.themeSettings.createTestSessionDialogTheme
                     .createTestSessionDialogSelectedSearchResultDecoration
-                : widget.themeSettings
+                : widget.themeSettings.createTestSessionDialogTheme
                     .createTestSessionDialogUnselectedSearchResultDecoration,
             child: _buildIconAndNameRow(),
           ),
@@ -129,7 +129,8 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
             widget.builder.name,
             softWrap: false,
             overflow: TextOverflow.ellipsis,
-            style: themeSettings.createTestSessionDialogSearchResultTextStyle,
+            style: themeSettings.createTestSessionDialogTheme
+                .createTestSessionDialogSearchResultTextStyle,
           ),
         ),
       ],
