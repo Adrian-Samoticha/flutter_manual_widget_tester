@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'bool_editor_theme.dart';
 import 'button_theme.dart';
 import 'create_test_session_dialog_theme.dart';
 import 'dialog_theme.dart';
@@ -42,6 +43,9 @@ class ManualWidgetTesterThemeSettings {
 
   /// The double editor theme.
   final ManualWidgetTesterDoubleEditor doubleEditorTheme;
+
+  /// The boolean editor theme.
+  final ManualWidgetTesterBoolEditorTheme boolEditorTheme;
 
   /// Whether this is a dark theme.
   final bool isDark;
@@ -143,18 +147,6 @@ class ManualWidgetTesterThemeSettings {
   /// The text style of an unselected radio buttons label.
   final TextStyle unselectedRadioButtonLabelStyle;
 
-  /// The maximal width of a boolean editor.
-  final double boolEditorMaxWidth;
-
-  /// The space between the radio buttons in the boolean editor.
-  final double boolEditorSpaceBetweenRadioButtons;
-
-  /// The boolean editor's padding.
-  final EdgeInsets boolEditorRadioButtonPadding;
-
-  /// The height of the boolean editor.
-  final double boolEditorHeight;
-
   /// The padding of the “create test session” button.
   final EdgeInsets createTestSessionButtonPadding;
 
@@ -201,6 +193,7 @@ class ManualWidgetTesterThemeSettings {
     this.editColorButtonTheme = const ManualWidgetTesterEditColorButtonTheme(),
     this.dialogTheme = const ManualWidgetTesterDialogTheme(),
     this.doubleEditorTheme = const ManualWidgetTesterDoubleEditor(),
+    this.boolEditorTheme = const ManualWidgetTesterBoolEditorTheme(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -319,11 +312,6 @@ class ManualWidgetTesterThemeSettings {
     this.unselectedRadioButtonLabelStyle = const TextStyle(
       color: Color.fromRGBO(255, 255, 255, 0.5),
     ),
-    this.boolEditorMaxWidth = 192.0,
-    this.boolEditorSpaceBetweenRadioButtons = 12.0,
-    this.boolEditorRadioButtonPadding =
-        const EdgeInsets.symmetric(vertical: 8.0),
-    this.boolEditorHeight = 16.0,
     this.createTestSessionButtonPadding = const EdgeInsets.all(6.5),
     this.dragHandleColor = Colors.blue,
     this.dragHandleSize = 6.0,

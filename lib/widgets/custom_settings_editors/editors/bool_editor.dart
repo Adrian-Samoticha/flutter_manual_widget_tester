@@ -31,7 +31,7 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: ConstrainedBox(
               constraints: BoxConstraints(
-                maxWidth: themeSettings.boolEditorMaxWidth,
+                maxWidth: themeSettings.boolEditorTheme.boolEditorMaxWidth,
               ),
               child: Row(
                 children: [
@@ -39,7 +39,8 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
                     child: _buildRadioButtonWithLabel(true),
                   ),
                   SizedBox(
-                      width: themeSettings.boolEditorSpaceBetweenRadioButtons),
+                      width: themeSettings
+                          .boolEditorTheme.boolEditorSpaceBetweenRadioButtons),
                   Expanded(
                     child: _buildRadioButtonWithLabel(false),
                   ),
@@ -59,10 +60,10 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
       child: GestureDetector(
         onTapDown: (_) => onChanged(isTrue),
         child: Container(
-          padding: themeSettings.boolEditorRadioButtonPadding,
+          padding: themeSettings.boolEditorTheme.boolEditorRadioButtonPadding,
           color: Colors.transparent,
           child: SizedBox(
-            height: themeSettings.boolEditorHeight,
+            height: themeSettings.boolEditorTheme.boolEditorHeight,
             child: ManualWidgetTesterRadioButtonWithLabel(
               themeSettings: themeSettings,
               isSelected: isTrue ? currentValue : !currentValue,
