@@ -61,7 +61,7 @@ class _ManualWidgetTesterAppBarState extends State<ManualWidgetTesterAppBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.themeSettings.appBarHeight,
+      height: widget.themeSettings.appBarTheme.appBarHeight,
       color: widget.themeSettings.sidebarColor,
       child: Stack(
         children: [
@@ -79,7 +79,7 @@ class _ManualWidgetTesterAppBarState extends State<ManualWidgetTesterAppBar> {
                 ),
               ),
               Container(
-                width: widget.themeSettings.appBarHeight,
+                width: widget.themeSettings.appBarTheme.appBarHeight,
                 padding: widget.themeSettings.createTestSessionButtonPadding,
                 child: NewTestSessionButton(
                   themeSettings: widget.themeSettings,

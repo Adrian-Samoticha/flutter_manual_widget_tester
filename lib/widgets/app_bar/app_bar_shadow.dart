@@ -15,8 +15,8 @@ class AppBarShadow extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        height: themeSettings.appBarShadowHeight,
-        decoration: themeSettings.appBarShadowBoxDecoration,
+        height: themeSettings.appBarTheme.appBarShadowHeight,
+        decoration: themeSettings.appBarTheme.appBarShadowBoxDecoration,
       ),
     );
   }

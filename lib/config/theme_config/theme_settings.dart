@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'app_bar_theme.dart';
 import 'bool_editor_theme.dart';
 import 'button_theme.dart';
 import 'close_button_theme.dart';
@@ -74,6 +75,12 @@ class ManualWidgetTesterThemeSettings {
   /// setting could be built.
   final ManualWidgetTesterNoEditorMessageTheme noEditorMessageTheme;
 
+  /// The theme of the app bar.
+  ///
+  /// The app bar is the bar that houses the tab bar and the “create new test
+  /// session” button.
+  final ManualWidgetTesterAppBarTheme appBarTheme;
+
   /// Whether this is a dark theme.
   final bool isDark;
 
@@ -82,12 +89,6 @@ class ManualWidgetTesterThemeSettings {
 
   /// The color of the manual widget tester's sidebar.
   final Color sidebarColor;
-
-  /// The height of the app bar on the top of the widget.
-  ///
-  /// The app bar is the bar that houses the tab bar and the “create new test
-  /// session” button.
-  final double appBarHeight;
 
   /// The accent color, currently used only for the decoration of the focused
   /// tab.
@@ -119,14 +120,6 @@ class ManualWidgetTesterThemeSettings {
   /// The padding of the “create test session” button.
   final EdgeInsets createTestSessionButtonPadding;
 
-  /// The height of the container that simulates the shadow at the bottom of
-  /// the app bar.
-  final double appBarShadowHeight;
-
-  /// The box decoration of the container that simulates the shadow at the
-  /// bottom of the app bar.
-  final BoxDecoration appBarShadowBoxDecoration;
-
   /// The duration of the scroll animation that plays when a widget is moved
   /// into view.
   final Duration scrollIntoViewDuration;
@@ -153,10 +146,10 @@ class ManualWidgetTesterThemeSettings {
     this.radioButtonTheme = const ManualWidgetTesterRadioButtonTheme(),
     this.closeButtonTheme = const ManualWidgetTesterCloseButtonTheme(),
     this.noEditorMessageTheme = const ManualWidgetTesterNoEditorMessageTheme(),
+    this.appBarTheme = const ManualWidgetTesterAppBarTheme(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
-    this.appBarHeight = 40.0,
     this.accentColor = const Color.fromARGB(255, 40, 138, 251),
     this.dottedLineColor = const Color.fromRGBO(255, 255, 255, 0.5),
     this.widgetSizeTextStyle = const TextStyle(
@@ -169,17 +162,6 @@ class ManualWidgetTesterThemeSettings {
     this.stringEditorHeight = 32.0,
     this.defaultNumberEditorButtonRowWidth = 64.0,
     this.createTestSessionButtonPadding = const EdgeInsets.all(6.5),
-    this.appBarShadowHeight = 16.0,
-    this.appBarShadowBoxDecoration = const BoxDecoration(
-      gradient: LinearGradient(
-        colors: [
-          Color.fromRGBO(0, 0, 0, 0.15),
-          Colors.transparent,
-        ],
-        begin: Alignment.bottomCenter,
-        end: Alignment.topCenter,
-      ),
-    ),
     this.scrollIntoViewDuration = const Duration(milliseconds: 250),
   });
 }
