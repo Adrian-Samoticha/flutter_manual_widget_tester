@@ -9,6 +9,7 @@ import 'double_editor_theme.dart';
 import 'drag_handle_theme.dart';
 import 'edit_color_button_theme.dart';
 import 'foldable_region_theme.dart';
+import 'no_custom_settings_message_theme.dart';
 import 'tab_theme.dart';
 import 'test_session_menu_item_theme.dart';
 import 'text_field_theme.dart';
@@ -54,6 +55,11 @@ class ManualWidgetTesterThemeSettings {
 
   /// The theme of the drag handle.
   final ManualWidgetTesterDragHandleTheme dragHandleTheme;
+
+  /// The theme of the message that is displayed when a test session has no
+  /// custom settings.
+  final ManualWidgetTesterNoCustomSettingsMessageTheme
+      noCustomSettingsMessageTheme;
 
   /// Whether this is a dark theme.
   final bool isDark;
@@ -103,14 +109,6 @@ class ManualWidgetTesterThemeSettings {
   /// The box decoration of the message that is displayed when no editor for a
   /// particular setting could be built.
   final BoxDecoration noEditorMessageDecoration;
-
-  /// The padding of the message that is displayed when a test session has no
-  /// custom settings.
-  final EdgeInsets noCustomSettingsMessagePadding;
-
-  /// The text style of the message that is displayed when a test session has
-  /// no custom settings.
-  final TextStyle noCustomSettingsMessageTextStyle;
 
   /// The text style of the message that is displayed when no editor for a
   /// particular setting could be built.
@@ -178,6 +176,8 @@ class ManualWidgetTesterThemeSettings {
     this.customSettingsHeadingTheme =
         const ManualWidgetTesterCustomSettingHeadingTheme(),
     this.dragHandleTheme = const ManualWidgetTesterDragHandleTheme(),
+    this.noCustomSettingsMessageTheme =
+        const ManualWidgetTesterNoCustomSettingsMessageTheme(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -204,10 +204,6 @@ class ManualWidgetTesterThemeSettings {
         ),
       ),
       borderRadius: BorderRadius.all(Radius.circular(8.0)),
-    ),
-    this.noCustomSettingsMessagePadding = const EdgeInsets.all(8.0),
-    this.noCustomSettingsMessageTextStyle = const TextStyle(
-      color: Color.fromRGBO(255, 255, 255, 0.75),
     ),
     this.noEditorTextStyle = const TextStyle(
       color: Color.fromRGBO(255, 128, 0, 1.0),

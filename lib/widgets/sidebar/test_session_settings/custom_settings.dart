@@ -108,10 +108,12 @@ class CustomSettings extends StatelessWidget {
 
   Padding _buildNoSettingsText() {
     return Padding(
-      padding: themeSettings.noCustomSettingsMessagePadding,
+      padding: themeSettings
+          .noCustomSettingsMessageTheme.noCustomSettingsMessagePadding,
       child: Text(
         'This test session has no custom settings.',
-        style: themeSettings.noCustomSettingsMessageTextStyle,
+        style: themeSettings
+            .noCustomSettingsMessageTheme.noCustomSettingsMessageTextStyle,
       ),
     );
   }
