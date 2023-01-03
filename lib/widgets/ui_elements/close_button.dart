@@ -58,13 +58,14 @@ class _ManualWidgetTesterCloseButtonState
                 duration: const Duration(milliseconds: 50),
                 opacity: _isBeingHovered ? 1.0 : 0.0,
                 child: Container(
-                  decoration: widget.themeSettings.closeButtonHoverDecoration,
+                  decoration: widget.themeSettings.closeButtonTheme
+                      .closeButtonHoverDecoration,
                 ),
               ),
               Center(
                 child: Icon(
                   Icons.close,
-                  color: widget.themeSettings.closeButtonColor,
+                  color: widget.themeSettings.closeButtonTheme.closeButtonColor,
                   size: widget.size,
                 ),
               ),

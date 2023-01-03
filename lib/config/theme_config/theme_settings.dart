@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'bool_editor_theme.dart';
 import 'button_theme.dart';
+import 'close_button_theme.dart';
 import 'create_test_session_dialog_theme.dart';
 import 'custom_setting_heading_theme.dart';
 import 'dialog_theme.dart';
@@ -65,6 +66,9 @@ class ManualWidgetTesterThemeSettings {
   /// The radio button theme.
   final ManualWidgetTesterRadioButtonTheme radioButtonTheme;
 
+  /// The close button theme.
+  final ManualWidgetTesterCloseButtonTheme closeButtonTheme;
+
   /// Whether this is a dark theme.
   final bool isDark;
 
@@ -95,12 +99,6 @@ class ManualWidgetTesterThemeSettings {
 
   /// The space between text boxes and connected button rows.
   final double spaceBetweenTextBoxesAndButtonRows;
-
-  /// The box decoration of a close button's hover effect.
-  final BoxDecoration closeButtonHoverDecoration;
-
-  /// The close button's color.
-  final Color closeButtonColor;
 
   /// The padding of the message that is displayed when no editor for a
   /// particular setting could be built.
@@ -168,6 +166,7 @@ class ManualWidgetTesterThemeSettings {
     this.noCustomSettingsMessageTheme =
         const ManualWidgetTesterNoCustomSettingsMessageTheme(),
     this.radioButtonTheme = const ManualWidgetTesterRadioButtonTheme(),
+    this.closeButtonTheme = const ManualWidgetTesterCloseButtonTheme(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -180,11 +179,6 @@ class ManualWidgetTesterThemeSettings {
     ),
     this.defaultIconColor = const Color.fromRGBO(64, 167, 255, 1.0),
     this.spaceBetweenTextBoxesAndButtonRows = 0.5,
-    this.closeButtonHoverDecoration = const BoxDecoration(
-      color: Color.fromRGBO(255, 255, 255, 0.2),
-      borderRadius: BorderRadius.all(Radius.circular(1024.0)),
-    ),
-    this.closeButtonColor = const Color.fromRGBO(255, 255, 255, 0.9),
     this.noEditorMessagePadding = const EdgeInsets.all(8.0),
     this.noEditorMessageMargin = const EdgeInsets.all(8.0),
     this.noEditorMessageDecoration = const BoxDecoration(
