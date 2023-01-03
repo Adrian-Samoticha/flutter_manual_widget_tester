@@ -12,10 +12,10 @@ class ManualWidgetTesterRadioButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isSelected) {
-      return themeSettings.selectedRadioButton;
+      return themeSettings.radioButtonTheme.selectedRadioButton;
     }
 
-    return themeSettings.unselectedRadioButton;
+    return themeSettings.radioButtonTheme.unselectedRadioButton;
   }
 }
 
@@ -44,14 +44,17 @@ class ManualWidgetTesterRadioButtonWithLabel extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(width: themeSettings.spaceBetweenRadioButtonAndLabel),
+        SizedBox(
+            width:
+                themeSettings.radioButtonTheme.spaceBetweenRadioButtonAndLabel),
         Expanded(
           child: Text(label,
               softWrap: false,
               overflow: TextOverflow.fade,
               style: isSelected
-                  ? themeSettings.selectedRadioButtonLabelStyle
-                  : themeSettings.unselectedRadioButtonLabelStyle),
+                  ? themeSettings.radioButtonTheme.selectedRadioButtonLabelStyle
+                  : themeSettings
+                      .radioButtonTheme.unselectedRadioButtonLabelStyle),
         ),
       ],
     );
