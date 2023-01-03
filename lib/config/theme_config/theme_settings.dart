@@ -6,6 +6,7 @@ import 'create_test_session_dialog_theme.dart';
 import 'custom_setting_heading_theme.dart';
 import 'dialog_theme.dart';
 import 'double_editor_theme.dart';
+import 'drag_handle_theme.dart';
 import 'edit_color_button_theme.dart';
 import 'foldable_region_theme.dart';
 import 'tab_theme.dart';
@@ -50,6 +51,9 @@ class ManualWidgetTesterThemeSettings {
 
   /// The custom settings heading theme.
   final ManualWidgetTesterCustomSettingHeadingTheme customSettingsHeadingTheme;
+
+  /// The theme of the drag handle.
+  final ManualWidgetTesterDragHandleTheme dragHandleTheme;
 
   /// Whether this is a dark theme.
   final bool isDark;
@@ -145,24 +149,6 @@ class ManualWidgetTesterThemeSettings {
   /// The padding of the “create test session” button.
   final EdgeInsets createTestSessionButtonPadding;
 
-  /// The color of the drag handle that appears when the sidebar is being
-  /// resized.
-  final Color dragHandleColor;
-
-  /// The size of the drag handle that appears when the sidebar is being
-  /// resized.
-  final double dragHandleSize;
-
-  /// The duration of the drag handle's fade animation.
-  ///
-  /// The “drag handle” refers to the line that appears when the sidebar is
-  /// being resized.
-  final Duration dragHandleChangeOpacityDuration;
-
-  /// The amount of time until the drag handle appears when sidebar's edge is
-  /// being hovered over.
-  final Duration timeUntilDragHandleAppears;
-
   /// The height of the container that simulates the shadow at the bottom of
   /// the app bar.
   final double appBarShadowHeight;
@@ -191,6 +177,7 @@ class ManualWidgetTesterThemeSettings {
     this.boolEditorTheme = const ManualWidgetTesterBoolEditorTheme(),
     this.customSettingsHeadingTheme =
         const ManualWidgetTesterCustomSettingHeadingTheme(),
+    this.dragHandleTheme = const ManualWidgetTesterDragHandleTheme(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -305,10 +292,6 @@ class ManualWidgetTesterThemeSettings {
       color: Color.fromRGBO(255, 255, 255, 0.5),
     ),
     this.createTestSessionButtonPadding = const EdgeInsets.all(6.5),
-    this.dragHandleColor = Colors.blue,
-    this.dragHandleSize = 6.0,
-    this.dragHandleChangeOpacityDuration = const Duration(milliseconds: 150),
-    this.timeUntilDragHandleAppears = const Duration(milliseconds: 250),
     this.appBarShadowHeight = 16.0,
     this.appBarShadowBoxDecoration = const BoxDecoration(
       gradient: LinearGradient(
