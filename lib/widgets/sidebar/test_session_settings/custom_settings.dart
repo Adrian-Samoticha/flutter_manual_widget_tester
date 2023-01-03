@@ -74,9 +74,9 @@ class CustomSettings extends StatelessWidget {
 
   Container _buildNoEditorMessage(String settingName, settingValue) {
     return Container(
-      padding: themeSettings.noEditorMessagePadding,
-      margin: themeSettings.noEditorMessageMargin,
-      decoration: themeSettings.noEditorMessageDecoration,
+      padding: themeSettings.noEditorMessageTheme.noEditorMessagePadding,
+      margin: themeSettings.noEditorMessageTheme.noEditorMessageMargin,
+      decoration: themeSettings.noEditorMessageTheme.noEditorMessageDecoration,
       child: _buildNoEditorText(settingName, settingValue),
     );
   }
@@ -85,18 +85,20 @@ class CustomSettings extends StatelessWidget {
     return RichText(
       text: TextSpan(
         text: 'Could not build type editor for setting ',
-        style: themeSettings.noEditorTextStyle,
+        style: themeSettings.noEditorMessageTheme.noEditorTextStyle,
         children: [
           TextSpan(
             text: settingName,
-            style: themeSettings.noEditorHighlightedTextStyle,
+            style:
+                themeSettings.noEditorMessageTheme.noEditorHighlightedTextStyle,
           ),
           const TextSpan(
             text: ' which is of type ',
           ),
           TextSpan(
             text: '${settingValue.runtimeType}',
-            style: themeSettings.noEditorHighlightedTextStyle,
+            style:
+                themeSettings.noEditorMessageTheme.noEditorHighlightedTextStyle,
           ),
           const TextSpan(
             text: '. No editor for that type has been provided.',

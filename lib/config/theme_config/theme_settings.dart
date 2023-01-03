@@ -11,6 +11,7 @@ import 'drag_handle_theme.dart';
 import 'edit_color_button_theme.dart';
 import 'foldable_region_theme.dart';
 import 'no_custom_settings_message_theme.dart';
+import 'no_editor_message_theme.dart';
 import 'radio_button_theme.dart';
 import 'tab_theme.dart';
 import 'test_session_menu_item_theme.dart';
@@ -69,6 +70,10 @@ class ManualWidgetTesterThemeSettings {
   /// The close button theme.
   final ManualWidgetTesterCloseButtonTheme closeButtonTheme;
 
+  /// The theme of the message that is displayed when no editor for a particular
+  /// setting could be built.
+  final ManualWidgetTesterNoEditorMessageTheme noEditorMessageTheme;
+
   /// Whether this is a dark theme.
   final bool isDark;
 
@@ -99,26 +104,6 @@ class ManualWidgetTesterThemeSettings {
 
   /// The space between text boxes and connected button rows.
   final double spaceBetweenTextBoxesAndButtonRows;
-
-  /// The padding of the message that is displayed when no editor for a
-  /// particular setting could be built.
-  final EdgeInsets noEditorMessagePadding;
-
-  /// The margin of the message that is displayed when no editor for a
-  /// particular setting could be built.
-  final EdgeInsets noEditorMessageMargin;
-
-  /// The box decoration of the message that is displayed when no editor for a
-  /// particular setting could be built.
-  final BoxDecoration noEditorMessageDecoration;
-
-  /// The text style of the message that is displayed when no editor for a
-  /// particular setting could be built.
-  final TextStyle noEditorTextStyle;
-
-  /// The text style of the highlighted text of the message that is displayed
-  /// when no editor for a particular setting could be built.
-  final TextStyle noEditorHighlightedTextStyle;
 
   /// The padding of a custom settings widget.
   final EdgeInsets customSettingsPadding;
@@ -167,6 +152,7 @@ class ManualWidgetTesterThemeSettings {
         const ManualWidgetTesterNoCustomSettingsMessageTheme(),
     this.radioButtonTheme = const ManualWidgetTesterRadioButtonTheme(),
     this.closeButtonTheme = const ManualWidgetTesterCloseButtonTheme(),
+    this.noEditorMessageTheme = const ManualWidgetTesterNoEditorMessageTheme(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -179,23 +165,6 @@ class ManualWidgetTesterThemeSettings {
     ),
     this.defaultIconColor = const Color.fromRGBO(64, 167, 255, 1.0),
     this.spaceBetweenTextBoxesAndButtonRows = 0.5,
-    this.noEditorMessagePadding = const EdgeInsets.all(8.0),
-    this.noEditorMessageMargin = const EdgeInsets.all(8.0),
-    this.noEditorMessageDecoration = const BoxDecoration(
-      border: Border.fromBorderSide(
-        BorderSide(
-          color: Color.fromRGBO(255, 128, 0, 1.0),
-        ),
-      ),
-      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-    ),
-    this.noEditorTextStyle = const TextStyle(
-      color: Color.fromRGBO(255, 128, 0, 1.0),
-    ),
-    this.noEditorHighlightedTextStyle = const TextStyle(
-      color: Color.fromRGBO(255, 192, 0, 1.0),
-      fontStyle: FontStyle.italic,
-    ),
     this.customSettingsPadding = const EdgeInsets.all(8.0),
     this.stringEditorHeight = 32.0,
     this.defaultNumberEditorButtonRowWidth = 64.0,
