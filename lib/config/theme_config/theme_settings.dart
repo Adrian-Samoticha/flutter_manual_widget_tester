@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'bool_editor_theme.dart';
 import 'button_theme.dart';
 import 'create_test_session_dialog_theme.dart';
+import 'custom_setting_heading_theme.dart';
 import 'dialog_theme.dart';
 import 'double_editor_theme.dart';
 import 'edit_color_button_theme.dart';
@@ -46,6 +47,9 @@ class ManualWidgetTesterThemeSettings {
 
   /// The boolean editor theme.
   final ManualWidgetTesterBoolEditorTheme boolEditorTheme;
+
+  /// The custom settings heading theme.
+  final ManualWidgetTesterCustomSettingHeadingTheme customSettingsHeadingTheme;
 
   /// Whether this is a dark theme.
   final bool isDark;
@@ -111,15 +115,6 @@ class ManualWidgetTesterThemeSettings {
   /// The text style of the highlighted text of the message that is displayed
   /// when no editor for a particular setting could be built.
   final TextStyle noEditorHighlightedTextStyle;
-
-  /// The text style of a custom setting's heading.
-  final TextStyle customSettingHeadingTextStyle;
-
-  /// The text overflow behavior of a custom setting's heading.
-  final TextOverflow customSettingHeadingOverflow;
-
-  /// The padding of a custom setting's heading.
-  final EdgeInsets customSettingsHeadingPadding;
 
   /// The padding of a custom settings widget.
   final EdgeInsets customSettingsPadding;
@@ -194,6 +189,8 @@ class ManualWidgetTesterThemeSettings {
     this.dialogTheme = const ManualWidgetTesterDialogTheme(),
     this.doubleEditorTheme = const ManualWidgetTesterDoubleEditor(),
     this.boolEditorTheme = const ManualWidgetTesterBoolEditorTheme(),
+    this.customSettingsHeadingTheme =
+        const ManualWidgetTesterCustomSettingHeadingTheme(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -232,11 +229,6 @@ class ManualWidgetTesterThemeSettings {
       color: Color.fromRGBO(255, 192, 0, 1.0),
       fontStyle: FontStyle.italic,
     ),
-    this.customSettingHeadingTextStyle = const TextStyle(
-      color: Color.fromRGBO(255, 255, 255, 0.9),
-    ),
-    this.customSettingHeadingOverflow = TextOverflow.ellipsis,
-    this.customSettingsHeadingPadding = const EdgeInsets.only(bottom: 5.0),
     this.customSettingsPadding = const EdgeInsets.all(8.0),
     this.stringEditorHeight = 32.0,
     this.defaultNumberEditorButtonRowWidth = 64.0,
