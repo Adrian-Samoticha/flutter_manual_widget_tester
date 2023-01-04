@@ -46,7 +46,7 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
           Column(
             children: [
               SizedBox(
-                height: themeSettings.stringEditorHeight,
+                height: themeSettings.stringEditorTheme.stringEditorHeight,
                 child: LayoutBuilder(
                   builder: (context, constraints) {
                     return Row(

@@ -37,7 +37,7 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
           ManualWidgetTesterCustomSettingsHeading(
               themeSettings: themeSettings, settingName: settingName),
           SizedBox(
-            height: themeSettings.stringEditorHeight,
+            height: themeSettings.stringEditorTheme.stringEditorHeight,
             child: LayoutBuilder(builder: (context, constraints) {
               return Row(
                 children: [

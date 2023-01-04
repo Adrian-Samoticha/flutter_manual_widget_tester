@@ -14,6 +14,7 @@ import 'foldable_region_theme.dart';
 import 'no_custom_settings_message_theme.dart';
 import 'no_editor_message_theme.dart';
 import 'radio_button_theme.dart';
+import 'string_editor_theme.dart';
 import 'tab_theme.dart';
 import 'test_session_menu_item_theme.dart';
 import 'text_field_theme.dart';
@@ -81,6 +82,9 @@ class ManualWidgetTesterThemeSettings {
   /// session” button.
   final ManualWidgetTesterAppBarTheme appBarTheme;
 
+  /// The string editor theme.
+  final ManualWidgetTesterStringEditorTheme stringEditorTheme;
+
   /// Whether this is a dark theme.
   final bool isDark;
 
@@ -108,9 +112,6 @@ class ManualWidgetTesterThemeSettings {
 
   /// The padding of a custom settings widget.
   final EdgeInsets customSettingsPadding;
-
-  /// The height of the string editor.
-  final double stringEditorHeight;
 
   /// The default width of the number edit button row.
   ///
@@ -147,6 +148,7 @@ class ManualWidgetTesterThemeSettings {
     this.closeButtonTheme = const ManualWidgetTesterCloseButtonTheme(),
     this.noEditorMessageTheme = const ManualWidgetTesterNoEditorMessageTheme(),
     this.appBarTheme = const ManualWidgetTesterAppBarTheme(),
+    this.stringEditorTheme = const ManualWidgetTesterStringEditorTheme(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -159,7 +161,6 @@ class ManualWidgetTesterThemeSettings {
     this.defaultIconColor = const Color.fromRGBO(64, 167, 255, 1.0),
     this.spaceBetweenTextBoxesAndButtonRows = 0.5,
     this.customSettingsPadding = const EdgeInsets.all(8.0),
-    this.stringEditorHeight = 32.0,
     this.defaultNumberEditorButtonRowWidth = 64.0,
     this.createTestSessionButtonPadding = const EdgeInsets.all(6.5),
     this.scrollIntoViewDuration = const Duration(milliseconds: 250),
