@@ -80,7 +80,8 @@ class _ManualWidgetTesterAppBarState extends State<ManualWidgetTesterAppBar> {
               ),
               Container(
                 width: widget.themeSettings.appBarTheme.appBarHeight,
-                padding: widget.themeSettings.createTestSessionButtonPadding,
+                padding: widget.themeSettings.createTestSessionButtonTheme
+                    .createTestSessionButtonPadding,
                 child: NewTestSessionButton(
                   themeSettings: widget.themeSettings,
                   builders: widget.builders,

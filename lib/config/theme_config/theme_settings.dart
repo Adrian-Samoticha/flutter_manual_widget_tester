@@ -4,6 +4,7 @@ import 'app_bar_theme.dart';
 import 'bool_editor_theme.dart';
 import 'button_theme.dart';
 import 'close_button_theme.dart';
+import 'create_test_session_button_theme.dart';
 import 'create_test_session_dialog_theme.dart';
 import 'custom_setting_heading_theme.dart';
 import 'dialog_theme.dart';
@@ -85,6 +86,9 @@ class ManualWidgetTesterThemeSettings {
   /// The string editor theme.
   final ManualWidgetTesterStringEditorTheme stringEditorTheme;
 
+  /// The theme of the “create test session” button.
+  final ManualWidgetTesterCreateTestSessionButton createTestSessionButtonTheme;
+
   /// Whether this is a dark theme.
   final bool isDark;
 
@@ -118,9 +122,6 @@ class ManualWidgetTesterThemeSettings {
   /// The width gets reduced if the sidebar is too narrow.
   final double defaultNumberEditorButtonRowWidth;
 
-  /// The padding of the “create test session” button.
-  final EdgeInsets createTestSessionButtonPadding;
-
   /// The duration of the scroll animation that plays when a widget is moved
   /// into view.
   final Duration scrollIntoViewDuration;
@@ -149,6 +150,8 @@ class ManualWidgetTesterThemeSettings {
     this.noEditorMessageTheme = const ManualWidgetTesterNoEditorMessageTheme(),
     this.appBarTheme = const ManualWidgetTesterAppBarTheme(),
     this.stringEditorTheme = const ManualWidgetTesterStringEditorTheme(),
+    this.createTestSessionButtonTheme =
+        const ManualWidgetTesterCreateTestSessionButton(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -162,7 +165,6 @@ class ManualWidgetTesterThemeSettings {
     this.spaceBetweenTextBoxesAndButtonRows = 0.5,
     this.customSettingsPadding = const EdgeInsets.all(8.0),
     this.defaultNumberEditorButtonRowWidth = 64.0,
-    this.createTestSessionButtonPadding = const EdgeInsets.all(6.5),
     this.scrollIntoViewDuration = const Duration(milliseconds: 250),
   });
 }
