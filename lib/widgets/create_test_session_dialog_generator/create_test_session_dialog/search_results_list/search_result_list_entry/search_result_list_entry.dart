@@ -121,7 +121,7 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
                   themeSettings: themeSettings,
                   icon: widget.builder.icon!,
                   iconColor: widget.builder.iconColor ??
-                      themeSettings.defaultIconColor,
+                      themeSettings.iconTheme.defaultIconColor,
                 ),
               ],
         Expanded(

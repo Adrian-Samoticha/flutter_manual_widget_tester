@@ -100,7 +100,8 @@ class _ManualWidgetTesterTabBarState extends State<ManualWidgetTesterTabBar> {
           onClose: () =>
               widgetTestSessionHandler.closeWidgetTestSession(entry.key),
           icon: session.icon,
-          iconColor: session.iconColor ?? widget.themeSettings.defaultIconColor,
+          iconColor: session.iconColor ??
+              widget.themeSettings.iconTheme.defaultIconColor,
         );
       },
     ).toList();

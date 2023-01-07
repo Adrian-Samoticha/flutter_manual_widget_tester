@@ -12,6 +12,7 @@ import 'double_editor_theme.dart';
 import 'drag_handle_theme.dart';
 import 'edit_color_button_theme.dart';
 import 'foldable_region_theme.dart';
+import 'icon_theme.dart';
 import 'no_custom_settings_message_theme.dart';
 import 'no_editor_message_theme.dart';
 import 'radio_button_theme.dart';
@@ -89,6 +90,9 @@ class ManualWidgetTesterThemeSettings {
   /// The theme of the “create test session” button.
   final ManualWidgetTesterCreateTestSessionButton createTestSessionButtonTheme;
 
+  /// The icon theme.
+  final ManualWidgetTesterIconTheme iconTheme;
+
   /// Whether this is a dark theme.
   final bool isDark;
 
@@ -107,9 +111,6 @@ class ManualWidgetTesterThemeSettings {
 
   /// The text style in which the tested widget's size is displayed.
   final TextStyle widgetSizeTextStyle;
-
-  /// The default color of the icons of the open test sessions.
-  final Color defaultIconColor;
 
   /// The space between text boxes and connected button rows.
   final double spaceBetweenTextBoxesAndButtonRows;
@@ -152,6 +153,7 @@ class ManualWidgetTesterThemeSettings {
     this.stringEditorTheme = const ManualWidgetTesterStringEditorTheme(),
     this.createTestSessionButtonTheme =
         const ManualWidgetTesterCreateTestSessionButton(),
+    this.iconTheme = const ManualWidgetTesterIconTheme(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -161,7 +163,6 @@ class ManualWidgetTesterThemeSettings {
       color: Color.fromRGBO(255, 255, 255, 0.5),
       fontSize: 10.0,
     ),
-    this.defaultIconColor = const Color.fromRGBO(64, 167, 255, 1.0),
     this.spaceBetweenTextBoxesAndButtonRows = 0.5,
     this.customSettingsPadding = const EdgeInsets.all(8.0),
     this.defaultNumberEditorButtonRowWidth = 64.0,

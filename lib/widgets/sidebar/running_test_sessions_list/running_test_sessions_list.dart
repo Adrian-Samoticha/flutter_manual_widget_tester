@@ -37,7 +37,8 @@ class RunningTestSessionsList extends StatelessWidget {
         .map((int index, WidgetTestSession session) {
           final toBeReturnedWidget = ManualWidgetTesterTestSessionMenuItem(
             widgetName: session.name,
-            iconColor: session.iconColor ?? themeSettings.defaultIconColor,
+            iconColor:
+                session.iconColor ?? themeSettings.iconTheme.defaultIconColor,
             icon: session.icon,
             themeSettings: themeSettings,
             onSelect: () {
