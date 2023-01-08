@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterAppBarTheme {
+class ManualWidgetTesterAppBarTheme extends Equatable {
   /// The height of the app bar on the top of the widget.
   ///
   /// The app bar is the bar that houses the tab bar and the “create new test
@@ -29,4 +30,11 @@ class ManualWidgetTesterAppBarTheme {
       ),
     ),
   });
+
+  @override
+  List<Object?> get props => [
+        appBarHeight,
+        appBarShadowHeight,
+        appBarShadowBoxDecoration,
+      ];
 }
