@@ -4,7 +4,7 @@ import 'config_data.dart';
 export 'config_data.dart';
 
 class Config extends InheritedWidget {
-  /// Creates a configuration object for the [ManualWidgetTester].
+  /// Creates a configuration widget for the [ManualWidgetTester].
   ///
   /// The [doubleEditorInfiniteScrollViewRange] is the range of the double
   /// editor infinite scroll view.
