@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterDragHandleTheme {
+class ManualWidgetTesterDragHandleTheme extends Equatable {
   /// The color of the drag handle that appears when the sidebar is being
   /// resized.
   final Color dragHandleColor;
@@ -25,4 +26,12 @@ class ManualWidgetTesterDragHandleTheme {
     this.dragHandleChangeOpacityDuration = const Duration(milliseconds: 150),
     this.timeUntilDragHandleAppears = const Duration(milliseconds: 250),
   });
+
+  @override
+  List<Object?> get props => [
+        dragHandleColor,
+        dragHandleSize,
+        dragHandleChangeOpacityDuration,
+        timeUntilDragHandleAppears,
+      ];
 }
