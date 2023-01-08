@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterNoEditorMessageTheme {
+class ManualWidgetTesterNoEditorMessageTheme extends Equatable {
   /// The padding of the message that is displayed when no editor for a
   /// particular setting could be built.
   final EdgeInsets noEditorMessagePadding;
@@ -40,4 +41,13 @@ class ManualWidgetTesterNoEditorMessageTheme {
       fontStyle: FontStyle.italic,
     ),
   });
+
+  @override
+  List<Object?> get props => [
+        noEditorMessagePadding,
+        noEditorMessageMargin,
+        noEditorMessageDecoration,
+        noEditorTextStyle,
+        noEditorHighlightedTextStyle,
+      ];
 }
