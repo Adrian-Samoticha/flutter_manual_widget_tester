@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterDialogTheme {
+class ManualWidgetTesterDialogTheme extends Equatable {
   /// A dialog's background color.
   final Color dialogBackgroundColor;
 
@@ -127,4 +128,34 @@ class ManualWidgetTesterDialogTheme {
     this.editColorDialogRunSpacing = 4.0,
     this.editColorDialogColumnSpacing = 8.0,
   });
+
+  @override
+  List<Object?> get props => [
+        dialogBackgroundColor,
+        dialogBarrierColor,
+        dialogOpenCloseAnimationDuration,
+        dialogOpenCloseAnimationCurve,
+        dialogOpenCloseAnimationOffset,
+        dialogAlignment,
+        dialogBlurRadius,
+        dialogBorderRadius,
+        dialogBorderColor,
+        dialogShadow,
+        dialogPadding,
+        dialogActionButtonHeight,
+        dialogActionButtonSectionBackgroundColor,
+        baseDialogActionButtonRowWidth,
+        customDialogActionButtonWidthAddition,
+        distanceBetweenDialogContentAndActionButtons,
+        editColorDialogSizeChangeAnimationDuration,
+        editColorDialogSizeChangeCurve,
+        editColorDialogElevation,
+        editColorDialogBorderRadius,
+        editColorDialogColorNameTextStyle,
+        editColorDialogPickerTypeTextStyle,
+        editColorDialogSelectedPickerTypeColor,
+        editColorDialogSpacing,
+        editColorDialogRunSpacing,
+        editColorDialogColumnSpacing,
+      ];
 }
