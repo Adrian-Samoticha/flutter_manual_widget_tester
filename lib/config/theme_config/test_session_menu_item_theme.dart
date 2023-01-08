@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterTestSessionMenuItemTheme {
+class ManualWidgetTesterTestSessionMenuItemTheme extends Equatable {
   /// The height of a menu item in the “RUNNING TEST SESSIONS” area.
   final double testSessionMenuItemHeight;
 
@@ -61,4 +62,19 @@ class ManualWidgetTesterTestSessionMenuItemTheme {
       color: Color.fromRGBO(255, 255, 255, 0.15),
     ),
   });
+
+  @override
+  List<Object?> get props => [
+        testSessionMenuItemHeight,
+        testSessionMenuItemUnfocusedTabOpacity,
+        testSessionMenuItemPadding,
+        testSessionMenuItemCloseButtonPadding,
+        testSessionMenuItemCloseButtonSize,
+        testSessionMenuItemTextOverflow,
+        testSessionMenuItemTextStyle,
+        testSessionMenuItemIconSize,
+        testSessionMenuItemHoverTintDecoration,
+        testSessionMenuItemTabIconPadding,
+        testSessionMenuItemFocusedTabTintDecoration,
+      ];
 }
