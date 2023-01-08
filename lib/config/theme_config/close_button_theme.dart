@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterCloseButtonTheme {
+class ManualWidgetTesterCloseButtonTheme extends Equatable {
   /// The box decoration of a close button's hover effect.
   final BoxDecoration closeButtonHoverDecoration;
 
@@ -14,4 +15,10 @@ class ManualWidgetTesterCloseButtonTheme {
     ),
     this.closeButtonColor = const Color.fromRGBO(255, 255, 255, 0.9),
   });
+
+  @override
+  List<Object?> get props => [
+        closeButtonHoverDecoration,
+        closeButtonColor,
+      ];
 }
