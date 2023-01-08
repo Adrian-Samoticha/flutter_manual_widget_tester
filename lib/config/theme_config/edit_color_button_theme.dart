@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterEditColorButtonTheme {
+class ManualWidgetTesterEditColorButtonTheme extends Equatable {
   /// The height of the edit color button.
   final double editColorButtonHeight;
 
@@ -135,4 +136,24 @@ class ManualWidgetTesterEditColorButtonTheme {
       color: Color.fromRGBO(0, 0, 0, 0.9),
     ),
   });
+
+  @override
+  List<Object?> get props => [
+        editColorButtonHeight,
+        editColorButtonDecorationForDarkColor,
+        editColorButtonDecorationForBrightColor,
+        editColorButtonBorderRadius,
+        editColorButtonCheckerboardColor1,
+        editColorButtonCheckerboardColor2,
+        editColorButtonCheckerboardSize,
+        editColorButtonIcon,
+        editColorButtonIconColorForDarkColor,
+        editColorButtonIconColorForBrightColor,
+        editColorButtonIconShadowsForDarkColor,
+        editColorButtonIconShadowsForBrightColor,
+        editColorButtonIconAnimationDuration,
+        editColorButtonIconAnimationCurve,
+        editColorButtonTextStyleForDarkColor,
+        editColorButtonTextStyleForBrightColor,
+      ];
 }
