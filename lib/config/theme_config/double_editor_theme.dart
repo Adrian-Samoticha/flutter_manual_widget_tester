@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterDoubleEditor {
+class ManualWidgetTesterDoubleEditor extends Equatable {
   /// The space between the text field and the double editor's infinite scroll
   /// view.
   final double spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView;
@@ -81,4 +82,19 @@ class ManualWidgetTesterDoubleEditor {
     this.doubleEditorInfiniteScrollViewIndicatorWidth = 2.31,
     this.doubleEditorInfiniteScrollViewIndicatorHeight = 0.75,
   });
+
+  @override
+  List<Object?> get props => [
+        spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView,
+        doubleEditorInfiniteScrollViewHeight,
+        doubleEditorInfiniteScrollViewBoxDecoration,
+        doubleEditorInfiniteScrollViewPadding,
+        doubleEditorInfiniteScrollViewTextStyle,
+        doubleEditorInfiniteScrollViewTextPaddingAmount,
+        doubleEditorInfiniteScrollViewLineColor,
+        doubleEditorInfiniteScrollViewLineWidth,
+        doubleEditorInfiniteScrollViewIndicatorColor,
+        doubleEditorInfiniteScrollViewIndicatorWidth,
+        doubleEditorInfiniteScrollViewIndicatorHeight,
+      ];
 }
