@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterZoomControlsTheme {
+class ManualWidgetTesterZoomControlsTheme extends Equatable {
   /// The width of the zoom controls.
   final double zoomControlsWidth;
 
@@ -51,4 +52,18 @@ class ManualWidgetTesterZoomControlsTheme {
     this.zoomControlsDistanceToBorder = 8.0,
     this.zoomControlsAlignment = Alignment.bottomCenter,
   });
+
+  @override
+  List<Object?> get props => [
+        zoomControlsWidth,
+        zoomControlsHeight,
+        zoomControlsBorderRadius,
+        zoomControlsShadow,
+        zoomControlsPadding,
+        zoomControlsButtonRowWidth,
+        zoomControlsZoomOutIcon,
+        zoomControlsZoomInIcon,
+        zoomControlsDistanceToBorder,
+        zoomControlsAlignment,
+      ];
 }
