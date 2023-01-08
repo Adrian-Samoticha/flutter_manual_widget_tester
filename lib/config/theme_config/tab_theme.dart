@@ -1,7 +1,8 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 
-class ManualWidgetTesterTabTheme {
+class ManualWidgetTesterTabTheme extends Equatable {
   /// The minimal tab width.
   ///
   /// **Note:** The tabs will resize themselves based on the current window
@@ -137,4 +138,24 @@ class ManualWidgetTesterTabTheme {
     this.tabOpenAnimationDuration = const Duration(milliseconds: 150),
     this.tabOpenAnimationCurve = Curves.ease,
   });
+
+  @override
+  List<Object?> get props => [
+        maxTabWidth,
+        focusedTabBoxDecoration,
+        unfocusedTabBoxDecoration,
+        focusedTabAccentColorDecorationWidth,
+        tabSeparatorBoxDecoration,
+        tabLightReflectionBoxDecoration,
+        tabIconPadding,
+        tabIconSize,
+        tabTextStyle,
+        unfocusedHoveredTabOpacity,
+        unfocusedNotHoveredTabOpacity,
+        unfocusedTabOpacityChangeDuration,
+        spaceAboveTabs,
+        tabContentPadding,
+        tabOpenAnimationDuration,
+        tabOpenAnimationCurve,
+      ];
 }
