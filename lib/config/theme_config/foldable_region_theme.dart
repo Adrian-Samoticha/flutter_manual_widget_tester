@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterFoldableRegionTheme {
+class ManualWidgetTesterFoldableRegionTheme extends Equatable {
   /// The animation duration of foldable regions.
   final Duration foldableRegionAnimationDuration;
 
@@ -48,4 +49,18 @@ class ManualWidgetTesterFoldableRegionTheme {
     this.foldableRegionHeadingOverflow = TextOverflow.ellipsis,
     this.foldableRegionIndentationAmount = 12.0,
   });
+
+  @override
+  List<Object?> get props => [
+        foldableRegionAnimationDuration,
+        foldableRegionContentAlignment,
+        foldableRegionHeaderHeight,
+        foldableRegionFoldedHeaderOpacity,
+        foldableRegionHeaderColor,
+        foldableRegionChevronIconColor,
+        foldableRegionChevronIconSize,
+        foldableRegionHeadingStyle,
+        foldableRegionHeadingOverflow,
+        foldableRegionIndentationAmount,
+      ];
 }
