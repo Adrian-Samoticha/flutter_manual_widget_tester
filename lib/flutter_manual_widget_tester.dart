@@ -45,7 +45,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       _onMouseCursorOverrideChangedStreamSubscription;
   final TypeEditorBuilder _typeEditorBuilder = TypeEditorBuilder();
 
-  ManualWidgetTesterConfig get _config => ManualWidgetTesterConfig(
+  ConfigData get _configData => ConfigData(
       doubleEditorInfiniteScrollViewRange:
           widget.doubleEditorInfiniteScrollViewRange,
       doubleEditorInfiniteScrollViewScrollSpeedFactor:
@@ -54,8 +54,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
   void _installDefaultEditorBuilders() {
     EditorBuilderInstaller.installDefaultEditorBuilders(
         typeEditorBuilder: _typeEditorBuilder,
-        themeSettings: widget.themeSettings,
-        config: _config);
+        themeSettings: widget.themeSettings);
   }
 
   @override
@@ -95,22 +94,24 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       data: widget.themeSettings.isDark ? ThemeData.dark() : ThemeData.light(),
       child: DefaultTextStyle(
         style: DefaultTextStyleProvider.defaultTextStyle,
-        child: MouseRegion(
-          cursor: _mouseCursorOverrider.currentMouseCursor,
-          child: Stack(
-            children: [
-              ManualWidgetTesterBackground(
-                color: widget.themeSettings.backgroundColor,
-              ),
-              _ManualWidgetTesterBody(
-                themeSettings: widget.themeSettings,
-                config: _config,
-                mouseCursorOverrider: _mouseCursorOverrider,
-                widgetTestSessionHandler: _widgetTestSessionHandler,
-                typeEditorBuilder: _typeEditorBuilder,
-                builders: widget.builders,
-              ),
-            ],
+        child: ManualWidgetTesterConfig(
+          data: _configData,
+          child: MouseRegion(
+            cursor: _mouseCursorOverrider.currentMouseCursor,
+            child: Stack(
+              children: [
+                ManualWidgetTesterBackground(
+                  color: widget.themeSettings.backgroundColor,
+                ),
+                _ManualWidgetTesterBody(
+                  themeSettings: widget.themeSettings,
+                  mouseCursorOverrider: _mouseCursorOverrider,
+                  widgetTestSessionHandler: _widgetTestSessionHandler,
+                  typeEditorBuilder: _typeEditorBuilder,
+                  builders: widget.builders,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -122,7 +123,6 @@ class _ManualWidgetTesterBody extends StatelessWidget {
   const _ManualWidgetTesterBody({
     Key? key,
     required this.themeSettings,
-    required this.config,
     required this.mouseCursorOverrider,
     required this.widgetTestSessionHandler,
     required this.typeEditorBuilder,
@@ -130,7 +130,6 @@ class _ManualWidgetTesterBody extends StatelessWidget {
   }) : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
-  final ManualWidgetTesterConfig config;
   final MouseCursorOverrider mouseCursorOverrider;
   final WidgetTestSessionHandler widgetTestSessionHandler;
   final TypeEditorBuilder typeEditorBuilder;
@@ -145,7 +144,6 @@ class _ManualWidgetTesterBody extends StatelessWidget {
           children: [
             ManualWidgetTesterSidebar(
               themeSettings: themeSettings,
-              config: config,
               maxWidth: constraints.maxWidth - 128.0,
               mouseCursorOverrider: mouseCursorOverrider,
               widgetTestSessionHandler: widgetTestSessionHandler,

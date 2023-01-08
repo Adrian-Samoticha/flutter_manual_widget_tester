@@ -14,12 +14,10 @@ class DefaultTextStyleSettings extends StatelessWidget {
   const DefaultTextStyleSettings({
     Key? key,
     required this.themeSettings,
-    required this.config,
     required this.session,
   }) : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
-  final ManualWidgetTesterConfig config;
   final WidgetTestSession session;
 
   WidgetTestSessionGenericSettings get _genericSettings =>
@@ -33,6 +31,7 @@ class DefaultTextStyleSettings extends StatelessWidget {
   }
 
   ManualWidgetTesterFoldableRegion _buildDoubleEditor({
+    required BuildContext context,
     required String settingName,
     required double currentValue,
     required TextStyle Function(TextStyle, double) copyWithChangedData,
@@ -53,9 +52,6 @@ class DefaultTextStyleSettings extends StatelessWidget {
               copyWithChangedData(_genericSettings.defaultTextStyle, newValue);
           _genericSettings.defaultTextStyle = newTextStyle;
         },
-        infiniteScrollViewRange: config.doubleEditorInfiniteScrollViewRange,
-        infiniteScrollViewScrollSpeedFactor:
-            config.doubleEditorInfiniteScrollViewScrollSpeedFactor,
         lowerLimit: lowerLimit,
         upperLimit: upperLimit,
       ),
@@ -72,6 +68,7 @@ class DefaultTextStyleSettings extends StatelessWidget {
       child: Column(
         children: [
           _buildDoubleEditor(
+            context: context,
             settingName: 'fontSize',
             currentValue: _genericSettings.defaultTextStyle.fontSize ??
                 DefaultTextStyleProvider.defaultTextStyle.fontSize ??

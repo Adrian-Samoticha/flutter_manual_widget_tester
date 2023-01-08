@@ -14,13 +14,11 @@ class TestSessionSettings extends StatelessWidget {
   const TestSessionSettings(
       {Key? key,
       required this.themeSettings,
-      required this.config,
       required this.typeEditorBuilder,
       required this.widgetTestSessionHandler})
       : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
-  final ManualWidgetTesterConfig config;
   final TypeEditorBuilder typeEditorBuilder;
   final WidgetTestSessionHandler widgetTestSessionHandler;
 
@@ -43,7 +41,6 @@ class TestSessionSettings extends StatelessWidget {
               GenericSettings(
                 themeSettings: themeSettings,
                 session: session,
-                config: config,
               ),
             ],
           );

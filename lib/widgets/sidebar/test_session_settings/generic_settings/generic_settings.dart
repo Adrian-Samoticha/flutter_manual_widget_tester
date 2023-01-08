@@ -15,18 +15,15 @@ class GenericSettings extends StatefulWidget {
   ///
   /// The [key] is used to identify this widget in the widget tree.
   /// The [themeSettings] is the theme settings for the widget.
-  /// The [config] is the configuration for the widget.
   /// The [session] is the widget test session for which the generic settings
   /// are displayed.
   const GenericSettings({
     Key? key,
     required this.themeSettings,
-    required this.config,
     required this.session,
   }) : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
-  final ManualWidgetTesterConfig config;
   final WidgetTestSession session;
 
   @override
@@ -70,12 +67,10 @@ class _GenericSettingsState extends State<GenericSettings> {
     return [
       MediaQuerySettings(
         themeSettings: widget.themeSettings,
-        config: widget.config,
         session: widget.session,
       ),
       DefaultTextStyleSettings(
         themeSettings: widget.themeSettings,
-        config: widget.config,
         session: widget.session,
       ),
     ];

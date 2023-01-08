@@ -4,7 +4,6 @@ import 'package:flutter_manual_widget_tester/backend/constrained_types/clamped_d
 import 'package:flutter_manual_widget_tester/backend/constrained_types/clamped_int.dart';
 import 'package:flutter_manual_widget_tester/backend/constrained_types/constrained_int.dart';
 import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
-import 'package:flutter_manual_widget_tester/config/config.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/editors/bool_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/editors/color_editor/color_editor.dart';
@@ -15,8 +14,7 @@ import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/edi
 class EditorBuilderInstaller {
   static void installDefaultEditorBuilders(
       {required TypeEditorBuilder typeEditorBuilder,
-      required ManualWidgetTesterThemeSettings themeSettings,
-      required ManualWidgetTesterConfig config}) {
+      required ManualWidgetTesterThemeSettings themeSettings}) {
     typeEditorBuilder.installEditorBuilder<String>((String settingName,
         String currentValue, void Function(String) onChanged) {
       return ManualWidgetTesterCustomSettingsStringEditor(
@@ -54,9 +52,6 @@ class EditorBuilderInstaller {
         settingName: settingName,
         currentValue: currentValue,
         onChanged: onChanged,
-        infiniteScrollViewRange: config.doubleEditorInfiniteScrollViewRange,
-        infiniteScrollViewScrollSpeedFactor:
-            config.doubleEditorInfiniteScrollViewScrollSpeedFactor,
       );
     });
 
@@ -79,9 +74,6 @@ class EditorBuilderInstaller {
         onChanged: (double newValue) {
           onChanged(currentValue..value = newValue);
         },
-        infiniteScrollViewRange: config.doubleEditorInfiniteScrollViewRange,
-        infiniteScrollViewScrollSpeedFactor:
-            config.doubleEditorInfiniteScrollViewScrollSpeedFactor,
         lowerLimit: currentValue.lowerLimit,
         upperLimit: currentValue.upperLimit,
       );

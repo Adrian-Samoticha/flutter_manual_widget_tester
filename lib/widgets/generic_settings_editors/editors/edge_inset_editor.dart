@@ -24,16 +24,12 @@ class ManualWidgetTesterGenericSettingsEdgeInsetEditor extends StatelessWidget {
       required this.settingName,
       required this.currentEdgeInsets,
       required this.onChanged,
-      required this.infiniteScrollViewRange,
-      required this.infiniteScrollViewScrollSpeedFactor,
       this.onlyAllowPositiveValues = false});
 
   final ManualWidgetTesterThemeSettings themeSettings;
   final String settingName;
   final EdgeInsets currentEdgeInsets;
   final void Function(EdgeInsets) onChanged;
-  final double infiniteScrollViewRange;
-  final double infiniteScrollViewScrollSpeedFactor;
   final bool onlyAllowPositiveValues;
 
   @override
@@ -49,9 +45,6 @@ class ManualWidgetTesterGenericSettingsEdgeInsetEditor extends StatelessWidget {
                 currentEdgeInsets.copyWith(left: max(0.0, newValue));
             onChanged(newEdgeInsets);
           },
-          infiniteScrollViewRange: infiniteScrollViewRange,
-          infiniteScrollViewScrollSpeedFactor:
-              infiniteScrollViewScrollSpeedFactor,
           lowerLimit: onlyAllowPositiveValues ? 0.0 : double.negativeInfinity,
         ),
         ManualWidgetTesterCustomSettingsDoubleEditor(
@@ -63,9 +56,6 @@ class ManualWidgetTesterGenericSettingsEdgeInsetEditor extends StatelessWidget {
                 currentEdgeInsets.copyWith(top: max(0.0, newValue));
             onChanged(newEdgeInsets);
           },
-          infiniteScrollViewRange: infiniteScrollViewRange,
-          infiniteScrollViewScrollSpeedFactor:
-              infiniteScrollViewScrollSpeedFactor,
           lowerLimit: onlyAllowPositiveValues ? 0.0 : double.negativeInfinity,
         ),
         ManualWidgetTesterCustomSettingsDoubleEditor(
@@ -77,9 +67,6 @@ class ManualWidgetTesterGenericSettingsEdgeInsetEditor extends StatelessWidget {
                 currentEdgeInsets.copyWith(right: max(0.0, newValue));
             onChanged(newEdgeInsets);
           },
-          infiniteScrollViewRange: infiniteScrollViewRange,
-          infiniteScrollViewScrollSpeedFactor:
-              infiniteScrollViewScrollSpeedFactor,
           lowerLimit: onlyAllowPositiveValues ? 0.0 : double.negativeInfinity,
         ),
         ManualWidgetTesterCustomSettingsDoubleEditor(
@@ -91,9 +78,6 @@ class ManualWidgetTesterGenericSettingsEdgeInsetEditor extends StatelessWidget {
                 currentEdgeInsets.copyWith(bottom: max(0.0, newValue));
             onChanged(newEdgeInsets);
           },
-          infiniteScrollViewRange: infiniteScrollViewRange,
-          infiniteScrollViewScrollSpeedFactor:
-              infiniteScrollViewScrollSpeedFactor,
           lowerLimit: onlyAllowPositiveValues ? 0.0 : double.negativeInfinity,
         ),
       ],

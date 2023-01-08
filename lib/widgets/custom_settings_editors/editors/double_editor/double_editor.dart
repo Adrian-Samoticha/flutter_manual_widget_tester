@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/config/config.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row/button_row.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
@@ -17,8 +18,6 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
       required this.settingName,
       required this.currentValue,
       required this.onChanged,
-      required this.infiniteScrollViewRange,
-      required this.infiniteScrollViewScrollSpeedFactor,
       this.lowerLimit = double.negativeInfinity,
       this.upperLimit = double.infinity})
       : super(key: key);
@@ -27,8 +26,6 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
   final String settingName;
   final double currentValue;
   final void Function(double) onChanged;
-  final double infiniteScrollViewRange;
-  final double infiniteScrollViewScrollSpeedFactor;
   final double lowerLimit;
   final double upperLimit;
 
@@ -68,7 +65,7 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
                 height: themeSettings.doubleEditorTheme
                     .spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView,
               ),
-              _buildInfiniteScrollView(),
+              _buildInfiniteScrollView(context),
             ],
           ),
         ],
@@ -76,7 +73,7 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
     );
   }
 
-  Widget _buildInfiniteScrollView() {
+  Widget _buildInfiniteScrollView(BuildContext context) {
     return Listener(
       onPointerSignal: (PointerSignalEvent event) {
         if (event is PointerScrollEvent) {
@@ -86,7 +83,8 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
               final scrollDelta = (event as PointerScrollEvent).scrollDelta;
               final newValue = currentValue +
                   (scrollDelta.dx + scrollDelta.dy) *
-                      infiniteScrollViewScrollSpeedFactor;
+                      ManualWidgetTesterConfig.of(context)
+                          .doubleEditorInfiniteScrollViewScrollSpeedFactor;
               onChanged(newValue);
             },
           );
@@ -97,7 +95,8 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
           final panDelta = details.delta;
           final newValue = currentValue +
               (-panDelta.dx - panDelta.dy) *
-                  infiniteScrollViewScrollSpeedFactor;
+                  ManualWidgetTesterConfig.of(context)
+                      .doubleEditorInfiniteScrollViewScrollSpeedFactor;
           onChanged(newValue);
         },
         child: Container(
@@ -112,7 +111,8 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
           child: InfiniteScrollView(
             themeSettings: themeSettings,
             currentValue: currentValue,
-            infiniteScrollViewRange: infiniteScrollViewRange,
+            infiniteScrollViewRange: ManualWidgetTesterConfig.of(context)
+                .doubleEditorInfiniteScrollViewRange,
             lowerLimit: lowerLimit,
             upperLimit: upperLimit,
           ),

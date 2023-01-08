@@ -11,12 +11,10 @@ class MediaQuerySettings extends StatelessWidget {
   const MediaQuerySettings({
     Key? key,
     required this.themeSettings,
-    required this.config,
     required this.session,
   }) : super(key: key);
 
   final ManualWidgetTesterThemeSettings themeSettings;
-  final ManualWidgetTesterConfig config;
   final WidgetTestSession session;
 
   WidgetTestSessionGenericSettings get _genericSettings =>
@@ -30,6 +28,7 @@ class MediaQuerySettings extends StatelessWidget {
   }
 
   ManualWidgetTesterFoldableRegion _buildEdgeInsetEditor({
+    required BuildContext context,
     required String settingName,
     required EdgeInsets currentEdgeInsets,
     required MediaQueryData Function(MediaQueryData, EdgeInsets)
@@ -49,9 +48,6 @@ class MediaQuerySettings extends StatelessWidget {
               copyWithChangedData(_genericSettings.mediaQueryData, newPadding);
           _genericSettings.mediaQueryData = newMediaQueryData;
         },
-        infiniteScrollViewRange: config.doubleEditorInfiniteScrollViewRange,
-        infiniteScrollViewScrollSpeedFactor:
-            config.doubleEditorInfiniteScrollViewScrollSpeedFactor,
         onlyAllowPositiveValues: true,
       ),
     );
@@ -67,6 +63,7 @@ class MediaQuerySettings extends StatelessWidget {
       child: Column(
         children: [
           _buildEdgeInsetEditor(
+            context: context,
             settingName: 'padding',
             currentEdgeInsets: _genericSettings.mediaQueryData.padding,
             copyWithChangedData:
@@ -75,6 +72,7 @@ class MediaQuerySettings extends StatelessWidget {
             },
           ),
           _buildEdgeInsetEditor(
+            context: context,
             settingName: 'viewInsets',
             currentEdgeInsets: _genericSettings.mediaQueryData.viewInsets,
             copyWithChangedData:
@@ -83,6 +81,7 @@ class MediaQuerySettings extends StatelessWidget {
             },
           ),
           _buildEdgeInsetEditor(
+            context: context,
             settingName: 'viewPadding',
             currentEdgeInsets: _genericSettings.mediaQueryData.viewPadding,
             copyWithChangedData:
