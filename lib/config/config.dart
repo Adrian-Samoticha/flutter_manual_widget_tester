@@ -12,12 +12,12 @@ class ConfigData {
   final double doubleEditorInfiniteScrollViewScrollSpeedFactor;
 
   @override
-  bool operator ==(o) =>
-      o is ConfigData &&
+  bool operator ==(other) =>
+      other is ConfigData &&
       doubleEditorInfiniteScrollViewRange ==
-          o.doubleEditorInfiniteScrollViewRange &&
+          other.doubleEditorInfiniteScrollViewRange &&
       doubleEditorInfiniteScrollViewScrollSpeedFactor ==
-          o.doubleEditorInfiniteScrollViewScrollSpeedFactor;
+          other.doubleEditorInfiniteScrollViewScrollSpeedFactor;
 
   @override
   int get hashCode => Object.hash(doubleEditorInfiniteScrollViewRange,
