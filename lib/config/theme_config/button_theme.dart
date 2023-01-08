@@ -1,7 +1,8 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 
-class ManualWidgetTesterButtonTheme {
+class ManualWidgetTesterButtonTheme extends Equatable {
   /// The buttons' color.
   final Color buttonColor;
 
@@ -96,4 +97,23 @@ class ManualWidgetTesterButtonTheme {
       width: 1.0,
     ),
   });
+
+  @override
+  List<Object?> get props => [
+        buttonColor,
+        buttonBorderRadius,
+        buttonShadow,
+        buttonPressedTint,
+        buttonHoveredTint,
+        buttonPressedOffset,
+        buttonSeparatorColor,
+        buttonSeparatorWidth,
+        disabledButtonIconTheme,
+        pressedButtonIconTheme,
+        buttonIconTheme,
+        disabledButtonTextStyle,
+        pressedButtonTextStyle,
+        buttonTextStyle,
+        buttonBoxBorder,
+      ];
 }
