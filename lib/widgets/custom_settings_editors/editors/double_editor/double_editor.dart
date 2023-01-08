@@ -83,7 +83,7 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
               final scrollDelta = (event as PointerScrollEvent).scrollDelta;
               final newValue = currentValue +
                   (scrollDelta.dx + scrollDelta.dy) *
-                      ManualWidgetTesterConfig.of(context)
+                      Config.of(context)
                           .doubleEditorInfiniteScrollViewScrollSpeedFactor;
               onChanged(newValue);
             },
@@ -95,7 +95,7 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
           final panDelta = details.delta;
           final newValue = currentValue +
               (-panDelta.dx - panDelta.dy) *
-                  ManualWidgetTesterConfig.of(context)
+                  Config.of(context)
                       .doubleEditorInfiniteScrollViewScrollSpeedFactor;
           onChanged(newValue);
         },
@@ -111,8 +111,8 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
           child: InfiniteScrollView(
             themeSettings: themeSettings,
             currentValue: currentValue,
-            infiniteScrollViewRange: ManualWidgetTesterConfig.of(context)
-                .doubleEditorInfiniteScrollViewRange,
+            infiniteScrollViewRange:
+                Config.of(context).doubleEditorInfiniteScrollViewRange,
             lowerLimit: lowerLimit,
             upperLimit: upperLimit,
           ),

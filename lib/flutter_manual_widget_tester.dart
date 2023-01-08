@@ -94,7 +94,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
       data: widget.themeSettings.isDark ? ThemeData.dark() : ThemeData.light(),
       child: DefaultTextStyle(
         style: DefaultTextStyleProvider.defaultTextStyle,
-        child: ManualWidgetTesterConfig(
+        child: Config(
           data: _configData,
           child: MouseRegion(
             cursor: _mouseCursorOverrider.currentMouseCursor,
