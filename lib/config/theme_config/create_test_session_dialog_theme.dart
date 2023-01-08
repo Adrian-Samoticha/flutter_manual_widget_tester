@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterCreateTestSessionDialogTheme {
+class ManualWidgetTesterCreateTestSessionDialogTheme extends Equatable {
   /// The width of the “create test session” button.
   final double createTestSessionDialogWidth;
 
@@ -88,4 +89,22 @@ class ManualWidgetTesterCreateTestSessionDialogTheme {
       color: Color.fromRGBO(255, 255, 255, 0.9),
     ),
   });
+
+  @override
+  List<Object?> get props => [
+        createTestSessionDialogWidth,
+        createTestSessionDialogPadding,
+        createTestSessionDialogSearchResultsHeightFactor,
+        createTestSessionDialogSearchBarHeight,
+        createTestSessionDialogSearchResultsPadding,
+        createTestSessionDialogSearchResultHeight,
+        createTestSessionDialogSelectedSearchResultDecoration,
+        createTestSessionDialogUnselectedSearchResultDecoration,
+        createTestSessionDialogSearchResultTextStyle,
+        createTestSessionDialogSearchResultIconPadding,
+        createTestSessionDialogSearchResultIconSize,
+        createTestSessionDialogSearchResultFadeDuration,
+        createTestSessionDialogUnselectedSearchResultOpacity,
+        createTestSessionDialogNoMatchingResultsTextStyle,
+      ];
 }
