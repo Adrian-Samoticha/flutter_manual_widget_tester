@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterCustomSettingHeadingTheme {
+class ManualWidgetTesterCustomSettingHeadingTheme extends Equatable {
   /// The text style of a custom setting's heading.
   final TextStyle customSettingHeadingTextStyle;
 
@@ -17,4 +18,11 @@ class ManualWidgetTesterCustomSettingHeadingTheme {
     this.customSettingHeadingOverflow = TextOverflow.ellipsis,
     this.customSettingHeadingPadding = const EdgeInsets.only(bottom: 5.0),
   });
+
+  @override
+  List<Object?> get props => [
+        customSettingHeadingTextStyle,
+        customSettingHeadingOverflow,
+        customSettingHeadingPadding,
+      ];
 }
