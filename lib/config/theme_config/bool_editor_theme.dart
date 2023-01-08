@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterBoolEditorTheme {
+class ManualWidgetTesterBoolEditorTheme extends Equatable {
   /// The maximal width of a boolean editor.
   final double boolEditorMaxWidth;
 
@@ -20,4 +21,12 @@ class ManualWidgetTesterBoolEditorTheme {
         const EdgeInsets.symmetric(vertical: 8.0),
     this.boolEditorHeight = 16.0,
   });
+
+  @override
+  List<Object?> get props => [
+        boolEditorMaxWidth,
+        boolEditorSpaceBetweenRadioButtons,
+        boolEditorRadioButtonPadding,
+        boolEditorHeight,
+      ];
 }
