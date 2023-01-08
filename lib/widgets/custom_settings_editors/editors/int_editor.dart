@@ -30,7 +30,7 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: themeSettings.customSettingsPadding,
+      padding: themeSettings.customSettingsTheme.customSettingsPadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

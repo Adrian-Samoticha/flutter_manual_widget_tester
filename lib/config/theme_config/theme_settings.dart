@@ -7,6 +7,7 @@ import 'close_button_theme.dart';
 import 'create_test_session_button_theme.dart';
 import 'create_test_session_dialog_theme.dart';
 import 'custom_setting_heading_theme.dart';
+import 'custom_settings_theme.dart';
 import 'dialog_theme.dart';
 import 'double_editor_theme.dart';
 import 'drag_handle_theme.dart';
@@ -93,6 +94,9 @@ class ManualWidgetTesterThemeSettings {
   /// The icon theme.
   final ManualWidgetTesterIconTheme iconTheme;
 
+  /// The custom settings theme.
+  final ManualWidgetTesterCustomSettingsTheme customSettingsTheme;
+
   /// Whether this is a dark theme.
   final bool isDark;
 
@@ -114,9 +118,6 @@ class ManualWidgetTesterThemeSettings {
 
   /// The space between text boxes and connected button rows.
   final double spaceBetweenTextBoxesAndButtonRows;
-
-  /// The padding of a custom settings widget.
-  final EdgeInsets customSettingsPadding;
 
   /// The default width of the number edit button row.
   ///
@@ -154,6 +155,7 @@ class ManualWidgetTesterThemeSettings {
     this.createTestSessionButtonTheme =
         const ManualWidgetTesterCreateTestSessionButton(),
     this.iconTheme = const ManualWidgetTesterIconTheme(),
+    this.customSettingsTheme = const ManualWidgetTesterCustomSettingsTheme(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
@@ -164,7 +166,6 @@ class ManualWidgetTesterThemeSettings {
       fontSize: 10.0,
     ),
     this.spaceBetweenTextBoxesAndButtonRows = 0.5,
-    this.customSettingsPadding = const EdgeInsets.all(8.0),
     this.defaultNumberEditorButtonRowWidth = 64.0,
     this.scrollIntoViewDuration = const Duration(milliseconds: 250),
   });
