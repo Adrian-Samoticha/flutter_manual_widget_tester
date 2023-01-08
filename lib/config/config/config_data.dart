@@ -1,4 +1,11 @@
 class ConfigData {
+  /// Creates a [ConfigData].
+  ///
+  /// The [doubleEditorInfiniteScrollViewRange] is the range of the double
+  /// editor infinite scroll view.
+  ///
+  /// The [doubleEditorInfiniteScrollViewScrollSpeedFactor] is the scroll speed
+  /// factor of the double editor infinite scroll view.
   const ConfigData(
       {required this.doubleEditorInfiniteScrollViewRange,
       required this.doubleEditorInfiniteScrollViewScrollSpeedFactor});
