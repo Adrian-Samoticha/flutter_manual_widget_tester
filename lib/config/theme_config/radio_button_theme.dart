@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterRadioButtonTheme {
+class ManualWidgetTesterRadioButtonTheme extends Equatable {
   /// The widget to use as the selected radio button.
   final Widget selectedRadioButton;
 
@@ -90,4 +91,13 @@ class ManualWidgetTesterRadioButtonTheme {
       color: Color.fromRGBO(255, 255, 255, 0.5),
     ),
   });
+
+  @override
+  List<Object?> get props => [
+        selectedRadioButton,
+        unselectedRadioButton,
+        spaceBetweenRadioButtonAndLabel,
+        selectedRadioButtonLabelStyle,
+        unselectedRadioButtonLabelStyle,
+      ];
 }
