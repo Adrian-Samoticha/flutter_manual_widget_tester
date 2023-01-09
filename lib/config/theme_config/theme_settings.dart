@@ -98,6 +98,7 @@ class ManualWidgetTesterThemeSettings {
   /// The custom settings theme.
   final ManualWidgetTesterCustomSettingsTheme customSettingsTheme;
 
+  /// The widget test session area theme.
   final ManualWidgetTesterWidgetTestSessionAreaTheme widgetTestSessionAreaTheme;
 
   /// Whether this is a dark theme.
