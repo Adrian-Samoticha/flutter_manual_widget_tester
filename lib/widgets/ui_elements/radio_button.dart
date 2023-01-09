@@ -1,34 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 class ManualWidgetTesterRadioButton extends StatelessWidget {
-  final ManualWidgetTesterThemeSettings themeSettings;
   final bool isSelected;
 
-  const ManualWidgetTesterRadioButton(
-      {Key? key, required this.isSelected, required this.themeSettings})
+  const ManualWidgetTesterRadioButton({Key? key, required this.isSelected})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     if (isSelected) {
-      return themeSettings.radioButtonTheme.selectedRadioButton;
+      return ManualWidgetTesterTheme.of(context)
+          .radioButtonTheme
+          .selectedRadioButton;
     }
 
-    return themeSettings.radioButtonTheme.unselectedRadioButton;
+    return ManualWidgetTesterTheme.of(context)
+        .radioButtonTheme
+        .unselectedRadioButton;
   }
 }
 
 class ManualWidgetTesterRadioButtonWithLabel extends StatelessWidget {
-  final ManualWidgetTesterThemeSettings themeSettings;
   final bool isSelected;
   final String label;
 
   const ManualWidgetTesterRadioButtonWithLabel(
-      {Key? key,
-      required this.themeSettings,
-      required this.isSelected,
-      required this.label})
+      {Key? key, required this.isSelected, required this.label})
       : super(key: key);
 
   @override
@@ -39,22 +37,25 @@ class ManualWidgetTesterRadioButtonWithLabel extends StatelessWidget {
           child: AspectRatio(
             aspectRatio: 1.0,
             child: ManualWidgetTesterRadioButton(
-              themeSettings: themeSettings,
               isSelected: isSelected,
             ),
           ),
         ),
         SizedBox(
-            width:
-                themeSettings.radioButtonTheme.spaceBetweenRadioButtonAndLabel),
+            width: ManualWidgetTesterTheme.of(context)
+                .radioButtonTheme
+                .spaceBetweenRadioButtonAndLabel),
         Expanded(
           child: Text(label,
               softWrap: false,
               overflow: TextOverflow.fade,
               style: isSelected
-                  ? themeSettings.radioButtonTheme.selectedRadioButtonLabelStyle
-                  : themeSettings
-                      .radioButtonTheme.unselectedRadioButtonLabelStyle),
+                  ? ManualWidgetTesterTheme.of(context)
+                      .radioButtonTheme
+                      .selectedRadioButtonLabelStyle
+                  : ManualWidgetTesterTheme.of(context)
+                      .radioButtonTheme
+                      .unselectedRadioButtonLabelStyle),
         ),
       ],
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 import '../../ui_elements/heading.dart';
 import 'color_picker/color_picker.dart';
@@ -7,13 +7,11 @@ import 'color_picker/color_picker.dart';
 class ManualWidgetTesterCustomSettingsColorEditor extends StatelessWidget {
   const ManualWidgetTesterCustomSettingsColorEditor(
       {Key? key,
-      required this.themeSettings,
       required this.settingName,
       required this.currentValue,
       required this.onChanged})
       : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
   final String settingName;
   final Color currentValue;
   final void Function(Color) onChanged;
@@ -21,16 +19,20 @@ class ManualWidgetTesterCustomSettingsColorEditor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: themeSettings.customSettingsTheme.customSettingsPadding,
+      padding: ManualWidgetTesterTheme.of(context)
+          .customSettingsTheme
+          .customSettingsPadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ManualWidgetTesterCustomSettingsHeading(
-              themeSettings: themeSettings, settingName: settingName),
+            settingName: settingName,
+          ),
           SizedBox(
-            height: themeSettings.editColorButtonTheme.editColorButtonHeight,
+            height: ManualWidgetTesterTheme.of(context)
+                .editColorButtonTheme
+                .editColorButtonHeight,
             child: ColorPicker(
-              themeSettings: themeSettings,
               selectedColor: currentValue,
               onChanged: onChanged,
             ),

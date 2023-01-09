@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 import 'tab_stack/tab_stack.dart';
 
 class TabBox extends StatelessWidget {
   const TabBox(
       {Key? key,
-      required this.themeSettings,
       required this.width,
       required this.isBeingHovered,
       required this.isFocused,
@@ -17,7 +16,6 @@ class TabBox extends StatelessWidget {
       required this.widgetName})
       : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
   final double width;
   final bool isBeingHovered;
   final bool isFocused;
@@ -30,9 +28,10 @@ class TabBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(
-      duration: themeSettings.tabTheme.tabOpenAnimationDuration,
+      duration:
+          ManualWidgetTesterTheme.of(context).tabTheme.tabOpenAnimationDuration,
       tween: Tween<double>(begin: 1.0, end: 0.0),
-      curve: themeSettings.tabTheme.tabOpenAnimationCurve,
+      curve: ManualWidgetTesterTheme.of(context).tabTheme.tabOpenAnimationCurve,
       builder: (BuildContext context, double value, Widget? child) {
         return FractionalTranslation(
           translation: Offset(0.0, value),
@@ -41,9 +40,10 @@ class TabBox extends StatelessWidget {
       },
       child: SizedBox(
         width: width,
-        height: themeSettings.appBarTheme.appBarHeight,
+        height: ManualWidgetTesterTheme.of(context).appBarTheme.appBarHeight,
         child: Padding(
-          padding: EdgeInsets.only(top: themeSettings.tabTheme.spaceAboveTabs),
+          padding: EdgeInsets.only(
+              top: ManualWidgetTesterTheme.of(context).tabTheme.spaceAboveTabs),
           child: TabStack(
             isBeingHovered: isBeingHovered,
             isFocused: isFocused,
@@ -51,7 +51,6 @@ class TabBox extends StatelessWidget {
             iconColor: iconColor,
             focusedTabIndex: focusedTabIndex,
             tabIndex: tabIndex,
-            themeSettings: themeSettings,
             widgetName: widgetName,
           ),
         ),

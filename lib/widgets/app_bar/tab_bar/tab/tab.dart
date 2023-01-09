@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 
 import 'tab_box/tab_box.dart';
@@ -10,7 +11,6 @@ class ManualWidgetTesterTab extends StatefulWidget {
       {Key? key,
       required this.width,
       required this.widgetName,
-      required this.themeSettings,
       required this.tabIndex,
       required this.focusedTabIndex,
       required this.onSelect,
@@ -23,7 +23,6 @@ class ManualWidgetTesterTab extends StatefulWidget {
   final int tabIndex;
   final int focusedTabIndex;
   final String widgetName;
-  final ManualWidgetTesterThemeSettings themeSettings;
   final void Function() onSelect;
   final void Function() onClose;
   final IconData? icon;
@@ -46,11 +45,15 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
     }
 
     Scrollable.ensureVisible(_globalKey.currentContext!,
-        duration: widget.themeSettings.generalTheme.scrollIntoViewDuration,
+        duration: ManualWidgetTesterTheme.of(context)
+            .generalTheme
+            .scrollIntoViewDuration,
         alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtStart);
 
     Scrollable.ensureVisible(_globalKey.currentContext!,
-        duration: widget.themeSettings.generalTheme.scrollIntoViewDuration,
+        duration: ManualWidgetTesterTheme.of(context)
+            .generalTheme
+            .scrollIntoViewDuration,
         alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd);
   }
 
@@ -88,7 +91,6 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
         }),
         child: TabBox(
           isBeingHovered: _isBeingHovered,
-          themeSettings: widget.themeSettings,
           icon: widget.icon,
           iconColor: widget.iconColor,
           isFocused: _isFocused,

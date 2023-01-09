@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 
 class ManualWidgetTesterFoldableRegion extends StatefulWidget {
   final Widget child;
   final String heading;
-  final ManualWidgetTesterThemeSettings themeSettings;
   final bool isIndented;
   final bool isInitiallyFolded;
 
@@ -12,7 +12,6 @@ class ManualWidgetTesterFoldableRegion extends StatefulWidget {
       {Key? key,
       required this.child,
       required this.heading,
-      required this.themeSettings,
       this.isIndented = false,
       this.isInitiallyFolded = false})
       : super(key: key);
@@ -38,14 +37,14 @@ class _ManualWidgetTesterFoldableRegionState
     return Padding(
       padding: widget.isIndented
           ? EdgeInsets.only(
-              left: widget.themeSettings.foldableRegionTheme
+              left: ManualWidgetTesterTheme.of(context)
+                  .foldableRegionTheme
                   .foldableRegionIndentationAmount)
           : EdgeInsets.zero,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _Header(
-            themeSettings: widget.themeSettings,
             text: widget.heading,
             isFolded: _isFolded,
             isIndented: widget.isIndented,
@@ -56,7 +55,8 @@ class _ManualWidgetTesterFoldableRegionState
             },
           ),
           TweenAnimationBuilder<double>(
-            duration: widget.themeSettings.foldableRegionTheme
+            duration: ManualWidgetTesterTheme.of(context)
+                .foldableRegionTheme
                 .foldableRegionAnimationDuration,
             tween: Tween<double>(
                 begin: _isFolded ? 0.0 : 1.0, end: _isFolded ? 0.0 : 1.0),
@@ -65,7 +65,8 @@ class _ManualWidgetTesterFoldableRegionState
               return ClipRect(
                 clipBehavior: value < 1.0 ? Clip.antiAlias : Clip.none,
                 child: Align(
-                  alignment: widget.themeSettings.foldableRegionTheme
+                  alignment: ManualWidgetTesterTheme.of(context)
+                      .foldableRegionTheme
                       .foldableRegionContentAlignment,
                   heightFactor: value,
                   child: child,
@@ -85,14 +86,12 @@ class _Header extends StatelessWidget {
   final bool isFolded;
   final void Function() onClicked;
   final bool isIndented;
-  final ManualWidgetTesterThemeSettings themeSettings;
 
   const _Header(
       {required this.text,
       required this.isFolded,
       required this.onClicked,
-      required this.isIndented,
-      required this.themeSettings});
+      required this.isIndented});
 
   @override
   Widget build(BuildContext context) {
@@ -103,33 +102,41 @@ class _Header extends StatelessWidget {
         child: AnimatedOpacity(
           duration: const Duration(milliseconds: 50),
           opacity: isFolded
-              ? themeSettings
-                  .foldableRegionTheme.foldableRegionFoldedHeaderOpacity
+              ? ManualWidgetTesterTheme.of(context)
+                  .foldableRegionTheme
+                  .foldableRegionFoldedHeaderOpacity
               : 1.0,
           child: Container(
-            height:
-                themeSettings.foldableRegionTheme.foldableRegionHeaderHeight,
+            height: ManualWidgetTesterTheme.of(context)
+                .foldableRegionTheme
+                .foldableRegionHeaderHeight,
             color: isIndented
                 ? Colors.transparent
-                : themeSettings.foldableRegionTheme.foldableRegionHeaderColor,
+                : ManualWidgetTesterTheme.of(context)
+                    .foldableRegionTheme
+                    .foldableRegionHeaderColor,
             child: Row(
               children: [
                 Icon(
                   isFolded
                       ? Icons.keyboard_arrow_right_outlined
                       : Icons.keyboard_arrow_down_outlined,
-                  color: themeSettings
-                      .foldableRegionTheme.foldableRegionChevronIconColor,
-                  size: themeSettings
-                      .foldableRegionTheme.foldableRegionChevronIconSize,
+                  color: ManualWidgetTesterTheme.of(context)
+                      .foldableRegionTheme
+                      .foldableRegionChevronIconColor,
+                  size: ManualWidgetTesterTheme.of(context)
+                      .foldableRegionTheme
+                      .foldableRegionChevronIconSize,
                 ),
                 Expanded(
                   child: Text(text,
                       softWrap: false,
-                      overflow: themeSettings
-                          .foldableRegionTheme.foldableRegionHeadingOverflow,
-                      style: themeSettings
-                          .foldableRegionTheme.foldableRegionHeadingStyle),
+                      overflow: ManualWidgetTesterTheme.of(context)
+                          .foldableRegionTheme
+                          .foldableRegionHeadingOverflow,
+                      style: ManualWidgetTesterTheme.of(context)
+                          .foldableRegionTheme
+                          .foldableRegionHeadingStyle),
                 ),
               ],
             ),

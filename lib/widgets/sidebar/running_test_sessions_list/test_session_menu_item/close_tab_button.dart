@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/close_button.dart';
 
 class CloseTabButton extends StatelessWidget {
   const CloseTabButton({
     Key? key,
-    required this.themeSettings,
     required this.tweenValue,
     required this.onPressed,
   }) : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
   final double tweenValue;
   final void Function() onPressed;
 
@@ -26,7 +25,8 @@ class CloseTabButton extends StatelessWidget {
           child: Opacity(
             opacity: value,
             child: Padding(
-              padding: themeSettings.testSessionMenuItemTheme
+              padding: ManualWidgetTesterTheme.of(context)
+                  .testSessionMenuItemTheme
                   .testSessionMenuItemCloseButtonPadding,
               child: child,
             ),
@@ -34,15 +34,17 @@ class CloseTabButton extends StatelessWidget {
         );
       },
       child: SizedBox(
-        width: themeSettings
-            .testSessionMenuItemTheme.testSessionMenuItemCloseButtonSize,
-        height: themeSettings
-            .testSessionMenuItemTheme.testSessionMenuItemCloseButtonSize,
+        width: ManualWidgetTesterTheme.of(context)
+            .testSessionMenuItemTheme
+            .testSessionMenuItemCloseButtonSize,
+        height: ManualWidgetTesterTheme.of(context)
+            .testSessionMenuItemTheme
+            .testSessionMenuItemCloseButtonSize,
         child: ManualWidgetTesterCloseButton(
-          themeSettings: themeSettings,
           onPressed: onPressed,
-          size: themeSettings
-              .testSessionMenuItemTheme.testSessionMenuItemCloseButtonSize,
+          size: ManualWidgetTesterTheme.of(context)
+              .testSessionMenuItemTheme
+              .testSessionMenuItemCloseButtonSize,
         ),
       ),
     );

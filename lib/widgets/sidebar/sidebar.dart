@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 
 import 'horizontal_drag_handle.dart';
@@ -25,12 +25,10 @@ class ManualWidgetTesterSidebar extends StatefulWidget {
       {Key? key,
       required this.maxWidth,
       required this.mouseCursorOverrider,
-      required this.themeSettings,
       required this.widgetTestSessionHandler,
       required this.typeEditorBuilder})
       : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
   final double maxWidth;
   final MouseCursorOverrider mouseCursorOverrider;
   final WidgetTestSessionHandler widgetTestSessionHandler;
@@ -80,7 +78,7 @@ class _ManualWidgetTesterSidebarState extends State<ManualWidgetTesterSidebar> {
 
     return Container(
       width: displayWidth,
-      color: widget.themeSettings.generalTheme.sidebarColor,
+      color: ManualWidgetTesterTheme.of(context).generalTheme.sidebarColor,
       child: Stack(
         children: [
           SingleChildScrollView(
@@ -88,14 +86,12 @@ class _ManualWidgetTesterSidebarState extends State<ManualWidgetTesterSidebar> {
             child: Column(
               children: [
                 RunningTestSessionsList(
-                  themeSettings: widget.themeSettings,
                   widgetTestSessionHandler: widget.widgetTestSessionHandler,
                 ),
                 ...widget.widgetTestSessionHandler.widgetTestSessions.isEmpty
                     ? const []
                     : [
                         TestSessionSettings(
-                          themeSettings: widget.themeSettings,
                           typeEditorBuilder: widget.typeEditorBuilder,
                           widgetTestSessionHandler:
                               widget.widgetTestSessionHandler,
@@ -107,7 +103,6 @@ class _ManualWidgetTesterSidebarState extends State<ManualWidgetTesterSidebar> {
           Align(
             alignment: Alignment.topRight,
             child: HorizontalDragHandle(
-              themeSettings: widget.themeSettings,
               mouseCursorOverrider: widget.mouseCursorOverrider,
               onDragStart: () {
                 _draggedWidth = displayWidth;

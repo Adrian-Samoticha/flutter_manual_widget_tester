@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 import 'search_result_icon.dart';
 
@@ -13,14 +13,12 @@ class SearchResultListEntry extends StatefulWidget {
     required this.index,
     required this.legalSelectedSearchResultIndex,
     required this.builder,
-    required this.themeSettings,
     required this.widgetTestSessionHandler,
   }) : super(key: key);
 
   final int index;
   final int legalSelectedSearchResultIndex;
   final WidgetTestBuilder builder;
-  final ManualWidgetTesterThemeSettings themeSettings;
   final WidgetTestSessionHandler widgetTestSessionHandler;
 
   @override
@@ -40,11 +38,15 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
     }
 
     Scrollable.ensureVisible(_globalKey.currentContext!,
-        duration: widget.themeSettings.generalTheme.scrollIntoViewDuration,
+        duration: ManualWidgetTesterTheme.of(context)
+            .generalTheme
+            .scrollIntoViewDuration,
         alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtStart);
 
     Scrollable.ensureVisible(_globalKey.currentContext!,
-        duration: widget.themeSettings.generalTheme.scrollIntoViewDuration,
+        duration: ManualWidgetTesterTheme.of(context)
+            .generalTheme
+            .scrollIntoViewDuration,
         alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd);
   }
 
@@ -88,19 +90,24 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
           });
         },
         child: AnimatedOpacity(
-          duration: widget.themeSettings.createTestSessionDialogTheme
+          duration: ManualWidgetTesterTheme.of(context)
+              .createTestSessionDialogTheme
               .createTestSessionDialogSearchResultFadeDuration,
           opacity: _isSelected || _isBeingHovered
               ? 1.0
-              : widget.themeSettings.createTestSessionDialogTheme
+              : ManualWidgetTesterTheme.of(context)
+                  .createTestSessionDialogTheme
                   .createTestSessionDialogUnselectedSearchResultOpacity,
           child: Container(
-            height: widget.themeSettings.createTestSessionDialogTheme
+            height: ManualWidgetTesterTheme.of(context)
+                .createTestSessionDialogTheme
                 .createTestSessionDialogSearchResultHeight,
             decoration: _isSelected
-                ? widget.themeSettings.createTestSessionDialogTheme
+                ? ManualWidgetTesterTheme.of(context)
+                    .createTestSessionDialogTheme
                     .createTestSessionDialogSelectedSearchResultDecoration
-                : widget.themeSettings.createTestSessionDialogTheme
+                : ManualWidgetTesterTheme.of(context)
+                    .createTestSessionDialogTheme
                     .createTestSessionDialogUnselectedSearchResultDecoration,
             child: _buildIconAndNameRow(),
           ),
@@ -110,7 +117,7 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
   }
 
   Row _buildIconAndNameRow() {
-    final themeSettings = widget.themeSettings;
+    final themeSettings = ManualWidgetTesterTheme.of(context);
 
     return Row(
       children: [
@@ -118,7 +125,6 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
             ? const []
             : [
                 SearchResultIcon(
-                  themeSettings: themeSettings,
                   icon: widget.builder.icon!,
                   iconColor: widget.builder.iconColor ??
                       themeSettings.iconTheme.defaultIconColor,

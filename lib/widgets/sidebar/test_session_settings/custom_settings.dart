@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_custom_settings.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
 
 class CustomSettings extends StatelessWidget {
@@ -15,13 +15,9 @@ class CustomSettings extends StatelessWidget {
   /// The [typeEditorBuilder] is the type editor builder used to build editors
   /// for the custom settings.
   const CustomSettings(
-      {Key? key,
-      required this.themeSettings,
-      required this.session,
-      required this.typeEditorBuilder})
+      {Key? key, required this.session, required this.typeEditorBuilder})
       : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
   final WidgetTestSession session;
   final TypeEditorBuilder typeEditorBuilder;
 
@@ -30,36 +26,38 @@ class CustomSettings extends StatelessWidget {
     return ManualWidgetTesterFoldableRegion(
       isIndented: true,
       heading: 'CUSTOM SETTINGS',
-      themeSettings: themeSettings,
       child: Column(
-        children: _generateCustomSettingsChildren(),
+        children: _generateCustomSettingsChildren(context),
       ),
     );
   }
 
-  List<Widget> _generateCustomSettingsChildren() {
+  List<Widget> _generateCustomSettingsChildren(BuildContext context) {
     final customSettings = session.customSettings;
 
     if (customSettings.settings.isEmpty) {
-      return [_buildNoSettingsText()];
+      return [_buildNoSettingsText(context)];
     }
 
     return customSettings.settings
         .map((String settingName, dynamic settingValue) {
-          final widget =
-              _buildWidgetForSetting(customSettings, settingName, settingValue);
+          final widget = _buildWidgetForSetting(
+              context, customSettings, settingName, settingValue);
           return MapEntry<String, Widget>(settingName, widget);
         })
         .values
         .toList();
   }
 
-  Widget _buildWidgetForSetting(WidgetTestSessionCustomSettings customSettings,
-      String settingName, dynamic settingValue) {
+  Widget _buildWidgetForSetting(
+      BuildContext context,
+      WidgetTestSessionCustomSettings customSettings,
+      String settingName,
+      dynamic settingValue) {
     final settingType = settingValue.runtimeType;
 
     if (!typeEditorBuilder.hasEditorBuilderInstalledForType(settingType)) {
-      return _buildNoEditorMessage(settingName, settingValue);
+      return _buildNoEditorMessage(context, settingName, settingValue);
     }
 
     return typeEditorBuilder.buildEditor(
@@ -72,33 +70,45 @@ class CustomSettings extends StatelessWidget {
     );
   }
 
-  Container _buildNoEditorMessage(String settingName, settingValue) {
+  Container _buildNoEditorMessage(
+      BuildContext context, String settingName, settingValue) {
     return Container(
-      padding: themeSettings.noEditorMessageTheme.noEditorMessagePadding,
-      margin: themeSettings.noEditorMessageTheme.noEditorMessageMargin,
-      decoration: themeSettings.noEditorMessageTheme.noEditorMessageDecoration,
-      child: _buildNoEditorText(settingName, settingValue),
+      padding: ManualWidgetTesterTheme.of(context)
+          .noEditorMessageTheme
+          .noEditorMessagePadding,
+      margin: ManualWidgetTesterTheme.of(context)
+          .noEditorMessageTheme
+          .noEditorMessageMargin,
+      decoration: ManualWidgetTesterTheme.of(context)
+          .noEditorMessageTheme
+          .noEditorMessageDecoration,
+      child: _buildNoEditorText(context, settingName, settingValue),
     );
   }
 
-  RichText _buildNoEditorText(String settingName, settingValue) {
+  RichText _buildNoEditorText(
+      BuildContext context, String settingName, settingValue) {
     return RichText(
       text: TextSpan(
         text: 'Could not build type editor for setting ',
-        style: themeSettings.noEditorMessageTheme.noEditorTextStyle,
+        style: ManualWidgetTesterTheme.of(context)
+            .noEditorMessageTheme
+            .noEditorTextStyle,
         children: [
           TextSpan(
             text: settingName,
-            style:
-                themeSettings.noEditorMessageTheme.noEditorHighlightedTextStyle,
+            style: ManualWidgetTesterTheme.of(context)
+                .noEditorMessageTheme
+                .noEditorHighlightedTextStyle,
           ),
           const TextSpan(
             text: ' which is of type ',
           ),
           TextSpan(
             text: '${settingValue.runtimeType}',
-            style:
-                themeSettings.noEditorMessageTheme.noEditorHighlightedTextStyle,
+            style: ManualWidgetTesterTheme.of(context)
+                .noEditorMessageTheme
+                .noEditorHighlightedTextStyle,
           ),
           const TextSpan(
             text: '. No editor for that type has been provided.',
@@ -108,14 +118,16 @@ class CustomSettings extends StatelessWidget {
     );
   }
 
-  Padding _buildNoSettingsText() {
+  Padding _buildNoSettingsText(BuildContext context) {
     return Padding(
-      padding: themeSettings
-          .noCustomSettingsMessageTheme.noCustomSettingsMessagePadding,
+      padding: ManualWidgetTesterTheme.of(context)
+          .noCustomSettingsMessageTheme
+          .noCustomSettingsMessagePadding,
       child: Text(
         'This test session has no custom settings.',
-        style: themeSettings
-            .noCustomSettingsMessageTheme.noCustomSettingsMessageTextStyle,
+        style: ManualWidgetTesterTheme.of(context)
+            .noCustomSettingsMessageTheme
+            .noCustomSettingsMessageTextStyle,
       ),
     );
   }

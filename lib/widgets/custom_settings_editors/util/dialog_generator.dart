@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 import 'package:flutter_manual_widget_tester/util/multiply_opacity.dart';
 import 'package:num_remap/num_remap.dart';
@@ -17,7 +17,6 @@ class ManualWidgetTesterDialogGenerator {
   /// positioned between the “Cancel” and “Apply” buttons.
   static void showEditSettingDialog({
     required BuildContext context,
-    required ManualWidgetTesterThemeSettings themeSettings,
     required Widget Function(BuildContext) editorBuilder,
     double dialogWidth = 512.0,
     void Function()? onCancel,
@@ -29,13 +28,16 @@ class ManualWidgetTesterDialogGenerator {
       context: context,
       barrierDismissible: true,
       barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
-      barrierColor: themeSettings.dialogTheme.dialogBarrierColor,
-      transitionDuration:
-          themeSettings.dialogTheme.dialogOpenCloseAnimationDuration,
-      transitionBuilder: (BuildContext context, Animation<double> animation,
+      barrierColor:
+          ManualWidgetTesterTheme.of(context).dialogTheme.dialogBarrierColor,
+      transitionDuration: ManualWidgetTesterTheme.of(context)
+          .dialogTheme
+          .dialogOpenCloseAnimationDuration,
+      transitionBuilder: (BuildContext _, Animation<double> animation,
           Animation<double> secondaryAnimation, Widget widget) {
-        final curvedAnimationValue = themeSettings
-            .dialogTheme.dialogOpenCloseAnimationCurve
+        final curvedAnimationValue = ManualWidgetTesterTheme.of(context)
+            .dialogTheme
+            .dialogOpenCloseAnimationCurve
             .transform(animation.value);
 
         // Unfortunately, the BackdropFilter Widget cannot be combined with the
@@ -43,7 +45,9 @@ class ManualWidgetTesterDialogGenerator {
         // this code fades the background color to full opacity to hide the
         // point at which the BackdropFilter is enabled/disabled.
         final originalDialogBackgroundColor =
-            themeSettings.dialogTheme.dialogBackgroundColor;
+            ManualWidgetTesterTheme.of(context)
+                .dialogTheme
+                .dialogBackgroundColor;
         final renderedDialogBackgroundColor =
             _getRenderedBackgroundColorFromOriginalBackgroundColor(
                 curvedAnimationValue, originalDialogBackgroundColor);
@@ -51,13 +55,16 @@ class ManualWidgetTesterDialogGenerator {
         final doEnableBlur = curvedAnimationValue >= 0.5;
 
         return Transform.translate(
-          offset: themeSettings.dialogTheme.dialogOpenCloseAnimationOffset *
+          offset: ManualWidgetTesterTheme.of(context)
+                  .dialogTheme
+                  .dialogOpenCloseAnimationOffset *
               (1.0 - curvedAnimationValue),
           child: Align(
-            alignment: themeSettings.dialogTheme.dialogAlignment,
+            alignment:
+                ManualWidgetTesterTheme.of(context).dialogTheme.dialogAlignment,
             child: _buildDialogWindow(
+                context,
                 dialogWidth,
-                themeSettings,
                 renderedDialogBackgroundColor,
                 curvedAnimationValue,
                 doEnableBlur,
@@ -65,30 +72,38 @@ class ManualWidgetTesterDialogGenerator {
           ),
         );
       },
-      pageBuilder: (BuildContext context, Animation<double> animation,
+      pageBuilder: (BuildContext _, Animation<double> animation,
           Animation<double> secondaryAnimation) {
         return Theme(
-          data: themeSettings.generalTheme.isDark
+          data: ManualWidgetTesterTheme.of(context).generalTheme.isDark
               ? ThemeData.dark()
               : ThemeData.light(),
           child: DefaultTextStyle(
             style: DefaultTextStyleProvider.defaultTextStyle,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: themeSettings.dialogTheme.dialogPadding.copyWith(
-                    bottom: 0.0,
+            child: ManualWidgetTesterTheme(
+              themeSettings: ManualWidgetTesterTheme.of(context),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: ManualWidgetTesterTheme.of(context)
+                        .dialogTheme
+                        .dialogPadding
+                        .copyWith(
+                          bottom: 0.0,
+                        ),
+                    child: editorBuilder(context),
                   ),
-                  child: editorBuilder(context),
-                ),
-                SizedBox(
-                    height: themeSettings.dialogTheme
-                        .distanceBetweenDialogContentAndActionButtons),
-                _buildActionButtonRow(themeSettings, context, onApply, onCancel,
-                    customActionButtons),
-              ],
+                  SizedBox(
+                    height: ManualWidgetTesterTheme.of(context)
+                        .dialogTheme
+                        .distanceBetweenDialogContentAndActionButtons,
+                  ),
+                  _buildActionButtonRow(
+                      context, onApply, onCancel, customActionButtons),
+                ],
+              ),
             ),
           ),
         );
@@ -112,8 +127,8 @@ class ManualWidgetTesterDialogGenerator {
   }
 
   static Widget _buildDialogWindow(
+      BuildContext context,
       double dialogWidth,
-      ManualWidgetTesterThemeSettings themeSettings,
       Color renderedDialogBackgroundColor,
       double curvedAnimationValue,
       bool doEnableBlur,
@@ -121,15 +136,20 @@ class ManualWidgetTesterDialogGenerator {
     return Container(
       width: dialogWidth,
       decoration: BoxDecoration(
-        borderRadius: themeSettings.dialogTheme.dialogBorderRadius,
+        borderRadius:
+            ManualWidgetTesterTheme.of(context).dialogTheme.dialogBorderRadius,
         color: renderedDialogBackgroundColor,
         border: Border.fromBorderSide(
           BorderSide(
-              color: themeSettings.dialogTheme.dialogBorderColor
+              color: ManualWidgetTesterTheme.of(context)
+                  .dialogTheme
+                  .dialogBorderColor
                   .multiplyOpacity(curvedAnimationValue)),
         ),
-        boxShadow:
-            themeSettings.dialogTheme.dialogShadow.map((BoxShadow boxShadow) {
+        boxShadow: ManualWidgetTesterTheme.of(context)
+            .dialogTheme
+            .dialogShadow
+            .map((BoxShadow boxShadow) {
           return BoxShadow(
             blurRadius: boxShadow.blurRadius,
             color: boxShadow.color.multiplyOpacity(curvedAnimationValue),
@@ -140,12 +160,17 @@ class ManualWidgetTesterDialogGenerator {
         }).toList(),
       ),
       child: ClipRRect(
-        borderRadius: themeSettings.dialogTheme.dialogBorderRadius,
+        borderRadius:
+            ManualWidgetTesterTheme.of(context).dialogTheme.dialogBorderRadius,
         child: BackdropFilter(
           filter: doEnableBlur
               ? ImageFilter.blur(
-                  sigmaX: themeSettings.dialogTheme.dialogBlurRadius,
-                  sigmaY: themeSettings.dialogTheme.dialogBlurRadius)
+                  sigmaX: ManualWidgetTesterTheme.of(context)
+                      .dialogTheme
+                      .dialogBlurRadius,
+                  sigmaY: ManualWidgetTesterTheme.of(context)
+                      .dialogTheme
+                      .dialogBlurRadius)
               : ImageFilter.blur(),
           child: Opacity(
             opacity: curvedAnimationValue,
@@ -157,27 +182,38 @@ class ManualWidgetTesterDialogGenerator {
   }
 
   static Widget _buildActionButtonRow(
-      ManualWidgetTesterThemeSettings themeSettings,
       BuildContext context,
       void Function()? onApply,
       void Function()? onCancel,
       List<ManualWidgetTesterButtonInfo> customButtons) {
     return Container(
-      color: themeSettings.dialogTheme.dialogActionButtonSectionBackgroundColor,
-      padding: themeSettings.dialogTheme.dialogPadding.copyWith(
-        top: themeSettings.dialogTheme.dialogPadding.bottom,
-      ),
+      color: ManualWidgetTesterTheme.of(context)
+          .dialogTheme
+          .dialogActionButtonSectionBackgroundColor,
+      padding: ManualWidgetTesterTheme.of(context)
+          .dialogTheme
+          .dialogPadding
+          .copyWith(
+            top: ManualWidgetTesterTheme.of(context)
+                .dialogTheme
+                .dialogPadding
+                .bottom,
+          ),
       child: Row(
         children: [
           const Spacer(),
           SizedBox(
-            height: themeSettings.dialogTheme.dialogActionButtonHeight,
-            width: themeSettings.dialogTheme.baseDialogActionButtonRowWidth +
-                themeSettings
-                        .dialogTheme.customDialogActionButtonWidthAddition *
+            height: ManualWidgetTesterTheme.of(context)
+                .dialogTheme
+                .dialogActionButtonHeight,
+            width: ManualWidgetTesterTheme.of(context)
+                    .dialogTheme
+                    .baseDialogActionButtonRowWidth +
+                ManualWidgetTesterTheme.of(context)
+                        .dialogTheme
+                        .customDialogActionButtonWidthAddition *
                     customButtons.length,
             child: ManualWidgetTesterButtonRow(
-              themeSettings: themeSettings,
               buttons: [
                 ManualWidgetTesterButtonInfo(
                   onButtonDown: null,

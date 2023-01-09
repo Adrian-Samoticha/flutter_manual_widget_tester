@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:num_remap/num_remap.dart';
 
 class InfiniteScrollView extends StatelessWidget {
   const InfiniteScrollView({
     Key? key,
-    required this.themeSettings,
     required this.currentValue,
     required this.infiniteScrollViewRange,
     required this.lowerLimit,
     required this.upperLimit,
   }) : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
   final double currentValue;
   final double infiniteScrollViewRange;
   final double lowerLimit;
@@ -22,11 +20,11 @@ class InfiniteScrollView extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: _InfiniteScrollViewPainter(
-        themeSettings: themeSettings,
         value: currentValue,
         range: infiniteScrollViewRange,
         lowerLimit: lowerLimit,
         upperLimit: upperLimit,
+        context: context,
       ),
     );
   }
@@ -37,28 +35,32 @@ class _InfiniteScrollViewPainter extends CustomPainter {
   final double range;
   final double lowerLimit;
   final double upperLimit;
-  final ManualWidgetTesterThemeSettings themeSettings;
+  final BuildContext context;
 
   _InfiniteScrollViewPainter(
-      {required this.themeSettings,
-      required this.value,
+      {required this.value,
       required this.range,
       required this.lowerLimit,
-      required this.upperLimit});
+      required this.upperLimit,
+      required this.context});
 
   @override
   void paint(Canvas canvas, Size size) {
     final linePaint = Paint()
-      ..color = themeSettings
-          .doubleEditorTheme.doubleEditorInfiniteScrollViewLineColor
-      ..strokeWidth = themeSettings
-          .doubleEditorTheme.doubleEditorInfiniteScrollViewLineWidth;
+      ..color = ManualWidgetTesterTheme.of(context)
+          .doubleEditorTheme
+          .doubleEditorInfiniteScrollViewLineColor
+      ..strokeWidth = ManualWidgetTesterTheme.of(context)
+          .doubleEditorTheme
+          .doubleEditorInfiniteScrollViewLineWidth;
 
     final indicatorPaint = Paint()
-      ..color = themeSettings
-          .doubleEditorTheme.doubleEditorInfiniteScrollViewIndicatorColor
-      ..strokeWidth = themeSettings
-          .doubleEditorTheme.doubleEditorInfiniteScrollViewIndicatorWidth;
+      ..color = ManualWidgetTesterTheme.of(context)
+          .doubleEditorTheme
+          .doubleEditorInfiniteScrollViewIndicatorColor
+      ..strokeWidth = ManualWidgetTesterTheme.of(context)
+          .doubleEditorTheme
+          .doubleEditorInfiniteScrollViewIndicatorWidth;
 
     _drawRuler(canvas, size, linePaint, 1.0, 1.0);
     _drawRuler(canvas, size, linePaint, 0.5, 0.5);
@@ -71,8 +73,9 @@ class _InfiniteScrollViewPainter extends CustomPainter {
         canvas,
         size,
         indicatorPaint,
-        themeSettings
-            .doubleEditorTheme.doubleEditorInfiniteScrollViewIndicatorHeight);
+        ManualWidgetTesterTheme.of(context)
+            .doubleEditorTheme
+            .doubleEditorInfiniteScrollViewIndicatorHeight);
   }
 
   void _drawRuler(Canvas canvas, Size size, Paint paint, double stepSize,
@@ -114,17 +117,20 @@ class _InfiniteScrollViewPainter extends CustomPainter {
 
     final textPositionLeft =
         _valueToPosition(valueToDrawTheRulerNumberAt, size.width) +
-            themeSettings.doubleEditorTheme
+            ManualWidgetTesterTheme.of(context)
+                .doubleEditorTheme
                 .doubleEditorInfiniteScrollViewTextPaddingAmount;
     final textPositionRight =
         _valueToPosition(valueToDrawTheRulerNumberAt + 1.0, size.width) -
-            themeSettings.doubleEditorTheme
+            ManualWidgetTesterTheme.of(context)
+                .doubleEditorTheme
                 .doubleEditorInfiniteScrollViewTextPaddingAmount;
 
     final textSpan = TextSpan(
       text: valueToDrawTheRulerNumberAt.floor().toString(),
-      style: themeSettings
-          .doubleEditorTheme.doubleEditorInfiniteScrollViewTextStyle,
+      style: ManualWidgetTesterTheme.of(context)
+          .doubleEditorTheme
+          .doubleEditorInfiniteScrollViewTextStyle,
     );
 
     final textPainter = TextPainter(

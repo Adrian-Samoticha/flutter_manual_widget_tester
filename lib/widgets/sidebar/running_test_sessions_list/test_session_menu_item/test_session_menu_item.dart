@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 import 'close_tab_button.dart';
 
@@ -7,7 +7,6 @@ class ManualWidgetTesterTestSessionMenuItem extends StatefulWidget {
   final int tabIndex;
   final int focusedTabIndex;
   final String widgetName;
-  final ManualWidgetTesterThemeSettings themeSettings;
   final void Function() onSelect;
   final void Function() onClose;
   final bool enableIcon;
@@ -19,7 +18,6 @@ class ManualWidgetTesterTestSessionMenuItem extends StatefulWidget {
       required this.tabIndex,
       required this.focusedTabIndex,
       required this.widgetName,
-      required this.themeSettings,
       required this.onSelect,
       required this.onClose,
       this.icon,
@@ -52,20 +50,24 @@ class _ManualWidgetTesterTestSessionMenuItemState
         child: Opacity(
           opacity: widget.tabIndex == widget.focusedTabIndex
               ? 1.0
-              : widget.themeSettings.testSessionMenuItemTheme
+              : ManualWidgetTesterTheme.of(context)
+                  .testSessionMenuItemTheme
                   .testSessionMenuItemUnfocusedTabOpacity,
           child: Container(
-            height: widget.themeSettings.testSessionMenuItemTheme
+            height: ManualWidgetTesterTheme.of(context)
+                .testSessionMenuItemTheme
                 .testSessionMenuItemHeight,
             decoration: widget.tabIndex != widget.focusedTabIndex
                 ? null
-                : widget.themeSettings.testSessionMenuItemTheme
+                : ManualWidgetTesterTheme.of(context)
+                    .testSessionMenuItemTheme
                     .testSessionMenuItemFocusedTabTintDecoration,
             child: Stack(
               children: [
                 _buildHoverTint(),
                 Padding(
-                  padding: widget.themeSettings.testSessionMenuItemTheme
+                  padding: ManualWidgetTesterTheme.of(context)
+                      .testSessionMenuItemTheme
                       .testSessionMenuItemPadding,
                   child: _buildTabRow(),
                 ),
@@ -99,7 +101,6 @@ class _ManualWidgetTesterTestSessionMenuItemState
     final tweenValue = isVisible ? 1.0 : 0.0;
 
     return CloseTabButton(
-      themeSettings: widget.themeSettings,
       tweenValue: tweenValue,
       onPressed: widget.onClose,
     );
@@ -108,21 +109,25 @@ class _ManualWidgetTesterTestSessionMenuItemState
   Text _buildTabText() {
     return Text(widget.widgetName,
         softWrap: false,
-        overflow: widget.themeSettings.testSessionMenuItemTheme
+        overflow: ManualWidgetTesterTheme.of(context)
+            .testSessionMenuItemTheme
             .testSessionMenuItemTextOverflow,
-        style: widget.themeSettings.testSessionMenuItemTheme
+        style: ManualWidgetTesterTheme.of(context)
+            .testSessionMenuItemTheme
             .testSessionMenuItemTextStyle);
   }
 
   Padding _buildTabIcon() {
     return Padding(
-      padding: widget.themeSettings.testSessionMenuItemTheme
+      padding: ManualWidgetTesterTheme.of(context)
+          .testSessionMenuItemTheme
           .testSessionMenuItemTabIconPadding,
       child: Icon(
         widget.icon,
         color: widget.iconColor,
-        size: widget
-            .themeSettings.testSessionMenuItemTheme.testSessionMenuItemIconSize,
+        size: ManualWidgetTesterTheme.of(context)
+            .testSessionMenuItemTheme
+            .testSessionMenuItemIconSize,
       ),
     );
   }
@@ -132,7 +137,8 @@ class _ManualWidgetTesterTestSessionMenuItemState
       duration: const Duration(milliseconds: 50),
       opacity: _isBeingHovered ? 1.0 : 0.0,
       child: Container(
-          decoration: widget.themeSettings.testSessionMenuItemTheme
+          decoration: ManualWidgetTesterTheme.of(context)
+              .testSessionMenuItemTheme
               .testSessionMenuItemHoverTintDecoration),
     );
   }

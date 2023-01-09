@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/config/config.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row/button_row.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
@@ -14,7 +15,6 @@ import 'infinite_scroll_view.dart';
 class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
   const ManualWidgetTesterCustomSettingsDoubleEditor(
       {Key? key,
-      required this.themeSettings,
       required this.settingName,
       required this.currentValue,
       required this.onChanged,
@@ -22,7 +22,6 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
       this.upperLimit = double.infinity})
       : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
   final String settingName;
   final double currentValue;
   final void Function(double) onChanged;
@@ -34,16 +33,21 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: themeSettings.customSettingsTheme.customSettingsPadding,
+      padding: ManualWidgetTesterTheme.of(context)
+          .customSettingsTheme
+          .customSettingsPadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ManualWidgetTesterCustomSettingsHeading(
-              themeSettings: themeSettings, settingName: settingName),
+            settingName: settingName,
+          ),
           Column(
             children: [
               SizedBox(
-                height: themeSettings.stringEditorTheme.stringEditorHeight,
+                height: ManualWidgetTesterTheme.of(context)
+                    .stringEditorTheme
+                    .stringEditorHeight,
                 child: LayoutBuilder(
                   builder: (context, constraints) {
                     return Row(
@@ -52,17 +56,19 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
                           child: _buildTextField(),
                         ),
                         SizedBox(
-                          width: themeSettings
-                              .generalTheme.spaceBetweenTextBoxesAndButtonRows,
+                          width: ManualWidgetTesterTheme.of(context)
+                              .generalTheme
+                              .spaceBetweenTextBoxesAndButtonRows,
                         ),
-                        _buildButtonRow(constraints),
+                        _buildButtonRow(context, constraints),
                       ],
                     );
                   },
                 ),
               ),
               SizedBox(
-                height: themeSettings.doubleEditorTheme
+                height: ManualWidgetTesterTheme.of(context)
+                    .doubleEditorTheme
                     .spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView,
               ),
               _buildInfiniteScrollView(context),
@@ -101,15 +107,17 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
         },
         child: Container(
           width: double.infinity,
-          height: themeSettings
-              .doubleEditorTheme.doubleEditorInfiniteScrollViewHeight,
-          padding: themeSettings
-              .doubleEditorTheme.doubleEditorInfiniteScrollViewPadding,
-          decoration: themeSettings
-              .doubleEditorTheme.doubleEditorInfiniteScrollViewBoxDecoration,
+          height: ManualWidgetTesterTheme.of(context)
+              .doubleEditorTheme
+              .doubleEditorInfiniteScrollViewHeight,
+          padding: ManualWidgetTesterTheme.of(context)
+              .doubleEditorTheme
+              .doubleEditorInfiniteScrollViewPadding,
+          decoration: ManualWidgetTesterTheme.of(context)
+              .doubleEditorTheme
+              .doubleEditorInfiniteScrollViewBoxDecoration,
           clipBehavior: Clip.hardEdge,
           child: InfiniteScrollView(
-            themeSettings: themeSettings,
             currentValue: currentValue,
             infiniteScrollViewRange:
                 Config.of(context).doubleEditorInfiniteScrollViewRange,
@@ -128,7 +136,6 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
         final parsedValue = double.tryParse(valueAsString);
         onChanged(parsedValue ?? currentValue);
       },
-      themeSettings: themeSettings,
       disableRoundedCornersOnRightSide: true,
     );
   }
@@ -138,12 +145,14 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
     return delta < epsilon;
   }
 
-  SizedBox _buildButtonRow(BoxConstraints constraints) {
+  SizedBox _buildButtonRow(BuildContext context, BoxConstraints constraints) {
     return SizedBox(
-      width: min(themeSettings.generalTheme.defaultNumberEditorButtonRowWidth,
+      width: min(
+          ManualWidgetTesterTheme.of(context)
+              .generalTheme
+              .defaultNumberEditorButtonRowWidth,
           constraints.maxWidth * 0.5),
       child: ManualWidgetTesterButtonRow(
-        themeSettings: themeSettings,
         disableRoundedCornersOnLeftSide: true,
         buttons: [
           ManualWidgetTesterButtonInfo(

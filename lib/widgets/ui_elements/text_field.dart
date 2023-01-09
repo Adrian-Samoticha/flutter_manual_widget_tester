@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 
 class ManualWidgetTesterTextField extends StatelessWidget {
@@ -8,7 +9,6 @@ class ManualWidgetTesterTextField extends StatelessWidget {
   final void Function(String) onSubmitted;
   final void Function(String)? onChanged;
   final String suffix;
-  final ManualWidgetTesterThemeSettings themeSettings;
   final bool autofocus;
   final TextEditingController? textEditingController;
 
@@ -19,7 +19,6 @@ class ManualWidgetTesterTextField extends StatelessWidget {
       this.disableRoundedCornersOnRightSide = false,
       required this.onSubmitted,
       this.suffix = '',
-      required this.themeSettings,
       this.autofocus = false,
       this.onChanged,
       this.textEditingController})
@@ -37,25 +36,41 @@ class ManualWidgetTesterTextField extends StatelessWidget {
       return SizedBox.expand(
         child: Container(
           decoration: BoxDecoration(
-            color: themeSettings.textFieldTheme.textFieldColor,
-            boxShadow: themeSettings.textFieldTheme.textFieldShadow,
+            color: ManualWidgetTesterTheme.of(context)
+                .textFieldTheme
+                .textFieldColor,
+            boxShadow: ManualWidgetTesterTheme.of(context)
+                .textFieldTheme
+                .textFieldShadow,
             borderRadius: BorderRadius.only(
               topLeft: disableRoundedCornersOnLeftSide
                   ? Radius.zero
-                  : themeSettings.textFieldTheme.textFieldBorderRadius,
+                  : ManualWidgetTesterTheme.of(context)
+                      .textFieldTheme
+                      .textFieldBorderRadius,
               bottomLeft: disableRoundedCornersOnLeftSide
                   ? Radius.zero
-                  : themeSettings.textFieldTheme.textFieldBorderRadius,
+                  : ManualWidgetTesterTheme.of(context)
+                      .textFieldTheme
+                      .textFieldBorderRadius,
               topRight: disableRoundedCornersOnRightSide
                   ? Radius.zero
-                  : themeSettings.textFieldTheme.textFieldBorderRadius,
+                  : ManualWidgetTesterTheme.of(context)
+                      .textFieldTheme
+                      .textFieldBorderRadius,
               bottomRight: disableRoundedCornersOnRightSide
                   ? Radius.zero
-                  : themeSettings.textFieldTheme.textFieldBorderRadius,
+                  : ManualWidgetTesterTheme.of(context)
+                      .textFieldTheme
+                      .textFieldBorderRadius,
             ),
             border: Border.all(
-              color: themeSettings.textFieldTheme.textFieldBorderColor,
-              width: themeSettings.textFieldTheme.textFieldBorderWidth,
+              color: ManualWidgetTesterTheme.of(context)
+                  .textFieldTheme
+                  .textFieldBorderColor,
+              width: ManualWidgetTesterTheme.of(context)
+                  .textFieldTheme
+                  .textFieldBorderWidth,
             ),
           ),
           child: Container(
@@ -63,16 +78,24 @@ class ManualWidgetTesterTextField extends StatelessWidget {
               borderRadius: BorderRadius.only(
                 topLeft: disableRoundedCornersOnLeftSide
                     ? Radius.zero
-                    : themeSettings.textFieldTheme.textFieldBorderRadius,
+                    : ManualWidgetTesterTheme.of(context)
+                        .textFieldTheme
+                        .textFieldBorderRadius,
                 bottomLeft: disableRoundedCornersOnLeftSide
                     ? Radius.zero
-                    : themeSettings.textFieldTheme.textFieldBorderRadius,
+                    : ManualWidgetTesterTheme.of(context)
+                        .textFieldTheme
+                        .textFieldBorderRadius,
                 topRight: disableRoundedCornersOnRightSide
                     ? Radius.zero
-                    : themeSettings.textFieldTheme.textFieldBorderRadius,
+                    : ManualWidgetTesterTheme.of(context)
+                        .textFieldTheme
+                        .textFieldBorderRadius,
                 bottomRight: disableRoundedCornersOnRightSide
                     ? Radius.zero
-                    : themeSettings.textFieldTheme.textFieldBorderRadius,
+                    : ManualWidgetTesterTheme.of(context)
+                        .textFieldTheme
+                        .textFieldBorderRadius,
               ),
               gradient: const LinearGradient(
                 begin: Alignment.topCenter,
@@ -100,8 +123,9 @@ class ManualWidgetTesterTextField extends StatelessWidget {
       child: Theme(
         data: Theme.of(context).copyWith(
           textSelectionTheme: TextSelectionThemeData(
-            selectionColor:
-                themeSettings.textFieldTheme.textFieldSelectionColor,
+            selectionColor: ManualWidgetTesterTheme.of(context)
+                .textFieldTheme
+                .textFieldSelectionColor,
           ),
         ),
         child: TextField(
@@ -111,14 +135,21 @@ class ManualWidgetTesterTextField extends StatelessWidget {
               ),
           decoration: InputDecoration(
             isDense: true,
-            contentPadding:
-                themeSettings.textFieldTheme.textFieldContentPadding,
+            contentPadding: ManualWidgetTesterTheme.of(context)
+                .textFieldTheme
+                .textFieldContentPadding,
             border: InputBorder.none,
             suffixText: suffix,
-            suffixStyle: themeSettings.textFieldTheme.textFieldSuffixStyle,
+            suffixStyle: ManualWidgetTesterTheme.of(context)
+                .textFieldTheme
+                .textFieldSuffixStyle,
           ),
-          style: themeSettings.textFieldTheme.textFieldTextStyle,
-          cursorColor: themeSettings.textFieldTheme.textFieldCursorColor,
+          style: ManualWidgetTesterTheme.of(context)
+              .textFieldTheme
+              .textFieldTextStyle,
+          cursorColor: ManualWidgetTesterTheme.of(context)
+              .textFieldTheme
+              .textFieldCursorColor,
           autocorrect: false,
           autofocus: autofocus,
           onSubmitted: onSubmitted,

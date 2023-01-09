@@ -2,18 +2,15 @@ import 'package:basic_utils/basic_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_generic_settings.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/widgets/generic_settings_editors/editors/edge_inset_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
 
 class MediaQuerySettings extends StatelessWidget {
   const MediaQuerySettings({
     Key? key,
-    required this.themeSettings,
     required this.session,
   }) : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
   final WidgetTestSession session;
 
   WidgetTestSessionGenericSettings get _genericSettings =>
@@ -35,11 +32,9 @@ class MediaQuerySettings extends StatelessWidget {
   }) {
     return ManualWidgetTesterFoldableRegion(
       heading: _formatSettingNameForFoldableRegionUsage(settingName),
-      themeSettings: themeSettings,
       isIndented: true,
       isInitiallyFolded: true,
       child: ManualWidgetTesterGenericSettingsEdgeInsetEditor(
-        themeSettings: themeSettings,
         settingName: settingName,
         currentEdgeInsets: currentEdgeInsets,
         onChanged: (EdgeInsets newPadding) {
@@ -56,7 +51,6 @@ class MediaQuerySettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return ManualWidgetTesterFoldableRegion(
       heading: 'MEDIA QUERY',
-      themeSettings: themeSettings,
       isIndented: true,
       isInitiallyFolded: true,
       child: Column(

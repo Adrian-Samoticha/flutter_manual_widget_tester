@@ -4,7 +4,6 @@ import 'package:basic_utils/basic_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_generic_settings.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/editors/double_editor/double_editor.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region.dart';
@@ -12,11 +11,9 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region
 class DefaultTextStyleSettings extends StatelessWidget {
   const DefaultTextStyleSettings({
     Key? key,
-    required this.themeSettings,
     required this.session,
   }) : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
   final WidgetTestSession session;
 
   WidgetTestSessionGenericSettings get _genericSettings =>
@@ -39,11 +36,9 @@ class DefaultTextStyleSettings extends StatelessWidget {
   }) {
     return ManualWidgetTesterFoldableRegion(
       heading: _formatSettingNameForFoldableRegionUsage(settingName),
-      themeSettings: themeSettings,
       isIndented: true,
       isInitiallyFolded: true,
       child: ManualWidgetTesterCustomSettingsDoubleEditor(
-        themeSettings: themeSettings,
         settingName: settingName,
         currentValue: currentValue,
         onChanged: (double newValue) {
@@ -61,7 +56,6 @@ class DefaultTextStyleSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return ManualWidgetTesterFoldableRegion(
       heading: 'DEFAULT TEXT STYLE',
-      themeSettings: themeSettings,
       isIndented: true,
       isInitiallyFolded: true,
       child: Column(

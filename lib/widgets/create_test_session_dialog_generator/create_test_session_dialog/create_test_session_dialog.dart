@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/util/get_resemblance_to_search_term.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 
@@ -12,13 +12,11 @@ import 'no_matching_results_message.dart';
 import 'search_results_list/search_results_list.dart';
 
 class CreateTestSessionDialog extends StatefulWidget {
-  final ManualWidgetTesterThemeSettings themeSettings;
   final List<WidgetTestBuilder> builders;
   final WidgetTestSessionHandler widgetTestSessionHandler;
 
   const CreateTestSessionDialog(
       {Key? key,
-      required this.themeSettings,
       required this.builders,
       required this.widgetTestSessionHandler})
       : super(key: key);
@@ -46,35 +44,50 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: widget.themeSettings.generalTheme.isDark
+      data: ManualWidgetTesterTheme.of(context).generalTheme.isDark
           ? ThemeData.dark()
           : ThemeData.light(),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.vertical(
-            bottom:
-                widget.themeSettings.dialogTheme.dialogBorderRadius.bottomLeft,
+            bottom: ManualWidgetTesterTheme.of(context)
+                .dialogTheme
+                .dialogBorderRadius
+                .bottomLeft,
           ),
-          color: widget.themeSettings.dialogTheme.dialogBackgroundColor,
+          color: ManualWidgetTesterTheme.of(context)
+              .dialogTheme
+              .dialogBackgroundColor,
           border: Border.fromBorderSide(
             BorderSide(
-                color: widget.themeSettings.dialogTheme.dialogBorderColor),
+                color: ManualWidgetTesterTheme.of(context)
+                    .dialogTheme
+                    .dialogBorderColor),
           ),
-          boxShadow: widget.themeSettings.dialogTheme.dialogShadow,
+          boxShadow:
+              ManualWidgetTesterTheme.of(context).dialogTheme.dialogShadow,
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.vertical(
-            bottom:
-                widget.themeSettings.dialogTheme.dialogBorderRadius.bottomLeft,
+            bottom: ManualWidgetTesterTheme.of(context)
+                .dialogTheme
+                .dialogBorderRadius
+                .bottomLeft,
           ),
           child: BackdropFilter(
             filter: ImageFilter.blur(
-                sigmaX: widget.themeSettings.dialogTheme.dialogBlurRadius,
-                sigmaY: widget.themeSettings.dialogTheme.dialogBlurRadius),
+                sigmaX: ManualWidgetTesterTheme.of(context)
+                    .dialogTheme
+                    .dialogBlurRadius,
+                sigmaY: ManualWidgetTesterTheme.of(context)
+                    .dialogTheme
+                    .dialogBlurRadius),
             child: Container(
-              width: widget.themeSettings.createTestSessionDialogTheme
+              width: ManualWidgetTesterTheme.of(context)
+                  .createTestSessionDialogTheme
                   .createTestSessionDialogWidth,
-              padding: widget.themeSettings.createTestSessionDialogTheme
+              padding: ManualWidgetTesterTheme.of(context)
+                  .createTestSessionDialogTheme
                   .createTestSessionDialogPadding,
               child: _buildMainColumn(),
             ),
@@ -121,7 +134,8 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
         children: [
           _buildSearchBar(),
           _buildSearchResultList(MediaQuery.of(context).size.height *
-              widget.themeSettings.createTestSessionDialogTheme
+              ManualWidgetTesterTheme.of(context)
+                  .createTestSessionDialogTheme
                   .createTestSessionDialogSearchResultsHeightFactor),
         ],
       ),
@@ -130,7 +144,8 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
 
   Widget _buildSearchBar() {
     return SizedBox(
-      height: widget.themeSettings.createTestSessionDialogTheme
+      height: ManualWidgetTesterTheme.of(context)
+          .createTestSessionDialogTheme
           .createTestSessionDialogSearchBarHeight,
       child: ManualWidgetTesterTextField(
         textEditingController: _textEditingController,
@@ -142,7 +157,6 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
             _searchResults = _generateSearchResultsFromSearchTerm(_searchTerm);
           });
         },
-        themeSettings: widget.themeSettings,
         autofocus: true,
       ),
     );
@@ -150,13 +164,10 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
 
   Widget _buildSearchResultList(double maxHeight) {
     if (_searchResults.isEmpty) {
-      return NoMatchingResultsMessage(
-        themeSettings: widget.themeSettings,
-      );
+      return const NoMatchingResultsMessage();
     }
 
     return SearchResultsList(
-      themeSettings: widget.themeSettings,
       widgetTestSessionHandler: widget.widgetTestSessionHandler,
       searchResults: _searchResults,
       legalSelectedSearchResultIndex: _legalSelectedSearchResultIndex,

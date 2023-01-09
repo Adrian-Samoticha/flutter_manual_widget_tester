@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row/button_row.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 
@@ -10,7 +10,6 @@ import '../ui_elements/heading.dart';
 class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
   const ManualWidgetTesterCustomSettingsIntEditor(
       {Key? key,
-      required this.themeSettings,
       required this.settingName,
       required this.currentValue,
       required this.onChanged,
@@ -19,7 +18,6 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
       this.stepSize = 1})
       : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
   final String settingName;
   final int currentValue;
   final void Function(int) onChanged;
@@ -30,14 +28,19 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: themeSettings.customSettingsTheme.customSettingsPadding,
+      padding: ManualWidgetTesterTheme.of(context)
+          .customSettingsTheme
+          .customSettingsPadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ManualWidgetTesterCustomSettingsHeading(
-              themeSettings: themeSettings, settingName: settingName),
+            settingName: settingName,
+          ),
           SizedBox(
-            height: themeSettings.stringEditorTheme.stringEditorHeight,
+            height: ManualWidgetTesterTheme.of(context)
+                .stringEditorTheme
+                .stringEditorHeight,
             child: LayoutBuilder(builder: (context, constraints) {
               return Row(
                 children: [
@@ -45,9 +48,10 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
                     child: _buildTextField(),
                   ),
                   SizedBox(
-                      width: themeSettings
-                          .generalTheme.spaceBetweenTextBoxesAndButtonRows),
-                  _buildButtonRow(constraints),
+                      width: ManualWidgetTesterTheme.of(context)
+                          .generalTheme
+                          .spaceBetweenTextBoxesAndButtonRows),
+                  _buildButtonRow(context, constraints),
                 ],
               );
             }),
@@ -64,17 +68,18 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
         final parsedValue = int.tryParse(valueAsString);
         onChanged(parsedValue ?? currentValue);
       },
-      themeSettings: themeSettings,
       disableRoundedCornersOnRightSide: true,
     );
   }
 
-  SizedBox _buildButtonRow(BoxConstraints constraints) {
+  SizedBox _buildButtonRow(BuildContext context, BoxConstraints constraints) {
     return SizedBox(
-      width: min(themeSettings.generalTheme.defaultNumberEditorButtonRowWidth,
+      width: min(
+          ManualWidgetTesterTheme.of(context)
+              .generalTheme
+              .defaultNumberEditorButtonRowWidth,
           constraints.maxWidth * 0.5),
       child: ManualWidgetTesterButtonRow(
-        themeSettings: themeSettings,
         disableRoundedCornersOnLeftSide: true,
         buttons: [
           ManualWidgetTesterButtonInfo(

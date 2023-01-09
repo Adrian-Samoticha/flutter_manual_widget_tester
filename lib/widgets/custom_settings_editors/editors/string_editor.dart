@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 
 import '../ui_elements/heading.dart';
@@ -7,13 +7,11 @@ import '../ui_elements/heading.dart';
 class ManualWidgetTesterCustomSettingsStringEditor extends StatelessWidget {
   const ManualWidgetTesterCustomSettingsStringEditor(
       {Key? key,
-      required this.themeSettings,
       required this.settingName,
       required this.currentValue,
       required this.onChanged})
       : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
   final String settingName;
   final String currentValue;
   final void Function(String) onChanged;
@@ -21,18 +19,22 @@ class ManualWidgetTesterCustomSettingsStringEditor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: themeSettings.customSettingsTheme.customSettingsPadding,
+      padding: ManualWidgetTesterTheme.of(context)
+          .customSettingsTheme
+          .customSettingsPadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ManualWidgetTesterCustomSettingsHeading(
-              themeSettings: themeSettings, settingName: settingName),
+            settingName: settingName,
+          ),
           SizedBox(
-            height: themeSettings.stringEditorTheme.stringEditorHeight,
+            height: ManualWidgetTesterTheme.of(context)
+                .stringEditorTheme
+                .stringEditorHeight,
             child: ManualWidgetTesterTextField(
               initialValue: currentValue,
               onSubmitted: onChanged,
-              themeSettings: themeSettings,
             ),
           ),
         ],

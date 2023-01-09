@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 import 'tab_icon.dart';
 import 'tab_text.dart';
@@ -7,7 +7,6 @@ import 'tab_text.dart';
 class TabContent extends StatelessWidget {
   const TabContent({
     Key? key,
-    required this.themeSettings,
     required this.isBeingHovered,
     required this.icon,
     required this.iconColor,
@@ -15,7 +14,6 @@ class TabContent extends StatelessWidget {
     required this.widgetName,
   }) : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
   final bool isBeingHovered;
   final IconData? icon;
   final Color? iconColor;
@@ -25,14 +23,13 @@ class TabContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: themeSettings.tabTheme.tabContentPadding,
+      padding: ManualWidgetTesterTheme.of(context).tabTheme.tabContentPadding,
       child: Row(
         children: [
           ...icon == null
               ? const []
               : [
                   TabIcon(
-                    themeSettings: themeSettings,
                     icon: icon!,
                     iconColor: iconColor,
                     isFocused: isFocused,
@@ -41,7 +38,6 @@ class TabContent extends StatelessWidget {
                 ],
           Expanded(
             child: TabText(
-              themeSettings: themeSettings,
               widgetName: widgetName,
               isFocused: isFocused,
               isBeingHovered: isBeingHovered,

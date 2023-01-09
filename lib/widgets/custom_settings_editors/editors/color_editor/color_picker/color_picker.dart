@@ -1,21 +1,17 @@
 import 'package:flex_color_picker/flex_color_picker.dart' as flex_color_picker;
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/util/dialog_generator.dart';
 
 import 'checkerboard.dart';
 import 'colored_container.dart';
 
 class ColorPicker extends StatefulWidget {
-  final ManualWidgetTesterThemeSettings themeSettings;
   final Color selectedColor;
   final void Function(Color) onChanged;
 
   const ColorPicker(
-      {Key? key,
-      required this.themeSettings,
-      required this.selectedColor,
-      required this.onChanged})
+      {Key? key, required this.selectedColor, required this.onChanged})
       : super(key: key);
 
   @override
@@ -59,10 +55,10 @@ class _ColorPickerState extends State<ColorPicker> {
           children: [
             _buildCheckerboardBackground(),
             ColoredContainer(
-                isSelectedColorDark: isSelectedColorDark,
-                doShowEditIcon: _isBeingHovered || _isDialogOpen,
-                selectedColor: widget.selectedColor,
-                themeSettings: widget.themeSettings),
+              isSelectedColorDark: isSelectedColorDark,
+              doShowEditIcon: _isBeingHovered || _isDialogOpen,
+              selectedColor: widget.selectedColor,
+            ),
           ],
         ),
       ),
@@ -72,7 +68,6 @@ class _ColorPickerState extends State<ColorPicker> {
   void _showEditColorDialog(BuildContext context) {
     return ManualWidgetTesterDialogGenerator.showEditSettingDialog(
         context: context,
-        themeSettings: widget.themeSettings,
         onClose: () {
           setState(() {
             _isDialogOpen = false;
@@ -83,10 +78,12 @@ class _ColorPickerState extends State<ColorPicker> {
         },
         editorBuilder: (BuildContext context) {
           return AnimatedSize(
-            duration: widget.themeSettings.dialogTheme
+            duration: ManualWidgetTesterTheme.of(context)
+                .dialogTheme
                 .editColorDialogSizeChangeAnimationDuration,
-            curve:
-                widget.themeSettings.dialogTheme.editColorDialogSizeChangeCurve,
+            curve: ManualWidgetTesterTheme.of(context)
+                .dialogTheme
+                .editColorDialogSizeChangeCurve,
             child: Material(
               type: MaterialType.transparency,
               child: flex_color_picker.ColorPicker(
@@ -100,22 +97,30 @@ class _ColorPickerState extends State<ColorPicker> {
                 enableShadesSelection: true,
                 enableTonalPalette: true,
                 showColorName: true,
-                elevation:
-                    widget.themeSettings.dialogTheme.editColorDialogElevation,
-                borderRadius: widget
-                    .themeSettings.dialogTheme.editColorDialogBorderRadius,
-                colorNameTextStyle: widget.themeSettings.dialogTheme
+                elevation: ManualWidgetTesterTheme.of(context)
+                    .dialogTheme
+                    .editColorDialogElevation,
+                borderRadius: ManualWidgetTesterTheme.of(context)
+                    .dialogTheme
+                    .editColorDialogBorderRadius,
+                colorNameTextStyle: ManualWidgetTesterTheme.of(context)
+                    .dialogTheme
                     .editColorDialogColorNameTextStyle,
-                pickerTypeTextStyle: widget.themeSettings.dialogTheme
+                pickerTypeTextStyle: ManualWidgetTesterTheme.of(context)
+                    .dialogTheme
                     .editColorDialogPickerTypeTextStyle,
-                selectedPickerTypeColor: widget.themeSettings.dialogTheme
+                selectedPickerTypeColor: ManualWidgetTesterTheme.of(context)
+                    .dialogTheme
                     .editColorDialogSelectedPickerTypeColor,
-                spacing:
-                    widget.themeSettings.dialogTheme.editColorDialogSpacing,
-                runSpacing:
-                    widget.themeSettings.dialogTheme.editColorDialogRunSpacing,
-                columnSpacing: widget
-                    .themeSettings.dialogTheme.editColorDialogColumnSpacing,
+                spacing: ManualWidgetTesterTheme.of(context)
+                    .dialogTheme
+                    .editColorDialogSpacing,
+                runSpacing: ManualWidgetTesterTheme.of(context)
+                    .dialogTheme
+                    .editColorDialogRunSpacing,
+                columnSpacing: ManualWidgetTesterTheme.of(context)
+                    .dialogTheme
+                    .editColorDialogColumnSpacing,
                 showColorCode: true,
                 colorCodeHasColor: true,
                 pickersEnabled: const {
@@ -132,11 +137,10 @@ class _ColorPickerState extends State<ColorPicker> {
   SizedBox _buildCheckerboardBackground() {
     return SizedBox.expand(
       child: ClipRRect(
-        borderRadius: widget
-            .themeSettings.editColorButtonTheme.editColorButtonBorderRadius,
-        child: Checkerboard(
-          themeSettings: widget.themeSettings,
-        ),
+        borderRadius: ManualWidgetTesterTheme.of(context)
+            .editColorButtonTheme
+            .editColorButtonBorderRadius,
+        child: const Checkerboard(),
       ),
     );
   }

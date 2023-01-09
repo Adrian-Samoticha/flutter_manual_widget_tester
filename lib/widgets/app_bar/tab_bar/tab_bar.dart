@@ -4,18 +4,16 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 
 import 'tab/tab.dart';
 
 class ManualWidgetTesterTabBar extends StatefulWidget {
   const ManualWidgetTesterTabBar(
-      {Key? key,
-      required this.themeSettings,
-      required this.widgetTestSessionHandler})
+      {Key? key, required this.widgetTestSessionHandler})
       : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
   final WidgetTestSessionHandler widgetTestSessionHandler;
 
   @override
@@ -92,7 +90,6 @@ class _ManualWidgetTesterTabBarState extends State<ManualWidgetTesterTabBar> {
         return ManualWidgetTesterTab(
           width: tabWidth,
           widgetName: session.name,
-          themeSettings: widget.themeSettings,
           tabIndex: entry.key,
           focusedTabIndex: widgetTestSessionHandler.currentIndex,
           onSelect: () =>
@@ -101,15 +98,17 @@ class _ManualWidgetTesterTabBarState extends State<ManualWidgetTesterTabBar> {
               widgetTestSessionHandler.closeWidgetTestSession(entry.key),
           icon: session.icon,
           iconColor: session.iconColor ??
-              widget.themeSettings.iconTheme.defaultIconColor,
+              ManualWidgetTesterTheme.of(context).iconTheme.defaultIconColor,
         );
       },
     ).toList();
   }
 
   double _calculateTabWidth(int numberOfTabs, double maxWidth) {
-    final minTabWidth = widget.themeSettings.tabTheme.minTabWidth;
-    final maxTabWidth = widget.themeSettings.tabTheme.maxTabWidth;
+    final minTabWidth =
+        ManualWidgetTesterTheme.of(context).tabTheme.minTabWidth;
+    final maxTabWidth =
+        ManualWidgetTesterTheme.of(context).tabTheme.maxTabWidth;
 
     return (maxWidth / numberOfTabs).clamp(minTabWidth, maxTabWidth);
   }

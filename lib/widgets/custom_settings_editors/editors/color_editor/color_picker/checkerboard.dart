@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 class Checkerboard extends StatelessWidget {
   const Checkerboard({
     Key? key,
-    required this.themeSettings,
   }) : super(key: key);
-
-  final ManualWidgetTesterThemeSettings themeSettings;
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: _CheckerboardPainter(
-        themeSettings.editColorButtonTheme.editColorButtonCheckerboardSize,
-        themeSettings.editColorButtonTheme.editColorButtonCheckerboardColor1,
-        themeSettings.editColorButtonTheme.editColorButtonCheckerboardColor2,
+        ManualWidgetTesterTheme.of(context)
+            .editColorButtonTheme
+            .editColorButtonCheckerboardSize,
+        ManualWidgetTesterTheme.of(context)
+            .editColorButtonTheme
+            .editColorButtonCheckerboardColor1,
+        ManualWidgetTesterTheme.of(context)
+            .editColorButtonTheme
+            .editColorButtonCheckerboardColor2,
       ),
     );
   }

@@ -18,11 +18,9 @@ class GenericSettings extends StatefulWidget {
   /// are displayed.
   const GenericSettings({
     Key? key,
-    required this.themeSettings,
     required this.session,
   }) : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
   final WidgetTestSession session;
 
   @override
@@ -55,7 +53,6 @@ class _GenericSettingsState extends State<GenericSettings> {
     return ManualWidgetTesterFoldableRegion(
       isIndented: true,
       heading: 'GENERIC SETTINGS',
-      themeSettings: widget.themeSettings,
       child: Column(
         children: _generateGenericSettingsChildren(),
       ),
@@ -65,11 +62,9 @@ class _GenericSettingsState extends State<GenericSettings> {
   List<Widget> _generateGenericSettingsChildren() {
     return [
       MediaQuerySettings(
-        themeSettings: widget.themeSettings,
         session: widget.session,
       ),
       DefaultTextStyleSettings(
-        themeSettings: widget.themeSettings,
         session: widget.session,
       ),
     ];

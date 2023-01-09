@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 
@@ -11,7 +12,6 @@ class ResizableBorder extends StatefulWidget {
   final void Function() onDragStart;
   final void Function(double) onDragUpdate;
   final MouseCursorOverrider mouseCursorOverrider;
-  final ManualWidgetTesterThemeSettings themeSettings;
   final double zoom;
 
   const ResizableBorder(
@@ -21,7 +21,6 @@ class ResizableBorder extends StatefulWidget {
       required this.onDragStart,
       required this.onDragUpdate,
       required this.mouseCursorOverrider,
-      required this.themeSettings,
       required this.zoom,
       required this.oppositeSize})
       : super(key: key);
@@ -45,7 +44,8 @@ class _ResizableBorderState extends State<ResizableBorder> {
               child: RotatedBox(
                 quarterTurns: 3,
                 child: Text('${(widget.oppositeSize / widget.zoom).round()} px',
-                    style: widget.themeSettings.widgetTestSessionAreaTheme
+                    style: ManualWidgetTesterTheme.of(context)
+                        .widgetTestSessionAreaTheme
                         .widgetSizeTextStyle),
               ),
             ),
@@ -81,8 +81,9 @@ class _ResizableBorderState extends State<ResizableBorder> {
           width: 6.0,
           child: SizedBox.expand(
             child: DottedLine(
-              color: widget
-                  .themeSettings.widgetTestSessionAreaTheme.dottedLineColor,
+              color: ManualWidgetTesterTheme.of(context)
+                  .widgetTestSessionAreaTheme
+                  .dottedLineColor,
             ),
           ),
         ),

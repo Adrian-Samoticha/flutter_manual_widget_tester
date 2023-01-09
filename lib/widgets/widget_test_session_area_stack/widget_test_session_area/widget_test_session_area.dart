@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_generic_settings.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 
@@ -13,13 +13,11 @@ import 'zoom_controls.dart';
 
 class ManualWidgetTesterWidgetTestSessionArea extends StatefulWidget {
   final MouseCursorOverrider mouseCursorOverrider;
-  final ManualWidgetTesterThemeSettings themeSettings;
   final WidgetTestSession widgetTestSession;
 
   const ManualWidgetTesterWidgetTestSessionArea(
       {Key? key,
       required this.mouseCursorOverrider,
-      required this.themeSettings,
       required this.widgetTestSession})
       : super(key: key);
 
@@ -77,13 +75,14 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
 
     return SizedBox.expand(
       child: Padding(
-        padding: EdgeInsets.all(widget
-            .themeSettings.zoomControlsTheme.zoomControlsDistanceToBorder),
+        padding: EdgeInsets.all(ManualWidgetTesterTheme.of(context)
+            .zoomControlsTheme
+            .zoomControlsDistanceToBorder),
         child: Align(
-          alignment:
-              widget.themeSettings.zoomControlsTheme.zoomControlsAlignment,
+          alignment: ManualWidgetTesterTheme.of(context)
+              .zoomControlsTheme
+              .zoomControlsAlignment,
           child: ManualWidgetTesterZoomControls(
-            themeSettings: widget.themeSettings,
             minZoom: minZoom,
             maxZoom: maxZoom,
             onZoomInButtonPressed: () => setState(() {
@@ -131,8 +130,10 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
     final maxSizeMinusHandleSize = maxSize -
         2 *
             (8.0 +
-                (widget.themeSettings.widgetTestSessionAreaTheme
-                        .widgetSizeTextStyle.fontSize ??
+                (ManualWidgetTesterTheme.of(context)
+                        .widgetTestSessionAreaTheme
+                        .widgetSizeTextStyle
+                        .fontSize ??
                     DefaultTextStyleProvider.defaultTextStyle.fontSize!));
 
     if (minSize > maxSizeMinusHandleSize) {
@@ -154,7 +155,6 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
           _draggedWidth += delta;
         }),
         mouseCursorOverrider: widget.mouseCursorOverrider,
-        themeSettings: widget.themeSettings,
         zoom: _zoom,
       ),
       ResizableBorder(
@@ -166,7 +166,6 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
           _draggedHeight += delta;
         }),
         mouseCursorOverrider: widget.mouseCursorOverrider,
-        themeSettings: widget.themeSettings,
         zoom: _zoom,
       ),
       ResizableCorners(

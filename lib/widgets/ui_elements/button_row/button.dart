@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 import 'button_info.dart';
 
@@ -7,7 +7,6 @@ class ManualWidgetTesterButton extends StatefulWidget {
   final ManualWidgetTesterButtonInfo button;
   final List<ManualWidgetTesterButtonInfo> buttons;
   final int index;
-  final ManualWidgetTesterThemeSettings themeSettings;
   final bool disableRoundedCornersOnLeftSide;
   final bool disableRoundedCornersOnRightSide;
 
@@ -16,7 +15,6 @@ class ManualWidgetTesterButton extends StatefulWidget {
       required this.button,
       required this.buttons,
       required this.index,
-      required this.themeSettings,
       required this.disableRoundedCornersOnLeftSide,
       required this.disableRoundedCornersOnRightSide});
 
@@ -89,7 +87,9 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
         _isPressed
             ? Container(
                 decoration: BoxDecoration(
-                  color: widget.themeSettings.buttonTheme.buttonPressedTint,
+                  color: ManualWidgetTesterTheme.of(context)
+                      .buttonTheme
+                      .buttonPressedTint,
                   borderRadius: _generateBorderRadius(
                     roundLeftCorners: widget.index == 0 &&
                         !widget.disableRoundedCornersOnLeftSide,
@@ -104,7 +104,9 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
                 opacity: _isBeingHovered ? 1.0 : 0.0,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: widget.themeSettings.buttonTheme.buttonHoveredTint,
+                    color: ManualWidgetTesterTheme.of(context)
+                        .buttonTheme
+                        .buttonHoveredTint,
                     borderRadius: _generateBorderRadius(
                       roundLeftCorners: widget.index == 0 &&
                           !widget.disableRoundedCornersOnLeftSide,
@@ -126,7 +128,9 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
           ),
           child: Transform.translate(
             offset: _isPressed
-                ? widget.themeSettings.buttonTheme.buttonPressedOffset
+                ? ManualWidgetTesterTheme.of(context)
+                    .buttonTheme
+                    .buttonPressedOffset
                 : Offset.zero,
             child: widget.button.child,
           ),
@@ -137,10 +141,12 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Container(
-                    width:
-                        widget.themeSettings.buttonTheme.buttonSeparatorWidth,
-                    color:
-                        widget.themeSettings.buttonTheme.buttonSeparatorColor,
+                    width: ManualWidgetTesterTheme.of(context)
+                        .buttonTheme
+                        .buttonSeparatorWidth,
+                    color: ManualWidgetTesterTheme.of(context)
+                        .buttonTheme
+                        .buttonSeparatorColor,
                   ),
                 ),
               ]
@@ -154,9 +160,13 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
       required bool isDisabled}) {
     if (isDisabled) {
       return IconTheme(
-        data: widget.themeSettings.buttonTheme.disabledButtonIconTheme,
+        data: ManualWidgetTesterTheme.of(context)
+            .buttonTheme
+            .disabledButtonIconTheme,
         child: DefaultTextStyle(
-          style: widget.themeSettings.buttonTheme.disabledButtonTextStyle,
+          style: ManualWidgetTesterTheme.of(context)
+              .buttonTheme
+              .disabledButtonTextStyle,
           softWrap: false,
           overflow: TextOverflow.fade,
           child: Container(
@@ -168,9 +178,13 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
 
     if (isPressed) {
       return IconTheme(
-        data: widget.themeSettings.buttonTheme.pressedButtonIconTheme,
+        data: ManualWidgetTesterTheme.of(context)
+            .buttonTheme
+            .pressedButtonIconTheme,
         child: DefaultTextStyle(
-          style: widget.themeSettings.buttonTheme.pressedButtonTextStyle,
+          style: ManualWidgetTesterTheme.of(context)
+              .buttonTheme
+              .pressedButtonTextStyle,
           softWrap: false,
           overflow: TextOverflow.fade,
           child: Container(
@@ -181,9 +195,9 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
     }
 
     return IconTheme(
-      data: widget.themeSettings.buttonTheme.buttonIconTheme,
+      data: ManualWidgetTesterTheme.of(context).buttonTheme.buttonIconTheme,
       child: DefaultTextStyle(
-        style: widget.themeSettings.buttonTheme.buttonTextStyle,
+        style: ManualWidgetTesterTheme.of(context).buttonTheme.buttonTextStyle,
         softWrap: false,
         overflow: TextOverflow.fade,
         child: Container(
@@ -197,16 +211,16 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
       {required bool roundLeftCorners, required bool roundRightCorners}) {
     return BorderRadius.only(
       topLeft: roundLeftCorners
-          ? widget.themeSettings.buttonTheme.buttonBorderRadius
+          ? ManualWidgetTesterTheme.of(context).buttonTheme.buttonBorderRadius
           : Radius.zero,
       bottomLeft: roundLeftCorners
-          ? widget.themeSettings.buttonTheme.buttonBorderRadius
+          ? ManualWidgetTesterTheme.of(context).buttonTheme.buttonBorderRadius
           : Radius.zero,
       topRight: roundRightCorners
-          ? widget.themeSettings.buttonTheme.buttonBorderRadius
+          ? ManualWidgetTesterTheme.of(context).buttonTheme.buttonBorderRadius
           : Radius.zero,
       bottomRight: roundRightCorners
-          ? widget.themeSettings.buttonTheme.buttonBorderRadius
+          ? ManualWidgetTesterTheme.of(context).buttonTheme.buttonBorderRadius
           : Radius.zero,
     );
   }
@@ -222,7 +236,7 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
     );
 
     return BoxDecoration(
-      border: widget.themeSettings.buttonTheme.buttonBoxBorder,
+      border: ManualWidgetTesterTheme.of(context).buttonTheme.buttonBoxBorder,
       borderRadius: _generateBorderRadius(
           roundLeftCorners: roundLeftCorners,
           roundRightCorners: roundRightCorners),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 import 'button.dart';
 import 'button_info.dart';
@@ -10,13 +10,11 @@ class ManualWidgetTesterButtonRow extends StatelessWidget {
   const ManualWidgetTesterButtonRow(
       {Key? key,
       required this.buttons,
-      required this.themeSettings,
       this.disableRoundedCornersOnLeftSide = false,
       this.disableRoundedCornersOnRightSide = false})
       : super(key: key);
 
   final List<ManualWidgetTesterButtonInfo> buttons;
-  final ManualWidgetTesterThemeSettings themeSettings;
   final bool disableRoundedCornersOnLeftSide;
   final bool disableRoundedCornersOnRightSide;
 
@@ -24,22 +22,30 @@ class ManualWidgetTesterButtonRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: themeSettings.buttonTheme.buttonColor,
+        color: ManualWidgetTesterTheme.of(context).buttonTheme.buttonColor,
         borderRadius: BorderRadius.only(
           topLeft: disableRoundedCornersOnLeftSide
               ? Radius.zero
-              : themeSettings.buttonTheme.buttonBorderRadius,
+              : ManualWidgetTesterTheme.of(context)
+                  .buttonTheme
+                  .buttonBorderRadius,
           bottomLeft: disableRoundedCornersOnLeftSide
               ? Radius.zero
-              : themeSettings.buttonTheme.buttonBorderRadius,
+              : ManualWidgetTesterTheme.of(context)
+                  .buttonTheme
+                  .buttonBorderRadius,
           topRight: disableRoundedCornersOnRightSide
               ? Radius.zero
-              : themeSettings.buttonTheme.buttonBorderRadius,
+              : ManualWidgetTesterTheme.of(context)
+                  .buttonTheme
+                  .buttonBorderRadius,
           bottomRight: disableRoundedCornersOnRightSide
               ? Radius.zero
-              : themeSettings.buttonTheme.buttonBorderRadius,
+              : ManualWidgetTesterTheme.of(context)
+                  .buttonTheme
+                  .buttonBorderRadius,
         ),
-        boxShadow: themeSettings.buttonTheme.buttonShadow,
+        boxShadow: ManualWidgetTesterTheme.of(context).buttonTheme.buttonShadow,
       ),
       child: _buildButtons(),
     );
@@ -55,7 +61,6 @@ class ManualWidgetTesterButtonRow extends StatelessWidget {
                 button: button,
                 buttons: buttons,
                 index: index,
-                themeSettings: themeSettings,
                 disableRoundedCornersOnLeftSide:
                     disableRoundedCornersOnLeftSide,
                 disableRoundedCornersOnRightSide:

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row/button_row.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 
 class ManualWidgetTesterZoomControls extends StatelessWidget {
-  final ManualWidgetTesterThemeSettings themeSettings;
   final double zoom;
   final void Function() onZoomOutButtonPressed;
   final void Function() onZoomInButtonPressed;
@@ -14,7 +13,6 @@ class ManualWidgetTesterZoomControls extends StatelessWidget {
 
   const ManualWidgetTesterZoomControls(
       {Key? key,
-      required this.themeSettings,
       required this.zoom,
       required this.onZoomOutButtonPressed,
       required this.onZoomInButtonPressed,
@@ -24,22 +22,31 @@ class ManualWidgetTesterZoomControls extends StatelessWidget {
       : super(key: key);
 
   @override
-  Widget build(Object context) {
+  Widget build(BuildContext context) {
     return Container(
-      width: themeSettings.zoomControlsTheme.zoomControlsWidth,
-      height: themeSettings.zoomControlsTheme.zoomControlsHeight,
+      width: ManualWidgetTesterTheme.of(context)
+          .zoomControlsTheme
+          .zoomControlsWidth,
+      height: ManualWidgetTesterTheme.of(context)
+          .zoomControlsTheme
+          .zoomControlsHeight,
       decoration: BoxDecoration(
-        color: themeSettings.generalTheme.sidebarColor,
-        borderRadius: themeSettings.zoomControlsTheme.zoomControlsBorderRadius,
-        boxShadow: themeSettings.zoomControlsTheme.zoomControlsShadow,
+        color: ManualWidgetTesterTheme.of(context).generalTheme.sidebarColor,
+        borderRadius: ManualWidgetTesterTheme.of(context)
+            .zoomControlsTheme
+            .zoomControlsBorderRadius,
+        boxShadow: ManualWidgetTesterTheme.of(context)
+            .zoomControlsTheme
+            .zoomControlsShadow,
       ),
       child: Padding(
-        padding: themeSettings.zoomControlsTheme.zoomControlsPadding,
+        padding: ManualWidgetTesterTheme.of(context)
+            .zoomControlsTheme
+            .zoomControlsPadding,
         child: Row(
           children: [
             Expanded(
               child: ManualWidgetTesterTextField(
-                themeSettings: themeSettings,
                 initialValue: '${(zoom * 100).round()}',
                 disableRoundedCornersOnRightSide: true,
                 onSubmitted: (text) {
@@ -50,26 +57,30 @@ class ManualWidgetTesterZoomControls extends StatelessWidget {
               ),
             ),
             SizedBox(
-                width: themeSettings
-                    .generalTheme.spaceBetweenTextBoxesAndButtonRows),
+                width: ManualWidgetTesterTheme.of(context)
+                    .generalTheme
+                    .spaceBetweenTextBoxesAndButtonRows),
             SizedBox(
-              width: themeSettings.zoomControlsTheme.zoomControlsButtonRowWidth,
+              width: ManualWidgetTesterTheme.of(context)
+                  .zoomControlsTheme
+                  .zoomControlsButtonRowWidth,
               child: ManualWidgetTesterButtonRow(
-                themeSettings: themeSettings,
                 disableRoundedCornersOnLeftSide: true,
                 buttons: [
                   ManualWidgetTesterButtonInfo(
                     onButtonDown:
                         zoom > minZoom ? onZoomOutButtonPressed : null,
                     onButtonPressed: null,
-                    child:
-                        themeSettings.zoomControlsTheme.zoomControlsZoomOutIcon,
+                    child: ManualWidgetTesterTheme.of(context)
+                        .zoomControlsTheme
+                        .zoomControlsZoomOutIcon,
                   ),
                   ManualWidgetTesterButtonInfo(
                     onButtonDown: zoom < maxZoom ? onZoomInButtonPressed : null,
                     onButtonPressed: null,
-                    child:
-                        themeSettings.zoomControlsTheme.zoomControlsZoomInIcon,
+                    child: ManualWidgetTesterTheme.of(context)
+                        .zoomControlsTheme
+                        .zoomControlsZoomInIcon,
                   ),
                 ],
               ),

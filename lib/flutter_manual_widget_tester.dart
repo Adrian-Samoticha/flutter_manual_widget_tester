@@ -8,6 +8,7 @@ import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/config/config.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 import 'package:flutter_manual_widget_tester/util/list_has_duplicates.dart';
@@ -53,8 +54,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
 
   void _installDefaultEditorBuilders() {
     EditorBuilderInstaller.installDefaultEditorBuilders(
-        typeEditorBuilder: _typeEditorBuilder,
-        themeSettings: widget.themeSettings);
+        typeEditorBuilder: _typeEditorBuilder);
   }
 
   @override
@@ -96,23 +96,25 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
           : ThemeData.light(),
       child: DefaultTextStyle(
         style: DefaultTextStyleProvider.defaultTextStyle,
-        child: Config(
-          data: _configData,
-          child: MouseRegion(
-            cursor: _mouseCursorOverrider.currentMouseCursor,
-            child: Stack(
-              children: [
-                ManualWidgetTesterBackground(
-                  color: widget.themeSettings.generalTheme.backgroundColor,
-                ),
-                _ManualWidgetTesterBody(
-                  themeSettings: widget.themeSettings,
-                  mouseCursorOverrider: _mouseCursorOverrider,
-                  widgetTestSessionHandler: _widgetTestSessionHandler,
-                  typeEditorBuilder: _typeEditorBuilder,
-                  builders: widget.builders,
-                ),
-              ],
+        child: ManualWidgetTesterTheme(
+          themeSettings: widget.themeSettings,
+          child: Config(
+            data: _configData,
+            child: MouseRegion(
+              cursor: _mouseCursorOverrider.currentMouseCursor,
+              child: Stack(
+                children: [
+                  ManualWidgetTesterBackground(
+                    color: widget.themeSettings.generalTheme.backgroundColor,
+                  ),
+                  _ManualWidgetTesterBody(
+                    mouseCursorOverrider: _mouseCursorOverrider,
+                    widgetTestSessionHandler: _widgetTestSessionHandler,
+                    typeEditorBuilder: _typeEditorBuilder,
+                    builders: widget.builders,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -124,14 +126,12 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
 class _ManualWidgetTesterBody extends StatelessWidget {
   const _ManualWidgetTesterBody({
     Key? key,
-    required this.themeSettings,
     required this.mouseCursorOverrider,
     required this.widgetTestSessionHandler,
     required this.typeEditorBuilder,
     required this.builders,
   }) : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
   final MouseCursorOverrider mouseCursorOverrider;
   final WidgetTestSessionHandler widgetTestSessionHandler;
   final TypeEditorBuilder typeEditorBuilder;
@@ -145,7 +145,6 @@ class _ManualWidgetTesterBody extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ManualWidgetTesterSidebar(
-              themeSettings: themeSettings,
               maxWidth: constraints.maxWidth - 128.0,
               mouseCursorOverrider: mouseCursorOverrider,
               widgetTestSessionHandler: widgetTestSessionHandler,
@@ -155,14 +154,12 @@ class _ManualWidgetTesterBody extends StatelessWidget {
               child: Column(
                 children: [
                   ManualWidgetTesterAppBar(
-                    themeSettings: themeSettings,
                     widgetTestSessionHandler: widgetTestSessionHandler,
                     builders: builders,
                   ),
                   Expanded(
                     child: ManualWidgetTesterWidgetTestSessionAreaStack(
                       mouseCursorOverrider: mouseCursorOverrider,
-                      themeSettings: themeSettings,
                       widgetTestSessionHandler: widgetTestSessionHandler,
                     ),
                   ),
