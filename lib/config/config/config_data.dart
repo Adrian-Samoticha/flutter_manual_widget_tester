@@ -1,4 +1,6 @@
-class ConfigData {
+import 'package:equatable/equatable.dart';
+
+class ConfigData extends Equatable {
   /// Creates a [ConfigData].
   ///
   /// The [doubleEditorInfiniteScrollViewRange] is the range of the double
@@ -17,14 +19,8 @@ class ConfigData {
   final double doubleEditorInfiniteScrollViewScrollSpeedFactor;
 
   @override
-  bool operator ==(other) =>
-      other is ConfigData &&
-      doubleEditorInfiniteScrollViewRange ==
-          other.doubleEditorInfiniteScrollViewRange &&
-      doubleEditorInfiniteScrollViewScrollSpeedFactor ==
-          other.doubleEditorInfiniteScrollViewScrollSpeedFactor;
-
-  @override
-  int get hashCode => Object.hash(doubleEditorInfiniteScrollViewRange,
-      doubleEditorInfiniteScrollViewScrollSpeedFactor);
+  List<Object?> get props => [
+        doubleEditorInfiniteScrollViewRange,
+        doubleEditorInfiniteScrollViewScrollSpeedFactor,
+      ];
 }
