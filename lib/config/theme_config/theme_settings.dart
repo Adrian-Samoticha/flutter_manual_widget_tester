@@ -12,6 +12,7 @@ import 'dialog_theme.dart';
 import 'double_editor_theme.dart';
 import 'drag_handle_theme.dart';
 import 'edit_color_button_theme.dart';
+import 'edit_color_dialog_theme.dart';
 import 'foldable_region_theme.dart';
 import 'general_theme.dart';
 import 'icon_theme.dart';
@@ -108,6 +109,9 @@ class ManualWidgetTesterThemeSettings extends Equatable {
   /// other themes.
   final ManualWidgetTesterGeneralTheme generalTheme;
 
+  /// The theme of the “edit color” dialog.
+  final ManualWidgetTesterEditColorDialogTheme editColorDialogTheme;
+
   const ManualWidgetTesterThemeSettings({
     this.tabTheme = const ManualWidgetTesterTabTheme(),
     this.buttonTheme = const ManualWidgetTesterButtonTheme(),
@@ -139,6 +143,7 @@ class ManualWidgetTesterThemeSettings extends Equatable {
     this.widgetTestSessionAreaTheme =
         const ManualWidgetTesterWidgetTestSessionAreaTheme(),
     this.generalTheme = const ManualWidgetTesterGeneralTheme(),
+    this.editColorDialogTheme = const ManualWidgetTesterEditColorDialogTheme(),
   });
 
   @override
@@ -167,5 +172,6 @@ class ManualWidgetTesterThemeSettings extends Equatable {
         customSettingsTheme,
         widgetTestSessionAreaTheme,
         generalTheme,
+        editColorDialogTheme,
       ];
 }
