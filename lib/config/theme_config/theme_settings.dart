@@ -116,7 +116,7 @@ class ManualWidgetTesterThemeSettings {
   /// The space between text boxes and connected button rows.
   final double spaceBetweenTextBoxesAndButtonRows;
 
-  /// The default width of the number edit button row.
+  /// The default width of the number editor button row.
   ///
   /// The width gets reduced if the sidebar is too narrow.
   final double defaultNumberEditorButtonRowWidth;
