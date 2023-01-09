@@ -18,7 +18,7 @@ class ImageList extends StatelessWidget {
             (index) => Padding(
               padding: EdgeInsets.all(imagePadding),
               child: Image.network(
-                  'https://picsum.photos/seed/foobar$index/1280/960'),
+                  'https://picsum.photos/seed/flutter$index/1280/960'),
             ),
           )
         ],
