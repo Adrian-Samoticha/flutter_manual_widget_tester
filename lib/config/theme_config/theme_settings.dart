@@ -21,6 +21,7 @@ import 'string_editor_theme.dart';
 import 'tab_theme.dart';
 import 'test_session_menu_item_theme.dart';
 import 'text_field_theme.dart';
+import 'widget_test_session_area_theme.dart';
 import 'zoom_controls_theme.dart';
 
 class ManualWidgetTesterThemeSettings {
@@ -97,6 +98,8 @@ class ManualWidgetTesterThemeSettings {
   /// The custom settings theme.
   final ManualWidgetTesterCustomSettingsTheme customSettingsTheme;
 
+  final ManualWidgetTesterWidgetTestSessionAreaTheme widgetTestSessionAreaTheme;
+
   /// Whether this is a dark theme.
   final bool isDark;
 
@@ -109,12 +112,6 @@ class ManualWidgetTesterThemeSettings {
   /// The accent color, currently used only for the decoration of the focused
   /// tab.
   final Color accentColor;
-
-  /// The color of the dotted lines that show the tested widget's size.
-  final Color dottedLineColor;
-
-  /// The text style in which the tested widget's size is displayed.
-  final TextStyle widgetSizeTextStyle;
 
   /// The space between text boxes and connected button rows.
   final double spaceBetweenTextBoxesAndButtonRows;
@@ -156,15 +153,12 @@ class ManualWidgetTesterThemeSettings {
         const ManualWidgetTesterCreateTestSessionButton(),
     this.iconTheme = const ManualWidgetTesterIconTheme(),
     this.customSettingsTheme = const ManualWidgetTesterCustomSettingsTheme(),
+    this.widgetTestSessionAreaTheme =
+        const ManualWidgetTesterWidgetTestSessionAreaTheme(),
     this.isDark = true,
     this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
     this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
     this.accentColor = const Color.fromARGB(255, 40, 138, 251),
-    this.dottedLineColor = const Color.fromRGBO(255, 255, 255, 0.5),
-    this.widgetSizeTextStyle = const TextStyle(
-      color: Color.fromRGBO(255, 255, 255, 0.5),
-      fontSize: 10.0,
-    ),
     this.spaceBetweenTextBoxesAndButtonRows = 0.5,
     this.defaultNumberEditorButtonRowWidth = 64.0,
     this.scrollIntoViewDuration = const Duration(milliseconds: 250),

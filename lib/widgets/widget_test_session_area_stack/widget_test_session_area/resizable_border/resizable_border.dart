@@ -45,7 +45,8 @@ class _ResizableBorderState extends State<ResizableBorder> {
               child: RotatedBox(
                 quarterTurns: 3,
                 child: Text('${(widget.oppositeSize / widget.zoom).round()} px',
-                    style: widget.themeSettings.widgetSizeTextStyle),
+                    style: widget.themeSettings.widgetTestSessionAreaTheme
+                        .widgetSizeTextStyle),
               ),
             ),
           ),
@@ -80,7 +81,8 @@ class _ResizableBorderState extends State<ResizableBorder> {
           width: 6.0,
           child: SizedBox.expand(
             child: DottedLine(
-              color: widget.themeSettings.dottedLineColor,
+              color: widget
+                  .themeSettings.widgetTestSessionAreaTheme.dottedLineColor,
             ),
           ),
         ),

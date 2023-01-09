@@ -131,7 +131,8 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
     final maxSizeMinusHandleSize = maxSize -
         2 *
             (8.0 +
-                (widget.themeSettings.widgetSizeTextStyle.fontSize ??
+                (widget.themeSettings.widgetTestSessionAreaTheme
+                        .widgetSizeTextStyle.fontSize ??
                     DefaultTextStyleProvider.defaultTextStyle.fontSize!));
 
     if (minSize > maxSizeMinusHandleSize) {
