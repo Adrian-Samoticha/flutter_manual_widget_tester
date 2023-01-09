@@ -60,7 +60,7 @@ class ManualWidgetTesterDialogTheme extends Equatable {
     this.dialogOpenCloseAnimationCurve = Curves.easeInOutSine,
     this.dialogOpenCloseAnimationOffset = const Offset(0.0, -16.0),
     this.dialogAlignment = Alignment.center,
-    this.dialogBlurRadius = 8.0,
+    this.dialogBlurRadius = 16.0,
     this.dialogBorderRadius = const BorderRadius.all(Radius.circular(5.0)),
     this.dialogBorderColor = const Color.fromRGBO(255, 255, 255, 0.025),
     this.dialogShadow = const [
