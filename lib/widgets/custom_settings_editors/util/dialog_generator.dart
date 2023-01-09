@@ -136,16 +136,6 @@ class ManualWidgetTesterDialogGenerator {
     return Container(
       width: dialogWidth,
       decoration: BoxDecoration(
-        borderRadius:
-            ManualWidgetTesterTheme.of(context).dialogTheme.dialogBorderRadius,
-        color: renderedDialogBackgroundColor,
-        border: Border.fromBorderSide(
-          BorderSide(
-              color: ManualWidgetTesterTheme.of(context)
-                  .dialogTheme
-                  .dialogBorderColor
-                  .multiplyOpacity(curvedAnimationValue)),
-        ),
         boxShadow: ManualWidgetTesterTheme.of(context)
             .dialogTheme
             .dialogShadow
@@ -172,9 +162,24 @@ class ManualWidgetTesterDialogGenerator {
                       .dialogTheme
                       .dialogBlurRadius)
               : ImageFilter.blur(),
-          child: Opacity(
-            opacity: curvedAnimationValue,
-            child: widget,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: ManualWidgetTesterTheme.of(context)
+                  .dialogTheme
+                  .dialogBorderRadius,
+              color: renderedDialogBackgroundColor,
+              border: Border.fromBorderSide(
+                BorderSide(
+                    color: ManualWidgetTesterTheme.of(context)
+                        .dialogTheme
+                        .dialogBorderColor
+                        .multiplyOpacity(curvedAnimationValue)),
+              ),
+            ),
+            child: Opacity(
+              opacity: curvedAnimationValue,
+              child: widget,
+            ),
           ),
         ),
       ),
