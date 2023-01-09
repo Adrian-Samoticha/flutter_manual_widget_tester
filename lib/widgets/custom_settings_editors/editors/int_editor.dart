@@ -45,7 +45,8 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
                     child: _buildTextField(),
                   ),
                   SizedBox(
-                      width: themeSettings.spaceBetweenTextBoxesAndButtonRows),
+                      width: themeSettings
+                          .generalTheme.spaceBetweenTextBoxesAndButtonRows),
                   _buildButtonRow(constraints),
                 ],
               );
@@ -70,7 +71,7 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
 
   SizedBox _buildButtonRow(BoxConstraints constraints) {
     return SizedBox(
-      width: min(themeSettings.defaultNumberEditorButtonRowWidth,
+      width: min(themeSettings.generalTheme.defaultNumberEditorButtonRowWidth,
           constraints.maxWidth * 0.5),
       child: ManualWidgetTesterButtonRow(
         themeSettings: themeSettings,

@@ -62,7 +62,7 @@ class _ManualWidgetTesterAppBarState extends State<ManualWidgetTesterAppBar> {
   Widget build(BuildContext context) {
     return Container(
       height: widget.themeSettings.appBarTheme.appBarHeight,
-      color: widget.themeSettings.sidebarColor,
+      color: widget.themeSettings.generalTheme.sidebarColor,
       child: Stack(
         children: [
           AnimatedOpacity(

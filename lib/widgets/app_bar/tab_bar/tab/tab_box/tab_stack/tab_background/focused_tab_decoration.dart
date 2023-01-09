@@ -20,7 +20,7 @@ class FocusedTabDecoration extends StatelessWidget {
           bottomRight: Radius.circular(
               themeSettings.tabTheme.focusedTabAccentColorDecorationWidth),
         ),
-        color: themeSettings.accentColor,
+        color: themeSettings.generalTheme.accentColor,
       ),
     );
   }

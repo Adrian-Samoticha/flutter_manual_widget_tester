@@ -80,7 +80,7 @@ class _ManualWidgetTesterSidebarState extends State<ManualWidgetTesterSidebar> {
 
     return Container(
       width: displayWidth,
-      color: widget.themeSettings.sidebarColor,
+      color: widget.themeSettings.generalTheme.sidebarColor,
       child: Stack(
         children: [
           SingleChildScrollView(

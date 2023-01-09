@@ -68,7 +68,9 @@ class ManualWidgetTesterDialogGenerator {
       pageBuilder: (BuildContext context, Animation<double> animation,
           Animation<double> secondaryAnimation) {
         return Theme(
-          data: themeSettings.isDark ? ThemeData.dark() : ThemeData.light(),
+          data: themeSettings.generalTheme.isDark
+              ? ThemeData.dark()
+              : ThemeData.light(),
           child: DefaultTextStyle(
             style: DefaultTextStyleProvider.defaultTextStyle,
             child: Column(

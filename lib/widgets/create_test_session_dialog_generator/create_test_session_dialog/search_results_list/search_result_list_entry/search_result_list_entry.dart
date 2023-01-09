@@ -40,11 +40,11 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
     }
 
     Scrollable.ensureVisible(_globalKey.currentContext!,
-        duration: widget.themeSettings.scrollIntoViewDuration,
+        duration: widget.themeSettings.generalTheme.scrollIntoViewDuration,
         alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtStart);
 
     Scrollable.ensureVisible(_globalKey.currentContext!,
-        duration: widget.themeSettings.scrollIntoViewDuration,
+        duration: widget.themeSettings.generalTheme.scrollIntoViewDuration,
         alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd);
   }
 

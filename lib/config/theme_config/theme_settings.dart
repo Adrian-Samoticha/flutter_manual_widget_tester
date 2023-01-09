@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'app_bar_theme.dart';
 import 'bool_editor_theme.dart';
 import 'button_theme.dart';
@@ -13,6 +11,7 @@ import 'double_editor_theme.dart';
 import 'drag_handle_theme.dart';
 import 'edit_color_button_theme.dart';
 import 'foldable_region_theme.dart';
+import 'general_theme.dart';
 import 'icon_theme.dart';
 import 'no_custom_settings_message_theme.dart';
 import 'no_editor_message_theme.dart';
@@ -101,30 +100,11 @@ class ManualWidgetTesterThemeSettings {
   /// The widget test session area theme.
   final ManualWidgetTesterWidgetTestSessionAreaTheme widgetTestSessionAreaTheme;
 
-  /// Whether this is a dark theme.
-  final bool isDark;
-
-  /// The color of the manual widget tester's background.
-  final Color backgroundColor;
-
-  /// The color of the manual widget tester's sidebar.
-  final Color sidebarColor;
-
-  /// The accent color, currently used only for the decoration of the focused
-  /// tab.
-  final Color accentColor;
-
-  /// The space between text boxes and connected button rows.
-  final double spaceBetweenTextBoxesAndButtonRows;
-
-  /// The default width of the number editor button row.
+  /// The “general” theme.
   ///
-  /// The width gets reduced if the sidebar is too narrow.
-  final double defaultNumberEditorButtonRowWidth;
-
-  /// The duration of the scroll animation that plays when a widget is moved
-  /// into view.
-  final Duration scrollIntoViewDuration;
+  /// This theme contains miscellaneous properties that do not fit into the
+  /// other themes.
+  final ManualWidgetTesterGeneralTheme generalTheme;
 
   const ManualWidgetTesterThemeSettings({
     this.tabTheme = const ManualWidgetTesterTabTheme(),
@@ -156,12 +136,6 @@ class ManualWidgetTesterThemeSettings {
     this.customSettingsTheme = const ManualWidgetTesterCustomSettingsTheme(),
     this.widgetTestSessionAreaTheme =
         const ManualWidgetTesterWidgetTestSessionAreaTheme(),
-    this.isDark = true,
-    this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
-    this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
-    this.accentColor = const Color.fromARGB(255, 40, 138, 251),
-    this.spaceBetweenTextBoxesAndButtonRows = 0.5,
-    this.defaultNumberEditorButtonRowWidth = 64.0,
-    this.scrollIntoViewDuration = const Duration(milliseconds: 250),
+    this.generalTheme = const ManualWidgetTesterGeneralTheme(),
   });
 }

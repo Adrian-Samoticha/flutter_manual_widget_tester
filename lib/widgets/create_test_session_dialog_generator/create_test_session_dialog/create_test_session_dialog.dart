@@ -46,7 +46,9 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: widget.themeSettings.isDark ? ThemeData.dark() : ThemeData.light(),
+      data: widget.themeSettings.generalTheme.isDark
+          ? ThemeData.dark()
+          : ThemeData.light(),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.vertical(

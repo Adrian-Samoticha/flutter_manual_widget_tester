@@ -91,7 +91,9 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
     }
 
     return Theme(
-      data: widget.themeSettings.isDark ? ThemeData.dark() : ThemeData.light(),
+      data: widget.themeSettings.generalTheme.isDark
+          ? ThemeData.dark()
+          : ThemeData.light(),
       child: DefaultTextStyle(
         style: DefaultTextStyleProvider.defaultTextStyle,
         child: Config(
@@ -101,7 +103,7 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
             child: Stack(
               children: [
                 ManualWidgetTesterBackground(
-                  color: widget.themeSettings.backgroundColor,
+                  color: widget.themeSettings.generalTheme.backgroundColor,
                 ),
                 _ManualWidgetTesterBody(
                   themeSettings: widget.themeSettings,

@@ -29,7 +29,7 @@ class ManualWidgetTesterZoomControls extends StatelessWidget {
       width: themeSettings.zoomControlsTheme.zoomControlsWidth,
       height: themeSettings.zoomControlsTheme.zoomControlsHeight,
       decoration: BoxDecoration(
-        color: themeSettings.sidebarColor,
+        color: themeSettings.generalTheme.sidebarColor,
         borderRadius: themeSettings.zoomControlsTheme.zoomControlsBorderRadius,
         boxShadow: themeSettings.zoomControlsTheme.zoomControlsShadow,
       ),
@@ -49,7 +49,9 @@ class ManualWidgetTesterZoomControls extends StatelessWidget {
                 suffix: '%',
               ),
             ),
-            SizedBox(width: themeSettings.spaceBetweenTextBoxesAndButtonRows),
+            SizedBox(
+                width: themeSettings
+                    .generalTheme.spaceBetweenTextBoxesAndButtonRows),
             SizedBox(
               width: themeSettings.zoomControlsTheme.zoomControlsButtonRowWidth,
               child: ManualWidgetTesterButtonRow(
