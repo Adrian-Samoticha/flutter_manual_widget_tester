@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterWidgetTestSessionAreaTheme {
+class ManualWidgetTesterWidgetTestSessionAreaTheme extends Equatable {
   /// The color of the dotted lines that show the tested widget's size.
   final Color dottedLineColor;
 
@@ -14,4 +15,10 @@ class ManualWidgetTesterWidgetTestSessionAreaTheme {
       fontSize: 10.0,
     ),
   });
+
+  @override
+  List<Object?> get props => [
+        dottedLineColor,
+        widgetSizeTextStyle,
+      ];
 }
