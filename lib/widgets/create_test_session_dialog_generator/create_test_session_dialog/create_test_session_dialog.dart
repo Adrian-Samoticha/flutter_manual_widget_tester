@@ -49,21 +49,6 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
           : ThemeData.light(),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.vertical(
-            bottom: ManualWidgetTesterTheme.of(context)
-                .dialogTheme
-                .dialogBorderRadius
-                .bottomLeft,
-          ),
-          color: ManualWidgetTesterTheme.of(context)
-              .dialogTheme
-              .dialogBackgroundColor,
-          border: Border.fromBorderSide(
-            BorderSide(
-                color: ManualWidgetTesterTheme.of(context)
-                    .dialogTheme
-                    .dialogBorderColor),
-          ),
           boxShadow:
               ManualWidgetTesterTheme.of(context).dialogTheme.dialogShadow,
         ),
@@ -83,6 +68,23 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
                     .dialogTheme
                     .dialogBlurRadius),
             child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.vertical(
+                  bottom: ManualWidgetTesterTheme.of(context)
+                      .dialogTheme
+                      .dialogBorderRadius
+                      .bottomLeft,
+                ),
+                color: ManualWidgetTesterTheme.of(context)
+                    .dialogTheme
+                    .dialogBackgroundColor,
+                border: Border.fromBorderSide(
+                  BorderSide(
+                      color: ManualWidgetTesterTheme.of(context)
+                          .dialogTheme
+                          .dialogBorderColor),
+                ),
+              ),
               width: ManualWidgetTesterTheme.of(context)
                   .createTestSessionDialogTheme
                   .createTestSessionDialogWidth,
