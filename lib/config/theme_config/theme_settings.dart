@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 import 'app_bar_theme.dart';
 import 'bool_editor_theme.dart';
 import 'button_theme.dart';
@@ -23,7 +25,7 @@ import 'text_field_theme.dart';
 import 'widget_test_session_area_theme.dart';
 import 'zoom_controls_theme.dart';
 
-class ManualWidgetTesterThemeSettings {
+class ManualWidgetTesterThemeSettings extends Equatable {
   /// The tab theme.
   final ManualWidgetTesterTabTheme tabTheme;
 
@@ -138,4 +140,32 @@ class ManualWidgetTesterThemeSettings {
         const ManualWidgetTesterWidgetTestSessionAreaTheme(),
     this.generalTheme = const ManualWidgetTesterGeneralTheme(),
   });
+
+  @override
+  List<Object?> get props => [
+        tabTheme,
+        buttonTheme,
+        textFieldTheme,
+        zoomControlsTheme,
+        foldableRegionTheme,
+        createTestSessionDialogTheme,
+        testSessionMenuItemTheme,
+        editColorButtonTheme,
+        dialogTheme,
+        doubleEditorTheme,
+        boolEditorTheme,
+        customSettingsHeadingTheme,
+        dragHandleTheme,
+        noCustomSettingsMessageTheme,
+        radioButtonTheme,
+        closeButtonTheme,
+        noEditorMessageTheme,
+        appBarTheme,
+        stringEditorTheme,
+        createTestSessionButtonTheme,
+        iconTheme,
+        customSettingsTheme,
+        widgetTestSessionAreaTheme,
+        generalTheme,
+      ];
 }
