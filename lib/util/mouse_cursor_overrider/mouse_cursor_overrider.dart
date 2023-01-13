@@ -29,6 +29,17 @@ class MouseCursorOverrider extends StatefulWidget {
   /// MouseCursorOverrider.of(context)
   ///           .cancelOverride(_mouseCursorOverrideId);
   /// ```
+  ///
+  /// **Warning:** [MouseRegion]s will still override the mouse cursor while
+  /// being hovered over, even when a mouse cursor override is active. For this
+  /// reason, it is recommended to set their [cursor] to [MouseCursor.defer]
+  /// while a mouse cursor override is active. You can check if an override is
+  /// currently active using the
+  /// [MouseCursorOverriderController.isOverrideActive] method:
+  ///
+  /// ```dart
+  /// MouseCursorOverrider.of(context).isOverrideActive
+  /// ```
   const MouseCursorOverrider({super.key, this.child});
 
   final Widget? child;
