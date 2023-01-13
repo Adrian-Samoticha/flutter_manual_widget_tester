@@ -1,7 +1,5 @@
 library flutter_manual_widget_tester;
 
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/editor_builder_installer.dart';
 import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
@@ -12,7 +10,7 @@ import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 import 'package:flutter_manual_widget_tester/util/list_has_duplicates.dart';
-import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
+import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider/mouse_cursor_overrider.dart';
 import 'package:flutter_manual_widget_tester/widgets/app_bar/app_bar.dart';
 import 'package:flutter_manual_widget_tester/widgets/background.dart';
 import 'package:flutter_manual_widget_tester/widgets/sidebar/sidebar.dart';
@@ -40,10 +38,7 @@ class ManualWidgetTester extends StatefulWidget {
 }
 
 class _ManualWidgetTesterState extends State<ManualWidgetTester> {
-  final _mouseCursorOverrider = MouseCursorOverrider();
   final _widgetTestSessionHandler = WidgetTestSessionHandler();
-  late final StreamSubscription<MouseCursorOverrider>
-      _onMouseCursorOverrideChangedStreamSubscription;
   final TypeEditorBuilder _typeEditorBuilder = TypeEditorBuilder();
 
   ConfigData get _configData => ConfigData(
@@ -59,11 +54,6 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
 
   @override
   void initState() {
-    _onMouseCursorOverrideChangedStreamSubscription =
-        _mouseCursorOverrider.registerOnMouseCursorOverrideChanged((_) {
-      setState(() {});
-    });
-
     _installDefaultEditorBuilders();
 
     super.initState();
@@ -71,8 +61,6 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
 
   @override
   void dispose() {
-    _onMouseCursorOverrideChangedStreamSubscription.cancel();
-
     super.dispose();
   }
 
@@ -100,15 +88,13 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
           themeSettings: widget.themeSettings,
           child: Config(
             data: _configData,
-            child: MouseRegion(
-              cursor: _mouseCursorOverrider.currentMouseCursor,
+            child: MouseCursorOverrider(
               child: Stack(
                 children: [
                   ManualWidgetTesterBackground(
                     color: widget.themeSettings.generalTheme.backgroundColor,
                   ),
                   _ManualWidgetTesterBody(
-                    mouseCursorOverrider: _mouseCursorOverrider,
                     widgetTestSessionHandler: _widgetTestSessionHandler,
                     typeEditorBuilder: _typeEditorBuilder,
                     builders: widget.builders,
@@ -126,13 +112,11 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
 class _ManualWidgetTesterBody extends StatelessWidget {
   const _ManualWidgetTesterBody({
     Key? key,
-    required this.mouseCursorOverrider,
     required this.widgetTestSessionHandler,
     required this.typeEditorBuilder,
     required this.builders,
   }) : super(key: key);
 
-  final MouseCursorOverrider mouseCursorOverrider;
   final WidgetTestSessionHandler widgetTestSessionHandler;
   final TypeEditorBuilder typeEditorBuilder;
   final List<WidgetTestBuilder> builders;
@@ -146,7 +130,6 @@ class _ManualWidgetTesterBody extends StatelessWidget {
           children: [
             ManualWidgetTesterSidebar(
               maxWidth: constraints.maxWidth - 128.0,
-              mouseCursorOverrider: mouseCursorOverrider,
               widgetTestSessionHandler: widgetTestSessionHandler,
               typeEditorBuilder: typeEditorBuilder,
             ),
@@ -159,7 +142,6 @@ class _ManualWidgetTesterBody extends StatelessWidget {
                   ),
                   Expanded(
                     child: ManualWidgetTesterWidgetTestSessionAreaStack(
-                      mouseCursorOverrider: mouseCursorOverrider,
                       widgetTestSessionHandler: widgetTestSessionHandler,
                     ),
                   ),

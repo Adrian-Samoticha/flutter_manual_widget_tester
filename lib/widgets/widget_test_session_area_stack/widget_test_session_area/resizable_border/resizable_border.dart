@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
-import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
+import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider/mouse_cursor_overrider.dart';
 
 import 'dotted_line.dart';
 
@@ -11,7 +11,6 @@ class ResizableBorder extends StatefulWidget {
   final double oppositeSize;
   final void Function() onDragStart;
   final void Function(double) onDragUpdate;
-  final MouseCursorOverrider mouseCursorOverrider;
   final double zoom;
 
   const ResizableBorder(
@@ -20,7 +19,6 @@ class ResizableBorder extends StatefulWidget {
       required this.size,
       required this.onDragStart,
       required this.onDragUpdate,
-      required this.mouseCursorOverrider,
       required this.zoom,
       required this.oppositeSize})
       : super(key: key);
@@ -69,13 +67,14 @@ class _ResizableBorderState extends State<ResizableBorder> {
       child: GestureDetector(
         onHorizontalDragStart: (_) {
           _mouseCursorOverrideId =
-              widget.mouseCursorOverrider.overrideMouseCursor(mouseCursor);
+              MouseCursorOverrider.of(context).overrideMouseCursor(mouseCursor);
           widget.onDragStart();
         },
         onHorizontalDragUpdate: (details) =>
             widget.onDragUpdate((isLeft ? -2 : 2) * details.delta.dx),
         onHorizontalDragEnd: (_) {
-          widget.mouseCursorOverrider.cancelOverride(_mouseCursorOverrideId);
+          MouseCursorOverrider.of(context)
+              .cancelOverride(_mouseCursorOverrideId);
         },
         child: SizedBox(
           width: 6.0,
@@ -92,7 +91,7 @@ class _ResizableBorderState extends State<ResizableBorder> {
   }
 
   MouseCursor _getMouseCursor() {
-    if (widget.mouseCursorOverrider.isOverrideActive) {
+    if (MouseCursorOverrider.of(context).isOverrideActive) {
       return MouseCursor.defer;
     }
 

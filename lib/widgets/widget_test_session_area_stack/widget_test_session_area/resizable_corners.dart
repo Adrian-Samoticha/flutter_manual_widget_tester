@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
+import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider/mouse_cursor_overrider.dart';
 
 class ResizableCorners extends StatefulWidget {
   final double width;
@@ -10,7 +10,6 @@ class ResizableCorners extends StatefulWidget {
   final void Function(double) onHorizontalDragUpdate;
   final void Function() onVerticalDragStart;
   final void Function(double) onVerticalDragUpdate;
-  final MouseCursorOverrider mouseCursorOverrider;
 
   const ResizableCorners(
       {Key? key,
@@ -19,8 +18,7 @@ class ResizableCorners extends StatefulWidget {
       required this.onHorizontalDragStart,
       required this.onHorizontalDragUpdate,
       required this.onVerticalDragStart,
-      required this.onVerticalDragUpdate,
-      required this.mouseCursorOverrider})
+      required this.onVerticalDragUpdate})
       : super(key: key);
 
   @override
@@ -61,7 +59,7 @@ class _ResizableCornersState extends State<ResizableCorners> {
           child: GestureDetector(
             onPanStart: (_) {
               _mouseCursorOverrideId =
-                  widget.mouseCursorOverrider.overrideMouseCursor(
+                  MouseCursorOverrider.of(context).overrideMouseCursor(
                 _getMouseCursorForCorner(
                   isRight: isRight,
                   isBottom: isBottom,
@@ -80,7 +78,7 @@ class _ResizableCornersState extends State<ResizableCorners> {
               widget.onVerticalDragUpdate(verticalDelta);
             },
             onPanEnd: (_) {
-              widget.mouseCursorOverrider
+              MouseCursorOverrider.of(context)
                   .cancelOverride(_mouseCursorOverrideId);
               _isBeingDragged = false;
             },
@@ -99,7 +97,7 @@ class _ResizableCornersState extends State<ResizableCorners> {
       {required bool isRight,
       required bool isBottom,
       bool isMouseButtonDown = false}) {
-    if (widget.mouseCursorOverrider.isOverrideActive) {
+    if (MouseCursorOverrider.of(context).isOverrideActive) {
       return MouseCursor.defer;
     }
 

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/type_editor_builder.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
-import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 
 import 'horizontal_drag_handle.dart';
 import 'running_test_sessions_list/running_test_sessions_list.dart';
@@ -24,13 +23,11 @@ class ManualWidgetTesterSidebar extends StatefulWidget {
   const ManualWidgetTesterSidebar(
       {Key? key,
       required this.maxWidth,
-      required this.mouseCursorOverrider,
       required this.widgetTestSessionHandler,
       required this.typeEditorBuilder})
       : super(key: key);
 
   final double maxWidth;
-  final MouseCursorOverrider mouseCursorOverrider;
   final WidgetTestSessionHandler widgetTestSessionHandler;
   final TypeEditorBuilder typeEditorBuilder;
 
@@ -103,7 +100,6 @@ class _ManualWidgetTesterSidebarState extends State<ManualWidgetTesterSidebar> {
           Align(
             alignment: Alignment.topRight,
             child: HorizontalDragHandle(
-              mouseCursorOverrider: widget.mouseCursorOverrider,
               onDragStart: () {
                 _draggedWidth = displayWidth;
               },

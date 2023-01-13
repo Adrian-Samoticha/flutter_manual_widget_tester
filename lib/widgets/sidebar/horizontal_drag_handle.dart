@@ -2,19 +2,18 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
-import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
+import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider/mouse_cursor_overrider.dart';
+import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider/mouse_cursor_overrider_controller.dart';
 
 class HorizontalDragHandle extends StatefulWidget {
-  const HorizontalDragHandle(
-      {Key? key,
-      required this.onDragUpdate,
-      required this.onDragStart,
-      required this.mouseCursorOverrider})
-      : super(key: key);
+  const HorizontalDragHandle({
+    Key? key,
+    required this.onDragUpdate,
+    required this.onDragStart,
+  }) : super(key: key);
 
   final void Function() onDragStart;
   final void Function(double) onDragUpdate;
-  final MouseCursorOverrider mouseCursorOverrider;
 
   @override
   State<HorizontalDragHandle> createState() => _HorizontalDragHandleState();
@@ -47,13 +46,14 @@ class _HorizontalDragHandleState extends State<HorizontalDragHandle> {
         },
         child: GestureDetector(
           onHorizontalDragStart: (_) {
-            _mouseCursorOverrideId = widget.mouseCursorOverrider
+            _mouseCursorOverrideId = MouseCursorOverrider.of(context)
                 .overrideMouseCursor(SystemMouseCursors.resizeLeftRight);
             setState(() => _isBeingDragged = true);
             widget.onDragStart();
           },
           onHorizontalDragEnd: (_) {
-            widget.mouseCursorOverrider.cancelOverride(_mouseCursorOverrideId);
+            MouseCursorOverrider.of(context)
+                .cancelOverride(_mouseCursorOverrideId);
             setState(() => _isBeingDragged = false);
           },
           onHorizontalDragUpdate: (DragUpdateDetails details) =>

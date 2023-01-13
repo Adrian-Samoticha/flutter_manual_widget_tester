@@ -1,10 +1,11 @@
 import 'package:flutter/rendering.dart';
-import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
+import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider/mouse_cursor_overrider_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('mouse cursor overrider basic functionality', (tester) async {
-    final mouseCursorOverrider = MouseCursorOverrider();
+  testWidgets('mouse cursor overrider controller basic functionality',
+      (tester) async {
+    final mouseCursorOverrider = MouseCursorOverriderController();
 
     expect(mouseCursorOverrider.currentMouseCursor, MouseCursor.defer);
 
@@ -24,9 +25,9 @@ void main() {
   });
 
   testWidgets(
-      'mouse cursor overrider on override changed callback (override mouse '
+      'mouse cursor overrider controller on override changed callback (override mouse '
       'cursor)', (tester) async {
-    final mouseCursorOverrider = MouseCursorOverrider();
+    final mouseCursorOverrider = MouseCursorOverriderController();
 
     mouseCursorOverrider.registerOnMouseCursorOverrideChanged(
         expectAsync1((value) => value == mouseCursorOverrider));
@@ -35,9 +36,9 @@ void main() {
   });
 
   testWidgets(
-      'mouse cursor overrider on override changed callback (cancel override)',
+      'mouse cursor overrider controller on override changed callback (cancel override)',
       (tester) async {
-    final mouseCursorOverrider = MouseCursorOverrider();
+    final mouseCursorOverrider = MouseCursorOverriderController();
 
     final overrideId =
         mouseCursorOverrider.overrideMouseCursor(SystemMouseCursors.alias);

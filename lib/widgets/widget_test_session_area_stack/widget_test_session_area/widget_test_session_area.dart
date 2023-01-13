@@ -5,20 +5,16 @@ import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_generic_settings.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
-import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 
 import 'resizable_border/resizable_border.dart';
 import 'resizable_corners.dart';
 import 'zoom_controls.dart';
 
 class ManualWidgetTesterWidgetTestSessionArea extends StatefulWidget {
-  final MouseCursorOverrider mouseCursorOverrider;
   final WidgetTestSession widgetTestSession;
 
   const ManualWidgetTesterWidgetTestSessionArea(
-      {Key? key,
-      required this.mouseCursorOverrider,
-      required this.widgetTestSession})
+      {Key? key, required this.widgetTestSession})
       : super(key: key);
 
   @override
@@ -154,7 +150,6 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
         onDragUpdate: (delta) => setState(() {
           _draggedWidth += delta;
         }),
-        mouseCursorOverrider: widget.mouseCursorOverrider,
         zoom: _zoom,
       ),
       ResizableBorder(
@@ -165,21 +160,20 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
         onDragUpdate: (delta) => setState(() {
           _draggedHeight += delta;
         }),
-        mouseCursorOverrider: widget.mouseCursorOverrider,
         zoom: _zoom,
       ),
       ResizableCorners(
-          width: displayWidth,
-          height: displayHeight,
-          onHorizontalDragStart: () => _draggedWidth = displayWidth,
-          onHorizontalDragUpdate: (delta) => setState(() {
-                _draggedWidth += delta;
-              }),
-          onVerticalDragStart: () => _draggedHeight = displayHeight,
-          onVerticalDragUpdate: (delta) => setState(() {
-                _draggedHeight += delta;
-              }),
-          mouseCursorOverrider: widget.mouseCursorOverrider)
+        width: displayWidth,
+        height: displayHeight,
+        onHorizontalDragStart: () => _draggedWidth = displayWidth,
+        onHorizontalDragUpdate: (delta) => setState(() {
+          _draggedWidth += delta;
+        }),
+        onVerticalDragStart: () => _draggedHeight = displayHeight,
+        onVerticalDragUpdate: (delta) => setState(() {
+          _draggedHeight += delta;
+        }),
+      )
     ];
   }
 }

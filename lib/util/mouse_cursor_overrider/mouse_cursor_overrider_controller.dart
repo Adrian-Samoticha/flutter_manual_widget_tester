@@ -17,15 +17,16 @@ class _MouseCursorOverrideGenerator {
   }
 }
 
-class MouseCursorOverrider {
+class MouseCursorOverriderController {
   final List<_MouseCursorOverride> _overrides = [];
   final mouseCursorOverrideGenerator = _MouseCursorOverrideGenerator();
 
-  final StreamController<MouseCursorOverrider>
+  final StreamController<MouseCursorOverriderController>
       _onMouseCursorOverrideChangedStream = StreamController.broadcast();
 
-  StreamSubscription<MouseCursorOverrider> registerOnMouseCursorOverrideChanged(
-      void Function(MouseCursorOverrider) callback) {
+  StreamSubscription<MouseCursorOverriderController>
+      registerOnMouseCursorOverrideChanged(
+          void Function(MouseCursorOverriderController) callback) {
     return _onMouseCursorOverrideChangedStream.stream.listen(callback);
   }
 

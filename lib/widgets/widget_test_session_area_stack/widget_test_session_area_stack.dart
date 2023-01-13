@@ -3,18 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session.dart';
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
-import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider.dart';
 
 import 'widget_test_session_area/widget_test_session_area.dart';
 
 class ManualWidgetTesterWidgetTestSessionAreaStack extends StatefulWidget {
   final WidgetTestSessionHandler widgetTestSessionHandler;
-  final MouseCursorOverrider mouseCursorOverrider;
 
   const ManualWidgetTesterWidgetTestSessionAreaStack(
-      {Key? key,
-      required this.widgetTestSessionHandler,
-      required this.mouseCursorOverrider})
+      {Key? key, required this.widgetTestSessionHandler})
       : super(key: key);
 
   @override
@@ -50,7 +46,6 @@ class _ManualWidgetTesterWidgetTestSessionAreaStackState
         return ManualWidgetTesterWidgetTestSessionArea(
           key: session.key,
           widgetTestSession: session,
-          mouseCursorOverrider: widget.mouseCursorOverrider,
         );
       }).toList(),
     );
