@@ -6,6 +6,29 @@ import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider/mouse_c
 import 'mouse_cursor_overrider_inherited_widget.dart';
 
 class MouseCursorOverrider extends StatefulWidget {
+  /// A widget that allows the current mouse cursor to be overridden.
+  ///
+  /// [MouseCursorOverrider] is a class that allows you to override the current
+  /// mouse cursor while a widget is being dragged. This is useful in situations
+  /// where user-resizable widgets are implemented using a [MouseRegion], as the
+  /// cursor may lag behind the widget during a drag, causing the cursor to
+  /// return to the default system cursor.
+  ///
+  /// To use [MouseCursorOverrider], wrap your entire app in an instance of the
+  /// class. You can then override the cursor within a widget as follows:
+  ///
+  /// ```dart
+  /// _mouseCursorOverrideId = MouseCursorOverrider.of(context)
+  ///           .overrideMouseCursor(SystemMouseCursors.resizeLeftRight);
+  /// ```
+  ///
+  /// It is important to store the ID of the mouse cursor override, as it is
+  /// needed to cancel the override once the drag has finished:
+  ///
+  /// ```dart
+  /// MouseCursorOverrider.of(context)
+  ///           .cancelOverride(_mouseCursorOverrideId);
+  /// ```
   const MouseCursorOverrider({super.key, this.child});
 
   final Widget? child;
