@@ -1,0 +1,1 @@
+enum DesignLanguage { skeuomorphic, flat }
