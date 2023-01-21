@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import 'theme_generator/theme_generator_parameters.dart';
+
 class ManualWidgetTesterAppBarTheme extends Equatable {
   /// The height of the app bar on the top of the widget.
   ///
@@ -37,4 +39,56 @@ class ManualWidgetTesterAppBarTheme extends Equatable {
         appBarShadowHeight,
         appBarShadowBoxDecoration,
       ];
+
+  static double _getAppBarHeightFromLayout(Layout layout) {
+    switch (layout) {
+      case Layout.compact:
+        return 32.0;
+      case Layout.normal:
+        return 40.0;
+      case Layout.cozy:
+        return 64.0;
+    }
+  }
+
+  static double _getAppBarShadowHeightFromDesignLanguage(
+      DesignLanguage designLanguage) {
+    switch (designLanguage) {
+      case DesignLanguage.skeuomorphic:
+        return 16.0;
+      case DesignLanguage.flat:
+        return 0.0;
+    }
+  }
+
+  static BoxDecoration _getAppBarShadowBoxDecorationFromDesignLanguage(
+      DesignLanguage designLanguage) {
+    switch (designLanguage) {
+      case DesignLanguage.skeuomorphic:
+        return const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromRGBO(0, 0, 0, 0.15),
+              Colors.transparent,
+            ],
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+          ),
+        );
+      case DesignLanguage.flat:
+        return const BoxDecoration();
+    }
+  }
+
+  static ManualWidgetTesterAppBarTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return ManualWidgetTesterAppBarTheme(
+      appBarHeight: _getAppBarHeightFromLayout(parameters.layout),
+      appBarShadowHeight:
+          _getAppBarShadowHeightFromDesignLanguage(parameters.designLanguage),
+      appBarShadowBoxDecoration:
+          _getAppBarShadowBoxDecorationFromDesignLanguage(
+              parameters.designLanguage),
+    );
+  }
 }
