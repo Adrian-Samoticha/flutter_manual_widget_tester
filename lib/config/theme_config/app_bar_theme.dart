@@ -51,6 +51,18 @@ class ManualWidgetTesterAppBarTheme extends Equatable {
     }
   }
 
+  static ManualWidgetTesterAppBarTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return ManualWidgetTesterAppBarTheme(
+      appBarHeight: _getAppBarHeightFromLayout(parameters.layout),
+      appBarShadowHeight:
+          _getAppBarShadowHeightFromDesignLanguage(parameters.designLanguage),
+      appBarShadowBoxDecoration:
+          _getAppBarShadowBoxDecorationFromDesignLanguage(
+              parameters.designLanguage),
+    );
+  }
+
   static double _getAppBarShadowHeightFromDesignLanguage(
       DesignLanguage designLanguage) {
     switch (designLanguage) {
@@ -78,17 +90,5 @@ class ManualWidgetTesterAppBarTheme extends Equatable {
       case DesignLanguage.flat:
         return const BoxDecoration();
     }
-  }
-
-  static ManualWidgetTesterAppBarTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
-    return ManualWidgetTesterAppBarTheme(
-      appBarHeight: _getAppBarHeightFromLayout(parameters.layout),
-      appBarShadowHeight:
-          _getAppBarShadowHeightFromDesignLanguage(parameters.designLanguage),
-      appBarShadowBoxDecoration:
-          _getAppBarShadowBoxDecorationFromDesignLanguage(
-              parameters.designLanguage),
-    );
   }
 }
