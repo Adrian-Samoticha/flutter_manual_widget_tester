@@ -16,6 +16,7 @@ dependencies:
   sprintf: ^6.0.0
   gradient_borders: ^0.2.0
   equatable: ^2.0.5
+  flutter_color: ^2.0.0
 
 dev_dependencies:
   flutter_test:
