@@ -7,7 +7,7 @@ import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/config/config.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
-import 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_data.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 import 'package:flutter_manual_widget_tester/util/list_has_duplicates.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider/mouse_cursor_overrider.dart';
@@ -16,19 +16,19 @@ import 'package:flutter_manual_widget_tester/widgets/background.dart';
 import 'package:flutter_manual_widget_tester/widgets/sidebar/sidebar.dart';
 import 'package:flutter_manual_widget_tester/widgets/widget_test_session_area_stack/widget_test_session_area_stack.dart';
 
-export 'package:flutter_manual_widget_tester/config/theme_config/theme_settings.dart';
+export 'package:flutter_manual_widget_tester/config/theme_config/theme_data.dart';
 export 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 
 class ManualWidgetTester extends StatefulWidget {
   const ManualWidgetTester(
       {Key? key,
-      this.themeSettings = const ManualWidgetTesterThemeSettings(),
+      this.themeData = const ManualWidgetTesterThemeData(),
       this.doubleEditorInfiniteScrollViewRange = 3.0,
       this.doubleEditorInfiniteScrollViewScrollSpeedFactor = 0.003,
       required this.builders})
       : super(key: key);
 
-  final ManualWidgetTesterThemeSettings themeSettings;
+  final ManualWidgetTesterThemeData themeData;
   final double doubleEditorInfiniteScrollViewRange;
   final double doubleEditorInfiniteScrollViewScrollSpeedFactor;
   final List<WidgetTestBuilder> builders;
@@ -79,20 +79,20 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
     }
 
     return Theme(
-      data: widget.themeSettings.generalTheme.isDark
+      data: widget.themeData.generalTheme.isDark
           ? ThemeData.dark()
           : ThemeData.light(),
       child: DefaultTextStyle(
         style: DefaultTextStyleProvider.defaultTextStyle,
         child: ManualWidgetTesterTheme(
-          themeSettings: widget.themeSettings,
+          themeData: widget.themeData,
           child: Config(
             data: _configData,
             child: MouseCursorOverrider(
               child: Stack(
                 children: [
                   ManualWidgetTesterBackground(
-                    color: widget.themeSettings.generalTheme.backgroundColor,
+                    color: widget.themeData.generalTheme.backgroundColor,
                   ),
                   _ManualWidgetTesterBody(
                     widgetTestSessionHandler: _widgetTestSessionHandler,

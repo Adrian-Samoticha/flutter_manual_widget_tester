@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-import 'theme_settings.dart';
+import 'theme_data.dart';
 
 class ManualWidgetTesterTheme extends InheritedWidget {
   const ManualWidgetTesterTheme(
-      {super.key, required super.child, required this.themeSettings});
+      {super.key, required super.child, required this.themeData});
 
-  final ManualWidgetTesterThemeSettings themeSettings;
+  final ManualWidgetTesterThemeData themeData;
 
-  static ManualWidgetTesterThemeSettings of(BuildContext context) {
+  static ManualWidgetTesterThemeData of(BuildContext context) {
     final theme =
         context.dependOnInheritedWidgetOfExactType<ManualWidgetTesterTheme>();
 
     assert(theme != null);
-    return theme!.themeSettings;
+    return theme!.themeData;
   }
 
   @override
   bool updateShouldNotify(ManualWidgetTesterTheme oldWidget) {
-    return themeSettings != oldWidget.themeSettings;
+    return themeData != oldWidget.themeData;
   }
 }

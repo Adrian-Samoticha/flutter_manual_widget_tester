@@ -9,7 +9,7 @@ class CustomSettings extends StatelessWidget {
   /// Creates a widget that displays custom settings for a widget test session.
   ///
   /// The [key] is used to identify this widget in the widget tree.
-  /// The [themeSettings] is the theme settings for the widget.
+  /// The [themeData] is the theme settings for the widget.
   /// The [session] is the widget test session for which the custom settings are
   /// displayed.
   /// The [typeEditorBuilder] is the type editor builder used to build editors

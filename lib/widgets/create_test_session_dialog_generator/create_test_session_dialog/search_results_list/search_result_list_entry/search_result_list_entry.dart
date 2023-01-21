@@ -117,7 +117,7 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
   }
 
   Row _buildIconAndNameRow() {
-    final themeSettings = ManualWidgetTesterTheme.of(context);
+    final themeData = ManualWidgetTesterTheme.of(context);
 
     return Row(
       children: [
@@ -127,7 +127,7 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
                 SearchResultIcon(
                   icon: widget.builder.icon!,
                   iconColor: widget.builder.iconColor ??
-                      themeSettings.iconTheme.defaultIconColor,
+                      themeData.iconTheme.defaultIconColor,
                 ),
               ],
         Expanded(
@@ -135,7 +135,7 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
             widget.builder.name,
             softWrap: false,
             overflow: TextOverflow.ellipsis,
-            style: themeSettings.createTestSessionDialogTheme
+            style: themeData.createTestSessionDialogTheme
                 .createTestSessionDialogSearchResultTextStyle,
           ),
         ),

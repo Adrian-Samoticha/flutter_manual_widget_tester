@@ -15,7 +15,7 @@ class ManualWidgetTesterSidebar extends StatefulWidget {
   /// The [key] is used to identify this widget in the widget tree.
   /// The [maxWidth] is the maximum width of the sidebar.
   /// The [mouseCursorOverrider] is used to override the mouse cursor.
-  /// The [themeSettings] is the theme settings for the widget.
+  /// The [themeData] is the theme settings for the widget.
   /// The [config] is the configuration for the widget.
   /// The [widgetTestSessionHandler] is the handler for the widget test
   /// sessions.

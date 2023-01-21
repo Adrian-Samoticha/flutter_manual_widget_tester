@@ -21,7 +21,7 @@ class CreateTestSessionDialogGenerator {
       pageBuilder: (BuildContext _, Animation<double> animation,
           Animation<double> secondaryAnimation) {
         return ManualWidgetTesterTheme(
-          themeSettings: ManualWidgetTesterTheme.of(context),
+          themeData: ManualWidgetTesterTheme.of(context),
           child: Align(
             alignment: Alignment.topCenter,
             child: CreateTestSessionDialog(

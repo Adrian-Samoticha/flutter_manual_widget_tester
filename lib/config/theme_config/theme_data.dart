@@ -26,7 +26,7 @@ import 'text_field_theme.dart';
 import 'widget_test_session_area_theme.dart';
 import 'zoom_controls_theme.dart';
 
-class ManualWidgetTesterThemeSettings extends Equatable {
+class ManualWidgetTesterThemeData extends Equatable {
   /// The tab theme.
   final ManualWidgetTesterTabTheme tabTheme;
 
@@ -112,7 +112,7 @@ class ManualWidgetTesterThemeSettings extends Equatable {
   /// The theme of the “edit color” dialog.
   final ManualWidgetTesterEditColorDialogTheme editColorDialogTheme;
 
-  const ManualWidgetTesterThemeSettings({
+  const ManualWidgetTesterThemeData({
     this.tabTheme = const ManualWidgetTesterTabTheme(),
     this.buttonTheme = const ManualWidgetTesterButtonTheme(),
     this.textFieldTheme = const ManualWidgetTesterTextFieldTheme(),

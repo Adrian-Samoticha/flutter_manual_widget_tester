@@ -208,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ];
 
     return ManualWidgetTester(
-      themeSettings: const ManualWidgetTesterThemeSettings(),
+      themeData: const ManualWidgetTesterThemeData(),
       builders: builders,
     );
   }

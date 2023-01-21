@@ -81,7 +81,7 @@ class ManualWidgetTesterDialogGenerator {
           child: DefaultTextStyle(
             style: DefaultTextStyleProvider.defaultTextStyle,
             child: ManualWidgetTesterTheme(
-              themeSettings: ManualWidgetTesterTheme.of(context),
+              themeData: ManualWidgetTesterTheme.of(context),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisSize: MainAxisSize.min,

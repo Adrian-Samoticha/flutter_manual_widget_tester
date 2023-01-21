@@ -7,7 +7,7 @@ class ManualWidgetTesterGenericSettingsEdgeInsetEditor extends StatelessWidget {
   /// Creates an editor for an `EdgeInsets` setting.
   ///
   /// The [key] is used to identify this widget in the widget tree.
-  /// The [themeSettings] is the theme settings for the widget.
+  /// The [themeData] is the theme settings for the widget.
   /// The [settingName] is the name of the setting.
   /// The [currentEdgeInsets] is the current value of the setting.
   /// The [onChanged] is a callback that is called when the value of the setting
