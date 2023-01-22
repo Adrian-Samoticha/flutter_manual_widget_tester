@@ -1,5 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_color/flutter_color.dart';
+
+import 'theme_generator/theme_generator_parameters.dart';
 
 class ManualWidgetTesterDialogTheme extends Equatable {
   /// A dialog's background color.
@@ -99,4 +102,115 @@ class ManualWidgetTesterDialogTheme extends Equatable {
         customDialogActionButtonWidthAddition,
         distanceBetweenDialogContentAndActionButtons,
       ];
+
+  static ManualWidgetTesterDialogTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return ManualWidgetTesterDialogTheme(
+      dialogBackgroundColor:
+          _getDialogBackgroundColorFromParameters(parameters),
+      dialogOpenCloseAnimationDuration:
+          _getDialogOpenCloseAnimationDurationFromAnimationSpeed(
+              parameters.animationSpeed),
+      dialogBlurRadius:
+          _getDialogBlurRadiusFromDesignLanguage(parameters.designLanguage),
+      dialogBorderColor:
+          _getDialogBorderColorFromBrightness(parameters.brightness),
+      dialogPadding: _getDialogPaddingFromLayout(parameters.layout),
+      dialogActionButtonHeight:
+          _getDialogActionButtonHeightFromLayout(parameters.layout),
+      dialogActionButtonSectionBackgroundColor:
+          _getDialogActionButtonSectionBackgroundColor(parameters),
+      distanceBetweenDialogContentAndActionButtons:
+          _getDistanceBetweenDialogContentAndActionButtonsFromLayout(
+              parameters.layout),
+    );
+  }
+
+  static Color _getDialogBackgroundColorFromParameters(
+      ThemeGeneratorParameters parameters) {
+    final opacity =
+        parameters.designLanguage == DesignLanguage.skeuomorphic ? 0.75 : 1.0;
+
+    if (parameters.brightness == Brightness.dark) {
+      return parameters.backgroundColor.lighter(32).withOpacity(opacity);
+    }
+
+    return parameters.backgroundColor.darker(32).withOpacity(opacity);
+  }
+
+  static Duration _getDialogOpenCloseAnimationDurationFromAnimationSpeed(
+      AnimationSpeed animationSpeed) {
+    switch (animationSpeed) {
+      case AnimationSpeed.instant:
+        return const Duration();
+      case AnimationSpeed.quick:
+        return const Duration(milliseconds: 80);
+      case AnimationSpeed.normal:
+        return const Duration(milliseconds: 150);
+      case AnimationSpeed.slow:
+        return const Duration(milliseconds: 300);
+    }
+  }
+
+  static double _getDialogBlurRadiusFromDesignLanguage(
+      DesignLanguage designLanguage) {
+    switch (designLanguage) {
+      case DesignLanguage.skeuomorphic:
+        return 16.0;
+      case DesignLanguage.flat:
+        return 0.0;
+    }
+  }
+
+  static Color _getDialogBorderColorFromBrightness(Brightness brightness) {
+    switch (brightness) {
+      case Brightness.dark:
+        return const Color.fromRGBO(255, 255, 255, 0.025);
+      case Brightness.light:
+        return const Color.fromRGBO(0, 0, 0, 0.025);
+    }
+  }
+
+  static EdgeInsets _getDialogPaddingFromLayout(Layout layout) {
+    switch (layout) {
+      case Layout.compact:
+        return const EdgeInsets.all(4.0);
+      case Layout.normal:
+        return const EdgeInsets.all(8.0);
+      case Layout.cozy:
+        return const EdgeInsets.all(12.0);
+    }
+  }
+
+  static double _getDialogActionButtonHeightFromLayout(Layout layout) {
+    switch (layout) {
+      case Layout.compact:
+        return 24.0;
+      case Layout.normal:
+        return 32.0;
+      case Layout.cozy:
+        return 48.0;
+    }
+  }
+
+  static Color _getDialogActionButtonSectionBackgroundColor(
+      ThemeGeneratorParameters parameters) {
+    if (parameters.brightness == Brightness.dark) {
+      return parameters.backgroundColor.lighter(16).withOpacity(0.5);
+    }
+
+    return parameters.backgroundColor.darker(16).withOpacity(0.5);
+  }
+
+  static double _getDistanceBetweenDialogContentAndActionButtonsFromLayout(
+      Layout layout) {
+    switch (layout) {
+      case Layout.compact:
+        return 4.0;
+      case Layout.normal:
+        return 8.0;
+      case Layout.cozy:
+        return 12.0;
+    }
+  }
 }
