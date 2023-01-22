@@ -47,7 +47,7 @@ class ManualWidgetTesterAppBarTheme extends Equatable {
       case Layout.normal:
         return 40.0;
       case Layout.cozy:
-        return 64.0;
+        return 48.0;
     }
   }
 
