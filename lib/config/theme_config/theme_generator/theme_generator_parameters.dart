@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/util/clamp_lightness.dart';
+import 'package:flutter_manual_widget_tester/util/clamp_saturation.dart';
 
 import 'animation_speed.dart';
 import 'design_language.dart';
@@ -27,14 +29,14 @@ class ThemeGeneratorParameters {
   Color get filteredBackgroundColor {
     if (brightness == Brightness.dark) {
       return HSLColor.fromColor(backgroundColor)
-          .withLightness(0.2)
-          .withSaturation(0.5)
+          .clampLightness(0.0, 0.2)
+          .clampSaturation(0.0, 0.5)
           .toColor();
     }
 
     return HSLColor.fromColor(backgroundColor)
-        .withLightness(0.95)
-        .withSaturation(0.2)
+        .clampLightness(0.95, 1.0)
+        .clampSaturation(0.0, 0.2)
         .toColor();
   }
 }
