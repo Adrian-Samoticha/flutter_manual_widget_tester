@@ -137,7 +137,7 @@ class ManualWidgetTesterDialogTheme extends Equatable {
           .withOpacity(opacity);
     }
 
-    return parameters.filteredBackgroundColor.darker(32).withOpacity(opacity);
+    return parameters.filteredBackgroundColor.darker(2).withOpacity(opacity);
   }
 
   static Duration _getDialogOpenCloseAnimationDurationFromAnimationSpeed(
