@@ -168,8 +168,6 @@ class ManualWidgetTesterTabTheme extends Equatable {
       minTabWidth: _getMinTabWidthFromLayout(parameters.layout),
       maxTabWidth: _getMaxTabWidthFromLayout(parameters.layout),
       focusedTabBoxDecoration: _getFocusedTabBoxDecoration(parameters),
-      // unfocusedTabBoxDecoration:
-      // focusedTabAccentColorDecorationWidth:
       tabSeparatorBoxDecoration:
           _getTabSeparatorBoxDecorationFromBrightness(parameters.brightness),
       tabLightReflectionBoxDecoration:
