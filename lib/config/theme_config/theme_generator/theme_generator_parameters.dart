@@ -35,8 +35,8 @@ class ThemeGeneratorParameters {
     }
 
     return HSLColor.fromColor(backgroundColor)
-        .clampLightness(0.95, 1.0)
-        .clampSaturation(0.0, 0.2)
+        .clampLightness(0.8, 1.0)
+        .clampSaturation(0.0, 0.25)
         .toColor();
   }
 }
