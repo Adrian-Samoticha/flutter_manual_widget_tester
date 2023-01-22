@@ -1,7 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ManualWidgetTesterDoubleEditor extends Equatable {
+import 'theme_generator/theme_generator_parameters.dart';
+
+class ManualWidgetTesterDoubleEditorTheme extends Equatable {
   /// The space between the text field and the double editor's infinite scroll
   /// view.
   final double spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView;
@@ -46,7 +48,7 @@ class ManualWidgetTesterDoubleEditor extends Equatable {
   /// shows where the currently selected double value is located.
   final double doubleEditorInfiniteScrollViewIndicatorHeight;
 
-  const ManualWidgetTesterDoubleEditor({
+  const ManualWidgetTesterDoubleEditorTheme({
     this.spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView = 4.0,
     this.doubleEditorInfiniteScrollViewHeight = 32.0,
     this.doubleEditorInfiniteScrollViewBoxDecoration = const BoxDecoration(
@@ -97,4 +99,9 @@ class ManualWidgetTesterDoubleEditor extends Equatable {
         doubleEditorInfiniteScrollViewIndicatorWidth,
         doubleEditorInfiniteScrollViewIndicatorHeight,
       ];
+
+  static ManualWidgetTesterDoubleEditorTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return const ManualWidgetTesterDoubleEditorTheme();
+  }
 }

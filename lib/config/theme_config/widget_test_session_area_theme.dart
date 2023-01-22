@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import 'theme_generator/theme_generator_parameters.dart';
+
 class ManualWidgetTesterWidgetTestSessionAreaTheme extends Equatable {
   /// The color of the dotted lines that show the tested widget's size.
   final Color dottedLineColor;
@@ -21,4 +23,9 @@ class ManualWidgetTesterWidgetTestSessionAreaTheme extends Equatable {
         dottedLineColor,
         widgetSizeTextStyle,
       ];
+
+  static ManualWidgetTesterWidgetTestSessionAreaTheme
+      fromThemeGeneratorParameters(ThemeGeneratorParameters parameters) {
+    return const ManualWidgetTesterWidgetTestSessionAreaTheme();
+  }
 }

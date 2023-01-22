@@ -23,6 +23,7 @@ import 'string_editor_theme.dart';
 import 'tab_theme.dart';
 import 'test_session_menu_item_theme.dart';
 import 'text_field_theme.dart';
+import 'theme_generator/theme_generator_parameters.dart';
 import 'widget_test_session_area_theme.dart';
 import 'zoom_controls_theme.dart';
 
@@ -56,13 +57,13 @@ class ManualWidgetTesterThemeData extends Equatable {
   final ManualWidgetTesterDialogTheme dialogTheme;
 
   /// The double editor theme.
-  final ManualWidgetTesterDoubleEditor doubleEditorTheme;
+  final ManualWidgetTesterDoubleEditorTheme doubleEditorTheme;
 
   /// The boolean editor theme.
   final ManualWidgetTesterBoolEditorTheme boolEditorTheme;
 
   /// The custom settings heading theme.
-  final ManualWidgetTesterCustomSettingHeadingTheme customSettingsHeadingTheme;
+  final ManualWidgetTesterCustomSettingHeadingTheme customSettingHeadingTheme;
 
   /// The theme of the drag handle.
   final ManualWidgetTesterDragHandleTheme dragHandleTheme;
@@ -92,7 +93,8 @@ class ManualWidgetTesterThemeData extends Equatable {
   final ManualWidgetTesterStringEditorTheme stringEditorTheme;
 
   /// The theme of the “create test session” button.
-  final ManualWidgetTesterCreateTestSessionButton createTestSessionButtonTheme;
+  final ManualWidgetTesterCreateTestSessionButtonTheme
+      createTestSessionButtonTheme;
 
   /// The icon theme.
   final ManualWidgetTesterIconTheme iconTheme;
@@ -124,9 +126,9 @@ class ManualWidgetTesterThemeData extends Equatable {
         const ManualWidgetTesterTestSessionMenuItemTheme(),
     this.editColorButtonTheme = const ManualWidgetTesterEditColorButtonTheme(),
     this.dialogTheme = const ManualWidgetTesterDialogTheme(),
-    this.doubleEditorTheme = const ManualWidgetTesterDoubleEditor(),
+    this.doubleEditorTheme = const ManualWidgetTesterDoubleEditorTheme(),
     this.boolEditorTheme = const ManualWidgetTesterBoolEditorTheme(),
-    this.customSettingsHeadingTheme =
+    this.customSettingHeadingTheme =
         const ManualWidgetTesterCustomSettingHeadingTheme(),
     this.dragHandleTheme = const ManualWidgetTesterDragHandleTheme(),
     this.noCustomSettingsMessageTheme =
@@ -137,7 +139,7 @@ class ManualWidgetTesterThemeData extends Equatable {
     this.appBarTheme = const ManualWidgetTesterAppBarTheme(),
     this.stringEditorTheme = const ManualWidgetTesterStringEditorTheme(),
     this.createTestSessionButtonTheme =
-        const ManualWidgetTesterCreateTestSessionButton(),
+        const ManualWidgetTesterCreateTestSessionButtonTheme(),
     this.iconTheme = const ManualWidgetTesterIconTheme(),
     this.customSettingsTheme = const ManualWidgetTesterCustomSettingsTheme(),
     this.widgetTestSessionAreaTheme =
@@ -159,7 +161,7 @@ class ManualWidgetTesterThemeData extends Equatable {
         dialogTheme,
         doubleEditorTheme,
         boolEditorTheme,
-        customSettingsHeadingTheme,
+        customSettingHeadingTheme,
         dragHandleTheme,
         noCustomSettingsMessageTheme,
         radioButtonTheme,
@@ -174,4 +176,76 @@ class ManualWidgetTesterThemeData extends Equatable {
         generalTheme,
         editColorDialogTheme,
       ];
+
+  static ManualWidgetTesterThemeData fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return ManualWidgetTesterThemeData(
+      tabTheme:
+          ManualWidgetTesterTabTheme.fromThemeGeneratorParameters(parameters),
+      buttonTheme: ManualWidgetTesterButtonTheme.fromThemeGeneratorParameters(
+          parameters),
+      textFieldTheme:
+          ManualWidgetTesterTextFieldTheme.fromThemeGeneratorParameters(
+              parameters),
+      zoomControlsTheme:
+          ManualWidgetTesterZoomControlsTheme.fromThemeGeneratorParameters(
+              parameters),
+      foldableRegionTheme:
+          ManualWidgetTesterFoldableRegionTheme.fromThemeGeneratorParameters(
+              parameters),
+      createTestSessionDialogTheme:
+          ManualWidgetTesterCreateTestSessionDialogTheme
+              .fromThemeGeneratorParameters(parameters),
+      testSessionMenuItemTheme: ManualWidgetTesterTestSessionMenuItemTheme
+          .fromThemeGeneratorParameters(parameters),
+      editColorButtonTheme:
+          ManualWidgetTesterEditColorButtonTheme.fromThemeGeneratorParameters(
+              parameters),
+      dialogTheme: ManualWidgetTesterDialogTheme.fromThemeGeneratorParameters(
+          parameters),
+      doubleEditorTheme:
+          ManualWidgetTesterDoubleEditorTheme.fromThemeGeneratorParameters(
+              parameters),
+      boolEditorTheme:
+          ManualWidgetTesterBoolEditorTheme.fromThemeGeneratorParameters(
+              parameters),
+      customSettingHeadingTheme: ManualWidgetTesterCustomSettingHeadingTheme
+          .fromThemeGeneratorParameters(parameters),
+      dragHandleTheme:
+          ManualWidgetTesterDragHandleTheme.fromThemeGeneratorParameters(
+              parameters),
+      noCustomSettingsMessageTheme:
+          ManualWidgetTesterNoCustomSettingsMessageTheme
+              .fromThemeGeneratorParameters(parameters),
+      radioButtonTheme:
+          ManualWidgetTesterRadioButtonTheme.fromThemeGeneratorParameters(
+              parameters),
+      closeButtonTheme:
+          ManualWidgetTesterCloseButtonTheme.fromThemeGeneratorParameters(
+              parameters),
+      noEditorMessageTheme:
+          ManualWidgetTesterNoEditorMessageTheme.fromThemeGeneratorParameters(
+              parameters),
+      appBarTheme: ManualWidgetTesterAppBarTheme.fromThemeGeneratorParameters(
+          parameters),
+      stringEditorTheme:
+          ManualWidgetTesterStringEditorTheme.fromThemeGeneratorParameters(
+              parameters),
+      createTestSessionButtonTheme:
+          ManualWidgetTesterCreateTestSessionButtonTheme
+              .fromThemeGeneratorParameters(parameters),
+      iconTheme:
+          ManualWidgetTesterIconTheme.fromThemeGeneratorParameters(parameters),
+      customSettingsTheme:
+          ManualWidgetTesterCustomSettingsTheme.fromThemeGeneratorParameters(
+              parameters),
+      widgetTestSessionAreaTheme: ManualWidgetTesterWidgetTestSessionAreaTheme
+          .fromThemeGeneratorParameters(parameters),
+      generalTheme: ManualWidgetTesterGeneralTheme.fromThemeGeneratorParameters(
+          parameters),
+      editColorDialogTheme:
+          ManualWidgetTesterEditColorDialogTheme.fromThemeGeneratorParameters(
+              parameters),
+    );
+  }
 }

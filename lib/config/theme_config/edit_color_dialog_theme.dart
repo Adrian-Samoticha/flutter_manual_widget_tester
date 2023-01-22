@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import 'theme_generator/theme_generator_parameters.dart';
+
 class ManualWidgetTesterEditColorDialogTheme extends Equatable {
   /// The duration of the edit color dialog's size change animation.
   final Duration editColorDialogSizeChangeAnimationDuration;
@@ -67,4 +69,9 @@ class ManualWidgetTesterEditColorDialogTheme extends Equatable {
         editColorDialogRunSpacing,
         editColorDialogColumnSpacing,
       ];
+
+  static ManualWidgetTesterEditColorDialogTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return const ManualWidgetTesterEditColorDialogTheme();
+  }
 }

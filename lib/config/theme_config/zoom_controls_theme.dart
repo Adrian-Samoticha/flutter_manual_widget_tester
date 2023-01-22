@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import 'theme_generator/theme_generator_parameters.dart';
+
 class ManualWidgetTesterZoomControlsTheme extends Equatable {
   /// The width of the zoom controls.
   final double zoomControlsWidth;
@@ -66,4 +68,9 @@ class ManualWidgetTesterZoomControlsTheme extends Equatable {
         zoomControlsDistanceToBorder,
         zoomControlsAlignment,
       ];
+
+  static ManualWidgetTesterZoomControlsTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return const ManualWidgetTesterZoomControlsTheme();
+  }
 }

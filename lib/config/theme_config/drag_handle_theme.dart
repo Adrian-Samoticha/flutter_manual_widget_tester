@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import 'theme_generator/theme_generator_parameters.dart';
+
 class ManualWidgetTesterDragHandleTheme extends Equatable {
   /// The color of the drag handle that appears when the sidebar is being
   /// resized.
@@ -34,4 +36,9 @@ class ManualWidgetTesterDragHandleTheme extends Equatable {
         dragHandleChangeOpacityDuration,
         timeUntilDragHandleAppears,
       ];
+
+  static ManualWidgetTesterDragHandleTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return const ManualWidgetTesterDragHandleTheme();
+  }
 }

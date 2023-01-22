@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import 'theme_generator/theme_generator_parameters.dart';
+
 class ManualWidgetTesterEditColorButtonTheme extends Equatable {
   /// The height of the edit color button.
   final double editColorButtonHeight;
@@ -156,4 +158,9 @@ class ManualWidgetTesterEditColorButtonTheme extends Equatable {
         editColorButtonTextStyleForDarkColor,
         editColorButtonTextStyleForBrightColor,
       ];
+
+  static ManualWidgetTesterEditColorButtonTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return const ManualWidgetTesterEditColorButtonTheme();
+  }
 }

@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import 'theme_generator/theme_generator_parameters.dart';
+
 class ManualWidgetTesterRadioButtonTheme extends Equatable {
   /// The widget to use as the selected radio button.
   final Widget selectedRadioButton;
@@ -100,4 +102,9 @@ class ManualWidgetTesterRadioButtonTheme extends Equatable {
         selectedRadioButtonLabelStyle,
         unselectedRadioButtonLabelStyle,
       ];
+
+  static ManualWidgetTesterRadioButtonTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return const ManualWidgetTesterRadioButtonTheme();
+  }
 }

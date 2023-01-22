@@ -2,6 +2,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 
+import 'theme_generator/theme_generator_parameters.dart';
+
 class ManualWidgetTesterTabTheme extends Equatable {
   /// The minimal tab width.
   ///
@@ -158,4 +160,9 @@ class ManualWidgetTesterTabTheme extends Equatable {
         tabOpenAnimationDuration,
         tabOpenAnimationCurve,
       ];
+
+  static ManualWidgetTesterTabTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return const ManualWidgetTesterTabTheme();
+  }
 }

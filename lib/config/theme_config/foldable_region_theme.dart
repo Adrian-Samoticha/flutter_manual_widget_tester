@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import 'theme_generator/theme_generator_parameters.dart';
+
 class ManualWidgetTesterFoldableRegionTheme extends Equatable {
   /// The animation duration of foldable regions.
   final Duration foldableRegionAnimationDuration;
@@ -63,4 +65,9 @@ class ManualWidgetTesterFoldableRegionTheme extends Equatable {
         foldableRegionHeadingOverflow,
         foldableRegionIndentationAmount,
       ];
+
+  static ManualWidgetTesterFoldableRegionTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return const ManualWidgetTesterFoldableRegionTheme();
+  }
 }

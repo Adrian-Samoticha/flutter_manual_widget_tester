@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import 'theme_generator/theme_generator_parameters.dart';
+
 class ManualWidgetTesterGeneralTheme extends Equatable {
   /// Whether this is a dark theme.
   final bool isDark;
@@ -51,4 +53,9 @@ class ManualWidgetTesterGeneralTheme extends Equatable {
         defaultNumberEditorButtonRowWidth,
         scrollIntoViewDuration,
       ];
+
+  static ManualWidgetTesterGeneralTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return const ManualWidgetTesterGeneralTheme();
+  }
 }

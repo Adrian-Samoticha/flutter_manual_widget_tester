@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import 'theme_generator/theme_generator_parameters.dart';
+
 class ManualWidgetTesterNoCustomSettingsMessageTheme extends Equatable {
   /// The padding of the message that is displayed when a test session has no
   /// custom settings.
@@ -22,4 +24,9 @@ class ManualWidgetTesterNoCustomSettingsMessageTheme extends Equatable {
         noCustomSettingsMessagePadding,
         noCustomSettingsMessageTextStyle,
       ];
+
+  static ManualWidgetTesterNoCustomSettingsMessageTheme
+      fromThemeGeneratorParameters(ThemeGeneratorParameters parameters) {
+    return const ManualWidgetTesterNoCustomSettingsMessageTheme();
+  }
 }

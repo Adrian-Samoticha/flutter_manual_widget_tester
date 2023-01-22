@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import 'theme_generator/theme_generator_parameters.dart';
+
 class ManualWidgetTesterTestSessionMenuItemTheme extends Equatable {
   /// The height of a menu item in the “RUNNING TEST SESSIONS” area.
   final double testSessionMenuItemHeight;
@@ -77,4 +79,9 @@ class ManualWidgetTesterTestSessionMenuItemTheme extends Equatable {
         testSessionMenuItemTabIconPadding,
         testSessionMenuItemFocusedTabTintDecoration,
       ];
+
+  static ManualWidgetTesterTestSessionMenuItemTheme
+      fromThemeGeneratorParameters(ThemeGeneratorParameters parameters) {
+    return const ManualWidgetTesterTestSessionMenuItemTheme();
+  }
 }

@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import 'theme_generator/theme_generator_parameters.dart';
+
 class ManualWidgetTesterTextFieldTheme extends Equatable {
   /// The shadow(s) of a text field.
   final List<BoxShadow> textFieldShadow;
@@ -70,4 +72,9 @@ class ManualWidgetTesterTextFieldTheme extends Equatable {
         textFieldSelectionColor,
         textFieldContentPadding,
       ];
+
+  static ManualWidgetTesterTextFieldTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return const ManualWidgetTesterTextFieldTheme();
+  }
 }

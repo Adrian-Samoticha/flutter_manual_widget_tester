@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import 'theme_generator/theme_generator_parameters.dart';
+
 class ManualWidgetTesterNoEditorMessageTheme extends Equatable {
   /// The padding of the message that is displayed when no editor for a
   /// particular setting could be built.
@@ -50,4 +52,9 @@ class ManualWidgetTesterNoEditorMessageTheme extends Equatable {
         noEditorTextStyle,
         noEditorHighlightedTextStyle,
       ];
+
+  static ManualWidgetTesterNoEditorMessageTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return const ManualWidgetTesterNoEditorMessageTheme();
+  }
 }

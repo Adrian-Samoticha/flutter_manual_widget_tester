@@ -13,16 +13,16 @@ class ManualWidgetTesterCustomSettingsHeading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: ManualWidgetTesterTheme.of(context)
-          .customSettingsHeadingTheme
+          .customSettingHeadingTheme
           .customSettingHeadingPadding,
       child: Text(
         '$settingName:',
         softWrap: false,
         overflow: ManualWidgetTesterTheme.of(context)
-            .customSettingsHeadingTheme
+            .customSettingHeadingTheme
             .customSettingHeadingOverflow,
         style: ManualWidgetTesterTheme.of(context)
-            .customSettingsHeadingTheme
+            .customSettingHeadingTheme
             .customSettingHeadingTextStyle,
       ),
     );
