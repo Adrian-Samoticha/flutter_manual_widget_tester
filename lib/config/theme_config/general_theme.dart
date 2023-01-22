@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_color/flutter_color.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
@@ -56,6 +57,27 @@ class ManualWidgetTesterGeneralTheme extends Equatable {
 
   static ManualWidgetTesterGeneralTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return const ManualWidgetTesterGeneralTheme();
+    return ManualWidgetTesterGeneralTheme(
+      isDark: parameters.brightness == Brightness.dark,
+      backgroundColor: parameters.filteredBackgroundColor,
+      sidebarColor: parameters.filteredBackgroundColor.darker(6),
+      accentColor: parameters.primaryColor,
+      scrollIntoViewDuration: _getScrollIntoViewDurationFromAnimationSpeed(
+          parameters.animationSpeed),
+    );
+  }
+
+  static Duration _getScrollIntoViewDurationFromAnimationSpeed(
+      AnimationSpeed animationSpeed) {
+    switch (animationSpeed) {
+      case AnimationSpeed.instant:
+        return const Duration();
+      case AnimationSpeed.quick:
+        return const Duration(milliseconds: 125);
+      case AnimationSpeed.normal:
+        return const Duration(milliseconds: 250);
+      case AnimationSpeed.slow:
+        return const Duration(milliseconds: 500);
+    }
   }
 }
