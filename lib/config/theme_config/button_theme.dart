@@ -123,7 +123,7 @@ class ManualWidgetTesterButtonTheme extends Equatable {
   static ManualWidgetTesterButtonTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
     return ManualWidgetTesterButtonTheme(
-      buttonColor: parameters.backgroundColor.lighter(32),
+      buttonColor: parameters.filteredBackgroundColor.lighter(16),
       buttonShadow:
           _getButtonShadowFromDesignLanguage(parameters.designLanguage),
       disabledButtonIconTheme: IconThemeData(

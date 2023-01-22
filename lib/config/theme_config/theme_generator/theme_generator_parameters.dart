@@ -23,4 +23,18 @@ class ThemeGeneratorParameters {
       this.animationSpeed = AnimationSpeed.normal,
       this.layout = Layout.normal,
       this.designLanguage = DesignLanguage.skeuomorphic});
+
+  Color get filteredBackgroundColor {
+    if (brightness == Brightness.dark) {
+      return HSLColor.fromColor(backgroundColor)
+          .withLightness(0.2)
+          .withSaturation(0.5)
+          .toColor();
+    }
+
+    return HSLColor.fromColor(backgroundColor)
+        .withLightness(0.95)
+        .withSaturation(0.2)
+        .toColor();
+  }
 }

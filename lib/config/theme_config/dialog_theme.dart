@@ -132,10 +132,12 @@ class ManualWidgetTesterDialogTheme extends Equatable {
         parameters.designLanguage == DesignLanguage.skeuomorphic ? 0.75 : 1.0;
 
     if (parameters.brightness == Brightness.dark) {
-      return parameters.backgroundColor.lighter(32).withOpacity(opacity);
+      return parameters.filteredBackgroundColor
+          .lighter(16)
+          .withOpacity(opacity);
     }
 
-    return parameters.backgroundColor.darker(32).withOpacity(opacity);
+    return parameters.filteredBackgroundColor.darker(32).withOpacity(opacity);
   }
 
   static Duration _getDialogOpenCloseAnimationDurationFromAnimationSpeed(
@@ -196,10 +198,10 @@ class ManualWidgetTesterDialogTheme extends Equatable {
   static Color _getDialogActionButtonSectionBackgroundColor(
       ThemeGeneratorParameters parameters) {
     if (parameters.brightness == Brightness.dark) {
-      return parameters.backgroundColor.lighter(16).withOpacity(0.5);
+      return parameters.filteredBackgroundColor.lighter(24).withOpacity(0.5);
     }
 
-    return parameters.backgroundColor.darker(16).withOpacity(0.5);
+    return parameters.filteredBackgroundColor.darker(24).withOpacity(0.5);
   }
 
   static double _getDistanceBetweenDialogContentAndActionButtonsFromLayout(
