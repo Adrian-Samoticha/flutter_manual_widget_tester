@@ -143,10 +143,10 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
                   child: Container(
                     width: ManualWidgetTesterTheme.of(context)
                         .buttonTheme
-                        .buttonSeparatorWidth,
+                        .separatorWidth,
                     color: ManualWidgetTesterTheme.of(context)
                         .buttonTheme
-                        .buttonSeparatorColor,
+                        .separatorColor,
                   ),
                 ),
               ]
@@ -195,9 +195,9 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
     }
 
     return IconTheme(
-      data: ManualWidgetTesterTheme.of(context).buttonTheme.buttonIconTheme,
+      data: ManualWidgetTesterTheme.of(context).buttonTheme.iconTheme,
       child: DefaultTextStyle(
-        style: ManualWidgetTesterTheme.of(context).buttonTheme.buttonTextStyle,
+        style: ManualWidgetTesterTheme.of(context).buttonTheme.textStyle,
         softWrap: false,
         overflow: TextOverflow.fade,
         child: Container(
@@ -211,16 +211,16 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
       {required bool roundLeftCorners, required bool roundRightCorners}) {
     return BorderRadius.only(
       topLeft: roundLeftCorners
-          ? ManualWidgetTesterTheme.of(context).buttonTheme.buttonBorderRadius
+          ? ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius
           : Radius.zero,
       bottomLeft: roundLeftCorners
-          ? ManualWidgetTesterTheme.of(context).buttonTheme.buttonBorderRadius
+          ? ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius
           : Radius.zero,
       topRight: roundRightCorners
-          ? ManualWidgetTesterTheme.of(context).buttonTheme.buttonBorderRadius
+          ? ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius
           : Radius.zero,
       bottomRight: roundRightCorners
-          ? ManualWidgetTesterTheme.of(context).buttonTheme.buttonBorderRadius
+          ? ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius
           : Radius.zero,
     );
   }
@@ -236,7 +236,7 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
     );
 
     return BoxDecoration(
-      border: ManualWidgetTesterTheme.of(context).buttonTheme.buttonBoxBorder,
+      border: ManualWidgetTesterTheme.of(context).buttonTheme.boxBorder,
       borderRadius: _generateBorderRadius(
           roundLeftCorners: roundLeftCorners,
           roundRightCorners: roundRightCorners),

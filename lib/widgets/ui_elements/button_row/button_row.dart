@@ -22,30 +22,22 @@ class ManualWidgetTesterButtonRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: ManualWidgetTesterTheme.of(context).buttonTheme.buttonColor,
+        color: ManualWidgetTesterTheme.of(context).buttonTheme.color,
         borderRadius: BorderRadius.only(
           topLeft: disableRoundedCornersOnLeftSide
               ? Radius.zero
-              : ManualWidgetTesterTheme.of(context)
-                  .buttonTheme
-                  .buttonBorderRadius,
+              : ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius,
           bottomLeft: disableRoundedCornersOnLeftSide
               ? Radius.zero
-              : ManualWidgetTesterTheme.of(context)
-                  .buttonTheme
-                  .buttonBorderRadius,
+              : ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius,
           topRight: disableRoundedCornersOnRightSide
               ? Radius.zero
-              : ManualWidgetTesterTheme.of(context)
-                  .buttonTheme
-                  .buttonBorderRadius,
+              : ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius,
           bottomRight: disableRoundedCornersOnRightSide
               ? Radius.zero
-              : ManualWidgetTesterTheme.of(context)
-                  .buttonTheme
-                  .buttonBorderRadius,
+              : ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius,
         ),
-        boxShadow: ManualWidgetTesterTheme.of(context).buttonTheme.buttonShadow,
+        boxShadow: ManualWidgetTesterTheme.of(context).buttonTheme.shadow,
       ),
       child: _buildButtons(),
     );

@@ -5,15 +5,15 @@ import 'package:gradient_borders/gradient_borders.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterButtonTheme extends Equatable {
+class ButtonTheme extends Equatable {
   /// The buttons' color.
-  final Color buttonColor;
+  final Color color;
 
   /// The buttons' border radius.
-  final Radius buttonBorderRadius;
+  final Radius borderRadius;
 
   /// The buttons' shadow(s).
-  final List<BoxShadow> buttonShadow;
+  final List<BoxShadow> shadow;
 
   /// The color to tint the button with when it is pressed.
   final Color buttonPressedTint;
@@ -25,10 +25,10 @@ class ManualWidgetTesterButtonTheme extends Equatable {
   final Offset buttonPressedOffset;
 
   /// The color of the line that separates two buttons within a button row.
-  final Color buttonSeparatorColor;
+  final Color separatorColor;
 
   /// The width of the line that separates two buttons within a button row.
-  final double buttonSeparatorWidth;
+  final double separatorWidth;
 
   /// The icon theme of a disabled button.
   final IconThemeData disabledButtonIconTheme;
@@ -37,7 +37,7 @@ class ManualWidgetTesterButtonTheme extends Equatable {
   final IconThemeData pressedButtonIconTheme;
 
   /// The icon theme of an enabled, unpressed button.
-  final IconThemeData buttonIconTheme;
+  final IconThemeData iconTheme;
 
   /// The text style of a disabled button.
   final TextStyle disabledButtonTextStyle;
@@ -46,15 +46,15 @@ class ManualWidgetTesterButtonTheme extends Equatable {
   final TextStyle pressedButtonTextStyle;
 
   /// The text style of an enabled, unpressed button.
-  final TextStyle buttonTextStyle;
+  final TextStyle textStyle;
 
   /// The border of the individual button inside a button row.
-  final BoxBorder buttonBoxBorder;
+  final BoxBorder boxBorder;
 
-  const ManualWidgetTesterButtonTheme({
-    this.buttonColor = const Color.fromRGBO(45, 50, 59, 1.0),
-    this.buttonBorderRadius = const Radius.circular(3.0),
-    this.buttonShadow = const [
+  const ButtonTheme({
+    this.color = const Color.fromRGBO(45, 50, 59, 1.0),
+    this.borderRadius = const Radius.circular(3.0),
+    this.shadow = const [
       BoxShadow(
         blurRadius: 2.0,
         color: Color.fromRGBO(0, 0, 0, 0.2),
@@ -64,8 +64,8 @@ class ManualWidgetTesterButtonTheme extends Equatable {
     this.buttonPressedTint = const Color.fromRGBO(0, 0, 0, 0.1),
     this.buttonHoveredTint = const Color.fromRGBO(255, 255, 255, 0.05),
     this.buttonPressedOffset = const Offset(0.0, 0.5),
-    this.buttonSeparatorColor = const Color.fromRGBO(0, 0, 0, 0.2),
-    this.buttonSeparatorWidth = 1.2,
+    this.separatorColor = const Color.fromRGBO(0, 0, 0, 0.2),
+    this.separatorWidth = 1.2,
     this.disabledButtonIconTheme = const IconThemeData(
       color: Color.fromRGBO(255, 255, 255, 0.25),
       size: 18.5,
@@ -74,7 +74,7 @@ class ManualWidgetTesterButtonTheme extends Equatable {
       color: Color.fromRGBO(255, 255, 255, 0.5),
       size: 18.5,
     ),
-    this.buttonIconTheme = const IconThemeData(
+    this.iconTheme = const IconThemeData(
       color: Color.fromRGBO(255, 255, 255, 0.9),
       size: 18.5,
     ),
@@ -84,10 +84,10 @@ class ManualWidgetTesterButtonTheme extends Equatable {
     this.pressedButtonTextStyle = const TextStyle(
       color: Color.fromRGBO(255, 255, 255, 0.5),
     ),
-    this.buttonTextStyle = const TextStyle(
+    this.textStyle = const TextStyle(
       color: Color.fromRGBO(255, 255, 255, 0.9),
     ),
-    this.buttonBoxBorder = const GradientBoxBorder(
+    this.boxBorder = const GradientBoxBorder(
       gradient: LinearGradient(
         colors: [
           Color.fromRGBO(255, 255, 255, 0.1),
@@ -103,29 +103,28 @@ class ManualWidgetTesterButtonTheme extends Equatable {
 
   @override
   List<Object?> get props => [
-        buttonColor,
-        buttonBorderRadius,
-        buttonShadow,
+        color,
+        borderRadius,
+        shadow,
         buttonPressedTint,
         buttonHoveredTint,
         buttonPressedOffset,
-        buttonSeparatorColor,
-        buttonSeparatorWidth,
+        separatorColor,
+        separatorWidth,
         disabledButtonIconTheme,
         pressedButtonIconTheme,
-        buttonIconTheme,
+        iconTheme,
         disabledButtonTextStyle,
         pressedButtonTextStyle,
-        buttonTextStyle,
-        buttonBoxBorder,
+        textStyle,
+        boxBorder,
       ];
 
-  static ManualWidgetTesterButtonTheme fromThemeGeneratorParameters(
+  static ButtonTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return ManualWidgetTesterButtonTheme(
-      buttonColor: parameters.filteredBackgroundColor.lighter(16),
-      buttonShadow:
-          _getButtonShadowFromDesignLanguage(parameters.designLanguage),
+    return ButtonTheme(
+      color: parameters.filteredBackgroundColor.lighter(16),
+      shadow: _getShadowFromDesignLanguage(parameters.designLanguage),
       disabledButtonIconTheme: IconThemeData(
         color: _getColorFromBrightness(parameters.brightness).withOpacity(0.25),
         size: _getIconSizeFromLayout(parameters.layout),
@@ -134,7 +133,7 @@ class ManualWidgetTesterButtonTheme extends Equatable {
         color: _getColorFromBrightness(parameters.brightness).withOpacity(0.5),
         size: _getIconSizeFromLayout(parameters.layout),
       ),
-      buttonIconTheme: IconThemeData(
+      iconTheme: IconThemeData(
         color: _getColorFromBrightness(parameters.brightness).withOpacity(0.9),
         size: _getIconSizeFromLayout(parameters.layout),
       ),
@@ -144,15 +143,14 @@ class ManualWidgetTesterButtonTheme extends Equatable {
       pressedButtonTextStyle: TextStyle(
         color: _getColorFromBrightness(parameters.brightness).withOpacity(0.5),
       ),
-      buttonTextStyle: TextStyle(
+      textStyle: TextStyle(
         color: _getColorFromBrightness(parameters.brightness).withOpacity(0.9),
       ),
-      buttonBoxBorder:
-          _getButtonBoxBorderFromDesignLanguage(parameters.designLanguage),
+      boxBorder: _getBoxBorderFromDesignLanguage(parameters.designLanguage),
     );
   }
 
-  static List<BoxShadow> _getButtonShadowFromDesignLanguage(
+  static List<BoxShadow> _getShadowFromDesignLanguage(
       DesignLanguage designLanguage) {
     switch (designLanguage) {
       case DesignLanguage.skeuomorphic:
@@ -188,7 +186,7 @@ class ManualWidgetTesterButtonTheme extends Equatable {
     }
   }
 
-  static BoxBorder _getButtonBoxBorderFromDesignLanguage(
+  static BoxBorder _getBoxBorderFromDesignLanguage(
       DesignLanguage designLanguage) {
     switch (designLanguage) {
       case DesignLanguage.skeuomorphic:
