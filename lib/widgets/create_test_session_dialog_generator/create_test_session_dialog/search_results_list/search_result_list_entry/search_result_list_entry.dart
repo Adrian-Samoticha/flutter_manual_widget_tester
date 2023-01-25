@@ -92,23 +92,23 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
         child: AnimatedOpacity(
           duration: ManualWidgetTesterTheme.of(context)
               .createTestSessionDialogTheme
-              .createTestSessionDialogSearchResultFadeDuration,
+              .searchResultFadeDuration,
           opacity: _isSelected || _isBeingHovered
               ? 1.0
               : ManualWidgetTesterTheme.of(context)
                   .createTestSessionDialogTheme
-                  .createTestSessionDialogUnselectedSearchResultOpacity,
+                  .unselectedSearchResultOpacity,
           child: Container(
             height: ManualWidgetTesterTheme.of(context)
                 .createTestSessionDialogTheme
-                .createTestSessionDialogSearchResultHeight,
+                .searchResultHeight,
             decoration: _isSelected
                 ? ManualWidgetTesterTheme.of(context)
                     .createTestSessionDialogTheme
-                    .createTestSessionDialogSelectedSearchResultDecoration
+                    .selectedSearchResultDecoration
                 : ManualWidgetTesterTheme.of(context)
                     .createTestSessionDialogTheme
-                    .createTestSessionDialogUnselectedSearchResultDecoration,
+                    .unselectedSearchResultDecoration,
             child: _buildIconAndNameRow(),
           ),
         ),
@@ -135,8 +135,7 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
             widget.builder.name,
             softWrap: false,
             overflow: TextOverflow.ellipsis,
-            style: themeData.createTestSessionDialogTheme
-                .createTestSessionDialogSearchResultTextStyle,
+            style: themeData.createTestSessionDialogTheme.searchResultTextStyle,
           ),
         ),
       ],

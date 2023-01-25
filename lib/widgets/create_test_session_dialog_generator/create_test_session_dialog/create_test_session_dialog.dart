@@ -87,10 +87,10 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
               ),
               width: ManualWidgetTesterTheme.of(context)
                   .createTestSessionDialogTheme
-                  .createTestSessionDialogWidth,
+                  .width,
               padding: ManualWidgetTesterTheme.of(context)
                   .createTestSessionDialogTheme
-                  .createTestSessionDialogPadding,
+                  .padding,
               child: _buildMainColumn(),
             ),
           ),
@@ -138,7 +138,7 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
           _buildSearchResultList(MediaQuery.of(context).size.height *
               ManualWidgetTesterTheme.of(context)
                   .createTestSessionDialogTheme
-                  .createTestSessionDialogSearchResultsHeightFactor),
+                  .searchResultsHeightFactor),
         ],
       ),
     );
@@ -148,7 +148,7 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
     return SizedBox(
       height: ManualWidgetTesterTheme.of(context)
           .createTestSessionDialogTheme
-          .createTestSessionDialogSearchBarHeight,
+          .searchBarHeight,
       child: ManualWidgetTesterTextField(
         textEditingController: _textEditingController,
         onSubmitted: (_) {},

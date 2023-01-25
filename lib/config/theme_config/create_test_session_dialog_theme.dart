@@ -3,69 +3,67 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterCreateTestSessionDialogTheme extends Equatable {
+class CreateTestSessionDialogTheme extends Equatable {
   /// The width of the “create test session” button.
-  final double createTestSessionDialogWidth;
+  final double width;
 
   /// The padding of the “create test session” dialog.
-  final EdgeInsets createTestSessionDialogPadding;
+  final EdgeInsets padding;
 
   /// The height factor of the “create test session” dialog's search result list
   /// in relation to the window's height.
   ///
   /// A height factor of 0.5 means that the search result list covers 50 % of
   /// the application window.
-  final double createTestSessionDialogSearchResultsHeightFactor;
+  final double searchResultsHeightFactor;
 
   /// The height of the “create test session” dialog's search bar.
-  final double createTestSessionDialogSearchBarHeight;
+  final double searchBarHeight;
 
   /// The padding of the “create test session” dialog's search results.
-  final EdgeInsets createTestSessionDialogSearchResultsPadding;
+  final EdgeInsets searchResultsPadding;
 
   /// The height of a single item in the “create test session” dialog's search
   /// results.
-  final double createTestSessionDialogSearchResultHeight;
+  final double searchResultHeight;
 
   /// The box decoration of the “create test session” dialog's selected search
   /// result.
-  final BoxDecoration createTestSessionDialogSelectedSearchResultDecoration;
+  final BoxDecoration selectedSearchResultDecoration;
 
   /// The box decoration of the “create test session” dialog's unselected search
   /// results.
-  final BoxDecoration createTestSessionDialogUnselectedSearchResultDecoration;
+  final BoxDecoration unselectedSearchResultDecoration;
 
   /// The text style of the “create test session” dialog's search results.
-  final TextStyle createTestSessionDialogSearchResultTextStyle;
+  final TextStyle searchResultTextStyle;
 
   /// The padding of the “create test session” dialog's search result icons.
-  final EdgeInsets createTestSessionDialogSearchResultIconPadding;
+  final EdgeInsets searchResultIconPadding;
 
   /// The size of the “create test session” dialog's search result icons.
-  final double createTestSessionDialogSearchResultIconSize;
+  final double searchResultIconSize;
 
   /// The duration of the “create test session” dialog's search result fade
   /// animation.
-  final Duration createTestSessionDialogSearchResultFadeDuration;
+  final Duration searchResultFadeDuration;
 
   /// The opacity of the “create test session” dialog's unselected search
   /// results.
-  final double createTestSessionDialogUnselectedSearchResultOpacity;
+  final double unselectedSearchResultOpacity;
 
   /// The text style of the “create test session” dialog's *“No matching
   /// results.”* text.
-  final TextStyle createTestSessionDialogNoMatchingResultsTextStyle;
+  final TextStyle noMatchingResultsTextStyle;
 
-  const ManualWidgetTesterCreateTestSessionDialogTheme({
-    this.createTestSessionDialogWidth = 512.0,
-    this.createTestSessionDialogPadding = const EdgeInsets.all(8.0),
-    this.createTestSessionDialogSearchResultsHeightFactor = 0.5,
-    this.createTestSessionDialogSearchBarHeight = 32.0,
-    this.createTestSessionDialogSearchResultsPadding =
-        const EdgeInsets.only(top: 8.0),
-    this.createTestSessionDialogSearchResultHeight = 28.0,
-    this.createTestSessionDialogSelectedSearchResultDecoration =
-        const BoxDecoration(
+  const CreateTestSessionDialogTheme({
+    this.width = 512.0,
+    this.padding = const EdgeInsets.all(8.0),
+    this.searchResultsHeightFactor = 0.5,
+    this.searchBarHeight = 32.0,
+    this.searchResultsPadding = const EdgeInsets.only(top: 8.0),
+    this.searchResultHeight = 28.0,
+    this.selectedSearchResultDecoration = const BoxDecoration(
       color: Color.fromRGBO(255, 255, 255, 0.15),
       border: Border.fromBorderSide(
         BorderSide(
@@ -76,74 +74,60 @@ class ManualWidgetTesterCreateTestSessionDialogTheme extends Equatable {
         Radius.circular(5.0),
       ),
     ),
-    this.createTestSessionDialogUnselectedSearchResultDecoration =
-        const BoxDecoration(),
-    this.createTestSessionDialogSearchResultTextStyle = const TextStyle(
+    this.unselectedSearchResultDecoration = const BoxDecoration(),
+    this.searchResultTextStyle = const TextStyle(
       color: Colors.white,
     ),
-    this.createTestSessionDialogSearchResultIconPadding =
-        const EdgeInsets.only(right: 8.0, left: 2.0),
-    this.createTestSessionDialogSearchResultIconSize = 21.0,
-    this.createTestSessionDialogSearchResultFadeDuration =
-        const Duration(milliseconds: 100),
-    this.createTestSessionDialogUnselectedSearchResultOpacity = 0.5,
-    this.createTestSessionDialogNoMatchingResultsTextStyle = const TextStyle(
+    this.searchResultIconPadding = const EdgeInsets.only(right: 8.0, left: 2.0),
+    this.searchResultIconSize = 21.0,
+    this.searchResultFadeDuration = const Duration(milliseconds: 100),
+    this.unselectedSearchResultOpacity = 0.5,
+    this.noMatchingResultsTextStyle = const TextStyle(
       color: Color.fromRGBO(255, 255, 255, 0.9),
     ),
   });
 
   @override
   List<Object?> get props => [
-        createTestSessionDialogWidth,
-        createTestSessionDialogPadding,
-        createTestSessionDialogSearchResultsHeightFactor,
-        createTestSessionDialogSearchBarHeight,
-        createTestSessionDialogSearchResultsPadding,
-        createTestSessionDialogSearchResultHeight,
-        createTestSessionDialogSelectedSearchResultDecoration,
-        createTestSessionDialogUnselectedSearchResultDecoration,
-        createTestSessionDialogSearchResultTextStyle,
-        createTestSessionDialogSearchResultIconPadding,
-        createTestSessionDialogSearchResultIconSize,
-        createTestSessionDialogSearchResultFadeDuration,
-        createTestSessionDialogUnselectedSearchResultOpacity,
-        createTestSessionDialogNoMatchingResultsTextStyle,
+        width,
+        padding,
+        searchResultsHeightFactor,
+        searchBarHeight,
+        searchResultsPadding,
+        searchResultHeight,
+        selectedSearchResultDecoration,
+        unselectedSearchResultDecoration,
+        searchResultTextStyle,
+        searchResultIconPadding,
+        searchResultIconSize,
+        searchResultFadeDuration,
+        unselectedSearchResultOpacity,
+        noMatchingResultsTextStyle,
       ];
 
-  static ManualWidgetTesterCreateTestSessionDialogTheme
-      fromThemeGeneratorParameters(ThemeGeneratorParameters parameters) {
-    return ManualWidgetTesterCreateTestSessionDialogTheme(
-      createTestSessionDialogPadding:
-          _getCreateTestSessionDialogPaddingFromLayout(parameters.layout),
-      createTestSessionDialogSearchBarHeight:
-          _getCreateTestSessionDialogSearchBarHeightFromLayout(
-              parameters.layout),
-      createTestSessionDialogSearchResultsPadding:
-          _getCreateTestSessionDialogSearchResultsPaddingFromLayout(
-              parameters.layout),
-      createTestSessionDialogSearchResultHeight:
-          _getCreateTestSessionDialogSearchResultHeightFromLayout(
-              parameters.layout),
-      createTestSessionDialogSelectedSearchResultDecoration:
-          _getCreateTestSessionDialogSelectedSearchResultDecorationFromBrightness(
+  static CreateTestSessionDialogTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return CreateTestSessionDialogTheme(
+      padding: _getPaddingFromLayout(parameters.layout),
+      searchBarHeight: _getSearchBarHeightFromLayout(parameters.layout),
+      searchResultsPadding:
+          _getSearchResultsPaddingFromLayout(parameters.layout),
+      searchResultHeight: _getSearchResultHeightFromLayout(parameters.layout),
+      selectedSearchResultDecoration:
+          _getSelectedSearchResultDecorationFromBrightness(
               parameters.brightness),
-      createTestSessionDialogSearchResultTextStyle:
-          _getCreateTestSessionDialogSearchResultTextStyleFromBrightness(
-              parameters.brightness),
-      createTestSessionDialogSearchResultIconSize:
-          _getCreateTestSessionDialogSearchResultIconSizeFromLayout(
-              parameters.layout),
-      createTestSessionDialogSearchResultFadeDuration:
-          _getCreateTestSessionDialogSearchResultFadeDurationFromAnimationSpeed(
-              parameters.animationSpeed),
-      createTestSessionDialogNoMatchingResultsTextStyle:
-          _getCreateTestSessionDialogNoMatchingResultsTextStyleFromBrightness(
-              parameters.brightness),
+      searchResultTextStyle:
+          _getSearchResultTextStyleFromBrightness(parameters.brightness),
+      searchResultIconSize:
+          _getSearchResultIconSizeFromLayout(parameters.layout),
+      searchResultFadeDuration: _getSearchResultFadeDurationFromAnimationSpeed(
+          parameters.animationSpeed),
+      noMatchingResultsTextStyle:
+          _getNoMatchingResultsTextStyleFromBrightness(parameters.brightness),
     );
   }
 
-  static EdgeInsets _getCreateTestSessionDialogPaddingFromLayout(
-      Layout layout) {
+  static EdgeInsets _getPaddingFromLayout(Layout layout) {
     switch (layout) {
       case Layout.compact:
         return const EdgeInsets.all(5.5);
@@ -154,8 +138,7 @@ class ManualWidgetTesterCreateTestSessionDialogTheme extends Equatable {
     }
   }
 
-  static double _getCreateTestSessionDialogSearchBarHeightFromLayout(
-      Layout layout) {
+  static double _getSearchBarHeightFromLayout(Layout layout) {
     switch (layout) {
       case Layout.compact:
         return 24.0;
@@ -166,8 +149,7 @@ class ManualWidgetTesterCreateTestSessionDialogTheme extends Equatable {
     }
   }
 
-  static EdgeInsets _getCreateTestSessionDialogSearchResultsPaddingFromLayout(
-      Layout layout) {
+  static EdgeInsets _getSearchResultsPaddingFromLayout(Layout layout) {
     switch (layout) {
       case Layout.compact:
         return const EdgeInsets.only(top: 5.5);
@@ -178,8 +160,7 @@ class ManualWidgetTesterCreateTestSessionDialogTheme extends Equatable {
     }
   }
 
-  static double _getCreateTestSessionDialogSearchResultHeightFromLayout(
-      Layout layout) {
+  static double _getSearchResultHeightFromLayout(Layout layout) {
     switch (layout) {
       case Layout.compact:
         return 24.0;
@@ -190,9 +171,8 @@ class ManualWidgetTesterCreateTestSessionDialogTheme extends Equatable {
     }
   }
 
-  static BoxDecoration
-      _getCreateTestSessionDialogSelectedSearchResultDecorationFromBrightness(
-          Brightness brightness) {
+  static BoxDecoration _getSelectedSearchResultDecorationFromBrightness(
+      Brightness brightness) {
     switch (brightness) {
       case Brightness.dark:
         return const BoxDecoration(
@@ -221,9 +201,8 @@ class ManualWidgetTesterCreateTestSessionDialogTheme extends Equatable {
     }
   }
 
-  static TextStyle
-      _getCreateTestSessionDialogSearchResultTextStyleFromBrightness(
-          Brightness brightness) {
+  static TextStyle _getSearchResultTextStyleFromBrightness(
+      Brightness brightness) {
     switch (brightness) {
       case Brightness.dark:
         return const TextStyle(
@@ -236,8 +215,7 @@ class ManualWidgetTesterCreateTestSessionDialogTheme extends Equatable {
     }
   }
 
-  static double _getCreateTestSessionDialogSearchResultIconSizeFromLayout(
-      Layout layout) {
+  static double _getSearchResultIconSizeFromLayout(Layout layout) {
     switch (layout) {
       case Layout.compact:
         return 18.0;
@@ -248,9 +226,8 @@ class ManualWidgetTesterCreateTestSessionDialogTheme extends Equatable {
     }
   }
 
-  static Duration
-      _getCreateTestSessionDialogSearchResultFadeDurationFromAnimationSpeed(
-          AnimationSpeed animationSpeed) {
+  static Duration _getSearchResultFadeDurationFromAnimationSpeed(
+      AnimationSpeed animationSpeed) {
     switch (animationSpeed) {
       case AnimationSpeed.instant:
         return const Duration();
@@ -263,9 +240,8 @@ class ManualWidgetTesterCreateTestSessionDialogTheme extends Equatable {
     }
   }
 
-  static TextStyle
-      _getCreateTestSessionDialogNoMatchingResultsTextStyleFromBrightness(
-          Brightness brightness) {
+  static TextStyle _getNoMatchingResultsTextStyleFromBrightness(
+      Brightness brightness) {
     switch (brightness) {
       case Brightness.dark:
         return const TextStyle(

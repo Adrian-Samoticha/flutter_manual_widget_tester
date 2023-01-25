@@ -27,7 +27,7 @@ class SearchResultsList extends StatelessWidget {
       child: Padding(
         padding: ManualWidgetTesterTheme.of(context)
             .createTestSessionDialogTheme
-            .createTestSessionDialogSearchResultsPadding,
+            .searchResultsPadding,
         child: ConstrainedBox(
           constraints: BoxConstraints(
             maxHeight: maxHeight,

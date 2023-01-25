@@ -12,13 +12,13 @@ class NoMatchingResultsMessage extends StatelessWidget {
     return Padding(
       padding: ManualWidgetTesterTheme.of(context)
           .createTestSessionDialogTheme
-          .createTestSessionDialogSearchResultsPadding,
+          .searchResultsPadding,
       child: DefaultTextStyle(
         style: DefaultTextStyleProvider.defaultTextStyle,
         child: Text('No matching results.',
             style: ManualWidgetTesterTheme.of(context)
                 .createTestSessionDialogTheme
-                .createTestSessionDialogNoMatchingResultsTextStyle),
+                .noMatchingResultsTextStyle),
       ),
     );
   }
