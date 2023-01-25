@@ -3,25 +3,25 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterAppBarTheme extends Equatable {
+class AppBarTheme extends Equatable {
   /// The height of the app bar on the top of the widget.
   ///
   /// The app bar is the bar that houses the tab bar and the “create new test
   /// session” button.
-  final double appBarHeight;
+  final double height;
 
   /// The height of the container that simulates the shadow at the bottom of
   /// the app bar.
-  final double appBarShadowHeight;
+  final double shadowHeight;
 
   /// The box decoration of the container that simulates the shadow at the
   /// bottom of the app bar.
-  final BoxDecoration appBarShadowBoxDecoration;
+  final BoxDecoration shadowBoxDecoration;
 
-  const ManualWidgetTesterAppBarTheme({
-    this.appBarHeight = 40.0,
-    this.appBarShadowHeight = 16.0,
-    this.appBarShadowBoxDecoration = const BoxDecoration(
+  const AppBarTheme({
+    this.height = 40.0,
+    this.shadowHeight = 16.0,
+    this.shadowBoxDecoration = const BoxDecoration(
       gradient: LinearGradient(
         colors: [
           Color.fromRGBO(0, 0, 0, 0.15),
@@ -35,12 +35,23 @@ class ManualWidgetTesterAppBarTheme extends Equatable {
 
   @override
   List<Object?> get props => [
-        appBarHeight,
-        appBarShadowHeight,
-        appBarShadowBoxDecoration,
+        height,
+        shadowHeight,
+        shadowBoxDecoration,
       ];
 
-  static double _getAppBarHeightFromLayout(Layout layout) {
+  static AppBarTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return AppBarTheme(
+      height: _getHeightFromLayout(parameters.layout),
+      shadowHeight:
+          _getShadowHeightFromDesignLanguage(parameters.designLanguage),
+      shadowBoxDecoration:
+          _getShadowBoxDecorationFromDesignLanguage(parameters.designLanguage),
+    );
+  }
+
+  static double _getHeightFromLayout(Layout layout) {
     switch (layout) {
       case Layout.compact:
         return 32.0;
@@ -51,19 +62,7 @@ class ManualWidgetTesterAppBarTheme extends Equatable {
     }
   }
 
-  static ManualWidgetTesterAppBarTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
-    return ManualWidgetTesterAppBarTheme(
-      appBarHeight: _getAppBarHeightFromLayout(parameters.layout),
-      appBarShadowHeight:
-          _getAppBarShadowHeightFromDesignLanguage(parameters.designLanguage),
-      appBarShadowBoxDecoration:
-          _getAppBarShadowBoxDecorationFromDesignLanguage(
-              parameters.designLanguage),
-    );
-  }
-
-  static double _getAppBarShadowHeightFromDesignLanguage(
+  static double _getShadowHeightFromDesignLanguage(
       DesignLanguage designLanguage) {
     switch (designLanguage) {
       case DesignLanguage.skeuomorphic:
@@ -73,7 +72,7 @@ class ManualWidgetTesterAppBarTheme extends Equatable {
     }
   }
 
-  static BoxDecoration _getAppBarShadowBoxDecorationFromDesignLanguage(
+  static BoxDecoration _getShadowBoxDecorationFromDesignLanguage(
       DesignLanguage designLanguage) {
     switch (designLanguage) {
       case DesignLanguage.skeuomorphic:

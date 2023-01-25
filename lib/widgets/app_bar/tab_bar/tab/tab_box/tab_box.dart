@@ -40,7 +40,7 @@ class TabBox extends StatelessWidget {
       },
       child: SizedBox(
         width: width,
-        height: ManualWidgetTesterTheme.of(context).appBarTheme.appBarHeight,
+        height: ManualWidgetTesterTheme.of(context).appBarTheme.height,
         child: Padding(
           padding: EdgeInsets.only(
               top: ManualWidgetTesterTheme.of(context).tabTheme.spaceAboveTabs),

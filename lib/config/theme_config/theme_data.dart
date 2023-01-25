@@ -87,7 +87,7 @@ class ManualWidgetTesterThemeData extends Equatable {
   ///
   /// The app bar is the bar that houses the tab bar and the “create new test
   /// session” button.
-  final ManualWidgetTesterAppBarTheme appBarTheme;
+  final AppBarTheme appBarTheme;
 
   /// The string editor theme.
   final ManualWidgetTesterStringEditorTheme stringEditorTheme;
@@ -136,7 +136,7 @@ class ManualWidgetTesterThemeData extends Equatable {
     this.radioButtonTheme = const ManualWidgetTesterRadioButtonTheme(),
     this.closeButtonTheme = const ManualWidgetTesterCloseButtonTheme(),
     this.noEditorMessageTheme = const ManualWidgetTesterNoEditorMessageTheme(),
-    this.appBarTheme = const ManualWidgetTesterAppBarTheme(),
+    this.appBarTheme = const AppBarTheme(),
     this.stringEditorTheme = const ManualWidgetTesterStringEditorTheme(),
     this.createTestSessionButtonTheme =
         const ManualWidgetTesterCreateTestSessionButtonTheme(),
@@ -224,8 +224,7 @@ class ManualWidgetTesterThemeData extends Equatable {
       noEditorMessageTheme:
           ManualWidgetTesterNoEditorMessageTheme.fromThemeGeneratorParameters(
               parameters),
-      appBarTheme: ManualWidgetTesterAppBarTheme.fromThemeGeneratorParameters(
-          parameters),
+      appBarTheme: AppBarTheme.fromThemeGeneratorParameters(parameters),
       stringEditorTheme:
           ManualWidgetTesterStringEditorTheme.fromThemeGeneratorParameters(
               parameters),

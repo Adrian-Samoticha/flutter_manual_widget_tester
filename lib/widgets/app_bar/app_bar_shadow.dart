@@ -12,11 +12,9 @@ class AppBarShadow extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        height:
-            ManualWidgetTesterTheme.of(context).appBarTheme.appBarShadowHeight,
-        decoration: ManualWidgetTesterTheme.of(context)
-            .appBarTheme
-            .appBarShadowBoxDecoration,
+        height: ManualWidgetTesterTheme.of(context).appBarTheme.shadowHeight,
+        decoration:
+            ManualWidgetTesterTheme.of(context).appBarTheme.shadowBoxDecoration,
       ),
     );
   }
