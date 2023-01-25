@@ -3,36 +3,35 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterCloseButtonTheme extends Equatable {
+class CloseButtonTheme extends Equatable {
   /// The box decoration of a close button's hover effect.
-  final BoxDecoration closeButtonHoverDecoration;
+  final BoxDecoration hoverDecoration;
 
   /// The close button's color.
-  final Color closeButtonColor;
+  final Color color;
 
-  const ManualWidgetTesterCloseButtonTheme({
-    this.closeButtonHoverDecoration = const BoxDecoration(
+  const CloseButtonTheme({
+    this.hoverDecoration = const BoxDecoration(
       color: Color.fromRGBO(255, 255, 255, 0.2),
       borderRadius: BorderRadius.all(Radius.circular(1024.0)),
     ),
-    this.closeButtonColor = const Color.fromRGBO(255, 255, 255, 0.9),
+    this.color = const Color.fromRGBO(255, 255, 255, 0.9),
   });
 
   @override
   List<Object?> get props => [
-        closeButtonHoverDecoration,
-        closeButtonColor,
+        hoverDecoration,
+        color,
       ];
 
-  static ManualWidgetTesterCloseButtonTheme fromThemeGeneratorParameters(
+  static CloseButtonTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return ManualWidgetTesterCloseButtonTheme(
-      closeButtonColor:
-          _getCloseButtonColorFromBrightness(parameters.brightness),
+    return CloseButtonTheme(
+      color: _getColorFromBrightness(parameters.brightness),
     );
   }
 
-  static Color _getCloseButtonColorFromBrightness(Brightness brightness) {
+  static Color _getColorFromBrightness(Brightness brightness) {
     switch (brightness) {
       case Brightness.dark:
         return const Color.fromRGBO(255, 255, 255, 0.9);

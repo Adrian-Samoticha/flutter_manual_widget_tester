@@ -77,7 +77,7 @@ class ManualWidgetTesterThemeData extends Equatable {
   final ManualWidgetTesterRadioButtonTheme radioButtonTheme;
 
   /// The close button theme.
-  final ManualWidgetTesterCloseButtonTheme closeButtonTheme;
+  final CloseButtonTheme closeButtonTheme;
 
   /// The theme of the message that is displayed when no editor for a particular
   /// setting could be built.
@@ -134,7 +134,7 @@ class ManualWidgetTesterThemeData extends Equatable {
     this.noCustomSettingsMessageTheme =
         const ManualWidgetTesterNoCustomSettingsMessageTheme(),
     this.radioButtonTheme = const ManualWidgetTesterRadioButtonTheme(),
-    this.closeButtonTheme = const ManualWidgetTesterCloseButtonTheme(),
+    this.closeButtonTheme = const CloseButtonTheme(),
     this.noEditorMessageTheme = const ManualWidgetTesterNoEditorMessageTheme(),
     this.appBarTheme = const AppBarTheme(),
     this.stringEditorTheme = const ManualWidgetTesterStringEditorTheme(),
@@ -216,8 +216,7 @@ class ManualWidgetTesterThemeData extends Equatable {
           ManualWidgetTesterRadioButtonTheme.fromThemeGeneratorParameters(
               parameters),
       closeButtonTheme:
-          ManualWidgetTesterCloseButtonTheme.fromThemeGeneratorParameters(
-              parameters),
+          CloseButtonTheme.fromThemeGeneratorParameters(parameters),
       noEditorMessageTheme:
           ManualWidgetTesterNoEditorMessageTheme.fromThemeGeneratorParameters(
               parameters),

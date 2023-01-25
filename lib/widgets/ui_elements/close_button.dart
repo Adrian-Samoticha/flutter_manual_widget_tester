@@ -58,7 +58,7 @@ class _ManualWidgetTesterCloseButtonState
                 child: Container(
                   decoration: ManualWidgetTesterTheme.of(context)
                       .closeButtonTheme
-                      .closeButtonHoverDecoration,
+                      .hoverDecoration,
                 ),
               ),
               Center(
@@ -66,7 +66,7 @@ class _ManualWidgetTesterCloseButtonState
                   Icons.close,
                   color: ManualWidgetTesterTheme.of(context)
                       .closeButtonTheme
-                      .closeButtonColor,
+                      .color,
                   size: widget.size,
                 ),
               ),
