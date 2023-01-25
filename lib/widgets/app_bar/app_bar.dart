@@ -81,7 +81,7 @@ class _ManualWidgetTesterAppBarState extends State<ManualWidgetTesterAppBar> {
                 width: ManualWidgetTesterTheme.of(context).appBarTheme.height,
                 padding: ManualWidgetTesterTheme.of(context)
                     .createTestSessionButtonTheme
-                    .createTestSessionButtonPadding,
+                    .padding,
                 child: NewTestSessionButton(
                   builders: widget.builders,
                   widgetTestSessionHandler: widget.widgetTestSessionHandler,

@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterCreateTestSessionButtonTheme extends Equatable {
+class CreateTestSessionButtonTheme extends Equatable {
   /// The padding of the “create test session” button.
-  final EdgeInsets createTestSessionButtonPadding;
+  final EdgeInsets padding;
 
-  const ManualWidgetTesterCreateTestSessionButtonTheme({
-    this.createTestSessionButtonPadding = const EdgeInsets.all(6.5),
+  const CreateTestSessionButtonTheme({
+    this.padding = const EdgeInsets.all(6.5),
   });
 
   @override
   List<Object?> get props => [
-        createTestSessionButtonPadding,
+        padding,
       ];
 
-  static ManualWidgetTesterCreateTestSessionButtonTheme
-      fromThemeGeneratorParameters(ThemeGeneratorParameters parameters) {
-    return const ManualWidgetTesterCreateTestSessionButtonTheme();
+  static CreateTestSessionButtonTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return const CreateTestSessionButtonTheme();
   }
 }
