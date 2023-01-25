@@ -4,89 +4,89 @@ import 'package:flutter_color/flutter_color.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterTextFieldTheme extends Equatable {
+class TextFieldTheme extends Equatable {
   /// The shadow(s) of a text field.
-  final List<BoxShadow> textFieldShadow;
+  final List<BoxShadow> shadow;
 
   /// The border radius of a text field.
-  final Radius textFieldBorderRadius;
+  final Radius borderRadius;
 
   /// The color of a text field.
-  final Color textFieldColor;
+  final Color color;
 
   /// The border color of a text field.
-  final Color textFieldBorderColor;
+  final Color borderColor;
 
   /// The border width of a text field.
-  final double textFieldBorderWidth;
+  final double borderWidth;
 
   /// The text style of a text field.
-  final TextStyle textFieldTextStyle;
+  final TextStyle textStyle;
 
   /// The text style of a text field's suffix.
-  final TextStyle textFieldSuffixStyle;
+  final TextStyle suffixStyle;
 
   /// The color of a text field's cursor.
-  final Color textFieldCursorColor;
+  final Color cursorColor;
 
   /// The color of a text field's selection.
-  final Color textFieldSelectionColor;
+  final Color selectionColor;
 
   /// The padding of a text field's content.
-  final EdgeInsetsGeometry textFieldContentPadding;
+  final EdgeInsetsGeometry contentPadding;
 
-  const ManualWidgetTesterTextFieldTheme({
-    this.textFieldShadow = const [
+  const TextFieldTheme({
+    this.shadow = const [
       BoxShadow(
         blurRadius: 2.0,
         color: Color.fromRGBO(0, 0, 0, 0.2),
         offset: Offset(0.0, 1.0),
       ),
     ],
-    this.textFieldBorderRadius = const Radius.circular(3.0),
-    this.textFieldColor = const Color.fromARGB(255, 41, 45, 53),
-    this.textFieldBorderColor = const Color.fromRGBO(255, 255, 255, 0.05),
-    this.textFieldBorderWidth = 1.0,
-    this.textFieldTextStyle = const TextStyle(
+    this.borderRadius = const Radius.circular(3.0),
+    this.color = const Color.fromARGB(255, 41, 45, 53),
+    this.borderColor = const Color.fromRGBO(255, 255, 255, 0.05),
+    this.borderWidth = 1.0,
+    this.textStyle = const TextStyle(
       color: Color.fromRGBO(255, 255, 255, 1.0),
       fontSize: 13.0,
     ),
-    this.textFieldSuffixStyle = const TextStyle(
+    this.suffixStyle = const TextStyle(
       color: Color.fromRGBO(255, 255, 255, 1.0),
       fontSize: 13.0,
     ),
-    this.textFieldCursorColor = const Color.fromRGBO(4, 180, 255, 1.0),
-    this.textFieldSelectionColor = const Color.fromRGBO(4, 180, 255, 0.67),
-    this.textFieldContentPadding = const EdgeInsets.all(8.0),
+    this.cursorColor = const Color.fromRGBO(4, 180, 255, 1.0),
+    this.selectionColor = const Color.fromRGBO(4, 180, 255, 0.67),
+    this.contentPadding = const EdgeInsets.all(8.0),
   });
 
   @override
   List<Object?> get props => [
-        textFieldShadow,
-        textFieldBorderRadius,
-        textFieldColor,
-        textFieldBorderColor,
-        textFieldBorderWidth,
-        textFieldTextStyle,
-        textFieldSuffixStyle,
-        textFieldCursorColor,
-        textFieldSelectionColor,
-        textFieldContentPadding,
+        shadow,
+        borderRadius,
+        color,
+        borderColor,
+        borderWidth,
+        textStyle,
+        suffixStyle,
+        cursorColor,
+        selectionColor,
+        contentPadding,
       ];
 
-  static ManualWidgetTesterTextFieldTheme fromThemeGeneratorParameters(
+  static TextFieldTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return ManualWidgetTesterTextFieldTheme(
-      textFieldShadow: _getShadowFromDesignLanguage(parameters.designLanguage),
-      textFieldColor: _getColor(parameters),
-      textFieldBorderColor:
+    return TextFieldTheme(
+      shadow: _getShadowFromDesignLanguage(parameters.designLanguage),
+      color: _getColor(parameters),
+      borderColor:
           _getDefaultForegroundColorFromBrightness(parameters.brightness)
               .withOpacity(0.05),
-      textFieldTextStyle: _getDefaultTextStyle(parameters),
-      textFieldSuffixStyle: _getDefaultTextStyle(parameters),
-      textFieldCursorColor: _getCursorColor(parameters),
-      textFieldSelectionColor: _getCursorColor(parameters).withOpacity(0.67),
-      textFieldContentPadding: _getContentPaddingFromLayout(parameters.layout),
+      textStyle: _getDefaultTextStyle(parameters),
+      suffixStyle: _getDefaultTextStyle(parameters),
+      cursorColor: _getCursorColor(parameters),
+      selectionColor: _getCursorColor(parameters).withOpacity(0.67),
+      contentPadding: _getContentPaddingFromLayout(parameters.layout),
     );
   }
 

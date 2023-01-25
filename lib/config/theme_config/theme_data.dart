@@ -35,7 +35,7 @@ class ManualWidgetTesterThemeData extends Equatable {
   final ManualWidgetTesterButtonTheme buttonTheme;
 
   /// The text field theme.
-  final ManualWidgetTesterTextFieldTheme textFieldTheme;
+  final TextFieldTheme textFieldTheme;
 
   /// The theme of the zoom controls.
   final ManualWidgetTesterZoomControlsTheme zoomControlsTheme;
@@ -117,7 +117,7 @@ class ManualWidgetTesterThemeData extends Equatable {
   const ManualWidgetTesterThemeData({
     this.tabTheme = const ManualWidgetTesterTabTheme(),
     this.buttonTheme = const ManualWidgetTesterButtonTheme(),
-    this.textFieldTheme = const ManualWidgetTesterTextFieldTheme(),
+    this.textFieldTheme = const TextFieldTheme(),
     this.zoomControlsTheme = const ManualWidgetTesterZoomControlsTheme(),
     this.foldableRegionTheme = const ManualWidgetTesterFoldableRegionTheme(),
     this.createTestSessionDialogTheme =
@@ -184,9 +184,7 @@ class ManualWidgetTesterThemeData extends Equatable {
           ManualWidgetTesterTabTheme.fromThemeGeneratorParameters(parameters),
       buttonTheme: ManualWidgetTesterButtonTheme.fromThemeGeneratorParameters(
           parameters),
-      textFieldTheme:
-          ManualWidgetTesterTextFieldTheme.fromThemeGeneratorParameters(
-              parameters),
+      textFieldTheme: TextFieldTheme.fromThemeGeneratorParameters(parameters),
       zoomControlsTheme:
           ManualWidgetTesterZoomControlsTheme.fromThemeGeneratorParameters(
               parameters),

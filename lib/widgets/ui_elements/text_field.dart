@@ -35,41 +35,38 @@ class ManualWidgetTesterTextField extends StatelessWidget {
       return SizedBox.expand(
         child: Container(
           decoration: BoxDecoration(
-            color: ManualWidgetTesterTheme.of(context)
-                .textFieldTheme
-                .textFieldColor,
-            boxShadow: ManualWidgetTesterTheme.of(context)
-                .textFieldTheme
-                .textFieldShadow,
+            color: ManualWidgetTesterTheme.of(context).textFieldTheme.color,
+            boxShadow:
+                ManualWidgetTesterTheme.of(context).textFieldTheme.shadow,
             borderRadius: BorderRadius.only(
               topLeft: disableRoundedCornersOnLeftSide
                   ? Radius.zero
                   : ManualWidgetTesterTheme.of(context)
                       .textFieldTheme
-                      .textFieldBorderRadius,
+                      .borderRadius,
               bottomLeft: disableRoundedCornersOnLeftSide
                   ? Radius.zero
                   : ManualWidgetTesterTheme.of(context)
                       .textFieldTheme
-                      .textFieldBorderRadius,
+                      .borderRadius,
               topRight: disableRoundedCornersOnRightSide
                   ? Radius.zero
                   : ManualWidgetTesterTheme.of(context)
                       .textFieldTheme
-                      .textFieldBorderRadius,
+                      .borderRadius,
               bottomRight: disableRoundedCornersOnRightSide
                   ? Radius.zero
                   : ManualWidgetTesterTheme.of(context)
                       .textFieldTheme
-                      .textFieldBorderRadius,
+                      .borderRadius,
             ),
             border: Border.all(
               color: ManualWidgetTesterTheme.of(context)
                   .textFieldTheme
-                  .textFieldBorderColor,
+                  .borderColor,
               width: ManualWidgetTesterTheme.of(context)
                   .textFieldTheme
-                  .textFieldBorderWidth,
+                  .borderWidth,
             ),
           ),
           child: Container(
@@ -79,22 +76,22 @@ class ManualWidgetTesterTextField extends StatelessWidget {
                     ? Radius.zero
                     : ManualWidgetTesterTheme.of(context)
                         .textFieldTheme
-                        .textFieldBorderRadius,
+                        .borderRadius,
                 bottomLeft: disableRoundedCornersOnLeftSide
                     ? Radius.zero
                     : ManualWidgetTesterTheme.of(context)
                         .textFieldTheme
-                        .textFieldBorderRadius,
+                        .borderRadius,
                 topRight: disableRoundedCornersOnRightSide
                     ? Radius.zero
                     : ManualWidgetTesterTheme.of(context)
                         .textFieldTheme
-                        .textFieldBorderRadius,
+                        .borderRadius,
                 bottomRight: disableRoundedCornersOnRightSide
                     ? Radius.zero
                     : ManualWidgetTesterTheme.of(context)
                         .textFieldTheme
-                        .textFieldBorderRadius,
+                        .borderRadius,
               ),
               gradient: const LinearGradient(
                 begin: Alignment.topCenter,
@@ -124,7 +121,7 @@ class ManualWidgetTesterTextField extends StatelessWidget {
           textSelectionTheme: TextSelectionThemeData(
             selectionColor: ManualWidgetTesterTheme.of(context)
                 .textFieldTheme
-                .textFieldSelectionColor,
+                .selectionColor,
           ),
         ),
         child: TextField(
@@ -136,19 +133,15 @@ class ManualWidgetTesterTextField extends StatelessWidget {
             isDense: true,
             contentPadding: ManualWidgetTesterTheme.of(context)
                 .textFieldTheme
-                .textFieldContentPadding,
+                .contentPadding,
             border: InputBorder.none,
             suffixText: suffix,
-            suffixStyle: ManualWidgetTesterTheme.of(context)
-                .textFieldTheme
-                .textFieldSuffixStyle,
+            suffixStyle:
+                ManualWidgetTesterTheme.of(context).textFieldTheme.suffixStyle,
           ),
-          style: ManualWidgetTesterTheme.of(context)
-              .textFieldTheme
-              .textFieldTextStyle,
-          cursorColor: ManualWidgetTesterTheme.of(context)
-              .textFieldTheme
-              .textFieldCursorColor,
+          style: ManualWidgetTesterTheme.of(context).textFieldTheme.textStyle,
+          cursorColor:
+              ManualWidgetTesterTheme.of(context).textFieldTheme.cursorColor,
           autocorrect: false,
           autofocus: autofocus,
           onSubmitted: onSubmitted,
