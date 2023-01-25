@@ -3,44 +3,40 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterCustomSettingHeadingTheme extends Equatable {
+class CustomSettingHeadingTheme extends Equatable {
   /// The text style of a custom setting's heading.
-  final TextStyle customSettingHeadingTextStyle;
+  final TextStyle textStyle;
 
   /// The text overflow behavior of a custom setting's heading.
-  final TextOverflow customSettingHeadingOverflow;
+  final TextOverflow overflow;
 
   /// The padding of a custom setting's heading.
-  final EdgeInsets customSettingHeadingPadding;
+  final EdgeInsets padding;
 
-  const ManualWidgetTesterCustomSettingHeadingTheme({
-    this.customSettingHeadingTextStyle = const TextStyle(
+  const CustomSettingHeadingTheme({
+    this.textStyle = const TextStyle(
       color: Color.fromRGBO(255, 255, 255, 0.9),
     ),
-    this.customSettingHeadingOverflow = TextOverflow.ellipsis,
-    this.customSettingHeadingPadding = const EdgeInsets.only(bottom: 5.0),
+    this.overflow = TextOverflow.ellipsis,
+    this.padding = const EdgeInsets.only(bottom: 5.0),
   });
 
   @override
   List<Object?> get props => [
-        customSettingHeadingTextStyle,
-        customSettingHeadingOverflow,
-        customSettingHeadingPadding,
+        textStyle,
+        overflow,
+        padding,
       ];
 
-  static ManualWidgetTesterCustomSettingHeadingTheme
-      fromThemeGeneratorParameters(ThemeGeneratorParameters parameters) {
-    return ManualWidgetTesterCustomSettingHeadingTheme(
-      customSettingHeadingTextStyle:
-          _getCustomSettingHeadingTextStyleFromBrightness(
-              parameters.brightness),
-      customSettingHeadingPadding:
-          _getCustomSettingHeadingPaddingFromLayout(parameters.layout),
+  static CustomSettingHeadingTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return CustomSettingHeadingTheme(
+      textStyle: _getTextStyleFromBrightness(parameters.brightness),
+      padding: _getPaddingFromLayout(parameters.layout),
     );
   }
 
-  static TextStyle _getCustomSettingHeadingTextStyleFromBrightness(
-      Brightness brightness) {
+  static TextStyle _getTextStyleFromBrightness(Brightness brightness) {
     switch (brightness) {
       case Brightness.dark:
         return const TextStyle(
@@ -53,7 +49,7 @@ class ManualWidgetTesterCustomSettingHeadingTheme extends Equatable {
     }
   }
 
-  static EdgeInsets _getCustomSettingHeadingPaddingFromLayout(Layout layout) {
+  static EdgeInsets _getPaddingFromLayout(Layout layout) {
     switch (layout) {
       case Layout.compact:
         return const EdgeInsets.only(bottom: 4.0);

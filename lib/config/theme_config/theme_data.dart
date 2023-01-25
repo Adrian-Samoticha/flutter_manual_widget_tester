@@ -62,7 +62,7 @@ class ManualWidgetTesterThemeData extends Equatable {
   final BoolEditorTheme boolEditorTheme;
 
   /// The custom settings heading theme.
-  final ManualWidgetTesterCustomSettingHeadingTheme customSettingHeadingTheme;
+  final CustomSettingHeadingTheme customSettingHeadingTheme;
 
   /// The theme of the drag handle.
   final ManualWidgetTesterDragHandleTheme dragHandleTheme;
@@ -125,8 +125,7 @@ class ManualWidgetTesterThemeData extends Equatable {
     this.dialogTheme = const ManualWidgetTesterDialogTheme(),
     this.doubleEditorTheme = const ManualWidgetTesterDoubleEditorTheme(),
     this.boolEditorTheme = const BoolEditorTheme(),
-    this.customSettingHeadingTheme =
-        const ManualWidgetTesterCustomSettingHeadingTheme(),
+    this.customSettingHeadingTheme = const CustomSettingHeadingTheme(),
     this.dragHandleTheme = const ManualWidgetTesterDragHandleTheme(),
     this.noCustomSettingsMessageTheme =
         const ManualWidgetTesterNoCustomSettingsMessageTheme(),
@@ -199,8 +198,8 @@ class ManualWidgetTesterThemeData extends Equatable {
           ManualWidgetTesterDoubleEditorTheme.fromThemeGeneratorParameters(
               parameters),
       boolEditorTheme: BoolEditorTheme.fromThemeGeneratorParameters(parameters),
-      customSettingHeadingTheme: ManualWidgetTesterCustomSettingHeadingTheme
-          .fromThemeGeneratorParameters(parameters),
+      customSettingHeadingTheme:
+          CustomSettingHeadingTheme.fromThemeGeneratorParameters(parameters),
       dragHandleTheme:
           ManualWidgetTesterDragHandleTheme.fromThemeGeneratorParameters(
               parameters),
