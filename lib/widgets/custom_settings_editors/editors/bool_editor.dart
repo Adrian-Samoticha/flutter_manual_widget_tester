@@ -34,7 +34,7 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
               constraints: BoxConstraints(
                 maxWidth: ManualWidgetTesterTheme.of(context)
                     .boolEditorTheme
-                    .boolEditorMaxWidth,
+                    .maxWidth,
               ),
               child: Row(
                 children: [
@@ -44,7 +44,7 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
                   SizedBox(
                       width: ManualWidgetTesterTheme.of(context)
                           .boolEditorTheme
-                          .boolEditorSpaceBetweenRadioButtons),
+                          .spaceBetweenRadioButtons),
                   Expanded(
                     child: _buildRadioButtonWithLabel(context, false),
                   ),
@@ -66,12 +66,12 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
         child: Container(
           padding: ManualWidgetTesterTheme.of(context)
               .boolEditorTheme
-              .boolEditorRadioButtonPadding,
+              .radioButtonPadding,
           color: Colors.transparent,
           child: SizedBox(
             height: ManualWidgetTesterTheme.of(context)
                 .boolEditorTheme
-                .boolEditorHeight,
+                .editorHeight,
             child: ManualWidgetTesterRadioButtonWithLabel(
               isSelected: isTrue ? currentValue : !currentValue,
               label: '$isTrue',

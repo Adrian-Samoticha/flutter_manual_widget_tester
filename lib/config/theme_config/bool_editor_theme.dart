@@ -3,48 +3,45 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterBoolEditorTheme extends Equatable {
+class BoolEditorTheme extends Equatable {
   /// The maximal width of a boolean editor.
-  final double boolEditorMaxWidth;
+  final double maxWidth;
 
   /// The space between the radio buttons in the boolean editor.
-  final double boolEditorSpaceBetweenRadioButtons;
+  final double spaceBetweenRadioButtons;
 
   /// The boolean editor's padding.
-  final EdgeInsets boolEditorRadioButtonPadding;
+  final EdgeInsets radioButtonPadding;
 
   /// The height of the boolean editor.
-  final double boolEditorHeight;
+  final double editorHeight;
 
-  const ManualWidgetTesterBoolEditorTheme({
-    this.boolEditorMaxWidth = 192.0,
-    this.boolEditorSpaceBetweenRadioButtons = 12.0,
-    this.boolEditorRadioButtonPadding =
-        const EdgeInsets.symmetric(vertical: 8.0),
-    this.boolEditorHeight = 16.0,
+  const BoolEditorTheme({
+    this.maxWidth = 192.0,
+    this.spaceBetweenRadioButtons = 12.0,
+    this.radioButtonPadding = const EdgeInsets.symmetric(vertical: 8.0),
+    this.editorHeight = 16.0,
   });
 
   @override
   List<Object?> get props => [
-        boolEditorMaxWidth,
-        boolEditorSpaceBetweenRadioButtons,
-        boolEditorRadioButtonPadding,
-        boolEditorHeight,
+        maxWidth,
+        spaceBetweenRadioButtons,
+        radioButtonPadding,
+        editorHeight,
       ];
 
-  static ManualWidgetTesterBoolEditorTheme fromThemeGeneratorParameters(
+  static BoolEditorTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return ManualWidgetTesterBoolEditorTheme(
-      boolEditorMaxWidth: _getBoolEditorMaxWidthFromLayout(parameters.layout),
-      boolEditorSpaceBetweenRadioButtons:
-          _getBoolEditorSpaceBetweenRadioButtons(parameters.layout),
-      boolEditorRadioButtonPadding:
-          _getBoolEditorRadioButtonPadding(parameters.layout),
-      boolEditorHeight: _getBoolEditorHeightFromLayout(parameters.layout),
+    return BoolEditorTheme(
+      maxWidth: _getMaxWidthFromLayout(parameters.layout),
+      spaceBetweenRadioButtons: _getSpaceBetweenRadioButtons(parameters.layout),
+      radioButtonPadding: _getRadioButtonPadding(parameters.layout),
+      editorHeight: _getHeightFromLayout(parameters.layout),
     );
   }
 
-  static double _getBoolEditorMaxWidthFromLayout(Layout layout) {
+  static double _getMaxWidthFromLayout(Layout layout) {
     switch (layout) {
       case Layout.compact:
         return 160.0;
@@ -55,7 +52,7 @@ class ManualWidgetTesterBoolEditorTheme extends Equatable {
     }
   }
 
-  static double _getBoolEditorSpaceBetweenRadioButtons(Layout layout) {
+  static double _getSpaceBetweenRadioButtons(Layout layout) {
     switch (layout) {
       case Layout.compact:
         return 8.0;
@@ -66,7 +63,7 @@ class ManualWidgetTesterBoolEditorTheme extends Equatable {
     }
   }
 
-  static EdgeInsets _getBoolEditorRadioButtonPadding(Layout layout) {
+  static EdgeInsets _getRadioButtonPadding(Layout layout) {
     switch (layout) {
       case Layout.compact:
         return const EdgeInsets.symmetric(vertical: 6.0);
@@ -77,7 +74,7 @@ class ManualWidgetTesterBoolEditorTheme extends Equatable {
     }
   }
 
-  static double _getBoolEditorHeightFromLayout(Layout layout) {
+  static double _getHeightFromLayout(Layout layout) {
     switch (layout) {
       case Layout.compact:
         return 12.0;
