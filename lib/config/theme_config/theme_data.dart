@@ -100,7 +100,7 @@ class ManualWidgetTesterThemeData extends Equatable {
   final CustomSettingsTheme customSettingsTheme;
 
   /// The widget test session area theme.
-  final ManualWidgetTesterWidgetTestSessionAreaTheme widgetTestSessionAreaTheme;
+  final WidgetTestSessionAreaTheme widgetTestSessionAreaTheme;
 
   /// The “general” theme.
   ///
@@ -134,8 +134,7 @@ class ManualWidgetTesterThemeData extends Equatable {
     this.createTestSessionButtonTheme = const CreateTestSessionButtonTheme(),
     this.iconTheme = const IconTheme(),
     this.customSettingsTheme = const CustomSettingsTheme(),
-    this.widgetTestSessionAreaTheme =
-        const ManualWidgetTesterWidgetTestSessionAreaTheme(),
+    this.widgetTestSessionAreaTheme = const WidgetTestSessionAreaTheme(),
     this.generalTheme = const GeneralTheme(),
     this.editColorDialogTheme = const EditColorDialogTheme(),
   });
@@ -209,8 +208,8 @@ class ManualWidgetTesterThemeData extends Equatable {
       iconTheme: IconTheme.fromThemeGeneratorParameters(parameters),
       customSettingsTheme:
           CustomSettingsTheme.fromThemeGeneratorParameters(parameters),
-      widgetTestSessionAreaTheme: ManualWidgetTesterWidgetTestSessionAreaTheme
-          .fromThemeGeneratorParameters(parameters),
+      widgetTestSessionAreaTheme:
+          WidgetTestSessionAreaTheme.fromThemeGeneratorParameters(parameters),
       generalTheme: GeneralTheme.fromThemeGeneratorParameters(parameters),
       editColorDialogTheme:
           EditColorDialogTheme.fromThemeGeneratorParameters(parameters),

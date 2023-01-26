@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterWidgetTestSessionAreaTheme extends Equatable {
+class WidgetTestSessionAreaTheme extends Equatable {
   /// The color of the dotted lines that show the tested widget's size.
   final Color dottedLineColor;
 
   /// The text style in which the tested widget's size is displayed.
   final TextStyle widgetSizeTextStyle;
 
-  const ManualWidgetTesterWidgetTestSessionAreaTheme({
+  const WidgetTestSessionAreaTheme({
     this.dottedLineColor = const Color.fromRGBO(255, 255, 255, 0.5),
     this.widgetSizeTextStyle = const TextStyle(
       color: Color.fromRGBO(255, 255, 255, 0.5),
@@ -24,8 +24,8 @@ class ManualWidgetTesterWidgetTestSessionAreaTheme extends Equatable {
         widgetSizeTextStyle,
       ];
 
-  static ManualWidgetTesterWidgetTestSessionAreaTheme
-      fromThemeGeneratorParameters(ThemeGeneratorParameters parameters) {
-    return const ManualWidgetTesterWidgetTestSessionAreaTheme();
+  static WidgetTestSessionAreaTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return const WidgetTestSessionAreaTheme();
   }
 }
