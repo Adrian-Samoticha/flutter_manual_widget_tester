@@ -60,14 +60,10 @@ class _HorizontalDragHandleState extends State<HorizontalDragHandle> {
           child: AnimatedContainer(
             duration: ManualWidgetTesterTheme.of(context)
                 .dragHandleTheme
-                .dragHandleChangeOpacityDuration,
-            width: ManualWidgetTesterTheme.of(context)
-                .dragHandleTheme
-                .dragHandleSize,
+                .opacityChangeDuration,
+            width: ManualWidgetTesterTheme.of(context).dragHandleTheme.size,
             color: _isBeingDragged || _isBeingHovered
-                ? ManualWidgetTesterTheme.of(context)
-                    .dragHandleTheme
-                    .dragHandleColor
+                ? ManualWidgetTesterTheme.of(context).dragHandleTheme.color
                 : Colors.transparent,
           ),
         ),

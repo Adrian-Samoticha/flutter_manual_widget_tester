@@ -3,42 +3,42 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterDragHandleTheme extends Equatable {
+class DragHandleTheme extends Equatable {
   /// The color of the drag handle that appears when the sidebar is being
   /// resized.
-  final Color dragHandleColor;
+  final Color color;
 
   /// The size of the drag handle that appears when the sidebar is being
   /// resized.
-  final double dragHandleSize;
+  final double size;
 
   /// The duration of the drag handle's fade animation.
   ///
   /// The “drag handle” refers to the line that appears when the sidebar is
   /// being resized.
-  final Duration dragHandleChangeOpacityDuration;
+  final Duration opacityChangeDuration;
 
   /// The amount of time until the drag handle appears when sidebar's edge is
   /// being hovered over.
   final Duration timeUntilDragHandleAppears;
 
-  const ManualWidgetTesterDragHandleTheme({
-    this.dragHandleColor = Colors.blue,
-    this.dragHandleSize = 6.0,
-    this.dragHandleChangeOpacityDuration = const Duration(milliseconds: 150),
+  const DragHandleTheme({
+    this.color = Colors.blue,
+    this.size = 6.0,
+    this.opacityChangeDuration = const Duration(milliseconds: 150),
     this.timeUntilDragHandleAppears = const Duration(milliseconds: 250),
   });
 
   @override
   List<Object?> get props => [
-        dragHandleColor,
-        dragHandleSize,
-        dragHandleChangeOpacityDuration,
+        color,
+        size,
+        opacityChangeDuration,
         timeUntilDragHandleAppears,
       ];
 
-  static ManualWidgetTesterDragHandleTheme fromThemeGeneratorParameters(
+  static DragHandleTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return const ManualWidgetTesterDragHandleTheme();
+    return const DragHandleTheme();
   }
 }
