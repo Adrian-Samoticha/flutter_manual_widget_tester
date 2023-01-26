@@ -3,71 +3,71 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterFoldableRegionTheme extends Equatable {
+class FoldableRegionTheme extends Equatable {
   /// The animation duration of foldable regions.
-  final Duration foldableRegionAnimationDuration;
+  final Duration animationDuration;
 
   /// The alignment of a foldable region's content during the fold/unfold
   /// animation.
-  final Alignment foldableRegionContentAlignment;
+  final Alignment contentAlignment;
 
   /// The height of a foldable region's header.
-  final double foldableRegionHeaderHeight;
+  final double headerHeight;
 
   /// The opacity of a foldable region's header when it is folded.
-  final double foldableRegionFoldedHeaderOpacity;
+  final double foldedHeaderOpacity;
 
   /// A foldable region's header color.
-  final Color foldableRegionHeaderColor;
+  final Color headerColor;
 
   /// The color of a foldable region's chevron icon.
-  final Color foldableRegionChevronIconColor;
+  final Color chevronIconColor;
 
   /// The size of a foldable region's chevron icon.
-  final double foldableRegionChevronIconSize;
+  final double chevronIconSize;
 
   /// The text style of a foldable region's heading.
-  final TextStyle foldableRegionHeadingStyle;
+  final TextStyle headingStyle;
 
   /// The foldable region's header's overflow.
-  final TextOverflow foldableRegionHeadingOverflow;
+  final TextOverflow headingOverflow;
 
   /// The indentation amount in foldable regions.
-  final double foldableRegionIndentationAmount;
+  final double indentationAmount;
 
-  const ManualWidgetTesterFoldableRegionTheme({
-    this.foldableRegionAnimationDuration = const Duration(milliseconds: 300),
-    this.foldableRegionContentAlignment = Alignment.bottomLeft,
-    this.foldableRegionHeaderHeight = 24.0,
-    this.foldableRegionFoldedHeaderOpacity = 0.75,
-    this.foldableRegionHeaderColor = const Color.fromRGBO(70, 79, 90, 1.0),
-    this.foldableRegionChevronIconColor = Colors.white,
-    this.foldableRegionChevronIconSize = 18.0,
-    this.foldableRegionHeadingStyle = const TextStyle(
+  const FoldableRegionTheme({
+    this.animationDuration = const Duration(milliseconds: 300),
+    this.contentAlignment = Alignment.bottomLeft,
+    this.headerHeight = 24.0,
+    this.foldedHeaderOpacity = 0.75,
+    this.headerColor = const Color.fromRGBO(70, 79, 90, 1.0),
+    this.chevronIconColor = Colors.white,
+    this.chevronIconSize = 18.0,
+    this.headingStyle = const TextStyle(
       color: Colors.white,
       fontSize: 12.0,
       fontWeight: FontWeight.w700,
     ),
-    this.foldableRegionHeadingOverflow = TextOverflow.ellipsis,
-    this.foldableRegionIndentationAmount = 12.0,
+    this.headingOverflow = TextOverflow.ellipsis,
+    this.indentationAmount = 12.0,
   });
 
   @override
   List<Object?> get props => [
-        foldableRegionAnimationDuration,
-        foldableRegionContentAlignment,
-        foldableRegionHeaderHeight,
-        foldableRegionFoldedHeaderOpacity,
-        foldableRegionHeaderColor,
-        foldableRegionChevronIconColor,
-        foldableRegionChevronIconSize,
-        foldableRegionHeadingStyle,
-        foldableRegionHeadingOverflow,
-        foldableRegionIndentationAmount,
+        animationDuration,
+        contentAlignment,
+        headerHeight,
+        foldedHeaderOpacity,
+        headerColor,
+        chevronIconColor,
+        chevronIconSize,
+        headingStyle,
+        headingOverflow,
+        indentationAmount,
       ];
 
-  static ManualWidgetTesterFoldableRegionTheme fromThemeGeneratorParameters(
+  static FoldableRegionTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return const ManualWidgetTesterFoldableRegionTheme();
+    return const FoldableRegionTheme();
   }
 }

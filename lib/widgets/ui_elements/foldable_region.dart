@@ -38,7 +38,7 @@ class _ManualWidgetTesterFoldableRegionState
           ? EdgeInsets.only(
               left: ManualWidgetTesterTheme.of(context)
                   .foldableRegionTheme
-                  .foldableRegionIndentationAmount)
+                  .indentationAmount)
           : EdgeInsets.zero,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -56,7 +56,7 @@ class _ManualWidgetTesterFoldableRegionState
           TweenAnimationBuilder<double>(
             duration: ManualWidgetTesterTheme.of(context)
                 .foldableRegionTheme
-                .foldableRegionAnimationDuration,
+                .animationDuration,
             tween: Tween<double>(
                 begin: _isFolded ? 0.0 : 1.0, end: _isFolded ? 0.0 : 1.0),
             curve: Curves.ease,
@@ -66,7 +66,7 @@ class _ManualWidgetTesterFoldableRegionState
                 child: Align(
                   alignment: ManualWidgetTesterTheme.of(context)
                       .foldableRegionTheme
-                      .foldableRegionContentAlignment,
+                      .contentAlignment,
                   heightFactor: value,
                   child: child,
                 ),
@@ -103,17 +103,17 @@ class _Header extends StatelessWidget {
           opacity: isFolded
               ? ManualWidgetTesterTheme.of(context)
                   .foldableRegionTheme
-                  .foldableRegionFoldedHeaderOpacity
+                  .foldedHeaderOpacity
               : 1.0,
           child: Container(
             height: ManualWidgetTesterTheme.of(context)
                 .foldableRegionTheme
-                .foldableRegionHeaderHeight,
+                .headerHeight,
             color: isIndented
                 ? Colors.transparent
                 : ManualWidgetTesterTheme.of(context)
                     .foldableRegionTheme
-                    .foldableRegionHeaderColor,
+                    .headerColor,
             child: Row(
               children: [
                 Icon(
@@ -122,20 +122,20 @@ class _Header extends StatelessWidget {
                       : Icons.keyboard_arrow_down_outlined,
                   color: ManualWidgetTesterTheme.of(context)
                       .foldableRegionTheme
-                      .foldableRegionChevronIconColor,
+                      .chevronIconColor,
                   size: ManualWidgetTesterTheme.of(context)
                       .foldableRegionTheme
-                      .foldableRegionChevronIconSize,
+                      .chevronIconSize,
                 ),
                 Expanded(
                   child: Text(text,
                       softWrap: false,
                       overflow: ManualWidgetTesterTheme.of(context)
                           .foldableRegionTheme
-                          .foldableRegionHeadingOverflow,
+                          .headingOverflow,
                       style: ManualWidgetTesterTheme.of(context)
                           .foldableRegionTheme
-                          .foldableRegionHeadingStyle),
+                          .headingStyle),
                 ),
               ],
             ),
