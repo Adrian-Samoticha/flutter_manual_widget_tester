@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterIconTheme extends Equatable {
+class IconTheme extends Equatable {
   /// The default color of the icons of the open test sessions.
-  final Color defaultIconColor;
+  final Color defaultColor;
 
-  const ManualWidgetTesterIconTheme({
-    this.defaultIconColor = const Color.fromRGBO(64, 167, 255, 1.0),
+  const IconTheme({
+    this.defaultColor = const Color.fromRGBO(64, 167, 255, 1.0),
   });
 
   @override
   List<Object?> get props => [
-        defaultIconColor,
+        defaultColor,
       ];
 
-  static ManualWidgetTesterIconTheme fromThemeGeneratorParameters(
+  static IconTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return const ManualWidgetTesterIconTheme();
+    return const IconTheme();
   }
 }
