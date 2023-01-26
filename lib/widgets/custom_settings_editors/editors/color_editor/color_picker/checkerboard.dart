@@ -12,13 +12,13 @@ class Checkerboard extends StatelessWidget {
       painter: _CheckerboardPainter(
         ManualWidgetTesterTheme.of(context)
             .editColorButtonTheme
-            .editColorButtonCheckerboardSize,
+            .checkerboardSize,
         ManualWidgetTesterTheme.of(context)
             .editColorButtonTheme
-            .editColorButtonCheckerboardColor1,
+            .checkerboardColor1,
         ManualWidgetTesterTheme.of(context)
             .editColorButtonTheme
-            .editColorButtonCheckerboardColor2,
+            .checkerboardColor2,
       ),
     );
   }

@@ -19,15 +19,15 @@ class ColoredContainer extends StatelessWidget {
       decoration: (isSelectedColorDark
               ? ManualWidgetTesterTheme.of(context)
                   .editColorButtonTheme
-                  .editColorButtonDecorationForDarkColor
+                  .decorationForDarkColor
               : ManualWidgetTesterTheme.of(context)
                   .editColorButtonTheme
-                  .editColorButtonDecorationForBrightColor)
+                  .decorationForBrightColor)
           .copyWith(
         color: selectedColor,
         borderRadius: ManualWidgetTesterTheme.of(context)
             .editColorButtonTheme
-            .editColorButtonBorderRadius,
+            .borderRadius,
       ),
       child: Row(
         children: [
@@ -39,13 +39,13 @@ class ColoredContainer extends StatelessWidget {
           TweenAnimationBuilder<double>(
             duration: ManualWidgetTesterTheme.of(context)
                 .editColorButtonTheme
-                .editColorButtonIconAnimationDuration,
+                .iconAnimationDuration,
             tween: Tween<double>(
                 begin: doShowEditIcon ? 1.0 : 0.0,
                 end: doShowEditIcon ? 1.0 : 0.0),
             curve: ManualWidgetTesterTheme.of(context)
                 .editColorButtonTheme
-                .editColorButtonIconAnimationCurve,
+                .iconAnimationCurve,
             builder:
                 (BuildContext context, double animationValue, Widget? child) {
               return Opacity(
@@ -59,23 +59,21 @@ class ColoredContainer extends StatelessWidget {
               );
             },
             child: Icon(
-              ManualWidgetTesterTheme.of(context)
-                  .editColorButtonTheme
-                  .editColorButtonIcon,
+              ManualWidgetTesterTheme.of(context).editColorButtonTheme.icon,
               color: isSelectedColorDark
                   ? ManualWidgetTesterTheme.of(context)
                       .editColorButtonTheme
-                      .editColorButtonIconColorForDarkColor
+                      .iconColorForDarkColor
                   : ManualWidgetTesterTheme.of(context)
                       .editColorButtonTheme
-                      .editColorButtonIconColorForBrightColor,
+                      .iconColorForBrightColor,
               shadows: isSelectedColorDark
                   ? ManualWidgetTesterTheme.of(context)
                       .editColorButtonTheme
-                      .editColorButtonIconShadowsForDarkColor
+                      .iconShadowsForDarkColor
                   : ManualWidgetTesterTheme.of(context)
                       .editColorButtonTheme
-                      .editColorButtonIconShadowsForBrightColor,
+                      .iconShadowsForBrightColor,
             ),
           ),
         ],
@@ -91,10 +89,10 @@ class ColoredContainer extends StatelessWidget {
       style: isSelectedColorDark
           ? ManualWidgetTesterTheme.of(context)
               .editColorButtonTheme
-              .editColorButtonTextStyleForDarkColor
+              .textStyleForDarkColor
           : ManualWidgetTesterTheme.of(context)
               .editColorButtonTheme
-              .editColorButtonTextStyleForBrightColor,
+              .textStyleForBrightColor,
     );
   }
 

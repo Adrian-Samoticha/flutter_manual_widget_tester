@@ -3,77 +3,77 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterEditColorButtonTheme extends Equatable {
+class EditColorButtonTheme extends Equatable {
   /// The height of the edit color button.
-  final double editColorButtonHeight;
+  final double height;
 
   /// The box decoration of the edit color button when it is displaying a dark
   /// color.
-  final BoxDecoration editColorButtonDecorationForDarkColor;
+  final BoxDecoration decorationForDarkColor;
 
   /// The box decoration of the edit color button when it is displaying a
   /// bright color.
-  final BoxDecoration editColorButtonDecorationForBrightColor;
+  final BoxDecoration decorationForBrightColor;
 
   /// The border radius of the edit color button.
-  final BorderRadius editColorButtonBorderRadius;
+  final BorderRadius borderRadius;
 
   /// The first checkerboard color of the edit color button.
   ///
   /// The checkerboard pattern is only shown when the edit color button is
   /// displaying a transparent color.
-  final Color editColorButtonCheckerboardColor1;
+  final Color checkerboardColor1;
 
   /// The second checkerboard color of the edit color button.
   ///
   /// The checkerboard pattern is only shown when the edit color button is
   /// displaying a transparent color.
-  final Color editColorButtonCheckerboardColor2;
+  final Color checkerboardColor2;
 
   /// The checkerboard size of the edit color button.
   ///
   /// The checkerboard pattern is only shown when the edit color button is
   /// displaying a transparent color.
-  final double editColorButtonCheckerboardSize;
+  final double checkerboardSize;
 
   /// The icon on the edit color button.
-  final IconData editColorButtonIcon;
+  final IconData icon;
 
   /// The color of the edit color button's icon when it is displaying a dark
   /// color.
-  final Color editColorButtonIconColorForDarkColor;
+  final Color iconColorForDarkColor;
 
   /// The color of the edit color button's icon when it is displaying a bright
   /// color.
-  final Color editColorButtonIconColorForBrightColor;
+  final Color iconColorForBrightColor;
 
   /// The shadow(s) of the edit color button's icon when it is displaying a dark
   /// color.
-  final List<Shadow>? editColorButtonIconShadowsForDarkColor;
+  final List<Shadow>? iconShadowsForDarkColor;
 
   /// The shadow(s) of the edit color button's icon when it is displaying a
   /// bright color.
-  final List<Shadow>? editColorButtonIconShadowsForBrightColor;
+  final List<Shadow>? iconShadowsForBrightColor;
 
   /// The duration of the edit color button's icon's slide in/out animation that
   /// is played when the mouse is hovered over the button.
-  final Duration editColorButtonIconAnimationDuration;
+  final Duration iconAnimationDuration;
 
   /// The animation curve of the edit color button's icon's slide in/out
   /// animation that is played when the mouse is hovered over the button.
-  final Curve editColorButtonIconAnimationCurve;
+  final Curve iconAnimationCurve;
 
   /// The text style of the edit color button when it is displaying a dark
   /// color.
-  final TextStyle editColorButtonTextStyleForDarkColor;
+  final TextStyle textStyleForDarkColor;
 
   /// The text style of the edit color button when it is displaying a bright
   /// color.
-  final TextStyle editColorButtonTextStyleForBrightColor;
+  final TextStyle textStyleForBrightColor;
 
-  const ManualWidgetTesterEditColorButtonTheme({
-    this.editColorButtonHeight = 28.0,
-    this.editColorButtonDecorationForDarkColor = const BoxDecoration(
+  const EditColorButtonTheme({
+    this.height = 28.0,
+    this.decorationForDarkColor = const BoxDecoration(
       border: Border.fromBorderSide(
         BorderSide(
           color: Color.fromRGBO(255, 255, 255, 0.4),
@@ -87,7 +87,7 @@ class ManualWidgetTesterEditColorButtonTheme extends Equatable {
         ),
       ],
     ),
-    this.editColorButtonDecorationForBrightColor = const BoxDecoration(
+    this.decorationForBrightColor = const BoxDecoration(
       border: Border.fromBorderSide(
         BorderSide(
           color: Color.fromRGBO(0, 0, 0, 0.5),
@@ -101,30 +101,24 @@ class ManualWidgetTesterEditColorButtonTheme extends Equatable {
         ),
       ],
     ),
-    this.editColorButtonBorderRadius =
-        const BorderRadius.all(Radius.circular(5.0)),
-    this.editColorButtonCheckerboardColor1 =
-        const Color.fromRGBO(255, 255, 255, 1.0),
-    this.editColorButtonCheckerboardColor2 =
-        const Color.fromRGBO(192, 192, 192, 1.0),
-    this.editColorButtonCheckerboardSize = 14.0,
-    this.editColorButtonIcon = Icons.colorize_rounded,
-    this.editColorButtonIconColorForDarkColor =
-        const Color.fromRGBO(255, 255, 255, 0.9),
-    this.editColorButtonIconColorForBrightColor =
-        const Color.fromRGBO(0, 0, 0, 0.7),
-    this.editColorButtonIconShadowsForDarkColor = const [
+    this.borderRadius = const BorderRadius.all(Radius.circular(5.0)),
+    this.checkerboardColor1 = const Color.fromRGBO(255, 255, 255, 1.0),
+    this.checkerboardColor2 = const Color.fromRGBO(192, 192, 192, 1.0),
+    this.checkerboardSize = 14.0,
+    this.icon = Icons.colorize_rounded,
+    this.iconColorForDarkColor = const Color.fromRGBO(255, 255, 255, 0.9),
+    this.iconColorForBrightColor = const Color.fromRGBO(0, 0, 0, 0.7),
+    this.iconShadowsForDarkColor = const [
       Shadow(
         blurRadius: 2.0,
         color: Color.fromRGBO(0, 0, 0, 0.5),
         offset: Offset(0.0, 1.0),
       ),
     ],
-    this.editColorButtonIconShadowsForBrightColor,
-    this.editColorButtonIconAnimationDuration =
-        const Duration(milliseconds: 250),
-    this.editColorButtonIconAnimationCurve = Curves.ease,
-    this.editColorButtonTextStyleForDarkColor = const TextStyle(
+    this.iconShadowsForBrightColor,
+    this.iconAnimationDuration = const Duration(milliseconds: 250),
+    this.iconAnimationCurve = Curves.ease,
+    this.textStyleForDarkColor = const TextStyle(
       color: Color.fromRGBO(255, 255, 255, 0.9),
       shadows: [
         Shadow(
@@ -134,33 +128,33 @@ class ManualWidgetTesterEditColorButtonTheme extends Equatable {
         ),
       ],
     ),
-    this.editColorButtonTextStyleForBrightColor = const TextStyle(
+    this.textStyleForBrightColor = const TextStyle(
       color: Color.fromRGBO(0, 0, 0, 0.9),
     ),
   });
 
   @override
   List<Object?> get props => [
-        editColorButtonHeight,
-        editColorButtonDecorationForDarkColor,
-        editColorButtonDecorationForBrightColor,
-        editColorButtonBorderRadius,
-        editColorButtonCheckerboardColor1,
-        editColorButtonCheckerboardColor2,
-        editColorButtonCheckerboardSize,
-        editColorButtonIcon,
-        editColorButtonIconColorForDarkColor,
-        editColorButtonIconColorForBrightColor,
-        editColorButtonIconShadowsForDarkColor,
-        editColorButtonIconShadowsForBrightColor,
-        editColorButtonIconAnimationDuration,
-        editColorButtonIconAnimationCurve,
-        editColorButtonTextStyleForDarkColor,
-        editColorButtonTextStyleForBrightColor,
+        height,
+        decorationForDarkColor,
+        decorationForBrightColor,
+        borderRadius,
+        checkerboardColor1,
+        checkerboardColor2,
+        checkerboardSize,
+        icon,
+        iconColorForDarkColor,
+        iconColorForBrightColor,
+        iconShadowsForDarkColor,
+        iconShadowsForBrightColor,
+        iconAnimationDuration,
+        iconAnimationCurve,
+        textStyleForDarkColor,
+        textStyleForBrightColor,
       ];
 
-  static ManualWidgetTesterEditColorButtonTheme fromThemeGeneratorParameters(
+  static EditColorButtonTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return const ManualWidgetTesterEditColorButtonTheme();
+    return const EditColorButtonTheme();
   }
 }

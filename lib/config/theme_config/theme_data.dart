@@ -50,7 +50,7 @@ class ManualWidgetTesterThemeData extends Equatable {
   final ManualWidgetTesterTestSessionMenuItemTheme testSessionMenuItemTheme;
 
   /// The edit color button theme.
-  final ManualWidgetTesterEditColorButtonTheme editColorButtonTheme;
+  final EditColorButtonTheme editColorButtonTheme;
 
   /// The dialog theme.
   final DialogTheme dialogTheme;
@@ -121,7 +121,7 @@ class ManualWidgetTesterThemeData extends Equatable {
     this.createTestSessionDialogTheme = const CreateTestSessionDialogTheme(),
     this.testSessionMenuItemTheme =
         const ManualWidgetTesterTestSessionMenuItemTheme(),
-    this.editColorButtonTheme = const ManualWidgetTesterEditColorButtonTheme(),
+    this.editColorButtonTheme = const EditColorButtonTheme(),
     this.dialogTheme = const DialogTheme(),
     this.doubleEditorTheme = const DoubleEditorTheme(),
     this.boolEditorTheme = const BoolEditorTheme(),
@@ -190,8 +190,7 @@ class ManualWidgetTesterThemeData extends Equatable {
       testSessionMenuItemTheme: ManualWidgetTesterTestSessionMenuItemTheme
           .fromThemeGeneratorParameters(parameters),
       editColorButtonTheme:
-          ManualWidgetTesterEditColorButtonTheme.fromThemeGeneratorParameters(
-              parameters),
+          EditColorButtonTheme.fromThemeGeneratorParameters(parameters),
       dialogTheme: DialogTheme.fromThemeGeneratorParameters(parameters),
       doubleEditorTheme:
           DoubleEditorTheme.fromThemeGeneratorParameters(parameters),

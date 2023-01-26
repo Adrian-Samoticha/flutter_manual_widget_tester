@@ -139,7 +139,7 @@ class _ColorPickerState extends State<ColorPicker> {
       child: ClipRRect(
         borderRadius: ManualWidgetTesterTheme.of(context)
             .editColorButtonTheme
-            .editColorButtonBorderRadius,
+            .borderRadius,
         child: const Checkerboard(),
       ),
     );
