@@ -107,7 +107,7 @@ class ManualWidgetTesterThemeData extends Equatable {
   ///
   /// This theme contains miscellaneous properties that do not fit into the
   /// other themes.
-  final ManualWidgetTesterGeneralTheme generalTheme;
+  final GeneralTheme generalTheme;
 
   /// The theme of the “edit color” dialog.
   final EditColorDialogTheme editColorDialogTheme;
@@ -139,7 +139,7 @@ class ManualWidgetTesterThemeData extends Equatable {
     this.customSettingsTheme = const CustomSettingsTheme(),
     this.widgetTestSessionAreaTheme =
         const ManualWidgetTesterWidgetTestSessionAreaTheme(),
-    this.generalTheme = const ManualWidgetTesterGeneralTheme(),
+    this.generalTheme = const GeneralTheme(),
     this.editColorDialogTheme = const EditColorDialogTheme(),
   });
 
@@ -220,8 +220,7 @@ class ManualWidgetTesterThemeData extends Equatable {
           CustomSettingsTheme.fromThemeGeneratorParameters(parameters),
       widgetTestSessionAreaTheme: ManualWidgetTesterWidgetTestSessionAreaTheme
           .fromThemeGeneratorParameters(parameters),
-      generalTheme: ManualWidgetTesterGeneralTheme.fromThemeGeneratorParameters(
-          parameters),
+      generalTheme: GeneralTheme.fromThemeGeneratorParameters(parameters),
       editColorDialogTheme:
           EditColorDialogTheme.fromThemeGeneratorParameters(parameters),
     );
