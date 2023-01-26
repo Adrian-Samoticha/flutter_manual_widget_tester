@@ -80,6 +80,86 @@ class TestSessionMenuItemTheme extends Equatable {
 
   static TestSessionMenuItemTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return const TestSessionMenuItemTheme();
+    return TestSessionMenuItemTheme(
+      height: _getHeightFromLayout(parameters.layout),
+      closeButtonSize: _getCloseButtonSizeFromLayout(parameters.layout),
+      textStyle: _getTextStyle(parameters),
+      iconSize: _getIconSizeFromLayout(parameters.layout),
+      hoverTintDecoration:
+          _getHoverTintDecorationFromBrightness(parameters.brightness),
+      focusedTabTintDecoration:
+          _getFocusedTabTintDecorationFromBrightness(parameters.brightness),
+    );
+  }
+
+  static double _getHeightFromLayout(Layout layout) {
+    switch (layout) {
+      case Layout.compact:
+        return 18.0;
+      case Layout.normal:
+        return 24.0;
+      case Layout.cozy:
+        return 32.0;
+    }
+  }
+
+  static double _getCloseButtonSizeFromLayout(Layout layout) {
+    switch (layout) {
+      case Layout.compact:
+        return 11.5;
+      case Layout.normal:
+        return 12.0;
+      case Layout.cozy:
+        return 14.0;
+    }
+  }
+
+  static TextStyle _getTextStyle(ThemeGeneratorParameters parameters) {
+    return TextStyle(
+      color: parameters.brightness == Brightness.dark
+          ? Colors.white
+          : Colors.black,
+      fontSize: _getTextSizeFromLayout(parameters.layout),
+    );
+  }
+
+  static double _getTextSizeFromLayout(Layout layout) {
+    switch (layout) {
+      case Layout.compact:
+        return 11.5;
+      case Layout.normal:
+        return 12.0;
+      case Layout.cozy:
+        return 14.0;
+    }
+  }
+
+  static double _getIconSizeFromLayout(Layout layout) {
+    switch (layout) {
+      case Layout.compact:
+        return 16.0;
+      case Layout.normal:
+        return 18.0;
+      case Layout.cozy:
+        return 22.0;
+    }
+  }
+
+  static BoxDecoration _getHoverTintDecorationFromBrightness(
+      Brightness brightness) {
+    return BoxDecoration(
+      color: brightness == Brightness.dark
+          ? const Color.fromRGBO(255, 255, 255, 0.1)
+          : const Color.fromRGBO(255, 255, 255, 0.25),
+    );
+  }
+
+  static BoxDecoration _getFocusedTabTintDecorationFromBrightness(
+      Brightness brightness) {
+    return BoxDecoration(
+      color: brightness == Brightness.dark
+          ? const Color.fromRGBO(255, 255, 255, 0.15)
+          : const Color.fromRGBO(0, 0, 0, 0.075),
+    );
   }
 }
