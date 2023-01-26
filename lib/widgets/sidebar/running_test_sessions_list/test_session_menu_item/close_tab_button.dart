@@ -26,7 +26,7 @@ class CloseTabButton extends StatelessWidget {
             child: Padding(
               padding: ManualWidgetTesterTheme.of(context)
                   .testSessionMenuItemTheme
-                  .testSessionMenuItemCloseButtonPadding,
+                  .closeButtonPadding,
               child: child,
             ),
           ),
@@ -35,15 +35,15 @@ class CloseTabButton extends StatelessWidget {
       child: SizedBox(
         width: ManualWidgetTesterTheme.of(context)
             .testSessionMenuItemTheme
-            .testSessionMenuItemCloseButtonSize,
+            .closeButtonSize,
         height: ManualWidgetTesterTheme.of(context)
             .testSessionMenuItemTheme
-            .testSessionMenuItemCloseButtonSize,
+            .closeButtonSize,
         child: ManualWidgetTesterCloseButton(
           onPressed: onPressed,
           size: ManualWidgetTesterTheme.of(context)
               .testSessionMenuItemTheme
-              .testSessionMenuItemCloseButtonSize,
+              .closeButtonSize,
         ),
       ),
     );

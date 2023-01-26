@@ -47,7 +47,7 @@ class ManualWidgetTesterThemeData extends Equatable {
   final CreateTestSessionDialogTheme createTestSessionDialogTheme;
 
   /// The test session menu item theme.
-  final ManualWidgetTesterTestSessionMenuItemTheme testSessionMenuItemTheme;
+  final TestSessionMenuItemTheme testSessionMenuItemTheme;
 
   /// The edit color button theme.
   final EditColorButtonTheme editColorButtonTheme;
@@ -118,8 +118,7 @@ class ManualWidgetTesterThemeData extends Equatable {
     this.zoomControlsTheme = const ManualWidgetTesterZoomControlsTheme(),
     this.foldableRegionTheme = const FoldableRegionTheme(),
     this.createTestSessionDialogTheme = const CreateTestSessionDialogTheme(),
-    this.testSessionMenuItemTheme =
-        const ManualWidgetTesterTestSessionMenuItemTheme(),
+    this.testSessionMenuItemTheme = const TestSessionMenuItemTheme(),
     this.editColorButtonTheme = const EditColorButtonTheme(),
     this.dialogTheme = const DialogTheme(),
     this.doubleEditorTheme = const DoubleEditorTheme(),
@@ -183,8 +182,8 @@ class ManualWidgetTesterThemeData extends Equatable {
           FoldableRegionTheme.fromThemeGeneratorParameters(parameters),
       createTestSessionDialogTheme:
           CreateTestSessionDialogTheme.fromThemeGeneratorParameters(parameters),
-      testSessionMenuItemTheme: ManualWidgetTesterTestSessionMenuItemTheme
-          .fromThemeGeneratorParameters(parameters),
+      testSessionMenuItemTheme:
+          TestSessionMenuItemTheme.fromThemeGeneratorParameters(parameters),
       editColorButtonTheme:
           EditColorButtonTheme.fromThemeGeneratorParameters(parameters),
       dialogTheme: DialogTheme.fromThemeGeneratorParameters(parameters),

@@ -52,23 +52,23 @@ class _ManualWidgetTesterTestSessionMenuItemState
               ? 1.0
               : ManualWidgetTesterTheme.of(context)
                   .testSessionMenuItemTheme
-                  .testSessionMenuItemUnfocusedTabOpacity,
+                  .unfocusedTabOpacity,
           child: Container(
             height: ManualWidgetTesterTheme.of(context)
                 .testSessionMenuItemTheme
-                .testSessionMenuItemHeight,
+                .height,
             decoration: widget.tabIndex != widget.focusedTabIndex
                 ? null
                 : ManualWidgetTesterTheme.of(context)
                     .testSessionMenuItemTheme
-                    .testSessionMenuItemFocusedTabTintDecoration,
+                    .focusedTabTintDecoration,
             child: Stack(
               children: [
                 _buildHoverTint(),
                 Padding(
                   padding: ManualWidgetTesterTheme.of(context)
                       .testSessionMenuItemTheme
-                      .testSessionMenuItemPadding,
+                      .padding,
                   child: _buildTabRow(),
                 ),
               ],
@@ -111,23 +111,23 @@ class _ManualWidgetTesterTestSessionMenuItemState
         softWrap: false,
         overflow: ManualWidgetTesterTheme.of(context)
             .testSessionMenuItemTheme
-            .testSessionMenuItemTextOverflow,
+            .textOverflow,
         style: ManualWidgetTesterTheme.of(context)
             .testSessionMenuItemTheme
-            .testSessionMenuItemTextStyle);
+            .textStyle);
   }
 
   Padding _buildTabIcon() {
     return Padding(
       padding: ManualWidgetTesterTheme.of(context)
           .testSessionMenuItemTheme
-          .testSessionMenuItemTabIconPadding,
+          .tabIconPadding,
       child: Icon(
         widget.icon,
         color: widget.iconColor,
         size: ManualWidgetTesterTheme.of(context)
             .testSessionMenuItemTheme
-            .testSessionMenuItemIconSize,
+            .iconSize,
       ),
     );
   }
@@ -139,7 +139,7 @@ class _ManualWidgetTesterTestSessionMenuItemState
       child: Container(
           decoration: ManualWidgetTesterTheme.of(context)
               .testSessionMenuItemTheme
-              .testSessionMenuItemHoverTintDecoration),
+              .hoverTintDecoration),
     );
   }
 }

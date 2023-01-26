@@ -3,85 +3,83 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterTestSessionMenuItemTheme extends Equatable {
+class TestSessionMenuItemTheme extends Equatable {
   /// The height of a menu item in the “RUNNING TEST SESSIONS” area.
-  final double testSessionMenuItemHeight;
+  final double height;
 
   /// The opacity of an unfocused menu item in the “RUNNING TEST SESSIONS” area.
-  final double testSessionMenuItemUnfocusedTabOpacity;
+  final double unfocusedTabOpacity;
 
   /// The padding of a menu item in the “RUNNING TEST SESSIONS” area.
-  final EdgeInsets testSessionMenuItemPadding;
+  final EdgeInsets padding;
 
   /// The padding of a menu item's close button in the “RUNNING TEST SESSIONS”
   /// area.
-  final EdgeInsets testSessionMenuItemCloseButtonPadding;
+  final EdgeInsets closeButtonPadding;
 
   /// The size of a menu item's close button in the “RUNNING TEST SESSIONS”
   /// area.
-  final double testSessionMenuItemCloseButtonSize;
+  final double closeButtonSize;
 
   /// The text overflow behavior of a menu item in the “RUNNING TEST SESSIONS”
   /// area.
-  final TextOverflow testSessionMenuItemTextOverflow;
+  final TextOverflow textOverflow;
 
   /// The text style of a menu item in the “RUNNING TEST SESSIONS” area.
-  final TextStyle testSessionMenuItemTextStyle;
+  final TextStyle textStyle;
 
   /// The icon size of a menu item in the “RUNNING TEST SESSIONS” area.
-  final double testSessionMenuItemIconSize;
+  final double iconSize;
 
   /// The hover tint decoration of a menu item in the “RUNNING TEST SESSIONS”
   /// area.
-  final BoxDecoration testSessionMenuItemHoverTintDecoration;
+  final BoxDecoration hoverTintDecoration;
 
   /// The icon padding of a menu item in the “RUNNING TEST SESSIONS” area.
-  final EdgeInsets testSessionMenuItemTabIconPadding;
+  final EdgeInsets tabIconPadding;
 
   /// The tint decoration of a focused menu item in the “RUNNING TEST SESSIONS”
   /// area.
-  final BoxDecoration testSessionMenuItemFocusedTabTintDecoration;
+  final BoxDecoration focusedTabTintDecoration;
 
-  const ManualWidgetTesterTestSessionMenuItemTheme({
-    this.testSessionMenuItemHeight = 24.0,
-    this.testSessionMenuItemUnfocusedTabOpacity = 0.5,
-    this.testSessionMenuItemPadding =
-        const EdgeInsets.symmetric(horizontal: 8.0),
-    this.testSessionMenuItemCloseButtonPadding =
-        const EdgeInsets.only(left: 8.0),
-    this.testSessionMenuItemCloseButtonSize = 12.0,
-    this.testSessionMenuItemTextOverflow = TextOverflow.ellipsis,
-    this.testSessionMenuItemTextStyle = const TextStyle(
+  const TestSessionMenuItemTheme({
+    this.height = 24.0,
+    this.unfocusedTabOpacity = 0.5,
+    this.padding = const EdgeInsets.symmetric(horizontal: 8.0),
+    this.closeButtonPadding = const EdgeInsets.only(left: 8.0),
+    this.closeButtonSize = 12.0,
+    this.textOverflow = TextOverflow.ellipsis,
+    this.textStyle = const TextStyle(
       color: Colors.white,
       fontSize: 12.0,
     ),
-    this.testSessionMenuItemIconSize = 18.0,
-    this.testSessionMenuItemHoverTintDecoration = const BoxDecoration(
+    this.iconSize = 18.0,
+    this.hoverTintDecoration = const BoxDecoration(
       color: Color.fromRGBO(255, 255, 255, 0.1),
     ),
-    this.testSessionMenuItemTabIconPadding = const EdgeInsets.only(right: 8.0),
-    this.testSessionMenuItemFocusedTabTintDecoration = const BoxDecoration(
+    this.tabIconPadding = const EdgeInsets.only(right: 8.0),
+    this.focusedTabTintDecoration = const BoxDecoration(
       color: Color.fromRGBO(255, 255, 255, 0.15),
     ),
   });
 
   @override
   List<Object?> get props => [
-        testSessionMenuItemHeight,
-        testSessionMenuItemUnfocusedTabOpacity,
-        testSessionMenuItemPadding,
-        testSessionMenuItemCloseButtonPadding,
-        testSessionMenuItemCloseButtonSize,
-        testSessionMenuItemTextOverflow,
-        testSessionMenuItemTextStyle,
-        testSessionMenuItemIconSize,
-        testSessionMenuItemHoverTintDecoration,
-        testSessionMenuItemTabIconPadding,
-        testSessionMenuItemFocusedTabTintDecoration,
+        height,
+        unfocusedTabOpacity,
+        padding,
+        closeButtonPadding,
+        closeButtonSize,
+        textOverflow,
+        textStyle,
+        iconSize,
+        hoverTintDecoration,
+        tabIconPadding,
+        focusedTabTintDecoration,
       ];
 
-  static ManualWidgetTesterTestSessionMenuItemTheme
-      fromThemeGeneratorParameters(ThemeGeneratorParameters parameters) {
-    return const ManualWidgetTesterTestSessionMenuItemTheme();
+  static TestSessionMenuItemTheme fromThemeGeneratorParameters(
+      ThemeGeneratorParameters parameters) {
+    return const TestSessionMenuItemTheme();
   }
 }
