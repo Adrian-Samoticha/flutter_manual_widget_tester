@@ -80,10 +80,10 @@ class _ColorPickerState extends State<ColorPicker> {
           return AnimatedSize(
             duration: ManualWidgetTesterTheme.of(context)
                 .editColorDialogTheme
-                .editColorDialogSizeChangeAnimationDuration,
+                .sizeChangeAnimationDuration,
             curve: ManualWidgetTesterTheme.of(context)
                 .editColorDialogTheme
-                .editColorDialogSizeChangeCurve,
+                .sizeChangeAnimationCurve,
             child: Material(
               type: MaterialType.transparency,
               child: flex_color_picker.ColorPicker(
@@ -99,28 +99,28 @@ class _ColorPickerState extends State<ColorPicker> {
                 showColorName: true,
                 elevation: ManualWidgetTesterTheme.of(context)
                     .editColorDialogTheme
-                    .editColorDialogElevation,
+                    .elevation,
                 borderRadius: ManualWidgetTesterTheme.of(context)
                     .editColorDialogTheme
-                    .editColorDialogBorderRadius,
+                    .borderRadius,
                 colorNameTextStyle: ManualWidgetTesterTheme.of(context)
                     .editColorDialogTheme
-                    .editColorDialogColorNameTextStyle,
+                    .colorNameTextStyle,
                 pickerTypeTextStyle: ManualWidgetTesterTheme.of(context)
                     .editColorDialogTheme
-                    .editColorDialogPickerTypeTextStyle,
+                    .pickerTypeTextStyle,
                 selectedPickerTypeColor: ManualWidgetTesterTheme.of(context)
                     .editColorDialogTheme
-                    .editColorDialogSelectedPickerTypeColor,
+                    .selectedPickerTypeColor,
                 spacing: ManualWidgetTesterTheme.of(context)
                     .editColorDialogTheme
-                    .editColorDialogSpacing,
+                    .spacing,
                 runSpacing: ManualWidgetTesterTheme.of(context)
                     .editColorDialogTheme
-                    .editColorDialogRunSpacing,
+                    .runSpacing,
                 columnSpacing: ManualWidgetTesterTheme.of(context)
                     .editColorDialogTheme
-                    .editColorDialogColumnSpacing,
+                    .columnSpacing,
                 showColorCode: true,
                 colorCodeHasColor: true,
                 pickersEnabled: const {

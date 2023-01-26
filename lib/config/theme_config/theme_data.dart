@@ -110,7 +110,7 @@ class ManualWidgetTesterThemeData extends Equatable {
   final ManualWidgetTesterGeneralTheme generalTheme;
 
   /// The theme of the “edit color” dialog.
-  final ManualWidgetTesterEditColorDialogTheme editColorDialogTheme;
+  final EditColorDialogTheme editColorDialogTheme;
 
   const ManualWidgetTesterThemeData({
     this.tabTheme = const ManualWidgetTesterTabTheme(),
@@ -140,7 +140,7 @@ class ManualWidgetTesterThemeData extends Equatable {
     this.widgetTestSessionAreaTheme =
         const ManualWidgetTesterWidgetTestSessionAreaTheme(),
     this.generalTheme = const ManualWidgetTesterGeneralTheme(),
-    this.editColorDialogTheme = const ManualWidgetTesterEditColorDialogTheme(),
+    this.editColorDialogTheme = const EditColorDialogTheme(),
   });
 
   @override
@@ -224,8 +224,7 @@ class ManualWidgetTesterThemeData extends Equatable {
       generalTheme: ManualWidgetTesterGeneralTheme.fromThemeGeneratorParameters(
           parameters),
       editColorDialogTheme:
-          ManualWidgetTesterEditColorDialogTheme.fromThemeGeneratorParameters(
-              parameters),
+          EditColorDialogTheme.fromThemeGeneratorParameters(parameters),
     );
   }
 }
