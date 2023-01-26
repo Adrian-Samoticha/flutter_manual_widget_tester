@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterRadioButtonTheme extends Equatable {
+class RadioButtonTheme extends Equatable {
   /// The widget to use as the selected radio button.
   final Widget selectedRadioButton;
 
@@ -19,7 +19,7 @@ class ManualWidgetTesterRadioButtonTheme extends Equatable {
   /// The text style of an unselected radio buttons label.
   final TextStyle unselectedRadioButtonLabelStyle;
 
-  const ManualWidgetTesterRadioButtonTheme({
+  const RadioButtonTheme({
     this.selectedRadioButton = const DecoratedBox(
       decoration: BoxDecoration(
         shape: BoxShape.circle,
@@ -103,8 +103,8 @@ class ManualWidgetTesterRadioButtonTheme extends Equatable {
         unselectedRadioButtonLabelStyle,
       ];
 
-  static ManualWidgetTesterRadioButtonTheme fromThemeGeneratorParameters(
+  static RadioButtonTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return const ManualWidgetTesterRadioButtonTheme();
+    return const RadioButtonTheme();
   }
 }

@@ -72,7 +72,7 @@ class ManualWidgetTesterThemeData extends Equatable {
   final NoCustomSettingsMessageTheme noCustomSettingsMessageTheme;
 
   /// The radio button theme.
-  final ManualWidgetTesterRadioButtonTheme radioButtonTheme;
+  final RadioButtonTheme radioButtonTheme;
 
   /// The close button theme.
   final CloseButtonTheme closeButtonTheme;
@@ -127,7 +127,7 @@ class ManualWidgetTesterThemeData extends Equatable {
     this.customSettingHeadingTheme = const CustomSettingHeadingTheme(),
     this.dragHandleTheme = const DragHandleTheme(),
     this.noCustomSettingsMessageTheme = const NoCustomSettingsMessageTheme(),
-    this.radioButtonTheme = const ManualWidgetTesterRadioButtonTheme(),
+    this.radioButtonTheme = const RadioButtonTheme(),
     this.closeButtonTheme = const CloseButtonTheme(),
     this.noEditorMessageTheme = const NoEditorMessageTheme(),
     this.appBarTheme = const AppBarTheme(),
@@ -198,8 +198,7 @@ class ManualWidgetTesterThemeData extends Equatable {
       noCustomSettingsMessageTheme:
           NoCustomSettingsMessageTheme.fromThemeGeneratorParameters(parameters),
       radioButtonTheme:
-          ManualWidgetTesterRadioButtonTheme.fromThemeGeneratorParameters(
-              parameters),
+          RadioButtonTheme.fromThemeGeneratorParameters(parameters),
       closeButtonTheme:
           CloseButtonTheme.fromThemeGeneratorParameters(parameters),
       noEditorMessageTheme:
