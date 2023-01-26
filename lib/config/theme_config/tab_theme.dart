@@ -296,9 +296,20 @@ class TabTheme extends Equatable {
       color: parameters.brightness == Brightness.dark
           ? Colors.white
           : Colors.black,
-      fontSize: parameters.layout == Layout.compact ? 10.0 : 12.0,
+      fontSize: _getTextSizeFromLayout(parameters.layout),
       fontWeight: FontWeight.w600,
     );
+  }
+
+  static double _getTextSizeFromLayout(Layout layout) {
+    switch (layout) {
+      case Layout.compact:
+        return 10.0;
+      case Layout.normal:
+        return 12.0;
+      case Layout.cozy:
+        return 15.0;
+    }
   }
 
   static Duration _getUnfocusedTabOpacityChangeDurationFromAnimationSpeed(
