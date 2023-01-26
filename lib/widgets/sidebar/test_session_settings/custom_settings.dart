@@ -122,12 +122,12 @@ class CustomSettings extends StatelessWidget {
     return Padding(
       padding: ManualWidgetTesterTheme.of(context)
           .noCustomSettingsMessageTheme
-          .noCustomSettingsMessagePadding,
+          .padding,
       child: Text(
         'This test session has no custom settings.',
         style: ManualWidgetTesterTheme.of(context)
             .noCustomSettingsMessageTheme
-            .noCustomSettingsMessageTextStyle,
+            .textStyle,
       ),
     );
   }

@@ -69,8 +69,7 @@ class ManualWidgetTesterThemeData extends Equatable {
 
   /// The theme of the message that is displayed when a test session has no
   /// custom settings.
-  final ManualWidgetTesterNoCustomSettingsMessageTheme
-      noCustomSettingsMessageTheme;
+  final NoCustomSettingsMessageTheme noCustomSettingsMessageTheme;
 
   /// The radio button theme.
   final ManualWidgetTesterRadioButtonTheme radioButtonTheme;
@@ -127,8 +126,7 @@ class ManualWidgetTesterThemeData extends Equatable {
     this.boolEditorTheme = const BoolEditorTheme(),
     this.customSettingHeadingTheme = const CustomSettingHeadingTheme(),
     this.dragHandleTheme = const DragHandleTheme(),
-    this.noCustomSettingsMessageTheme =
-        const ManualWidgetTesterNoCustomSettingsMessageTheme(),
+    this.noCustomSettingsMessageTheme = const NoCustomSettingsMessageTheme(),
     this.radioButtonTheme = const ManualWidgetTesterRadioButtonTheme(),
     this.closeButtonTheme = const CloseButtonTheme(),
     this.noEditorMessageTheme = const ManualWidgetTesterNoEditorMessageTheme(),
@@ -198,8 +196,7 @@ class ManualWidgetTesterThemeData extends Equatable {
           CustomSettingHeadingTheme.fromThemeGeneratorParameters(parameters),
       dragHandleTheme: DragHandleTheme.fromThemeGeneratorParameters(parameters),
       noCustomSettingsMessageTheme:
-          ManualWidgetTesterNoCustomSettingsMessageTheme
-              .fromThemeGeneratorParameters(parameters),
+          NoCustomSettingsMessageTheme.fromThemeGeneratorParameters(parameters),
       radioButtonTheme:
           ManualWidgetTesterRadioButtonTheme.fromThemeGeneratorParameters(
               parameters),
