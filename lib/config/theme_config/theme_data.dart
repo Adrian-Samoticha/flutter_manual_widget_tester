@@ -56,7 +56,7 @@ class ManualWidgetTesterThemeData extends Equatable {
   final DialogTheme dialogTheme;
 
   /// The double editor theme.
-  final ManualWidgetTesterDoubleEditorTheme doubleEditorTheme;
+  final DoubleEditorTheme doubleEditorTheme;
 
   /// The boolean editor theme.
   final BoolEditorTheme boolEditorTheme;
@@ -123,7 +123,7 @@ class ManualWidgetTesterThemeData extends Equatable {
         const ManualWidgetTesterTestSessionMenuItemTheme(),
     this.editColorButtonTheme = const ManualWidgetTesterEditColorButtonTheme(),
     this.dialogTheme = const DialogTheme(),
-    this.doubleEditorTheme = const ManualWidgetTesterDoubleEditorTheme(),
+    this.doubleEditorTheme = const DoubleEditorTheme(),
     this.boolEditorTheme = const BoolEditorTheme(),
     this.customSettingHeadingTheme = const CustomSettingHeadingTheme(),
     this.dragHandleTheme = const ManualWidgetTesterDragHandleTheme(),
@@ -194,8 +194,7 @@ class ManualWidgetTesterThemeData extends Equatable {
               parameters),
       dialogTheme: DialogTheme.fromThemeGeneratorParameters(parameters),
       doubleEditorTheme:
-          ManualWidgetTesterDoubleEditorTheme.fromThemeGeneratorParameters(
-              parameters),
+          DoubleEditorTheme.fromThemeGeneratorParameters(parameters),
       boolEditorTheme: BoolEditorTheme.fromThemeGeneratorParameters(parameters),
       customSettingHeadingTheme:
           CustomSettingHeadingTheme.fromThemeGeneratorParameters(parameters),

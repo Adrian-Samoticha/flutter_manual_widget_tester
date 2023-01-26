@@ -106,13 +106,13 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
           width: double.infinity,
           height: ManualWidgetTesterTheme.of(context)
               .doubleEditorTheme
-              .doubleEditorInfiniteScrollViewHeight,
+              .infiniteScrollViewHeight,
           padding: ManualWidgetTesterTheme.of(context)
               .doubleEditorTheme
-              .doubleEditorInfiniteScrollViewPadding,
+              .infiniteScrollViewPadding,
           decoration: ManualWidgetTesterTheme.of(context)
               .doubleEditorTheme
-              .doubleEditorInfiniteScrollViewBoxDecoration,
+              .infiniteScrollViewBoxDecoration,
           clipBehavior: Clip.hardEdge,
           child: InfiniteScrollView(
             currentValue: currentValue,
