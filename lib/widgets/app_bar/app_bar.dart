@@ -66,7 +66,7 @@ class _ManualWidgetTesterAppBarState extends State<ManualWidgetTesterAppBar> {
           AnimatedOpacity(
             duration: ManualWidgetTesterTheme.of(context)
                 .tabTheme
-                .tabOpenAnimationDuration,
+                .openingAnimationDuration,
             opacity: _appBarShadowOpacity,
             child: const AppBarShadow(),
           ),

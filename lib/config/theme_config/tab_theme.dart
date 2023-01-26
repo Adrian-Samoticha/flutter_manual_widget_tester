@@ -4,18 +4,18 @@ import 'package:gradient_borders/gradient_borders.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterTabTheme extends Equatable {
+class TabTheme extends Equatable {
   /// The minimal tab width.
   ///
   /// **Note:** The tabs will resize themselves based on the current window
   /// size.
-  final double minTabWidth;
+  final double minWidth;
 
   /// The maximal tab width.
   ///
   /// **Note:** The tabs will resize themselves based on the current window
   /// size.
-  final double maxTabWidth;
+  final double maxWidth;
 
   /// The box decoration of the focused tab.
   final BoxDecoration focusedTabBoxDecoration;
@@ -27,19 +27,19 @@ class ManualWidgetTesterTabTheme extends Equatable {
   final double focusedTabAccentColorDecorationWidth;
 
   /// The width of the line that separates tabs.
-  final BoxDecoration tabSeparatorBoxDecoration;
+  final BoxDecoration separatorBoxDecoration;
 
   /// The box decoration of the active tab's light reflection.
-  final BoxDecoration tabLightReflectionBoxDecoration;
+  final BoxDecoration lightReflectionBoxDecoration;
 
   /// The padding of the tabs' icons.
-  final EdgeInsets tabIconPadding;
+  final EdgeInsets iconPadding;
 
   /// The size of the tabs' icons.
-  final double tabIconSize;
+  final double iconSize;
 
   /// The text style of the tabs' text.
-  final TextStyle tabTextStyle;
+  final TextStyle textStyle;
 
   /// The opacity of unfocused tabs that are being hovered over.
   final double unfocusedHoveredTabOpacity;
@@ -55,18 +55,18 @@ class ManualWidgetTesterTabTheme extends Equatable {
   final double spaceAboveTabs;
 
   /// The padding of the tabs' content.
-  final EdgeInsets tabContentPadding;
+  final EdgeInsets contentPadding;
 
   /// The duration of the animation that plays when a new tab has been opened.
-  final Duration tabOpenAnimationDuration;
+  final Duration openingAnimationDuration;
 
   /// The animation curve of the animation that plays when a new tab has been
   /// opened.
-  final Curve tabOpenAnimationCurve;
+  final Curve openingAnimationCurve;
 
-  const ManualWidgetTesterTabTheme({
-    this.minTabWidth = 94.0,
-    this.maxTabWidth = 192.0,
+  const TabTheme({
+    this.minWidth = 94.0,
+    this.maxWidth = 192.0,
     this.focusedTabBoxDecoration = const BoxDecoration(
       color: Color.fromRGBO(41, 43, 53, 1.0),
       border: GradientBoxBorder(
@@ -96,7 +96,7 @@ class ManualWidgetTesterTabTheme extends Equatable {
       color: Colors.transparent,
     ),
     this.focusedTabAccentColorDecorationWidth = 3.0,
-    this.tabSeparatorBoxDecoration = const BoxDecoration(
+    this.separatorBoxDecoration = const BoxDecoration(
       gradient: LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
@@ -107,7 +107,7 @@ class ManualWidgetTesterTabTheme extends Equatable {
         ],
       ),
     ),
-    this.tabLightReflectionBoxDecoration = const BoxDecoration(
+    this.lightReflectionBoxDecoration = const BoxDecoration(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(3.0),
         topRight: Radius.circular(3.0),
@@ -125,9 +125,9 @@ class ManualWidgetTesterTabTheme extends Equatable {
         ],
       ),
     ),
-    this.tabIconPadding = const EdgeInsets.only(right: 4.0),
-    this.tabIconSize = 21.0,
-    this.tabTextStyle = const TextStyle(
+    this.iconPadding = const EdgeInsets.only(right: 4.0),
+    this.iconSize = 21.0,
+    this.textStyle = const TextStyle(
       color: Colors.white,
       fontSize: 12.0,
       fontWeight: FontWeight.w600,
@@ -136,54 +136,54 @@ class ManualWidgetTesterTabTheme extends Equatable {
     this.unfocusedNotHoveredTabOpacity = 0.4,
     this.unfocusedTabOpacityChangeDuration = const Duration(milliseconds: 150),
     this.spaceAboveTabs = 4.0,
-    this.tabContentPadding = const EdgeInsets.all(8.0),
-    this.tabOpenAnimationDuration = const Duration(milliseconds: 150),
-    this.tabOpenAnimationCurve = Curves.ease,
+    this.contentPadding = const EdgeInsets.all(8.0),
+    this.openingAnimationDuration = const Duration(milliseconds: 150),
+    this.openingAnimationCurve = Curves.ease,
   });
 
   @override
   List<Object?> get props => [
-        minTabWidth,
-        maxTabWidth,
+        minWidth,
+        maxWidth,
         focusedTabBoxDecoration,
         unfocusedTabBoxDecoration,
         focusedTabAccentColorDecorationWidth,
-        tabSeparatorBoxDecoration,
-        tabLightReflectionBoxDecoration,
-        tabIconPadding,
-        tabIconSize,
-        tabTextStyle,
+        separatorBoxDecoration,
+        lightReflectionBoxDecoration,
+        iconPadding,
+        iconSize,
+        textStyle,
         unfocusedHoveredTabOpacity,
         unfocusedNotHoveredTabOpacity,
         unfocusedTabOpacityChangeDuration,
         spaceAboveTabs,
-        tabContentPadding,
-        tabOpenAnimationDuration,
-        tabOpenAnimationCurve,
+        contentPadding,
+        openingAnimationDuration,
+        openingAnimationCurve,
       ];
 
-  static ManualWidgetTesterTabTheme fromThemeGeneratorParameters(
+  static TabTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return ManualWidgetTesterTabTheme(
-      minTabWidth: _getMinTabWidthFromLayout(parameters.layout),
-      maxTabWidth: _getMaxTabWidthFromLayout(parameters.layout),
+    return TabTheme(
+      minWidth: _getMinWidthFromLayout(parameters.layout),
+      maxWidth: _getMaxWidthFromLayout(parameters.layout),
       focusedTabBoxDecoration: _getFocusedTabBoxDecoration(parameters),
-      tabSeparatorBoxDecoration:
-          _getTabSeparatorBoxDecorationFromBrightness(parameters.brightness),
-      tabLightReflectionBoxDecoration:
-          _getTabLightReflectionBoxDecorationFromDesignLanguage(
+      separatorBoxDecoration:
+          _getSeparatorBoxDecorationFromBrightness(parameters.brightness),
+      lightReflectionBoxDecoration:
+          _getLightReflectionBoxDecorationFromDesignLanguage(
               parameters.designLanguage),
-      tabTextStyle: _getTabTextStyle(parameters),
+      textStyle: _getTextStyle(parameters),
       unfocusedTabOpacityChangeDuration:
           _getUnfocusedTabOpacityChangeDurationFromAnimationSpeed(
               parameters.animationSpeed),
-      tabContentPadding: _getTabContentPaddingFromLayout(parameters.layout),
-      tabOpenAnimationDuration: _getTabOpenAnimationDurationFromAnimationSpeed(
+      contentPadding: _getContentPaddingFromLayout(parameters.layout),
+      openingAnimationDuration: _getOpenAnimationDurationFromAnimationSpeed(
           parameters.animationSpeed),
     );
   }
 
-  static double _getMinTabWidthFromLayout(Layout layout) {
+  static double _getMinWidthFromLayout(Layout layout) {
     switch (layout) {
       case Layout.compact:
         return 62.0;
@@ -194,7 +194,7 @@ class ManualWidgetTesterTabTheme extends Equatable {
     }
   }
 
-  static double _getMaxTabWidthFromLayout(Layout layout) {
+  static double _getMaxWidthFromLayout(Layout layout) {
     switch (layout) {
       case Layout.compact:
         return 128.0;
@@ -246,7 +246,7 @@ class ManualWidgetTesterTabTheme extends Equatable {
     }
   }
 
-  static BoxDecoration _getTabSeparatorBoxDecorationFromBrightness(
+  static BoxDecoration _getSeparatorBoxDecorationFromBrightness(
       Brightness brightness) {
     final color = brightness == Brightness.dark ? Colors.white : Colors.black;
 
@@ -263,7 +263,7 @@ class ManualWidgetTesterTabTheme extends Equatable {
     );
   }
 
-  static BoxDecoration _getTabLightReflectionBoxDecorationFromDesignLanguage(
+  static BoxDecoration _getLightReflectionBoxDecorationFromDesignLanguage(
       DesignLanguage designLanguage) {
     switch (designLanguage) {
       case DesignLanguage.skeuomorphic:
@@ -291,7 +291,7 @@ class ManualWidgetTesterTabTheme extends Equatable {
     }
   }
 
-  static TextStyle _getTabTextStyle(ThemeGeneratorParameters parameters) {
+  static TextStyle _getTextStyle(ThemeGeneratorParameters parameters) {
     return TextStyle(
       color: parameters.brightness == Brightness.dark
           ? Colors.white
@@ -315,7 +315,7 @@ class ManualWidgetTesterTabTheme extends Equatable {
     }
   }
 
-  static EdgeInsets _getTabContentPaddingFromLayout(Layout layout) {
+  static EdgeInsets _getContentPaddingFromLayout(Layout layout) {
     switch (layout) {
       case Layout.compact:
         return const EdgeInsets.all(4.0);
@@ -326,7 +326,7 @@ class ManualWidgetTesterTabTheme extends Equatable {
     }
   }
 
-  static Duration _getTabOpenAnimationDurationFromAnimationSpeed(
+  static Duration _getOpenAnimationDurationFromAnimationSpeed(
       AnimationSpeed animationSpeed) {
     switch (animationSpeed) {
       case AnimationSpeed.instant:

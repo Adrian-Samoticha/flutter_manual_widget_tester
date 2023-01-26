@@ -10,9 +10,8 @@ class TabSeparator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 1.0,
-      decoration: ManualWidgetTesterTheme.of(context)
-          .tabTheme
-          .tabSeparatorBoxDecoration,
+      decoration:
+          ManualWidgetTesterTheme.of(context).tabTheme.separatorBoxDecoration,
     );
   }
 }

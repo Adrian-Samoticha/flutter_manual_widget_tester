@@ -21,7 +21,7 @@ class TabText extends StatelessWidget {
         widgetName,
         overflow: TextOverflow.fade,
         softWrap: false,
-        style: ManualWidgetTesterTheme.of(context).tabTheme.tabTextStyle,
+        style: ManualWidgetTesterTheme.of(context).tabTheme.textStyle,
       ));
     }
 
@@ -41,7 +41,7 @@ class TabText extends StatelessWidget {
         widgetName,
         overflow: TextOverflow.fade,
         softWrap: false,
-        style: ManualWidgetTesterTheme.of(context).tabTheme.tabTextStyle,
+        style: ManualWidgetTesterTheme.of(context).tabTheme.textStyle,
       ),
     ));
   }

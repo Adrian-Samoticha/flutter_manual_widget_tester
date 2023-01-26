@@ -16,7 +16,7 @@ class TabLightReflection extends StatelessWidget {
           ? null
           : ManualWidgetTesterTheme.of(context)
               .tabTheme
-              .tabLightReflectionBoxDecoration,
+              .lightReflectionBoxDecoration,
     );
   }
 }

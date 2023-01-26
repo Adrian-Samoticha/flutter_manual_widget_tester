@@ -19,10 +19,10 @@ class TabIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     if (isFocused) {
       return Padding(
-        padding: ManualWidgetTesterTheme.of(context).tabTheme.tabIconPadding,
+        padding: ManualWidgetTesterTheme.of(context).tabTheme.iconPadding,
         child: Icon(
           icon,
-          size: ManualWidgetTesterTheme.of(context).tabTheme.tabIconSize,
+          size: ManualWidgetTesterTheme.of(context).tabTheme.iconSize,
           color: iconColor,
         ),
       );
@@ -40,10 +40,10 @@ class TabIcon extends StatelessWidget {
               .tabTheme
               .unfocusedNotHoveredTabOpacity,
       child: Padding(
-        padding: ManualWidgetTesterTheme.of(context).tabTheme.tabIconPadding,
+        padding: ManualWidgetTesterTheme.of(context).tabTheme.iconPadding,
         child: Icon(
           icon,
-          size: ManualWidgetTesterTheme.of(context).tabTheme.tabIconSize,
+          size: ManualWidgetTesterTheme.of(context).tabTheme.iconSize,
           color: iconColor,
         ),
       ),

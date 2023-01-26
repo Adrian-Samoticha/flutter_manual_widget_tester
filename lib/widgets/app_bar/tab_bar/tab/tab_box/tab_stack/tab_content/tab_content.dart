@@ -23,7 +23,7 @@ class TabContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: ManualWidgetTesterTheme.of(context).tabTheme.tabContentPadding,
+      padding: ManualWidgetTesterTheme.of(context).tabTheme.contentPadding,
       child: Row(
         children: [
           ...icon == null

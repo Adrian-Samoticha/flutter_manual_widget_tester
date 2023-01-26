@@ -29,9 +29,9 @@ class TabBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(
       duration:
-          ManualWidgetTesterTheme.of(context).tabTheme.tabOpenAnimationDuration,
+          ManualWidgetTesterTheme.of(context).tabTheme.openingAnimationDuration,
       tween: Tween<double>(begin: 1.0, end: 0.0),
-      curve: ManualWidgetTesterTheme.of(context).tabTheme.tabOpenAnimationCurve,
+      curve: ManualWidgetTesterTheme.of(context).tabTheme.openingAnimationCurve,
       builder: (BuildContext context, double value, Widget? child) {
         return FractionalTranslation(
           translation: Offset(0.0, value),

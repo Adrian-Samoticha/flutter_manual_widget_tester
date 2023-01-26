@@ -104,10 +104,8 @@ class _ManualWidgetTesterTabBarState extends State<ManualWidgetTesterTabBar> {
   }
 
   double _calculateTabWidth(int numberOfTabs, double maxWidth) {
-    final minTabWidth =
-        ManualWidgetTesterTheme.of(context).tabTheme.minTabWidth;
-    final maxTabWidth =
-        ManualWidgetTesterTheme.of(context).tabTheme.maxTabWidth;
+    final minTabWidth = ManualWidgetTesterTheme.of(context).tabTheme.minWidth;
+    final maxTabWidth = ManualWidgetTesterTheme.of(context).tabTheme.maxWidth;
 
     return (maxWidth / numberOfTabs).clamp(minTabWidth, maxTabWidth);
   }

@@ -29,7 +29,7 @@ import 'zoom_controls_theme.dart';
 
 class ManualWidgetTesterThemeData extends Equatable {
   /// The tab theme.
-  final ManualWidgetTesterTabTheme tabTheme;
+  final TabTheme tabTheme;
 
   /// The button theme.
   final ButtonTheme buttonTheme;
@@ -112,7 +112,7 @@ class ManualWidgetTesterThemeData extends Equatable {
   final EditColorDialogTheme editColorDialogTheme;
 
   const ManualWidgetTesterThemeData({
-    this.tabTheme = const ManualWidgetTesterTabTheme(),
+    this.tabTheme = const TabTheme(),
     this.buttonTheme = const ButtonTheme(),
     this.textFieldTheme = const TextFieldTheme(),
     this.zoomControlsTheme = const ManualWidgetTesterZoomControlsTheme(),
@@ -173,8 +173,7 @@ class ManualWidgetTesterThemeData extends Equatable {
   static ManualWidgetTesterThemeData fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
     return ManualWidgetTesterThemeData(
-      tabTheme:
-          ManualWidgetTesterTabTheme.fromThemeGeneratorParameters(parameters),
+      tabTheme: TabTheme.fromThemeGeneratorParameters(parameters),
       buttonTheme: ButtonTheme.fromThemeGeneratorParameters(parameters),
       textFieldTheme: TextFieldTheme.fromThemeGeneratorParameters(parameters),
       zoomControlsTheme:
