@@ -29,15 +29,15 @@ class ManualWidgetTesterDialogGenerator {
       barrierDismissible: true,
       barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
       barrierColor:
-          ManualWidgetTesterTheme.of(context).dialogTheme.dialogBarrierColor,
+          ManualWidgetTesterTheme.of(context).dialogTheme.barrierColor,
       transitionDuration: ManualWidgetTesterTheme.of(context)
           .dialogTheme
-          .dialogOpenCloseAnimationDuration,
+          .openCloseAnimationDuration,
       transitionBuilder: (BuildContext _, Animation<double> animation,
           Animation<double> secondaryAnimation, Widget widget) {
         final curvedAnimationValue = ManualWidgetTesterTheme.of(context)
             .dialogTheme
-            .dialogOpenCloseAnimationCurve
+            .openCloseAnimationCurve
             .transform(animation.value);
 
         // Unfortunately, the BackdropFilter Widget cannot be combined with the
@@ -45,9 +45,7 @@ class ManualWidgetTesterDialogGenerator {
         // this code fades the background color to full opacity to hide the
         // point at which the BackdropFilter is enabled/disabled.
         final originalDialogBackgroundColor =
-            ManualWidgetTesterTheme.of(context)
-                .dialogTheme
-                .dialogBackgroundColor;
+            ManualWidgetTesterTheme.of(context).dialogTheme.backgroundColor;
         final renderedDialogBackgroundColor =
             _getRenderedBackgroundColorFromOriginalBackgroundColor(
                 curvedAnimationValue, originalDialogBackgroundColor);
@@ -57,11 +55,11 @@ class ManualWidgetTesterDialogGenerator {
         return Transform.translate(
           offset: ManualWidgetTesterTheme.of(context)
                   .dialogTheme
-                  .dialogOpenCloseAnimationOffset *
+                  .openCloseAnimationOffset *
               (1.0 - curvedAnimationValue),
           child: Align(
             alignment:
-                ManualWidgetTesterTheme.of(context).dialogTheme.dialogAlignment,
+                ManualWidgetTesterTheme.of(context).dialogTheme.alignment,
             child: _buildDialogWindow(
                 context,
                 dialogWidth,
@@ -89,7 +87,7 @@ class ManualWidgetTesterDialogGenerator {
                   Padding(
                     padding: ManualWidgetTesterTheme.of(context)
                         .dialogTheme
-                        .dialogPadding
+                        .padding
                         .copyWith(
                           bottom: 0.0,
                         ),
@@ -98,7 +96,7 @@ class ManualWidgetTesterDialogGenerator {
                   SizedBox(
                     height: ManualWidgetTesterTheme.of(context)
                         .dialogTheme
-                        .distanceBetweenDialogContentAndActionButtons,
+                        .distanceBetweenContentAndActionButtons,
                   ),
                   _buildActionButtonRow(
                       context, onApply, onCancel, customActionButtons),
@@ -138,7 +136,7 @@ class ManualWidgetTesterDialogGenerator {
       decoration: BoxDecoration(
         boxShadow: ManualWidgetTesterTheme.of(context)
             .dialogTheme
-            .dialogShadow
+            .shadow
             .map((BoxShadow boxShadow) {
           return BoxShadow(
             blurRadius: boxShadow.blurRadius,
@@ -151,28 +149,27 @@ class ManualWidgetTesterDialogGenerator {
       ),
       child: ClipRRect(
         borderRadius:
-            ManualWidgetTesterTheme.of(context).dialogTheme.dialogBorderRadius,
+            ManualWidgetTesterTheme.of(context).dialogTheme.borderRadius,
         child: BackdropFilter(
           filter: doEnableBlur
               ? ImageFilter.blur(
                   sigmaX: ManualWidgetTesterTheme.of(context)
                       .dialogTheme
-                      .dialogBlurRadius,
+                      .blurRadius,
                   sigmaY: ManualWidgetTesterTheme.of(context)
                       .dialogTheme
-                      .dialogBlurRadius)
+                      .blurRadius)
               : ImageFilter.blur(),
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: ManualWidgetTesterTheme.of(context)
-                  .dialogTheme
-                  .dialogBorderRadius,
+              borderRadius:
+                  ManualWidgetTesterTheme.of(context).dialogTheme.borderRadius,
               color: renderedDialogBackgroundColor,
               border: Border.fromBorderSide(
                 BorderSide(
                     color: ManualWidgetTesterTheme.of(context)
                         .dialogTheme
-                        .dialogBorderColor
+                        .borderColor
                         .multiplyOpacity(curvedAnimationValue)),
               ),
             ),
@@ -194,15 +191,9 @@ class ManualWidgetTesterDialogGenerator {
     return Container(
       color: ManualWidgetTesterTheme.of(context)
           .dialogTheme
-          .dialogActionButtonSectionBackgroundColor,
-      padding: ManualWidgetTesterTheme.of(context)
-          .dialogTheme
-          .dialogPadding
-          .copyWith(
-            top: ManualWidgetTesterTheme.of(context)
-                .dialogTheme
-                .dialogPadding
-                .bottom,
+          .actionButtonSectionBackgroundColor,
+      padding: ManualWidgetTesterTheme.of(context).dialogTheme.padding.copyWith(
+            top: ManualWidgetTesterTheme.of(context).dialogTheme.padding.bottom,
           ),
       child: Row(
         children: [
@@ -210,10 +201,10 @@ class ManualWidgetTesterDialogGenerator {
           SizedBox(
             height: ManualWidgetTesterTheme.of(context)
                 .dialogTheme
-                .dialogActionButtonHeight,
+                .actionButtonHeight,
             width: ManualWidgetTesterTheme.of(context)
                     .dialogTheme
-                    .baseDialogActionButtonRowWidth +
+                    .baseActionButtonRowWidth +
                 ManualWidgetTesterTheme.of(context)
                         .dialogTheme
                         .customDialogActionButtonWidthAddition *

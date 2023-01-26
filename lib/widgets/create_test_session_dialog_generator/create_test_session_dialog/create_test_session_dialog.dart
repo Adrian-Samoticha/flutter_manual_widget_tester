@@ -49,40 +49,37 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
           : ThemeData.light(),
       child: Container(
         decoration: BoxDecoration(
-          boxShadow:
-              ManualWidgetTesterTheme.of(context).dialogTheme.dialogShadow,
+          boxShadow: ManualWidgetTesterTheme.of(context).dialogTheme.shadow,
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.vertical(
             bottom: ManualWidgetTesterTheme.of(context)
                 .dialogTheme
-                .dialogBorderRadius
+                .borderRadius
                 .bottomLeft,
           ),
           child: BackdropFilter(
             filter: ImageFilter.blur(
-                sigmaX: ManualWidgetTesterTheme.of(context)
-                    .dialogTheme
-                    .dialogBlurRadius,
-                sigmaY: ManualWidgetTesterTheme.of(context)
-                    .dialogTheme
-                    .dialogBlurRadius),
+                sigmaX:
+                    ManualWidgetTesterTheme.of(context).dialogTheme.blurRadius,
+                sigmaY:
+                    ManualWidgetTesterTheme.of(context).dialogTheme.blurRadius),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(
                   bottom: ManualWidgetTesterTheme.of(context)
                       .dialogTheme
-                      .dialogBorderRadius
+                      .borderRadius
                       .bottomLeft,
                 ),
                 color: ManualWidgetTesterTheme.of(context)
                     .dialogTheme
-                    .dialogBackgroundColor,
+                    .backgroundColor,
                 border: Border.fromBorderSide(
                   BorderSide(
                       color: ManualWidgetTesterTheme.of(context)
                           .dialogTheme
-                          .dialogBorderColor),
+                          .borderColor),
                 ),
               ),
               width: ManualWidgetTesterTheme.of(context)
