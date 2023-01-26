@@ -98,7 +98,7 @@ class ManualWidgetTesterThemeData extends Equatable {
   final ManualWidgetTesterIconTheme iconTheme;
 
   /// The custom settings theme.
-  final ManualWidgetTesterCustomSettingsTheme customSettingsTheme;
+  final CustomSettingsTheme customSettingsTheme;
 
   /// The widget test session area theme.
   final ManualWidgetTesterWidgetTestSessionAreaTheme widgetTestSessionAreaTheme;
@@ -136,7 +136,7 @@ class ManualWidgetTesterThemeData extends Equatable {
     this.stringEditorTheme = const ManualWidgetTesterStringEditorTheme(),
     this.createTestSessionButtonTheme = const CreateTestSessionButtonTheme(),
     this.iconTheme = const ManualWidgetTesterIconTheme(),
-    this.customSettingsTheme = const ManualWidgetTesterCustomSettingsTheme(),
+    this.customSettingsTheme = const CustomSettingsTheme(),
     this.widgetTestSessionAreaTheme =
         const ManualWidgetTesterWidgetTestSessionAreaTheme(),
     this.generalTheme = const ManualWidgetTesterGeneralTheme(),
@@ -223,8 +223,7 @@ class ManualWidgetTesterThemeData extends Equatable {
       iconTheme:
           ManualWidgetTesterIconTheme.fromThemeGeneratorParameters(parameters),
       customSettingsTheme:
-          ManualWidgetTesterCustomSettingsTheme.fromThemeGeneratorParameters(
-              parameters),
+          CustomSettingsTheme.fromThemeGeneratorParameters(parameters),
       widgetTestSessionAreaTheme: ManualWidgetTesterWidgetTestSessionAreaTheme
           .fromThemeGeneratorParameters(parameters),
       generalTheme: ManualWidgetTesterGeneralTheme.fromThemeGeneratorParameters(

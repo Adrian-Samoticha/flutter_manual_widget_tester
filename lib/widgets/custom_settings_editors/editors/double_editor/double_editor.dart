@@ -32,9 +32,7 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: ManualWidgetTesterTheme.of(context)
-          .customSettingsTheme
-          .customSettingsPadding,
+      padding: ManualWidgetTesterTheme.of(context).customSettingsTheme.padding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

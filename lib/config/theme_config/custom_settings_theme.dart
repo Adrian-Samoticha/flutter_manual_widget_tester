@@ -3,28 +3,27 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterCustomSettingsTheme extends Equatable {
+class CustomSettingsTheme extends Equatable {
   /// The padding of a custom settings widget.
-  final EdgeInsets customSettingsPadding;
+  final EdgeInsets padding;
 
-  const ManualWidgetTesterCustomSettingsTheme({
-    this.customSettingsPadding = const EdgeInsets.all(8.0),
+  const CustomSettingsTheme({
+    this.padding = const EdgeInsets.all(8.0),
   });
 
   @override
   List<Object?> get props => [
-        customSettingsPadding,
+        padding,
       ];
 
-  static ManualWidgetTesterCustomSettingsTheme fromThemeGeneratorParameters(
+  static CustomSettingsTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return ManualWidgetTesterCustomSettingsTheme(
-      customSettingsPadding:
-          _getCustomSettingsPaddingFromLayout(parameters.layout),
+    return CustomSettingsTheme(
+      padding: _getPaddingFromLayout(parameters.layout),
     );
   }
 
-  static EdgeInsets _getCustomSettingsPaddingFromLayout(Layout layout) {
+  static EdgeInsets _getPaddingFromLayout(Layout layout) {
     switch (layout) {
       case Layout.compact:
         return const EdgeInsets.all(6.0);
