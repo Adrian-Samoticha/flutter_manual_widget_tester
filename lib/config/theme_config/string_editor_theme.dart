@@ -2,21 +2,21 @@ import 'package:equatable/equatable.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterStringEditorTheme extends Equatable {
+class StringEditorTheme extends Equatable {
   /// The height of the string editor.
-  final double stringEditorHeight;
+  final double height;
 
-  const ManualWidgetTesterStringEditorTheme({
-    this.stringEditorHeight = 32.0,
+  const StringEditorTheme({
+    this.height = 32.0,
   });
 
   @override
   List<Object?> get props => [
-        stringEditorHeight,
+        height,
       ];
 
-  static ManualWidgetTesterStringEditorTheme fromThemeGeneratorParameters(
+  static StringEditorTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return const ManualWidgetTesterStringEditorTheme();
+    return const StringEditorTheme();
   }
 }

@@ -27,9 +27,8 @@ class ManualWidgetTesterCustomSettingsStringEditor extends StatelessWidget {
             settingName: settingName,
           ),
           SizedBox(
-            height: ManualWidgetTesterTheme.of(context)
-                .stringEditorTheme
-                .stringEditorHeight,
+            height:
+                ManualWidgetTesterTheme.of(context).stringEditorTheme.height,
             child: ManualWidgetTesterTextField(
               initialValue: currentValue,
               onSubmitted: onChanged,
