@@ -3,31 +3,31 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterNoEditorMessageTheme extends Equatable {
+class NoEditorMessageTheme extends Equatable {
   /// The padding of the message that is displayed when no editor for a
   /// particular setting could be built.
-  final EdgeInsets noEditorMessagePadding;
+  final EdgeInsets padding;
 
   /// The margin of the message that is displayed when no editor for a
   /// particular setting could be built.
-  final EdgeInsets noEditorMessageMargin;
+  final EdgeInsets margin;
 
   /// The box decoration of the message that is displayed when no editor for a
   /// particular setting could be built.
-  final BoxDecoration noEditorMessageDecoration;
+  final BoxDecoration decoration;
 
   /// The text style of the message that is displayed when no editor for a
   /// particular setting could be built.
-  final TextStyle noEditorTextStyle;
+  final TextStyle textStyle;
 
   /// The text style of the highlighted text of the message that is displayed
   /// when no editor for a particular setting could be built.
-  final TextStyle noEditorHighlightedTextStyle;
+  final TextStyle highlightedTextStyle;
 
-  const ManualWidgetTesterNoEditorMessageTheme({
-    this.noEditorMessagePadding = const EdgeInsets.all(8.0),
-    this.noEditorMessageMargin = const EdgeInsets.all(8.0),
-    this.noEditorMessageDecoration = const BoxDecoration(
+  const NoEditorMessageTheme({
+    this.padding = const EdgeInsets.all(8.0),
+    this.margin = const EdgeInsets.all(8.0),
+    this.decoration = const BoxDecoration(
       border: Border.fromBorderSide(
         BorderSide(
           color: Color.fromRGBO(255, 128, 0, 1.0),
@@ -35,10 +35,10 @@ class ManualWidgetTesterNoEditorMessageTheme extends Equatable {
       ),
       borderRadius: BorderRadius.all(Radius.circular(8.0)),
     ),
-    this.noEditorTextStyle = const TextStyle(
+    this.textStyle = const TextStyle(
       color: Color.fromRGBO(255, 128, 0, 1.0),
     ),
-    this.noEditorHighlightedTextStyle = const TextStyle(
+    this.highlightedTextStyle = const TextStyle(
       color: Color.fromRGBO(255, 192, 0, 1.0),
       fontStyle: FontStyle.italic,
     ),
@@ -46,15 +46,15 @@ class ManualWidgetTesterNoEditorMessageTheme extends Equatable {
 
   @override
   List<Object?> get props => [
-        noEditorMessagePadding,
-        noEditorMessageMargin,
-        noEditorMessageDecoration,
-        noEditorTextStyle,
-        noEditorHighlightedTextStyle,
+        padding,
+        margin,
+        decoration,
+        textStyle,
+        highlightedTextStyle,
       ];
 
-  static ManualWidgetTesterNoEditorMessageTheme fromThemeGeneratorParameters(
+  static NoEditorMessageTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return const ManualWidgetTesterNoEditorMessageTheme();
+    return const NoEditorMessageTheme();
   }
 }

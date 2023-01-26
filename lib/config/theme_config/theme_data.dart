@@ -79,7 +79,7 @@ class ManualWidgetTesterThemeData extends Equatable {
 
   /// The theme of the message that is displayed when no editor for a particular
   /// setting could be built.
-  final ManualWidgetTesterNoEditorMessageTheme noEditorMessageTheme;
+  final NoEditorMessageTheme noEditorMessageTheme;
 
   /// The theme of the app bar.
   ///
@@ -129,7 +129,7 @@ class ManualWidgetTesterThemeData extends Equatable {
     this.noCustomSettingsMessageTheme = const NoCustomSettingsMessageTheme(),
     this.radioButtonTheme = const ManualWidgetTesterRadioButtonTheme(),
     this.closeButtonTheme = const CloseButtonTheme(),
-    this.noEditorMessageTheme = const ManualWidgetTesterNoEditorMessageTheme(),
+    this.noEditorMessageTheme = const NoEditorMessageTheme(),
     this.appBarTheme = const AppBarTheme(),
     this.stringEditorTheme = const ManualWidgetTesterStringEditorTheme(),
     this.createTestSessionButtonTheme = const CreateTestSessionButtonTheme(),
@@ -203,8 +203,7 @@ class ManualWidgetTesterThemeData extends Equatable {
       closeButtonTheme:
           CloseButtonTheme.fromThemeGeneratorParameters(parameters),
       noEditorMessageTheme:
-          ManualWidgetTesterNoEditorMessageTheme.fromThemeGeneratorParameters(
-              parameters),
+          NoEditorMessageTheme.fromThemeGeneratorParameters(parameters),
       appBarTheme: AppBarTheme.fromThemeGeneratorParameters(parameters),
       stringEditorTheme:
           ManualWidgetTesterStringEditorTheme.fromThemeGeneratorParameters(

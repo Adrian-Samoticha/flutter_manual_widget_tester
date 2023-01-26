@@ -73,15 +73,10 @@ class CustomSettings extends StatelessWidget {
   Container _buildNoEditorMessage(
       BuildContext context, String settingName, settingValue) {
     return Container(
-      padding: ManualWidgetTesterTheme.of(context)
-          .noEditorMessageTheme
-          .noEditorMessagePadding,
-      margin: ManualWidgetTesterTheme.of(context)
-          .noEditorMessageTheme
-          .noEditorMessageMargin,
-      decoration: ManualWidgetTesterTheme.of(context)
-          .noEditorMessageTheme
-          .noEditorMessageDecoration,
+      padding: ManualWidgetTesterTheme.of(context).noEditorMessageTheme.padding,
+      margin: ManualWidgetTesterTheme.of(context).noEditorMessageTheme.margin,
+      decoration:
+          ManualWidgetTesterTheme.of(context).noEditorMessageTheme.decoration,
       child: _buildNoEditorText(context, settingName, settingValue),
     );
   }
@@ -91,15 +86,14 @@ class CustomSettings extends StatelessWidget {
     return RichText(
       text: TextSpan(
         text: 'Could not build type editor for setting ',
-        style: ManualWidgetTesterTheme.of(context)
-            .noEditorMessageTheme
-            .noEditorTextStyle,
+        style:
+            ManualWidgetTesterTheme.of(context).noEditorMessageTheme.textStyle,
         children: [
           TextSpan(
             text: settingName,
             style: ManualWidgetTesterTheme.of(context)
                 .noEditorMessageTheme
-                .noEditorHighlightedTextStyle,
+                .highlightedTextStyle,
           ),
           const TextSpan(
             text: ' which is of type ',
@@ -108,7 +102,7 @@ class CustomSettings extends StatelessWidget {
             text: '${settingValue.runtimeType}',
             style: ManualWidgetTesterTheme.of(context)
                 .noEditorMessageTheme
-                .noEditorHighlightedTextStyle,
+                .highlightedTextStyle,
           ),
           const TextSpan(
             text: '. No editor for that type has been provided.',
