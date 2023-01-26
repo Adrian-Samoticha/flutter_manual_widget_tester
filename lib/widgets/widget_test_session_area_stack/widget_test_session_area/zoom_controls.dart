@@ -24,25 +24,16 @@ class ManualWidgetTesterZoomControls extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: ManualWidgetTesterTheme.of(context)
-          .zoomControlsTheme
-          .zoomControlsWidth,
-      height: ManualWidgetTesterTheme.of(context)
-          .zoomControlsTheme
-          .zoomControlsHeight,
+      width: ManualWidgetTesterTheme.of(context).zoomControlsTheme.width,
+      height: ManualWidgetTesterTheme.of(context).zoomControlsTheme.height,
       decoration: BoxDecoration(
         color: ManualWidgetTesterTheme.of(context).generalTheme.sidebarColor,
-        borderRadius: ManualWidgetTesterTheme.of(context)
-            .zoomControlsTheme
-            .zoomControlsBorderRadius,
-        boxShadow: ManualWidgetTesterTheme.of(context)
-            .zoomControlsTheme
-            .zoomControlsShadow,
+        borderRadius:
+            ManualWidgetTesterTheme.of(context).zoomControlsTheme.borderRadius,
+        boxShadow: ManualWidgetTesterTheme.of(context).zoomControlsTheme.shadow,
       ),
       child: Padding(
-        padding: ManualWidgetTesterTheme.of(context)
-            .zoomControlsTheme
-            .zoomControlsPadding,
+        padding: ManualWidgetTesterTheme.of(context).zoomControlsTheme.padding,
         child: Row(
           children: [
             Expanded(
@@ -63,7 +54,7 @@ class ManualWidgetTesterZoomControls extends StatelessWidget {
             SizedBox(
               width: ManualWidgetTesterTheme.of(context)
                   .zoomControlsTheme
-                  .zoomControlsButtonRowWidth,
+                  .buttonRowWidth,
               child: ManualWidgetTesterButtonRow(
                 disableRoundedCornersOnLeftSide: true,
                 buttons: [
@@ -73,14 +64,14 @@ class ManualWidgetTesterZoomControls extends StatelessWidget {
                     onButtonPressed: null,
                     child: ManualWidgetTesterTheme.of(context)
                         .zoomControlsTheme
-                        .zoomControlsZoomOutIcon,
+                        .zoomOutIcon,
                   ),
                   ManualWidgetTesterButtonInfo(
                     onButtonDown: zoom < maxZoom ? onZoomInButtonPressed : null,
                     onButtonPressed: null,
                     child: ManualWidgetTesterTheme.of(context)
                         .zoomControlsTheme
-                        .zoomControlsZoomInIcon,
+                        .zoomInIcon,
                   ),
                 ],
               ),

@@ -73,11 +73,10 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
       child: Padding(
         padding: EdgeInsets.all(ManualWidgetTesterTheme.of(context)
             .zoomControlsTheme
-            .zoomControlsDistanceToBorder),
+            .distanceToBorder),
         child: Align(
-          alignment: ManualWidgetTesterTheme.of(context)
-              .zoomControlsTheme
-              .zoomControlsAlignment,
+          alignment:
+              ManualWidgetTesterTheme.of(context).zoomControlsTheme.alignment,
           child: ManualWidgetTesterZoomControls(
             minZoom: minZoom,
             maxZoom: maxZoom,

@@ -3,74 +3,74 @@ import 'package:flutter/material.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
-class ManualWidgetTesterZoomControlsTheme extends Equatable {
+class ZoomControlsTheme extends Equatable {
   /// The width of the zoom controls.
-  final double zoomControlsWidth;
+  final double width;
 
   /// The height of the zoom controls.
-  final double zoomControlsHeight;
+  final double height;
 
   /// The border radius of the zoom controls.
-  final BorderRadius zoomControlsBorderRadius;
+  final BorderRadius borderRadius;
 
   /// The shadow(s) of the zoom controls.
-  final List<BoxShadow> zoomControlsShadow;
+  final List<BoxShadow> shadow;
 
   /// The padding of the zoom controls.
-  final EdgeInsets zoomControlsPadding;
+  final EdgeInsets padding;
 
   /// The width of the zoom controls' button row.
-  final double zoomControlsButtonRowWidth;
+  final double buttonRowWidth;
 
   /// The icon on the zoom controls' zoom out button.
-  final Icon zoomControlsZoomOutIcon;
+  final Icon zoomOutIcon;
 
   /// The icon on the zoom controls' zoom in button.
-  final Icon zoomControlsZoomInIcon;
+  final Icon zoomInIcon;
 
   /// The zoom controls' distance to the manual widget tester's border.
-  final double zoomControlsDistanceToBorder;
+  final double distanceToBorder;
 
   /// The zoom controls' alignment.
-  final Alignment zoomControlsAlignment;
+  final Alignment alignment;
 
-  const ManualWidgetTesterZoomControlsTheme({
-    this.zoomControlsWidth = 128.0,
-    this.zoomControlsHeight = 32.0,
-    this.zoomControlsBorderRadius = const BorderRadius.all(
+  const ZoomControlsTheme({
+    this.width = 128.0,
+    this.height = 32.0,
+    this.borderRadius = const BorderRadius.all(
       Radius.circular(3.0),
     ),
-    this.zoomControlsShadow = const [
+    this.shadow = const [
       BoxShadow(
         blurRadius: 2.0,
         color: Color.fromRGBO(0, 0, 0, 0.25),
         offset: Offset(0.0, 1.0),
       ),
     ],
-    this.zoomControlsPadding = const EdgeInsets.all(3.5),
-    this.zoomControlsButtonRowWidth = 64.0,
-    this.zoomControlsZoomOutIcon = const Icon(Icons.zoom_out),
-    this.zoomControlsZoomInIcon = const Icon(Icons.zoom_in),
-    this.zoomControlsDistanceToBorder = 8.0,
-    this.zoomControlsAlignment = Alignment.bottomCenter,
+    this.padding = const EdgeInsets.all(3.5),
+    this.buttonRowWidth = 64.0,
+    this.zoomOutIcon = const Icon(Icons.zoom_out),
+    this.zoomInIcon = const Icon(Icons.zoom_in),
+    this.distanceToBorder = 8.0,
+    this.alignment = Alignment.bottomCenter,
   });
 
   @override
   List<Object?> get props => [
-        zoomControlsWidth,
-        zoomControlsHeight,
-        zoomControlsBorderRadius,
-        zoomControlsShadow,
-        zoomControlsPadding,
-        zoomControlsButtonRowWidth,
-        zoomControlsZoomOutIcon,
-        zoomControlsZoomInIcon,
-        zoomControlsDistanceToBorder,
-        zoomControlsAlignment,
+        width,
+        height,
+        borderRadius,
+        shadow,
+        padding,
+        buttonRowWidth,
+        zoomOutIcon,
+        zoomInIcon,
+        distanceToBorder,
+        alignment,
       ];
 
-  static ManualWidgetTesterZoomControlsTheme fromThemeGeneratorParameters(
+  static ZoomControlsTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return const ManualWidgetTesterZoomControlsTheme();
+    return const ZoomControlsTheme();
   }
 }
