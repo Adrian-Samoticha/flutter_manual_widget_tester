@@ -39,6 +39,24 @@ class DragHandleTheme extends Equatable {
 
   static DragHandleTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return const DragHandleTheme();
+    return DragHandleTheme(
+      color: parameters.primaryColor,
+      opacityChangeDuration: _getOpacityChangeDurationFromAnimationSpeed(
+          parameters.animationSpeed),
+    );
+  }
+
+  static Duration _getOpacityChangeDurationFromAnimationSpeed(
+      AnimationSpeed animationSpeed) {
+    switch (animationSpeed) {
+      case AnimationSpeed.instant:
+        return const Duration();
+      case AnimationSpeed.quick:
+        return const Duration(milliseconds: 80);
+      case AnimationSpeed.normal:
+        return const Duration(milliseconds: 150);
+      case AnimationSpeed.slow:
+        return const Duration(milliseconds: 300);
+    }
   }
 }
