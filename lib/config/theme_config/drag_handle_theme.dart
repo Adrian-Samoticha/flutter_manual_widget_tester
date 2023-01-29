@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_color/flutter_color.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
@@ -40,10 +41,18 @@ class DragHandleTheme extends Equatable {
   static DragHandleTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
     return DragHandleTheme(
-      color: parameters.primaryColor,
+      color: _getColor(parameters),
       opacityChangeDuration: _getOpacityChangeDurationFromAnimationSpeed(
           parameters.animationSpeed),
     );
+  }
+
+  static Color _getColor(ThemeGeneratorParameters parameters) {
+    if (parameters.brightness == Brightness.dark) {
+      return parameters.primaryColor.lighter(4);
+    }
+
+    return parameters.primaryColor.darker(2);
   }
 
   static Duration _getOpacityChangeDurationFromAnimationSpeed(
