@@ -64,7 +64,10 @@ class _HorizontalDragHandleState extends State<HorizontalDragHandle> {
             width: ManualWidgetTesterTheme.of(context).dragHandleTheme.size,
             color: _isBeingDragged || _isBeingHovered
                 ? ManualWidgetTesterTheme.of(context).dragHandleTheme.color
-                : Colors.transparent,
+                : ManualWidgetTesterTheme.of(context)
+                    .dragHandleTheme
+                    .color
+                    .withOpacity(0.0),
           ),
         ),
       ),
