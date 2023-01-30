@@ -134,10 +134,10 @@ packages:
     dependency: transitive
     description:
       name: gradient_borders
-      sha256: "8be30e4184bc8d87767f37c04342367b62f5d95806f1847004f32dbcf6e57eaf"
+      sha256: "69eeaff519d145a4c6c213ada1abae386bcc8981a4970d923e478ce7ba19e309"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "1.0.0"
   http:
     dependency: transitive
     description:
