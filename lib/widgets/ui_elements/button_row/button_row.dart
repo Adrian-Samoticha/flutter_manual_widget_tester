@@ -20,26 +20,28 @@ class ManualWidgetTesterButtonRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: ManualWidgetTesterTheme.of(context).buttonTheme.color,
-        borderRadius: BorderRadius.only(
-          topLeft: disableRoundedCornersOnLeftSide
-              ? Radius.zero
-              : ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius,
-          bottomLeft: disableRoundedCornersOnLeftSide
-              ? Radius.zero
-              : ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius,
-          topRight: disableRoundedCornersOnRightSide
-              ? Radius.zero
-              : ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius,
-          bottomRight: disableRoundedCornersOnRightSide
-              ? Radius.zero
-              : ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius,
+    return RepaintBoundary(
+      child: Container(
+        decoration: BoxDecoration(
+          color: ManualWidgetTesterTheme.of(context).buttonTheme.color,
+          borderRadius: BorderRadius.only(
+            topLeft: disableRoundedCornersOnLeftSide
+                ? Radius.zero
+                : ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius,
+            bottomLeft: disableRoundedCornersOnLeftSide
+                ? Radius.zero
+                : ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius,
+            topRight: disableRoundedCornersOnRightSide
+                ? Radius.zero
+                : ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius,
+            bottomRight: disableRoundedCornersOnRightSide
+                ? Radius.zero
+                : ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius,
+          ),
+          boxShadow: ManualWidgetTesterTheme.of(context).buttonTheme.shadow,
         ),
-        boxShadow: ManualWidgetTesterTheme.of(context).buttonTheme.shadow,
+        child: _buildButtons(),
       ),
-      child: _buildButtons(),
     );
   }
 
