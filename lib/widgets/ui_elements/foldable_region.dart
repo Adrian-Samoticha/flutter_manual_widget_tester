@@ -33,48 +33,50 @@ class _ManualWidgetTesterFoldableRegionState
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: widget.isIndented
-          ? EdgeInsets.only(
-              left: ManualWidgetTesterTheme.of(context)
+    return RepaintBoundary(
+      child: Padding(
+        padding: widget.isIndented
+            ? EdgeInsets.only(
+                left: ManualWidgetTesterTheme.of(context)
+                    .foldableRegionTheme
+                    .indentationAmount)
+            : EdgeInsets.zero,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _Header(
+              text: widget.heading,
+              isFolded: _isFolded,
+              isIndented: widget.isIndented,
+              onClicked: () {
+                setState(() {
+                  _isFolded = !_isFolded;
+                });
+              },
+            ),
+            TweenAnimationBuilder<double>(
+              duration: ManualWidgetTesterTheme.of(context)
                   .foldableRegionTheme
-                  .indentationAmount)
-          : EdgeInsets.zero,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          _Header(
-            text: widget.heading,
-            isFolded: _isFolded,
-            isIndented: widget.isIndented,
-            onClicked: () {
-              setState(() {
-                _isFolded = !_isFolded;
-              });
-            },
-          ),
-          TweenAnimationBuilder<double>(
-            duration: ManualWidgetTesterTheme.of(context)
-                .foldableRegionTheme
-                .animationDuration,
-            tween: Tween<double>(
-                begin: _isFolded ? 0.0 : 1.0, end: _isFolded ? 0.0 : 1.0),
-            curve: Curves.ease,
-            builder: (context, value, child) {
-              return ClipRect(
-                clipBehavior: value < 1.0 ? Clip.antiAlias : Clip.none,
-                child: Align(
-                  alignment: ManualWidgetTesterTheme.of(context)
-                      .foldableRegionTheme
-                      .contentAlignment,
-                  heightFactor: value,
-                  child: child,
-                ),
-              );
-            },
-            child: widget.child,
-          )
-        ],
+                  .animationDuration,
+              tween: Tween<double>(
+                  begin: _isFolded ? 0.0 : 1.0, end: _isFolded ? 0.0 : 1.0),
+              curve: Curves.ease,
+              builder: (context, value, child) {
+                return ClipRect(
+                  clipBehavior: value < 1.0 ? Clip.antiAlias : Clip.none,
+                  child: Align(
+                    alignment: ManualWidgetTesterTheme.of(context)
+                        .foldableRegionTheme
+                        .contentAlignment,
+                    heightFactor: value,
+                    child: child,
+                  ),
+                );
+              },
+              child: widget.child,
+            )
+          ],
+        ),
       ),
     );
   }
