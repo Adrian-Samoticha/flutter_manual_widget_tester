@@ -134,12 +134,20 @@ class DoubleEditorTheme extends Equatable {
       color: _getInfiniteScrollViewBackgroundColor(parameters),
       borderRadius: const BorderRadius.all(Radius.circular(4.0)),
       boxShadow: _getInfiniteScrollViewBoxShadow(parameters),
-      border: const Border.fromBorderSide(
+      border: Border.fromBorderSide(
         BorderSide(
-          color: Color.fromRGBO(255, 255, 255, 0.075),
+          color: _getInfiniteScrollViewBorderColorFromBrightness(
+              parameters.brightness),
         ),
       ),
     );
+  }
+
+  static Color _getInfiniteScrollViewBorderColorFromBrightness(
+      Brightness brightness) {
+    return brightness == Brightness.dark
+        ? const Color.fromRGBO(255, 255, 255, 0.075)
+        : const Color.fromRGBO(255, 255, 255, 0.29);
   }
 
   static Color _getInfiniteScrollViewBackgroundColor(
