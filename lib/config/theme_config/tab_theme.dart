@@ -227,12 +227,19 @@ class TabTheme extends Equatable {
             topLeft: Radius.circular(3.0),
             topRight: Radius.circular(3.0),
           ),
-          boxShadow: const [
-            BoxShadow(
-              blurRadius: 16.0,
-              color: Color.fromRGBO(0, 0, 0, 0.5),
-            )
-          ],
+          boxShadow: parameters.brightness == Brightness.dark
+              ? const [
+                  BoxShadow(
+                    blurRadius: 16.0,
+                    color: Color.fromRGBO(0, 0, 0, 0.5),
+                  )
+                ]
+              : const [
+                  BoxShadow(
+                    blurRadius: 8.0,
+                    color: Color.fromRGBO(0, 0, 0, 0.25),
+                  )
+                ],
         );
 
       case DesignLanguage.flat:

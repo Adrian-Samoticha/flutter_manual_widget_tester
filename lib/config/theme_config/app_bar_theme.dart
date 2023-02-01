@@ -44,10 +44,8 @@ class AppBarTheme extends Equatable {
       ThemeGeneratorParameters parameters) {
     return AppBarTheme(
       height: _getHeightFromLayout(parameters.layout),
-      shadowHeight:
-          _getShadowHeightFromDesignLanguage(parameters.designLanguage),
-      shadowBoxDecoration:
-          _getShadowBoxDecorationFromDesignLanguage(parameters.designLanguage),
+      shadowHeight: _getShadowHeight(parameters),
+      shadowBoxDecoration: _getShadowBoxDecoration(parameters),
     );
   }
 
@@ -62,24 +60,25 @@ class AppBarTheme extends Equatable {
     }
   }
 
-  static double _getShadowHeightFromDesignLanguage(
-      DesignLanguage designLanguage) {
-    switch (designLanguage) {
+  static double _getShadowHeight(ThemeGeneratorParameters parameters) {
+    switch (parameters.designLanguage) {
       case DesignLanguage.skeuomorphic:
-        return 16.0;
+        return parameters.brightness == Brightness.dark ? 16.0 : 12.0;
       case DesignLanguage.flat:
         return 0.0;
     }
   }
 
-  static BoxDecoration _getShadowBoxDecorationFromDesignLanguage(
-      DesignLanguage designLanguage) {
-    switch (designLanguage) {
+  static BoxDecoration _getShadowBoxDecoration(
+      ThemeGeneratorParameters parameters) {
+    switch (parameters.designLanguage) {
       case DesignLanguage.skeuomorphic:
-        return const BoxDecoration(
+        return BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromRGBO(0, 0, 0, 0.15),
+              parameters.brightness == Brightness.dark
+                  ? const Color.fromRGBO(0, 0, 0, 0.15)
+                  : const Color.fromRGBO(0, 0, 0, 0.08),
               Colors.transparent,
             ],
             begin: Alignment.bottomCenter,
