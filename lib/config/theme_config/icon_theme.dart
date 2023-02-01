@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_manual_widget_tester/util/multiply_saturation.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
@@ -18,6 +19,10 @@ class IconTheme extends Equatable {
 
   static IconTheme fromThemeGeneratorParameters(
       ThemeGeneratorParameters parameters) {
-    return const IconTheme();
+    return IconTheme(
+      defaultColor: HSLColor.fromColor(parameters.primaryColor)
+          .multiplySaturation(0.95)
+          .toColor(),
+    );
   }
 }
