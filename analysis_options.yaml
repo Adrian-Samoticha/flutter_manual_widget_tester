@@ -52,3 +52,15 @@ dart_code_metrics:
         order:
           - constructors
           - public_fields
+        widgets-order:
+          - constructor
+          - named-constructor
+          - const-fields
+          - static-methods
+          - final-fields
+          - init-state-method
+          - var-fields
+          - init-state-method
+          - private-methods
+          - overridden-public-methods
+          - build-method
