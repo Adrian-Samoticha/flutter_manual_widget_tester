@@ -3,8 +3,8 @@ import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 class Checkerboard extends StatelessWidget {
   const Checkerboard({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +25,11 @@ class Checkerboard extends StatelessWidget {
 }
 
 class _CheckerboardPainter extends CustomPainter {
+  _CheckerboardPainter(this.tileSize, this.color1, this.color2);
+
   final double tileSize;
   final Color color1;
   final Color color2;
-
-  _CheckerboardPainter(this.tileSize, this.color1, this.color2);
 
   @override
   void paint(Canvas canvas, Size size) {

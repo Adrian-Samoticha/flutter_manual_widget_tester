@@ -3,8 +3,8 @@ import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 class TabSeparator extends StatelessWidget {
   const TabSeparator({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

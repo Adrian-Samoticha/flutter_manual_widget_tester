@@ -18,8 +18,11 @@ class CreateTestSessionDialogGenerator {
       barrierColor:
           ManualWidgetTesterTheme.of(context).dialogTheme.barrierColor,
       transitionDuration: const Duration(milliseconds: 0),
-      pageBuilder: (BuildContext _, Animation<double> animation,
-          Animation<double> secondaryAnimation) {
+      pageBuilder: (
+        BuildContext _,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+      ) {
         return ManualWidgetTesterTheme(
           themeData: ManualWidgetTesterTheme.of(context),
           child: Align(

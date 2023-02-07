@@ -16,9 +16,9 @@ class GenericSettings extends StatefulWidget {
   /// The [session] is the widget test session for which the generic settings
   /// are displayed.
   const GenericSettings({
-    Key? key,
+    super.key,
     required this.session,
-  }) : super(key: key);
+  });
 
   final WidgetTestSession session;
 

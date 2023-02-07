@@ -23,7 +23,8 @@ class WidgetTestSessionGenericSettings {
 
   StreamSubscription<WidgetTestSessionGenericSettings>
       registerOnChangedCallback(
-          void Function(WidgetTestSessionGenericSettings) callback) {
+    void Function(WidgetTestSessionGenericSettings) callback,
+  ) {
     return _onChangedStream.stream.listen(callback);
   }
 }

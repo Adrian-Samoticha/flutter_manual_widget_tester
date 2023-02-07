@@ -27,7 +27,8 @@ extension GetResemblanceToSearchTerm on String {
     }
 
     if (thisWithoutWhitespaceLowerCase.containsCharactersInOrder(
-        searchTermWithoutWhitespaceLowerCase.codeUnits)) {
+      searchTermWithoutWhitespaceLowerCase.codeUnits,
+    )) {
       return 0.6;
     }
 

@@ -42,7 +42,8 @@ class WidgetTestSessionCustomSettings {
   Map<String, dynamic> get settings => UnmodifiableMapView(_settingNameToValue);
 
   StreamSubscription registerOnChangedCallback(
-      void Function(WidgetTestSessionCustomSettings) callback) {
+    void Function(WidgetTestSessionCustomSettings) callback,
+  ) {
     return _onChangedStream.stream.listen(callback);
   }
 }

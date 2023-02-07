@@ -6,51 +6,6 @@ import 'package:gradient_borders/gradient_borders.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class ButtonTheme extends Equatable {
-  /// The buttons' color.
-  final Color color;
-
-  /// The buttons' border radius.
-  final Radius borderRadius;
-
-  /// The buttons' shadow(s).
-  final List<BoxShadow> shadow;
-
-  /// The color to tint the button with when it is pressed.
-  final Color buttonPressedTint;
-
-  /// The color to tint the button with when it is hovered over.
-  final Color buttonHoveredTint;
-
-  /// The offset of the button when it is pressed.
-  final Offset buttonPressedOffset;
-
-  /// The color of the line that separates two buttons within a button row.
-  final Color separatorColor;
-
-  /// The width of the line that separates two buttons within a button row.
-  final double separatorWidth;
-
-  /// The icon theme of a disabled button.
-  final IconThemeData disabledButtonIconTheme;
-
-  /// The icon theme of a pressed button.
-  final IconThemeData pressedButtonIconTheme;
-
-  /// The icon theme of an enabled, unpressed button.
-  final IconThemeData iconTheme;
-
-  /// The text style of a disabled button.
-  final TextStyle disabledButtonTextStyle;
-
-  /// The text style of a pressed button.
-  final TextStyle pressedButtonTextStyle;
-
-  /// The text style of an enabled, unpressed button.
-  final TextStyle textStyle;
-
-  /// The border of the individual button inside a button row.
-  final BoxBorder boxBorder;
-
   const ButtonTheme({
     this.color = const Color.fromRGBO(45, 50, 59, 1.0),
     this.borderRadius = const Radius.circular(3.0),
@@ -101,6 +56,51 @@ class ButtonTheme extends Equatable {
     ),
   });
 
+  /// The buttons' color.
+  final Color color;
+
+  /// The buttons' border radius.
+  final Radius borderRadius;
+
+  /// The buttons' shadow(s).
+  final List<BoxShadow> shadow;
+
+  /// The color to tint the button with when it is pressed.
+  final Color buttonPressedTint;
+
+  /// The color to tint the button with when it is hovered over.
+  final Color buttonHoveredTint;
+
+  /// The offset of the button when it is pressed.
+  final Offset buttonPressedOffset;
+
+  /// The color of the line that separates two buttons within a button row.
+  final Color separatorColor;
+
+  /// The width of the line that separates two buttons within a button row.
+  final double separatorWidth;
+
+  /// The icon theme of a disabled button.
+  final IconThemeData disabledButtonIconTheme;
+
+  /// The icon theme of a pressed button.
+  final IconThemeData pressedButtonIconTheme;
+
+  /// The icon theme of an enabled, unpressed button.
+  final IconThemeData iconTheme;
+
+  /// The text style of a disabled button.
+  final TextStyle disabledButtonTextStyle;
+
+  /// The text style of a pressed button.
+  final TextStyle pressedButtonTextStyle;
+
+  /// The text style of an enabled, unpressed button.
+  final TextStyle textStyle;
+
+  /// The border of the individual button inside a button row.
+  final BoxBorder boxBorder;
+
   @override
   List<Object?> get props => [
         color,
@@ -121,7 +121,8 @@ class ButtonTheme extends Equatable {
       ];
 
   static ButtonTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return ButtonTheme(
       color: parameters.filteredBackgroundColor.lighter(16),
       shadow: _getShadowFromDesignLanguage(parameters.designLanguage),
@@ -151,7 +152,8 @@ class ButtonTheme extends Equatable {
   }
 
   static List<BoxShadow> _getShadowFromDesignLanguage(
-      DesignLanguage designLanguage) {
+    DesignLanguage designLanguage,
+  ) {
     switch (designLanguage) {
       case DesignLanguage.skeuomorphic:
         return const [
@@ -187,7 +189,8 @@ class ButtonTheme extends Equatable {
   }
 
   static BoxBorder _getBoxBorderFromDesignLanguage(
-      DesignLanguage designLanguage) {
+    DesignLanguage designLanguage,
+  ) {
     switch (designLanguage) {
       case DesignLanguage.skeuomorphic:
         return const GradientBoxBorder(

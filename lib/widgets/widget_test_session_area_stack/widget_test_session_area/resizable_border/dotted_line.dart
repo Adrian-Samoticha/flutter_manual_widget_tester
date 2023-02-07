@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class DottedLine extends StatelessWidget {
   const DottedLine({
-    Key? key,
+    super.key,
     required this.color,
-  }) : super(key: key);
+  });
 
   final Color color;
 
@@ -17,9 +17,9 @@ class DottedLine extends StatelessWidget {
 }
 
 class _DottedLinePainter extends CustomPainter {
-  final Color dottedLineColor;
-
   _DottedLinePainter(this.dottedLineColor);
+
+  final Color dottedLineColor;
 
   @override
   void paint(Canvas canvas, Size size) {

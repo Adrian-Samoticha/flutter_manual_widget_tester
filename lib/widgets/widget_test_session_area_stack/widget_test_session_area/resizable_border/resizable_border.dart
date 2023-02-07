@@ -5,22 +5,22 @@ import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider/mouse_c
 import 'dotted_line.dart';
 
 class ResizableBorder extends StatefulWidget {
+  const ResizableBorder({
+    super.key,
+    required this.isVertical,
+    required this.size,
+    required this.onDragStart,
+    required this.onDragUpdate,
+    required this.zoom,
+    required this.oppositeSize,
+  });
+
   final bool isVertical;
   final double size;
   final double oppositeSize;
   final void Function() onDragStart;
   final void Function(double) onDragUpdate;
   final double zoom;
-
-  const ResizableBorder(
-      {Key? key,
-      required this.isVertical,
-      required this.size,
-      required this.onDragStart,
-      required this.onDragUpdate,
-      required this.zoom,
-      required this.oppositeSize})
-      : super(key: key);
 
   @override
   State<ResizableBorder> createState() => _ResizableBorderState();
@@ -40,10 +40,12 @@ class _ResizableBorderState extends State<ResizableBorder> {
               alignment: Alignment.centerRight,
               child: RotatedBox(
                 quarterTurns: 3,
-                child: Text('${(widget.oppositeSize / widget.zoom).round()} px',
-                    style: ManualWidgetTesterTheme.of(context)
-                        .widgetTestSessionAreaTheme
-                        .widgetSizeTextStyle),
+                child: Text(
+                  '${(widget.oppositeSize / widget.zoom).round()} px',
+                  style: ManualWidgetTesterTheme.of(context)
+                      .widgetTestSessionAreaTheme
+                      .widgetSizeTextStyle,
+                ),
               ),
             ),
           ),

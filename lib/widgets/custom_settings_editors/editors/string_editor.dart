@@ -5,12 +5,12 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart
 import '../ui_elements/heading.dart';
 
 class ManualWidgetTesterCustomSettingsStringEditor extends StatelessWidget {
-  const ManualWidgetTesterCustomSettingsStringEditor(
-      {Key? key,
-      required this.settingName,
-      required this.currentValue,
-      required this.onChanged})
-      : super(key: key);
+  const ManualWidgetTesterCustomSettingsStringEditor({
+    super.key,
+    required this.settingName,
+    required this.currentValue,
+    required this.onChanged,
+  });
 
   final String settingName;
   final String currentValue;

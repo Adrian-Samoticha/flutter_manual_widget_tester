@@ -6,13 +6,13 @@ import 'tab_text.dart';
 
 class TabContent extends StatelessWidget {
   const TabContent({
-    Key? key,
+    super.key,
     required this.isBeingHovered,
     required this.icon,
     required this.iconColor,
     required this.isFocused,
     required this.widgetName,
-  }) : super(key: key);
+  });
 
   final bool isBeingHovered;
   final IconData? icon;

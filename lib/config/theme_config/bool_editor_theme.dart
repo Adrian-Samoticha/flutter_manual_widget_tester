@@ -4,6 +4,13 @@ import 'package:flutter/material.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class BoolEditorTheme extends Equatable {
+  const BoolEditorTheme({
+    this.maxWidth = 192.0,
+    this.spaceBetweenRadioButtons = 12.0,
+    this.radioButtonPadding = const EdgeInsets.symmetric(vertical: 8.0),
+    this.editorHeight = 16.0,
+  });
+
   /// The maximal width of a boolean editor.
   final double maxWidth;
 
@@ -16,13 +23,6 @@ class BoolEditorTheme extends Equatable {
   /// The height of the boolean editor.
   final double editorHeight;
 
-  const BoolEditorTheme({
-    this.maxWidth = 192.0,
-    this.spaceBetweenRadioButtons = 12.0,
-    this.radioButtonPadding = const EdgeInsets.symmetric(vertical: 8.0),
-    this.editorHeight = 16.0,
-  });
-
   @override
   List<Object?> get props => [
         maxWidth,
@@ -32,7 +32,8 @@ class BoolEditorTheme extends Equatable {
       ];
 
   static BoolEditorTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return BoolEditorTheme(
       maxWidth: _getMaxWidthFromLayout(parameters.layout),
       spaceBetweenRadioButtons: _getSpaceBetweenRadioButtons(parameters.layout),

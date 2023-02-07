@@ -2,6 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 class ManualWidgetTesterTextField extends StatelessWidget {
+  const ManualWidgetTesterTextField({
+    super.key,
+    this.initialValue,
+    this.disableRoundedCornersOnLeftSide = false,
+    this.disableRoundedCornersOnRightSide = false,
+    required this.onSubmitted,
+    this.suffix = '',
+    this.autofocus = false,
+    this.onChanged,
+    this.textEditingController,
+  });
+
   final String? initialValue;
   final bool disableRoundedCornersOnLeftSide;
   final bool disableRoundedCornersOnRightSide;
@@ -10,18 +22,6 @@ class ManualWidgetTesterTextField extends StatelessWidget {
   final String suffix;
   final bool autofocus;
   final TextEditingController? textEditingController;
-
-  const ManualWidgetTesterTextField(
-      {Key? key,
-      this.initialValue,
-      this.disableRoundedCornersOnLeftSide = false,
-      this.disableRoundedCornersOnRightSide = false,
-      required this.onSubmitted,
-      this.suffix = '',
-      this.autofocus = false,
-      this.onChanged,
-      this.textEditingController})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

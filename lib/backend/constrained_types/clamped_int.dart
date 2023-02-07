@@ -1,17 +1,4 @@
 class ClampedInt {
-  final int? lowerLimit;
-  final int? upperLimit;
-  late int _value;
-
-  int get value => _value;
-
-  set value(int value) {
-    final theoreticalLowerLimit = lowerLimit ?? value;
-    final theoreticalUpperLimit = upperLimit ?? value;
-
-    _value = value.clamp(theoreticalLowerLimit, theoreticalUpperLimit);
-  }
-
   /// Creates a [ClampedInt] whose [value] is guaranteed to be clamped to be
   /// in the range [lowerLimit]-[upperLimit].
   ///
@@ -46,5 +33,18 @@ class ClampedInt {
         '($lowerLimit).');
 
     this.value = value;
+  }
+
+  final int? lowerLimit;
+  final int? upperLimit;
+  late int _value;
+
+  int get value => _value;
+
+  set value(int value) {
+    final theoreticalLowerLimit = lowerLimit ?? value;
+    final theoreticalUpperLimit = upperLimit ?? value;
+
+    _value = value.clamp(theoreticalLowerLimit, theoreticalUpperLimit);
   }
 }

@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 class ManualWidgetTesterFoldableRegion extends StatefulWidget {
+  const ManualWidgetTesterFoldableRegion({
+    super.key,
+    required this.child,
+    required this.heading,
+    this.isIndented = false,
+    this.isInitiallyFolded = false,
+  });
+
   final Widget child;
   final String heading;
   final bool isIndented;
   final bool isInitiallyFolded;
-
-  const ManualWidgetTesterFoldableRegion(
-      {Key? key,
-      required this.child,
-      required this.heading,
-      this.isIndented = false,
-      this.isInitiallyFolded = false})
-      : super(key: key);
 
   @override
   State<ManualWidgetTesterFoldableRegion> createState() =>
@@ -39,7 +39,8 @@ class _ManualWidgetTesterFoldableRegionState
             ? EdgeInsets.only(
                 left: ManualWidgetTesterTheme.of(context)
                     .foldableRegionTheme
-                    .indentationAmount)
+                    .indentationAmount,
+              )
             : EdgeInsets.zero,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -59,7 +60,9 @@ class _ManualWidgetTesterFoldableRegionState
                   .foldableRegionTheme
                   .animationDuration,
               tween: Tween<double>(
-                  begin: _isFolded ? 0.0 : 1.0, end: _isFolded ? 0.0 : 1.0),
+                begin: _isFolded ? 0.0 : 1.0,
+                end: _isFolded ? 0.0 : 1.0,
+              ),
               curve: Curves.ease,
               builder: (context, value, child) {
                 return ClipRect(
@@ -74,7 +77,7 @@ class _ManualWidgetTesterFoldableRegionState
                 );
               },
               child: widget.child,
-            )
+            ),
           ],
         ),
       ),
@@ -83,16 +86,17 @@ class _ManualWidgetTesterFoldableRegionState
 }
 
 class _Header extends StatelessWidget {
+  const _Header({
+    required this.text,
+    required this.isFolded,
+    required this.onClicked,
+    required this.isIndented,
+  });
+
   final String text;
   final bool isFolded;
   final void Function() onClicked;
   final bool isIndented;
-
-  const _Header(
-      {required this.text,
-      required this.isFolded,
-      required this.onClicked,
-      required this.isIndented});
 
   @override
   Widget build(BuildContext context) {
@@ -130,14 +134,16 @@ class _Header extends StatelessWidget {
                       .chevronIconSize,
                 ),
                 Expanded(
-                  child: Text(text,
-                      softWrap: false,
-                      overflow: ManualWidgetTesterTheme.of(context)
-                          .foldableRegionTheme
-                          .headingOverflow,
-                      style: ManualWidgetTesterTheme.of(context)
-                          .foldableRegionTheme
-                          .headingStyle),
+                  child: Text(
+                    text,
+                    softWrap: false,
+                    overflow: ManualWidgetTesterTheme.of(context)
+                        .foldableRegionTheme
+                        .headingOverflow,
+                    style: ManualWidgetTesterTheme.of(context)
+                        .foldableRegionTheme
+                        .headingStyle,
+                  ),
                 ),
               ],
             ),

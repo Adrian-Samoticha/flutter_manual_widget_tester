@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class CustomSettingsTheme extends Equatable {
-  /// The padding of a custom settings widget.
-  final EdgeInsets padding;
-
   const CustomSettingsTheme({
     this.padding = const EdgeInsets.all(8.0),
   });
+
+  /// The padding of a custom settings widget.
+  final EdgeInsets padding;
 
   @override
   List<Object?> get props => [
@@ -17,7 +17,8 @@ class CustomSettingsTheme extends Equatable {
       ];
 
   static CustomSettingsTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return CustomSettingsTheme(
       padding: _getPaddingFromLayout(parameters.layout),
     );

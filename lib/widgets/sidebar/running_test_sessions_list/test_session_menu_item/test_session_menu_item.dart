@@ -4,6 +4,18 @@ import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'close_tab_button.dart';
 
 class ManualWidgetTesterTestSessionMenuItem extends StatefulWidget {
+  const ManualWidgetTesterTestSessionMenuItem({
+    super.key,
+    required this.tabIndex,
+    required this.focusedTabIndex,
+    required this.widgetName,
+    required this.onSelect,
+    required this.onClose,
+    this.icon,
+    required this.iconColor,
+    required this.enableIcon,
+  });
+
   final int tabIndex;
   final int focusedTabIndex;
   final String widgetName;
@@ -12,18 +24,6 @@ class ManualWidgetTesterTestSessionMenuItem extends StatefulWidget {
   final bool enableIcon;
   final IconData? icon;
   final Color iconColor;
-
-  const ManualWidgetTesterTestSessionMenuItem(
-      {Key? key,
-      required this.tabIndex,
-      required this.focusedTabIndex,
-      required this.widgetName,
-      required this.onSelect,
-      required this.onClose,
-      this.icon,
-      required this.iconColor,
-      required this.enableIcon})
-      : super(key: key);
 
   @override
   State<ManualWidgetTesterTestSessionMenuItem> createState() =>
@@ -107,14 +107,16 @@ class _ManualWidgetTesterTestSessionMenuItemState
   }
 
   Text _buildTabText() {
-    return Text(widget.widgetName,
-        softWrap: false,
-        overflow: ManualWidgetTesterTheme.of(context)
-            .testSessionMenuItemTheme
-            .textOverflow,
-        style: ManualWidgetTesterTheme.of(context)
-            .testSessionMenuItemTheme
-            .textStyle);
+    return Text(
+      widget.widgetName,
+      softWrap: false,
+      overflow: ManualWidgetTesterTheme.of(context)
+          .testSessionMenuItemTheme
+          .textOverflow,
+      style: ManualWidgetTesterTheme.of(context)
+          .testSessionMenuItemTheme
+          .textStyle,
+    );
   }
 
   Padding _buildTabIcon() {
@@ -137,9 +139,10 @@ class _ManualWidgetTesterTestSessionMenuItemState
       duration: const Duration(milliseconds: 50),
       opacity: _isBeingHovered ? 1.0 : 0.0,
       child: Container(
-          decoration: ManualWidgetTesterTheme.of(context)
-              .testSessionMenuItemTheme
-              .hoverTintDecoration),
+        decoration: ManualWidgetTesterTheme.of(context)
+            .testSessionMenuItemTheme
+            .hoverTintDecoration,
+      ),
     );
   }
 }

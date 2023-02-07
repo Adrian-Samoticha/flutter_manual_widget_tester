@@ -4,6 +4,13 @@ import 'package:flutter/material.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class NoCustomSettingsMessageTheme extends Equatable {
+  const NoCustomSettingsMessageTheme({
+    this.padding = const EdgeInsets.all(8.0),
+    this.textStyle = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.75),
+    ),
+  });
+
   /// The padding of the message that is displayed when a test session has no
   /// custom settings.
   final EdgeInsets padding;
@@ -12,13 +19,6 @@ class NoCustomSettingsMessageTheme extends Equatable {
   /// no custom settings.
   final TextStyle textStyle;
 
-  const NoCustomSettingsMessageTheme({
-    this.padding = const EdgeInsets.all(8.0),
-    this.textStyle = const TextStyle(
-      color: Color.fromRGBO(255, 255, 255, 0.75),
-    ),
-  });
-
   @override
   List<Object?> get props => [
         padding,
@@ -26,7 +26,8 @@ class NoCustomSettingsMessageTheme extends Equatable {
       ];
 
   static NoCustomSettingsMessageTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return const NoCustomSettingsMessageTheme();
   }
 }

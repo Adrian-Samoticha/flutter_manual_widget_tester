@@ -11,11 +11,12 @@ import 'resizable_corners.dart';
 import 'zoom_controls.dart';
 
 class ManualWidgetTesterWidgetTestSessionArea extends StatefulWidget {
-  final WidgetTestSession widgetTestSession;
+  const ManualWidgetTesterWidgetTestSessionArea({
+    super.key,
+    required this.widgetTestSession,
+  });
 
-  const ManualWidgetTesterWidgetTestSessionArea(
-      {Key? key, required this.widgetTestSession})
-      : super(key: key);
+  final WidgetTestSession widgetTestSession;
 
   @override
   State<ManualWidgetTesterWidgetTestSessionArea> createState() =>
@@ -50,9 +51,13 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       final displayWidth = _getLegalDisplaySizeFromDraggedSize(
-          _draggedWidth, constraints.maxWidth);
+        _draggedWidth,
+        constraints.maxWidth,
+      );
       final displayHeight = _getLegalDisplaySizeFromDraggedSize(
-          _draggedHeight, constraints.maxHeight);
+        _draggedHeight,
+        constraints.maxHeight,
+      );
 
       return Stack(
         children: [
@@ -120,7 +125,9 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
   }
 
   double _getLegalDisplaySizeFromDraggedSize(
-      double draggedSize, double maxSize) {
+    double draggedSize,
+    double maxSize,
+  ) {
     const minSize = 32.0;
     final maxSizeMinusHandleSize = maxSize -
         2 *
@@ -139,7 +146,9 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
   }
 
   List<Widget> _generateResizableHandles(
-      double displayWidth, double displayHeight) {
+    double displayWidth,
+    double displayHeight,
+  ) {
     return [
       ResizableBorder(
         isVertical: false,
@@ -172,7 +181,7 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
         onVerticalDragUpdate: (delta) => setState(() {
           _draggedHeight += delta;
         }),
-      )
+      ),
     ];
   }
 }

@@ -20,13 +20,13 @@ export 'package:flutter_manual_widget_tester/config/theme_config/theme_data.dart
 export 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_builder.dart';
 
 class ManualWidgetTester extends StatefulWidget {
-  const ManualWidgetTester(
-      {Key? key,
-      this.themeData = const ManualWidgetTesterThemeData(),
-      this.doubleEditorInfiniteScrollViewRange = 3.0,
-      this.doubleEditorInfiniteScrollViewScrollSpeedFactor = 0.003,
-      required this.builders})
-      : super(key: key);
+  const ManualWidgetTester({
+    super.key,
+    this.themeData = const ManualWidgetTesterThemeData(),
+    this.doubleEditorInfiniteScrollViewRange = 3.0,
+    this.doubleEditorInfiniteScrollViewScrollSpeedFactor = 0.003,
+    required this.builders,
+  });
 
   final ManualWidgetTesterThemeData themeData;
   final double doubleEditorInfiniteScrollViewRange;
@@ -42,14 +42,16 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
   final TypeEditorBuilder _typeEditorBuilder = TypeEditorBuilder();
 
   ConfigData get _configData => ConfigData(
-      doubleEditorInfiniteScrollViewRange:
-          widget.doubleEditorInfiniteScrollViewRange,
-      doubleEditorInfiniteScrollViewScrollSpeedFactor:
-          widget.doubleEditorInfiniteScrollViewScrollSpeedFactor);
+        doubleEditorInfiniteScrollViewRange:
+            widget.doubleEditorInfiniteScrollViewRange,
+        doubleEditorInfiniteScrollViewScrollSpeedFactor:
+            widget.doubleEditorInfiniteScrollViewScrollSpeedFactor,
+      );
 
   void _installDefaultEditorBuilders() {
     EditorBuilderInstaller.installDefaultEditorBuilders(
-        typeEditorBuilder: _typeEditorBuilder);
+      typeEditorBuilder: _typeEditorBuilder,
+    );
   }
 
   @override
@@ -111,11 +113,10 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
 
 class _ManualWidgetTesterBody extends StatelessWidget {
   const _ManualWidgetTesterBody({
-    Key? key,
     required this.widgetTestSessionHandler,
     required this.typeEditorBuilder,
     required this.builders,
-  }) : super(key: key);
+  });
 
   final WidgetTestSessionHandler widgetTestSessionHandler;
   final TypeEditorBuilder typeEditorBuilder;

@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 class ManualWidgetTesterCloseButton extends StatefulWidget {
+  const ManualWidgetTesterCloseButton({
+    super.key,
+    this.size = 24.0,
+    required this.onPressed,
+  });
+
   final double size;
   final void Function() onPressed;
-
-  const ManualWidgetTesterCloseButton(
-      {Key? key, this.size = 24.0, required this.onPressed})
-      : super(key: key);
 
   @override
   State<ManualWidgetTesterCloseButton> createState() =>

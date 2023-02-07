@@ -58,6 +58,7 @@ class WidgetTestSessionHandler {
 
     if (_widgetTestSessions.isEmpty) {
       _currentIndex = -1;
+
       return;
     }
 
@@ -65,7 +66,8 @@ class WidgetTestSessionHandler {
   }
 
   StreamSubscription<WidgetTestSessionHandler> registerOnChangedCallback(
-      void Function(WidgetTestSessionHandler) callback) {
+    void Function(WidgetTestSessionHandler) callback,
+  ) {
     return _onChangedStream.stream.listen(callback);
   }
 }

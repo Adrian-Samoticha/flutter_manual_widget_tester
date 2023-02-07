@@ -4,8 +4,8 @@ import 'package:flutter_manual_widget_tester/const/default_text_style_provider.d
 
 class NoMatchingResultsMessage extends StatelessWidget {
   const NoMatchingResultsMessage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +15,12 @@ class NoMatchingResultsMessage extends StatelessWidget {
           .searchResultsPadding,
       child: DefaultTextStyle(
         style: DefaultTextStyleProvider.defaultTextStyle,
-        child: Text('No matching results.',
-            style: ManualWidgetTesterTheme.of(context)
-                .createTestSessionDialogTheme
-                .noMatchingResultsTextStyle),
+        child: Text(
+          'No matching results.',
+          style: ManualWidgetTesterTheme.of(context)
+              .createTestSessionDialogTheme
+              .noMatchingResultsTextStyle,
+        ),
       ),
     );
   }

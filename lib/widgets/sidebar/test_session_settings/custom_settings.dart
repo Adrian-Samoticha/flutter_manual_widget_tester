@@ -14,9 +14,11 @@ class CustomSettings extends StatelessWidget {
   /// displayed.
   /// The [typeEditorBuilder] is the type editor builder used to build editors
   /// for the custom settings.
-  const CustomSettings(
-      {Key? key, required this.session, required this.typeEditorBuilder})
-      : super(key: key);
+  const CustomSettings({
+    super.key,
+    required this.session,
+    required this.typeEditorBuilder,
+  });
 
   final WidgetTestSession session;
   final TypeEditorBuilder typeEditorBuilder;
@@ -42,7 +44,12 @@ class CustomSettings extends StatelessWidget {
     return customSettings.settings
         .map((String settingName, dynamic settingValue) {
           final widget = _buildWidgetForSetting(
-              context, customSettings, settingName, settingValue);
+            context,
+            customSettings,
+            settingName,
+            settingValue,
+          );
+
           return MapEntry<String, Widget>(settingName, widget);
         })
         .values
@@ -50,10 +57,11 @@ class CustomSettings extends StatelessWidget {
   }
 
   Widget _buildWidgetForSetting(
-      BuildContext context,
-      WidgetTestSessionCustomSettings customSettings,
-      String settingName,
-      dynamic settingValue) {
+    BuildContext context,
+    WidgetTestSessionCustomSettings customSettings,
+    String settingName,
+    dynamic settingValue,
+  ) {
     final settingType = settingValue.runtimeType;
 
     if (!typeEditorBuilder.hasEditorBuilderInstalledForType(settingType)) {
@@ -71,7 +79,10 @@ class CustomSettings extends StatelessWidget {
   }
 
   Container _buildNoEditorMessage(
-      BuildContext context, String settingName, settingValue) {
+    BuildContext context,
+    String settingName,
+    settingValue,
+  ) {
     return Container(
       padding: ManualWidgetTesterTheme.of(context).noEditorMessageTheme.padding,
       margin: ManualWidgetTesterTheme.of(context).noEditorMessageTheme.margin,
@@ -82,7 +93,10 @@ class CustomSettings extends StatelessWidget {
   }
 
   RichText _buildNoEditorText(
-      BuildContext context, String settingName, settingValue) {
+    BuildContext context,
+    String settingName,
+    settingValue,
+  ) {
     return RichText(
       text: TextSpan(
         text: 'Could not build type editor for setting ',

@@ -7,11 +7,12 @@ import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler
 import 'widget_test_session_area/widget_test_session_area.dart';
 
 class ManualWidgetTesterWidgetTestSessionAreaStack extends StatefulWidget {
-  final WidgetTestSessionHandler widgetTestSessionHandler;
+  const ManualWidgetTesterWidgetTestSessionAreaStack({
+    super.key,
+    required this.widgetTestSessionHandler,
+  });
 
-  const ManualWidgetTesterWidgetTestSessionAreaStack(
-      {Key? key, required this.widgetTestSessionHandler})
-      : super(key: key);
+  final WidgetTestSessionHandler widgetTestSessionHandler;
 
   @override
   State<ManualWidgetTesterWidgetTestSessionAreaStack> createState() =>

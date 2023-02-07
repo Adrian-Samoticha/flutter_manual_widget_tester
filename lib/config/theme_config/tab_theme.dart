@@ -5,6 +5,83 @@ import 'package:gradient_borders/gradient_borders.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class TabTheme extends Equatable {
+  const TabTheme({
+    this.minWidth = 94.0,
+    this.maxWidth = 192.0,
+    this.focusedTabBoxDecoration = const BoxDecoration(
+      color: Color.fromRGBO(41, 43, 53, 1.0),
+      border: GradientBoxBorder(
+        gradient: LinearGradient(
+          colors: [
+            Color.fromRGBO(255, 255, 255, 0.2),
+            Colors.transparent,
+            Colors.transparent,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+        width: 1.0,
+      ),
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(3.0),
+        topRight: Radius.circular(3.0),
+      ),
+      boxShadow: [
+        BoxShadow(
+          blurRadius: 16.0,
+          color: Color.fromRGBO(0, 0, 0, 0.5),
+        ),
+      ],
+    ),
+    this.unfocusedTabBoxDecoration = const BoxDecoration(
+      color: Colors.transparent,
+    ),
+    this.focusedTabAccentColorDecorationWidth = 3.0,
+    this.separatorBoxDecoration = const BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          Color.fromRGBO(255, 255, 255, 0.0),
+          Color.fromRGBO(255, 255, 255, 0.1),
+          Color.fromRGBO(255, 255, 255, 0.0),
+        ],
+      ),
+    ),
+    this.lightReflectionBoxDecoration = const BoxDecoration(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(3.0),
+        topRight: Radius.circular(3.0),
+      ),
+      gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          Color.fromRGBO(255, 255, 255, 0.3),
+          Color.fromRGBO(255, 255, 255, 0.12),
+          Color.fromRGBO(255, 255, 255, 0.1),
+          Color.fromRGBO(255, 255, 255, 0.05),
+          Color.fromRGBO(255, 255, 255, 0.02),
+          Color.fromRGBO(255, 255, 255, 0.0),
+        ],
+      ),
+    ),
+    this.iconPadding = const EdgeInsets.only(right: 4.0),
+    this.iconSize = 21.0,
+    this.textStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 12.0,
+      fontWeight: FontWeight.w600,
+    ),
+    this.unfocusedHoveredTabOpacity = 0.7,
+    this.unfocusedNotHoveredTabOpacity = 0.4,
+    this.unfocusedTabOpacityChangeDuration = const Duration(milliseconds: 150),
+    this.spaceAboveTabs = 4.0,
+    this.contentPadding = const EdgeInsets.all(8.0),
+    this.openingAnimationDuration = const Duration(milliseconds: 150),
+    this.openingAnimationCurve = Curves.ease,
+  });
+
   /// The minimal tab width.
   ///
   /// **Note:** The tabs will resize themselves based on the current window
@@ -64,83 +141,6 @@ class TabTheme extends Equatable {
   /// opened.
   final Curve openingAnimationCurve;
 
-  const TabTheme({
-    this.minWidth = 94.0,
-    this.maxWidth = 192.0,
-    this.focusedTabBoxDecoration = const BoxDecoration(
-      color: Color.fromRGBO(41, 43, 53, 1.0),
-      border: GradientBoxBorder(
-        gradient: LinearGradient(
-          colors: [
-            Color.fromRGBO(255, 255, 255, 0.2),
-            Colors.transparent,
-            Colors.transparent,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-        width: 1.0,
-      ),
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(3.0),
-        topRight: Radius.circular(3.0),
-      ),
-      boxShadow: [
-        BoxShadow(
-          blurRadius: 16.0,
-          color: Color.fromRGBO(0, 0, 0, 0.5),
-        )
-      ],
-    ),
-    this.unfocusedTabBoxDecoration = const BoxDecoration(
-      color: Colors.transparent,
-    ),
-    this.focusedTabAccentColorDecorationWidth = 3.0,
-    this.separatorBoxDecoration = const BoxDecoration(
-      gradient: LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [
-          Color.fromRGBO(255, 255, 255, 0.0),
-          Color.fromRGBO(255, 255, 255, 0.1),
-          Color.fromRGBO(255, 255, 255, 0.0),
-        ],
-      ),
-    ),
-    this.lightReflectionBoxDecoration = const BoxDecoration(
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(3.0),
-        topRight: Radius.circular(3.0),
-      ),
-      gradient: LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [
-          Color.fromRGBO(255, 255, 255, 0.3),
-          Color.fromRGBO(255, 255, 255, 0.12),
-          Color.fromRGBO(255, 255, 255, 0.1),
-          Color.fromRGBO(255, 255, 255, 0.05),
-          Color.fromRGBO(255, 255, 255, 0.02),
-          Color.fromRGBO(255, 255, 255, 0.0),
-        ],
-      ),
-    ),
-    this.iconPadding = const EdgeInsets.only(right: 4.0),
-    this.iconSize = 21.0,
-    this.textStyle = const TextStyle(
-      color: Colors.white,
-      fontSize: 12.0,
-      fontWeight: FontWeight.w600,
-    ),
-    this.unfocusedHoveredTabOpacity = 0.7,
-    this.unfocusedNotHoveredTabOpacity = 0.4,
-    this.unfocusedTabOpacityChangeDuration = const Duration(milliseconds: 150),
-    this.spaceAboveTabs = 4.0,
-    this.contentPadding = const EdgeInsets.all(8.0),
-    this.openingAnimationDuration = const Duration(milliseconds: 150),
-    this.openingAnimationCurve = Curves.ease,
-  });
-
   @override
   List<Object?> get props => [
         minWidth,
@@ -163,7 +163,8 @@ class TabTheme extends Equatable {
       ];
 
   static TabTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return TabTheme(
       minWidth: _getMinWidthFromLayout(parameters.layout),
       maxWidth: _getMaxWidthFromLayout(parameters.layout),
@@ -172,14 +173,17 @@ class TabTheme extends Equatable {
           _getSeparatorBoxDecorationFromBrightness(parameters.brightness),
       lightReflectionBoxDecoration:
           _getLightReflectionBoxDecorationFromDesignLanguage(
-              parameters.designLanguage),
+        parameters.designLanguage,
+      ),
       textStyle: _getTextStyle(parameters),
       unfocusedTabOpacityChangeDuration:
           _getUnfocusedTabOpacityChangeDurationFromAnimationSpeed(
-              parameters.animationSpeed),
+        parameters.animationSpeed,
+      ),
       contentPadding: _getContentPaddingFromLayout(parameters.layout),
       openingAnimationDuration: _getOpenAnimationDurationFromAnimationSpeed(
-          parameters.animationSpeed),
+        parameters.animationSpeed,
+      ),
     );
   }
 
@@ -206,7 +210,8 @@ class TabTheme extends Equatable {
   }
 
   static BoxDecoration _getFocusedTabBoxDecoration(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     switch (parameters.designLanguage) {
       case DesignLanguage.skeuomorphic:
         return BoxDecoration(
@@ -232,13 +237,13 @@ class TabTheme extends Equatable {
                   BoxShadow(
                     blurRadius: 16.0,
                     color: Color.fromRGBO(0, 0, 0, 0.5),
-                  )
+                  ),
                 ]
               : const [
                   BoxShadow(
                     blurRadius: 8.0,
                     color: Color.fromRGBO(0, 0, 0, 0.25),
-                  )
+                  ),
                 ],
         );
 
@@ -254,7 +259,8 @@ class TabTheme extends Equatable {
   }
 
   static BoxDecoration _getSeparatorBoxDecorationFromBrightness(
-      Brightness brightness) {
+    Brightness brightness,
+  ) {
     final color = brightness == Brightness.dark ? Colors.white : Colors.black;
 
     return BoxDecoration(
@@ -271,7 +277,8 @@ class TabTheme extends Equatable {
   }
 
   static BoxDecoration _getLightReflectionBoxDecorationFromDesignLanguage(
-      DesignLanguage designLanguage) {
+    DesignLanguage designLanguage,
+  ) {
     switch (designLanguage) {
       case DesignLanguage.skeuomorphic:
         return const BoxDecoration(
@@ -320,7 +327,8 @@ class TabTheme extends Equatable {
   }
 
   static Duration _getUnfocusedTabOpacityChangeDurationFromAnimationSpeed(
-      AnimationSpeed animationSpeed) {
+    AnimationSpeed animationSpeed,
+  ) {
     switch (animationSpeed) {
       case AnimationSpeed.instant:
         return const Duration();
@@ -345,7 +353,8 @@ class TabTheme extends Equatable {
   }
 
   static Duration _getOpenAnimationDurationFromAnimationSpeed(
-      AnimationSpeed animationSpeed) {
+    AnimationSpeed animationSpeed,
+  ) {
     switch (animationSpeed) {
       case AnimationSpeed.instant:
         return const Duration();

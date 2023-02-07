@@ -4,17 +4,17 @@ import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'tab_stack/tab_stack.dart';
 
 class TabBox extends StatelessWidget {
-  const TabBox(
-      {Key? key,
-      required this.width,
-      required this.isBeingHovered,
-      required this.isFocused,
-      this.icon,
-      required this.iconColor,
-      required this.tabIndex,
-      required this.focusedTabIndex,
-      required this.widgetName})
-      : super(key: key);
+  const TabBox({
+    super.key,
+    required this.width,
+    required this.isBeingHovered,
+    required this.isFocused,
+    this.icon,
+    required this.iconColor,
+    required this.tabIndex,
+    required this.focusedTabIndex,
+    required this.widgetName,
+  });
 
   final double width;
   final bool isBeingHovered;
@@ -43,7 +43,8 @@ class TabBox extends StatelessWidget {
         height: ManualWidgetTesterTheme.of(context).appBarTheme.height,
         child: Padding(
           padding: EdgeInsets.only(
-              top: ManualWidgetTesterTheme.of(context).tabTheme.spaceAboveTabs),
+            top: ManualWidgetTesterTheme.of(context).tabTheme.spaceAboveTabs,
+          ),
           child: TabStack(
             isBeingHovered: isBeingHovered,
             isFocused: isFocused,

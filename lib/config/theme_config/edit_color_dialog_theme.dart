@@ -4,6 +4,23 @@ import 'package:flutter/material.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class EditColorDialogTheme extends Equatable {
+  const EditColorDialogTheme({
+    this.sizeChangeAnimationDuration = const Duration(milliseconds: 150),
+    this.sizeChangeAnimationCurve = Curves.ease,
+    this.elevation = 2.0,
+    this.borderRadius = 2.0,
+    this.colorNameTextStyle = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.9),
+    ),
+    this.pickerTypeTextStyle = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.9),
+    ),
+    this.selectedPickerTypeColor = const Color.fromRGBO(82, 82, 82, 1.0),
+    this.spacing = 4.0,
+    this.runSpacing = 4.0,
+    this.columnSpacing = 8.0,
+  });
+
   /// The duration of the edit color dialog's size change animation.
   final Duration sizeChangeAnimationDuration;
 
@@ -37,23 +54,6 @@ class EditColorDialogTheme extends Equatable {
   /// color dialog.
   final double columnSpacing;
 
-  const EditColorDialogTheme({
-    this.sizeChangeAnimationDuration = const Duration(milliseconds: 150),
-    this.sizeChangeAnimationCurve = Curves.ease,
-    this.elevation = 2.0,
-    this.borderRadius = 2.0,
-    this.colorNameTextStyle = const TextStyle(
-      color: Color.fromRGBO(255, 255, 255, 0.9),
-    ),
-    this.pickerTypeTextStyle = const TextStyle(
-      color: Color.fromRGBO(255, 255, 255, 0.9),
-    ),
-    this.selectedPickerTypeColor = const Color.fromRGBO(82, 82, 82, 1.0),
-    this.spacing = 4.0,
-    this.runSpacing = 4.0,
-    this.columnSpacing = 8.0,
-  });
-
   @override
   List<Object?> get props => [
         sizeChangeAnimationDuration,
@@ -69,7 +69,8 @@ class EditColorDialogTheme extends Equatable {
       ];
 
   static EditColorDialogTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return const EditColorDialogTheme();
   }
 }

@@ -6,10 +6,10 @@ import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider/mouse_c
 
 class HorizontalDragHandle extends StatefulWidget {
   const HorizontalDragHandle({
-    Key? key,
+    super.key,
     required this.onDragUpdate,
     required this.onDragStart,
-  }) : super(key: key);
+  });
 
   final void Function() onDragStart;
   final void Function(double) onDragUpdate;
@@ -30,13 +30,15 @@ class _HorizontalDragHandleState extends State<HorizontalDragHandle> {
       cursor: SystemMouseCursors.resizeLeftRight,
       child: MouseRegion(
         onEnter: (_) => _hoverTimer = Timer(
-            ManualWidgetTesterTheme.of(context)
-                .dragHandleTheme
-                .timeUntilDragHandleAppears, () {
-          setState(() {
-            _isBeingHovered = true;
-          });
-        }),
+          ManualWidgetTesterTheme.of(context)
+              .dragHandleTheme
+              .timeUntilDragHandleAppears,
+          () {
+            setState(() {
+              _isBeingHovered = true;
+            });
+          },
+        ),
         onExit: (_) {
           _hoverTimer?.cancel();
           setState(() {

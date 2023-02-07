@@ -5,12 +5,12 @@ import '../../ui_elements/heading.dart';
 import 'color_picker/color_picker.dart';
 
 class ManualWidgetTesterCustomSettingsColorEditor extends StatelessWidget {
-  const ManualWidgetTesterCustomSettingsColorEditor(
-      {Key? key,
-      required this.settingName,
-      required this.currentValue,
-      required this.onChanged})
-      : super(key: key);
+  const ManualWidgetTesterCustomSettingsColorEditor({
+    super.key,
+    required this.settingName,
+    required this.currentValue,
+    required this.onChanged,
+  });
 
   final String settingName;
   final Color currentValue;

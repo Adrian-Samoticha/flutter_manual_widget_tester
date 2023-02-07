@@ -9,11 +9,11 @@ import 'custom_settings.dart';
 import 'generic_settings/generic_settings.dart';
 
 class TestSessionSettings extends StatelessWidget {
-  const TestSessionSettings(
-      {Key? key,
-      required this.typeEditorBuilder,
-      required this.widgetTestSessionHandler})
-      : super(key: key);
+  const TestSessionSettings({
+    super.key,
+    required this.typeEditorBuilder,
+    required this.widgetTestSessionHandler,
+  });
 
   final TypeEditorBuilder typeEditorBuilder;
   final WidgetTestSessionHandler widgetTestSessionHandler;
@@ -44,6 +44,7 @@ class TestSessionSettings extends StatelessWidget {
 
   String _getCurrentTestSessionNameFormatted() {
     final currentName = _getCurrentTestSessionName();
+
     return StringUtils.camelCaseToUpperUnderscore(currentName)
         .replaceAll('_', ' ')
         .replaceAll('.', '')
@@ -53,6 +54,7 @@ class TestSessionSettings extends StatelessWidget {
 
   String _getCurrentTestSessionName() {
     final sessionHandler = widgetTestSessionHandler;
+
     return sessionHandler.widgetTestSessions[sessionHandler.currentIndex].name;
   }
 }

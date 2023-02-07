@@ -5,6 +5,31 @@ import 'package:flutter_color/flutter_color.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class TextFieldTheme extends Equatable {
+  const TextFieldTheme({
+    this.shadow = const [
+      BoxShadow(
+        blurRadius: 2.0,
+        color: Color.fromRGBO(0, 0, 0, 0.2),
+        offset: Offset(0.0, 1.0),
+      ),
+    ],
+    this.borderRadius = const Radius.circular(3.0),
+    this.color = const Color.fromARGB(255, 41, 45, 53),
+    this.borderColor = const Color.fromRGBO(255, 255, 255, 0.05),
+    this.borderWidth = 1.0,
+    this.textStyle = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 1.0),
+      fontSize: 13.0,
+    ),
+    this.suffixStyle = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 1.0),
+      fontSize: 13.0,
+    ),
+    this.cursorColor = const Color.fromRGBO(4, 180, 255, 1.0),
+    this.selectionColor = const Color.fromRGBO(4, 180, 255, 0.67),
+    this.contentPadding = const EdgeInsets.all(8.0),
+  });
+
   /// The shadow(s) of a text field.
   final List<BoxShadow> shadow;
 
@@ -35,31 +60,6 @@ class TextFieldTheme extends Equatable {
   /// The padding of a text field's content.
   final EdgeInsetsGeometry contentPadding;
 
-  const TextFieldTheme({
-    this.shadow = const [
-      BoxShadow(
-        blurRadius: 2.0,
-        color: Color.fromRGBO(0, 0, 0, 0.2),
-        offset: Offset(0.0, 1.0),
-      ),
-    ],
-    this.borderRadius = const Radius.circular(3.0),
-    this.color = const Color.fromARGB(255, 41, 45, 53),
-    this.borderColor = const Color.fromRGBO(255, 255, 255, 0.05),
-    this.borderWidth = 1.0,
-    this.textStyle = const TextStyle(
-      color: Color.fromRGBO(255, 255, 255, 1.0),
-      fontSize: 13.0,
-    ),
-    this.suffixStyle = const TextStyle(
-      color: Color.fromRGBO(255, 255, 255, 1.0),
-      fontSize: 13.0,
-    ),
-    this.cursorColor = const Color.fromRGBO(4, 180, 255, 1.0),
-    this.selectionColor = const Color.fromRGBO(4, 180, 255, 0.67),
-    this.contentPadding = const EdgeInsets.all(8.0),
-  });
-
   @override
   List<Object?> get props => [
         shadow,
@@ -75,7 +75,8 @@ class TextFieldTheme extends Equatable {
       ];
 
   static TextFieldTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return TextFieldTheme(
       shadow: _getShadowFromDesignLanguage(parameters.designLanguage),
       color: _getColor(parameters),
@@ -91,7 +92,8 @@ class TextFieldTheme extends Equatable {
   }
 
   static List<BoxShadow> _getShadowFromDesignLanguage(
-      DesignLanguage designLanguage) {
+    DesignLanguage designLanguage,
+  ) {
     switch (designLanguage) {
       case DesignLanguage.skeuomorphic:
         return const [

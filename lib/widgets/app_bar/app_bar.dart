@@ -10,11 +10,11 @@ import 'new_test_session_button.dart';
 import 'tab_bar/tab_bar.dart';
 
 class ManualWidgetTesterAppBar extends StatefulWidget {
-  const ManualWidgetTesterAppBar(
-      {Key? key,
-      required this.widgetTestSessionHandler,
-      required this.builders})
-      : super(key: key);
+  const ManualWidgetTesterAppBar({
+    super.key,
+    required this.widgetTestSessionHandler,
+    required this.builders,
+  });
 
   final WidgetTestSessionHandler widgetTestSessionHandler;
   final List<WidgetTestBuilder> builders;

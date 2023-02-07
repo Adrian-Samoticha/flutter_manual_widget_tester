@@ -4,12 +4,6 @@ import 'package:flutter/material.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class CloseButtonTheme extends Equatable {
-  /// The box decoration of a close button's hover effect.
-  final BoxDecoration hoverDecoration;
-
-  /// The close button's color.
-  final Color color;
-
   const CloseButtonTheme({
     this.hoverDecoration = const BoxDecoration(
       color: Color.fromRGBO(255, 255, 255, 0.2),
@@ -18,6 +12,12 @@ class CloseButtonTheme extends Equatable {
     this.color = const Color.fromRGBO(255, 255, 255, 0.9),
   });
 
+  /// The box decoration of a close button's hover effect.
+  final BoxDecoration hoverDecoration;
+
+  /// The close button's color.
+  final Color color;
+
   @override
   List<Object?> get props => [
         hoverDecoration,
@@ -25,7 +25,8 @@ class CloseButtonTheme extends Equatable {
       ];
 
   static CloseButtonTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return CloseButtonTheme(
       color: _getColorFromBrightness(parameters.brightness),
     );

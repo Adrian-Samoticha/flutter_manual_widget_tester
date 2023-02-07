@@ -4,6 +4,27 @@ import 'package:flutter/material.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class TestSessionMenuItemTheme extends Equatable {
+  const TestSessionMenuItemTheme({
+    this.height = 24.0,
+    this.unfocusedTabOpacity = 0.5,
+    this.padding = const EdgeInsets.symmetric(horizontal: 8.0),
+    this.closeButtonPadding = const EdgeInsets.only(left: 8.0),
+    this.closeButtonSize = 12.0,
+    this.textOverflow = TextOverflow.ellipsis,
+    this.textStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 12.0,
+    ),
+    this.iconSize = 18.0,
+    this.hoverTintDecoration = const BoxDecoration(
+      color: Color.fromRGBO(255, 255, 255, 0.1),
+    ),
+    this.tabIconPadding = const EdgeInsets.only(right: 8.0),
+    this.focusedTabTintDecoration = const BoxDecoration(
+      color: Color.fromRGBO(255, 255, 255, 0.15),
+    ),
+  });
+
   /// The height of a menu item in the “RUNNING TEST SESSIONS” area.
   final double height;
 
@@ -42,27 +63,6 @@ class TestSessionMenuItemTheme extends Equatable {
   /// area.
   final BoxDecoration focusedTabTintDecoration;
 
-  const TestSessionMenuItemTheme({
-    this.height = 24.0,
-    this.unfocusedTabOpacity = 0.5,
-    this.padding = const EdgeInsets.symmetric(horizontal: 8.0),
-    this.closeButtonPadding = const EdgeInsets.only(left: 8.0),
-    this.closeButtonSize = 12.0,
-    this.textOverflow = TextOverflow.ellipsis,
-    this.textStyle = const TextStyle(
-      color: Colors.white,
-      fontSize: 12.0,
-    ),
-    this.iconSize = 18.0,
-    this.hoverTintDecoration = const BoxDecoration(
-      color: Color.fromRGBO(255, 255, 255, 0.1),
-    ),
-    this.tabIconPadding = const EdgeInsets.only(right: 8.0),
-    this.focusedTabTintDecoration = const BoxDecoration(
-      color: Color.fromRGBO(255, 255, 255, 0.15),
-    ),
-  });
-
   @override
   List<Object?> get props => [
         height,
@@ -79,7 +79,8 @@ class TestSessionMenuItemTheme extends Equatable {
       ];
 
   static TestSessionMenuItemTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return TestSessionMenuItemTheme(
       height: _getHeightFromLayout(parameters.layout),
       closeButtonSize: _getCloseButtonSizeFromLayout(parameters.layout),
@@ -146,7 +147,8 @@ class TestSessionMenuItemTheme extends Equatable {
   }
 
   static BoxDecoration _getHoverTintDecorationFromBrightness(
-      Brightness brightness) {
+    Brightness brightness,
+  ) {
     return BoxDecoration(
       color: brightness == Brightness.dark
           ? const Color.fromRGBO(255, 255, 255, 0.1)
@@ -155,7 +157,8 @@ class TestSessionMenuItemTheme extends Equatable {
   }
 
   static BoxDecoration _getFocusedTabTintDecorationFromBrightness(
-      Brightness brightness) {
+    Brightness brightness,
+  ) {
     return BoxDecoration(
       color: brightness == Brightness.dark
           ? const Color.fromRGBO(255, 255, 255, 0.15)

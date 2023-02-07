@@ -6,17 +6,17 @@ import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'tab_box/tab_box.dart';
 
 class ManualWidgetTesterTab extends StatefulWidget {
-  const ManualWidgetTesterTab(
-      {Key? key,
-      required this.width,
-      required this.widgetName,
-      required this.tabIndex,
-      required this.focusedTabIndex,
-      required this.onSelect,
-      required this.onClose,
-      required this.icon,
-      required this.iconColor})
-      : super(key: key);
+  const ManualWidgetTesterTab({
+    super.key,
+    required this.width,
+    required this.widgetName,
+    required this.tabIndex,
+    required this.focusedTabIndex,
+    required this.onSelect,
+    required this.onClose,
+    required this.icon,
+    required this.iconColor,
+  });
 
   final double width;
   final int tabIndex;
@@ -43,17 +43,21 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
       return;
     }
 
-    Scrollable.ensureVisible(_globalKey.currentContext!,
-        duration: ManualWidgetTesterTheme.of(context)
-            .generalTheme
-            .scrollIntoViewDuration,
-        alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtStart);
+    Scrollable.ensureVisible(
+      _globalKey.currentContext!,
+      duration: ManualWidgetTesterTheme.of(context)
+          .generalTheme
+          .scrollIntoViewDuration,
+      alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtStart,
+    );
 
-    Scrollable.ensureVisible(_globalKey.currentContext!,
-        duration: ManualWidgetTesterTheme.of(context)
-            .generalTheme
-            .scrollIntoViewDuration,
-        alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd);
+    Scrollable.ensureVisible(
+      _globalKey.currentContext!,
+      duration: ManualWidgetTesterTheme.of(context)
+          .generalTheme
+          .scrollIntoViewDuration,
+      alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd,
+    );
   }
 
   @override

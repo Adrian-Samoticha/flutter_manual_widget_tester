@@ -12,14 +12,14 @@ import 'no_matching_results_message.dart';
 import 'search_results_list/search_results_list.dart';
 
 class CreateTestSessionDialog extends StatefulWidget {
+  const CreateTestSessionDialog({
+    super.key,
+    required this.builders,
+    required this.widgetTestSessionHandler,
+  });
+
   final List<WidgetTestBuilder> builders;
   final WidgetTestSessionHandler widgetTestSessionHandler;
-
-  const CreateTestSessionDialog(
-      {Key? key,
-      required this.builders,
-      required this.widgetTestSessionHandler})
-      : super(key: key);
 
   @override
   State<CreateTestSessionDialog> createState() =>
@@ -60,10 +60,11 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
           ),
           child: BackdropFilter(
             filter: ImageFilter.blur(
-                sigmaX:
-                    ManualWidgetTesterTheme.of(context).dialogTheme.blurRadius,
-                sigmaY:
-                    ManualWidgetTesterTheme.of(context).dialogTheme.blurRadius),
+              sigmaX:
+                  ManualWidgetTesterTheme.of(context).dialogTheme.blurRadius,
+              sigmaY:
+                  ManualWidgetTesterTheme.of(context).dialogTheme.blurRadius,
+            ),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(
@@ -77,9 +78,10 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
                     .backgroundColor,
                 border: Border.fromBorderSide(
                   BorderSide(
-                      color: ManualWidgetTesterTheme.of(context)
-                          .dialogTheme
-                          .borderColor),
+                    color: ManualWidgetTesterTheme.of(context)
+                        .dialogTheme
+                        .borderColor,
+                  ),
                 ),
               ),
               width: ManualWidgetTesterTheme.of(context)
@@ -105,6 +107,7 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
           setState(() {
             _selectedSearchResultIndex = _legalSelectedSearchResultIndex + 1;
           });
+
           return KeyEventResult.handled;
         }
 
@@ -113,6 +116,7 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
           setState(() {
             _selectedSearchResultIndex = _legalSelectedSearchResultIndex - 1;
           });
+
           return KeyEventResult.handled;
         }
 
@@ -123,6 +127,7 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
           widget.widgetTestSessionHandler
               .createNewSession(selectedSearchResult);
           Navigator.maybePop(context);
+
           return KeyEventResult.handled;
         }
 
@@ -175,7 +180,8 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
   }
 
   List<WidgetTestBuilder> _generateSearchResultsFromSearchTerm(
-      String searchTerm) {
+    String searchTerm,
+  ) {
     if (searchTerm.isEmpty) {
       return widget.builders;
     }

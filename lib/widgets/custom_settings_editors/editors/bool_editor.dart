@@ -5,12 +5,12 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/radio_button.da
 import '../ui_elements/heading.dart';
 
 class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
-  const ManualWidgetTesterCustomSettingsBoolEditor(
-      {Key? key,
-      required this.settingName,
-      required this.currentValue,
-      required this.onChanged})
-      : super(key: key);
+  const ManualWidgetTesterCustomSettingsBoolEditor({
+    super.key,
+    required this.settingName,
+    required this.currentValue,
+    required this.onChanged,
+  });
 
   final String settingName;
   final bool currentValue;
@@ -40,9 +40,10 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
                     child: _buildRadioButtonWithLabel(context, true),
                   ),
                   SizedBox(
-                      width: ManualWidgetTesterTheme.of(context)
-                          .boolEditorTheme
-                          .spaceBetweenRadioButtons),
+                    width: ManualWidgetTesterTheme.of(context)
+                        .boolEditorTheme
+                        .spaceBetweenRadioButtons,
+                  ),
                   Expanded(
                     child: _buildRadioButtonWithLabel(context, false),
                   ),

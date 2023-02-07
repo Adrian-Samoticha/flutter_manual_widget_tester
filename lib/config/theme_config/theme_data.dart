@@ -28,6 +28,34 @@ import 'widget_test_session_area_theme.dart';
 import 'zoom_controls_theme.dart';
 
 class ManualWidgetTesterThemeData extends Equatable {
+  const ManualWidgetTesterThemeData({
+    this.tabTheme = const TabTheme(),
+    this.buttonTheme = const ButtonTheme(),
+    this.textFieldTheme = const TextFieldTheme(),
+    this.zoomControlsTheme = const ZoomControlsTheme(),
+    this.foldableRegionTheme = const FoldableRegionTheme(),
+    this.createTestSessionDialogTheme = const CreateTestSessionDialogTheme(),
+    this.testSessionMenuItemTheme = const TestSessionMenuItemTheme(),
+    this.editColorButtonTheme = const EditColorButtonTheme(),
+    this.dialogTheme = const DialogTheme(),
+    this.doubleEditorTheme = const DoubleEditorTheme(),
+    this.boolEditorTheme = const BoolEditorTheme(),
+    this.customSettingHeadingTheme = const CustomSettingHeadingTheme(),
+    this.dragHandleTheme = const DragHandleTheme(),
+    this.noCustomSettingsMessageTheme = const NoCustomSettingsMessageTheme(),
+    this.radioButtonTheme = const RadioButtonTheme(),
+    this.closeButtonTheme = const CloseButtonTheme(),
+    this.noEditorMessageTheme = const NoEditorMessageTheme(),
+    this.appBarTheme = const AppBarTheme(),
+    this.stringEditorTheme = const StringEditorTheme(),
+    this.createTestSessionButtonTheme = const CreateTestSessionButtonTheme(),
+    this.iconTheme = const IconTheme(),
+    this.customSettingsTheme = const CustomSettingsTheme(),
+    this.widgetTestSessionAreaTheme = const WidgetTestSessionAreaTheme(),
+    this.generalTheme = const GeneralTheme(),
+    this.editColorDialogTheme = const EditColorDialogTheme(),
+  });
+
   /// The tab theme.
   final TabTheme tabTheme;
 
@@ -111,34 +139,6 @@ class ManualWidgetTesterThemeData extends Equatable {
   /// The theme of the “edit color” dialog.
   final EditColorDialogTheme editColorDialogTheme;
 
-  const ManualWidgetTesterThemeData({
-    this.tabTheme = const TabTheme(),
-    this.buttonTheme = const ButtonTheme(),
-    this.textFieldTheme = const TextFieldTheme(),
-    this.zoomControlsTheme = const ZoomControlsTheme(),
-    this.foldableRegionTheme = const FoldableRegionTheme(),
-    this.createTestSessionDialogTheme = const CreateTestSessionDialogTheme(),
-    this.testSessionMenuItemTheme = const TestSessionMenuItemTheme(),
-    this.editColorButtonTheme = const EditColorButtonTheme(),
-    this.dialogTheme = const DialogTheme(),
-    this.doubleEditorTheme = const DoubleEditorTheme(),
-    this.boolEditorTheme = const BoolEditorTheme(),
-    this.customSettingHeadingTheme = const CustomSettingHeadingTheme(),
-    this.dragHandleTheme = const DragHandleTheme(),
-    this.noCustomSettingsMessageTheme = const NoCustomSettingsMessageTheme(),
-    this.radioButtonTheme = const RadioButtonTheme(),
-    this.closeButtonTheme = const CloseButtonTheme(),
-    this.noEditorMessageTheme = const NoEditorMessageTheme(),
-    this.appBarTheme = const AppBarTheme(),
-    this.stringEditorTheme = const StringEditorTheme(),
-    this.createTestSessionButtonTheme = const CreateTestSessionButtonTheme(),
-    this.iconTheme = const IconTheme(),
-    this.customSettingsTheme = const CustomSettingsTheme(),
-    this.widgetTestSessionAreaTheme = const WidgetTestSessionAreaTheme(),
-    this.generalTheme = const GeneralTheme(),
-    this.editColorDialogTheme = const EditColorDialogTheme(),
-  });
-
   @override
   List<Object?> get props => [
         tabTheme,
@@ -169,7 +169,8 @@ class ManualWidgetTesterThemeData extends Equatable {
       ];
 
   static ManualWidgetTesterThemeData fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return ManualWidgetTesterThemeData(
       tabTheme: TabTheme.fromThemeGeneratorParameters(parameters),
       buttonTheme: ButtonTheme.fromThemeGeneratorParameters(parameters),

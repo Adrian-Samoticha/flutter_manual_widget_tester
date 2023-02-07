@@ -12,14 +12,14 @@ import '../../ui_elements/heading.dart';
 import 'infinite_scroll_view.dart';
 
 class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
-  const ManualWidgetTesterCustomSettingsDoubleEditor(
-      {Key? key,
-      required this.settingName,
-      required this.currentValue,
-      required this.onChanged,
-      this.lowerLimit = double.negativeInfinity,
-      this.upperLimit = double.infinity})
-      : super(key: key);
+  const ManualWidgetTesterCustomSettingsDoubleEditor({
+    super.key,
+    required this.settingName,
+    required this.currentValue,
+    required this.onChanged,
+    this.lowerLimit = double.negativeInfinity,
+    this.upperLimit = double.infinity,
+  });
 
   final String settingName;
   final double currentValue;
@@ -139,16 +139,18 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
 
   bool _isDoubleSimilar(double double1, double double2) {
     final delta = (double1 - double2).abs();
+
     return delta < epsilon;
   }
 
   SizedBox _buildButtonRow(BuildContext context, BoxConstraints constraints) {
     return SizedBox(
       width: min(
-          ManualWidgetTesterTheme.of(context)
-              .generalTheme
-              .defaultNumberEditorButtonRowWidth,
-          constraints.maxWidth * 0.5),
+        ManualWidgetTesterTheme.of(context)
+            .generalTheme
+            .defaultNumberEditorButtonRowWidth,
+        constraints.maxWidth * 0.5,
+      ),
       child: ManualWidgetTesterButtonRow(
         disableRoundedCornersOnLeftSide: true,
         buttons: [

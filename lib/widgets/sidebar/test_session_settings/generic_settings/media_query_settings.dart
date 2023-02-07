@@ -7,9 +7,9 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region
 
 class MediaQuerySettings extends StatelessWidget {
   const MediaQuerySettings({
-    Key? key,
+    super.key,
     required this.session,
-  }) : super(key: key);
+  });
 
   final WidgetTestSession session;
 

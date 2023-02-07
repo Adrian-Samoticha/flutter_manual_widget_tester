@@ -9,9 +9,10 @@ import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'tab/tab.dart';
 
 class ManualWidgetTesterTabBar extends StatefulWidget {
-  const ManualWidgetTesterTabBar(
-      {Key? key, required this.widgetTestSessionHandler})
-      : super(key: key);
+  const ManualWidgetTesterTabBar({
+    super.key,
+    required this.widgetTestSessionHandler,
+  });
 
   final WidgetTestSessionHandler widgetTestSessionHandler;
 
@@ -77,13 +78,15 @@ class _ManualWidgetTesterTabBarState extends State<ManualWidgetTesterTabBar> {
   }
 
   List<ManualWidgetTesterTab> _getTesterTabListFromWidgetTestSessionHandler(
-      WidgetTestSessionHandler widgetTestSessionHandler,
-      BoxConstraints constraints) {
+    WidgetTestSessionHandler widgetTestSessionHandler,
+    BoxConstraints constraints,
+  ) {
     return widgetTestSessionHandler.widgetTestSessions.asMap().entries.map(
       (MapEntry<int, WidgetTestSession> entry) {
         final tabWidth = _calculateTabWidth(
-            widgetTestSessionHandler.widgetTestSessions.length,
-            constraints.maxWidth);
+          widgetTestSessionHandler.widgetTestSessions.length,
+          constraints.maxWidth,
+        );
         final session = entry.value;
 
         return ManualWidgetTesterTab(

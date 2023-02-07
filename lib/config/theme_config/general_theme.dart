@@ -5,6 +5,20 @@ import 'package:flutter_color/flutter_color.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class GeneralTheme extends Equatable {
+  /// Creates a “general” theme object.
+  ///
+  /// This theme contains miscellaneous properties that do not fit into the
+  /// other themes.
+  const GeneralTheme({
+    this.isDark = true,
+    this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
+    this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
+    this.accentColor = const Color.fromARGB(255, 40, 138, 251),
+    this.spaceBetweenTextBoxesAndButtonRows = 0.5,
+    this.defaultNumberEditorButtonRowWidth = 64.0,
+    this.scrollIntoViewDuration = const Duration(milliseconds: 250),
+  });
+
   /// Whether this is a dark theme.
   final bool isDark;
 
@@ -30,20 +44,6 @@ class GeneralTheme extends Equatable {
   /// into view.
   final Duration scrollIntoViewDuration;
 
-  /// Creates a “general” theme object.
-  ///
-  /// This theme contains miscellaneous properties that do not fit into the
-  /// other themes.
-  const GeneralTheme({
-    this.isDark = true,
-    this.backgroundColor = const Color.fromRGBO(41, 43, 53, 1.0),
-    this.sidebarColor = const Color.fromRGBO(33, 37, 43, 1.0),
-    this.accentColor = const Color.fromARGB(255, 40, 138, 251),
-    this.spaceBetweenTextBoxesAndButtonRows = 0.5,
-    this.defaultNumberEditorButtonRowWidth = 64.0,
-    this.scrollIntoViewDuration = const Duration(milliseconds: 250),
-  });
-
   @override
   List<Object?> get props => [
         isDark,
@@ -56,19 +56,22 @@ class GeneralTheme extends Equatable {
       ];
 
   static GeneralTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return GeneralTheme(
       isDark: parameters.brightness == Brightness.dark,
       backgroundColor: parameters.filteredBackgroundColor,
       sidebarColor: parameters.filteredBackgroundColor.darker(6),
       accentColor: parameters.primaryColor,
       scrollIntoViewDuration: _getScrollIntoViewDurationFromAnimationSpeed(
-          parameters.animationSpeed),
+        parameters.animationSpeed,
+      ),
     );
   }
 
   static Duration _getScrollIntoViewDurationFromAnimationSpeed(
-      AnimationSpeed animationSpeed) {
+    AnimationSpeed animationSpeed,
+  ) {
     switch (animationSpeed) {
       case AnimationSpeed.instant:
         return const Duration();

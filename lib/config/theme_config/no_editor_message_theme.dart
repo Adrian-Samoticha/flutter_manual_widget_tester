@@ -4,26 +4,6 @@ import 'package:flutter/material.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class NoEditorMessageTheme extends Equatable {
-  /// The padding of the message that is displayed when no editor for a
-  /// particular setting could be built.
-  final EdgeInsets padding;
-
-  /// The margin of the message that is displayed when no editor for a
-  /// particular setting could be built.
-  final EdgeInsets margin;
-
-  /// The box decoration of the message that is displayed when no editor for a
-  /// particular setting could be built.
-  final BoxDecoration decoration;
-
-  /// The text style of the message that is displayed when no editor for a
-  /// particular setting could be built.
-  final TextStyle textStyle;
-
-  /// The text style of the highlighted text of the message that is displayed
-  /// when no editor for a particular setting could be built.
-  final TextStyle highlightedTextStyle;
-
   const NoEditorMessageTheme({
     this.padding = const EdgeInsets.all(8.0),
     this.margin = const EdgeInsets.all(8.0),
@@ -44,6 +24,26 @@ class NoEditorMessageTheme extends Equatable {
     ),
   });
 
+  /// The padding of the message that is displayed when no editor for a
+  /// particular setting could be built.
+  final EdgeInsets padding;
+
+  /// The margin of the message that is displayed when no editor for a
+  /// particular setting could be built.
+  final EdgeInsets margin;
+
+  /// The box decoration of the message that is displayed when no editor for a
+  /// particular setting could be built.
+  final BoxDecoration decoration;
+
+  /// The text style of the message that is displayed when no editor for a
+  /// particular setting could be built.
+  final TextStyle textStyle;
+
+  /// The text style of the highlighted text of the message that is displayed
+  /// when no editor for a particular setting could be built.
+  final TextStyle highlightedTextStyle;
+
   @override
   List<Object?> get props => [
         padding,
@@ -54,7 +54,8 @@ class NoEditorMessageTheme extends Equatable {
       ];
 
   static NoEditorMessageTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return const NoEditorMessageTheme();
   }
 }

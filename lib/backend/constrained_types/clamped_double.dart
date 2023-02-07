@@ -1,14 +1,4 @@
 class ClampedDouble {
-  final double lowerLimit;
-  final double upperLimit;
-  late double _value;
-
-  double get value => _value;
-
-  set value(double value) {
-    _value = value.clamp(lowerLimit, upperLimit);
-  }
-
   /// Creates a [ClampedDouble] whose [value] is guaranteed to be clamped to be
   /// in the range [lowerLimit]-[upperLimit].
   ///
@@ -33,15 +23,26 @@ class ClampedDouble {
   ///   },
   /// )
   /// ```
-  ClampedDouble(
-      {this.lowerLimit = double.negativeInfinity,
-      this.upperLimit = double.infinity,
-      required double value}) {
+  ClampedDouble({
+    this.lowerLimit = double.negativeInfinity,
+    this.upperLimit = double.infinity,
+    required double value,
+  }) {
     assert(
         upperLimit >= lowerLimit,
         'upperLimit ($upperLimit) must be greater than or equal to lowerLimit'
         '($lowerLimit).');
 
     this.value = value;
+  }
+
+  final double lowerLimit;
+  final double upperLimit;
+  late double _value;
+
+  double get value => _value;
+
+  set value(double value) {
+    _value = value.clamp(lowerLimit, upperLimit);
   }
 }

@@ -4,22 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider/mouse_cursor_overrider.dart';
 
 class ResizableCorners extends StatefulWidget {
+  const ResizableCorners({
+    super.key,
+    required this.width,
+    required this.height,
+    required this.onHorizontalDragStart,
+    required this.onHorizontalDragUpdate,
+    required this.onVerticalDragStart,
+    required this.onVerticalDragUpdate,
+  });
+
   final double width;
   final double height;
   final void Function() onHorizontalDragStart;
   final void Function(double) onHorizontalDragUpdate;
   final void Function() onVerticalDragStart;
   final void Function(double) onVerticalDragUpdate;
-
-  const ResizableCorners(
-      {Key? key,
-      required this.width,
-      required this.height,
-      required this.onHorizontalDragStart,
-      required this.onHorizontalDragUpdate,
-      required this.onVerticalDragStart,
-      required this.onVerticalDragUpdate})
-      : super(key: key);
 
   @override
   State<ResizableCorners> createState() => _ResizableCornersState();
@@ -93,10 +93,11 @@ class _ResizableCornersState extends State<ResizableCorners> {
     );
   }
 
-  MouseCursor _getMouseCursorForCorner(
-      {required bool isRight,
-      required bool isBottom,
-      bool isMouseButtonDown = false}) {
+  MouseCursor _getMouseCursorForCorner({
+    required bool isRight,
+    required bool isBottom,
+    bool isMouseButtonDown = false,
+  }) {
     if (MouseCursorOverrider.of(context).isOverrideActive) {
       return MouseCursor.defer;
     }

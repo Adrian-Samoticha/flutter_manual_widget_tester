@@ -4,22 +4,22 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row/butt
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 
 class ManualWidgetTesterZoomControls extends StatelessWidget {
+  const ManualWidgetTesterZoomControls({
+    super.key,
+    required this.zoom,
+    required this.onZoomOutButtonPressed,
+    required this.onZoomInButtonPressed,
+    required this.minZoom,
+    required this.maxZoom,
+    required this.onZoomChanged,
+  });
+
   final double zoom;
   final void Function() onZoomOutButtonPressed;
   final void Function() onZoomInButtonPressed;
   final void Function(double) onZoomChanged;
   final double minZoom;
   final double maxZoom;
-
-  const ManualWidgetTesterZoomControls(
-      {Key? key,
-      required this.zoom,
-      required this.onZoomOutButtonPressed,
-      required this.onZoomInButtonPressed,
-      required this.minZoom,
-      required this.maxZoom,
-      required this.onZoomChanged})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +48,10 @@ class ManualWidgetTesterZoomControls extends StatelessWidget {
               ),
             ),
             SizedBox(
-                width: ManualWidgetTesterTheme.of(context)
-                    .generalTheme
-                    .spaceBetweenTextBoxesAndButtonRows),
+              width: ManualWidgetTesterTheme.of(context)
+                  .generalTheme
+                  .spaceBetweenTextBoxesAndButtonRows,
+            ),
             SizedBox(
               width: ManualWidgetTesterTheme.of(context)
                   .zoomControlsTheme

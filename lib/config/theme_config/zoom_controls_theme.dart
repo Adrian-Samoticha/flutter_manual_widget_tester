@@ -4,6 +4,27 @@ import 'package:flutter/material.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class ZoomControlsTheme extends Equatable {
+  const ZoomControlsTheme({
+    this.width = 128.0,
+    this.height = 32.0,
+    this.borderRadius = const BorderRadius.all(
+      Radius.circular(3.0),
+    ),
+    this.shadow = const [
+      BoxShadow(
+        blurRadius: 2.0,
+        color: Color.fromRGBO(0, 0, 0, 0.25),
+        offset: Offset(0.0, 1.0),
+      ),
+    ],
+    this.padding = const EdgeInsets.all(3.5),
+    this.buttonRowWidth = 64.0,
+    this.zoomOutIcon = const Icon(Icons.zoom_out),
+    this.zoomInIcon = const Icon(Icons.zoom_in),
+    this.distanceToBorder = 8.0,
+    this.alignment = Alignment.bottomCenter,
+  });
+
   /// The width of the zoom controls.
   final double width;
 
@@ -34,27 +55,6 @@ class ZoomControlsTheme extends Equatable {
   /// The zoom controls' alignment.
   final Alignment alignment;
 
-  const ZoomControlsTheme({
-    this.width = 128.0,
-    this.height = 32.0,
-    this.borderRadius = const BorderRadius.all(
-      Radius.circular(3.0),
-    ),
-    this.shadow = const [
-      BoxShadow(
-        blurRadius: 2.0,
-        color: Color.fromRGBO(0, 0, 0, 0.25),
-        offset: Offset(0.0, 1.0),
-      ),
-    ],
-    this.padding = const EdgeInsets.all(3.5),
-    this.buttonRowWidth = 64.0,
-    this.zoomOutIcon = const Icon(Icons.zoom_out),
-    this.zoomInIcon = const Icon(Icons.zoom_in),
-    this.distanceToBorder = 8.0,
-    this.alignment = Alignment.bottomCenter,
-  });
-
   @override
   List<Object?> get props => [
         width,
@@ -70,7 +70,8 @@ class ZoomControlsTheme extends Equatable {
       ];
 
   static ZoomControlsTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return const ZoomControlsTheme();
   }
 }

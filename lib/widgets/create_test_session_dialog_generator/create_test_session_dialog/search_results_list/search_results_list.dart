@@ -8,12 +8,12 @@ import 'search_result_list_entry/search_result_list_entry.dart';
 
 class SearchResultsList extends StatelessWidget {
   const SearchResultsList({
-    Key? key,
+    super.key,
     required this.widgetTestSessionHandler,
     required this.legalSelectedSearchResultIndex,
     required this.searchResults,
     required this.maxHeight,
-  }) : super(key: key);
+  });
 
   final WidgetTestSessionHandler widgetTestSessionHandler;
   final List<WidgetTestBuilder> searchResults;

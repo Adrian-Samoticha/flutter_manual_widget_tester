@@ -3,9 +3,9 @@ import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 class ManualWidgetTesterCustomSettingsHeading extends StatelessWidget {
   const ManualWidgetTesterCustomSettingsHeading({
-    Key? key,
+    super.key,
     required this.settingName,
-  }) : super(key: key);
+  });
 
   final String settingName;
 

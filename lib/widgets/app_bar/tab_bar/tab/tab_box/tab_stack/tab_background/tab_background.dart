@@ -7,10 +7,10 @@ import 'tab_separator.dart';
 
 class TabBackground extends StatelessWidget {
   const TabBackground({
-    Key? key,
+    super.key,
     required this.tabIndex,
     required this.focusedTabIndex,
-  }) : super(key: key);
+  });
 
   final int tabIndex;
   final int focusedTabIndex;

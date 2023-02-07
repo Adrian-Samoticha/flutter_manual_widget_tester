@@ -8,15 +8,15 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart
 import '../ui_elements/heading.dart';
 
 class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
-  const ManualWidgetTesterCustomSettingsIntEditor(
-      {Key? key,
-      required this.settingName,
-      required this.currentValue,
-      required this.onChanged,
-      this.lowerValue,
-      this.upperValue,
-      this.stepSize = 1})
-      : super(key: key);
+  const ManualWidgetTesterCustomSettingsIntEditor({
+    super.key,
+    required this.settingName,
+    required this.currentValue,
+    required this.onChanged,
+    this.lowerValue,
+    this.upperValue,
+    this.stepSize = 1,
+  });
 
   final String settingName;
   final int currentValue;
@@ -45,9 +45,10 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
                     child: _buildTextField(),
                   ),
                   SizedBox(
-                      width: ManualWidgetTesterTheme.of(context)
-                          .generalTheme
-                          .spaceBetweenTextBoxesAndButtonRows),
+                    width: ManualWidgetTesterTheme.of(context)
+                        .generalTheme
+                        .spaceBetweenTextBoxesAndButtonRows,
+                  ),
                   _buildButtonRow(context, constraints),
                 ],
               );
@@ -72,10 +73,11 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
   SizedBox _buildButtonRow(BuildContext context, BoxConstraints constraints) {
     return SizedBox(
       width: min(
-          ManualWidgetTesterTheme.of(context)
-              .generalTheme
-              .defaultNumberEditorButtonRowWidth,
-          constraints.maxWidth * 0.5),
+        ManualWidgetTesterTheme.of(context)
+            .generalTheme
+            .defaultNumberEditorButtonRowWidth,
+        constraints.maxWidth * 0.5,
+      ),
       child: ManualWidgetTesterButtonRow(
         disableRoundedCornersOnLeftSide: true,
         buttons: [

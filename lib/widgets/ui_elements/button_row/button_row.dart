@@ -7,12 +7,12 @@ import 'button_info.dart';
 export 'button_info.dart';
 
 class ManualWidgetTesterButtonRow extends StatelessWidget {
-  const ManualWidgetTesterButtonRow(
-      {Key? key,
-      required this.buttons,
-      this.disableRoundedCornersOnLeftSide = false,
-      this.disableRoundedCornersOnRightSide = false})
-      : super(key: key);
+  const ManualWidgetTesterButtonRow({
+    super.key,
+    required this.buttons,
+    this.disableRoundedCornersOnLeftSide = false,
+    this.disableRoundedCornersOnRightSide = false,
+  });
 
   final List<ManualWidgetTesterButtonInfo> buttons;
   final bool disableRoundedCornersOnLeftSide;

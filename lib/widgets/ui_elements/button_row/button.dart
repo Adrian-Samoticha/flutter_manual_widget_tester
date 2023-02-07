@@ -4,19 +4,20 @@ import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'button_info.dart';
 
 class ManualWidgetTesterButton extends StatefulWidget {
+  const ManualWidgetTesterButton({
+    super.key,
+    required this.button,
+    required this.buttons,
+    required this.index,
+    required this.disableRoundedCornersOnLeftSide,
+    required this.disableRoundedCornersOnRightSide,
+  });
+
   final ManualWidgetTesterButtonInfo button;
   final List<ManualWidgetTesterButtonInfo> buttons;
   final int index;
   final bool disableRoundedCornersOnLeftSide;
   final bool disableRoundedCornersOnRightSide;
-
-  const ManualWidgetTesterButton(
-      {super.key,
-      required this.button,
-      required this.buttons,
-      required this.index,
-      required this.disableRoundedCornersOnLeftSide,
-      required this.disableRoundedCornersOnRightSide});
 
   @override
   State<ManualWidgetTesterButton> createState() =>
@@ -149,15 +150,16 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
                         .separatorColor,
                   ),
                 ),
-              ]
+              ],
       ],
     );
   }
 
-  Widget _buildDefaultTextStyleAndIconTheme(
-      {required Widget child,
-      required bool isPressed,
-      required bool isDisabled}) {
+  Widget _buildDefaultTextStyleAndIconTheme({
+    required Widget child,
+    required bool isPressed,
+    required bool isDisabled,
+  }) {
     if (isDisabled) {
       return IconTheme(
         data: ManualWidgetTesterTheme.of(context)
@@ -207,8 +209,10 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
     );
   }
 
-  BorderRadius _generateBorderRadius(
-      {required bool roundLeftCorners, required bool roundRightCorners}) {
+  BorderRadius _generateBorderRadius({
+    required bool roundLeftCorners,
+    required bool roundRightCorners,
+  }) {
     return BorderRadius.only(
       topLeft: roundLeftCorners
           ? ManualWidgetTesterTheme.of(context).buttonTheme.borderRadius
@@ -225,11 +229,12 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
     );
   }
 
-  BoxDecoration _generateButtonBoxDecoration(
-      {required bool roundLeftCorners,
-      required bool roundRightCorners,
-      required bool isPressed,
-      required bool isDisabled}) {
+  BoxDecoration _generateButtonBoxDecoration({
+    required bool roundLeftCorners,
+    required bool roundRightCorners,
+    required bool isPressed,
+    required bool isDisabled,
+  }) {
     final gradientColors = _getButtonBoxDecorationGradientColors(
       isPressed: isPressed,
       isDisabled: isDisabled,
@@ -238,8 +243,9 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
     return BoxDecoration(
       border: ManualWidgetTesterTheme.of(context).buttonTheme.boxBorder,
       borderRadius: _generateBorderRadius(
-          roundLeftCorners: roundLeftCorners,
-          roundRightCorners: roundRightCorners),
+        roundLeftCorners: roundLeftCorners,
+        roundRightCorners: roundRightCorners,
+      ),
       gradient: LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
@@ -248,8 +254,10 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
     );
   }
 
-  List<Color> _getButtonBoxDecorationGradientColors(
-      {required bool isPressed, required bool isDisabled}) {
+  List<Color> _getButtonBoxDecorationGradientColors({
+    required bool isPressed,
+    required bool isDisabled,
+  }) {
     if (isDisabled) {
       return const [
         Color.fromRGBO(255, 255, 255, 0.04),

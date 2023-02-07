@@ -3,9 +3,9 @@ import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 class TabLightReflection extends StatelessWidget {
   const TabLightReflection({
-    Key? key,
+    super.key,
     required this.isFocused,
-  }) : super(key: key);
+  });
 
   final bool isFocused;
 

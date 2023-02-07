@@ -9,12 +9,12 @@ import 'search_result_icon.dart';
 
 class SearchResultListEntry extends StatefulWidget {
   const SearchResultListEntry({
-    Key? key,
+    super.key,
     required this.index,
     required this.legalSelectedSearchResultIndex,
     required this.builder,
     required this.widgetTestSessionHandler,
-  }) : super(key: key);
+  });
 
   final int index;
   final int legalSelectedSearchResultIndex;
@@ -37,17 +37,21 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
       return;
     }
 
-    Scrollable.ensureVisible(_globalKey.currentContext!,
-        duration: ManualWidgetTesterTheme.of(context)
-            .generalTheme
-            .scrollIntoViewDuration,
-        alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtStart);
+    Scrollable.ensureVisible(
+      _globalKey.currentContext!,
+      duration: ManualWidgetTesterTheme.of(context)
+          .generalTheme
+          .scrollIntoViewDuration,
+      alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtStart,
+    );
 
-    Scrollable.ensureVisible(_globalKey.currentContext!,
-        duration: ManualWidgetTesterTheme.of(context)
-            .generalTheme
-            .scrollIntoViewDuration,
-        alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd);
+    Scrollable.ensureVisible(
+      _globalKey.currentContext!,
+      duration: ManualWidgetTesterTheme.of(context)
+          .generalTheme
+          .scrollIntoViewDuration,
+      alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd,
+    );
   }
 
   @override

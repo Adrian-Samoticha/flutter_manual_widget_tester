@@ -3,11 +3,11 @@ import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 class TabText extends StatelessWidget {
   const TabText({
-    Key? key,
+    super.key,
     required this.widgetName,
     required this.isFocused,
     required this.isBeingHovered,
-  }) : super(key: key);
+  });
 
   final String widgetName;
   final bool isFocused;
@@ -17,32 +17,34 @@ class TabText extends StatelessWidget {
   Widget build(BuildContext context) {
     if (isFocused) {
       return Center(
-          child: Text(
-        widgetName,
-        overflow: TextOverflow.fade,
-        softWrap: false,
-        style: ManualWidgetTesterTheme.of(context).tabTheme.textStyle,
-      ));
+        child: Text(
+          widgetName,
+          overflow: TextOverflow.fade,
+          softWrap: false,
+          style: ManualWidgetTesterTheme.of(context).tabTheme.textStyle,
+        ),
+      );
     }
 
     return Center(
-        child: AnimatedOpacity(
-      duration: ManualWidgetTesterTheme.of(context)
-          .tabTheme
-          .unfocusedTabOpacityChangeDuration,
-      opacity: isBeingHovered
-          ? ManualWidgetTesterTheme.of(context)
-              .tabTheme
-              .unfocusedHoveredTabOpacity
-          : ManualWidgetTesterTheme.of(context)
-              .tabTheme
-              .unfocusedNotHoveredTabOpacity,
-      child: Text(
-        widgetName,
-        overflow: TextOverflow.fade,
-        softWrap: false,
-        style: ManualWidgetTesterTheme.of(context).tabTheme.textStyle,
+      child: AnimatedOpacity(
+        duration: ManualWidgetTesterTheme.of(context)
+            .tabTheme
+            .unfocusedTabOpacityChangeDuration,
+        opacity: isBeingHovered
+            ? ManualWidgetTesterTheme.of(context)
+                .tabTheme
+                .unfocusedHoveredTabOpacity
+            : ManualWidgetTesterTheme.of(context)
+                .tabTheme
+                .unfocusedNotHoveredTabOpacity,
+        child: Text(
+          widgetName,
+          overflow: TextOverflow.fade,
+          softWrap: false,
+          style: ManualWidgetTesterTheme.of(context).tabTheme.textStyle,
+        ),
       ),
-    ));
+    );
   }
 }

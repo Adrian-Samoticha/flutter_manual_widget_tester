@@ -7,9 +7,10 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region
 import 'test_session_menu_item/test_session_menu_item.dart';
 
 class RunningTestSessionsList extends StatelessWidget {
-  const RunningTestSessionsList(
-      {Key? key, required this.widgetTestSessionHandler})
-      : super(key: key);
+  const RunningTestSessionsList({
+    super.key,
+    required this.widgetTestSessionHandler,
+  });
 
   final WidgetTestSessionHandler widgetTestSessionHandler;
 

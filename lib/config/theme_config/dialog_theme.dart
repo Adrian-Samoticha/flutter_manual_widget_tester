@@ -5,6 +5,33 @@ import 'package:flutter_color/flutter_color.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class DialogTheme extends Equatable {
+  const DialogTheme({
+    this.backgroundColor = const Color.fromRGBO(38, 39, 47, 0.75),
+    this.barrierColor = const Color.fromRGBO(0, 0, 0, 0.35),
+    this.openCloseAnimationDuration = const Duration(milliseconds: 150),
+    this.openCloseAnimationCurve = Curves.easeInOutSine,
+    this.openCloseAnimationOffset = const Offset(0.0, -16.0),
+    this.alignment = Alignment.center,
+    this.blurRadius = 16.0,
+    this.borderRadius = const BorderRadius.all(Radius.circular(5.0)),
+    this.borderColor = const Color.fromRGBO(255, 255, 255, 0.025),
+    this.shadow = const [
+      BoxShadow(
+        blurRadius: 8.0,
+        color: Color.fromRGBO(0, 0, 0, 0.25),
+        spreadRadius: 4.0,
+        offset: Offset(0.0, 4.0),
+      ),
+    ],
+    this.padding = const EdgeInsets.all(8.0),
+    this.actionButtonHeight = 32.0,
+    this.actionButtonSectionBackgroundColor =
+        const Color.fromRGBO(16, 18, 21, 0.5),
+    this.baseActionButtonRowWidth = 192.0,
+    this.customDialogActionButtonWidthAddition = 32.0,
+    this.distanceBetweenContentAndActionButtons = 8.0,
+  });
+
   /// A dialog's background color.
   final Color backgroundColor;
 
@@ -56,33 +83,6 @@ class DialogTheme extends Equatable {
   /// The distance between the dialog's content and its action button row.
   final double distanceBetweenContentAndActionButtons;
 
-  const DialogTheme({
-    this.backgroundColor = const Color.fromRGBO(38, 39, 47, 0.75),
-    this.barrierColor = const Color.fromRGBO(0, 0, 0, 0.35),
-    this.openCloseAnimationDuration = const Duration(milliseconds: 150),
-    this.openCloseAnimationCurve = Curves.easeInOutSine,
-    this.openCloseAnimationOffset = const Offset(0.0, -16.0),
-    this.alignment = Alignment.center,
-    this.blurRadius = 16.0,
-    this.borderRadius = const BorderRadius.all(Radius.circular(5.0)),
-    this.borderColor = const Color.fromRGBO(255, 255, 255, 0.025),
-    this.shadow = const [
-      BoxShadow(
-        blurRadius: 8.0,
-        color: Color.fromRGBO(0, 0, 0, 0.25),
-        spreadRadius: 4.0,
-        offset: Offset(0.0, 4.0),
-      ),
-    ],
-    this.padding = const EdgeInsets.all(8.0),
-    this.actionButtonHeight = 32.0,
-    this.actionButtonSectionBackgroundColor =
-        const Color.fromRGBO(16, 18, 21, 0.5),
-    this.baseActionButtonRowWidth = 192.0,
-    this.customDialogActionButtonWidthAddition = 32.0,
-    this.distanceBetweenContentAndActionButtons = 8.0,
-  });
-
   @override
   List<Object?> get props => [
         backgroundColor,
@@ -104,12 +104,14 @@ class DialogTheme extends Equatable {
       ];
 
   static DialogTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return DialogTheme(
       backgroundColor: _getBackgroundColorFromParameters(parameters),
       openCloseAnimationDuration:
           _getOpenCloseAnimationDurationFromAnimationSpeed(
-              parameters.animationSpeed),
+        parameters.animationSpeed,
+      ),
       blurRadius: _getBlurRadiusFromDesignLanguage(parameters.designLanguage),
       borderColor: _getBorderColorFromBrightness(parameters.brightness),
       padding: _getPaddingFromLayout(parameters.layout),
@@ -118,12 +120,14 @@ class DialogTheme extends Equatable {
           _getActionButtonSectionBackgroundColor(parameters),
       distanceBetweenContentAndActionButtons:
           _getDistanceBetweenContentAndActionButtonsFromLayout(
-              parameters.layout),
+        parameters.layout,
+      ),
     );
   }
 
   static Color _getBackgroundColorFromParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     final opacity =
         parameters.designLanguage == DesignLanguage.skeuomorphic ? 0.75 : 1.0;
 
@@ -137,7 +141,8 @@ class DialogTheme extends Equatable {
   }
 
   static Duration _getOpenCloseAnimationDurationFromAnimationSpeed(
-      AnimationSpeed animationSpeed) {
+    AnimationSpeed animationSpeed,
+  ) {
     switch (animationSpeed) {
       case AnimationSpeed.instant:
         return const Duration();
@@ -151,7 +156,8 @@ class DialogTheme extends Equatable {
   }
 
   static double _getBlurRadiusFromDesignLanguage(
-      DesignLanguage designLanguage) {
+    DesignLanguage designLanguage,
+  ) {
     switch (designLanguage) {
       case DesignLanguage.skeuomorphic:
         return 16.0;
@@ -192,7 +198,8 @@ class DialogTheme extends Equatable {
   }
 
   static Color _getActionButtonSectionBackgroundColor(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     if (parameters.brightness == Brightness.dark) {
       return parameters.filteredBackgroundColor.lighter(24).withOpacity(0.5);
     }
@@ -201,7 +208,8 @@ class DialogTheme extends Equatable {
   }
 
   static double _getDistanceBetweenContentAndActionButtonsFromLayout(
-      Layout layout) {
+    Layout layout,
+  ) {
     switch (layout) {
       case Layout.compact:
         return 4.0;

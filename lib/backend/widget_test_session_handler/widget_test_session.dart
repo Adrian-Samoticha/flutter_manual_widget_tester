@@ -10,13 +10,22 @@ class WidgetTestSession {
         customSettings = WidgetTestSessionCustomSettings(),
         genericSettings = WidgetTestSessionGenericSettings();
 
-  WidgetTestSession.withKeyAndSettings(this.widgetTestBuilder, this.key,
-      this.customSettings, this.genericSettings);
+  WidgetTestSession.withKeyAndSettings(
+    this.widgetTestBuilder,
+    this.key,
+    this.customSettings,
+    this.genericSettings,
+  );
 
   WidgetTestSession recreateWithNewWidgetTestBuilder(
-      WidgetTestBuilder widgetTestBuilder) {
+    WidgetTestBuilder widgetTestBuilder,
+  ) {
     return WidgetTestSession.withKeyAndSettings(
-        widgetTestBuilder, key, customSettings, genericSettings);
+      widgetTestBuilder,
+      key,
+      customSettings,
+      genericSettings,
+    );
   }
 
   final Key key;

@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'theme_data.dart';
 
 class ManualWidgetTesterTheme extends InheritedWidget {
-  const ManualWidgetTesterTheme(
-      {super.key, required super.child, required this.themeData});
+  const ManualWidgetTesterTheme({
+    super.key,
+    required super.child,
+    required this.themeData,
+  });
 
   final ManualWidgetTesterThemeData themeData;
 
@@ -13,6 +16,7 @@ class ManualWidgetTesterTheme extends InheritedWidget {
         context.dependOnInheritedWidgetOfExactType<ManualWidgetTesterTheme>();
 
     assert(theme != null);
+
     return theme!.themeData;
   }
 

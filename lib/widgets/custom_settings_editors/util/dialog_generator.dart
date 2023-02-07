@@ -33,8 +33,12 @@ class ManualWidgetTesterDialogGenerator {
       transitionDuration: ManualWidgetTesterTheme.of(context)
           .dialogTheme
           .openCloseAnimationDuration,
-      transitionBuilder: (BuildContext _, Animation<double> animation,
-          Animation<double> secondaryAnimation, Widget widget) {
+      transitionBuilder: (
+        BuildContext _,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+        Widget widget,
+      ) {
         final curvedAnimationValue = ManualWidgetTesterTheme.of(context)
             .dialogTheme
             .openCloseAnimationCurve
@@ -48,7 +52,9 @@ class ManualWidgetTesterDialogGenerator {
             ManualWidgetTesterTheme.of(context).dialogTheme.backgroundColor;
         final renderedDialogBackgroundColor =
             _getRenderedBackgroundColorFromOriginalBackgroundColor(
-                curvedAnimationValue, originalDialogBackgroundColor);
+          curvedAnimationValue,
+          originalDialogBackgroundColor,
+        );
 
         final doEnableBlur = curvedAnimationValue >= 0.5;
 
@@ -61,17 +67,21 @@ class ManualWidgetTesterDialogGenerator {
             alignment:
                 ManualWidgetTesterTheme.of(context).dialogTheme.alignment,
             child: _buildDialogWindow(
-                context,
-                dialogWidth,
-                renderedDialogBackgroundColor,
-                curvedAnimationValue,
-                doEnableBlur,
-                widget),
+              context,
+              dialogWidth,
+              renderedDialogBackgroundColor,
+              curvedAnimationValue,
+              doEnableBlur,
+              widget,
+            ),
           ),
         );
       },
-      pageBuilder: (BuildContext _, Animation<double> animation,
-          Animation<double> secondaryAnimation) {
+      pageBuilder: (
+        BuildContext _,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+      ) {
         return Theme(
           data: ManualWidgetTesterTheme.of(context).generalTheme.isDark
               ? ThemeData.dark()
@@ -99,7 +109,11 @@ class ManualWidgetTesterDialogGenerator {
                         .distanceBetweenContentAndActionButtons,
                   ),
                   _buildActionButtonRow(
-                      context, onApply, onCancel, customActionButtons),
+                    context,
+                    onApply,
+                    onCancel,
+                    customActionButtons,
+                  ),
                 ],
               ),
             ),
@@ -114,7 +128,9 @@ class ManualWidgetTesterDialogGenerator {
   }
 
   static Color _getRenderedBackgroundColorFromOriginalBackgroundColor(
-      double curvedAnimationValue, Color originalDialogBackgroundColor) {
+    double curvedAnimationValue,
+    Color originalDialogBackgroundColor,
+  ) {
     if (curvedAnimationValue >= 0.5) {
       return originalDialogBackgroundColor.withOpacity(curvedAnimationValue
           .remap(0.5, 1.0, 1.0, originalDialogBackgroundColor.opacity));
@@ -125,12 +141,13 @@ class ManualWidgetTesterDialogGenerator {
   }
 
   static Widget _buildDialogWindow(
-      BuildContext context,
-      double dialogWidth,
-      Color renderedDialogBackgroundColor,
-      double curvedAnimationValue,
-      bool doEnableBlur,
-      Widget widget) {
+    BuildContext context,
+    double dialogWidth,
+    Color renderedDialogBackgroundColor,
+    double curvedAnimationValue,
+    bool doEnableBlur,
+    Widget widget,
+  ) {
     return Container(
       width: dialogWidth,
       decoration: BoxDecoration(
@@ -158,7 +175,8 @@ class ManualWidgetTesterDialogGenerator {
                       .blurRadius,
                   sigmaY: ManualWidgetTesterTheme.of(context)
                       .dialogTheme
-                      .blurRadius)
+                      .blurRadius,
+                )
               : ImageFilter.blur(),
           child: Container(
             decoration: BoxDecoration(
@@ -167,10 +185,11 @@ class ManualWidgetTesterDialogGenerator {
               color: renderedDialogBackgroundColor,
               border: Border.fromBorderSide(
                 BorderSide(
-                    color: ManualWidgetTesterTheme.of(context)
-                        .dialogTheme
-                        .borderColor
-                        .multiplyOpacity(curvedAnimationValue)),
+                  color: ManualWidgetTesterTheme.of(context)
+                      .dialogTheme
+                      .borderColor
+                      .multiplyOpacity(curvedAnimationValue),
+                ),
               ),
             ),
             child: Opacity(
@@ -184,10 +203,11 @@ class ManualWidgetTesterDialogGenerator {
   }
 
   static Widget _buildActionButtonRow(
-      BuildContext context,
-      void Function()? onApply,
-      void Function()? onCancel,
-      List<ManualWidgetTesterButtonInfo> customButtons) {
+    BuildContext context,
+    void Function()? onApply,
+    void Function()? onCancel,
+    List<ManualWidgetTesterButtonInfo> customButtons,
+  ) {
     return Container(
       color: ManualWidgetTesterTheme.of(context)
           .dialogTheme

@@ -8,9 +8,10 @@ class ConfigData extends Equatable {
   ///
   /// The [doubleEditorInfiniteScrollViewScrollSpeedFactor] is the scroll speed
   /// factor of the double editor infinite scroll view.
-  const ConfigData(
-      {required this.doubleEditorInfiniteScrollViewRange,
-      required this.doubleEditorInfiniteScrollViewScrollSpeedFactor});
+  const ConfigData({
+    required this.doubleEditorInfiniteScrollViewRange,
+    required this.doubleEditorInfiniteScrollViewScrollSpeedFactor,
+  });
 
   /// The range of the double editor infinite scroll view.
   final double doubleEditorInfiniteScrollViewRange;

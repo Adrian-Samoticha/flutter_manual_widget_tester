@@ -4,6 +4,68 @@ import 'package:flutter/material.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class EditColorButtonTheme extends Equatable {
+  const EditColorButtonTheme({
+    this.height = 28.0,
+    this.decorationForDarkColor = const BoxDecoration(
+      border: Border.fromBorderSide(
+        BorderSide(
+          color: Color.fromRGBO(255, 255, 255, 0.4),
+        ),
+      ),
+      boxShadow: [
+        BoxShadow(
+          blurRadius: 3.0,
+          color: Color.fromRGBO(0, 0, 0, 0.25),
+          offset: Offset(0.0, 1.0),
+        ),
+      ],
+    ),
+    this.decorationForBrightColor = const BoxDecoration(
+      border: Border.fromBorderSide(
+        BorderSide(
+          color: Color.fromRGBO(0, 0, 0, 0.5),
+        ),
+      ),
+      boxShadow: [
+        BoxShadow(
+          blurRadius: 3.0,
+          color: Color.fromRGBO(0, 0, 0, 0.25),
+          offset: Offset(0.0, 1.0),
+        ),
+      ],
+    ),
+    this.borderRadius = const BorderRadius.all(Radius.circular(5.0)),
+    this.checkerboardColor1 = const Color.fromRGBO(255, 255, 255, 1.0),
+    this.checkerboardColor2 = const Color.fromRGBO(192, 192, 192, 1.0),
+    this.checkerboardSize = 14.0,
+    this.icon = Icons.colorize_rounded,
+    this.iconColorForDarkColor = const Color.fromRGBO(255, 255, 255, 0.9),
+    this.iconColorForBrightColor = const Color.fromRGBO(0, 0, 0, 0.7),
+    this.iconShadowsForDarkColor = const [
+      Shadow(
+        blurRadius: 2.0,
+        color: Color.fromRGBO(0, 0, 0, 0.5),
+        offset: Offset(0.0, 1.0),
+      ),
+    ],
+    this.iconShadowsForBrightColor,
+    this.iconAnimationDuration = const Duration(milliseconds: 250),
+    this.iconAnimationCurve = Curves.ease,
+    this.textStyleForDarkColor = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.9),
+      shadows: [
+        Shadow(
+          blurRadius: 2.0,
+          color: Color.fromRGBO(0, 0, 0, 0.5),
+          offset: Offset(0.0, 1.0),
+        ),
+      ],
+    ),
+    this.textStyleForBrightColor = const TextStyle(
+      color: Color.fromRGBO(0, 0, 0, 0.9),
+    ),
+  });
+
   /// The height of the edit color button.
   final double height;
 
@@ -71,68 +133,6 @@ class EditColorButtonTheme extends Equatable {
   /// color.
   final TextStyle textStyleForBrightColor;
 
-  const EditColorButtonTheme({
-    this.height = 28.0,
-    this.decorationForDarkColor = const BoxDecoration(
-      border: Border.fromBorderSide(
-        BorderSide(
-          color: Color.fromRGBO(255, 255, 255, 0.4),
-        ),
-      ),
-      boxShadow: [
-        BoxShadow(
-          blurRadius: 3.0,
-          color: Color.fromRGBO(0, 0, 0, 0.25),
-          offset: Offset(0.0, 1.0),
-        ),
-      ],
-    ),
-    this.decorationForBrightColor = const BoxDecoration(
-      border: Border.fromBorderSide(
-        BorderSide(
-          color: Color.fromRGBO(0, 0, 0, 0.5),
-        ),
-      ),
-      boxShadow: [
-        BoxShadow(
-          blurRadius: 3.0,
-          color: Color.fromRGBO(0, 0, 0, 0.25),
-          offset: Offset(0.0, 1.0),
-        ),
-      ],
-    ),
-    this.borderRadius = const BorderRadius.all(Radius.circular(5.0)),
-    this.checkerboardColor1 = const Color.fromRGBO(255, 255, 255, 1.0),
-    this.checkerboardColor2 = const Color.fromRGBO(192, 192, 192, 1.0),
-    this.checkerboardSize = 14.0,
-    this.icon = Icons.colorize_rounded,
-    this.iconColorForDarkColor = const Color.fromRGBO(255, 255, 255, 0.9),
-    this.iconColorForBrightColor = const Color.fromRGBO(0, 0, 0, 0.7),
-    this.iconShadowsForDarkColor = const [
-      Shadow(
-        blurRadius: 2.0,
-        color: Color.fromRGBO(0, 0, 0, 0.5),
-        offset: Offset(0.0, 1.0),
-      ),
-    ],
-    this.iconShadowsForBrightColor,
-    this.iconAnimationDuration = const Duration(milliseconds: 250),
-    this.iconAnimationCurve = Curves.ease,
-    this.textStyleForDarkColor = const TextStyle(
-      color: Color.fromRGBO(255, 255, 255, 0.9),
-      shadows: [
-        Shadow(
-          blurRadius: 2.0,
-          color: Color.fromRGBO(0, 0, 0, 0.5),
-          offset: Offset(0.0, 1.0),
-        ),
-      ],
-    ),
-    this.textStyleForBrightColor = const TextStyle(
-      color: Color.fromRGBO(0, 0, 0, 0.9),
-    ),
-  });
-
   @override
   List<Object?> get props => [
         height,
@@ -154,7 +154,8 @@ class EditColorButtonTheme extends Equatable {
       ];
 
   static EditColorButtonTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return const EditColorButtonTheme();
   }
 }

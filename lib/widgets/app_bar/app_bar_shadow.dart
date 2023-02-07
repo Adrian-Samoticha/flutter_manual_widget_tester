@@ -4,8 +4,8 @@ import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 /// A container that simulates the shadow of the widget test area.
 class AppBarShadow extends StatelessWidget {
   const AppBarShadow({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

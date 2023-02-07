@@ -4,21 +4,6 @@ import 'package:flutter/material.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class RadioButtonTheme extends Equatable {
-  /// The widget to use as the selected radio button.
-  final Widget selectedRadioButton;
-
-  /// The widget to use as the unselected radio button.
-  final Widget unselectedRadioButton;
-
-  /// The space between a radio button and its label.
-  final double spaceBetweenRadioButtonAndLabel;
-
-  /// The text style of a selected radio buttons label.
-  final TextStyle selectedRadioButtonLabelStyle;
-
-  /// The text style of an unselected radio buttons label.
-  final TextStyle unselectedRadioButtonLabelStyle;
-
   const RadioButtonTheme({
     this.selectedRadioButton = const DecoratedBox(
       decoration: BoxDecoration(
@@ -94,6 +79,21 @@ class RadioButtonTheme extends Equatable {
     ),
   });
 
+  /// The widget to use as the selected radio button.
+  final Widget selectedRadioButton;
+
+  /// The widget to use as the unselected radio button.
+  final Widget unselectedRadioButton;
+
+  /// The space between a radio button and its label.
+  final double spaceBetweenRadioButtonAndLabel;
+
+  /// The text style of a selected radio buttons label.
+  final TextStyle selectedRadioButtonLabelStyle;
+
+  /// The text style of an unselected radio buttons label.
+  final TextStyle unselectedRadioButtonLabelStyle;
+
   @override
   List<Object?> get props => [
         selectedRadioButton,
@@ -104,7 +104,8 @@ class RadioButtonTheme extends Equatable {
       ];
 
   static RadioButtonTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return const RadioButtonTheme();
   }
 }

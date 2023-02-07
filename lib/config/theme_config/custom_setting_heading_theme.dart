@@ -4,6 +4,14 @@ import 'package:flutter/material.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class CustomSettingHeadingTheme extends Equatable {
+  const CustomSettingHeadingTheme({
+    this.textStyle = const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.9),
+    ),
+    this.overflow = TextOverflow.ellipsis,
+    this.padding = const EdgeInsets.only(bottom: 5.0),
+  });
+
   /// The text style of a custom setting's heading.
   final TextStyle textStyle;
 
@@ -13,14 +21,6 @@ class CustomSettingHeadingTheme extends Equatable {
   /// The padding of a custom setting's heading.
   final EdgeInsets padding;
 
-  const CustomSettingHeadingTheme({
-    this.textStyle = const TextStyle(
-      color: Color.fromRGBO(255, 255, 255, 0.9),
-    ),
-    this.overflow = TextOverflow.ellipsis,
-    this.padding = const EdgeInsets.only(bottom: 5.0),
-  });
-
   @override
   List<Object?> get props => [
         textStyle,
@@ -29,7 +29,8 @@ class CustomSettingHeadingTheme extends Equatable {
       ];
 
   static CustomSettingHeadingTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return CustomSettingHeadingTheme(
       textStyle: _getTextStyleFromBrightness(parameters.brightness),
       padding: _getPaddingFromLayout(parameters.layout),

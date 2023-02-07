@@ -10,9 +10,9 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/foldable_region
 
 class DefaultTextStyleSettings extends StatelessWidget {
   const DefaultTextStyleSettings({
-    Key? key,
+    super.key,
     required this.session,
-  }) : super(key: key);
+  });
 
   final WidgetTestSession session;
 

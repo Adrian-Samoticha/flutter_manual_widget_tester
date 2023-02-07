@@ -11,20 +11,21 @@ export 'design_language.dart';
 export 'layout.dart';
 
 class ThemeGeneratorParameters {
+  ThemeGeneratorParameters({
+    this.brightness = Brightness.dark,
+    this.backgroundColor = Colors.blue,
+    this.primaryColor = Colors.blue,
+    this.animationSpeed = AnimationSpeed.normal,
+    this.layout = Layout.normal,
+    this.designLanguage = DesignLanguage.skeuomorphic,
+  });
+
   final Brightness brightness;
   final Color backgroundColor;
   final Color primaryColor;
   final AnimationSpeed animationSpeed;
   final Layout layout;
   final DesignLanguage designLanguage;
-
-  ThemeGeneratorParameters(
-      {this.brightness = Brightness.dark,
-      this.backgroundColor = Colors.blue,
-      this.primaryColor = Colors.blue,
-      this.animationSpeed = AnimationSpeed.normal,
-      this.layout = Layout.normal,
-      this.designLanguage = DesignLanguage.skeuomorphic});
 
   Color get filteredBackgroundColor {
     if (brightness == Brightness.dark) {

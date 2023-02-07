@@ -4,20 +4,6 @@ import 'package:flutter/material.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class AppBarTheme extends Equatable {
-  /// The height of the app bar on the top of the widget.
-  ///
-  /// The app bar is the bar that houses the tab bar and the “create new test
-  /// session” button.
-  final double height;
-
-  /// The height of the container that simulates the shadow at the bottom of
-  /// the app bar.
-  final double shadowHeight;
-
-  /// The box decoration of the container that simulates the shadow at the
-  /// bottom of the app bar.
-  final BoxDecoration shadowBoxDecoration;
-
   const AppBarTheme({
     this.height = 40.0,
     this.shadowHeight = 16.0,
@@ -33,6 +19,20 @@ class AppBarTheme extends Equatable {
     ),
   });
 
+  /// The height of the app bar on the top of the widget.
+  ///
+  /// The app bar is the bar that houses the tab bar and the “create new test
+  /// session” button.
+  final double height;
+
+  /// The height of the container that simulates the shadow at the bottom of
+  /// the app bar.
+  final double shadowHeight;
+
+  /// The box decoration of the container that simulates the shadow at the
+  /// bottom of the app bar.
+  final BoxDecoration shadowBoxDecoration;
+
   @override
   List<Object?> get props => [
         height,
@@ -41,7 +41,8 @@ class AppBarTheme extends Equatable {
       ];
 
   static AppBarTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return AppBarTheme(
       height: _getHeightFromLayout(parameters.layout),
       shadowHeight: _getShadowHeight(parameters),
@@ -70,7 +71,8 @@ class AppBarTheme extends Equatable {
   }
 
   static BoxDecoration _getShadowBoxDecoration(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     switch (parameters.designLanguage) {
       case DesignLanguage.skeuomorphic:
         return BoxDecoration(

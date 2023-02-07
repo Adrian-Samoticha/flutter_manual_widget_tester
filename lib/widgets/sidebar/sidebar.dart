@@ -20,12 +20,12 @@ class ManualWidgetTesterSidebar extends StatefulWidget {
   /// The [widgetTestSessionHandler] is the handler for the widget test
   /// sessions.
   /// The [typeEditorBuilder] is used to build type editors for custom settings.
-  const ManualWidgetTesterSidebar(
-      {Key? key,
-      required this.maxWidth,
-      required this.widgetTestSessionHandler,
-      required this.typeEditorBuilder})
-      : super(key: key);
+  const ManualWidgetTesterSidebar({
+    super.key,
+    required this.maxWidth,
+    required this.widgetTestSessionHandler,
+    required this.typeEditorBuilder,
+  });
 
   final double maxWidth;
   final WidgetTestSessionHandler widgetTestSessionHandler;

@@ -6,10 +6,10 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row/butt
 
 class NewTestSessionButton extends StatelessWidget {
   const NewTestSessionButton({
-    Key? key,
+    super.key,
     required this.builders,
     required this.widgetTestSessionHandler,
-  }) : super(key: key);
+  });
 
   final List<WidgetTestBuilder> builders;
   final WidgetTestSessionHandler widgetTestSessionHandler;

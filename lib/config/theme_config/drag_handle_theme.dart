@@ -5,6 +5,13 @@ import 'package:flutter_color/flutter_color.dart';
 import 'theme_generator/theme_generator_parameters.dart';
 
 class DragHandleTheme extends Equatable {
+  const DragHandleTheme({
+    this.color = Colors.blue,
+    this.size = 6.0,
+    this.opacityChangeDuration = const Duration(milliseconds: 150),
+    this.timeUntilDragHandleAppears = const Duration(milliseconds: 250),
+  });
+
   /// The color of the drag handle that appears when the sidebar is being
   /// resized.
   final Color color;
@@ -23,13 +30,6 @@ class DragHandleTheme extends Equatable {
   /// being hovered over.
   final Duration timeUntilDragHandleAppears;
 
-  const DragHandleTheme({
-    this.color = Colors.blue,
-    this.size = 6.0,
-    this.opacityChangeDuration = const Duration(milliseconds: 150),
-    this.timeUntilDragHandleAppears = const Duration(milliseconds: 250),
-  });
-
   @override
   List<Object?> get props => [
         color,
@@ -39,11 +39,13 @@ class DragHandleTheme extends Equatable {
       ];
 
   static DragHandleTheme fromThemeGeneratorParameters(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     return DragHandleTheme(
       color: _getColor(parameters),
       opacityChangeDuration: _getOpacityChangeDurationFromAnimationSpeed(
-          parameters.animationSpeed),
+        parameters.animationSpeed,
+      ),
     );
   }
 
@@ -56,7 +58,8 @@ class DragHandleTheme extends Equatable {
   }
 
   static Duration _getOpacityChangeDurationFromAnimationSpeed(
-      AnimationSpeed animationSpeed) {
+    AnimationSpeed animationSpeed,
+  ) {
     switch (animationSpeed) {
       case AnimationSpeed.instant:
         return const Duration();

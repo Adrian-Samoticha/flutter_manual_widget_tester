@@ -17,12 +17,13 @@ class ManualWidgetTesterGenericSettingsEdgeInsetEditor extends StatelessWidget {
   /// the infinite scroll view.
   /// The [onlyAllowPositiveValues] specifies whether only positive values are
   /// allowed for the setting.
-  const ManualWidgetTesterGenericSettingsEdgeInsetEditor(
-      {super.key,
-      required this.settingName,
-      required this.currentEdgeInsets,
-      required this.onChanged,
-      this.onlyAllowPositiveValues = false});
+  const ManualWidgetTesterGenericSettingsEdgeInsetEditor({
+    super.key,
+    required this.settingName,
+    required this.currentEdgeInsets,
+    required this.onChanged,
+    this.onlyAllowPositiveValues = false,
+  });
 
   final String settingName;
   final EdgeInsets currentEdgeInsets;

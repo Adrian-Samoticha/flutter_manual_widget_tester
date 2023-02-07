@@ -1,22 +1,4 @@
 class ConstrainedInt {
-  final int? lowerLimit;
-  final int? upperLimit;
-  final int divisor;
-  late int _value;
-
-  int get value => _value;
-
-  bool _isDivisible(int number, int divisor) => (number % divisor) == 0;
-
-  set value(int value) {
-    final theoreticalLowerLimit = lowerLimit ?? value;
-    final theoreticalUpperLimit = upperLimit ?? value;
-
-    _value =
-        (value.clamp(theoreticalLowerLimit, theoreticalUpperLimit) ~/ divisor) *
-            divisor;
-  }
-
   /// Creates a [ConstrainedInt] whose [value] is guaranteed to be clamped to be
   /// in the range [lowerLimit]-[upperLimit] and divisible by [divisor].
   ///
@@ -45,11 +27,12 @@ class ConstrainedInt {
   ///   },
   /// )
   /// ```
-  ConstrainedInt(
-      {this.lowerLimit,
-      this.upperLimit,
-      this.divisor = 1,
-      required int value}) {
+  ConstrainedInt({
+    this.lowerLimit,
+    this.upperLimit,
+    this.divisor = 1,
+    required int value,
+  }) {
     assert(
         lowerLimit == null || upperLimit == null || upperLimit! >= lowerLimit!,
         'upperLimit ($upperLimit) must be greater than or equal to lowerLimit'
@@ -62,5 +45,23 @@ class ConstrainedInt {
         'upperLimit ($upperLimit) must be divisible by divisor ($divisor).');
 
     this.value = value;
+  }
+
+  final int? lowerLimit;
+  final int? upperLimit;
+  final int divisor;
+  late int _value;
+
+  int get value => _value;
+
+  bool _isDivisible(int number, int divisor) => (number % divisor) == 0;
+
+  set value(int value) {
+    final theoreticalLowerLimit = lowerLimit ?? value;
+    final theoreticalUpperLimit = upperLimit ?? value;
+
+    _value =
+        (value.clamp(theoreticalLowerLimit, theoreticalUpperLimit) ~/ divisor) *
+            divisor;
   }
 }

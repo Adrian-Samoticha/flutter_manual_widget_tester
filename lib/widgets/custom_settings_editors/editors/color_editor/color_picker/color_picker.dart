@@ -7,12 +7,14 @@ import 'checkerboard.dart';
 import 'colored_container.dart';
 
 class ColorPicker extends StatefulWidget {
+  const ColorPicker({
+    super.key,
+    required this.selectedColor,
+    required this.onChanged,
+  });
+
   final Color selectedColor;
   final void Function(Color) onChanged;
-
-  const ColorPicker(
-      {Key? key, required this.selectedColor, required this.onChanged})
-      : super(key: key);
 
   @override
   State<ColorPicker> createState() => _ColorPickerState();
@@ -69,71 +71,72 @@ class _ColorPickerState extends State<ColorPicker> {
 
   void _showEditColorDialog(BuildContext context) {
     return ManualWidgetTesterDialogGenerator.showEditSettingDialog(
-        context: context,
-        onClose: () {
-          setState(() {
-            _isDialogOpen = false;
-          });
-        },
-        onApply: () {
-          widget.onChanged(_colorWorkingCopy);
-        },
-        editorBuilder: (BuildContext context) {
-          return AnimatedSize(
-            duration: ManualWidgetTesterTheme.of(context)
-                .editColorDialogTheme
-                .sizeChangeAnimationDuration,
-            curve: ManualWidgetTesterTheme.of(context)
-                .editColorDialogTheme
-                .sizeChangeAnimationCurve,
-            child: Material(
-              type: MaterialType.transparency,
-              child: flex_color_picker.ColorPicker(
-                onColorChanged: (Color newColor) {
-                  setState(() {
-                    _colorWorkingCopy = newColor;
-                  });
-                },
-                color: widget.selectedColor,
-                enableOpacity: true,
-                enableShadesSelection: true,
-                enableTonalPalette: true,
-                showColorName: true,
-                elevation: ManualWidgetTesterTheme.of(context)
-                    .editColorDialogTheme
-                    .elevation,
-                borderRadius: ManualWidgetTesterTheme.of(context)
-                    .editColorDialogTheme
-                    .borderRadius,
-                colorNameTextStyle: ManualWidgetTesterTheme.of(context)
-                    .editColorDialogTheme
-                    .colorNameTextStyle,
-                pickerTypeTextStyle: ManualWidgetTesterTheme.of(context)
-                    .editColorDialogTheme
-                    .pickerTypeTextStyle,
-                selectedPickerTypeColor: ManualWidgetTesterTheme.of(context)
-                    .editColorDialogTheme
-                    .selectedPickerTypeColor,
-                spacing: ManualWidgetTesterTheme.of(context)
-                    .editColorDialogTheme
-                    .spacing,
-                runSpacing: ManualWidgetTesterTheme.of(context)
-                    .editColorDialogTheme
-                    .runSpacing,
-                columnSpacing: ManualWidgetTesterTheme.of(context)
-                    .editColorDialogTheme
-                    .columnSpacing,
-                showColorCode: true,
-                colorCodeHasColor: true,
-                pickersEnabled: const {
-                  flex_color_picker.ColorPickerType.primary: true,
-                  flex_color_picker.ColorPickerType.accent: true,
-                  flex_color_picker.ColorPickerType.wheel: true,
-                },
-              ),
-            ),
-          );
+      context: context,
+      onClose: () {
+        setState(() {
+          _isDialogOpen = false;
         });
+      },
+      onApply: () {
+        widget.onChanged(_colorWorkingCopy);
+      },
+      editorBuilder: (BuildContext context) {
+        return AnimatedSize(
+          duration: ManualWidgetTesterTheme.of(context)
+              .editColorDialogTheme
+              .sizeChangeAnimationDuration,
+          curve: ManualWidgetTesterTheme.of(context)
+              .editColorDialogTheme
+              .sizeChangeAnimationCurve,
+          child: Material(
+            type: MaterialType.transparency,
+            child: flex_color_picker.ColorPicker(
+              onColorChanged: (Color newColor) {
+                setState(() {
+                  _colorWorkingCopy = newColor;
+                });
+              },
+              color: widget.selectedColor,
+              enableOpacity: true,
+              enableShadesSelection: true,
+              enableTonalPalette: true,
+              showColorName: true,
+              elevation: ManualWidgetTesterTheme.of(context)
+                  .editColorDialogTheme
+                  .elevation,
+              borderRadius: ManualWidgetTesterTheme.of(context)
+                  .editColorDialogTheme
+                  .borderRadius,
+              colorNameTextStyle: ManualWidgetTesterTheme.of(context)
+                  .editColorDialogTheme
+                  .colorNameTextStyle,
+              pickerTypeTextStyle: ManualWidgetTesterTheme.of(context)
+                  .editColorDialogTheme
+                  .pickerTypeTextStyle,
+              selectedPickerTypeColor: ManualWidgetTesterTheme.of(context)
+                  .editColorDialogTheme
+                  .selectedPickerTypeColor,
+              spacing: ManualWidgetTesterTheme.of(context)
+                  .editColorDialogTheme
+                  .spacing,
+              runSpacing: ManualWidgetTesterTheme.of(context)
+                  .editColorDialogTheme
+                  .runSpacing,
+              columnSpacing: ManualWidgetTesterTheme.of(context)
+                  .editColorDialogTheme
+                  .columnSpacing,
+              showColorCode: true,
+              colorCodeHasColor: true,
+              pickersEnabled: const {
+                flex_color_picker.ColorPickerType.primary: true,
+                flex_color_picker.ColorPickerType.accent: true,
+                flex_color_picker.ColorPickerType.wheel: true,
+              },
+            ),
+          ),
+        );
+      },
+    );
   }
 
   SizedBox _buildCheckerboardBackground() {

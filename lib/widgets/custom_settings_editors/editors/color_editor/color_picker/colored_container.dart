@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 class ColoredContainer extends StatelessWidget {
-  const ColoredContainer(
-      {Key? key,
-      required this.isSelectedColorDark,
-      required this.doShowEditIcon,
-      required this.selectedColor})
-      : super(key: key);
+  const ColoredContainer({
+    super.key,
+    required this.isSelectedColorDark,
+    required this.doShowEditIcon,
+    required this.selectedColor,
+  });
 
   final bool isSelectedColorDark;
   final bool doShowEditIcon;
@@ -41,8 +41,9 @@ class ColoredContainer extends StatelessWidget {
                 .editColorButtonTheme
                 .iconAnimationDuration,
             tween: Tween<double>(
-                begin: doShowEditIcon ? 1.0 : 0.0,
-                end: doShowEditIcon ? 1.0 : 0.0),
+              begin: doShowEditIcon ? 1.0 : 0.0,
+              end: doShowEditIcon ? 1.0 : 0.0,
+            ),
             curve: ManualWidgetTesterTheme.of(context)
                 .editColorButtonTheme
                 .iconAnimationCurve,
@@ -99,6 +100,7 @@ class ColoredContainer extends StatelessWidget {
   String _generateColorCodeString() {
     final rawColorString =
         selectedColor.value.toRadixString(16).toUpperCase().padLeft(8, '0');
+
     return '0x$rawColorString';
   }
 }

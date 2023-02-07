@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ManualWidgetTesterBackground extends StatelessWidget {
-  const ManualWidgetTesterBackground({Key? key, required this.color})
-      : super(key: key);
+  const ManualWidgetTesterBackground({super.key, required this.color});
 
   final Color color;
 

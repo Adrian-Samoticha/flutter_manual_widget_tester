@@ -4,10 +4,10 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/close_button.da
 
 class CloseTabButton extends StatelessWidget {
   const CloseTabButton({
-    Key? key,
+    super.key,
     required this.tweenValue,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   final double tweenValue;
   final void Function() onPressed;

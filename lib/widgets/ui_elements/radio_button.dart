@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 class ManualWidgetTesterRadioButton extends StatelessWidget {
-  final bool isSelected;
+  const ManualWidgetTesterRadioButton({super.key, required this.isSelected});
 
-  const ManualWidgetTesterRadioButton({Key? key, required this.isSelected})
-      : super(key: key);
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +21,14 @@ class ManualWidgetTesterRadioButton extends StatelessWidget {
 }
 
 class ManualWidgetTesterRadioButtonWithLabel extends StatelessWidget {
+  const ManualWidgetTesterRadioButtonWithLabel({
+    super.key,
+    required this.isSelected,
+    required this.label,
+  });
+
   final bool isSelected;
   final String label;
-
-  const ManualWidgetTesterRadioButtonWithLabel(
-      {Key? key, required this.isSelected, required this.label})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,20 +43,23 @@ class ManualWidgetTesterRadioButtonWithLabel extends StatelessWidget {
           ),
         ),
         SizedBox(
-            width: ManualWidgetTesterTheme.of(context)
-                .radioButtonTheme
-                .spaceBetweenRadioButtonAndLabel),
+          width: ManualWidgetTesterTheme.of(context)
+              .radioButtonTheme
+              .spaceBetweenRadioButtonAndLabel,
+        ),
         Expanded(
-          child: Text(label,
-              softWrap: false,
-              overflow: TextOverflow.fade,
-              style: isSelected
-                  ? ManualWidgetTesterTheme.of(context)
-                      .radioButtonTheme
-                      .selectedRadioButtonLabelStyle
-                  : ManualWidgetTesterTheme.of(context)
-                      .radioButtonTheme
-                      .unselectedRadioButtonLabelStyle),
+          child: Text(
+            label,
+            softWrap: false,
+            overflow: TextOverflow.fade,
+            style: isSelected
+                ? ManualWidgetTesterTheme.of(context)
+                    .radioButtonTheme
+                    .selectedRadioButtonLabelStyle
+                : ManualWidgetTesterTheme.of(context)
+                    .radioButtonTheme
+                    .unselectedRadioButtonLabelStyle,
+          ),
         ),
       ],
     );

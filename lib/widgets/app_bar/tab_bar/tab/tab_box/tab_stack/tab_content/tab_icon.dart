@@ -3,12 +3,12 @@ import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
 class TabIcon extends StatelessWidget {
   const TabIcon({
-    Key? key,
+    super.key,
     required this.icon,
     required this.iconColor,
     required this.isFocused,
     required this.isBeingHovered,
-  }) : super(key: key);
+  });
 
   final IconData icon;
   final Color? iconColor;

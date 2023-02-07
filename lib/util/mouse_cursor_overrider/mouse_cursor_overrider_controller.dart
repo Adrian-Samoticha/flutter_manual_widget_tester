@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/rendering.dart';
 
 class _MouseCursorOverride {
+  _MouseCursorOverride(this.mouseCursor, this.id);
+
   final MouseCursor mouseCursor;
   final int id;
-
-  _MouseCursorOverride(this.mouseCursor, this.id);
 }
 
 class _MouseCursorOverrideGenerator {
@@ -26,7 +26,8 @@ class MouseCursorOverriderController {
 
   StreamSubscription<MouseCursorOverriderController>
       registerOnMouseCursorOverrideChanged(
-          void Function(MouseCursorOverriderController) callback) {
+    void Function(MouseCursorOverriderController) callback,
+  ) {
     return _onMouseCursorOverrideChangedStream.stream.listen(callback);
   }
 
@@ -36,6 +37,7 @@ class MouseCursorOverriderController {
     final newOverride =
         mouseCursorOverrideGenerator.generateMouseCursorOverride(mouseCursor);
     _overrides.add(newOverride);
+
     return newOverride.id;
   }
 
