@@ -47,6 +47,7 @@ dart_code_metrics:
     - avoid-expanded-as-spacer
     - avoid-unnecessary-setstate
     - prefer-const-border-radius
+    - avoid-returning-widgets
     - member-ordering:
         alphabetize: false
         order:
