@@ -14,16 +14,6 @@ class RunningTestSessionsList extends StatelessWidget {
 
   final WidgetTestSessionHandler widgetTestSessionHandler;
 
-  @override
-  Widget build(BuildContext context) {
-    return ManualWidgetTesterFoldableRegion(
-      heading: 'RUNNING TEST SESSIONS',
-      child: Column(
-        children: _generateTestSessionColumnChildren(context),
-      ),
-    );
-  }
-
   List<Widget> _generateTestSessionColumnChildren(BuildContext context) {
     final enableIcons = widgetTestSessionHandler.widgetTestSessions
         .where((element) => element.icon != null)
@@ -52,5 +42,15 @@ class RunningTestSessionsList extends StatelessWidget {
         })
         .values
         .toList();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ManualWidgetTesterFoldableRegion(
+      heading: 'RUNNING TEST SESSIONS',
+      child: Column(
+        children: _generateTestSessionColumnChildren(context),
+      ),
+    );
   }
 }

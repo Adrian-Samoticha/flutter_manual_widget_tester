@@ -32,43 +32,6 @@ class _ColorPickerState extends State<ColorPicker> {
     super.initState();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final isSelectedColorDark = widget.selectedColor.computeLuminance() < 0.5;
-
-    return RepaintBoundary(
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        onEnter: (_) => setState(() {
-          _isBeingHovered = true;
-        }),
-        onExit: (_) => setState(() {
-          _isBeingHovered = false;
-        }),
-        child: GestureDetector(
-          onTap: () {
-            _colorWorkingCopy = widget.selectedColor;
-            setState(() {
-              _isDialogOpen = true;
-            });
-
-            _showEditColorDialog(context);
-          },
-          child: Stack(
-            children: [
-              _buildCheckerboardBackground(),
-              ColoredContainer(
-                isSelectedColorDark: isSelectedColorDark,
-                doShowEditIcon: _isBeingHovered || _isDialogOpen,
-                selectedColor: widget.selectedColor,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
   void _showEditColorDialog(BuildContext context) {
     return ManualWidgetTesterDialogGenerator.showEditSettingDialog(
       context: context,
@@ -146,6 +109,43 @@ class _ColorPickerState extends State<ColorPicker> {
             .editColorButtonTheme
             .borderRadius,
         child: const Checkerboard(),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isSelectedColorDark = widget.selectedColor.computeLuminance() < 0.5;
+
+    return RepaintBoundary(
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        onEnter: (_) => setState(() {
+          _isBeingHovered = true;
+        }),
+        onExit: (_) => setState(() {
+          _isBeingHovered = false;
+        }),
+        child: GestureDetector(
+          onTap: () {
+            _colorWorkingCopy = widget.selectedColor;
+            setState(() {
+              _isDialogOpen = true;
+            });
+
+            _showEditColorDialog(context);
+          },
+          child: Stack(
+            children: [
+              _buildCheckerboardBackground(),
+              ColoredContainer(
+                isSelectedColorDark: isSelectedColorDark,
+                doShowEditIcon: _isBeingHovered || _isDialogOpen,
+                selectedColor: widget.selectedColor,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

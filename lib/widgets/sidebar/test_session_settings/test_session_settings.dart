@@ -18,6 +18,22 @@ class TestSessionSettings extends StatelessWidget {
   final TypeEditorBuilder typeEditorBuilder;
   final WidgetTestSessionHandler widgetTestSessionHandler;
 
+  String _getCurrentTestSessionNameFormatted() {
+    final currentName = _getCurrentTestSessionName();
+
+    return StringUtils.camelCaseToUpperUnderscore(currentName)
+        .replaceAll('_', ' ')
+        .replaceAll('.', '')
+        .replaceAll('  ', ' ')
+        .trim();
+  }
+
+  String _getCurrentTestSessionName() {
+    final sessionHandler = widgetTestSessionHandler;
+
+    return sessionHandler.widgetTestSessions[sessionHandler.currentIndex].name;
+  }
+
   @override
   Widget build(BuildContext context) {
     return ManualWidgetTesterFoldableRegion(
@@ -40,21 +56,5 @@ class TestSessionSettings extends StatelessWidget {
         }).toList(),
       ),
     );
-  }
-
-  String _getCurrentTestSessionNameFormatted() {
-    final currentName = _getCurrentTestSessionName();
-
-    return StringUtils.camelCaseToUpperUnderscore(currentName)
-        .replaceAll('_', ' ')
-        .replaceAll('.', '')
-        .replaceAll('  ', ' ')
-        .trim();
-  }
-
-  String _getCurrentTestSessionName() {
-    final sessionHandler = widgetTestSessionHandler;
-
-    return sessionHandler.widgetTestSessions[sessionHandler.currentIndex].name;
   }
 }

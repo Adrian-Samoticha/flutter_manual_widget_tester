@@ -23,17 +23,6 @@ class CustomSettings extends StatelessWidget {
   final WidgetTestSession session;
   final TypeEditorBuilder typeEditorBuilder;
 
-  @override
-  Widget build(BuildContext context) {
-    return ManualWidgetTesterFoldableRegion(
-      isIndented: true,
-      heading: 'CUSTOM SETTINGS',
-      child: Column(
-        children: _generateCustomSettingsChildren(context),
-      ),
-    );
-  }
-
   List<Widget> _generateCustomSettingsChildren(BuildContext context) {
     final customSettings = session.customSettings;
 
@@ -136,6 +125,17 @@ class CustomSettings extends StatelessWidget {
         style: ManualWidgetTesterTheme.of(context)
             .noCustomSettingsMessageTheme
             .textStyle,
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ManualWidgetTesterFoldableRegion(
+      isIndented: true,
+      heading: 'CUSTOM SETTINGS',
+      child: Column(
+        children: _generateCustomSettingsChildren(context),
       ),
     );
   }

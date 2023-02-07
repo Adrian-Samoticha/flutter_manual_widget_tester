@@ -25,40 +25,6 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
   final int? upperValue;
   final int stepSize;
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: ManualWidgetTesterTheme.of(context).customSettingsTheme.padding,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          ManualWidgetTesterCustomSettingsHeading(
-            settingName: settingName,
-          ),
-          SizedBox(
-            height:
-                ManualWidgetTesterTheme.of(context).stringEditorTheme.height,
-            child: LayoutBuilder(builder: (context, constraints) {
-              return Row(
-                children: [
-                  Expanded(
-                    child: _buildTextField(),
-                  ),
-                  SizedBox(
-                    width: ManualWidgetTesterTheme.of(context)
-                        .generalTheme
-                        .spaceBetweenTextBoxesAndButtonRows,
-                  ),
-                  _buildButtonRow(context, constraints),
-                ],
-              );
-            }),
-          ),
-        ],
-      ),
-    );
-  }
-
   ManualWidgetTesterTextField _buildTextField() {
     return ManualWidgetTesterTextField(
       initialValue: currentValue.toString(),
@@ -98,6 +64,40 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
                     onChanged(currentValue + stepSize);
                   }
                 : null,
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: ManualWidgetTesterTheme.of(context).customSettingsTheme.padding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          ManualWidgetTesterCustomSettingsHeading(
+            settingName: settingName,
+          ),
+          SizedBox(
+            height:
+                ManualWidgetTesterTheme.of(context).stringEditorTheme.height,
+            child: LayoutBuilder(builder: (context, constraints) {
+              return Row(
+                children: [
+                  Expanded(
+                    child: _buildTextField(),
+                  ),
+                  SizedBox(
+                    width: ManualWidgetTesterTheme.of(context)
+                        .generalTheme
+                        .spaceBetweenTextBoxesAndButtonRows,
+                  ),
+                  _buildButtonRow(context, constraints),
+                ],
+              );
+            }),
           ),
         ],
       ),

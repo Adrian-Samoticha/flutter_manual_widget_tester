@@ -51,13 +51,6 @@ class _ManualWidgetTesterSidebarState extends State<ManualWidgetTesterSidebar> {
     super.initState();
   }
 
-  @override
-  void dispose() {
-    _widgetTestSessionsChangedStream.cancel();
-
-    super.dispose();
-  }
-
   double _getLegalDisplayWidthFromDraggedWidth(double draggedWidth) {
     const lowerBound = 96.0;
     final upperBound = widget.maxWidth;
@@ -67,6 +60,13 @@ class _ManualWidgetTesterSidebarState extends State<ManualWidgetTesterSidebar> {
     }
 
     return draggedWidth.clamp(lowerBound, upperBound);
+  }
+
+  @override
+  void dispose() {
+    _widgetTestSessionsChangedStream.cancel();
+
+    super.dispose();
   }
 
   @override

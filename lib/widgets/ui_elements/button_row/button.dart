@@ -28,59 +28,6 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
   bool _isBeingHovered = false;
   bool _isPressed = false;
 
-  @override
-  Widget build(BuildContext context) {
-    bool isDisabled = widget.button.onButtonDown == null &&
-        widget.button.onButtonPressed == null;
-
-    return _buildDefaultTextStyleAndIconTheme(
-      isPressed: _isPressed,
-      isDisabled: isDisabled,
-      child: SizedBox.expand(
-        child: MouseRegion(
-          cursor: isDisabled
-              ? SystemMouseCursors.forbidden
-              : SystemMouseCursors.click,
-          onEnter: (_) => setState(() {
-            if (isDisabled) {
-              return;
-            }
-            _isBeingHovered = true;
-          }),
-          onExit: (_) => setState(() {
-            _isBeingHovered = false;
-          }),
-          child: GestureDetector(
-            onTapDown: (_) => setState(() {
-              if (isDisabled) {
-                return;
-              }
-              _isPressed = true;
-
-              if (widget.button.onButtonDown != null) {
-                widget.button.onButtonDown!();
-              }
-            }),
-            onTapUp: (_) => setState(() {
-              _isPressed = false;
-            }),
-            onTapCancel: () => setState(() {
-              _isPressed = false;
-            }),
-            onTap: () {
-              if (widget.button.onButtonPressed != null) {
-                widget.button.onButtonPressed!();
-              }
-            },
-            child: _buildButtonStack(
-              isDisabled: isDisabled,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   Stack _buildButtonStack({required bool isDisabled}) {
     return Stack(
       fit: StackFit.expand,
@@ -280,5 +227,58 @@ class _ManualWidgetTesterButtonState extends State<ManualWidgetTesterButton> {
       Color.fromRGBO(255, 255, 255, 0.0),
       Color.fromRGBO(255, 255, 255, 0.0),
     ];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    bool isDisabled = widget.button.onButtonDown == null &&
+        widget.button.onButtonPressed == null;
+
+    return _buildDefaultTextStyleAndIconTheme(
+      isPressed: _isPressed,
+      isDisabled: isDisabled,
+      child: SizedBox.expand(
+        child: MouseRegion(
+          cursor: isDisabled
+              ? SystemMouseCursors.forbidden
+              : SystemMouseCursors.click,
+          onEnter: (_) => setState(() {
+            if (isDisabled) {
+              return;
+            }
+            _isBeingHovered = true;
+          }),
+          onExit: (_) => setState(() {
+            _isBeingHovered = false;
+          }),
+          child: GestureDetector(
+            onTapDown: (_) => setState(() {
+              if (isDisabled) {
+                return;
+              }
+              _isPressed = true;
+
+              if (widget.button.onButtonDown != null) {
+                widget.button.onButtonDown!();
+              }
+            }),
+            onTapUp: (_) => setState(() {
+              _isPressed = false;
+            }),
+            onTapCancel: () => setState(() {
+              _isPressed = false;
+            }),
+            onTap: () {
+              if (widget.button.onButtonPressed != null) {
+                widget.button.onButtonPressed!();
+              }
+            },
+            child: _buildButtonStack(
+              isDisabled: isDisabled,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

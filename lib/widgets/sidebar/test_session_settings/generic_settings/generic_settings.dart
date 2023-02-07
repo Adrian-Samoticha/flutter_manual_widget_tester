@@ -40,6 +40,17 @@ class _GenericSettingsState extends State<GenericSettings> {
     super.initState();
   }
 
+  List<Widget> _generateGenericSettingsChildren() {
+    return [
+      MediaQuerySettings(
+        session: widget.session,
+      ),
+      DefaultTextStyleSettings(
+        session: widget.session,
+      ),
+    ];
+  }
+
   @override
   void dispose() {
     _onGenericSettingsChangedStreamSubscription.cancel();
@@ -56,16 +67,5 @@ class _GenericSettingsState extends State<GenericSettings> {
         children: _generateGenericSettingsChildren(),
       ),
     );
-  }
-
-  List<Widget> _generateGenericSettingsChildren() {
-    return [
-      MediaQuerySettings(
-        session: widget.session,
-      ),
-      DefaultTextStyleSettings(
-        session: widget.session,
-      ),
-    ];
   }
 }

@@ -29,18 +29,6 @@ class _ResizableCornersState extends State<ResizableCorners> {
   int _mouseCursorOverrideId = 0;
   bool _isBeingDragged = false;
 
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        _buildResizeHandle(isRight: false, isBottom: false),
-        _buildResizeHandle(isRight: true, isBottom: false),
-        _buildResizeHandle(isRight: false, isBottom: true),
-        _buildResizeHandle(isRight: true, isBottom: true),
-      ],
-    );
-  }
-
   Widget _buildResizeHandle({required bool isRight, required bool isBottom}) {
     final mouseCursor = _getMouseCursorForCorner(
       isRight: isRight,
@@ -120,5 +108,17 @@ class _ResizableCornersState extends State<ResizableCorners> {
     }
 
     return MouseCursor.defer;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        _buildResizeHandle(isRight: false, isBottom: false),
+        _buildResizeHandle(isRight: true, isBottom: false),
+        _buildResizeHandle(isRight: false, isBottom: true),
+        _buildResizeHandle(isRight: true, isBottom: true),
+      ],
+    );
   }
 }

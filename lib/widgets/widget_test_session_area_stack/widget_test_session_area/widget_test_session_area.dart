@@ -40,35 +40,6 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
     super.initState();
   }
 
-  @override
-  void dispose() {
-    _genericSettingsChangedStreamSubscription.cancel();
-
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      final displayWidth = _getLegalDisplaySizeFromDraggedSize(
-        _draggedWidth,
-        constraints.maxWidth,
-      );
-      final displayHeight = _getLegalDisplaySizeFromDraggedSize(
-        _draggedHeight,
-        constraints.maxHeight,
-      );
-
-      return Stack(
-        children: [
-          _generateToBeTestedWidget(displayWidth, displayHeight),
-          ..._generateResizableHandles(displayWidth, displayHeight),
-          _buildZoomControls(),
-        ],
-      );
-    });
-  }
-
   Widget _buildZoomControls() {
     const minZoom = 0.2;
     const maxZoom = 4.0;
@@ -183,5 +154,34 @@ class _ManualWidgetTesterWidgetTestSessionAreaState
         }),
       ),
     ];
+  }
+
+  @override
+  void dispose() {
+    _genericSettingsChangedStreamSubscription.cancel();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraints) {
+      final displayWidth = _getLegalDisplaySizeFromDraggedSize(
+        _draggedWidth,
+        constraints.maxWidth,
+      );
+      final displayHeight = _getLegalDisplaySizeFromDraggedSize(
+        _draggedHeight,
+        constraints.maxHeight,
+      );
+
+      return Stack(
+        children: [
+          _generateToBeTestedWidget(displayWidth, displayHeight),
+          ..._generateResizableHandles(displayWidth, displayHeight),
+          _buildZoomControls(),
+        ],
+      );
+    });
   }
 }

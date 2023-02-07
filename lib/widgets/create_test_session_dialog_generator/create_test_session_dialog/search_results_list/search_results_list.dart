@@ -20,26 +20,6 @@ class SearchResultsList extends StatelessWidget {
   final int legalSelectedSearchResultIndex;
   final double maxHeight;
 
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTextStyle(
-      style: DefaultTextStyleProvider.defaultTextStyle,
-      child: Padding(
-        padding: ManualWidgetTesterTheme.of(context)
-            .createTestSessionDialogTheme
-            .searchResultsPadding,
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxHeight: maxHeight,
-          ),
-          child: SingleChildScrollView(
-            child: _buildSearchResultList(),
-          ),
-        ),
-      ),
-    );
-  }
-
   Column _buildSearchResultList() {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -57,6 +37,26 @@ class SearchResultsList extends StatelessWidget {
           widgetTestSessionHandler: widgetTestSessionHandler,
         );
       }).toList(),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTextStyle(
+      style: DefaultTextStyleProvider.defaultTextStyle,
+      child: Padding(
+        padding: ManualWidgetTesterTheme.of(context)
+            .createTestSessionDialogTheme
+            .searchResultsPadding,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: maxHeight,
+          ),
+          child: SingleChildScrollView(
+            child: _buildSearchResultList(),
+          ),
+        ),
+      ),
     );
   }
 }

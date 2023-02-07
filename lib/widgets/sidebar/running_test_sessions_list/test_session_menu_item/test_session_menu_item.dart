@@ -34,51 +34,6 @@ class _ManualWidgetTesterTestSessionMenuItemState
     extends State<ManualWidgetTesterTestSessionMenuItem> {
   bool _isBeingHovered = false;
 
-  @override
-  Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() {
-        _isBeingHovered = true;
-      }),
-      onExit: (_) => setState(() {
-        _isBeingHovered = false;
-      }),
-      child: GestureDetector(
-        onTapDown: (_) => widget.onSelect(),
-        onTertiaryTapDown: (_) => widget.onClose(),
-        child: Opacity(
-          opacity: widget.tabIndex == widget.focusedTabIndex
-              ? 1.0
-              : ManualWidgetTesterTheme.of(context)
-                  .testSessionMenuItemTheme
-                  .unfocusedTabOpacity,
-          child: Container(
-            height: ManualWidgetTesterTheme.of(context)
-                .testSessionMenuItemTheme
-                .height,
-            decoration: widget.tabIndex != widget.focusedTabIndex
-                ? null
-                : ManualWidgetTesterTheme.of(context)
-                    .testSessionMenuItemTheme
-                    .focusedTabTintDecoration,
-            child: Stack(
-              children: [
-                _buildHoverTint(),
-                Padding(
-                  padding: ManualWidgetTesterTheme.of(context)
-                      .testSessionMenuItemTheme
-                      .padding,
-                  child: _buildTabRow(),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   Row _buildTabRow() {
     return Row(
       children: [
@@ -142,6 +97,51 @@ class _ManualWidgetTesterTestSessionMenuItemState
         decoration: ManualWidgetTesterTheme.of(context)
             .testSessionMenuItemTheme
             .hoverTintDecoration,
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() {
+        _isBeingHovered = true;
+      }),
+      onExit: (_) => setState(() {
+        _isBeingHovered = false;
+      }),
+      child: GestureDetector(
+        onTapDown: (_) => widget.onSelect(),
+        onTertiaryTapDown: (_) => widget.onClose(),
+        child: Opacity(
+          opacity: widget.tabIndex == widget.focusedTabIndex
+              ? 1.0
+              : ManualWidgetTesterTheme.of(context)
+                  .testSessionMenuItemTheme
+                  .unfocusedTabOpacity,
+          child: Container(
+            height: ManualWidgetTesterTheme.of(context)
+                .testSessionMenuItemTheme
+                .height,
+            decoration: widget.tabIndex != widget.focusedTabIndex
+                ? null
+                : ManualWidgetTesterTheme.of(context)
+                    .testSessionMenuItemTheme
+                    .focusedTabTintDecoration,
+            child: Stack(
+              children: [
+                _buildHoverTint(),
+                Padding(
+                  padding: ManualWidgetTesterTheme.of(context)
+                      .testSessionMenuItemTheme
+                      .padding,
+                  child: _buildTabRow(),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

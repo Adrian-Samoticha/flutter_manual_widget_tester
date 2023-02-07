@@ -18,6 +18,30 @@ class ManualWidgetTesterButtonRow extends StatelessWidget {
   final bool disableRoundedCornersOnLeftSide;
   final bool disableRoundedCornersOnRightSide;
 
+  Widget _buildButtons() {
+    return Row(
+      children: buttons
+          .asMap()
+          .map((int index, ManualWidgetTesterButtonInfo button) {
+            final toBeReturnedWidget = Expanded(
+              child: ManualWidgetTesterButton(
+                button: button,
+                buttons: buttons,
+                index: index,
+                disableRoundedCornersOnLeftSide:
+                    disableRoundedCornersOnLeftSide,
+                disableRoundedCornersOnRightSide:
+                    disableRoundedCornersOnRightSide,
+              ),
+            );
+
+            return MapEntry(index, toBeReturnedWidget);
+          })
+          .values
+          .toList(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return RepaintBoundary(
@@ -42,30 +66,6 @@ class ManualWidgetTesterButtonRow extends StatelessWidget {
         ),
         child: _buildButtons(),
       ),
-    );
-  }
-
-  Widget _buildButtons() {
-    return Row(
-      children: buttons
-          .asMap()
-          .map((int index, ManualWidgetTesterButtonInfo button) {
-            final toBeReturnedWidget = Expanded(
-              child: ManualWidgetTesterButton(
-                button: button,
-                buttons: buttons,
-                index: index,
-                disableRoundedCornersOnLeftSide:
-                    disableRoundedCornersOnLeftSide,
-                disableRoundedCornersOnRightSide:
-                    disableRoundedCornersOnRightSide,
-              ),
-            );
-
-            return MapEntry(index, toBeReturnedWidget);
-          })
-          .values
-          .toList(),
     );
   }
 }

@@ -8,12 +8,12 @@ class MouseCursorOverriderInheritedWidget extends InheritedWidget {
     required super.child,
   }) : super();
 
-  final MouseCursorOverriderController controller;
-
   static MouseCursorOverriderController of(BuildContext context) => context
       .dependOnInheritedWidgetOfExactType<
           MouseCursorOverriderInheritedWidget>()!
       .controller;
+
+  final MouseCursorOverriderController controller;
 
   @override
   bool updateShouldNotify(MouseCursorOverriderInheritedWidget oldWidget) =>

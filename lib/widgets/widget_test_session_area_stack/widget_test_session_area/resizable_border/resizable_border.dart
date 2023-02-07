@@ -29,37 +29,6 @@ class ResizableBorder extends StatefulWidget {
 class _ResizableBorderState extends State<ResizableBorder> {
   int _mouseCursorOverrideId = 0;
 
-  @override
-  Widget build(BuildContext context) {
-    return RotatedBox(
-      quarterTurns: widget.isVertical ? 1 : 0,
-      child: Row(
-        children: [
-          Expanded(
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: RotatedBox(
-                quarterTurns: 3,
-                child: Text(
-                  '${(widget.oppositeSize / widget.zoom).round()} px',
-                  style: ManualWidgetTesterTheme.of(context)
-                      .widgetTestSessionAreaTheme
-                      .widgetSizeTextStyle,
-                ),
-              ),
-            ),
-          ),
-          _buildResizeHandle(isLeft: true),
-          Container(
-            width: widget.size,
-          ),
-          _buildResizeHandle(isLeft: false),
-          const Spacer(),
-        ],
-      ),
-    );
-  }
-
   Widget _buildResizeHandle({required bool isLeft}) {
     final mouseCursor = _getMouseCursor();
 
@@ -99,5 +68,36 @@ class _ResizableBorderState extends State<ResizableBorder> {
     return widget.isVertical
         ? SystemMouseCursors.resizeUpDown
         : SystemMouseCursors.resizeLeftRight;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return RotatedBox(
+      quarterTurns: widget.isVertical ? 1 : 0,
+      child: Row(
+        children: [
+          Expanded(
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: RotatedBox(
+                quarterTurns: 3,
+                child: Text(
+                  '${(widget.oppositeSize / widget.zoom).round()} px',
+                  style: ManualWidgetTesterTheme.of(context)
+                      .widgetTestSessionAreaTheme
+                      .widgetSizeTextStyle,
+                ),
+              ),
+            ),
+          ),
+          _buildResizeHandle(isLeft: true),
+          Container(
+            width: widget.size,
+          ),
+          _buildResizeHandle(isLeft: false),
+          const Spacer(),
+        ],
+      ),
+    );
   }
 }

@@ -7,11 +7,11 @@ class Config extends InheritedWidget {
   /// Creates a configuration widget for the [ManualWidgetTester].
   const Config({super.key, required super.child, required this.data});
 
-  final ConfigData data;
-
   static ConfigData of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<Config>()!.data;
   }
+
+  final ConfigData data;
 
   @override
   bool updateShouldNotify(Config oldWidget) {

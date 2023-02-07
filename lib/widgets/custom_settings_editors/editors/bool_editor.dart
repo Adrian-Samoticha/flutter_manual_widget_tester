@@ -16,6 +16,31 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
   final bool currentValue;
   final void Function(bool) onChanged;
 
+  Widget _buildRadioButtonWithLabel(BuildContext context, bool isTrue) {
+    return MouseRegion(
+      cursor:
+          isTrue != currentValue ? SystemMouseCursors.click : MouseCursor.defer,
+      child: GestureDetector(
+        onTapDown: (_) => onChanged(isTrue),
+        child: Container(
+          padding: ManualWidgetTesterTheme.of(context)
+              .boolEditorTheme
+              .radioButtonPadding,
+          color: Colors.transparent,
+          child: SizedBox(
+            height: ManualWidgetTesterTheme.of(context)
+                .boolEditorTheme
+                .editorHeight,
+            child: ManualWidgetTesterRadioButtonWithLabel(
+              isSelected: isTrue ? currentValue : !currentValue,
+              label: '$isTrue',
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -52,31 +77,6 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildRadioButtonWithLabel(BuildContext context, bool isTrue) {
-    return MouseRegion(
-      cursor:
-          isTrue != currentValue ? SystemMouseCursors.click : MouseCursor.defer,
-      child: GestureDetector(
-        onTapDown: (_) => onChanged(isTrue),
-        child: Container(
-          padding: ManualWidgetTesterTheme.of(context)
-              .boolEditorTheme
-              .radioButtonPadding,
-          color: Colors.transparent,
-          child: SizedBox(
-            height: ManualWidgetTesterTheme.of(context)
-                .boolEditorTheme
-                .editorHeight,
-            child: ManualWidgetTesterRadioButtonWithLabel(
-              isSelected: isTrue ? currentValue : !currentValue,
-              label: '$isTrue',
-            ),
-          ),
-        ),
       ),
     );
   }

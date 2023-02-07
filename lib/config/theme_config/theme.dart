@@ -9,8 +9,6 @@ class ManualWidgetTesterTheme extends InheritedWidget {
     required this.themeData,
   });
 
-  final ManualWidgetTesterThemeData themeData;
-
   static ManualWidgetTesterThemeData of(BuildContext context) {
     final theme =
         context.dependOnInheritedWidgetOfExactType<ManualWidgetTesterTheme>();
@@ -19,6 +17,8 @@ class ManualWidgetTesterTheme extends InheritedWidget {
 
     return theme!.themeData;
   }
+
+  final ManualWidgetTesterThemeData themeData;
 
   @override
   bool updateShouldNotify(ManualWidgetTesterTheme oldWidget) {

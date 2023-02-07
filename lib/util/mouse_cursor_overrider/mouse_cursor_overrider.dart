@@ -42,10 +42,10 @@ class MouseCursorOverrider extends StatefulWidget {
   /// ```
   const MouseCursorOverrider({super.key, this.child});
 
-  final Widget? child;
-
   static MouseCursorOverriderController of(BuildContext context) =>
       MouseCursorOverriderInheritedWidget.of(context);
+
+  final Widget? child;
 
   @override
   State<MouseCursorOverrider> createState() => _MouseCursorOverriderState();

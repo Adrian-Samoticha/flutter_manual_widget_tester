@@ -17,6 +17,13 @@ class TabBackground extends StatelessWidget {
 
   bool get _isFocused => tabIndex == focusedTabIndex;
 
+  Align _buildRightAlignedTabSeparator() {
+    return const Align(
+      alignment: Alignment.centerRight,
+      child: TabSeparator(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final tabDecoration = _isFocused
@@ -38,13 +45,6 @@ class TabBackground extends StatelessWidget {
           isFocused: _isFocused,
         ),
       ],
-    );
-  }
-
-  Align _buildRightAlignedTabSeparator() {
-    return const Align(
-      alignment: Alignment.centerRight,
-      child: TabSeparator(),
     );
   }
 }

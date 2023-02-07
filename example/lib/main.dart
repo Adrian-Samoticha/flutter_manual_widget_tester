@@ -2,6 +2,7 @@ import 'package:example/widgets/image_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/backend/constrained_types/clamped_double.dart';
 import 'package:flutter_manual_widget_tester/backend/constrained_types/constrained_int.dart';
+import 'package:flutter_manual_widget_tester/config/theme_config/theme_generator/theme_generator_parameters.dart';
 import 'package:flutter_manual_widget_tester/flutter_manual_widget_tester.dart';
 
 void main() {
@@ -208,7 +209,15 @@ class _MyHomePageState extends State<MyHomePage> {
     ];
 
     return ManualWidgetTester(
-      themeData: const ManualWidgetTesterThemeData(),
+      themeData: ManualWidgetTesterThemeData.fromThemeGeneratorParameters(
+          ThemeGeneratorParameters(
+        backgroundColor: Colors.blue,
+        primaryColor: Colors.orange,
+        brightness: Brightness.light,
+        animationSpeed: AnimationSpeed.slow,
+        designLanguage: DesignLanguage.skeuomorphic,
+        layout: Layout.compact,
+      )),
       builders: builders,
     );
   }

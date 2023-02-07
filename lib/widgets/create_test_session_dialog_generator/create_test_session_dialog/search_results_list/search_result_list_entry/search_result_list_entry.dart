@@ -32,6 +32,18 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
 
   bool get _isSelected => widget.index == widget.legalSelectedSearchResultIndex;
 
+  @override
+  void initState() {
+    super.initState();
+
+    // During the first build `_globalKey.currentContext` is null, therefore,
+    // use a timer to ensure that `_ensureVisible` is called after `build` has
+    // completed.
+    if (_isSelected) {
+      Timer(const Duration(), _ensureVisible);
+    }
+  }
+
   void _ensureVisible() {
     if (_globalKey.currentContext == null) {
       return;
@@ -54,16 +66,30 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
     );
   }
 
-  @override
-  void initState() {
-    super.initState();
+  Row _buildIconAndNameRow() {
+    final themeData = ManualWidgetTesterTheme.of(context);
 
-    // During the first build `_globalKey.currentContext` is null, therefore,
-    // use a timer to ensure that `_ensureVisible` is called after `build` has
-    // completed.
-    if (_isSelected) {
-      Timer(const Duration(), _ensureVisible);
-    }
+    return Row(
+      children: [
+        ...widget.builder.icon == null
+            ? const []
+            : [
+                SearchResultIcon(
+                  icon: widget.builder.icon!,
+                  iconColor: widget.builder.iconColor ??
+                      themeData.iconTheme.defaultColor,
+                ),
+              ],
+        Expanded(
+          child: Text(
+            widget.builder.name,
+            softWrap: false,
+            overflow: TextOverflow.ellipsis,
+            style: themeData.createTestSessionDialogTheme.searchResultTextStyle,
+          ),
+        ),
+      ],
+    );
   }
 
   @override
@@ -117,32 +143,6 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
           ),
         ),
       ),
-    );
-  }
-
-  Row _buildIconAndNameRow() {
-    final themeData = ManualWidgetTesterTheme.of(context);
-
-    return Row(
-      children: [
-        ...widget.builder.icon == null
-            ? const []
-            : [
-                SearchResultIcon(
-                  icon: widget.builder.icon!,
-                  iconColor: widget.builder.iconColor ??
-                      themeData.iconTheme.defaultColor,
-                ),
-              ],
-        Expanded(
-          child: Text(
-            widget.builder.name,
-            softWrap: false,
-            overflow: TextOverflow.ellipsis,
-            style: themeData.createTestSessionDialogTheme.searchResultTextStyle,
-          ),
-        ),
-      ],
     );
   }
 }

@@ -38,6 +38,18 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
 
   bool get _isFocused => widget.tabIndex == widget.focusedTabIndex;
 
+  @override
+  void initState() {
+    super.initState();
+
+    // During the first build `_globalKey.currentContext` is null, therefore,
+    // use a timer to ensure that `_ensureVisible` is called after `build` has
+    // completed.
+    if (_isFocused) {
+      Timer(const Duration(), _ensureVisible);
+    }
+  }
+
   void _ensureVisible() {
     if (_globalKey.currentContext == null) {
       return;
@@ -58,18 +70,6 @@ class _ManualWidgetTesterTabState extends State<ManualWidgetTesterTab> {
           .scrollIntoViewDuration,
       alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd,
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
-    // During the first build `_globalKey.currentContext` is null, therefore,
-    // use a timer to ensure that `_ensureVisible` is called after `build` has
-    // completed.
-    if (_isFocused) {
-      Timer(const Duration(), _ensureVisible);
-    }
   }
 
   @override

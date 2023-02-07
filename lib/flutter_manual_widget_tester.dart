@@ -48,17 +48,17 @@ class _ManualWidgetTesterState extends State<ManualWidgetTester> {
             widget.doubleEditorInfiniteScrollViewScrollSpeedFactor,
       );
 
-  void _installDefaultEditorBuilders() {
-    EditorBuilderInstaller.installDefaultEditorBuilders(
-      typeEditorBuilder: _typeEditorBuilder,
-    );
-  }
-
   @override
   void initState() {
     _installDefaultEditorBuilders();
 
     super.initState();
+  }
+
+  void _installDefaultEditorBuilders() {
+    EditorBuilderInstaller.installDefaultEditorBuilders(
+      typeEditorBuilder: _typeEditorBuilder,
+    );
   }
 
   @override

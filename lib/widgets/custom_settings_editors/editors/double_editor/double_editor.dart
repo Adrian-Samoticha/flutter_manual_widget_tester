@@ -21,60 +21,13 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
     this.upperLimit = double.infinity,
   });
 
+  static const double epsilon = 0.00000001;
+
   final String settingName;
   final double currentValue;
   final void Function(double) onChanged;
   final double lowerLimit;
   final double upperLimit;
-
-  static const double epsilon = 0.00000001;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: ManualWidgetTesterTheme.of(context).customSettingsTheme.padding,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          ManualWidgetTesterCustomSettingsHeading(
-            settingName: settingName,
-          ),
-          Column(
-            children: [
-              SizedBox(
-                height: ManualWidgetTesterTheme.of(context)
-                    .stringEditorTheme
-                    .height,
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    return Row(
-                      children: [
-                        Expanded(
-                          child: _buildTextField(),
-                        ),
-                        SizedBox(
-                          width: ManualWidgetTesterTheme.of(context)
-                              .generalTheme
-                              .spaceBetweenTextBoxesAndButtonRows,
-                        ),
-                        _buildButtonRow(context, constraints),
-                      ],
-                    );
-                  },
-                ),
-              ),
-              SizedBox(
-                height: ManualWidgetTesterTheme.of(context)
-                    .doubleEditorTheme
-                    .spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView,
-              ),
-              _buildInfiniteScrollView(context),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
 
   Widget _buildInfiniteScrollView(BuildContext context) {
     return Listener(
@@ -171,6 +124,53 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
                 : () {
                     onChanged(currentValue + 0.2);
                   },
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: ManualWidgetTesterTheme.of(context).customSettingsTheme.padding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          ManualWidgetTesterCustomSettingsHeading(
+            settingName: settingName,
+          ),
+          Column(
+            children: [
+              SizedBox(
+                height: ManualWidgetTesterTheme.of(context)
+                    .stringEditorTheme
+                    .height,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return Row(
+                      children: [
+                        Expanded(
+                          child: _buildTextField(),
+                        ),
+                        SizedBox(
+                          width: ManualWidgetTesterTheme.of(context)
+                              .generalTheme
+                              .spaceBetweenTextBoxesAndButtonRows,
+                        ),
+                        _buildButtonRow(context, constraints),
+                      ],
+                    );
+                  },
+                ),
+              ),
+              SizedBox(
+                height: ManualWidgetTesterTheme.of(context)
+                    .doubleEditorTheme
+                    .spaceBetweenTextFieldAndDoubleEditorInfiniteScrollView,
+              ),
+              _buildInfiniteScrollView(context),
+            ],
           ),
         ],
       ),

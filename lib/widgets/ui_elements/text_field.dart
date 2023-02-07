@@ -23,6 +23,44 @@ class ManualWidgetTesterTextField extends StatelessWidget {
   final bool autofocus;
   final TextEditingController? textEditingController;
 
+  Material _buildTextField(BuildContext context) {
+    return Material(
+      type: MaterialType.transparency,
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          textSelectionTheme: TextSelectionThemeData(
+            selectionColor: ManualWidgetTesterTheme.of(context)
+                .textFieldTheme
+                .selectionColor,
+          ),
+        ),
+        child: TextField(
+          controller: textEditingController ??
+              TextEditingController(
+                text: initialValue,
+              ),
+          decoration: InputDecoration(
+            isDense: true,
+            contentPadding: ManualWidgetTesterTheme.of(context)
+                .textFieldTheme
+                .contentPadding,
+            border: InputBorder.none,
+            suffixText: suffix,
+            suffixStyle:
+                ManualWidgetTesterTheme.of(context).textFieldTheme.suffixStyle,
+          ),
+          style: ManualWidgetTesterTheme.of(context).textFieldTheme.textStyle,
+          cursorColor:
+              ManualWidgetTesterTheme.of(context).textFieldTheme.cursorColor,
+          autocorrect: false,
+          autofocus: autofocus,
+          onSubmitted: onSubmitted,
+          onChanged: onChanged,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
@@ -111,43 +149,5 @@ class ManualWidgetTesterTextField extends StatelessWidget {
         ),
       );
     });
-  }
-
-  Material _buildTextField(BuildContext context) {
-    return Material(
-      type: MaterialType.transparency,
-      child: Theme(
-        data: Theme.of(context).copyWith(
-          textSelectionTheme: TextSelectionThemeData(
-            selectionColor: ManualWidgetTesterTheme.of(context)
-                .textFieldTheme
-                .selectionColor,
-          ),
-        ),
-        child: TextField(
-          controller: textEditingController ??
-              TextEditingController(
-                text: initialValue,
-              ),
-          decoration: InputDecoration(
-            isDense: true,
-            contentPadding: ManualWidgetTesterTheme.of(context)
-                .textFieldTheme
-                .contentPadding,
-            border: InputBorder.none,
-            suffixText: suffix,
-            suffixStyle:
-                ManualWidgetTesterTheme.of(context).textFieldTheme.suffixStyle,
-          ),
-          style: ManualWidgetTesterTheme.of(context).textFieldTheme.textStyle,
-          cursorColor:
-              ManualWidgetTesterTheme.of(context).textFieldTheme.cursorColor,
-          autocorrect: false,
-          autofocus: autofocus,
-          onSubmitted: onSubmitted,
-          onChanged: onChanged,
-        ),
-      ),
-    );
   }
 }
