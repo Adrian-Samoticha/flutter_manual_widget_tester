@@ -7,7 +7,7 @@ import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/const/default_text_style_provider.dart';
 
 import 'resizable_border/resizable_border.dart';
-import 'resizable_corners.dart';
+import 'resizable_corners/resizable_corners.dart';
 import 'zoom_controls.dart';
 
 class ManualWidgetTesterWidgetTestSessionArea extends StatefulWidget {
