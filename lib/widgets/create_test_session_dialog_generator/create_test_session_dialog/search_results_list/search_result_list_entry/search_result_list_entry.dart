@@ -66,32 +66,6 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
     );
   }
 
-  Row _buildIconAndNameRow() {
-    final themeData = ManualWidgetTesterTheme.of(context);
-
-    return Row(
-      children: [
-        ...widget.builder.icon == null
-            ? const []
-            : [
-                SearchResultIcon(
-                  icon: widget.builder.icon!,
-                  iconColor: widget.builder.iconColor ??
-                      themeData.iconTheme.defaultColor,
-                ),
-              ],
-        Expanded(
-          child: Text(
-            widget.builder.name,
-            softWrap: false,
-            overflow: TextOverflow.ellipsis,
-            style: themeData.createTestSessionDialogTheme.searchResultTextStyle,
-          ),
-        ),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     if (_isSelected && !_wasSelected) {
@@ -139,10 +113,43 @@ class _SearchResultListEntryState extends State<SearchResultListEntry> {
                 : ManualWidgetTesterTheme.of(context)
                     .createTestSessionDialogTheme
                     .unselectedSearchResultDecoration,
-            child: _buildIconAndNameRow(),
+            child: _IconAndNameRow(builder: widget.builder),
           ),
         ),
       ),
+    );
+  }
+}
+
+class _IconAndNameRow extends StatelessWidget {
+  const _IconAndNameRow({required this.builder});
+
+  final WidgetTestBuilder builder;
+
+  @override
+  Widget build(BuildContext context) {
+    final themeData = ManualWidgetTesterTheme.of(context);
+
+    return Row(
+      children: [
+        ...builder.icon == null
+            ? const []
+            : [
+                SearchResultIcon(
+                  icon: builder.icon!,
+                  iconColor:
+                      builder.iconColor ?? themeData.iconTheme.defaultColor,
+                ),
+              ],
+        Expanded(
+          child: Text(
+            builder.name,
+            softWrap: false,
+            overflow: TextOverflow.ellipsis,
+            style: themeData.createTestSessionDialogTheme.searchResultTextStyle,
+          ),
+        ),
+      ],
     );
   }
 }
