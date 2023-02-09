@@ -20,7 +20,44 @@ class SearchResultsList extends StatelessWidget {
   final int legalSelectedSearchResultIndex;
   final double maxHeight;
 
-  Column _buildSearchResultList() {
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTextStyle(
+      style: DefaultTextStyleProvider.defaultTextStyle,
+      child: Padding(
+        padding: ManualWidgetTesterTheme.of(context)
+            .createTestSessionDialogTheme
+            .searchResultsPadding,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: maxHeight,
+          ),
+          child: SingleChildScrollView(
+            child: _SearchResultListColumn(
+              widgetTestSessionHandler: widgetTestSessionHandler,
+              searchResults: searchResults,
+              legalSelectedSearchResultIndex: legalSelectedSearchResultIndex,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SearchResultListColumn extends StatelessWidget {
+  const _SearchResultListColumn({
+    required this.widgetTestSessionHandler,
+    required this.searchResults,
+    required this.legalSelectedSearchResultIndex,
+  });
+
+  final WidgetTestSessionHandler widgetTestSessionHandler;
+  final List<WidgetTestBuilder> searchResults;
+  final int legalSelectedSearchResultIndex;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: searchResults
@@ -37,26 +74,6 @@ class SearchResultsList extends StatelessWidget {
           widgetTestSessionHandler: widgetTestSessionHandler,
         );
       }).toList(),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTextStyle(
-      style: DefaultTextStyleProvider.defaultTextStyle,
-      child: Padding(
-        padding: ManualWidgetTesterTheme.of(context)
-            .createTestSessionDialogTheme
-            .searchResultsPadding,
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxHeight: maxHeight,
-          ),
-          child: SingleChildScrollView(
-            child: _buildSearchResultList(),
-          ),
-        ),
-      ),
     );
   }
 }
