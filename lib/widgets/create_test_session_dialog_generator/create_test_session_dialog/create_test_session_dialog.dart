@@ -6,9 +6,9 @@ import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/util/get_resemblance_to_search_term.dart';
-import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 
 import 'no_matching_results_message.dart';
+import 'search_bar.dart';
 import 'search_results_list/search_results_list.dart';
 
 class CreateTestSessionDialog extends StatefulWidget {
@@ -28,7 +28,6 @@ class CreateTestSessionDialog extends StatefulWidget {
 
 class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
   var _searchTerm = '';
-  final _textEditingController = TextEditingController();
   var _selectedSearchResultIndex = 0;
   late List<WidgetTestBuilder> _searchResults;
 
@@ -79,32 +78,21 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _buildSearchBar(),
+          SearchBar(
+            onSearchTermChanged: (newSearchTerm) {
+              setState(() {
+                _selectedSearchResultIndex = 0;
+                _searchTerm = newSearchTerm;
+                _searchResults =
+                    _generateSearchResultsFromSearchTerm(_searchTerm);
+              });
+            },
+          ),
           _buildSearchResultList(MediaQuery.of(context).size.height *
               ManualWidgetTesterTheme.of(context)
                   .createTestSessionDialogTheme
                   .searchResultsHeightFactor),
         ],
-      ),
-    );
-  }
-
-  Widget _buildSearchBar() {
-    return SizedBox(
-      height: ManualWidgetTesterTheme.of(context)
-          .createTestSessionDialogTheme
-          .searchBarHeight,
-      child: ManualWidgetTesterTextField(
-        textEditingController: _textEditingController,
-        onSubmitted: (_) {},
-        onChanged: (newSearchTerm) {
-          setState(() {
-            _selectedSearchResultIndex = 0;
-            _searchTerm = newSearchTerm;
-            _searchResults = _generateSearchResultsFromSearchTerm(_searchTerm);
-          });
-        },
-        autofocus: true,
       ),
     );
   }
