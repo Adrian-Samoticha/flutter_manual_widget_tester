@@ -88,25 +88,17 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
               });
             },
           ),
-          _buildSearchResultList(MediaQuery.of(context).size.height *
-              ManualWidgetTesterTheme.of(context)
-                  .createTestSessionDialogTheme
-                  .searchResultsHeightFactor),
+          _SearchResultsListOrNoMatchingResultsMessage(
+            widgetTestSessionHandler: widget.widgetTestSessionHandler,
+            legalSelectedSearchResultIndex: _legalSelectedSearchResultIndex,
+            searchResults: _searchResults,
+            maxHeight: MediaQuery.of(context).size.height *
+                ManualWidgetTesterTheme.of(context)
+                    .createTestSessionDialogTheme
+                    .searchResultsHeightFactor,
+          ),
         ],
       ),
-    );
-  }
-
-  Widget _buildSearchResultList(double maxHeight) {
-    if (_searchResults.isEmpty) {
-      return const NoMatchingResultsMessage();
-    }
-
-    return SearchResultsList(
-      widgetTestSessionHandler: widget.widgetTestSessionHandler,
-      searchResults: _searchResults,
-      legalSelectedSearchResultIndex: _legalSelectedSearchResultIndex,
-      maxHeight: maxHeight,
     );
   }
 
@@ -182,6 +174,34 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _SearchResultsListOrNoMatchingResultsMessage extends StatelessWidget {
+  const _SearchResultsListOrNoMatchingResultsMessage({
+    required this.searchResults,
+    required this.legalSelectedSearchResultIndex,
+    required this.maxHeight,
+    required this.widgetTestSessionHandler,
+  });
+
+  final List<WidgetTestBuilder> searchResults;
+  final int legalSelectedSearchResultIndex;
+  final double maxHeight;
+  final WidgetTestSessionHandler widgetTestSessionHandler;
+
+  @override
+  Widget build(BuildContext context) {
+    if (searchResults.isEmpty) {
+      return const NoMatchingResultsMessage();
+    }
+
+    return SearchResultsList(
+      widgetTestSessionHandler: widgetTestSessionHandler,
+      searchResults: searchResults,
+      legalSelectedSearchResultIndex: legalSelectedSearchResultIndex,
+      maxHeight: maxHeight,
     );
   }
 }
