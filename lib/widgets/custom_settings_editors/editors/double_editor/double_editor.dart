@@ -5,6 +5,7 @@ import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart
 import 'package:sprintf/sprintf.dart';
 
 import 'button_row_with_constraints.dart';
+import 'double_editor_text_field.dart';
 import 'themed_interactive_infinite_scroll_view/themed_interactive_infinite_scroll_view.dart';
 
 class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
@@ -55,7 +56,10 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
                     return Row(
                       children: [
                         Expanded(
-                          child: _buildTextField(),
+                          child: DoubleEditorTextField(
+                            currentValue: currentValue,
+                            onChanged: onChanged,
+                          ),
                         ),
                         SizedBox(
                           width: ManualWidgetTesterTheme.of(context)
