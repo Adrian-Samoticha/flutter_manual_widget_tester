@@ -1,12 +1,10 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/ui_elements/heading.dart';
-import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row/button_row.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 import 'package:sprintf/sprintf.dart';
 
+import 'button_row_with_constraints.dart';
 import 'themed_interactive_infinite_scroll_view/themed_interactive_infinite_scroll_view.dart';
 
 class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
@@ -18,8 +16,6 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
     this.lowerLimit = double.negativeInfinity,
     this.upperLimit = double.infinity,
   });
-
-  static const double epsilon = 0.00000001;
 
   final String settingName;
   final double currentValue;
@@ -35,46 +31,6 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
         onChanged(parsedValue ?? currentValue);
       },
       disableRoundedCornersOnRightSide: true,
-    );
-  }
-
-  bool _isDoubleSimilar(double double1, double double2) {
-    final delta = (double1 - double2).abs();
-
-    return delta < epsilon;
-  }
-
-  SizedBox _buildButtonRow(BuildContext context, BoxConstraints constraints) {
-    return SizedBox(
-      width: min(
-        ManualWidgetTesterTheme.of(context)
-            .generalTheme
-            .defaultNumberEditorButtonRowWidth,
-        constraints.maxWidth * 0.5,
-      ),
-      child: ManualWidgetTesterButtonRow(
-        disableRoundedCornersOnLeftSide: true,
-        buttons: [
-          ManualWidgetTesterButtonInfo(
-            child: const Center(child: Text('-')),
-            onButtonPressed: null,
-            onButtonDown: _isDoubleSimilar(currentValue, lowerLimit)
-                ? null
-                : () {
-                    onChanged(currentValue - 0.2);
-                  },
-          ),
-          ManualWidgetTesterButtonInfo(
-            child: const Center(child: Text('+')),
-            onButtonPressed: null,
-            onButtonDown: _isDoubleSimilar(currentValue, upperLimit)
-                ? null
-                : () {
-                    onChanged(currentValue + 0.2);
-                  },
-          ),
-        ],
-      ),
     );
   }
 
@@ -106,7 +62,13 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
                               .generalTheme
                               .spaceBetweenTextBoxesAndButtonRows,
                         ),
-                        _buildButtonRow(context, constraints),
+                        ButtonRowWithConstraints(
+                          constraints: constraints,
+                          currentValue: currentValue,
+                          lowerLimit: lowerLimit,
+                          upperLimit: upperLimit,
+                          onChanged: onChanged,
+                        ),
                       ],
                     );
                   },
