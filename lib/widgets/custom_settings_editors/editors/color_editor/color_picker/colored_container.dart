@@ -13,28 +13,6 @@ class ColoredContainer extends StatelessWidget {
   final bool doShowEditIcon;
   final Color selectedColor;
 
-  Text _buildColorCodeText(BuildContext context, bool isSelectedColorDark) {
-    return Text(
-      _generateColorCodeString(),
-      overflow: TextOverflow.fade,
-      softWrap: false,
-      style: isSelectedColorDark
-          ? ManualWidgetTesterTheme.of(context)
-              .editColorButtonTheme
-              .textStyleForDarkColor
-          : ManualWidgetTesterTheme.of(context)
-              .editColorButtonTheme
-              .textStyleForBrightColor,
-    );
-  }
-
-  String _generateColorCodeString() {
-    final rawColorString =
-        selectedColor.value.toRadixString(16).toUpperCase().padLeft(8, '0');
-
-    return '0x$rawColorString';
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -55,7 +33,10 @@ class ColoredContainer extends StatelessWidget {
         children: [
           Expanded(
             child: Center(
-              child: _buildColorCodeText(context, isSelectedColorDark),
+              child: _ColorCodeText(
+                selectedColor: selectedColor,
+                isSelectedColorDark: isSelectedColorDark,
+              ),
             ),
           ),
           TweenAnimationBuilder<double>(
@@ -101,6 +82,39 @@ class ColoredContainer extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _ColorCodeText extends StatelessWidget {
+  const _ColorCodeText({
+    required this.isSelectedColorDark,
+    required this.selectedColor,
+  });
+
+  final bool isSelectedColorDark;
+  final Color selectedColor;
+
+  String _generateColorCodeString() {
+    final rawColorString =
+        selectedColor.value.toRadixString(16).toUpperCase().padLeft(8, '0');
+
+    return '0x$rawColorString';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      _generateColorCodeString(),
+      overflow: TextOverflow.fade,
+      softWrap: false,
+      style: isSelectedColorDark
+          ? ManualWidgetTesterTheme.of(context)
+              .editColorButtonTheme
+              .textStyleForDarkColor
+          : ManualWidgetTesterTheme.of(context)
+              .editColorButtonTheme
+              .textStyleForBrightColor,
     );
   }
 }
