@@ -2,11 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
+import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/ui_elements/heading.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row/button_row.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 import 'package:sprintf/sprintf.dart';
 
-import '../../ui_elements/heading.dart';
 import 'themed_interactive_infinite_scroll_view/themed_interactive_infinite_scroll_view.dart';
 
 class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
