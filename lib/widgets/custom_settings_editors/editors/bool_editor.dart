@@ -16,31 +16,6 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
   final bool currentValue;
   final void Function(bool) onChanged;
 
-  Widget _buildRadioButtonWithLabel(BuildContext context, bool isTrue) {
-    return MouseRegion(
-      cursor:
-          isTrue != currentValue ? SystemMouseCursors.click : MouseCursor.defer,
-      child: GestureDetector(
-        onTapDown: (_) => onChanged(isTrue),
-        child: Container(
-          padding: ManualWidgetTesterTheme.of(context)
-              .boolEditorTheme
-              .radioButtonPadding,
-          color: Colors.transparent,
-          child: SizedBox(
-            height: ManualWidgetTesterTheme.of(context)
-                .boolEditorTheme
-                .editorHeight,
-            child: ManualWidgetTesterRadioButtonWithLabel(
-              isSelected: isTrue ? currentValue : !currentValue,
-              label: '$isTrue',
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -62,7 +37,11 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    child: _buildRadioButtonWithLabel(context, true),
+                    child: _RadioButtonWithLabel(
+                      isTrue: true,
+                      currentValue: currentValue,
+                      onChanged: onChanged,
+                    ),
                   ),
                   SizedBox(
                     width: ManualWidgetTesterTheme.of(context)
@@ -70,13 +49,55 @@ class ManualWidgetTesterCustomSettingsBoolEditor extends StatelessWidget {
                         .spaceBetweenRadioButtons,
                   ),
                   Expanded(
-                    child: _buildRadioButtonWithLabel(context, false),
+                    child: _RadioButtonWithLabel(
+                      isTrue: false,
+                      currentValue: currentValue,
+                      onChanged: onChanged,
+                    ),
                   ),
                 ],
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _RadioButtonWithLabel extends StatelessWidget {
+  const _RadioButtonWithLabel({
+    required this.isTrue,
+    required this.currentValue,
+    required this.onChanged,
+  });
+
+  final bool isTrue;
+  final bool currentValue;
+  final void Function(bool) onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      cursor:
+          isTrue != currentValue ? SystemMouseCursors.click : MouseCursor.defer,
+      child: GestureDetector(
+        onTapDown: (_) => onChanged(isTrue),
+        child: Container(
+          padding: ManualWidgetTesterTheme.of(context)
+              .boolEditorTheme
+              .radioButtonPadding,
+          color: Colors.transparent,
+          child: SizedBox(
+            height: ManualWidgetTesterTheme.of(context)
+                .boolEditorTheme
+                .editorHeight,
+            child: ManualWidgetTesterRadioButtonWithLabel(
+              isSelected: isTrue ? currentValue : !currentValue,
+              label: '$isTrue',
+            ),
+          ),
+        ),
       ),
     );
   }
