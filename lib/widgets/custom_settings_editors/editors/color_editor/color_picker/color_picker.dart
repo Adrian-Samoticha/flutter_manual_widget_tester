@@ -102,17 +102,6 @@ class _ColorPickerState extends State<ColorPicker> {
     );
   }
 
-  SizedBox _buildCheckerboardBackground() {
-    return SizedBox.expand(
-      child: ClipRRect(
-        borderRadius: ManualWidgetTesterTheme.of(context)
-            .editColorButtonTheme
-            .borderRadius,
-        child: const Checkerboard(),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final isSelectedColorDark = widget.selectedColor.computeLuminance() < 0.5;
@@ -137,7 +126,7 @@ class _ColorPickerState extends State<ColorPicker> {
           },
           child: Stack(
             children: [
-              _buildCheckerboardBackground(),
+              const _CheckerBoardBackground(),
               ColoredContainer(
                 isSelectedColorDark: isSelectedColorDark,
                 doShowEditIcon: _isBeingHovered || _isDialogOpen,
@@ -146,6 +135,22 @@ class _ColorPickerState extends State<ColorPicker> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _CheckerBoardBackground extends StatelessWidget {
+  const _CheckerBoardBackground();
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox.expand(
+      child: ClipRRect(
+        borderRadius: ManualWidgetTesterTheme.of(context)
+            .editColorButtonTheme
+            .borderRadius,
+        child: const Checkerboard(),
       ),
     );
   }
