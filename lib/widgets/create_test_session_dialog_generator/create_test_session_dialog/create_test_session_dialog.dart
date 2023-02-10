@@ -178,7 +178,12 @@ class _CreateTestSessionDialogState extends State<CreateTestSessionDialog> {
   }
 }
 
+/// A widget that displays either the [NoMatchingResultsMessage] widget or the
+/// [SearchResultsList] widget based on the value of [searchResults].
 class _SearchResultsListOrNoMatchingResultsMessage extends StatelessWidget {
+  /// Creates either a [SearchResultsList] or a [NoMatchingResultsMessage].
+  ///
+  /// Which widget is selected depends on whether [searchResults] is empty.
   const _SearchResultsListOrNoMatchingResultsMessage({
     required this.searchResults,
     required this.legalSelectedSearchResultIndex,
