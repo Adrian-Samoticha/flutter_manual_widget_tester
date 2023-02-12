@@ -6,7 +6,7 @@ import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/util/get_resemblance_to_search_term.dart';
 
 import 'search_bar.dart';
-import 'search_results_list_or_no_matching_results_message.dart';
+import 'search_results_list_or_no_matching_results_message/search_results_list_or_no_matching_results_message.dart';
 
 class MainColumn extends StatefulWidget {
   const MainColumn({

@@ -5,7 +5,7 @@ import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler
 import 'package:flutter_manual_widget_tester/backend/widget_test_session_handler/widget_test_session_handler.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 
-import 'main_column.dart';
+import 'main_column/main_column.dart';
 
 class CreateTestSessionDialog extends StatefulWidget {
   const CreateTestSessionDialog({
