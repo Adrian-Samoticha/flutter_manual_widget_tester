@@ -27,8 +27,13 @@ class _MainColumnState extends State<MainColumn> {
   var _selectedSearchResultIndex = 0;
   late List<WidgetTestBuilder> _searchResults;
 
-  int get _legalSelectedSearchResultIndex =>
-      _selectedSearchResultIndex.clamp(0, _searchResults.length - 1);
+  int get _legalSelectedSearchResultIndex {
+    if (_searchResults.isEmpty) {
+      return 0;
+    }
+
+    return _selectedSearchResultIndex.clamp(0, _searchResults.length - 1);
+  }
 
   @override
   void initState() {
