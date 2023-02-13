@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
-import 'package:flutter_manual_widget_tester/util/mouse_cursor_overrider/mouse_cursor_overrider.dart';
 
-import 'dotted_line.dart';
+import 'resize_handle/resize_handle.dart';
 
 class ResizableBorder extends StatefulWidget {
   const ResizableBorder({
@@ -27,49 +26,6 @@ class ResizableBorder extends StatefulWidget {
 }
 
 class _ResizableBorderState extends State<ResizableBorder> {
-  int _mouseCursorOverrideId = 0;
-
-  Widget _buildResizeHandle({required bool isLeft}) {
-    final mouseCursor = _getMouseCursor();
-
-    return MouseRegion(
-      cursor: mouseCursor,
-      child: GestureDetector(
-        onHorizontalDragStart: (_) {
-          _mouseCursorOverrideId =
-              MouseCursorOverrider.of(context).overrideMouseCursor(mouseCursor);
-          widget.onDragStart();
-        },
-        onHorizontalDragUpdate: (details) =>
-            widget.onDragUpdate((isLeft ? -2 : 2) * details.delta.dx),
-        onHorizontalDragEnd: (_) {
-          MouseCursorOverrider.of(context)
-              .cancelOverride(_mouseCursorOverrideId);
-        },
-        child: SizedBox(
-          width: 6.0,
-          child: SizedBox.expand(
-            child: DottedLine(
-              color: ManualWidgetTesterTheme.of(context)
-                  .widgetTestSessionAreaTheme
-                  .dottedLineColor,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  MouseCursor _getMouseCursor() {
-    if (MouseCursorOverrider.of(context).isOverrideActive) {
-      return MouseCursor.defer;
-    }
-
-    return widget.isVertical
-        ? SystemMouseCursors.resizeUpDown
-        : SystemMouseCursors.resizeLeftRight;
-  }
-
   @override
   Widget build(BuildContext context) {
     return RotatedBox(
@@ -90,11 +46,27 @@ class _ResizableBorderState extends State<ResizableBorder> {
               ),
             ),
           ),
-          _buildResizeHandle(isLeft: true),
+          ResizeHandle(
+            isLeft: true,
+            isVertical: widget.isVertical,
+            size: widget.size,
+            oppositeSize: widget.oppositeSize,
+            onDragStart: widget.onDragStart,
+            onDragUpdate: widget.onDragUpdate,
+            zoom: widget.zoom,
+          ),
           Container(
             width: widget.size,
           ),
-          _buildResizeHandle(isLeft: false),
+          ResizeHandle(
+            isLeft: false,
+            isVertical: widget.isVertical,
+            size: widget.size,
+            oppositeSize: widget.oppositeSize,
+            onDragStart: widget.onDragStart,
+            onDragUpdate: widget.onDragUpdate,
+            zoom: widget.zoom,
+          ),
           const Spacer(),
         ],
       ),
