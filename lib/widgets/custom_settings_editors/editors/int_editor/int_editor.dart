@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
+import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/ui_elements/heading.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 
-import '../../ui_elements/heading.dart';
 import 'button_row.dart';
 
 class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
