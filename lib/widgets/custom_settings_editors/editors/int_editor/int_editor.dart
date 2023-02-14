@@ -1,11 +1,9 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
-import 'package:flutter_manual_widget_tester/widgets/ui_elements/button_row/button_row.dart';
 import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
 
-import '../ui_elements/heading.dart';
+import '../../ui_elements/heading.dart';
+import 'button_row.dart';
 
 class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
   const ManualWidgetTesterCustomSettingsIntEditor({
@@ -36,40 +34,6 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
     );
   }
 
-  SizedBox _buildButtonRow(BuildContext context, BoxConstraints constraints) {
-    return SizedBox(
-      width: min(
-        ManualWidgetTesterTheme.of(context)
-            .generalTheme
-            .defaultNumberEditorButtonRowWidth,
-        constraints.maxWidth * 0.5,
-      ),
-      child: ManualWidgetTesterButtonRow(
-        disableRoundedCornersOnLeftSide: true,
-        buttons: [
-          ManualWidgetTesterButtonInfo(
-            child: const Center(child: Text('-')),
-            onButtonPressed: null,
-            onButtonDown: lowerValue == null || lowerValue! < currentValue
-                ? () {
-                    onChanged(currentValue - stepSize);
-                  }
-                : null,
-          ),
-          ManualWidgetTesterButtonInfo(
-            child: const Center(child: Text('+')),
-            onButtonPressed: null,
-            onButtonDown: upperValue == null || upperValue! > currentValue
-                ? () {
-                    onChanged(currentValue + stepSize);
-                  }
-                : null,
-          ),
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -94,7 +58,14 @@ class ManualWidgetTesterCustomSettingsIntEditor extends StatelessWidget {
                         .generalTheme
                         .spaceBetweenTextBoxesAndButtonRows,
                   ),
-                  _buildButtonRow(context, constraints),
+                  ButtonRow(
+                    constraints: constraints,
+                    currentValue: currentValue,
+                    onChanged: onChanged,
+                    lowerValue: lowerValue,
+                    upperValue: upperValue,
+                    stepSize: stepSize,
+                  ),
                 ],
               );
             }),
