@@ -19,6 +19,19 @@ class CreateTestSessionButtonTheme extends Equatable {
   static CreateTestSessionButtonTheme fromThemeGeneratorParameters(
     ThemeGeneratorParameters parameters,
   ) {
-    return const CreateTestSessionButtonTheme();
+    return CreateTestSessionButtonTheme(
+      padding: _getPaddingFromLayout(parameters.layout),
+    );
+  }
+
+  static EdgeInsets _getPaddingFromLayout(Layout layout) {
+    switch (layout) {
+      case Layout.compact:
+        return const EdgeInsets.all(5.0);
+      case Layout.normal:
+        return const EdgeInsets.all(6.5);
+      case Layout.cozy:
+        return const EdgeInsets.all(8.0);
+    }
   }
 }
