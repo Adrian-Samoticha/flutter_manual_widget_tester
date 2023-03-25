@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_color/flutter_color.dart';
 
 import 'theme_generator/theme_generator_parameters.dart';
 
@@ -71,6 +72,104 @@ class EditColorDialogTheme extends Equatable {
   static EditColorDialogTheme fromThemeGeneratorParameters(
     ThemeGeneratorParameters parameters,
   ) {
-    return const EditColorDialogTheme();
+    return EditColorDialogTheme(
+      sizeChangeAnimationDuration: _getSizeChangeAnimationDuration(parameters),
+      elevation: _getElevation(parameters),
+      colorNameTextStyle: _getColorNameTextStyle(parameters),
+      pickerTypeTextStyle: _getPickerTypeTextStyle(parameters),
+      selectedPickerTypeColor: _getSelectedPickerColor(parameters),
+      spacing: _getSpacing(parameters),
+      runSpacing: _getSpacing(parameters),
+      columnSpacing: _getColumnSpacing(parameters),
+    );
+  }
+
+  static Duration _getSizeChangeAnimationDuration(
+      ThemeGeneratorParameters parameters) {
+    final animationSpeed = parameters.animationSpeed;
+
+    switch (animationSpeed) {
+      case AnimationSpeed.instant:
+        return const Duration();
+      case AnimationSpeed.quick:
+        return const Duration(milliseconds: 80);
+      case AnimationSpeed.normal:
+        return const Duration(milliseconds: 150);
+      case AnimationSpeed.slow:
+        return const Duration(milliseconds: 300);
+    }
+  }
+
+  static double _getElevation(ThemeGeneratorParameters parameters) {
+    final designLanguage = parameters.designLanguage;
+
+    switch (designLanguage) {
+      case DesignLanguage.skeuomorphic:
+        return 2.0;
+      case DesignLanguage.flat:
+        return 0.0;
+    }
+  }
+
+  static TextStyle _getColorNameTextStyle(
+    ThemeGeneratorParameters parameters,
+  ) {
+    final brightness = parameters.brightness;
+
+    if (brightness == Brightness.light) {
+      return const TextStyle(
+        color: Color.fromRGBO(0, 0, 0, 0.9),
+      );
+    }
+
+    return const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.9),
+    );
+  }
+
+  static TextStyle _getPickerTypeTextStyle(
+    ThemeGeneratorParameters parameters,
+  ) {
+    final brightness = parameters.brightness;
+
+    if (brightness == Brightness.light) {
+      return const TextStyle(
+        color: Color.fromRGBO(0, 0, 0, 0.9),
+      );
+    }
+
+    return const TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.9),
+    );
+  }
+
+  static Color _getSelectedPickerColor(
+    ThemeGeneratorParameters parameters,
+  ) {
+    final brightness = parameters.brightness;
+
+    switch (brightness) {
+      case Brightness.dark:
+        return parameters.filteredBackgroundColor.lighter(8);
+      case Brightness.light:
+        return parameters.filteredBackgroundColor.lighter(8);
+    }
+  }
+
+  static double _getSpacing(ThemeGeneratorParameters parameters) {
+    final layout = parameters.layout;
+
+    switch (layout) {
+      case Layout.compact:
+        return 3.0;
+      case Layout.normal:
+        return 4.0;
+      case Layout.cozy:
+        return 5.0;
+    }
+  }
+
+  static double _getColumnSpacing(ThemeGeneratorParameters parameters) {
+    return _getSpacing(parameters) * 2.0;
   }
 }
