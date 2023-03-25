@@ -233,7 +233,8 @@ class EditColorButtonTheme extends Equatable {
   }
 
   static Duration _getIconAnimationDuration(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     final animationSpeed = parameters.animationSpeed;
 
     switch (animationSpeed) {
@@ -249,7 +250,8 @@ class EditColorButtonTheme extends Equatable {
   }
 
   static List<Shadow>? _getIconShadowsForDarkColor(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     final designLanguage = parameters.designLanguage;
 
     if (designLanguage == DesignLanguage.flat) {
@@ -266,7 +268,8 @@ class EditColorButtonTheme extends Equatable {
   }
 
   static TextStyle _getTextStyleForDarkColor(
-      ThemeGeneratorParameters parameters) {
+    ThemeGeneratorParameters parameters,
+  ) {
     final designLanguage = parameters.designLanguage;
 
     return TextStyle(
