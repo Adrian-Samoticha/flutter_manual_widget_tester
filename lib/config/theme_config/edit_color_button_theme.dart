@@ -156,6 +156,130 @@ class EditColorButtonTheme extends Equatable {
   static EditColorButtonTheme fromThemeGeneratorParameters(
     ThemeGeneratorParameters parameters,
   ) {
-    return const EditColorButtonTheme();
+    return EditColorButtonTheme(
+      height: _getHeightFromLayout(parameters.layout),
+      decorationForDarkColor: _getDecorationForDarkColor(parameters),
+      decorationForBrightColor: _getDecorationForBrightColor(parameters),
+      checkerboardSize: _getCheckerboardSize(parameters),
+      iconAnimationDuration: _getIconAnimationDuration(parameters),
+      iconShadowsForDarkColor: _getIconShadowsForDarkColor(parameters),
+      textStyleForDarkColor: _getTextStyleForDarkColor(parameters),
+    );
+  }
+
+  static double _getHeightFromLayout(Layout layout) {
+    switch (layout) {
+      case Layout.compact:
+        return 24.0;
+      case Layout.normal:
+        return 28.0;
+      case Layout.cozy:
+        return 32.0;
+    }
+  }
+
+  static BoxDecoration _getDecorationForDarkColor(
+    ThemeGeneratorParameters parameters,
+  ) {
+    final designLanguage = parameters.designLanguage;
+
+    return BoxDecoration(
+      border: const Border.fromBorderSide(
+        BorderSide(
+          color: Color.fromRGBO(255, 255, 255, 0.4),
+        ),
+      ),
+      boxShadow: designLanguage == DesignLanguage.flat
+          ? null
+          : const [
+              BoxShadow(
+                blurRadius: 3.0,
+                color: Color.fromRGBO(0, 0, 0, 0.25),
+                offset: Offset(0.0, 1.0),
+              ),
+            ],
+    );
+  }
+
+  static BoxDecoration _getDecorationForBrightColor(
+    ThemeGeneratorParameters parameters,
+  ) {
+    final designLanguage = parameters.designLanguage;
+
+    return BoxDecoration(
+      border: const Border.fromBorderSide(
+        BorderSide(
+          color: Color.fromRGBO(0, 0, 0, 0.5),
+        ),
+      ),
+      boxShadow: designLanguage == DesignLanguage.flat
+          ? null
+          : const [
+              BoxShadow(
+                blurRadius: 3.0,
+                color: Color.fromRGBO(0, 0, 0, 0.25),
+                offset: Offset(0.0, 1.0),
+              ),
+            ],
+    );
+  }
+
+  static double _getCheckerboardSize(
+    ThemeGeneratorParameters parameters,
+  ) {
+    final layout = parameters.layout;
+
+    return _getHeightFromLayout(layout) * 0.5;
+  }
+
+  static Duration _getIconAnimationDuration(
+      ThemeGeneratorParameters parameters) {
+    final animationSpeed = parameters.animationSpeed;
+
+    switch (animationSpeed) {
+      case AnimationSpeed.instant:
+        return const Duration();
+      case AnimationSpeed.quick:
+        return const Duration(milliseconds: 150);
+      case AnimationSpeed.normal:
+        return const Duration(milliseconds: 250);
+      case AnimationSpeed.slow:
+        return const Duration(milliseconds: 400);
+    }
+  }
+
+  static List<Shadow>? _getIconShadowsForDarkColor(
+      ThemeGeneratorParameters parameters) {
+    final designLanguage = parameters.designLanguage;
+
+    if (designLanguage == DesignLanguage.flat) {
+      return null;
+    }
+
+    return const [
+      Shadow(
+        blurRadius: 2.0,
+        color: Color.fromRGBO(0, 0, 0, 0.5),
+        offset: Offset(0.0, 1.0),
+      ),
+    ];
+  }
+
+  static TextStyle _getTextStyleForDarkColor(
+      ThemeGeneratorParameters parameters) {
+    final designLanguage = parameters.designLanguage;
+
+    return TextStyle(
+      color: const Color.fromRGBO(255, 255, 255, 0.9),
+      shadows: designLanguage == DesignLanguage.flat
+          ? null
+          : const [
+              Shadow(
+                blurRadius: 2.0,
+                color: Color.fromRGBO(0, 0, 0, 0.5),
+                offset: Offset(0.0, 1.0),
+              ),
+            ],
+    );
   }
 }
