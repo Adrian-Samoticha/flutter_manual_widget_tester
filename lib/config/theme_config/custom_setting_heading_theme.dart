@@ -32,22 +32,29 @@ class CustomSettingHeadingTheme extends Equatable {
     ThemeGeneratorParameters parameters,
   ) {
     return CustomSettingHeadingTheme(
-      textStyle: _getTextStyleFromBrightness(parameters.brightness),
+      textStyle: _getTextStyle(parameters),
       padding: _getPaddingFromLayout(parameters.layout),
     );
   }
 
-  static TextStyle _getTextStyleFromBrightness(Brightness brightness) {
-    switch (brightness) {
-      case Brightness.dark:
-        return const TextStyle(
-          color: Color.fromRGBO(255, 255, 255, 0.9),
-        );
-      case Brightness.light:
-        return const TextStyle(
-          color: Color.fromRGBO(0, 0, 0, 0.9),
-        );
-    }
+  static TextStyle _getTextStyle(ThemeGeneratorParameters parameters) {
+    final brightness = parameters.brightness;
+    final layout = parameters.layout;
+
+    final color = brightness == Brightness.light
+        ? const Color.fromRGBO(0, 0, 0, 0.9)
+        : const Color.fromRGBO(255, 255, 255, 0.9);
+
+    final fontSize = layout == Layout.compact
+        ? 13.0
+        : layout == Layout.normal
+            ? 14.0
+            : 16.0;
+
+    return TextStyle(
+      color: color,
+      fontSize: fontSize,
+    );
   }
 
   static EdgeInsets _getPaddingFromLayout(Layout layout) {
