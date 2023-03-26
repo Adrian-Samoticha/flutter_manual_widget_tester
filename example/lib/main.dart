@@ -206,6 +206,24 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
       ),
+      WidgetTestBuilder(
+        id: 'no custom settings',
+        name: 'No Custom Settings',
+        icon: Icons.settings,
+        builder: (context, settings) {
+          return const Text('This widget has no custom settings.');
+        },
+      ),
+      WidgetTestBuilder(
+        id: 'radio button test',
+        name: 'Radio Button Test',
+        icon: Icons.settings,
+        builder: (context, settings) {
+          final boolean = settings.getSetting('boolean', false);
+
+          return Text('Boolean state: $boolean');
+        },
+      ),
     ];
 
     return ManualWidgetTester(
