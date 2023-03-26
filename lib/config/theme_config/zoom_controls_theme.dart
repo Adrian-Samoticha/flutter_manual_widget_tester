@@ -72,6 +72,95 @@ class ZoomControlsTheme extends Equatable {
   static ZoomControlsTheme fromThemeGeneratorParameters(
     ThemeGeneratorParameters parameters,
   ) {
-    return const ZoomControlsTheme();
+    return ZoomControlsTheme(
+      width: _getWidth(parameters),
+      height: _getHeight(parameters),
+      shadow: _getShadow(parameters),
+      padding: _getPadding(parameters),
+      buttonRowWidth: _getButtonRowWidth(parameters),
+      distanceToBorder: _getDistanceToBorder(parameters),
+    );
+  }
+
+  static double _getWidth(ThemeGeneratorParameters parameters) {
+    final layout = parameters.layout;
+
+    switch (layout) {
+      case Layout.compact:
+        return 104.0;
+      case Layout.normal:
+        return 128.0;
+      case Layout.cozy:
+        return 144.0;
+    }
+  }
+
+  static double _getHeight(ThemeGeneratorParameters parameters) {
+    final layout = parameters.layout;
+
+    switch (layout) {
+      case Layout.compact:
+        return 26.0;
+      case Layout.normal:
+        return 32.0;
+      case Layout.cozy:
+        return 40.0;
+    }
+  }
+
+  static List<BoxShadow> _getShadow(ThemeGeneratorParameters parameters) {
+    final designLanguage = parameters.designLanguage;
+
+    switch (designLanguage) {
+      case DesignLanguage.skeuomorphic:
+        return const [
+          BoxShadow(
+            blurRadius: 2.0,
+            color: Color.fromRGBO(0, 0, 0, 0.25),
+            offset: Offset(0.0, 1.0),
+          ),
+        ];
+      case DesignLanguage.flat:
+        return const [];
+    }
+  }
+
+  static EdgeInsets _getPadding(ThemeGeneratorParameters parameters) {
+    final layout = parameters.layout;
+
+    switch (layout) {
+      case Layout.compact:
+        return const EdgeInsets.all(2.5);
+      case Layout.normal:
+        return const EdgeInsets.all(3.5);
+      case Layout.cozy:
+        return const EdgeInsets.all(5.0);
+    }
+  }
+
+  static double _getButtonRowWidth(ThemeGeneratorParameters parameters) {
+    final layout = parameters.layout;
+
+    switch (layout) {
+      case Layout.compact:
+        return 48.0;
+      case Layout.normal:
+        return 64.0;
+      case Layout.cozy:
+        return 80.0;
+    }
+  }
+
+  static double _getDistanceToBorder(ThemeGeneratorParameters parameters) {
+    final layout = parameters.layout;
+
+    switch (layout) {
+      case Layout.compact:
+        return 8.0;
+      case Layout.normal:
+        return 8.0;
+      case Layout.cozy:
+        return 12.0;
+    }
   }
 }
