@@ -56,6 +56,86 @@ class NoEditorMessageTheme extends Equatable {
   static NoEditorMessageTheme fromThemeGeneratorParameters(
     ThemeGeneratorParameters parameters,
   ) {
-    return const NoEditorMessageTheme();
+    return NoEditorMessageTheme(
+      padding: _getPadding(parameters),
+      margin: _getMargin(parameters),
+      decoration: _getDecoration(parameters),
+      textStyle: _getTextStyle(parameters),
+      highlightedTextStyle: _getHighlightedTextStyle(parameters),
+    );
+  }
+
+  static EdgeInsets _getPadding(ThemeGeneratorParameters parameters) {
+    final layout = parameters.layout;
+
+    switch (layout) {
+      case Layout.compact:
+        return const EdgeInsets.all(6.0);
+      case Layout.normal:
+        return const EdgeInsets.all(8.0);
+      case Layout.cozy:
+        return const EdgeInsets.all(10.0);
+    }
+  }
+
+  static EdgeInsets _getMargin(ThemeGeneratorParameters parameters) {
+    return _getPadding(parameters);
+  }
+
+  static BoxDecoration _getDecoration(ThemeGeneratorParameters parameters) {
+    final brightness = parameters.brightness;
+
+    if (brightness == Brightness.light) {
+      return const BoxDecoration(
+        color: Color.fromRGBO(255, 255, 255, 0.1),
+        border: Border.fromBorderSide(
+          BorderSide(
+            color: Color.fromRGBO(255, 128, 0, 1.0),
+          ),
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      );
+    }
+
+    return const BoxDecoration(
+      border: Border.fromBorderSide(
+        BorderSide(
+          color: Color.fromRGBO(255, 128, 0, 1.0),
+        ),
+      ),
+      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+    );
+  }
+
+  static TextStyle _getTextStyle(ThemeGeneratorParameters parameters) {
+    final brightness = parameters.brightness;
+
+    if (brightness == Brightness.light) {
+      return const TextStyle(
+        color: Color.fromRGBO(255, 115, 0, 1.0),
+      );
+    }
+
+    return const TextStyle(
+      color: Color.fromRGBO(255, 128, 0, 1.0),
+    );
+  }
+
+  static TextStyle _getHighlightedTextStyle(
+    ThemeGeneratorParameters parameters,
+  ) {
+    final brightness = parameters.brightness;
+
+    if (brightness == Brightness.light) {
+      return const TextStyle(
+        color: Color.fromRGBO(255, 12, 0, 1.0),
+        fontStyle: FontStyle.italic,
+      );
+    }
+
+    return const TextStyle(
+      color: Color.fromRGBO(255, 192, 0, 1.0),
+      fontStyle: FontStyle.italic,
+    );
   }
 }
