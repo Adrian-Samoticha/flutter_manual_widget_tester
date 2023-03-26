@@ -18,6 +18,21 @@ class StringEditorTheme extends Equatable {
   static StringEditorTheme fromThemeGeneratorParameters(
     ThemeGeneratorParameters parameters,
   ) {
-    return const StringEditorTheme();
+    return StringEditorTheme(
+      height: _getHeight(parameters),
+    );
+  }
+
+  static double _getHeight(ThemeGeneratorParameters parameters) {
+    final layout = parameters.layout;
+
+    switch (layout) {
+      case Layout.compact:
+        return 24.0;
+      case Layout.normal:
+        return 32.0;
+      case Layout.cozy:
+        return 48.0;
+    }
   }
 }
