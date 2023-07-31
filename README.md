@@ -141,15 +141,15 @@ As you can see, `ManualWidgetTester` receives a list of `WidgetTestBuilder` inst
 
 If we now run this app and click the plus icon in the top right, we will see our `Custom List` widget test builder in the list. Clicking it will load the UI to modify its settings and view the widget. The window should look like this:
 
-<!-- TODO: Insert screenshot here -->
+<img width="1072" alt="Screenshot 2023-07-31 at 20 45 58" src="https://github.com/Adrian-Samoticha/flutter_manual_widget_tester/assets/86920182/2589aac0-c527-4184-acb0-0067d411ea44">
 
 We can use the sidebar to modify the settings of the widget, change the current zoom level using the buttons on the bottom, resize the widget using the resize handles and interact with the widget as we normally would in our app. Any changes to the settings will automatically rebuild the widget and update the view. For instance, we can click the `headerColor` button and change the color to see the header update in real time.
 
-<!-- TODO: Insert screenshot here -->
+<img width="1072" alt="Screenshot 2023-07-31 at 20 50 42" src="https://github.com/Adrian-Samoticha/flutter_manual_widget_tester/assets/86920182/dc22054c-5006-4dcc-9c34-81a2cf29c907">
 
 $$\Downarrow$$
 
-<!-- TODO: Insert screenshot here -->
+<img width="1072" alt="Screenshot 2023-07-31 at 20 50 51" src="https://github.com/Adrian-Samoticha/flutter_manual_widget_tester/assets/86920182/f5dca5dc-df53-4404-bc46-315d4f7fc8ce">
 
 Additionally, we can change “generic settings,” such as the current media query properties or the default text style.
 
@@ -206,4 +206,4 @@ class CustomList extends StatelessWidget {
 
 and, more importantly, the custom list widget now respects the media query and has enough height for the larger text:
 
-<!-- TODO: Insert screenshot here -->
+<img width="1072" alt="Screenshot 2023-07-31 at 21 02 24" src="https://github.com/Adrian-Samoticha/flutter_manual_widget_tester/assets/86920182/169db4a8-36d0-4d28-8905-1a8c03a087fe">
