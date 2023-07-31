@@ -1,5 +1,5 @@
 name: flutter_manual_widget_tester
-description: A new Flutter package project.
+description: A widget testing utility for the Flutter framework.
 version: 0.0.1
 repository: https://github.com/Adrian-Samoticha/flutter_manual_widget_tester/tree/master
 
