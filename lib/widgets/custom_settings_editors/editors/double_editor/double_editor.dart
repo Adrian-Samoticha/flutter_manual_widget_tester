@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_manual_widget_tester/config/theme_config/theme.dart';
 import 'package:flutter_manual_widget_tester/widgets/custom_settings_editors/ui_elements/heading.dart';
-import 'package:flutter_manual_widget_tester/widgets/ui_elements/text_field.dart';
-import 'package:sprintf/sprintf.dart';
 
 import 'button_row_with_constraints.dart';
 import 'double_editor_text_field.dart';
@@ -23,17 +21,6 @@ class ManualWidgetTesterCustomSettingsDoubleEditor extends StatelessWidget {
   final void Function(double) onChanged;
   final double lowerLimit;
   final double upperLimit;
-
-  ManualWidgetTesterTextField _buildTextField() {
-    return ManualWidgetTesterTextField(
-      initialValue: sprintf('%f', [currentValue]),
-      onSubmitted: (String valueAsString) {
-        final parsedValue = double.tryParse(valueAsString);
-        onChanged(parsedValue ?? currentValue);
-      },
-      disableRoundedCornersOnRightSide: true,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
