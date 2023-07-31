@@ -71,7 +71,7 @@ class CustomList extends StatelessWidget {
 }
 ```
 
-Now, to manually test this `CustomList` widget, we can use the `ManualWidgetTester` provided by this package. To do so, make sure your `MyApp` class’ `MyHomePage` builds a `ManualWidgetTester` like this:
+Now, to manually test this `CustomList` widget, we can use the `ManualWidgetTester` provided by this package. To do so, make sure your `MyApp` class’ `MyHomePage` builds a `ManualWidgetTester` like so:
 
 ```dart
 void main() {
@@ -139,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 As you can see, `ManualWidgetTester` receives a list of `WidgetTestBuilder` instances. Each `WidgetTestBuilder` represents a widget you want to manually test. It receives an ID which is to be kept consistent across hot reloads, a name and icon to display in the UI, and most importantly the `builder` function which builds the widget you want to test. The `builder` method receives a `WidgetTestSessionCustomSettings` instance which provides access to the settings that can be modified in the UI. Here, we are using settings to modify the `headerColor`, `headingColor`, `numberOfItems`, and `heading` properties of the `CustomList` widget.
 
-If we now run this app and click the plus icon in the top right, we will see our `Custom List` widget test builder in the list. Clicking it will load the UI to modify its settings and view the widget. The window should look like this:
+If we now run this app and click the plus icon in the top right, we will see our `Custom List` widget in the list. Clicking it will load the UI to modify its settings and view the widget. The window should look like this:
 
 <img width="1072" alt="Screenshot 2023-07-31 at 20 45 58" src="https://github.com/Adrian-Samoticha/flutter_manual_widget_tester/assets/86920182/2589aac0-c527-4184-acb0-0067d411ea44">
 
@@ -204,6 +204,6 @@ class CustomList extends StatelessWidget {
 }
 ```
 
-and, more importantly, the custom list widget now respects the media query and has enough height for the larger text:
+More importantly, the custom list widget now respects the media query and has enough height for the larger text:
 
 <img width="1072" alt="Screenshot 2023-07-31 at 21 02 24" src="https://github.com/Adrian-Samoticha/flutter_manual_widget_tester/assets/86920182/169db4a8-36d0-4d28-8905-1a8c03a087fe">
